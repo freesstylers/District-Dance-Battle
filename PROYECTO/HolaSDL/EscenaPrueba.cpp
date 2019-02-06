@@ -42,7 +42,7 @@ void EscenaPrueba::handleEvents()
 				auto it = lista.front();
 				if (it != nullptr)
 				{
-					if (event.key.keysym.sym == (it)->getKey())
+					if (event.type == SDL_KEYUP && event.key.keysym.sym == (it)->getKey())
 					{
 						if (abs(it->getPos().CompX() - otros.front()->getPos().CompX()) <= 100)
 						{
@@ -55,7 +55,7 @@ void EscenaPrueba::handleEvents()
 						delete (it);
 						lista.remove(it);
 					}
-					else if (event.type == SDL_KEYDOWN)
+					else if (event.type == SDL_KEYUP)
 					{
 						cout << "mal";
 						delete (it);
@@ -98,10 +98,10 @@ void EscenaPrueba::run()
 	while (!exit)
 	{
 		timer->Update();
-		handleEvents();
 		frameTime = SDL_GetTicks() - startTime; // Tiempo desde última actualización
 		if (frameTime >= FRAME_RATE) {
 			update();
+			handleEvents();
 			startTime = SDL_GetTicks();
 		}
 		if (timer->DeltaTime() > 2.0f)
