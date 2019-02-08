@@ -12,16 +12,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioManager.h" />
-    <ClInclude Include="Bird.h" />
-    <ClInclude Include="Bullet.h" />
-    <ClInclude Include="BulletsShooter.h" />
     <ClInclude Include="Button.h" />
-    <ClInclude Include="Collisions.h" />
     <ClInclude Include="DemoGame.h" />
-    <ClInclude Include="Egg.h" />
-    <ClInclude Include="EggsShooter.h" />
     <ClInclude Include="Enemigo.h" />
-    <ClInclude Include="Fighter.h" />
     <ClInclude Include="Font.h" />
     <ClInclude Include="FontsManager.h" />
     <ClInclude Include="GameObject.h" />
@@ -46,16 +39,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AudioManager.cpp" />
-    <ClCompile Include="Bird.cpp" />
-    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="BulletsShooter.cpp" />
     <ClCompile Include="Button.cpp" />
-    <ClCompile Include="Collisions.cpp" />
     <ClCompile Include="DemoGame.cpp" />
-    <ClCompile Include="Egg.cpp" />
-    <ClCompile Include="EggsShooter.cpp" />
     <ClCompile Include="Enemigo.cpp" />
-    <ClCompile Include="Fighter.cpp" />
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="FontsManager.cpp" />
     <ClCompile Include="GameObject.cpp" />

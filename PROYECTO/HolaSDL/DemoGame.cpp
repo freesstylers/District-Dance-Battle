@@ -1,9 +1,7 @@
 #include "DemoGame.h"
-#include "Bird.h"
-#include "BulletsShooter.h"
-#include "Egg.h"
-#include "EggsShooter.h"
-#include "Fighter.h"
+
+//ESTE DEMOGAME ES COMO LA ESCENA DEL JUEGO
+//LA USAMOS PARA PROBAR LAS BATALLAS, NO ES DEFINITIVA
 
 using namespace std;
 
@@ -19,25 +17,9 @@ DemoGame::~DemoGame() {
 
 void DemoGame::initGame() {
 
-	EggsShooter* es = new EggsShooter(this);
-	BulletsShooter* bs = new BulletsShooter(this);
-
-	GameObject* bird = new Bird(this,es);
-	bird->setWidth(75);
-	bird->setHeight(75);
-	bird->setPosition(Vector2D(10, 10));
-	bird->setVelocity(Vector2D(2, 0));
-
-	GameObject* fighter = new Fighter(this,bs);
-	fighter->setWidth(75);
-	fighter->setHeight(75);
-	fighter->setPosition(Vector2D(getWindowWidth()/2, getWindowHeight()/2));
-	fighter->setVelocity(Vector2D(2, 0));
-
-	actors_.push_back(es);
-	actors_.push_back(bs);
-	actors_.push_back(bird);
-	actors_.push_back(fighter);
+	/*	Inicializacion de todo lo necesario
+	*	que vaya a aparecer en la escena
+	*/
 
 }
 
@@ -86,6 +68,8 @@ void DemoGame::handleInput(Uint32 time) {
 				break;
 			}
 		}
+		else if (event.type == SDL_QUIT) //Cierra el juego cuando se le da a la cruz de la ventana
+			exit_ = true;
 
 		for (GameObject* o : actors_) {
 			o->handleInput(time, event);
