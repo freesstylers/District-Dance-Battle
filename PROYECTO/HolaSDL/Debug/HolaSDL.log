@@ -1,2 +1,34 @@
-﻿  EscenaPrueba.cpp
-  HolaSDL.vcxproj -> C:\Users\Usuario\Desktop\DibujoArte\plantilla-juego\Despacito-2\PROYECTO\bin\HolaSDLDebug.exe
+﻿  AudioManager.cpp
+  Bird.cpp
+c:\hlocal\tpv\proyectossdl\holasdl\bird.cpp(37): warning C4244: '=': conversion from 'double' to 'Uint32', possible loss of data
+c:\hlocal\tpv\proyectossdl\holasdl\bird.cpp(43): warning C4244: '=': conversion from 'double' to 'Uint32', possible loss of data
+  Bullet.cpp
+c:\hlocal\tpv\proyectossdl\holasdl\bullet.cpp(38): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\hlocal\tpv\proyectossdl\holasdl\bullet.cpp(37): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  BulletsShooter.cpp
+  Collisions.cpp
+  DemoGame.cpp
+  Egg.cpp
+  EggsShooter.cpp
+  Fighter.cpp
+  Font.cpp
+  FontsManager.cpp
+  GameObject.cpp
+  main.cpp
+  RandomNumberGenerator.cpp
+  Resources.cpp
+  SDLAudioManager.cpp
+  SDLFontsManager.cpp
+  SDLGame.cpp
+  SDLTexturesManager.cpp
+  ServiceLocator.cpp
+  Generating Code...
+  Compiling...
+  SRandBasedGenerator.cpp
+c:\hlocal\tpv\proyectossdl\holasdl\srandbasedgenerator.cpp(10): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Texture.cpp
+  TexturesManager.cpp
+  Vector2D.cpp
+  Generating Code...
+     Creating library C:\hlocal\TPV\ProyectosSDL\bin\HolaSDLDebug.lib and object C:\hlocal\TPV\ProyectosSDL\bin\HolaSDLDebug.exp
+  HolaSDL.vcxproj -> C:\hlocal\TPV\ProyectosSDL\bin\HolaSDLDebug.exe
