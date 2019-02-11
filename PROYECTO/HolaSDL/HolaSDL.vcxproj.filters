@@ -96,6 +96,12 @@
     <ClInclude Include="Timer.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+<<<<<<< HEAD
+=======
+    <ClInclude Include="Point.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+>>>>>>> parent of 1312460... Merge branch 'Test-Arquitectura-Clases' of https://github.com/freesstylers/Despacito-2 into Test-Arquitectura-Clases
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AudioManager.cpp">
@@ -179,5 +185,11 @@
     <ClCompile Include="Timer.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
+<<<<<<< HEAD
+=======
+    <ClCompile Include="Point.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
+>>>>>>> parent of 1312460... Merge branch 'Test-Arquitectura-Clases' of https://github.com/freesstylers/Despacito-2 into Test-Arquitectura-Clases
   </ItemGroup>
 </Project>
