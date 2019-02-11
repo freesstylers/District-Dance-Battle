@@ -23,9 +23,12 @@
     <ClInclude Include="MusicTimer.h" />
     <ClInclude Include="Perico.h" />
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     <ClInclude Include="Point.h" />
 >>>>>>> parent of 1312460... Merge branch 'Test-Arquitectura-Clases' of https://github.com/freesstylers/Despacito-2 into Test-Arquitectura-Clases
+=======
+>>>>>>> parent of 4e9543a... Notas salen al ritmo
     <ClInclude Include="Pulsador.h" />
     <ClInclude Include="Puntuacion.h" />
     <ClInclude Include="QuickTimeEvents.h" />
@@ -57,9 +60,12 @@
     <ClCompile Include="MusicTimer.cpp" />
     <ClCompile Include="Perico.cpp" />
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     <ClCompile Include="Point.cpp" />
 >>>>>>> parent of 1312460... Merge branch 'Test-Arquitectura-Clases' of https://github.com/freesstylers/Despacito-2 into Test-Arquitectura-Clases
+=======
+>>>>>>> parent of 4e9543a... Notas salen al ritmo
     <ClCompile Include="Pulsador.cpp" />
     <ClCompile Include="Puntuacion.cpp" />
     <ClCompile Include="QuickTimeEvents.cpp" />
@@ -81,10 +87,14 @@
     <RootNamespace>HolaSDL</RootNamespace>
     <ProjectName>HolaSDL</ProjectName>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
 =======
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
 >>>>>>> parent of 1312460... Merge branch 'Test-Arquitectura-Clases' of https://github.com/freesstylers/Despacito-2 into Test-Arquitectura-Clases
+=======
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+>>>>>>> parent of 4e9543a... Notas salen al ritmo
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

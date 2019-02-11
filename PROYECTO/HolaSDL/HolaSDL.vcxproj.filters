@@ -97,11 +97,14 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     <ClInclude Include="Point.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
 >>>>>>> parent of 1312460... Merge branch 'Test-Arquitectura-Clases' of https://github.com/freesstylers/Despacito-2 into Test-Arquitectura-Clases
+=======
+>>>>>>> parent of 4e9543a... Notas salen al ritmo
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AudioManager.cpp">
@@ -186,10 +189,13 @@
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     <ClCompile Include="Point.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
 >>>>>>> parent of 1312460... Merge branch 'Test-Arquitectura-Clases' of https://github.com/freesstylers/Despacito-2 into Test-Arquitectura-Clases
+=======
+>>>>>>> parent of 4e9543a... Notas salen al ritmo
   </ItemGroup>
 </Project>
