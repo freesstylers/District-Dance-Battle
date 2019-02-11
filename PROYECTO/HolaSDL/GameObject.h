@@ -7,7 +7,8 @@ class GameObject {
 
 public:
 	GameObject();
-	GameObject(SDLGame* game);
+	GameObject(SDLGame* game);	//si el render lo hacemos común a todos los GameObjects, podría cambiarse a
+								//GameObject(SDLGame* game, int frames = 0);, así se pueden definir las frames de animación o dejarlo vacío cuando no haya
 	virtual ~GameObject();
 
 	SDLGame* getGame() const;
@@ -41,7 +42,8 @@ public:
 	// abstract methods to be implemented in sub-classes
 	virtual void handleInput(Uint32 time, const SDL_Event& event) = 0;
 	virtual void update(Uint32 time) = 0;
-	virtual void render(Uint32 time) = 0;
+	virtual void render(Uint32 time) = 0;	//dado que el render es común a todos los obbjetos, quizá sería mejor no ponerlo como vacío
+											//y definirlo por defecto, con 0 frames para objetos sin animación
 
 protected:
 	SDLGame* game_; // pointer to the game
