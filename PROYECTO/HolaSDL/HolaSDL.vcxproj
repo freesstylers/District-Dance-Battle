@@ -35,11 +35,11 @@
     <ClInclude Include="SRandBasedGenerator.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TexturesManager.h" />
+    <ClInclude Include="Timer.h" />
     <ClInclude Include="Vector2D.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AudioManager.cpp" />
-    <ClCompile Include="BulletsShooter.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="DemoGame.cpp" />
     <ClCompile Include="Enemigo.cpp" />
@@ -63,6 +63,7 @@
     <ClCompile Include="SRandBasedGenerator.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TexturesManager.cpp" />
+    <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Vector2D.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

@@ -20,7 +20,9 @@ void DemoGame::initGame() {
 	/*	Inicializacion de todo lo necesario
 	*	que vaya a aparecer en la escena
 	*/
-
+	SDL_Keycode  key = SDLK_s;
+	Flechas* flecha1 = new Flechas(key, this, 50, 50, Vector2D(700, 350), Vector2D(-5, 0));
+	actors_.push_back(flecha1);
 }
 
 void DemoGame::closeGame() {

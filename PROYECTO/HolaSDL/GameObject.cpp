@@ -84,3 +84,13 @@ double GameObject::getRotation() const {
 void GameObject::setRotation(double angle) {
 	rotation_ = angle;
 }
+
+SDL_Rect GameObject::getRect()
+{
+	SDL_Rect rect;
+	rect.h = height_;
+	rect.w = width_;
+	rect.x = position_.getX();
+	rect.y = position_.getY();
+	return rect;
+}

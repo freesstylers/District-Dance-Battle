@@ -1,9 +1,11 @@
 #pragma once
 
 #include <vector>
-
+#include <list>
 #include "SDLGame.h"
 #include "GameObject.h"
+#include "Timer.h"
+#include "Flechas.h"
 
 class DemoGame: public SDLGame {
 
@@ -25,6 +27,7 @@ private:
 	const static int _WINDOW_WIDTH_ = 800;
 	const static int _WINDOW_HEIGHT_ = 600;
 	bool exit_;
-	std::vector<GameObject*> actors_;
+	std::list<GameObject*> actors_;
+	Timer* timer;
 
 };
