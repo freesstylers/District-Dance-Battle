@@ -1,25 +1,17 @@
 #pragma once
-#include "Vector2D.h"
-#include "Texture.h"
-#include "SDL.h"
-#include "SDL_image.h"
-#include "checkML.h"
-class Flechas
+#include "GameObject.h"
+class Flechas: public GameObject
 {
-private:
-	Vector2D pos;
+protected:
 	Texture* texture;
-	int key;
-	int h, w;
+	SDL_Keycode key;
 public:
 	Flechas();
-	Flechas(Vector2D pos, Texture* texture,int key, int h, int w);
-	~Flechas();
-	void update();
-	void handleEvents(SDL_Event& event);
-	void render();
-	int getKey() { return key; };
-	SDL_Rect getRect();
-	Vector2D getPos();
+	Flechas(SDL_Keycode key, SDLGame* game, double width, double height, Vector2D pos, Vector2D vel);
+	virtual ~Flechas();
+	virtual void handleInput(Uint32 time, const SDL_Event& event); //Puede que no lo necesitemos si se lleva las pulsaciones desde pulsador
+	virtual void update(Uint32 time);
+	virtual void render(Uint32 time);
+	SDL_Keycode getKey() { return key; };
 };
 

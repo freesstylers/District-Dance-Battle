@@ -10,6 +10,66 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AudioManager.h" />
+    <ClInclude Include="BeatHandeler.h" />
+    <ClInclude Include="Button.h" />
+    <ClInclude Include="DemoGame.h" />
+    <ClInclude Include="EnemigoBaile.h" />
+    <ClInclude Include="Font.h" />
+    <ClInclude Include="FontsManager.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Flechas.h" />
+    <ClInclude Include="MusicTimer.h" />
+    <ClInclude Include="Perico.h" />
+    <ClInclude Include="Point.h" />
+    <ClInclude Include="Pulsador.h" />
+    <ClInclude Include="Puntuacion.h" />
+    <ClInclude Include="QuickTimeEvents.h" />
+    <ClInclude Include="RandomNumberGenerator.h" />
+    <ClInclude Include="Resources.h" />
+    <ClInclude Include="SDLAudioManager.h" />
+    <ClInclude Include="SDLFontsManager.h" />
+    <ClInclude Include="SDLGame.h" />
+    <ClInclude Include="SDLTexturesManager.h" />
+    <ClInclude Include="sdl_includes.h" />
+    <ClInclude Include="ServiceLocator.h" />
+    <ClInclude Include="SRandBasedGenerator.h" />
+    <ClInclude Include="Texture.h" />
+    <ClInclude Include="TexturesManager.h" />
+    <ClInclude Include="Timer.h" />
+    <ClInclude Include="Vector2D.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AudioManager.cpp" />
+    <ClCompile Include="BeatHandeler.cpp" />
+    <ClCompile Include="Button.cpp" />
+    <ClCompile Include="DemoGame.cpp" />
+    <ClCompile Include="EnemigoBaile.cpp" />
+    <ClCompile Include="Font.cpp" />
+    <ClCompile Include="FontsManager.cpp" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Flechas.cpp" />
+    <ClCompile Include="MusicTimer.cpp" />
+    <ClCompile Include="Perico.cpp" />
+    <ClCompile Include="Point.cpp" />
+    <ClCompile Include="Pulsador.cpp" />
+    <ClCompile Include="Puntuacion.cpp" />
+    <ClCompile Include="QuickTimeEvents.cpp" />
+    <ClCompile Include="RandomNumberGenerator.cpp" />
+    <ClCompile Include="Resources.cpp" />
+    <ClCompile Include="SDLAudioManager.cpp" />
+    <ClCompile Include="SDLFontsManager.cpp" />
+    <ClCompile Include="SDLGame.cpp" />
+    <ClCompile Include="SDLTexturesManager.cpp" />
+    <ClCompile Include="ServiceLocator.cpp" />
+    <ClCompile Include="SRandBasedGenerator.cpp" />
+    <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="TexturesManager.cpp" />
+    <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="Vector2D.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{28A4C5CD-307A-4FE6-81E4-4CE1F1E49AB4}</ProjectGuid>
     <RootNamespace>HolaSDL</RootNamespace>
@@ -41,7 +101,9 @@
     <Import Project="..\ProyectosSDL.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(SolutionDir)SDL2_ttf-2.0.14\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
