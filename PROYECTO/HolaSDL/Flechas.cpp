@@ -20,18 +20,9 @@ Flechas::~Flechas()
 
 }
 
-int Flechas::handleInput(Uint32 time, const SDL_Event& event, const GameObject& pulsador) {
+void Flechas::handleInput(Uint32 time, const SDL_Event& event) {
 
-	/*if(tecla correcta) --> parámetro pasado en su creación?
-	{
-		return pulsador.checkAccuracy( posición Y );
-	}
 
-	else
-		return 0; (es fallido)
-	*/
-
-	//el valor del return se tomará en playstate para calcular los puntos añadidos
 }
 
 void Flechas::update(Uint32 time) {
