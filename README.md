@@ -13,5 +13,12 @@ El Mapa: consistirá en una imagen plana, que sea una ciudad dividida en barrios
 
 Música: main theme, por cada barrio una canción (5) cada una tendrá una variación como mínimo, 
 
+Personajes:El juego tendrá 16 personajes: El protagonista y , por cada barrio, 2 esbirros y un boss.
+	
+		-El protagonista: Se llama Perico,es el hermano de Alarico,
+		
+		-Robot Vaporwave: Es el boss 1,
 
+					
 
+						
