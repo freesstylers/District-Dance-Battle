@@ -4,7 +4,7 @@
 #include <list>
 #include "Vector2D.h"
 #include "Timer.h"
-
+#include "BeatHandeler.h"
 const int W = 1000;
 const int H = 700;
 const enum TextureName { FlechaText, PointText };

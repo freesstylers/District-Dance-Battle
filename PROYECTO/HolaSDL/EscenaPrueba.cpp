@@ -80,10 +80,25 @@ void EscenaPrueba::render()
 
 void EscenaPrueba::update()
 {
+/*	exit_ = false;
+	int nbeats = 0;
+	//getServiceLocator()->getAudios()->playMusic (Resources::Explosion, -1);
+	getServiceLocator()->getAudios()->playChannel(Resources::MainSong, -1);
+	getServiceLocator()->getAudios()->setChannelVolume(10);
+	Uint32 lastIterationTime = SDL_GetTicks();
+	while (!exit_) {
+		//// PARTE IMPORTANTE PARA EL SONIDO/////////////////////
+		Uint32 startTime = SDL_GetTicks();
+		BeatHandeler* b = new BeatHandeler(112);
+		b->translateBmp();
+		if (SDL_GetTicks() > lastIterationTime + b->getBeatTime() - 5 && SDL_GetTicks() < lastIterationTime + b->getBeatTime() + 5) {
+			b->beatRateButton(nbeats);
+			lastIterationTime = SDL_GetTicks();
+		}
 	for (auto it = lista.begin(); it != lista.end(); it++)
 	{
 		(*it)->update();
-	}
+	}*/
 }
 void EscenaPrueba::generate()
 {
