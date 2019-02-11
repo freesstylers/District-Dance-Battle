@@ -11,13 +11,14 @@ public:
 
 	enum TextureId {
 		// images
-		Flecha
+		Flecha,
+		Point
 		// text
 	};
 
 	enum AudioId {
 		// music
-
+		Pruebas
 		// sound effects
 
 	};

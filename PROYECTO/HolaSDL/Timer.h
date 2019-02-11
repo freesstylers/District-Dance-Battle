@@ -8,6 +8,7 @@ private:
 	unsigned int _ElapsedTicks;
 	float _DeltaTime;
 	float _TimeScale;
+	float _lastItTimer;
 
 	Timer();
 	~Timer();
@@ -22,6 +23,7 @@ public:
 
 	void TimeScale(float t);
 	float TimeScale();
-
+	void setLastItTime(double t) { _lastItTimer = t; }
+	double getLastTIme() { return _lastItTimer; }
 	void Update();
 };

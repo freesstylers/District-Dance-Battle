@@ -22,6 +22,7 @@
     <ClInclude Include="Flechas.h" />
     <ClInclude Include="MusicTimer.h" />
     <ClInclude Include="Perico.h" />
+    <ClInclude Include="Point.h" />
     <ClInclude Include="Pulsador.h" />
     <ClInclude Include="Puntuacion.h" />
     <ClInclude Include="QuickTimeEvents.h" />
@@ -52,6 +53,7 @@
     <ClCompile Include="Flechas.cpp" />
     <ClCompile Include="MusicTimer.cpp" />
     <ClCompile Include="Perico.cpp" />
+    <ClCompile Include="Point.cpp" />
     <ClCompile Include="Pulsador.cpp" />
     <ClCompile Include="Puntuacion.cpp" />
     <ClCompile Include="QuickTimeEvents.cpp" />
@@ -72,7 +74,7 @@
     <ProjectGuid>{28A4C5CD-307A-4FE6-81E4-4CE1F1E49AB4}</ProjectGuid>
     <RootNamespace>HolaSDL</RootNamespace>
     <ProjectName>HolaSDL</ProjectName>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

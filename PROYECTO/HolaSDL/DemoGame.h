@@ -6,7 +6,8 @@
 #include "GameObject.h"
 #include "Timer.h"
 #include "Flechas.h"
-
+#include "Point.h"
+#include "BeatHandeler.h"
 class DemoGame: public SDLGame {
 
 public:
@@ -31,5 +32,6 @@ private:
 	std::list<GameObject*> actors_;
 	std::list<Flechas*> flechas_;
 	Timer* timer;
-
+	Point* punto;
+	BeatHandeler* bh;
 };
