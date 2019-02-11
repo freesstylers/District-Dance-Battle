@@ -23,11 +23,13 @@ private:
 	void handleInput(Uint32 time);
 	void update(Uint32 time);
 	void render(Uint32 time);
+	void generate();
 
 	const static int _WINDOW_WIDTH_ = 800;
 	const static int _WINDOW_HEIGHT_ = 600;
 	bool exit_;
 	std::list<GameObject*> actors_;
+	std::list<Flechas*> flechas_;
 	Timer* timer;
 
 };

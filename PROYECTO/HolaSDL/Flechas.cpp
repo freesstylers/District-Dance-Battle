@@ -12,7 +12,7 @@ Flechas::Flechas(SDL_Keycode key, SDLGame* game, double width, double height, Ve
 	setHeight(height);
 	setPosition(pos);
 	setVelocity(vel);
-	texture = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::Bird);
+	texture = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::Flecha);
 }
 
 Flechas::~Flechas()
@@ -29,7 +29,7 @@ void Flechas::update(Uint32 time) {
 	position_.set(position_ + velocity_);
 	if (position_.getX() < getGame()->getWindowWidth())
 	{
-		//delete this;
+		
 	}
 }
 

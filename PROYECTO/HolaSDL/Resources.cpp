@@ -7,7 +7,7 @@ vector<Resources::FontInfo> Resources::fonts_ {
 };
 
 vector<Resources::ImageInfo> Resources::images_ {
-
+	{Flecha, "resources/images/Flecha.png"}
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {
