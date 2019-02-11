@@ -11,39 +11,19 @@ public:
 
 	enum TextureId {
 		// images
-		Blank,
-		TennisBall,
-		KeyBoardIcon,
-		MouseIcon,
-		AIIcon,
-		SpaceShips,
-		Airplanes,
-		Star,
-		Bird,
-		FireEgg,
 
 		// text
-		HelloWorld,
-		PresAnyKey,
-		GameOver
 	};
 
 	enum AudioId {
 		// music
-		Beat,
-		Cheer,
-		Boooo,
 
 		// sound effects
-		Wall_Hit,
-		Paddle_Hit,
-		GunShot,
-		Explosion
+
 	};
 
 	enum FontId {
-		ARIAL16,
-		ARIAL24,
+		//Ejemplo de fuentes --> ARIAL16
 	};
 
 

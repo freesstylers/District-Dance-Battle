@@ -87,7 +87,10 @@
     <ClInclude Include="Perico.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="Enemigo.h">
+    <ClInclude Include="EnemigoBaile.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="BeatHandeler.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="Timer.h">
@@ -167,7 +170,10 @@
     <ClCompile Include="Perico.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
-    <ClCompile Include="Enemigo.cpp">
+    <ClCompile Include="EnemigoBaile.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
+    <ClCompile Include="BeatHandeler.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
     <ClCompile Include="Timer.cpp">
