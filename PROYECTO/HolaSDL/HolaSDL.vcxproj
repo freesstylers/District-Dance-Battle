@@ -14,14 +14,20 @@
     <ClInclude Include="AudioManager.h" />
     <ClInclude Include="BeatHandeler.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="CutSceneState.h" />
     <ClInclude Include="DemoGame.h" />
     <ClInclude Include="EnemigoBaile.h" />
     <ClInclude Include="Font.h" />
     <ClInclude Include="FontsManager.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Flechas.h" />
+    <ClInclude Include="GameState.h" />
+    <ClInclude Include="GameStateMachine.h" />
+    <ClInclude Include="MapState.h" />
+    <ClInclude Include="MenuState.h" />
     <ClInclude Include="MusicTimer.h" />
     <ClInclude Include="Perico.h" />
+    <ClInclude Include="PlayState.h" />
     <ClInclude Include="Pulsador.h" />
     <ClInclude Include="Puntuacion.h" />
     <ClInclude Include="QuickTimeEvents.h" />
@@ -43,15 +49,21 @@
     <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="BeatHandeler.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="CutSceneState.cpp" />
     <ClCompile Include="DemoGame.cpp" />
     <ClCompile Include="EnemigoBaile.cpp" />
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="FontsManager.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GameState.cpp" />
+    <ClCompile Include="GameStateMachine.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Flechas.cpp" />
+    <ClCompile Include="MapState.cpp" />
+    <ClCompile Include="MenuState.cpp" />
     <ClCompile Include="MusicTimer.cpp" />
     <ClCompile Include="Perico.cpp" />
+    <ClCompile Include="PlayState.cpp" />
     <ClCompile Include="Pulsador.cpp" />
     <ClCompile Include="Puntuacion.cpp" />
     <ClCompile Include="QuickTimeEvents.cpp" />
@@ -72,7 +84,7 @@
     <ProjectGuid>{28A4C5CD-307A-4FE6-81E4-4CE1F1E49AB4}</ProjectGuid>
     <RootNamespace>HolaSDL</RootNamespace>
     <ProjectName>HolaSDL</ProjectName>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
