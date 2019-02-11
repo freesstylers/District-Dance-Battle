@@ -1,11 +1,15 @@
 ﻿  DemoGame.cpp
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   HolaSDL.vcxproj -> C:\Users\Usuario\Desktop\DibujoArte\plantilla-juego\Despacito-2\PROYECTO\bin\HolaSDLDebug.exe
 =======
 c:\users\usuario_local\documents\github\despacito-2\proyecto\holasdl\timer.h(26): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   HolaSDL.vcxproj -> C:\Users\usuario_local\Documents\GitHub\Despacito-2\PROYECTO\bin\HolaSDLDebug.exe
 >>>>>>> parent of 1312460... Merge branch 'Test-Arquitectura-Clases' of https://github.com/freesstylers/Despacito-2 into Test-Arquitectura-Clases
+=======
+  HolaSDL.vcxproj -> C:\Users\Usuario\Desktop\DibujoArte\plantilla-juego\Despacito-2\PROYECTO\bin\HolaSDLDebug.exe
+>>>>>>> parent of 4e9543a... Notas salen al ritmo
 =======
   HolaSDL.vcxproj -> C:\Users\Usuario\Desktop\DibujoArte\plantilla-juego\Despacito-2\PROYECTO\bin\HolaSDLDebug.exe
 >>>>>>> parent of 4e9543a... Notas salen al ritmo

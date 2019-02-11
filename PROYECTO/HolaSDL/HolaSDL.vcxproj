@@ -24,9 +24,12 @@
     <ClInclude Include="Perico.h" />
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     <ClInclude Include="Point.h" />
 >>>>>>> parent of 1312460... Merge branch 'Test-Arquitectura-Clases' of https://github.com/freesstylers/Despacito-2 into Test-Arquitectura-Clases
+=======
+>>>>>>> parent of 4e9543a... Notas salen al ritmo
 =======
 >>>>>>> parent of 4e9543a... Notas salen al ritmo
     <ClInclude Include="Pulsador.h" />
@@ -61,9 +64,12 @@
     <ClCompile Include="Perico.cpp" />
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     <ClCompile Include="Point.cpp" />
 >>>>>>> parent of 1312460... Merge branch 'Test-Arquitectura-Clases' of https://github.com/freesstylers/Despacito-2 into Test-Arquitectura-Clases
+=======
+>>>>>>> parent of 4e9543a... Notas salen al ritmo
 =======
 >>>>>>> parent of 4e9543a... Notas salen al ritmo
     <ClCompile Include="Pulsador.cpp" />
@@ -88,10 +94,14 @@
     <ProjectName>HolaSDL</ProjectName>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
 =======
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
 >>>>>>> parent of 1312460... Merge branch 'Test-Arquitectura-Clases' of https://github.com/freesstylers/Despacito-2 into Test-Arquitectura-Clases
+=======
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+>>>>>>> parent of 4e9543a... Notas salen al ritmo
 =======
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
 >>>>>>> parent of 4e9543a... Notas salen al ritmo
