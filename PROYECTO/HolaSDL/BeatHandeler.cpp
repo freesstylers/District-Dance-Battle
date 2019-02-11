@@ -21,3 +21,7 @@ void BeatHandeler::beatRateButton(int &currentBeats) {
 		currentBeats++;
 
 }
+double BeatHandeler::translateBmp() {
+	beatTime = 60000 / bmp;
+	return beatTime;
+}

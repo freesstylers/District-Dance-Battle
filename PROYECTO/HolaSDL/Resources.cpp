@@ -7,8 +7,7 @@ vector<Resources::FontInfo> Resources::fonts_ {
 };
 
 vector<Resources::ImageInfo> Resources::images_ {
-	{Flecha, "resources/images/Flecha.png"},
-    {Point, "resources/images/Point.png"}
+	{Flecha, "resources/images/Flecha.png"}
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {
@@ -16,7 +15,7 @@ vector<Resources::TextMsgInfo> Resources::messages_ {
 };
 
 vector<Resources::MusicInfo> Resources::musics_ {
-	{Pruebas , "resources/sound/TutorialJuego.wav"}
+
 };
 
 vector<Resources::SoundInfo> Resources::sounds_ {
