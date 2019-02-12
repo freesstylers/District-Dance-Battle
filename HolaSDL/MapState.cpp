@@ -1,8 +1,8 @@
 #include "MapState.h"
+#include "GameManager.h"
 
 
-
-MapState::MapState(Game* g) : GameState( g)
+MapState::MapState(GameManager* g) : GameState( g)
 {
 }
 

@@ -1,8 +1,9 @@
 #include "GameState.h"
+#include "GameManager.h"
 
-GameState::GameState(Game* g)
+GameState::GameState(GameManager* g)
 {
-	app = g;
+	manager = g;
 }
 
 
@@ -24,7 +25,7 @@ void GameState::update()
 
 }
 
-void GameState::render()
+void GameState::render(Uint32 time)
 {
 	//for (GameObject* o : stage)
 		//o->render();

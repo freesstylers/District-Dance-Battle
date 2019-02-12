@@ -1,6 +1,6 @@
 #include "CutSceneState.h"
 
-CutSceneState::CutSceneState(Game* g): MapState(g)
+CutSceneState::CutSceneState(GameManager* g): MapState(g)
 {
 }
 

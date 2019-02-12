@@ -9,6 +9,7 @@
 #include "SDLFontsManager.h"
 #include "ServiceLocator.h"
 #include "SRandBasedGenerator.h"
+#include "GameStateMachine.h"
 
 using namespace std;
 
@@ -21,10 +22,10 @@ public:
 
 	SDL_Window* getWindow() const; // returns a pointer to the SDL window
 	SDL_Renderer* getRenderer() const; // returns a pointer to the SDL renderer
+
 	int getWindowWidth() const; // returns the window width
 	int getWindowHeight() const; // returns the window height
 	const ServiceLocator* getServiceLocator() const; // returns a pointer to the resources
-
 	// abstract methods to be implemented by subclasses
 	virtual void start() = 0; // start the game
 	virtual void stop() = 0;  // stop the game
@@ -48,6 +49,5 @@ protected:
 	string windowTitle_; // window title
 	int width_; // window width
 	int height_; // window height
-
 };
 
