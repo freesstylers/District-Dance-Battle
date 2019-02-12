@@ -23,6 +23,11 @@ void DemoGame::initGame() {
 	/*	Inicializacion de todo lo necesario
 	*	que vaya a aparecer en la escena
 	*/
+	timer = Timer::Instance();
+	punto = new Point(this, 80, 80, Vector2D(100, 330));
+	bh = new BeatHandeler(112);
+
+	velFlechas = asignaVel(bh->getBeatTime());
 	ifstream file("resources/levels/prueba.txt");
 	int aux;
 	Flechas* flecha;
@@ -30,27 +35,23 @@ void DemoGame::initGame() {
 		file >> aux;
 		switch (aux) {
 		case 1:
-			flecha = new Flechas(SDLK_LEFT, this, 50, 50, Vector2D(700, 350), Vector2D(-5, 0));
+			flecha = new Flechas(SDLK_LEFT, this, 50, 50, posFlechaInicial ,velFlechas);
 			break;
 		case 2:
-			flecha = new Flechas(SDLK_RIGHT, this, 50, 50, Vector2D(700, 350), Vector2D(-5, 0));
+			flecha = new Flechas(SDLK_RIGHT, this, 50, 50, posFlechaInicial, velFlechas);
 			break;
 		case 3:
-			flecha = new Flechas(SDLK_UP, this, 50, 50, Vector2D(700, 350), Vector2D(-5, 0));
+			flecha = new Flechas(SDLK_UP, this, 50, 50, posFlechaInicial, velFlechas);
 			break;
 		case 4:
-			flecha = new Flechas(SDLK_DOWN, this, 50, 50, Vector2D(700, 350), Vector2D(-5, 0));
+			flecha = new Flechas(SDLK_DOWN, this, 50, 50, posFlechaInicial, velFlechas);
 			break;
 		}
 		flechasNivel_.push_back(flecha);
 	}
 	file.close();
 
-	timer = Timer::Instance();
-	punto = new Point(this, 80, 80, Vector2D(100, 330));
-	bh = new BeatHandeler(112);
-	bh->getBeatTime();
-
+	
 	actors_.push_back(punto);
 }
 
@@ -177,5 +178,10 @@ void DemoGame::generate()
 		flechasPantalla_.push_back(flechasNivel_.back());
 		flechasNivel_.pop_back();
 	}
+}
+Vector2D DemoGame::asignaVel(double time) {
+	double distance = posFlechaInicial.getX() - (punto->getPosition().getX() + punto->getWidth()/2);
+	double velocity = distance / bh->getBeatTime();
+	return Vector2D(-velocity*4, 0);
 }
 
