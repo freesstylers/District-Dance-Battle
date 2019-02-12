@@ -34,6 +34,9 @@ void DemoGame::initGame() {
 	for (int i = 0; i < 25; i++) {
 		file >> aux;
 		switch (aux) {
+		case 0:
+			flecha = nullptr;
+			break;
 		case 1:
 			flecha = new Flechas(SDLK_LEFT, this, 50, 50, posFlechaInicial ,velFlechas);
 			break;
@@ -47,7 +50,7 @@ void DemoGame::initGame() {
 			flecha = new Flechas(SDLK_DOWN, this, 50, 50, posFlechaInicial, velFlechas);
 			break;
 		}
-		flechasNivel_.push_back(flecha);
+		flechasNivel_.push_front(flecha);
 	}
 	file.close();
 
@@ -112,9 +115,17 @@ void DemoGame::handleInput(Uint32 time) {
 				{
 					if (event.type == SDL_KEYUP && event.key.keysym.sym == it->getKey())
 					{
-						if (abs(it->getPosition().getX() - punto->getPosition().getX()) <= 100)
+						if (abs(it->getPosition().getX() - punto->getPosition().getX()) <= 25)
+						{
+							cout << "perfecto" << endl;
+						}
+						else if (abs(it->getPosition().getX() - punto->getPosition().getX()) <= 50)
 						{
 							cout << "bien" << endl;
+						}
+						else if (abs(it->getPosition().getX() - punto->getPosition().getX()) <= 100)
+						{
+							cout << "regular" << endl;
 						}
 						else
 						{
@@ -122,6 +133,12 @@ void DemoGame::handleInput(Uint32 time) {
 						}
 						delete(it);
 						flechasPantalla_.remove(it);
+					}
+					else if (event.type == SDL_KEYUP)
+					{
+						delete(it);
+						flechasPantalla_.remove(it);
+						cout << "flecha incorrecta" << endl;
 					}
 				}
 			}
@@ -175,9 +192,11 @@ void DemoGame::render(Uint32 time) {
 void DemoGame::generate()
 {
 	if (!flechasNivel_.empty()) {
-		flechasPantalla_.push_back(flechasNivel_.back());
-		flechasNivel_.pop_back();
-	}
+		if (flechasNivel_.back() != nullptr) {
+			flechasPantalla_.push_back(flechasNivel_.back());
+			flechasNivel_.pop_back();
+		} else flechasNivel_.pop_back();
+	} 
 }
 Vector2D DemoGame::asignaVel(double time) {
 	double distance = posFlechaInicial.getX() - (punto->getPosition().getX() + punto->getWidth()/2);
