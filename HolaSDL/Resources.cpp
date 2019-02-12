@@ -7,7 +7,10 @@ vector<Resources::FontInfo> Resources::fonts_ {
 };
 
 vector<Resources::ImageInfo> Resources::images_ {
-	{Flecha, "resources/images/Flecha.png"},
+	{FlechaLeft, "resources/images/FlechaLeft.png"},
+	{FlechaRight, "resources/images/FlechaRight.png"},
+	{FlechaUp, "resources/images/FlechaUp.png"},
+	{FlechaDown, "resources/images/FlechaDown.png"},
     {Point, "resources/images/Point.png"}
 };
 

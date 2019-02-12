@@ -30,7 +30,8 @@ private:
 	const static int _WINDOW_HEIGHT_ = 600;
 	bool exit_;
 	std::list<GameObject*> actors_;
-	std::list<Flechas*> flechas_;
+	std::list<Flechas*> flechasPantalla_;
+	std::list<Flechas*> flechasNivel_;
 	Timer* timer;
 	Point* punto;
 	BeatHandeler* bh;

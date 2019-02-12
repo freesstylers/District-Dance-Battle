@@ -11,7 +11,10 @@ public:
 
 	enum TextureId {
 		// images
-		Flecha,
+		FlechaLeft,
+		FlechaRight,
+		FlechaUp,
+		FlechaDown,
 		Point
 		// text
 	};

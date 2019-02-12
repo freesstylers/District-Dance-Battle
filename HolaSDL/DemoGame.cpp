@@ -3,6 +3,9 @@
 //ESTE DEMOGAME ES COMO LA ESCENA DEL JUEGO
 //LA USAMOS PARA PROBAR LAS BATALLAS, NO ES DEFINITIVA
 
+#include <cstdlib>
+#include <fstream>
+
 using namespace std;
 
 DemoGame::DemoGame() :
@@ -20,9 +23,29 @@ void DemoGame::initGame() {
 	/*	Inicializacion de todo lo necesario
 	*	que vaya a aparecer en la escena
 	*/
-	SDL_Keycode  key = SDLK_LEFT;
-	Flechas* flecha1 = new Flechas(key, this, 50, 50, Vector2D(700, 350), Vector2D(-5, 0));
-	flechas_.push_back(flecha1);
+	ifstream file("resources/levels/prueba.txt");
+	int aux;
+	Flechas* flecha;
+	for (int i = 0; i < 25; i++) {
+		file >> aux;
+		switch (aux) {
+		case 1:
+			flecha = new Flechas(SDLK_LEFT, this, 50, 50, Vector2D(700, 350), Vector2D(-5, 0));
+			break;
+		case 2:
+			flecha = new Flechas(SDLK_RIGHT, this, 50, 50, Vector2D(700, 350), Vector2D(-5, 0));
+			break;
+		case 3:
+			flecha = new Flechas(SDLK_UP, this, 50, 50, Vector2D(700, 350), Vector2D(-5, 0));
+			break;
+		case 4:
+			flecha = new Flechas(SDLK_DOWN, this, 50, 50, Vector2D(700, 350), Vector2D(-5, 0));
+			break;
+		}
+		flechasNivel_.push_back(flecha);
+	}
+	file.close();
+
 	timer = Timer::Instance();
 	punto = new Point(this, 80, 80, Vector2D(100, 330));
 	bh = new BeatHandeler(112);
@@ -35,7 +58,7 @@ void DemoGame::closeGame() {
 	for (GameObject* o : actors_) {
 		delete o;
 	}
-	for (Flechas* o : flechas_)
+	for (Flechas* o : flechasPantalla_)
 	{
 		delete o;
 	}
@@ -81,23 +104,23 @@ void DemoGame::handleInput(Uint32 time) {
 		}
 		else
 		{
-			if (!flechas_.empty())
+			if (!flechasPantalla_.empty())
 			{
-				auto it = flechas_.front();
+				auto it = flechasPantalla_.front();
 				if (it != nullptr)
 				{
 					if (event.type == SDL_KEYUP && event.key.keysym.sym == it->getKey())
 					{
 						if (abs(it->getPosition().getX() - punto->getPosition().getX()) <= 100)
 						{
-							cout << "bien";
+							cout << "bien" << endl;
 						}
 						else
 						{
-							cout << "mal";
+							cout << "mala punteria" << endl;
 						}
 						delete(it);
-						flechas_.remove(it);
+						flechasPantalla_.remove(it);
 					}
 				}
 			}
@@ -113,21 +136,20 @@ void DemoGame::update(Uint32 time) {
 	for (GameObject* o : actors_) {
 		o->update(time);
 	}
-	for (Flechas* o : flechas_)
+	for (Flechas* o : flechasPantalla_)
 	{
 		o->update(time);
 	}
-	if (!flechas_.empty() && flechas_.front()->getPosition().getX() < 50)
+	if (!flechasPantalla_.empty() && flechasPantalla_.front()->getPosition().getX() < 50)
 	{
 
-		flechas_.pop_front();
-		cout << "mal";
+		flechasPantalla_.pop_front();
+		cout << "fuera" << endl;
 		
 	}
 	timer->Update();
 	if (timer->DeltaTime() < (bh->getBeatTime()/1000) + 0.010 && timer->DeltaTime() > (bh->getBeatTime() / 1000) - 0.010)
 	{
-
 		generate();
 		timer->Reset();
 	}
@@ -141,7 +163,7 @@ void DemoGame::render(Uint32 time) {
 		o->render(time);
 	}
 
-	for (Flechas* o : flechas_)
+	for (Flechas* o : flechasPantalla_)
 	{
 		o->render(time);
 	}
@@ -151,8 +173,9 @@ void DemoGame::render(Uint32 time) {
 
 void DemoGame::generate()
 {
-	SDL_Keycode  key = SDLK_LEFT;
-	Flechas* flecha1 = new Flechas(key, this, 50, 50, Vector2D(700, 350), Vector2D(-5, 0));
-	flechas_.push_back(flecha1);
+	if (!flechasNivel_.empty()) {
+		flechasPantalla_.push_back(flechasNivel_.back());
+		flechasNivel_.pop_back();
+	}
 }
 
