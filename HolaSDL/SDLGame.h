@@ -9,13 +9,11 @@
 #include "SDLFontsManager.h"
 #include "ServiceLocator.h"
 #include "SRandBasedGenerator.h"
-#include "GameStateMachine.h"
+//#include "GameStateMachine.h"
 
 using namespace std;
 
 class SDLGame {
-public:
-
 public:
 	SDLGame(string windowTitle_, int width, int height);
 	virtual ~SDLGame();
