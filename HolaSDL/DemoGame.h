@@ -25,6 +25,7 @@ private:
 	void update(Uint32 time);
 	void render(Uint32 time);
 	void generate();
+	Vector2D asignaVel(double time);
 
 	const static int _WINDOW_WIDTH_ = 800;
 	const static int _WINDOW_HEIGHT_ = 600;
@@ -35,4 +36,6 @@ private:
 	Timer* timer;
 	Point* punto;
 	BeatHandeler* bh;
+	Vector2D posFlechaInicial =  Vector2D(700, 350);
+	Vector2D velFlechas;
 };
