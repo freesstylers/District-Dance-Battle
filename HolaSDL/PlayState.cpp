@@ -58,16 +58,6 @@ void PlayState::newGame()
 	//exit_ = false;
 	manager->getGame()->getServiceLocator()->getAudios()->playChannel(Resources::Pruebas, -1);
 	manager->getGame()->getServiceLocator()->getAudios()->setChannelVolume(70);
-	while (!manager->checkExit()) {
-		Uint32 startTime = SDL_GetTicks();
-		//handleEvent(SDL_Event e); ESTO HAY QUE MIRARLO
-		update(startTime);
-		render(startTime);
-
-		Uint32 frameTime = SDL_GetTicks() - startTime;
-		if (frameTime < 10)
-			SDL_Delay(10 - frameTime);
-	}
 }
 
 
@@ -80,26 +70,45 @@ void PlayState::update(Uint32 time)
 	//GameState::update();
 }
 
-bool PlayState::handleEvent(SDL_Event e)
+bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 {
-	/*if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE) {
-		cout << "Menu de pausa" << endl;
-		app->getMachine()->pushState(new PauseState(app));
-		return true;
-	}
-	else {
-
-		if (e.type == SDL_QUIT) {
-			game->exit();
-			return true;
-		}
-
-		if (e.type == SDL_KEYDOWN || e.type == SDL_KEYUP) {
-			paddle->handleEvents(e);
-			return true;
-		}
-	}
-	*/
+	//if (event.type == SDL_QUIT || event.key.keysym.sym == SDLK_ESCAPE) {
+	//	manager->exit();
+	//}
+	//// Pressing f to toggle fullscreen.
+	//else if (event.key.keysym.sym == SDLK_f)
+	//{
+	//	int flags = SDL_GetWindowFlags(window_);
+	//	if (flags & SDL_WINDOW_FULLSCREEN) {
+	//		SDL_SetWindowFullscreen(window_, 0);
+	//	}
+	//	else {
+	//		SDL_SetWindowFullscreen(window_, SDL_WINDOW_FULLSCREEN);
+	//	}
+	//}
+	//else
+	//{
+	//	if (!flechasPantalla_.empty())
+	//	{
+	//		auto it = flechasPantalla_.front();
+	//		if (it != nullptr)
+	//		{
+	//			if (event.type == SDL_KEYUP && event.key.keysym.sym == it->getKey())
+	//			{
+	//				if (abs(it->getPosition().getX() - punto->getPosition().getX()) <= 100)
+	//				{
+	//					cout << "bien" << endl;
+	//				}
+	//				else
+	//				{
+	//					cout << "mala punteria" << endl;
+	//				}
+	//				delete(it);
+	//				flechasPantalla_.remove(it);
+	//			}
+	//		}
+	//	}
+	//}
 	return false;
 }
 

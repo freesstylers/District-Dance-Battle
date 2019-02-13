@@ -30,7 +30,7 @@ public:
 	void newGame(); //Inicializa objetos
 	~PlayState();
 	virtual void update(Uint32 time);
-	virtual bool handleEvent(SDL_Event e);
+	virtual bool handleEvent(Uint32 time, SDL_Event e);
 
 protected:
 	void DeleteAll(); //Para borrado de objetos, por aquello de no dejar basura

@@ -11,9 +11,9 @@ MusicTimer::~MusicTimer()
 {
 }
 
-void MusicTimer::handleInput(Uint32 time, const SDL_Event& event) {
+bool MusicTimer::handleInput(Uint32 time, const SDL_Event& event) {
 
-
+	return false;
 }
 
 void MusicTimer::update(Uint32 time) {

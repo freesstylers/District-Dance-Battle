@@ -8,6 +8,7 @@
 #include "Flechas.h"
 #include "Point.h"
 #include "BeatHandeler.h"
+
 class DemoGame: public SDLGame {
 
 public:

@@ -13,7 +13,7 @@ GameState::~GameState()
 		delete o;
 }
 
-void GameState::update()
+void GameState::update(Uint32 time)
 {
 	for (auto o = stage.begin(); o != stage.end();)
 	{
@@ -27,19 +27,19 @@ void GameState::update()
 
 void GameState::render(Uint32 time)
 {
-	//for (GameObject* o : stage)
-		//o->render();
+	for (GameObject* o : stage)
+		o->render(time);
 }
 
-bool GameState::handleEvent(SDL_Event e)
+bool GameState::handleEvent(Uint32 time, SDL_Event e)
 {
 	bool handled = false;
 	auto it = stage.begin();
 	while (!handled && it != stage.end()) {
-		/*if ((*it)->handleEvent(e))
+		if ((*it)->handleInput(time, e))
 			handled = true;
 		else
-			++it;*/
+			++it;
 	}
 	return handled;
 }

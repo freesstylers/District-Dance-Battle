@@ -33,9 +33,9 @@ Flechas::~Flechas()
 
 }
 
-void Flechas::handleInput(Uint32 time, const SDL_Event& event) {
+bool Flechas::handleInput(Uint32 time, const SDL_Event& event) {
 
-
+	return false;
 }
 
 void Flechas::update(Uint32 time) {

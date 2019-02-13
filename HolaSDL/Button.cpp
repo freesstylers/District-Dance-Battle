@@ -15,9 +15,9 @@ Button::~Button()
 
 }
 
-void Button::handleInput(Uint32 time, const SDL_Event& event) {
+bool Button::handleInput(Uint32 time, const SDL_Event& event) {
 
-
+	return false;
 }
 
 void Button::update(Uint32 time) {

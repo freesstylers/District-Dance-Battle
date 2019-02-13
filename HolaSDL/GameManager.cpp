@@ -11,6 +11,43 @@ GameManager::GameManager(SDLGame* g)
 
 GameManager::~GameManager()
 {
+
+}
+
+void GameManager::run()
+{
+	while (!exit_) {
+		Uint32 startTime = SDL_GetTicks();
+		handleEvent(startTime);
+		update(startTime);
+		render(startTime);
+
+		Uint32 frameTime = SDL_GetTicks() - startTime;
+		if (frameTime < 10)
+			SDL_Delay(10 - frameTime);
+	}
+}
+
+void GameManager::update(Uint32 time)
+{
+	machine->currentState()->update(time);
+}
+
+void GameManager::handleEvent(Uint32 time)
+{
+	SDL_Event event;
+	bool handled = false;
+	while (SDL_PollEvent(&event) && !exit_ && !handled) {
+		if (event.type == SDL_QUIT)
+			exit_ = true;
+		handled = machine->currentState()->handleEvent(time, event);
+	}
+}
+
+
+void GameManager::render(Uint32 time)
+{
+	machine->currentState()->render(time);
 }
 
 void GameManager::exit()

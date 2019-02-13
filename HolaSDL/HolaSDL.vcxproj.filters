@@ -185,9 +185,6 @@
     <ClCompile Include="Button.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
-    <ClCompile Include="Pulsador.cpp">
-      <Filter>Archivos de código fuente</Filter>
-    </ClCompile>
     <ClCompile Include="Flechas.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
