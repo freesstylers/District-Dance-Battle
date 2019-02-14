@@ -1,3 +1,7 @@
+# La proxima vez que no se te olvide CERRAR todas las sesiones cuando uses el lab de informatica, que si se mete un cabron te puede borrar hasta el repositorio este y joderte vivo.
+  > Saludos, un compa del grado de GII
+
+
 Documento de diseño (Despacito 2)
 
 Descripción del juego: juego de ritmo con historia lineal  y  estilo “boss rush”.
