@@ -1,13 +1,21 @@
 #pragma once
 #include "GameObject.h"
-class Button :
-	public GameObject
-{
-public:
-	Button();
-	virtual ~Button();
-	virtual void handleInput(Uint32 time, const SDL_Event& event);
-	virtual void update(Uint32 time);
-	virtual void render(Uint32 time);
-};
 
+
+class Button : public GameObject {
+private:
+	typedef void Callback(SDLGame* game);
+	int type;
+	Texture* texture;
+
+	Callback* callback;
+
+
+public:
+
+	Button(SDLGame* game, double width, double height, Vector2D pos, Callback* callback);
+	void handleEvent(Uint32 time, const SDL_Event& event);
+	void render();
+
+	void checkButton(int x, int y);
+};
