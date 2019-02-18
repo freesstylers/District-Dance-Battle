@@ -31,6 +31,7 @@
     <ClInclude Include="PlayState.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Puntuacion.h" />
+    <ClInclude Include="QTEManager.h" />
     <ClInclude Include="QuickTimeEvents.h" />
     <ClInclude Include="RandomNumberGenerator.h" />
     <ClInclude Include="Resources.h" />
@@ -68,6 +69,7 @@
     <ClCompile Include="PlayState.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Puntuacion.cpp" />
+    <ClCompile Include="QTEManager.cpp" />
     <ClCompile Include="QuickTimeEvents.cpp" />
     <ClCompile Include="RandomNumberGenerator.cpp" />
     <ClCompile Include="Resources.cpp" />
