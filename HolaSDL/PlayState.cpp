@@ -20,6 +20,13 @@ void PlayState::newGame()
 	Flechas
 	Pulsador/Logica de botones
 	*/
+
+	timer = Timer::Instance();
+	punto = new Point(manager, 80, 80, Vector2D(100, 330));
+	bh = new BeatHandeler(112);
+	lip = new LevelInputManager(this); 
+
+	velFlechas = asignaVel(bh->getBeatTime());
 	ifstream file("resources/levels/prueba.txt");
 	int aux;
 	Flechas* flecha;
@@ -42,11 +49,6 @@ void PlayState::newGame()
 		flechasNivel_.push_back(flecha);
 	}
 	file.close();
-
-	timer = Timer::Instance();
-	punto = new Point(manager, 80, 80, Vector2D(100, 330));
-	bh = new BeatHandeler(112);
-	bh->getBeatTime();
 
 	stage.push_back(punto);
 
@@ -103,27 +105,9 @@ bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 	}
 	else
 	{
-		if (!flechasPantalla_.empty())
-		{
-			auto it = flechasPantalla_.front();
-			if (it != nullptr)
-			{
-				if (e.type == SDL_KEYUP && e.key.keysym.sym == it->getKey())
-				{
-					if (abs(it->getPosition().getX() - punto->getPosition().getX()) <= 100)
-					{
-						cout << "bien" << endl;
-					}
-					else
-					{
-						cout << "mala punteria" << endl;
-					}
-					delete(it);
-					flechasPantalla_.remove(it);
-				}
-			}
-		}
+			lip->handleInput(time, e);
 	}
+	GameState::handleEvent(time, e);
 	return false;
 }
 
@@ -171,4 +155,11 @@ void PlayState::generate()
 		flechasPantalla_.push_back(flechasNivel_.back());
 		flechasNivel_.pop_back();
 	}
+}
+
+Vector2D PlayState::asignaVel(double time)
+{
+	double distance = posFlechaInicial.getX() - (punto->getPosition().getX());
+	double velocity = distance / bh->getBeatTime();
+	return Vector2D(-velocity * 4, 0);
 }
