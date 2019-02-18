@@ -19,3 +19,17 @@ bool MapState::handleEvent(SDL_Event e)
 {
 	return false;
 }
+
+//////////////////////////////////////////////////////////////////
+
+/*
+
+//Cargar zona (que será un PlayState con parámetros)
+
+//Lanzar menús
+
+//Elegir zona
+
+//Menu de guardar/cargar partida/ajustes/salir
+
+*/

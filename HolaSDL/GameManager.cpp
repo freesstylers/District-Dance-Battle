@@ -11,16 +11,18 @@ GameManager::GameManager(): SDLGame("FreeStylers", _WINDOW_WIDTH_, _WINDOW_HEIGH
 
 GameManager::~GameManager()
 {
-	
+	delete machine;
+	machine = nullptr;
 }
 
 void GameManager::start() {
 	//entra el primer estado, aunque por ahora sera el PlayState
-	
+	machine->pushState(new PlayState(this));
+	run();
 }
 
 void GameManager::stop() {
-
+	exit_ = true;
 }
 
 void GameManager::run()
@@ -56,12 +58,11 @@ void GameManager::handleEvent(Uint32 time)
 
 void GameManager::render(Uint32 time)
 {
-	machine->currentState()->render(time);
-}
+	SDL_RenderClear(getRenderer());
 
-void GameManager::exit()
-{
-	exit_ = true;
+	machine->currentState()->render(time);
+
+	SDL_RenderPresent(getRenderer());
 }
 
 bool GameManager::checkExit()

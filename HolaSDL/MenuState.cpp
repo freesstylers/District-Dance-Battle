@@ -27,3 +27,19 @@ void MenuState::exit(GameManager* game)
 	cout << "saliendo" << endl;
 	//game->exit();
 }
+
+///////////////////////////////////////////////////////////////////////
+
+/*
+
+//Nueva partida
+
+//Cargar partida
+
+//Ajustes
+
+//Salir
+
+// ¿Extras?
+
+*/

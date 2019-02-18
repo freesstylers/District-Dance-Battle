@@ -19,10 +19,9 @@ void GameState::update(Uint32 time)
 	{
 		auto next = o;
 		++next;
-		//(*o)->update();
+		(*o)->update(time);
 		o = next;
 	}
-
 }
 
 void GameState::render(Uint32 time)

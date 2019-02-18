@@ -31,10 +31,12 @@ public:
 	~PlayState();
 	virtual void update(Uint32 time);
 	virtual bool handleEvent(Uint32 time, SDL_Event e);
+	virtual void render(Uint32 time);
 
 protected:
 	void DeleteAll(); //Para borrado de objetos, por aquello de no dejar basura
 	int getPoints();
 	void changePoints(int data);
+	void generate();
 };
 

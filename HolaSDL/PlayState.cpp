@@ -20,9 +20,6 @@ void PlayState::newGame()
 	Flechas
 	Pulsador/Logica de botones
 	*/
-
-
-
 	ifstream file("resources/levels/prueba.txt");
 	int aux;
 	Flechas* flecha;
@@ -67,49 +64,77 @@ PlayState::~PlayState()
 
 void PlayState::update(Uint32 time)
 {
-	//GameState::update();
+	GameState::update(time);
+
+	for (Flechas* o : flechasPantalla_)
+	{
+		o->update(time);
+	}
+	if (!flechasPantalla_.empty() && flechasPantalla_.front()->getPosition().getX() < 50)
+	{
+
+		flechasPantalla_.pop_front();
+		cout << "fuera" << endl;
+
+	}
+	timer->Update();
+	if (timer->DeltaTime() < (bh->getBeatTime() / 1000) + 0.010 && timer->DeltaTime() > (bh->getBeatTime() / 1000) - 0.010)
+	{
+		generate();
+		timer->Reset();
+	}
 }
 
 bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 {
-	//if (event.type == SDL_QUIT || event.key.keysym.sym == SDLK_ESCAPE) {
-	//	manager->exit();
-	//}
-	//// Pressing f to toggle fullscreen.
-	//else if (event.key.keysym.sym == SDLK_f)
-	//{
-	//	int flags = SDL_GetWindowFlags(window_);
-	//	if (flags & SDL_WINDOW_FULLSCREEN) {
-	//		SDL_SetWindowFullscreen(window_, 0);
-	//	}
-	//	else {
-	//		SDL_SetWindowFullscreen(window_, SDL_WINDOW_FULLSCREEN);
-	//	}
-	//}
-	//else
-	//{
-	//	if (!flechasPantalla_.empty())
-	//	{
-	//		auto it = flechasPantalla_.front();
-	//		if (it != nullptr)
-	//		{
-	//			if (event.type == SDL_KEYUP && event.key.keysym.sym == it->getKey())
-	//			{
-	//				if (abs(it->getPosition().getX() - punto->getPosition().getX()) <= 100)
-	//				{
-	//					cout << "bien" << endl;
-	//				}
-	//				else
-	//				{
-	//					cout << "mala punteria" << endl;
-	//				}
-	//				delete(it);
-	//				flechasPantalla_.remove(it);
-	//			}
-	//		}
-	//	}
-	//}
+	if (e.type == SDL_QUIT || e.key.keysym.sym == SDLK_ESCAPE) {
+		manager->stop();
+	}
+	// Pressing f to toggle fullscreen.
+	else if (e.key.keysym.sym == SDLK_f)
+	{
+		int flags = SDL_GetWindowFlags(manager->getWindow());
+		if (flags & SDL_WINDOW_FULLSCREEN) {
+			SDL_SetWindowFullscreen(manager->getWindow(), 0);
+		}
+		else {
+			SDL_SetWindowFullscreen(manager->getWindow(), SDL_WINDOW_FULLSCREEN);
+		}
+	}
+	else
+	{
+		if (!flechasPantalla_.empty())
+		{
+			auto it = flechasPantalla_.front();
+			if (it != nullptr)
+			{
+				if (e.type == SDL_KEYUP && e.key.keysym.sym == it->getKey())
+				{
+					if (abs(it->getPosition().getX() - punto->getPosition().getX()) <= 100)
+					{
+						cout << "bien" << endl;
+					}
+					else
+					{
+						cout << "mala punteria" << endl;
+					}
+					delete(it);
+					flechasPantalla_.remove(it);
+				}
+			}
+		}
+	}
 	return false;
+}
+
+void PlayState::render(Uint32 time)
+{
+	GameState::render(time);
+
+	for (Flechas* o : flechasPantalla_)
+	{
+		o->render(time);
+	}
 }
 
 void PlayState::DeleteAll()
@@ -140,7 +165,10 @@ void PlayState::changePoints(int data)
 	currentPoints = currentPoints + data;
 }
 
-/*GameManager* PlayState::getGameManager()
+void PlayState::generate()
 {
-	return gameManager;
-}*/
+	if (!flechasNivel_.empty()) {
+		flechasPantalla_.push_back(flechasNivel_.back());
+		flechasNivel_.pop_back();
+	}
+}

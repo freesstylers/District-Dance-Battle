@@ -17,3 +17,15 @@ bool CutSceneState::handleEvent(SDL_Event e)
 {
 	return false;
 }
+
+///////////////////////////////////////////////////////////
+
+/*
+
+//Script
+
+//Handle input para skipear script
+
+//Menu
+
+*/

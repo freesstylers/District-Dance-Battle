@@ -1,6 +1,7 @@
 #pragma once
 #include "GameStateMachine.h"
 #include "SDLGame.h"
+#include "PlayState.h"
 
 class GameManager: public SDLGame
 {
@@ -11,7 +12,6 @@ public:
 	void update(Uint32 time);
 	void handleEvent(Uint32 time);
 	void render(Uint32 time);
-	void exit();
 	bool checkExit();
 	virtual void start(); // start the game
 	virtual void stop();  // stop the game
