@@ -30,16 +30,16 @@ void PlayState::newGame()
 		file >> aux;
 		switch (aux) {
 		case 1:
-			flecha = new Flechas(SDLK_LEFT, manager->getGame(), 50, 50, Vector2D(700, 350), Vector2D(-5, 0));
+			flecha = new Flechas(SDLK_LEFT, manager, 50, 50, Vector2D(700, 350), Vector2D(-5, 0));
 			break;
 		case 2:
-			flecha = new Flechas(SDLK_RIGHT, manager->getGame(), 50, 50, Vector2D(700, 350), Vector2D(-5, 0));
+			flecha = new Flechas(SDLK_RIGHT, manager, 50, 50, Vector2D(700, 350), Vector2D(-5, 0));
 			break;
 		case 3:
-			flecha = new Flechas(SDLK_UP, manager->getGame(), 50, 50, Vector2D(700, 350), Vector2D(-5, 0));
+			flecha = new Flechas(SDLK_UP, manager, 50, 50, Vector2D(700, 350), Vector2D(-5, 0));
 			break;
 		case 4:
-			flecha = new Flechas(SDLK_DOWN, manager->getGame(), 50, 50, Vector2D(700, 350), Vector2D(-5, 0));
+			flecha = new Flechas(SDLK_DOWN, manager, 50, 50, Vector2D(700, 350), Vector2D(-5, 0));
 			break;
 		}
 		flechasNivel_.push_back(flecha);
@@ -47,7 +47,7 @@ void PlayState::newGame()
 	file.close();
 
 	timer = Timer::Instance();
-	punto = new Point(manager->getGame(), 80, 80, Vector2D(100, 330));
+	punto = new Point(manager, 80, 80, Vector2D(100, 330));
 	bh = new BeatHandeler(112);
 	bh->getBeatTime();
 
@@ -56,8 +56,8 @@ void PlayState::newGame()
 	/////////////////////////
 
 	//exit_ = false;
-	manager->getGame()->getServiceLocator()->getAudios()->playChannel(Resources::Pruebas, -1);
-	manager->getGame()->getServiceLocator()->getAudios()->setChannelVolume(70);
+	manager->getServiceLocator()->getAudios()->playChannel(Resources::Pruebas, -1);
+	manager->getServiceLocator()->getAudios()->setChannelVolume(70);
 }
 
 

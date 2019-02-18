@@ -2,10 +2,10 @@
 #include "GameStateMachine.h"
 #include "SDLGame.h"
 
-class GameManager
+class GameManager: public SDLGame
 {
 public:
-	GameManager(SDLGame* game);
+	GameManager();
 	~GameManager();
 	void run();
 	void update(Uint32 time);
@@ -13,10 +13,13 @@ public:
 	void render(Uint32 time);
 	void exit();
 	bool checkExit();
-	SDLGame* getGame();
+	virtual void start(); // start the game
+	virtual void stop();  // stop the game
 protected:
 	GameStateMachine* machine;
 	bool exit_;
-	SDLGame* game;
+private:
+	const static int _WINDOW_WIDTH_ = 800;
+	const static int _WINDOW_HEIGHT_ = 600;
 };
 

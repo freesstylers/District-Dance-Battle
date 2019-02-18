@@ -2,15 +2,24 @@
 
 
 
-GameManager::GameManager(SDLGame* g)
+GameManager::GameManager(): SDLGame("FreeStylers", _WINDOW_WIDTH_, _WINDOW_HEIGHT_)
 {
-	game = g;
+	machine = new GameStateMachine();
 	exit_ = false;
 }
 
 
 GameManager::~GameManager()
 {
+	
+}
+
+void GameManager::start() {
+	//entra el primer estado, aunque por ahora sera el PlayState
+	
+}
+
+void GameManager::stop() {
 
 }
 
@@ -58,9 +67,4 @@ void GameManager::exit()
 bool GameManager::checkExit()
 {
 	return exit_;
-}
-
-SDLGame* GameManager::getGame()
-{
-	return game;
 }
