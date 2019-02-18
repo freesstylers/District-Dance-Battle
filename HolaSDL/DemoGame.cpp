@@ -26,6 +26,7 @@ void DemoGame::initGame() {
 	timer = Timer::Instance();
 	punto = new Point(this, 80, 80, Vector2D(100, 330));
 	bh = new BeatHandeler(112);
+	lip = new LevelInputManager(this);
 
 	velFlechas = asignaVel(bh->getBeatTime());
 	ifstream file("resources/levels/prueba.txt");
@@ -108,40 +109,7 @@ void DemoGame::handleInput(Uint32 time) {
 		}
 		else
 		{
-			if (!flechasPantalla_.empty())
-			{
-				auto it = flechasPantalla_.front();
-				if (it != nullptr)
-				{
-					if (event.type == SDL_KEYUP && event.key.keysym.sym == it->getKey())
-					{
-						if (abs(it->getPosition().getX() - punto->getPosition().getX()) <= 25)
-						{
-							cout << "perfecto" << endl;
-						}
-						else if (abs(it->getPosition().getX() - punto->getPosition().getX()) <= 50)
-						{
-							cout << "bien" << endl;
-						}
-						else if (abs(it->getPosition().getX() - punto->getPosition().getX()) <= 100)
-						{
-							cout << "regular" << endl;
-						}
-						else
-						{
-							cout << "mala punteria" << endl;
-						}
-						delete(it);
-						flechasPantalla_.remove(it);
-					}
-					else if (event.type == SDL_KEYUP)
-					{
-						delete(it);
-						flechasPantalla_.remove(it);
-						cout << "flecha incorrecta" << endl;
-					}
-				}
-			}
+			lip->handleInput(time, event);
 		}
 
 		for (GameObject* o : actors_) {
@@ -199,7 +167,7 @@ void DemoGame::generate()
 	} 
 }
 Vector2D DemoGame::asignaVel(double time) {
-	double distance = posFlechaInicial.getX() - (punto->getPosition().getX() + punto->getWidth()/2);
+	double distance = posFlechaInicial.getX() - (punto->getPosition().getX());
 	double velocity = distance / bh->getBeatTime();
 	return Vector2D(-velocity*4, 0);
 }

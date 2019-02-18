@@ -8,6 +8,8 @@
 #include "Flechas.h"
 #include "Point.h"
 #include "BeatHandeler.h"
+#include "LevelInputManager.h"
+
 class DemoGame: public SDLGame {
 
 public:
@@ -17,6 +19,9 @@ public:
 	// from SDLGame
 	void start();
 	void stop();
+
+	std::list<Flechas*> flechasPantalla_;
+	Point* punto;
 
 private:
 	void initGame();
@@ -31,10 +36,9 @@ private:
 	const static int _WINDOW_HEIGHT_ = 600;
 	bool exit_;
 	std::list<GameObject*> actors_;
-	std::list<Flechas*> flechasPantalla_;
 	std::list<Flechas*> flechasNivel_;
 	Timer* timer;
-	Point* punto;
+	LevelInputManager* lip;
 	BeatHandeler* bh;
 	Vector2D posFlechaInicial =  Vector2D(700, 350);
 	Vector2D velFlechas;
