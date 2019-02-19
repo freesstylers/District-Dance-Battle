@@ -9,7 +9,7 @@ Button::Button(SDLGame* game, double width, double height, Vector2D pos, Callbac
 	setVelocity(Vector2D(0, 0));
 }
 
-void Button::handleEvent(Uint32 time, const SDL_Event& event) {
+void Button::handleInput(Uint32 time, const SDL_Event& event) {
 	if (event.type == SDL_MOUSEBUTTONDOWN && event.button.button == SDL_BUTTON_LEFT) {
 		checkButton(event.button.x, event.button.y);
 	}
@@ -24,6 +24,6 @@ void Button::checkButton(int x, int y) {
 	}
 }
 
-void Button::render() {
+void Button::render(Uint32 time) {
 	texture->render(getRect());
 }

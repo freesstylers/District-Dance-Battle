@@ -14,8 +14,8 @@ private:
 public:
 
 	Button(SDLGame* game, double width, double height, Vector2D pos, Callback* callback);
-	void handleEvent(Uint32 time, const SDL_Event& event);
-	void render();
+	void handleInput(Uint32 time, const SDL_Event& event);
+	void render(Uint32 time);
 
 	void checkButton(int x, int y);
 };
