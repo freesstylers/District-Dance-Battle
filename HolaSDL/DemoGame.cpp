@@ -27,6 +27,7 @@ void DemoGame::initGame() {
 	punto = new Point(this, 80, 80, Vector2D(100, 330));
 	bh = new BeatHandeler(112);
 	lip = new LevelInputManager(this);
+	qteman = new QTEManager(this);
 
 	velFlechas = asignaVel(bh->getBeatTime());
 	ifstream file("resources/levels/prueba.txt");
@@ -109,7 +110,10 @@ void DemoGame::handleInput(Uint32 time) {
 		}
 		else
 		{
-			lip->handleInput(time, event);
+			if (qteman->getFlecha() == nullptr)
+				lip->handleInput(time, event);
+			else
+				qteman->handleInput(time, event);
 		}
 
 		for (GameObject* o : actors_) {
@@ -126,6 +130,7 @@ void DemoGame::update(Uint32 time) {
 	{
 		o->update(time);
 	}
+	qteman->update(time);
 	if (!flechasPantalla_.empty() && flechasPantalla_.front()->getPosition().getX() < 50)
 	{
 
@@ -144,6 +149,8 @@ void DemoGame::update(Uint32 time) {
 void DemoGame::render(Uint32 time) {
 	SDL_SetRenderDrawColor(getRenderer(), COLOR(0x00AAAAFF));
 	SDL_RenderClear(getRenderer());
+
+	qteman->render(time);
 
 	for (GameObject* o : actors_) {
 		o->render(time);

@@ -1,25 +1,28 @@
 #pragma once
-
+#include "Timer.h"
 #include "GameObject.h"
+#include "Flechas.h"
 
-class DemoGame;
+class SDLGame;
 
 class QTEManager
 {
 public:
 
-	QTEManager(DemoGame* l);
+	QTEManager(SDLGame* l);
 	~QTEManager();
 
 	void update(Uint32 time);
 	void handleInput(Uint32 time, const SDL_Event& event);
+	void render(Uint32 time);
+	Flechas* getFlecha() { return flecha; }
 
 private:
 
-	void sendQTE();
-
+	Timer* timer;
 	bool keyup = true;
-	DemoGame* level;
+	SDLGame* level;
+	Flechas* flecha = nullptr;
 
 };
 

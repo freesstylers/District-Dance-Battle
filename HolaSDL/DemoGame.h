@@ -9,6 +9,7 @@
 #include "Point.h"
 #include "BeatHandeler.h"
 #include "LevelInputManager.h"
+#include "QTEManager.h"
 
 class DemoGame: public SDLGame {
 
@@ -39,6 +40,7 @@ private:
 	std::list<Flechas*> flechasNivel_;
 	Timer* timer;
 	LevelInputManager* lip;
+	QTEManager* qteman;
 	BeatHandeler* bh;
 	Vector2D posFlechaInicial =  Vector2D(700, 350);
 	Vector2D velFlechas;
