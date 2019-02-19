@@ -26,6 +26,8 @@ void DemoGame::initGame() {
 	timer = Timer::Instance();
 	punto = new Point(this, 80, 80, Vector2D(100, 330));
 	bh = new BeatHandeler(112);
+	lip = new LevelInputManager(this);
+	qteman = new QTEManager(this);
 
 	velFlechas = asignaVel(bh->getBeatTime());
 	ifstream file("resources/levels/prueba.txt");
@@ -108,40 +110,10 @@ void DemoGame::handleInput(Uint32 time) {
 		}
 		else
 		{
-			if (!flechasPantalla_.empty())
-			{
-				auto it = flechasPantalla_.front();
-				if (it != nullptr)
-				{
-					if (event.type == SDL_KEYUP && event.key.keysym.sym == it->getKey())
-					{
-						if (abs(it->getPosition().getX() - punto->getPosition().getX()) <= 25)
-						{
-							cout << "perfecto" << endl;
-						}
-						else if (abs(it->getPosition().getX() - punto->getPosition().getX()) <= 50)
-						{
-							cout << "bien" << endl;
-						}
-						else if (abs(it->getPosition().getX() - punto->getPosition().getX()) <= 100)
-						{
-							cout << "regular" << endl;
-						}
-						else
-						{
-							cout << "mala punteria" << endl;
-						}
-						delete(it);
-						flechasPantalla_.remove(it);
-					}
-					else if (event.type == SDL_KEYUP)
-					{
-						delete(it);
-						flechasPantalla_.remove(it);
-						cout << "flecha incorrecta" << endl;
-					}
-				}
-			}
+			if (qteman->getFlecha() == nullptr)
+				lip->handleInput(time, event);
+			else
+				qteman->handleInput(time, event);
 		}
 
 		for (GameObject* o : actors_) {
@@ -158,6 +130,7 @@ void DemoGame::update(Uint32 time) {
 	{
 		o->update(time);
 	}
+	qteman->update(time);
 	if (!flechasPantalla_.empty() && flechasPantalla_.front()->getPosition().getX() < 50)
 	{
 
@@ -176,6 +149,8 @@ void DemoGame::update(Uint32 time) {
 void DemoGame::render(Uint32 time) {
 	SDL_SetRenderDrawColor(getRenderer(), COLOR(0x00AAAAFF));
 	SDL_RenderClear(getRenderer());
+
+	qteman->render(time);
 
 	for (GameObject* o : actors_) {
 		o->render(time);
@@ -199,7 +174,7 @@ void DemoGame::generate()
 	} 
 }
 Vector2D DemoGame::asignaVel(double time) {
-	double distance = posFlechaInicial.getX() - (punto->getPosition().getX() + punto->getWidth()/2);
+	double distance = posFlechaInicial.getX() - (punto->getPosition().getX());
 	double velocity = distance / bh->getBeatTime();
 	return Vector2D(-velocity*4, 0);
 }

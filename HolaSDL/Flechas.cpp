@@ -34,16 +34,11 @@ Flechas::~Flechas()
 }
 
 void Flechas::handleInput(Uint32 time, const SDL_Event& event) {
-
-
+	
 }
 
 void Flechas::update(Uint32 time) {
 	position_.set(position_ + velocity_);
-	if (position_.getX() < getGame()->getWindowWidth())
-	{
-		
-	}
 }
 
 void Flechas::render(Uint32 time) {
