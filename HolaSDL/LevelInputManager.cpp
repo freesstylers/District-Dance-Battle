@@ -3,7 +3,6 @@
 
 
 LevelInputManager::LevelInputManager(PlayState* l)
-
 {
 	level = l;
 }
