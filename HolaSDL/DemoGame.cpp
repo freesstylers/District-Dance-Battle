@@ -26,6 +26,8 @@ void DemoGame::initGame() {
 	timer = Timer::Instance();
 	punto = new Point(this, 80, 80, Vector2D(100, 330));
 	bh = new BeatHandeler(112);
+	barra = new BarrasHUD(this, 40, 40, Vector2D(20, 20), Vector2D(0.3,0));
+	
 
 	velFlechas = asignaVel(bh->getBeatTime());
 	ifstream file("resources/levels/prueba.txt");
@@ -56,6 +58,7 @@ void DemoGame::initGame() {
 
 	
 	actors_.push_back(punto);
+	actors_.push_back(barra);
 }
 
 void DemoGame::closeGame() {

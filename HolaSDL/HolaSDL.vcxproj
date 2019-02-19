@@ -26,7 +26,6 @@
     <ClInclude Include="GameStateMachine.h" />
     <ClInclude Include="MapState.h" />
     <ClInclude Include="MenuState.h" />
-    <ClInclude Include="MusicTimer.h" />
     <ClInclude Include="Perico.h" />
     <ClInclude Include="PlayState.h" />
     <ClInclude Include="Point.h" />
@@ -63,7 +62,6 @@
     <ClCompile Include="Flechas.cpp" />
     <ClCompile Include="MapState.cpp" />
     <ClCompile Include="MenuState.cpp" />
-    <ClCompile Include="MusicTimer.cpp" />
     <ClCompile Include="Perico.cpp" />
     <ClCompile Include="PlayState.cpp" />
     <ClCompile Include="Point.cpp" />

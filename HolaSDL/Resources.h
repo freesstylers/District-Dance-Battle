@@ -15,7 +15,8 @@ public:
 		FlechaRight,
 		FlechaUp,
 		FlechaDown,
-		Point
+		Point,
+		Nota
 		// text
 	};
 
