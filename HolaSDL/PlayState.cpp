@@ -24,7 +24,8 @@ void PlayState::newGame()
 	timer = Timer::Instance();
 	punto = new Point(manager, 80, 80, Vector2D(100, 330));
 	bh = new BeatHandeler(112);
-	lip = new LevelInputManager(this); 
+	lip = new LevelInputManager(this);
+	qteman = new QTEManager(manager);
 
 	velFlechas = asignaVel(bh->getBeatTime());
 	ifstream file("resources/levels/prueba.txt");
@@ -34,16 +35,16 @@ void PlayState::newGame()
 		file >> aux;
 		switch (aux) {
 		case 1:
-			flecha = new Flechas(SDLK_LEFT, manager, 50, 50, Vector2D(700, 350), Vector2D(-5, 0));
+			flecha = new Flechas(SDLK_LEFT, manager, 50, 50, posFlechaInicial, velFlechas);
 			break;
 		case 2:
-			flecha = new Flechas(SDLK_RIGHT, manager, 50, 50, Vector2D(700, 350), Vector2D(-5, 0));
+			flecha = new Flechas(SDLK_RIGHT, manager, 50, 50, posFlechaInicial, velFlechas);
 			break;
 		case 3:
-			flecha = new Flechas(SDLK_UP, manager, 50, 50, Vector2D(700, 350), Vector2D(-5, 0));
+			flecha = new Flechas(SDLK_UP, manager, 50, 50, posFlechaInicial, velFlechas);
 			break;
 		case 4:
-			flecha = new Flechas(SDLK_DOWN, manager, 50, 50, Vector2D(700, 350), Vector2D(-5, 0));
+			flecha = new Flechas(SDLK_DOWN, manager, 50, 50, posFlechaInicial, velFlechas);
 			break;
 		}
 		flechasNivel_.push_back(flecha);
@@ -105,7 +106,10 @@ bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 	}
 	else
 	{
+		if (qteman->getFlecha() == nullptr)
 			lip->handleInput(time, e);
+		else
+			qteman->handleInput(time, e);
 	}
 	GameState::handleEvent(time, e);
 	return false;
@@ -152,8 +156,11 @@ void PlayState::changePoints(int data)
 void PlayState::generate()
 {
 	if (!flechasNivel_.empty()) {
-		flechasPantalla_.push_back(flechasNivel_.back());
-		flechasNivel_.pop_back();
+		if (flechasNivel_.back() != nullptr) {
+			flechasPantalla_.push_back(flechasNivel_.back());
+			flechasNivel_.pop_back();
+		}
+		else flechasNivel_.pop_back();
 	}
 }
 

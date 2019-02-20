@@ -34,6 +34,7 @@
     <ClInclude Include="Point.h" />
     <ClInclude Include="Pulsador.h" />
     <ClInclude Include="Puntuacion.h" />
+    <ClInclude Include="QTEManager.h" />
     <ClInclude Include="QuickTimeEvents.h" />
     <ClInclude Include="RandomNumberGenerator.h" />
     <ClInclude Include="Resources.h" />
@@ -73,6 +74,7 @@
     <ClCompile Include="PlayState.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Puntuacion.cpp" />
+    <ClCompile Include="QTEManager.cpp" />
     <ClCompile Include="QuickTimeEvents.cpp" />
     <ClCompile Include="RandomNumberGenerator.cpp" />
     <ClCompile Include="Resources.cpp" />
@@ -91,7 +93,7 @@
     <ProjectGuid>{28A4C5CD-307A-4FE6-81E4-4CE1F1E49AB4}</ProjectGuid>
     <RootNamespace>HolaSDL</RootNamespace>
     <ProjectName>HolaSDL</ProjectName>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
