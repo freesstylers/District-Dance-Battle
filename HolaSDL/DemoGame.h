@@ -9,6 +9,7 @@
 #include "Point.h"
 #include "BeatHandeler.h"
 #include "BarrasHUD.h"
+#include "EmptyObject.h"
 class DemoGame: public SDLGame {
 
 public:
@@ -39,6 +40,7 @@ private:
 	BeatHandeler* bh;
 	Vector2D posFlechaInicial =  Vector2D(700, 350);
 	Vector2D velFlechas;
-	BarrasHUD* barra;
+	BarrasHUD* indicador;
+	EmptyObject* spritebarra;
 	double duracion = 120.0;
 };

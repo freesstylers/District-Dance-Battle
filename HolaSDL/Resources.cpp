@@ -12,7 +12,8 @@ vector<Resources::ImageInfo> Resources::images_ {
 	{FlechaUp, "resources/images/FlechaUp.png"},
 	{FlechaDown, "resources/images/FlechaDown.png"},
     {Point, "resources/images/Point.png"},
-	{Nota, "resources/images/Nota.png"}
+	{Nota, "resources/images/Nota.png"},
+	{Bar, "resources/images/barhp.png"}
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {
