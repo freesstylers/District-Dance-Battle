@@ -3,18 +3,6 @@
 #include "SDLGame.h"
 #include "Vector2D.h"
 
-struct Animation {
-	Texture* texture_;
-	int firstFrameX;
-	int firstFrameY;
-	int nFramesX;
-	int nFramesY;
-	int totalFrames;
-	int currentFrame = 0;
-	int spriteWidth;
-	int spriteHeight;
-};
-
 class GameObject {
 
 public:

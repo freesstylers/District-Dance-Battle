@@ -6,6 +6,20 @@
 /*
  *
  */
+
+struct Animation {
+	Texture* texture_;
+	int firstFrameX;
+	int firstFrameY;
+	int nFramesX;
+	int nFramesY;
+	int totalFrames;
+	int currentFrame = 0;
+	int spriteWidth;
+	int spriteHeight;
+};
+
+
 class SDLTexturesManager : public TexturesManager {
 public:
 	SDLTexturesManager();

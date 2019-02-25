@@ -5,21 +5,23 @@
 Perico::Perico(SDLGame* game, double width, double height, Vector2D pos) :
 	GameObject(game)
 {
-	setWidth(width);
-	setHeight(height);
+	setWidth(60*4);
+	setHeight(120*4);
 	setPosition(pos);
 	setVelocity(Vector2D(0, 0));
 
 
-	animation.texture_ = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::AnimTest);
+	animation.texture_ = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::PericoIdle);
 
 	animation.firstFrameX = 0;
 	animation.firstFrameY = 0;
-	animation.nFramesX = 4;
-	animation.nFramesY = 2;
-	animation.totalFrames = 8;
-	animation.spriteHeight = height;
-	animation.spriteWidth = width;
+	animation.nFramesX = 3;
+	animation.nFramesY = 1;
+	animation.totalFrames = 4;
+	animation.spriteWidth = 60;
+	animation.spriteHeight = 120;
+
+	framesPerSecond = 4;
 }
 
 

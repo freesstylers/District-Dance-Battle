@@ -89,7 +89,7 @@ SDL_Rect* GameObject::getFrameRect()
 	rect->h = animation.spriteHeight;
 	rect->w = animation.spriteWidth;
 	rect->x = animation.firstFrameX + (animation.spriteWidth * (animation.currentFrame % animation.nFramesX));
-	rect->y = animation.firstFrameY + (animation.spriteHeight * trunc(animation.currentFrame / animation.nFramesY));
+	rect->y = animation.firstFrameY + (animation.spriteHeight * (int)(animation.currentFrame / animation.nFramesX));
 	return rect;
 }
 
@@ -122,10 +122,7 @@ void GameObject::render(Uint32 time)
 
 
 	if (time - lastRender >= 1000 / framesPerSecond) {	//animations update only when a certain time has passed
-		if (animation.currentFrame < animation.totalFrames)
-			animation.currentFrame++;
-		else
-			animation.currentFrame = 0;
+		animation.currentFrame = (animation.currentFrame + 1) % animation.totalFrames;
 
 		lastRender = time;
 	}

@@ -16,7 +16,7 @@ public:
 		FlechaUp,
 		FlechaDown,
 		Point,
-		AnimTest
+		PericoIdle
 		// text
 	};
 
