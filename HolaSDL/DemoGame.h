@@ -7,7 +7,6 @@
 #include "Timer.h"
 #include "Flechas.h"
 #include "Point.h"
-#include "Cuadro.h"
 #include "BeatHandeler.h"
 #include "LevelInputManager.h"
 #include "QTEManager.h"
@@ -24,7 +23,6 @@ public:
 
 	std::list<Flechas*> flechasPantalla_;
 	Point* punto;
-	Cuadro* cuadro;
 
 private:
 	void initGame();

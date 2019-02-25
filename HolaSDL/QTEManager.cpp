@@ -35,7 +35,7 @@ void QTEManager::update(Uint32 time) {
 	if (timer->DeltaTime() > 0.5f && flecha == nullptr)
 	{
 		if (rand()%1000 + 1 > 20 && rand() % 1000 + 1 < 21)
-			flecha = new Flechas(SDLK_UP, level, 50, 50, Vector2D(400,200), Vector2D(0,0));
+			flecha = new Flechas(SDLK_UP, level, 50, 50, Vector2D(400,300), Vector2D(0,0));
 	}
 
 }

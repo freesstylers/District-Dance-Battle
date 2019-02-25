@@ -25,7 +25,6 @@ void DemoGame::initGame() {
 	*/
 	timer = Timer::Instance();
 	punto = new Point(this, 80, 80, Vector2D(100, 330));
-	cuadro = new Cuadro(this, 700, 175, Vector2D(70, 290));
 	bh = new BeatHandeler(112);
 	lip = new LevelInputManager(this);
 	qteman = new QTEManager(this);
@@ -57,7 +56,7 @@ void DemoGame::initGame() {
 	}
 	file.close();
 
-	actors_.push_back(cuadro);
+	
 	actors_.push_back(punto);
 }
 
