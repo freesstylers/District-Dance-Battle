@@ -22,7 +22,7 @@ void PlayState::newGame()
 	*/
 
 	timer = Timer::Instance();
-	punto = new Point(manager, 80, 80, Vector2D(100, 330));
+	punto = new Point(manager, 80, 80, Vector2D(360, 465));
 	lip = new LevelInputManager(this);
 	perico = new Perico(manager, 33, 33, Vector2D(100, 50));
 
@@ -88,7 +88,7 @@ void PlayState::update(Uint32 time)
 		o->update(time);
 	}
 	qteman->update(time);
-	if (!flechasPantalla_.empty() && flechasPantalla_.front()->getPosition().getX() < 50)
+	if (!flechasPantalla_.empty() && flechasPantalla_.front()->getPosition().getY() > 550)
 	{
 
 		flechasPantalla_.pop_front();
@@ -182,7 +182,7 @@ void PlayState::generate()
 
 Vector2D PlayState::asignaVel(double time)
 {
-	double distance = posFlechaInicial.getX() - (punto->getPosition().getX());
+	double distance = posFlechaInicial.getY() - (punto->getPosition().getY());
 	double velocity = distance / bh->getBeatTime();
-	return Vector2D(-velocity * 4, 0);
+	return Vector2D(0, -velocity * 4);
 }

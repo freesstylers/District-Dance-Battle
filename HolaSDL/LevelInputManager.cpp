@@ -20,15 +20,15 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 			if (event.type == SDL_KEYDOWN && event.key.keysym.sym == it->getKey() && keyup)
 			{
 				keyup = false;
-				if (abs(it->getPosition().getX() - level->punto->getPosition().getX()) <= 25)
+				if (abs(it->getPosition().getY() - level->punto->getPosition().getY()) <= 25)
 				{
 					cout << "perfecto" << endl;
 				}
-				else if (abs(it->getPosition().getX() - level->punto->getPosition().getX()) <= 50)
+				else if (abs(it->getPosition().getY() - level->punto->getPosition().getY()) <= 50)
 				{
 					cout << "bien" << endl;
 				}
-				else if (abs(it->getPosition().getX() - level->punto->getPosition().getX()) <= 100)
+				else if (abs(it->getPosition().getY() - level->punto->getPosition().getY()) <= 100)
 				{
 					cout << "regular" << endl;
 				}

@@ -50,5 +50,5 @@ protected:
 	void changePoints(int data);
 	void generate();
 	Vector2D asignaVel(double time);
-	Vector2D posFlechaInicial = Vector2D(700, 350);
+	Vector2D posFlechaInicial = Vector2D(375, 10);
 };
