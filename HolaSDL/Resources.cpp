@@ -20,7 +20,8 @@ vector<Resources::TextMsgInfo> Resources::messages_ {
 };
 
 vector<Resources::MusicInfo> Resources::musics_ {
-	{Pruebas , "resources/sound/TutorialJuego.wav"}
+	{Pruebas , "resources/sound/TutorialJuego.wav"},
+	{Sunflower, "resources/sound/sunflower.mp3"}
 };
 
 vector<Resources::SoundInfo> Resources::sounds_ {

@@ -4,6 +4,7 @@
 #include <fstream>
 #include <vector>
 #include <list>
+#include <string>
 #include "GameObject.h"
 #include "Timer.h"
 #include "Flechas.h"
@@ -19,6 +20,7 @@ class PlayState : public GameState //Clase para las batallas y jugabilidad básic
 {
 protected:
 
+	string level;
 	int songLength;
 	int maxPoints;
 	int currentPoints;

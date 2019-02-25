@@ -26,7 +26,9 @@ void PlayState::newGame()
 	lip = new LevelInputManager(this);
 	perico = new Perico(manager, 33, 33, Vector2D(100, 50));
 
-	ifstream file("resources/levels/prueba.txt");
+	cin >> level;
+
+	ifstream file("resources/levels/" + level + ".txt");
 
 	file >> bpm;
 	file >> probqte;
