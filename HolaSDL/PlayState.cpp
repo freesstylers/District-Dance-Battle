@@ -77,6 +77,7 @@ void PlayState::update(Uint32 time)
 	{
 		o->update(time);
 	}
+	qteman->update(time);
 	if (!flechasPantalla_.empty() && flechasPantalla_.front()->getPosition().getX() < 50)
 	{
 
@@ -122,6 +123,8 @@ bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 void PlayState::render(Uint32 time)
 {
 	GameState::render(time);
+
+	qteman->render(time);
 
 	for (Flechas* o : flechasPantalla_)
 	{
