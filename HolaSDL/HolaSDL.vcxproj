@@ -15,6 +15,7 @@
     <ClInclude Include="BarrasHUD.h" />
     <ClInclude Include="BeatHandeler.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="Cuadro.h" />
     <ClInclude Include="CutSceneState.h" />
     <ClInclude Include="DemoGame.h" />
     <ClInclude Include="EnemigoBaile.h" />
@@ -52,6 +53,7 @@
     <ClCompile Include="BarrasHUD.cpp" />
     <ClCompile Include="BeatHandeler.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="Cuadro.cpp" />
     <ClCompile Include="CutSceneState.cpp" />
     <ClCompile Include="DemoGame.cpp" />
     <ClCompile Include="EnemigoBaile.cpp" />
