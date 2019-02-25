@@ -11,6 +11,7 @@
 #include "BeatHandeler.h"
 #include "LevelInputManager.h"
 #include "QTEManager.h"
+#include "Perico.h"
 
 //Constantes
 
@@ -27,6 +28,7 @@ protected:
 	LevelInputManager* lip;
 	Vector2D velFlechas;
 	QTEManager* qteman;
+	Perico* perico;
 	
 public:
 	PlayState(GameManager* g); //Crea estado (tal vez para niveles de dificultad con un int o bool)

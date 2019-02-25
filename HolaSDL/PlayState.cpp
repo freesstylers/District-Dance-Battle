@@ -26,6 +26,7 @@ void PlayState::newGame()
 	bh = new BeatHandeler(112);
 	lip = new LevelInputManager(this);
 	qteman = new QTEManager(manager);
+	perico = new Perico(manager, 33, 33, Vector2D(100, 50));
 
 	velFlechas = asignaVel(bh->getBeatTime());
 	ifstream file("resources/levels/prueba.txt");
@@ -52,6 +53,9 @@ void PlayState::newGame()
 	file.close();
 
 	stage.push_back(punto);
+	stage.push_back(perico);
+
+
 
 	/////////////////////////
 

@@ -70,6 +70,9 @@ protected:
 	double width_;  // width
 	double height_; // height
 
+	int lastRender = 0; //saves the last time the object was rendered
+	int framesPerSecond = 1; //times the object should be rendered every second
+
 	Vector2D position_; // position (suppose to be left-top corner)
 	Vector2D velocity_; // velocity
 	Vector2D acceleration_; // acceleration
