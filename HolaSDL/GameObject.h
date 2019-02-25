@@ -3,6 +3,18 @@
 #include "SDLGame.h"
 #include "Vector2D.h"
 
+struct Animation {
+	Texture* texture_;
+	int firstFrameX;
+	int firstFrameY;
+	int nFramesX;
+	int nFramesY;
+	int totalFrames;
+	int currentFrame;
+	int spriteWidth;
+	int spriteHeight;
+};
+
 class GameObject {
 
 public:
@@ -25,6 +37,11 @@ public:
 
 	void scale(double s);
 
+	Texture* getTexture();
+	void setTexture(Texture* texture);
+
+	SDL_Rect* getFrameRect();
+
 	const Vector2D& getPosition() const;
 	void setPosition(const Vector2D &pos);
 
@@ -39,17 +56,22 @@ public:
 
 	SDL_Rect getRect();
 	// abstract methods to be implemented in sub-classes
-	virtual void handleInput(Uint32 time, const SDL_Event& event) = 0;
+	virtual bool handleInput(Uint32 time, const SDL_Event& event) = 0;
 	virtual void update(Uint32 time) = 0;
-	virtual void render(Uint32 time) = 0;
+	virtual void render(Uint32 time); //De momento no coge animaciones, se extiende en el futuro
 
 protected:
 	SDLGame* game_; // pointer to the game
+
+	Animation animation;
 
 	bool active_;   // indicates if the object is active
 
 	double width_;  // width
 	double height_; // height
+
+	int lastRender = 0; //saves the last time the object was rendered
+	int framesPerSecond = 1; //times the object should be rendered every second
 
 	Vector2D position_; // position (suppose to be left-top corner)
 	Vector2D velocity_; // velocity

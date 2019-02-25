@@ -20,6 +20,7 @@
     <ClInclude Include="EnemigoBaile.h" />
     <ClInclude Include="Font.h" />
     <ClInclude Include="FontsManager.h" />
+    <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Flechas.h" />
     <ClInclude Include="GameState.h" />
@@ -27,9 +28,11 @@
     <ClInclude Include="LevelInputManager.h" />
     <ClInclude Include="MapState.h" />
     <ClInclude Include="MenuState.h" />
+    <ClInclude Include="MusicTimer.h" />
     <ClInclude Include="Perico.h" />
     <ClInclude Include="PlayState.h" />
     <ClInclude Include="Point.h" />
+    <ClInclude Include="Pulsador.h" />
     <ClInclude Include="Puntuacion.h" />
     <ClInclude Include="QTEManager.h" />
     <ClInclude Include="QuickTimeEvents.h" />
@@ -57,6 +60,7 @@
     <ClCompile Include="EnemigoBaile.cpp" />
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="FontsManager.cpp" />
+    <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="GameStateMachine.cpp" />
@@ -65,6 +69,7 @@
     <ClCompile Include="Flechas.cpp" />
     <ClCompile Include="MapState.cpp" />
     <ClCompile Include="MenuState.cpp" />
+    <ClCompile Include="MusicTimer.cpp" />
     <ClCompile Include="Perico.cpp" />
     <ClCompile Include="PlayState.cpp" />
     <ClCompile Include="Point.cpp" />

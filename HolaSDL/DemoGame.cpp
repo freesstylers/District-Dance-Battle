@@ -23,40 +23,34 @@ void DemoGame::initGame() {
 	/*	Inicializacion de todo lo necesario
 	*	que vaya a aparecer en la escena
 	*/
-	timer = Timer::Instance();
-	punto = new Point(this, 80, 80, Vector2D(100, 330));
-	bh = new BeatHandeler(112);
-	lip = new LevelInputManager(this);
-	qteman = new QTEManager(this);
-
-	velFlechas = asignaVel(bh->getBeatTime());
 	ifstream file("resources/levels/prueba.txt");
 	int aux;
 	Flechas* flecha;
 	for (int i = 0; i < 25; i++) {
 		file >> aux;
 		switch (aux) {
-		case 0:
-			flecha = nullptr;
-			break;
 		case 1:
-			flecha = new Flechas(SDLK_LEFT, this, 50, 50, posFlechaInicial ,velFlechas);
+			flecha = new Flechas(SDLK_LEFT, this, 50, 50, Vector2D(700, 350), Vector2D(-5, 0));
 			break;
 		case 2:
-			flecha = new Flechas(SDLK_RIGHT, this, 50, 50, posFlechaInicial, velFlechas);
+			flecha = new Flechas(SDLK_RIGHT, this, 50, 50, Vector2D(700, 350), Vector2D(-5, 0));
 			break;
 		case 3:
-			flecha = new Flechas(SDLK_UP, this, 50, 50, posFlechaInicial, velFlechas);
+			flecha = new Flechas(SDLK_UP, this, 50, 50, Vector2D(700, 350), Vector2D(-5, 0));
 			break;
 		case 4:
-			flecha = new Flechas(SDLK_DOWN, this, 50, 50, posFlechaInicial, velFlechas);
+			flecha = new Flechas(SDLK_DOWN, this, 50, 50, Vector2D(700, 350), Vector2D(-5, 0));
 			break;
 		}
-		flechasNivel_.push_front(flecha);
+		flechasNivel_.push_back(flecha);
 	}
 	file.close();
 
-	
+	timer = Timer::Instance();
+	punto = new Point(this, 80, 80, Vector2D(100, 330));
+	bh = new BeatHandeler(112);
+	bh->getBeatTime();
+
 	actors_.push_back(punto);
 }
 
@@ -110,10 +104,26 @@ void DemoGame::handleInput(Uint32 time) {
 		}
 		else
 		{
-			if (qteman->getFlecha() == nullptr)
-				lip->handleInput(time, event);
-			else
-				qteman->handleInput(time, event);
+			if (!flechasPantalla_.empty())
+			{
+				auto it = flechasPantalla_.front();
+				if (it != nullptr)
+				{
+					if (event.type == SDL_KEYUP && event.key.keysym.sym == it->getKey())
+					{
+						if (abs(it->getPosition().getX() - punto->getPosition().getX()) <= 100)
+						{
+							cout << "bien" << endl;
+						}
+						else
+						{
+							cout << "mala punteria" << endl;
+						}
+						delete(it);
+						flechasPantalla_.remove(it);
+					}
+				}
+			}
 		}
 
 		for (GameObject* o : actors_) {
@@ -130,7 +140,6 @@ void DemoGame::update(Uint32 time) {
 	{
 		o->update(time);
 	}
-	qteman->update(time);
 	if (!flechasPantalla_.empty() && flechasPantalla_.front()->getPosition().getX() < 50)
 	{
 
@@ -150,8 +159,6 @@ void DemoGame::render(Uint32 time) {
 	SDL_SetRenderDrawColor(getRenderer(), COLOR(0x00AAAAFF));
 	SDL_RenderClear(getRenderer());
 
-	qteman->render(time);
-
 	for (GameObject* o : actors_) {
 		o->render(time);
 	}
@@ -167,15 +174,8 @@ void DemoGame::render(Uint32 time) {
 void DemoGame::generate()
 {
 	if (!flechasNivel_.empty()) {
-		if (flechasNivel_.back() != nullptr) {
-			flechasPantalla_.push_back(flechasNivel_.back());
-			flechasNivel_.pop_back();
-		} else flechasNivel_.pop_back();
-	} 
-}
-Vector2D DemoGame::asignaVel(double time) {
-	double distance = posFlechaInicial.getX() - (punto->getPosition().getX());
-	double velocity = distance / bh->getBeatTime();
-	return Vector2D(-velocity*4, 0);
+		flechasPantalla_.push_back(flechasNivel_.back());
+		flechasNivel_.pop_back();
+	}
 }
 

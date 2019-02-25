@@ -14,9 +14,9 @@ EnemigoBaile::~EnemigoBaile()
 }
 
 
-void EnemigoBaile::handleInput(Uint32 time, const SDL_Event& event) {
+bool EnemigoBaile::handleInput(Uint32 time, const SDL_Event& event) {
 
-
+	return false;
 }
 
 void EnemigoBaile::update(Uint32 time) {

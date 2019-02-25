@@ -1,8 +1,8 @@
 #include "LevelInputManager.h"
-#include "DemoGame.h"
+#include "PlayState.h"
 
 
-LevelInputManager::LevelInputManager(DemoGame* l)
+LevelInputManager::LevelInputManager(PlayState* l)
 {
 	level = l;
 }

@@ -2,13 +2,12 @@
 
 #include "GameObject.h"
 
-class DemoGame;
+class PlayState;
 
 class LevelInputManager
 {
 public:
-
-	LevelInputManager(DemoGame* l);
+	LevelInputManager(PlayState* l);
 	~LevelInputManager();
 
 	void handleInput(Uint32 time, const SDL_Event& event);
@@ -16,7 +15,7 @@ public:
 private:
 
 	bool keyup = true;
-	DemoGame* level;
+	PlayState* level;
 
 };
 

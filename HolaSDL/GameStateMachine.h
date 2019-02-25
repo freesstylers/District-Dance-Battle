@@ -16,7 +16,5 @@ public:
 	void changeState(GameState* state);
 	void pushState(GameState* state);
 	void popState();
-protected:
-	GameState* pState;
 };
 

@@ -5,8 +5,8 @@ GameObject::GameObject() :
 }
 
 GameObject::GameObject(SDLGame* game) :
-		game_(game), active_(true), width_(), height_(), position_(), velocity_(), acceleration_(
-				0, 0), rotation_(0.0) {
+		game_(game), active_(true), width_(), height_(), position_(), velocity_(), acceleration_(0, 0),
+			rotation_(0.0) {
 }
 
 GameObject::~GameObject() {
@@ -73,6 +73,26 @@ void GameObject::scale(double s) {
 	height_ *= s;
 }
 
+Texture* GameObject::getTexture()
+{
+	return animation.texture_;
+}
+
+void GameObject::setTexture(Texture* texture)
+{
+	animation.texture_ = texture;
+}
+
+SDL_Rect* GameObject::getFrameRect()
+{
+	SDL_Rect* rect = new SDL_Rect;
+	rect->h = animation.spriteHeight;
+	rect->w = animation.spriteWidth;
+	rect->x = animation.firstFrameX + (animation.spriteWidth * (animation.currentFrame % animation.nFramesX));
+	rect->y = animation.firstFrameY + (animation.spriteHeight * (animation.currentFrame % animation.nFramesY));
+	return rect;
+}
+
 void GameObject::setAcceleration(const Vector2D &vel) {
 	acceleration_.set(vel);
 }
@@ -93,4 +113,20 @@ SDL_Rect GameObject::getRect()
 	rect.x = position_.getX();
 	rect.y = position_.getY();
 	return rect;
+}
+
+void GameObject::render(Uint32 time)
+{
+
+	animation.texture_->render(getRect(), getFrameRect());
+
+
+	if (time - lastRender >= 1000 / framesPerSecond) {	//animations update only when a certain time has passed
+		if (animation.currentFrame < animation.totalFrames)
+			animation.currentFrame++;
+		else
+			animation.currentFrame = 0;
+
+		lastRender = time;
+	}
 }

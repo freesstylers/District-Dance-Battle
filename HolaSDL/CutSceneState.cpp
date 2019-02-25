@@ -1,6 +1,6 @@
 #include "CutSceneState.h"
 
-CutSceneState::CutSceneState(Game* g): MapState(g)
+CutSceneState::CutSceneState(GameManager* g): MapState(g)
 {
 }
 
@@ -17,3 +17,15 @@ bool CutSceneState::handleEvent(SDL_Event e)
 {
 	return false;
 }
+
+///////////////////////////////////////////////////////////
+
+/*
+
+//Script
+
+//Handle input para skipear script
+
+//Menu
+
+*/

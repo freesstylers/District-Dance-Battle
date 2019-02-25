@@ -1,9 +1,9 @@
 #include "MenuState.h"
 //#include "Game.h"
 
-MenuState::MenuState(Game* g) :GameState(g)
+MenuState::MenuState(GameManager* g) :GameState(g)
 {
-	game = g;
+	gameManager = g;
 
 }
 
@@ -11,19 +11,35 @@ MenuState::~MenuState()
 {
 }
 
-void MenuState::play(Game* game) {
+void MenuState::play(GameManager* game) {
 	cout << "jugando" << endl;
 	//game->getMachine()->pushState(new PlayState(game, 0));
 }
 
-void MenuState::load(Game * game)
+void MenuState::load(GameManager* game)
 {
 	cout << "cargando" << endl;
 	//game->getMachine()->pushState(new PlayState(game, 1));
 }
 
-void MenuState::exit(Game * game)
+void MenuState::exit(GameManager* game)
 {
 	cout << "saliendo" << endl;
 	//game->exit();
 }
+
+///////////////////////////////////////////////////////////////////////
+
+/*
+
+//Nueva partida
+
+//Cargar partida
+
+//Ajustes
+
+//Salir
+
+// ¿Extras?
+
+*/
