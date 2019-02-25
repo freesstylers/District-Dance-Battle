@@ -1,5 +1,9 @@
 #include "Button.h"
 
+Button::Button()
+{
+}
+
 Button::Button(SDLGame* game, double width, double height, Vector2D pos, Callback* callback) :
 	GameObject(game), texture(texture), callback(callback)
 {
@@ -16,6 +20,7 @@ bool Button::handleInput(Uint32 time, const SDL_Event& event) {
 	return false;
 }
 
+
 void Button::checkButton(int x, int y) {
 	SDL_Rect auxRect = getRect();
 
@@ -27,4 +32,8 @@ void Button::checkButton(int x, int y) {
 
 void Button::render(Uint32 time) {
 	texture->render(getRect());
+}
+
+Button::~Button()
+{
 }
