@@ -10,7 +10,7 @@ struct Animation {
 	int nFramesX;
 	int nFramesY;
 	int totalFrames;
-	int currentFrame;
+	int currentFrame = 0;
 	int spriteWidth;
 	int spriteHeight;
 };

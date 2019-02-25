@@ -16,9 +16,8 @@ Perico::Perico(SDLGame* game, double width, double height, Vector2D pos) :
 	animation.firstFrameX = 0;
 	animation.firstFrameY = 0;
 	animation.nFramesX = 4;
-	animation.nFramesY = 1;
-	animation.totalFrames = 4;
-	animation.currentFrame = 0;
+	animation.nFramesY = 2;
+	animation.totalFrames = 8;
 	animation.spriteHeight = height;
 	animation.spriteWidth = width;
 }

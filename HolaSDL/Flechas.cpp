@@ -32,7 +32,6 @@ Flechas::Flechas(SDL_Keycode key, SDLGame* game, double width, double height, Ve
 	animation.nFramesX = 1;
 	animation.nFramesY = 1;
 	animation.totalFrames = 1;
-	animation.currentFrame = 1;
 	animation.spriteHeight = height;
 	animation.spriteWidth = width;
 }

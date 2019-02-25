@@ -89,7 +89,7 @@ SDL_Rect* GameObject::getFrameRect()
 	rect->h = animation.spriteHeight;
 	rect->w = animation.spriteWidth;
 	rect->x = animation.firstFrameX + (animation.spriteWidth * (animation.currentFrame % animation.nFramesX));
-	rect->y = animation.firstFrameY + (animation.spriteHeight * (animation.currentFrame % animation.nFramesY));
+	rect->y = animation.firstFrameY + (animation.spriteHeight * trunc(animation.currentFrame / animation.nFramesY));
 	return rect;
 }
 
