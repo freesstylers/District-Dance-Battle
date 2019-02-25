@@ -8,7 +8,7 @@ BarrasHUD::BarrasHUD(SDLGame* game, double width, double height, Vector2D pos, V
 	setHeight(height);
 	setPosition(pos);
 	setVelocity(vel);
-	texture = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::Bar);
+	texture = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::Nota);
 }
 void BarrasHUD::handleInput(Uint32 time, const SDL_Event& event) {
 
@@ -17,11 +17,6 @@ void BarrasHUD::handleInput(Uint32 time, const SDL_Event& event) {
 BarrasHUD::~BarrasHUD()
 {
 
-}
-int BarrasHUD::Puntuacion(int punt)
-{
-	guardapunt = guardapunt + punt;
-	return punt;
 }
 
 void BarrasHUD::GetFrameBarra()

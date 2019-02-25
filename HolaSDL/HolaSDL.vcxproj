@@ -12,11 +12,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioManager.h" />
+    <ClInclude Include="BarraPuntos.h" />
     <ClInclude Include="BarrasHUD.h" />
     <ClInclude Include="BeatHandeler.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="CutSceneState.h" />
     <ClInclude Include="DemoGame.h" />
+    <ClInclude Include="FondoBarra.h" />
     <ClInclude Include="EnemigoBaile.h" />
     <ClInclude Include="Font.h" />
     <ClInclude Include="FontsManager.h" />
@@ -47,11 +49,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AudioManager.cpp" />
+    <ClCompile Include="BarraPuntos.cpp" />
     <ClCompile Include="BarrasHUD.cpp" />
     <ClCompile Include="BeatHandeler.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="CutSceneState.cpp" />
     <ClCompile Include="DemoGame.cpp" />
+    <ClCompile Include="FondoBarra.cpp" />
     <ClCompile Include="EnemigoBaile.cpp" />
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="FontsManager.cpp" />

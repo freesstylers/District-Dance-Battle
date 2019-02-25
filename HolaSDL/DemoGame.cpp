@@ -26,8 +26,9 @@ void DemoGame::initGame() {
 	timer = Timer::Instance();
 	punto = new Point(this, 80, 80, Vector2D(100, 330));
 	bh = new BeatHandeler(112);
-	indicador = new BarrasHUD(this, 100, 100, Vector2D(20, 20), Vector2D(0.3,0));
-	spritebarra = new EmptyObject(this,800, 100, Vector2D(20, 20));
+	indicador = new BarrasHUD(this, 50, 50, Vector2D(20, 10), Vector2D(0.3,0)); //0.3 va a depender de la duracion de la cancion
+	spritebarra = new FondoBarra(this,20, 20, Vector2D(20, 25), 0.3);
+	barraPuntos = new BarraPuntos(this, 20, 20, Vector2D(20, 100));
 
 	velFlechas = asignaVel(bh->getBeatTime());
 	ifstream file("resources/levels/prueba.txt");
@@ -60,6 +61,7 @@ void DemoGame::initGame() {
 	actors_.push_back(punto);
 	actors_.push_back(spritebarra);
 	actors_.push_back(indicador);
+	actors_.push_back(barraPuntos);
 }
 
 void DemoGame::closeGame() {
@@ -122,22 +124,21 @@ void DemoGame::handleInput(Uint32 time) {
 						if (abs(it->getPosition().getX() - punto->getPosition().getX()) <= 25)
 						{
 							cout << "perfecto" << endl;
-							indicador->Puntuacion(50);
+							barraPuntos->avanza(30);
 						}
 						else if (abs(it->getPosition().getX() - punto->getPosition().getX()) <= 50)
 						{
 							cout << "bien" << endl;
-							indicador->Puntuacion(25);
+							barraPuntos->avanza(20);
 						}
 						else if (abs(it->getPosition().getX() - punto->getPosition().getX()) <= 100)
 						{
 							cout << "regular" << endl;
-							indicador->Puntuacion(5);
+							barraPuntos->avanza(10);
 						}
 						else
 						{
-							cout << "mala punteria" << endl;
-							indicador->Puntuacion(-5);
+							cout << "mala punteria" << endl;							
 						}
 						delete(it);
 						flechasPantalla_.remove(it);
@@ -146,8 +147,7 @@ void DemoGame::handleInput(Uint32 time) {
 					{
 						delete(it);
 						flechasPantalla_.remove(it);
-						cout << "flecha incorrecta" << endl;
-						indicador->Puntuacion(-25;)
+						cout << "flecha incorrecta" << endl;					
 					}
 				}
 			}
