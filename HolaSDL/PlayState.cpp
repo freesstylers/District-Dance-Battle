@@ -6,7 +6,7 @@ PlayState::PlayState(GameManager* g) :GameState(g) //Asigna game y llama a inici
 	newGame();
 }
 
-void PlayState::newGame() 
+void PlayState::newGame()
 {
 	/*
 	Inicializar:
@@ -23,13 +23,20 @@ void PlayState::newGame()
 
 	timer = Timer::Instance();
 	punto = new Point(manager, 80, 80, Vector2D(100, 330));
-	bh = new BeatHandeler(112);
 	lip = new LevelInputManager(this);
-	qteman = new QTEManager(manager);
 	perico = new Perico(manager, 33, 33, Vector2D(100, 50));
 
-	velFlechas = asignaVel(bh->getBeatTime());
 	ifstream file("resources/levels/prueba.txt");
+
+	file >> bpm;
+	file >> probqte;
+
+	bh = new BeatHandeler(bpm);
+	qteman = new QTEManager(manager, probqte);
+
+	velFlechas = asignaVel(bh->getBeatTime());
+
+
 	int aux;
 	Flechas* flecha;
 	for (int i = 0; i < 25; i++) {
@@ -51,6 +58,7 @@ void PlayState::newGame()
 		flechasNivel_.push_back(flecha);
 	}
 	file.close();
+
 
 	stage.push_back(punto);
 	stage.push_back(perico);
@@ -111,13 +119,12 @@ bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 	}
 	else
 	{
-		if (qteman->getFlecha() == nullptr)
-			lip->handleInput(time, e);
-		else
-			qteman->handleInput(time, e);
+		lip->handleInput(time, e);
+		qteman->handleInput(time, e);
+
+		GameState::handleEvent(time, e);
+		return false;
 	}
-	GameState::handleEvent(time, e);
-	return false;
 }
 
 void PlayState::render(Uint32 time)
@@ -134,7 +141,7 @@ void PlayState::render(Uint32 time)
 
 void PlayState::DeleteAll()
 {
-	for (GameObject* o : stage) 
+	for (GameObject* o : stage)
 	{
 		delete o;
 	}

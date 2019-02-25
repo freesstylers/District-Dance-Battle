@@ -18,10 +18,12 @@
 class PlayState : public GameState //Clase para las batallas y jugabilidad básica, render lo hereda de GameState, mantiene update y handleEvent independientes
 {
 protected:
-	
+
 	int songLength;
 	int maxPoints;
 	int currentPoints;
+	int probqte;
+	int bpm;
 	std::list<Flechas*> flechasNivel_;
 	Timer* timer;
 	BeatHandeler* bh;
@@ -29,7 +31,7 @@ protected:
 	Vector2D velFlechas;
 	QTEManager* qteman;
 	Perico* perico;
-	
+
 public:
 	PlayState(GameManager* g); //Crea estado (tal vez para niveles de dificultad con un int o bool)
 	void newGame(); //Inicializa objetos
@@ -48,4 +50,3 @@ protected:
 	Vector2D asignaVel(double time);
 	Vector2D posFlechaInicial = Vector2D(700, 350);
 };
-

@@ -9,7 +9,7 @@ class QTEManager
 {
 public:
 
-	QTEManager(SDLGame* l);
+	QTEManager(SDLGame* l, int proba);
 	~QTEManager();
 
 	void update(Uint32 time);
@@ -18,11 +18,11 @@ public:
 	Flechas* getFlecha() { return flecha; }
 
 private:
-
+	bool activo = false;
+	int prob;
 	Timer* timer;
 	bool keyup = true;
 	SDLGame* level;
 	Flechas* flecha = nullptr;
 
 };
-

@@ -2,8 +2,9 @@
 #include "SDLGame.h"
 
 
-QTEManager::QTEManager(SDLGame* l)
+QTEManager::QTEManager(SDLGame* l, int proba)
 {
+	prob = proba;
 	level = l;
 	timer = Timer::Instance();
 	timer->Reset();
@@ -19,7 +20,7 @@ void QTEManager::handleInput(Uint32 time, const SDL_Event& event) {
 	{
 		if (event.type == SDL_KEYDOWN && event.key.keysym.sym == flecha->getKey()/* && keyup*/)
 		{
-			//keyup = false;
+			activo = false;
 			cout << "ejej";
 			delete(flecha);
 			flecha = nullptr;
@@ -34,8 +35,10 @@ void QTEManager::update(Uint32 time) {
 	timer->Update();
 	if (timer->DeltaTime() > 0.5f && flecha == nullptr)
 	{
-		if (rand()%1000 + 1 > 20 && rand() % 1000 + 1 < 21)
-			flecha = new Flechas(SDLK_UP, level, 50, 50, Vector2D(400,300), Vector2D(0,0));
+		if (rand() % 1000 + 1 > 20 && rand() % 1000 + 1 < prob && !activo) {
+			flecha = new Flechas(SDLK_UP, level, 50, 50, Vector2D(400, 300), Vector2D(0, 0));
+			activo = true;
+		}
 	}
 
 }
