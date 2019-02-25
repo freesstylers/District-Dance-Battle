@@ -122,18 +122,22 @@ void DemoGame::handleInput(Uint32 time) {
 						if (abs(it->getPosition().getX() - punto->getPosition().getX()) <= 25)
 						{
 							cout << "perfecto" << endl;
+							indicador->Puntuacion(50);
 						}
 						else if (abs(it->getPosition().getX() - punto->getPosition().getX()) <= 50)
 						{
 							cout << "bien" << endl;
+							indicador->Puntuacion(25);
 						}
 						else if (abs(it->getPosition().getX() - punto->getPosition().getX()) <= 100)
 						{
 							cout << "regular" << endl;
+							indicador->Puntuacion(5);
 						}
 						else
 						{
 							cout << "mala punteria" << endl;
+							indicador->Puntuacion(-5);
 						}
 						delete(it);
 						flechasPantalla_.remove(it);
@@ -143,6 +147,7 @@ void DemoGame::handleInput(Uint32 time) {
 						delete(it);
 						flechasPantalla_.remove(it);
 						cout << "flecha incorrecta" << endl;
+						indicador->Puntuacion(-25;)
 					}
 				}
 			}
