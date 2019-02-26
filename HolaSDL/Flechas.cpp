@@ -5,7 +5,7 @@ Flechas::Flechas()
 {
 
 }
-Flechas::Flechas(SDL_Scancode key, SDLGame* game, double width, double height, Vector2D pos, Vector2D vel) :
+Flechas::Flechas(SDL_GameControllerButton key, SDLGame* game, double width, double height, Vector2D pos, Vector2D vel) :
 	GameObject(game), key(key)
 {
 	setWidth(width);
@@ -14,7 +14,7 @@ Flechas::Flechas(SDL_Scancode key, SDLGame* game, double width, double height, V
 	setVelocity(vel);
 
 	switch (key) {
-		case SDLK_LEFT:
+		/*case SDLK_LEFT:
 			animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::FlechaLeft);
 			break;
 		case SDLK_RIGHT:
@@ -37,7 +37,31 @@ Flechas::Flechas(SDL_Scancode key, SDLGame* game, double width, double height, V
 			break;
 		case SDL_SCANCODE_Y:
 			animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::BotonY);
-			break;
+			break;*/
+	case SDL_CONTROLLER_BUTTON_DPAD_LEFT:
+		animation.texture_ = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::FlechaLeft);
+		break;
+	case SDL_CONTROLLER_BUTTON_DPAD_RIGHT:
+		animation.texture_ = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::FlechaRight);
+		break;
+	case SDL_CONTROLLER_BUTTON_DPAD_UP:
+		animation.texture_ = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::FlechaUp);
+		break;
+	case SDL_CONTROLLER_BUTTON_DPAD_DOWN:
+		animation.texture_ = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::FlechaDown);
+		break;
+	case SDL_CONTROLLER_BUTTON_A:
+		animation.texture_ = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::BotonA);
+		break;
+	case SDL_CONTROLLER_BUTTON_B:
+		animation.texture_ = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::BotonB);
+		break;
+	case SDL_CONTROLLER_BUTTON_X:
+		animation.texture_ = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::BotonX);
+		break;
+	case SDL_CONTROLLER_BUTTON_Y:
+		animation.texture_ = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::BotonY);
+		break;
 	}
 
 

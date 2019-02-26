@@ -39,16 +39,16 @@ void DemoGame::initGame() {
 		file >> aux;
 		switch (aux) {
 		case 1:
-			flecha = new Flechas(SDL_SCANCODE_LEFT, this, 50, 50, Vector2D(700, 350), Vector2D(-5, 0));
+			flecha = new Flechas(SDL_CONTROLLER_BUTTON_DPAD_LEFT, this, 50, 50, Vector2D(700, 350), Vector2D(-5, 0));
 			break;
 		case 2:
-			flecha = new Flechas(SDL_SCANCODE_RIGHT, this, 50, 50, Vector2D(700, 350), Vector2D(-5, 0));
+			flecha = new Flechas(SDL_CONTROLLER_BUTTON_DPAD_RIGHT, this, 50, 50, Vector2D(700, 350), Vector2D(-5, 0));
 			break;
 		case 3:
-			flecha = new Flechas(SDL_SCANCODE_UP, this, 50, 50, Vector2D(700, 350), Vector2D(-5, 0));
+			flecha = new Flechas(SDL_CONTROLLER_BUTTON_DPAD_UP, this, 50, 50, Vector2D(700, 350), Vector2D(-5, 0));
 			break;
 		case 4:
-			flecha = new Flechas(SDL_SCANCODE_DOWN, this, 50, 50, Vector2D(700, 350), Vector2D(-5, 0));
+			flecha = new Flechas(SDL_CONTROLLER_BUTTON_DPAD_DOWN, this, 50, 50, Vector2D(700, 350), Vector2D(-5, 0));
 			break;
 		}
 		flechasNivel_.push_back(flecha);
@@ -119,9 +119,9 @@ void DemoGame::handleInput(Uint32 time) {
 			if (!flechasPantalla_.empty())
 			{
 				auto it = flechasPantalla_.front();
-				if (it != nullptr)
+				/*if (it != nullptr)
 				{
-					if (event.type == SDL_KEYUP && event.key.keysym.sym == it->getKey())
+					if (event.type == SDL_CONTROLLERBUTTONUP && event.key.keysym.sym == it->getKey())
 					{
 						if (abs(it->getPosition().getX() - punto->getPosition().getX()) <= 100)
 						if (abs(it->getPosition().getX() - punto->getPosition().getX()) <= 25)
