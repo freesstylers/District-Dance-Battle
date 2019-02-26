@@ -12,28 +12,21 @@ Flechas::Flechas(SDL_Keycode key, SDLGame* game, double width, double height, Ve
 	setHeight(height);
 	setPosition(pos);
 	setVelocity(vel);
+
 	switch (key) {
 	case SDLK_LEFT:
-		animation.texture_ = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::FlechaLeft);
+		animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::FlechaLeft);
 		break;
 	case SDLK_RIGHT:
-		animation.texture_ = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::FlechaRight);
+		animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::FlechaRight);
 		break;
 	case SDLK_UP:
-		animation.texture_ = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::FlechaUp);
+		animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::FlechaUp);
 		break;
 	case SDLK_DOWN:
-		animation.texture_ = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::FlechaDown);
+		animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::FlechaDown);
 		break;
 	}
-
-	animation.firstFrameX = 0;
-	animation.firstFrameY = 0;
-	animation.nFramesX = 1;
-	animation.nFramesY = 1;
-	animation.totalFrames = 1;
-	animation.spriteHeight = height;
-	animation.spriteWidth = width;
 }
 
 Flechas::~Flechas()

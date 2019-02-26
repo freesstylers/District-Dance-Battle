@@ -11,15 +11,7 @@ Perico::Perico(SDLGame* game, double width, double height, Vector2D pos) :
 	setVelocity(Vector2D(0, 0));
 
 
-	animation.texture_ = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::PericoIdle);
-
-	animation.firstFrameX = 0;
-	animation.firstFrameY = 0;
-	animation.nFramesX = 3;
-	animation.nFramesY = 1;
-	animation.totalFrames = 4;
-	animation.spriteWidth = 60;
-	animation.spriteHeight = 120;
+	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::PericoDab);
 
 	framesPerSecond = 4;
 }

@@ -7,12 +7,17 @@ vector<Resources::FontInfo> Resources::fonts_ {
 };
 
 vector<Resources::ImageInfo> Resources::images_ {
-	{FlechaLeft, "resources/images/FlechaLeft.png"},
-	{FlechaRight, "resources/images/FlechaRight.png"},
-	{FlechaUp, "resources/images/FlechaUp.png"},
-	{FlechaDown, "resources/images/FlechaDown.png"},
-    {Point, "resources/images/Point.png"},
-	{PericoIdle, "resources/images/PericoIdle.png"}
+
+//Enum, dirección a archivo, ancho de frame, alto de frame, columnas, filas, total de frames//
+
+	{FlechaLeft, "resources/images/FlechaLeft.png", 32, 32, 1, 1, 1},
+	{FlechaRight, "resources/images/FlechaRight.png", 32, 32, 1, 1, 1},
+	{FlechaUp, "resources/images/FlechaUp.png", 32, 32, 1, 1, 1},
+	{FlechaDown, "resources/images/FlechaDown.png", 32, 32, 1, 1, 1},
+    {Point, "resources/images/Point.png", 32, 32, 1, 1, 1},
+	{PericoIdle, "resources/images/PericoIdle.png", 60, 120, 3, 2, 4},
+	{PericoDab, "resources/images/PericoDab.png", 60, 120, 2, 1, 2},
+	{PericoBaile1, "resources/images/PericoBaile1.png", 60, 120, 2, 1, 2}
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {

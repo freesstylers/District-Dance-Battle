@@ -3,7 +3,7 @@
 BarrasHUD::BarrasHUD(SDLGame* game)
 {
 	//sprite de la barra
-	//texture = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::);
+	//texture = getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::);
 
 }
 

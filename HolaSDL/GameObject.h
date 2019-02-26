@@ -25,7 +25,7 @@ public:
 
 	void scale(double s);
 
-	Texture* getTexture();
+	Texture* getAnimation();
 	void setTexture(Texture* texture);
 
 	SDL_Rect* getFrameRect();

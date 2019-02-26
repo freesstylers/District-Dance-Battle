@@ -73,7 +73,7 @@ void GameObject::scale(double s) {
 	height_ *= s;
 }
 
-Texture* GameObject::getTexture()
+Texture* GameObject::getAnimation()
 {
 	return animation.texture_;
 }
@@ -86,10 +86,10 @@ void GameObject::setTexture(Texture* texture)
 SDL_Rect* GameObject::getFrameRect()
 {
 	SDL_Rect* rect = new SDL_Rect;
-	rect->h = animation.spriteHeight;
-	rect->w = animation.spriteWidth;
-	rect->x = animation.firstFrameX + (animation.spriteWidth * (animation.currentFrame % animation.nFramesX));
-	rect->y = animation.firstFrameY + (animation.spriteHeight * (int)(animation.currentFrame / animation.nFramesX));
+	rect->h = animation.frameHeight;
+	rect->w = animation.frameWidth;
+	rect->x = (animation.frameWidth * (animation.currentFrame % animation.columns));
+	rect->y = (animation.frameHeight * (int)(animation.currentFrame / animation.columns));
 	return rect;
 }
 

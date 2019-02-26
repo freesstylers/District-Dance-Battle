@@ -9,9 +9,11 @@ SDLTexturesManager::~SDLTexturesManager() {
 		return;
 
 	// free all textures
-	for (const auto &pair : textures_) {
-		if (pair.second != nullptr)
+	for (const auto &pair : animations_) {
+		if (pair.second != nullptr) {
+			delete pair.second->texture_;
 			delete pair.second;
+		}
 	}
 
 	IMG_Quit();
@@ -32,14 +34,21 @@ bool SDLTexturesManager::init() {
 
 
 bool SDLTexturesManager::loadFromImg(int tag, SDL_Renderer* renderer,
-		string fileName) {
+		string fileName, int width, int height, int columns, int rows, int totalFrames) {
 
 	if ( !initialized_ )
 		return false;
 
-	Texture* texture = new Texture(renderer, fileName);
-	if (texture->isReady()) {
-		storeTexture(tag, texture);
+	Animation* animation = new Animation;
+	animation->texture_ = new Texture(renderer, fileName);
+	animation->frameWidth = width;
+	animation->frameHeight = height;
+	animation->columns = columns;
+	animation->rows = rows;
+	animation->totalFrames = totalFrames;
+
+	if (animation->texture_->isReady()) {
+		storeAnimation(tag, animation);
 		return true;
 	}
 
@@ -53,9 +62,16 @@ bool SDLTexturesManager::loadFromText(int tag, SDL_Renderer* renderer,
 	if ( !initialized_ )
 		return false;
 
-	Texture* texture = new Texture(renderer, text, font, color);
-	if (texture->isReady()) {
-		storeTexture(tag, texture);
+	Animation* animation = new Animation;
+	animation->texture_ = new Texture(renderer, text, font, color);
+	animation->frameWidth = animation->texture_->getWidth();
+	animation->frameHeight = animation->texture_->getHeight();
+	animation->columns = 1;
+	animation->rows = 1;
+	animation->totalFrames = 1;
+
+	if (animation->texture_->isReady()) {
+		storeAnimation(tag, animation);
 		return true;
 	}
 
@@ -64,13 +80,15 @@ bool SDLTexturesManager::loadFromText(int tag, SDL_Renderer* renderer,
 
 }
 
-void SDLTexturesManager::storeTexture(int tag, Texture* texture) {
-	Texture* curr = textures_[tag];
-	if (curr != nullptr)
+void SDLTexturesManager::storeAnimation(int tag, Animation* animation) {
+	Animation* curr = animations_[tag];
+	if (curr != nullptr){
+		delete curr->texture_;
 		delete curr;
-	textures_[tag] = texture;
+	}
+	animations_[tag] = animation;
 }
 
-Texture* SDLTexturesManager::getTexture(int tag) {
-	return textures_[tag];
+Animation* SDLTexturesManager::getAnimation(int tag) {
+	return animations_[tag];
 }
