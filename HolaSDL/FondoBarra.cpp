@@ -6,7 +6,7 @@ FondoBarra::FondoBarra(SDLGame* game, double width, double height, Vector2D pos,
 	setHeight(height);
 	setPosition(pos);
 	vel_ = vel;
-	texture = getGame()->getServiceLocator()->getTextures()->getTexture(textura);
+	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(textura);
 }
 bool FondoBarra::handleInput(Uint32 time, const SDL_Event& event) {
 	return true;
@@ -15,10 +15,6 @@ void FondoBarra::update(Uint32 time)
 {
 	setWidth(width_+vel_);
 	position_.set(position_);
-}
-void FondoBarra::render(Uint32 time)
-{	
-	texture->render(getRect());
 }
 
 

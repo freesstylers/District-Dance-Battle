@@ -15,7 +15,6 @@ public:
 	Button();
 	Button(GameManager* game, double width, double height, Vector2D pos, Callback* callback);
 	virtual bool handleInput(Uint32 time, const SDL_Event& event);
-	//virtual void render(Uint32 time);
 	virtual void update(Uint32 time);
 	virtual ~Button();
 
