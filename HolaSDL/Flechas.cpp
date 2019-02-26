@@ -14,53 +14,29 @@ Flechas::Flechas(SDL_GameControllerButton key, SDLGame* game, double width, doub
 	setVelocity(vel);
 
 	switch (key) {
-		/*case SDLK_LEFT:
-			animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::FlechaLeft);
-			break;
-		case SDLK_RIGHT:
-			animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::FlechaRight);
-			break;
-		case SDLK_UP:
-			animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::FlechaUp);
-			break;
-		case SDLK_DOWN:
-			animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::FlechaDown);
-			break;
-		case SDL_SCANCODE_A:
-			animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::BotonA);
-			break;
-		case SDL_SCANCODE_B:
-			animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::BotonB);
-			break;
-		case SDL_SCANCODE_X:
-			animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::BotonX);
-			break;
-		case SDL_SCANCODE_Y:
-			animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::BotonY);
-			break;*/
 	case SDL_CONTROLLER_BUTTON_DPAD_LEFT:
-		animation.texture_ = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::FlechaLeft);
+		animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::FlechaLeft);
 		break;
 	case SDL_CONTROLLER_BUTTON_DPAD_RIGHT:
-		animation.texture_ = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::FlechaRight);
+		animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::FlechaRight);
 		break;
 	case SDL_CONTROLLER_BUTTON_DPAD_UP:
-		animation.texture_ = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::FlechaUp);
+		animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::FlechaUp);
 		break;
 	case SDL_CONTROLLER_BUTTON_DPAD_DOWN:
-		animation.texture_ = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::FlechaDown);
+		animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::FlechaDown);
 		break;
 	case SDL_CONTROLLER_BUTTON_A:
-		animation.texture_ = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::BotonA);
+		animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::BotonA);
 		break;
 	case SDL_CONTROLLER_BUTTON_B:
-		animation.texture_ = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::BotonB);
+		animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::BotonB);
 		break;
 	case SDL_CONTROLLER_BUTTON_X:
-		animation.texture_ = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::BotonX);
+		animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::BotonX);
 		break;
 	case SDL_CONTROLLER_BUTTON_Y:
-		animation.texture_ = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::BotonY);
+		animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::BotonY);
 		break;
 	}
 

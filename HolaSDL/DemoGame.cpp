@@ -152,7 +152,7 @@ void DemoGame::handleInput(Uint32 time) {
 						flechasPantalla_.remove(it);
 						cout << "flecha incorrecta" << endl;					
 					}
-				}
+				}*/
 			}
 		}
 
