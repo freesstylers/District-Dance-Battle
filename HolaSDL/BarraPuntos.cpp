@@ -7,9 +7,8 @@ BarraPuntos::BarraPuntos(SDLGame* game, double width, double height, Vector2D po
 	setPosition(pos);
 	texture = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::Bar);
 }
-void BarraPuntos::handleInput(Uint32 time, const SDL_Event& event) {
-
-
+bool BarraPuntos::handleInput(Uint32 time, const SDL_Event& event) {
+	return true;
 }
 void BarraPuntos::avanza(int punt)
 {

@@ -10,9 +10,9 @@ BarrasHUD::BarrasHUD(SDLGame* game, double width, double height, Vector2D pos, V
 	setVelocity(vel);
 	texture = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::Nota);*/
 }
-void BarrasHUD::handleInput(Uint32 time, const SDL_Event& event) {
-
-
+bool BarrasHUD::handleInput(Uint32 time, const SDL_Event& event) 
+{
+	return true;
 }
 BarrasHUD::~BarrasHUD()
 {

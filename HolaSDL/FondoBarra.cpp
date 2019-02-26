@@ -1,16 +1,15 @@
 #include "FondoBarra.h"
 
-FondoBarra::FondoBarra(SDLGame* game, double width, double height, Vector2D pos, double vel) : GameObject(game)
+FondoBarra::FondoBarra(SDLGame* game, double width, double height, Vector2D pos, double vel, int textura) : GameObject(game)
 {
 	setWidth(width);
 	setHeight(height);
 	setPosition(pos);
 	vel_ = vel;
-	texture = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::Bar);
+	texture = getGame()->getServiceLocator()->getTextures()->getTexture(textura);
 }
-void FondoBarra::handleInput(Uint32 time, const SDL_Event& event) {
-
-
+bool FondoBarra::handleInput(Uint32 time, const SDL_Event& event) {
+	return true;
 }
 void FondoBarra::update(Uint32 time)
 {

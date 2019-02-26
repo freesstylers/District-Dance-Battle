@@ -7,7 +7,7 @@ class MenuState : public GameState //Clase general para menus, he dejado los mét
 public:
 	MenuState(GameManager* g);
 	~MenuState();
-
+	virtual bool handleEvent(Uint32 time, SDL_Event e);
 
 private:
 	static void play(GameManager* gameManager);

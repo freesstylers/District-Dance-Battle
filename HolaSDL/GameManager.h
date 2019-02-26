@@ -16,6 +16,7 @@ public:
 	bool checkExit();
 	virtual void start(); // start the game
 	virtual void stop();  // stop the game
+	GameStateMachine* getMachine();
 protected:
 	GameStateMachine* machine;
 	bool exit_;
