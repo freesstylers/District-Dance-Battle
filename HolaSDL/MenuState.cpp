@@ -4,6 +4,7 @@
 MenuState::MenuState(GameManager* g) :GameState(g)
 {
 	gameManager = g;
+	stage.push_back(new Button(gameManager, 100, 100, Vector2D(0, 0), play));
 
 }
 
