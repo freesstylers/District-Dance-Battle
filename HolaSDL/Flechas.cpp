@@ -1,11 +1,12 @@
 #include "Flechas.h"
 
+#include "GameManager.h"
 
 Flechas::Flechas()
 {
 
 }
-Flechas::Flechas(SDL_Scancode key, SDLGame* game, double width, double height, Vector2D pos, Vector2D vel) :
+Flechas::Flechas(SDL_Scancode key, GameManager* game, double width, double height, Vector2D pos, Vector2D vel) :
 	GameObject(game), key(key)
 {
 	setWidth(width);

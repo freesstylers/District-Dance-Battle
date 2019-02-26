@@ -20,78 +20,29 @@ void PlayState::newGame()
 	Flechas
 	Pulsador/Logica de botones
 	*/
+
+	cin >> level;
+
 	timer = Timer::Instance();
 	punto = new Point(manager, 80, 80, Vector2D(300, 465));
 	puntobot = new Point(manager, 80, 80, Vector2D(500, 465));
 	lip = new LevelInputManager(this);
 	perico = new Perico(manager, 33, 33, Vector2D(100, 50));
+	nivel = new Level(this, level);
 
-	cin >> level;
-
-	ifstream file("resources/levels/" + level + ".txt");
-
-	file >> bpm;
-	file >> tiempo;
-	file >> probqte;
-
-	bh = new BeatHandeler(bpm);
-	qteman = new QTEManager(manager, probqte);
-
-	velFlechas = asignaVel(bh->getBeatTime());
-
-
-	int aux;
-	Flechas* flecha;
-	for (int i = 0; i < 25; i++) {
-		file >> aux;
-		switch (aux) {
-		case 1:
-			flecha = new Flechas(SDL_SCANCODE_LEFT, manager, 50, 50, posFlechaInicial, velFlechas);
-			break;
-		case 2:
-			flecha = new Flechas(SDL_SCANCODE_RIGHT, manager, 50, 50, posFlechaInicial, velFlechas);
-			break;
-		case 3:
-			flecha = new Flechas(SDL_SCANCODE_UP, manager, 50, 50, posFlechaInicial, velFlechas);
-			break;
-		case 4:
-			flecha = new Flechas(SDL_SCANCODE_DOWN, manager, 50, 50, posFlechaInicial, velFlechas);
-			break;
-		}
-		flechasNivel_.push_back(flecha);
-	}
-	for (int i = 0; i < 25; i++) {
-		file >> aux;
-		switch (aux) {
-		case 1:
-			flecha = new Flechas(SDL_SCANCODE_A, manager, 50, 50, posBotonInicial, velFlechas);
-			break;
-		case 2:
-			flecha = new Flechas(SDL_SCANCODE_B, manager, 50, 50, posBotonInicial, velFlechas);
-			break;
-		case 3:
-			flecha = new Flechas(SDL_SCANCODE_X, manager, 50, 50, posBotonInicial, velFlechas);
-			break;
-		case 4:
-			flecha = new Flechas(SDL_SCANCODE_Y, manager, 50, 50, posBotonInicial, velFlechas);
-			break;
-		}
-		botonesNivel_.push_back(flecha);
-	}
-	file.close();
-
+	bh = new BeatHandeler(nivel->bpm);
+	qteman = new QTEManager(this, nivel->probqte);
 
 	stage.push_back(punto);
 	stage.push_back(puntobot);
 	stage.push_back(perico);
 
 
-
 	/////////////////////////
 
 	//exit_ = false;
-	manager->getServiceLocator()->getAudios()->playChannel(Resources::Pruebas, -1);
-	manager->getServiceLocator()->getAudios()->setChannelVolume(70);
+	playSong(nivel->song);
+	
 }
 
 
@@ -233,4 +184,9 @@ Vector2D PlayState::asignaVel(double time)
 	double distance = posFlechaInicial.getY() - (punto->getPosition().getY());
 	double velocity = distance / bh->getBeatTime();
 	return Vector2D(0, -velocity * 4);
+}
+
+void PlayState::playSong(int song) {
+	manager->getServiceLocator()->getAudios()->playChannel(song, -1);
+	manager->getServiceLocator()->getAudios()->setChannelVolume(70);
 }

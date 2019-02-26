@@ -23,7 +23,7 @@ void DemoGame::initGame() {
 	/*	Inicializacion de todo lo necesario
 	*	que vaya a aparecer en la escena
 	*/
-	ifstream file("resources/levels/prueba.txt");
+	/*ifstream file("resources/levels/prueba.txt");
 	int aux;
 	Flechas* flecha;
 	for (int i = 0; i < 25; i++) {
@@ -44,7 +44,7 @@ void DemoGame::initGame() {
 		}
 		flechasNivel_.push_back(flecha);
 	}
-	file.close();
+	file.close();*/
 
 	timer = Timer::Instance();
 	punto = new Point(this, 80, 80, Vector2D(100, 330));

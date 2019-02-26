@@ -1,5 +1,8 @@
 #pragma once
 #include "GameObject.h"
+
+class GameManager;
+
 class Flechas: public GameObject
 {
 protected:
@@ -7,7 +10,7 @@ protected:
 	SDL_Scancode key;
 public:
 	Flechas();
-	Flechas(SDL_Scancode key, SDLGame* game, double width, double height, Vector2D pos, Vector2D vel);
+	Flechas(SDL_Scancode key, GameManager* game, double width, double height, Vector2D pos, Vector2D vel);
 	virtual ~Flechas();
 	virtual bool handleInput(Uint32 time, const SDL_Event& event); //Puede que no lo necesitemos si se lleva las pulsaciones desde pulsador
 	virtual void update(Uint32 time);

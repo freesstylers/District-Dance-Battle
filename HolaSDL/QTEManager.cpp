@@ -1,8 +1,9 @@
 #include "QTEManager.h"
-#include "SDLGame.h"
+#include "PlayState.h"
 
 
-QTEManager::QTEManager(SDLGame* l, int proba)
+
+QTEManager::QTEManager(PlayState* l, int proba)
 {
 	prob = proba;
 	level = l;
@@ -36,7 +37,7 @@ void QTEManager::update(Uint32 time) {
 	if (timer->DeltaTime() > 0.5f && flecha == nullptr)
 	{
 		if (rand() % 1000 + 1 > 20 && rand() % 1000 + 1 < prob && !activo) {
-			flecha = new Flechas(SDL_SCANCODE_UP, level, 50, 50, Vector2D(500, 300), Vector2D(0, 0));
+			flecha = new Flechas(SDL_SCANCODE_UP, level->manager, 50, 50, Vector2D(500, 300), Vector2D(0, 0));
 			activo = true;
 		}
 	}
