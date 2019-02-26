@@ -1,6 +1,5 @@
 #include "Flechas.h"
 
-#include "GameManager.h"
 
 Flechas::Flechas()
 {

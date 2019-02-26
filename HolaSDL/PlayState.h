@@ -16,24 +16,28 @@
 #include "BarrasHUD.h"
 #include "FondoBarra.h"
 #include "BarraPuntos.h"
-#include "Level.h"
 
 //Constantes
 
-class PlayState : public GameState //Clase para las batallas y jugabilidad bï¿½sica, render lo hereda de GameState, mantiene update y handleEvent independientes
+class PlayState : public GameState //Clase para las batallas y jugabilidad básica, render lo hereda de GameState, mantiene update y handleEvent independientes
 {
 protected:
 
 	string level;
+	int songLength;
 	int maxPoints;
 	int currentPoints;
+	int probqte;
+	int bpm;
+	int tiempo;
+	std::list<Flechas*> flechasNivel_;
+	std::list<Flechas*> botonesNivel_;
 	Timer* timer;
-
+	BeatHandeler* bh;
 	LevelInputManager* lip;
 	Vector2D velFlechas;
 	QTEManager* qteman;
 	Perico* perico;
-	Level* nivel;
 
 	BarrasHUD* indicador; //nota indicadora
 	FondoBarra* spriteBarra; //barra tiempo
@@ -46,18 +50,10 @@ public:
 	virtual void update(Uint32 time);
 	virtual bool handleEvent(Uint32 time, SDL_Event e);
 	virtual void render(Uint32 time);
-	Vector2D asignaVel(double time);
-	void playSong(int song);
-	std::list<Flechas*> flechasPantalla_;
+	std::list<Flechas*> flechasPantalla_; //La otra lista (Actors) se hereda de GameState
 	std::list<Flechas*> botonesPantalla_;
-	std::list<Flechas*> flechasNivel_;
-	std::list<Flechas*> botonesNivel_;
 	Point* punto; //Pulsador
 	Point* puntobot;
-	BeatHandeler* bh;
-
-	Vector2D posFlechaInicial = Vector2D(310, 10);
-	Vector2D posBotonInicial = Vector2D(510, 10);
 
 protected:
 	void DeleteAll(); //Para borrado de objetos, por aquello de no dejar basura
@@ -65,5 +61,8 @@ protected:
 	void changePoints(int data);
 	void generateFlechas();
 	void generateBotones();
+	Vector2D asignaVel(double time);
+	Vector2D posFlechaInicial = Vector2D(310, 10);
+	Vector2D posBotonInicial = Vector2D(510, 10);
 
 };
