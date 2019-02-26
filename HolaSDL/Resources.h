@@ -20,8 +20,7 @@ public:
 		BotonX,
 		BotonY,
 		Point,
-		AnimTest
-		Point,
+		AnimTest,
 		Nota,
 		Bar
 		// text

@@ -16,8 +16,7 @@ vector<Resources::ImageInfo> Resources::images_ {
 	{BotonX, "resources/images/BotonX.png"},
 	{BotonY, "resources/images/BotonY.png"},
     {Point, "resources/images/Point.png"},
-	{AnimTest, "resources/images/AnimTest.png"}
-    {Point, "resources/images/Point.png"},
+	{AnimTest, "resources/images/AnimTest.png"},
 	{Nota, "resources/images/Nota.png"},
 	{Bar, "resources/images/enemy_mana_bar_001.png"}
 };

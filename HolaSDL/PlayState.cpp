@@ -20,6 +20,11 @@ void PlayState::newGame()
 	Flechas
 	Pulsador/Logica de botones
 	*/
+	indicador = new BarrasHUD(manager, 50, 50, Vector2D(20, 10), Vector2D(0.3, 0)); //0.3 va a depender de la duracion de la cancion
+	spriteBarra = new FondoBarra(manager, 20, 20, Vector2D(20, 25), 0.3, Resources::Bar);
+	barraPuntos = new BarraPuntos(manager, 20, 20, Vector2D(20, 100));
+
+
 	timer = Timer::Instance();
 	punto = new Point(manager, 80, 80, Vector2D(300, 465));
 	puntobot = new Point(manager, 80, 80, Vector2D(500, 465));
@@ -84,6 +89,9 @@ void PlayState::newGame()
 	stage.push_back(punto);
 	stage.push_back(puntobot);
 	stage.push_back(perico);
+	stage.push_back(barraPuntos);
+	stage.push_back(spriteBarra);
+	stage.push_back(indicador);
 
 
 

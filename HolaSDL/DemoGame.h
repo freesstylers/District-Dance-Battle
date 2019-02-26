@@ -8,7 +8,6 @@
 #include "Flechas.h"
 #include "Point.h"
 #include "BeatHandeler.h"
-
 #include "BarrasHUD.h"
 #include "FondoBarra.h"
 #include "BarraPuntos.h"

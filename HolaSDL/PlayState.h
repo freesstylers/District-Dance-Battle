@@ -13,6 +13,9 @@
 #include "LevelInputManager.h"
 #include "QTEManager.h"
 #include "Perico.h"
+#include "BarrasHUD.h"
+#include "FondoBarra.h"
+#include "BarraPuntos.h"
 
 //Constantes
 
@@ -35,6 +38,10 @@ protected:
 	Vector2D velFlechas;
 	QTEManager* qteman;
 	Perico* perico;
+
+	BarrasHUD* indicador; //nota indicadora
+	FondoBarra* spriteBarra; //barra tiempo
+	BarraPuntos* barraPuntos; //barra puntuacion
 
 public:
 	PlayState(GameManager* g); //Crea estado (tal vez para niveles de dificultad con un int o bool)
