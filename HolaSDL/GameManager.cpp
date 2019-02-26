@@ -25,6 +25,11 @@ void GameManager::stop() {
 	exit_ = true;
 }
 
+GameStateMachine * GameManager::getMachine()
+{
+	return machine;
+}
+
 void GameManager::run()
 {
 	while (!exit_) {
