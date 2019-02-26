@@ -27,6 +27,7 @@
     <ClInclude Include="Flechas.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GameStateMachine.h" />
+    <ClInclude Include="Level.h" />
     <ClInclude Include="LevelInputManager.h" />
     <ClInclude Include="MapState.h" />
     <ClInclude Include="MenuState.h" />
@@ -67,6 +68,7 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="GameStateMachine.cpp" />
+    <ClCompile Include="Level.cpp" />
     <ClCompile Include="LevelInputManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Flechas.cpp" />

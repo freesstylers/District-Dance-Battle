@@ -1,5 +1,8 @@
 #pragma once
 #include "GameObject.h"
+
+class GameManager;
+
 class Flechas: public GameObject
 {
 protected:

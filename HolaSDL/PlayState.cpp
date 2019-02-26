@@ -1,7 +1,7 @@
 #include "PlayState.h"
 #include "GameManager.h"
 
-PlayState::PlayState(GameManager* g) :GameState(g) //Asigna game y llama a inicialización
+PlayState::PlayState(GameManager* g) :GameState(g) //Asigna game y llama a inicializaciï¿½n
 {
 	newGame();
 }
@@ -20,77 +20,21 @@ void PlayState::newGame()
 	Flechas
 	Pulsador/Logica de botones
 	*/
+
+	cin >> level;
 	indicador = new BarrasHUD(manager, 50, 50, Vector2D(20, 10), Vector2D(0.3, 0)); //0.3 va a depender de la duracion de la cancion
 	spriteBarra = new FondoBarra(manager, 20, 20, Vector2D(20, 25), 0.3, Resources::Bar);
 	barraPuntos = new BarraPuntos(manager, 20, 20, Vector2D(20, 100));
-
-
 	timer = Timer::Instance();
 	punto = new Point(manager, 80, 80, Vector2D(300, 465));
 	puntobot = new Point(manager, 80, 80, Vector2D(500, 465));
 	lip = new LevelInputManager(this);
 	perico = new Perico(manager, 33, 33, Vector2D(100, 50));
+	nivel = new Level(this, level);
+	nivel->init();
 
-	cin >> level;
-
-	ifstream file("resources/levels/" + level + ".txt");
-
-	file >> bpm;
-	file >> tiempo;
-	file >> probqte;
-
-	bh = new BeatHandeler(bpm);
-	qteman = new QTEManager(manager, probqte);
-
-	velFlechas = asignaVel(bh->getBeatTime());
-
-
-	int aux;
-	Flechas* flecha;
-	for (int i = 0; i < 50; i++) {
-		file >> aux;
-		switch (aux) {
-		case 0:
-			flecha = nullptr;
-			break;
-		case 1:
-			flecha = new Flechas(SDL_CONTROLLER_BUTTON_DPAD_LEFT, manager, 50, 50, posFlechaInicial, velFlechas);
-			break;
-		case 2:
-			flecha = new Flechas(SDL_CONTROLLER_BUTTON_DPAD_RIGHT, manager, 50, 50, posFlechaInicial, velFlechas);
-			break;
-		case 3:
-			flecha = new Flechas(SDL_CONTROLLER_BUTTON_DPAD_UP, manager, 50, 50, posFlechaInicial, velFlechas);
-			break;
-		case 4:
-			flecha = new Flechas(SDL_CONTROLLER_BUTTON_DPAD_DOWN, manager, 50, 50, posFlechaInicial, velFlechas);
-			break;
-		}
-		flechasNivel_.push_back(flecha);
-	}
-	for (int i = 0; i < 50; i++) {
-		file >> aux;
-		switch (aux) {
-		case 0:
-			flecha = nullptr;
-			break;
-		case 1:
-			flecha = new Flechas(SDL_CONTROLLER_BUTTON_A, manager, 50, 50, posBotonInicial, velFlechas);
-			break;
-		case 2:
-			flecha = new Flechas(SDL_CONTROLLER_BUTTON_B, manager, 50, 50, posBotonInicial, velFlechas);
-			break;
-		case 3:
-			flecha = new Flechas(SDL_CONTROLLER_BUTTON_X, manager, 50, 50, posBotonInicial, velFlechas);
-			break;
-		case 4:
-			flecha = new Flechas(SDL_CONTROLLER_BUTTON_Y, manager, 50, 50, posBotonInicial, velFlechas);
-			break;
-		}
-		botonesNivel_.push_back(flecha);
-	}
-	file.close();
-
+	bh = new BeatHandeler(nivel->bpm);
+	qteman = new QTEManager(this, nivel->probqte);
 
 	stage.push_back(punto);
 	stage.push_back(puntobot);
@@ -100,12 +44,11 @@ void PlayState::newGame()
 	stage.push_back(indicador);
 
 
-
 	/////////////////////////
 
 	//exit_ = false;
-	manager->getServiceLocator()->getAudios()->playChannel(Resources::Pruebas, -1);
-	manager->getServiceLocator()->getAudios()->setChannelVolume(70);
+	playSong(nivel->song);
+	
 }
 
 
@@ -203,7 +146,17 @@ void PlayState::DeleteAll()
 		delete o;
 	}
 
+	for (Flechas* o : botonesPantalla_)
+	{
+		delete o;
+	}
+
 	for (Flechas* o : flechasNivel_) //Por si se cierra el nivel antes de que acabe
+	{
+		delete o;
+	}
+
+	for (Flechas* o : botonesNivel_) //Por si se cierra el nivel antes de que acabe
 	{
 		delete o;
 	}
@@ -239,9 +192,15 @@ void PlayState::generateBotones()
 	}
 }
 
+
 Vector2D PlayState::asignaVel(double time)
 {
 	double distance = posFlechaInicial.getY() - (punto->getPosition().getY()+ punto->getHeight()/2);
 	double velocity = distance / bh->getBeatTime();
 	return Vector2D(0, -velocity * 4);
+}
+
+void PlayState::playSong(int song) {
+	manager->getServiceLocator()->getAudios()->playChannel(song, -1);
+	manager->getServiceLocator()->getAudios()->setChannelVolume(70);
 }

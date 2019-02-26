@@ -1,8 +1,9 @@
 #include "QTEManager.h"
-#include "SDLGame.h"
+#include "PlayState.h"
 
 
-QTEManager::QTEManager(SDLGame* l, int proba)
+
+QTEManager::QTEManager(PlayState* l, int proba)
 {
 	prob = proba;
 	level = l;

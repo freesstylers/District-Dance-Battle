@@ -53,7 +53,7 @@ void DemoGame::initGame() {
 		}
 		flechasNivel_.push_back(flecha);
 	}
-	file.close();
+	file.close();*/
 
 	timer = Timer::Instance();
 	punto = new Point(this, 80, 80, Vector2D(100, 330));

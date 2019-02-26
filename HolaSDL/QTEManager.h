@@ -3,13 +3,13 @@
 #include "GameObject.h"
 #include "Flechas.h"
 
-class SDLGame;
+class PlayState;
 
 class QTEManager
 {
 public:
 
-	QTEManager(SDLGame* l, int proba);
+	QTEManager(PlayState* l, int proba);
 	~QTEManager();
 
 	void update(Uint32 time);
@@ -22,7 +22,7 @@ private:
 	int prob;
 	Timer* timer;
 	bool keyup = true;
-	SDLGame* level;
+	PlayState* level;
 	Flechas* flecha = nullptr;
 
 };
