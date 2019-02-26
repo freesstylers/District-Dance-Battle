@@ -5,7 +5,7 @@ Flechas::Flechas()
 {
 
 }
-Flechas::Flechas(SDL_Keycode key, SDLGame* game, double width, double height, Vector2D pos, Vector2D vel) :
+Flechas::Flechas(SDL_Scancode key, SDLGame* game, double width, double height, Vector2D pos, Vector2D vel) :
 	GameObject(game), key(key)
 {
 	setWidth(width);
@@ -13,28 +13,28 @@ Flechas::Flechas(SDL_Keycode key, SDLGame* game, double width, double height, Ve
 	setPosition(pos);
 	setVelocity(vel);
 	switch (key) {
-	case SDLK_LEFT:
+	case SDL_SCANCODE_LEFT:
 		animation.texture_ = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::FlechaLeft);
 		break;
-	case SDLK_RIGHT:
+	case SDL_SCANCODE_RIGHT:
 		animation.texture_ = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::FlechaRight);
 		break;
-	case SDLK_UP:
+	case SDL_SCANCODE_UP:
 		animation.texture_ = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::FlechaUp);
 		break;
-	case SDLK_DOWN:
+	case SDL_SCANCODE_DOWN:
 		animation.texture_ = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::FlechaDown);
 		break;
-	case SDLK_a:
+	case SDL_SCANCODE_A:
 		animation.texture_ = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::BotonA);
 		break;
-	case SDLK_b:
+	case SDL_SCANCODE_B:
 		animation.texture_ = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::BotonB);
 		break;
-	case SDLK_x:
+	case SDL_SCANCODE_X:
 		animation.texture_ = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::BotonX);
 		break;
-	case SDLK_y:
+	case SDL_SCANCODE_Y:
 		animation.texture_ = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::BotonY);
 		break;
 	}

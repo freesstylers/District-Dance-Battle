@@ -20,7 +20,6 @@ void PlayState::newGame()
 	Flechas
 	Pulsador/Logica de botones
 	*/
-
 	timer = Timer::Instance();
 	punto = new Point(manager, 80, 80, Vector2D(300, 465));
 	puntobot = new Point(manager, 80, 80, Vector2D(500, 465));
@@ -47,16 +46,16 @@ void PlayState::newGame()
 		file >> aux;
 		switch (aux) {
 		case 1:
-			flecha = new Flechas(SDLK_LEFT, manager, 50, 50, posFlechaInicial, velFlechas);
+			flecha = new Flechas(SDL_SCANCODE_LEFT, manager, 50, 50, posFlechaInicial, velFlechas);
 			break;
 		case 2:
-			flecha = new Flechas(SDLK_RIGHT, manager, 50, 50, posFlechaInicial, velFlechas);
+			flecha = new Flechas(SDL_SCANCODE_RIGHT, manager, 50, 50, posFlechaInicial, velFlechas);
 			break;
 		case 3:
-			flecha = new Flechas(SDLK_UP, manager, 50, 50, posFlechaInicial, velFlechas);
+			flecha = new Flechas(SDL_SCANCODE_UP, manager, 50, 50, posFlechaInicial, velFlechas);
 			break;
 		case 4:
-			flecha = new Flechas(SDLK_DOWN, manager, 50, 50, posFlechaInicial, velFlechas);
+			flecha = new Flechas(SDL_SCANCODE_DOWN, manager, 50, 50, posFlechaInicial, velFlechas);
 			break;
 		}
 		flechasNivel_.push_back(flecha);
@@ -65,16 +64,16 @@ void PlayState::newGame()
 		file >> aux;
 		switch (aux) {
 		case 1:
-			flecha = new Flechas(SDLK_a, manager, 50, 50, posBotonInicial, velFlechas);
+			flecha = new Flechas(SDL_SCANCODE_A, manager, 50, 50, posBotonInicial, velFlechas);
 			break;
 		case 2:
-			flecha = new Flechas(SDLK_b, manager, 50, 50, posBotonInicial, velFlechas);
+			flecha = new Flechas(SDL_SCANCODE_B, manager, 50, 50, posBotonInicial, velFlechas);
 			break;
 		case 3:
-			flecha = new Flechas(SDLK_x, manager, 50, 50, posBotonInicial, velFlechas);
+			flecha = new Flechas(SDL_SCANCODE_X, manager, 50, 50, posBotonInicial, velFlechas);
 			break;
 		case 4:
-			flecha = new Flechas(SDLK_y, manager, 50, 50, posBotonInicial, velFlechas);
+			flecha = new Flechas(SDL_SCANCODE_Y, manager, 50, 50, posBotonInicial, velFlechas);
 			break;
 		}
 		botonesNivel_.push_back(flecha);

@@ -30,16 +30,16 @@ void DemoGame::initGame() {
 		file >> aux;
 		switch (aux) {
 		case 1:
-			flecha = new Flechas(SDLK_LEFT, this, 50, 50, Vector2D(700, 350), Vector2D(-5, 0));
+			flecha = new Flechas(SDL_SCANCODE_LEFT, this, 50, 50, Vector2D(700, 350), Vector2D(-5, 0));
 			break;
 		case 2:
-			flecha = new Flechas(SDLK_RIGHT, this, 50, 50, Vector2D(700, 350), Vector2D(-5, 0));
+			flecha = new Flechas(SDL_SCANCODE_RIGHT, this, 50, 50, Vector2D(700, 350), Vector2D(-5, 0));
 			break;
 		case 3:
-			flecha = new Flechas(SDLK_UP, this, 50, 50, Vector2D(700, 350), Vector2D(-5, 0));
+			flecha = new Flechas(SDL_SCANCODE_UP, this, 50, 50, Vector2D(700, 350), Vector2D(-5, 0));
 			break;
 		case 4:
-			flecha = new Flechas(SDLK_DOWN, this, 50, 50, Vector2D(700, 350), Vector2D(-5, 0));
+			flecha = new Flechas(SDL_SCANCODE_DOWN, this, 50, 50, Vector2D(700, 350), Vector2D(-5, 0));
 			break;
 		}
 		flechasNivel_.push_back(flecha);
