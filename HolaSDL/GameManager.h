@@ -2,6 +2,7 @@
 #include "GameStateMachine.h"
 #include "SDLGame.h"
 #include "PlayState.h"
+#include "MenuState.h"
 
 class GameManager: public SDLGame
 {
