@@ -29,7 +29,7 @@ protected:
 	int currentPoints;
 	int probqte;
 	int bpm;
-	int tiempo;
+	double tiempo;
 	std::list<Flechas*> flechasNivel_;
 	std::list<Flechas*> botonesNivel_;
 	Timer* timer;

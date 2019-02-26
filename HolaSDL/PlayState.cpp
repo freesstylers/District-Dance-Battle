@@ -20,9 +20,9 @@ void PlayState::newGame()
 	Flechas
 	Pulsador/Logica de botones
 	*/
-	indicador = new BarrasHUD(manager, 50, 50, Vector2D(20, 10), Vector2D(0.3, 0)); //0.3 va a depender de la duracion de la cancion
-	spriteBarra = new FondoBarra(manager, 20, 20, Vector2D(20, 25), 0.3, Resources::Bar);
-	barraPuntos = new BarraPuntos(manager, 20, 20, Vector2D(20, 100));
+
+	
+	
 
 
 	timer = Timer::Instance();
@@ -38,6 +38,10 @@ void PlayState::newGame()
 	file >> bpm;
 	file >> tiempo;
 	file >> probqte;
+
+	barraPuntos = new BarraPuntos(manager, 20, 20, Vector2D(20, 100));
+	spriteBarra = new FondoBarra(manager, 20, 20, Vector2D(20, 25), tiempo / (manager->getWindowWidth() - 40+50), Resources::Bar);
+	indicador = new BarrasHUD(manager, 50, 50, Vector2D(20, 10), Vector2D(tiempo/(manager->getWindowWidth()-40+50), 0),spriteBarra); //0.3 va a depender de la duracion de la cancion
 
 	bh = new BeatHandeler(bpm);
 	qteman = new QTEManager(manager, probqte);

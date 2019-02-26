@@ -11,12 +11,6 @@ FondoBarra::FondoBarra(SDLGame* game, double width, double height, Vector2D pos,
 bool FondoBarra::handleInput(Uint32 time, const SDL_Event& event) {
 	return true;
 }
-void FondoBarra::update(Uint32 time)
-{
-	setWidth(width_+vel_);
-	position_.set(position_);
-}
-
 
 FondoBarra::~FondoBarra()
 {

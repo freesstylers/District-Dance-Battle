@@ -8,7 +8,7 @@ private:
 public:
 	FondoBarra(SDLGame* game, double width, double height, Vector2D pos, double vel, int textura);
 	virtual bool handleInput(Uint32 time, const SDL_Event& event);
-	virtual void update(Uint32 time);
+	virtual void update(Uint32 time) {};
 	virtual ~FondoBarra();
 };
 

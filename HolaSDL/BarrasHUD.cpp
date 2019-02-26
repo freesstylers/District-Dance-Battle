@@ -1,6 +1,6 @@
 #include "BarrasHUD.h"
 
-BarrasHUD::BarrasHUD(SDLGame* game, double width, double height, Vector2D pos, Vector2D vel):
+BarrasHUD::BarrasHUD(SDLGame* game, double width, double height, Vector2D pos, Vector2D vel,FondoBarra* fondo):
 	GameObject(game), texture(texture)
 {
 	
@@ -9,6 +9,8 @@ BarrasHUD::BarrasHUD(SDLGame* game, double width, double height, Vector2D pos, V
 	setPosition(pos);
 	setVelocity(vel);
 	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::Nota);
+	bar = fondo;
+
 }
 bool BarrasHUD::handleInput(Uint32 time, const SDL_Event& event) 
 {
@@ -26,5 +28,11 @@ void BarrasHUD::GetFrameBarra()
 
 void BarrasHUD::update(Uint32 time)
 {
-	position_.set(position_ + velocity_);
+	if (position_.getX() < game_->getWindowWidth()-20-width_ ) {
+		position_.set(position_ + velocity_);
+	}
+	if (bar->getPosition().getX() < game_->getWindowWidth() - 20- width_) {
+		bar->setWidth(bar->getWidth() + velocity_.getX());
+	}
+	
 }
