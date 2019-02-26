@@ -20,10 +20,11 @@ public:
 		BotonX,
 		BotonY,
 		Point,
-		AnimTest
-		Point,
 		Nota,
-		Bar
+		Bar,
+		PericoIdle,
+		PericoDab,
+		PericoBaile1
 		// text
 	};
 
@@ -50,6 +51,11 @@ public:
 	struct ImageInfo {
 		TextureId id;
 		string fileName;
+		int width;
+		int height;
+		int columns;
+		int rows;
+		int frameTotal;
 	};
 
 	struct TextMsgInfo {

@@ -6,6 +6,8 @@
 /*
  *
  */
+
+
 class SDLTexturesManager : public TexturesManager {
 public:
 	SDLTexturesManager();
@@ -14,13 +16,13 @@ public:
 	// supposed to be called before start using the object
 	virtual bool init();
 
-	virtual Texture* getTexture(int tag);
-	bool loadFromImg(int tag, SDL_Renderer* renderer, string fileName);
+	virtual Animation* getAnimation(int tag);
+	bool loadFromImg(int tag, SDL_Renderer* renderer, string fileName, int width, int height, int columns, int rows, int totalFrames);
 	bool loadFromText(int tag, SDL_Renderer* renderer, string text, Font& font, SDL_Color color);
 private:
-	void storeTexture(int tag, Texture* texture);
+	void storeAnimation(int tag, Animation* animation);
 
 	bool initialized_;
-	map<int,Texture*> textures_;
+	map<int,Animation*> animations_;
 
 };

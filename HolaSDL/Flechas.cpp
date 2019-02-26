@@ -12,18 +12,19 @@ Flechas::Flechas(SDL_Scancode key, SDLGame* game, double width, double height, V
 	setHeight(height);
 	setPosition(pos);
 	setVelocity(vel);
+
 	switch (key) {
-	case SDL_SCANCODE_LEFT:
-		animation.texture_ = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::FlechaLeft);
+	case SDLK_LEFT:
+		animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::FlechaLeft);
 		break;
-	case SDL_SCANCODE_RIGHT:
-		animation.texture_ = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::FlechaRight);
+	case SDLK_RIGHT:
+		animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::FlechaRight);
 		break;
-	case SDL_SCANCODE_UP:
-		animation.texture_ = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::FlechaUp);
+	case SDLK_UP:
+		animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::FlechaUp);
 		break;
-	case SDL_SCANCODE_DOWN:
-		animation.texture_ = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::FlechaDown);
+	case SDLK_DOWN:
+		animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::FlechaDown);
 		break;
 	case SDL_SCANCODE_A:
 		animation.texture_ = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::BotonA);
@@ -38,15 +39,6 @@ Flechas::Flechas(SDL_Scancode key, SDLGame* game, double width, double height, V
 		animation.texture_ = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::BotonY);
 		break;
 	}
-
-	animation.firstFrameX = 0;
-	animation.firstFrameY = 0;
-	animation.nFramesX = 1;
-	animation.nFramesY = 1;
-	animation.totalFrames = 1;
-	animation.currentFrame = 1;
-	animation.spriteHeight = height;
-	animation.spriteWidth = width;
 }
 
 Flechas::~Flechas()

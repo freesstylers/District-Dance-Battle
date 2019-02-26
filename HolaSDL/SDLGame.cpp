@@ -58,7 +58,7 @@ void SDLGame::initResources() {
 	services_.setRandomGenerator(&random_);
 
 	for (auto &image : Resources::images_) {
-		textures_.loadFromImg(image.id, renderer_, image.fileName);
+		textures_.loadFromImg(image.id, renderer_, image.fileName, image.width, image.height, image.columns, image.rows, image.frameTotal);
 	}
 
 	for (auto &font : Resources::fonts_) {
