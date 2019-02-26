@@ -22,6 +22,7 @@ public:
 	int probqte;
 	int tiempo;
 	int song;
+	int puntMax;
 
 protected:
 	string name;

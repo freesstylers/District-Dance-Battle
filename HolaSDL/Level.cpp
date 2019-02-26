@@ -1,6 +1,7 @@
 #include "Level.h"
 
 #include "PlayState.h"
+#include <math.h>
 
 Level::Level(PlayState* l, string n)
 {
@@ -28,7 +29,7 @@ void Level::init() {
 
 	int aux;
 	Flechas* flecha;
-	for (int i = 0; i < 25; i++) {
+	for (int i = 0; i < round(bpm*(tiempo/60)); i++) {
 		file >> aux;
 		switch (aux) {
 		case 1:
@@ -46,7 +47,7 @@ void Level::init() {
 		}
 		level->flechasNivel_.push_back(flecha);
 	}
-	for (int i = 0; i < 25; i++) {
+	for (int i = 0; i < round(bpm*(tiempo/60)); i++) {
 		file >> aux;
 		switch (aux) {
 		case 1:
