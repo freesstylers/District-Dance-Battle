@@ -21,6 +21,9 @@ public:
 		BotonY,
 		Point,
 		AnimTest
+		Point,
+		Nota,
+		Bar
 		// text
 	};
 

@@ -23,6 +23,14 @@ void DemoGame::initGame() {
 	/*	Inicializacion de todo lo necesario
 	*	que vaya a aparecer en la escena
 	*/
+	timer = Timer::Instance();
+	punto = new Point(this, 80, 80, Vector2D(100, 330));
+	bh = new BeatHandeler(112);
+	indicador = new BarrasHUD(this, 50, 50, Vector2D(20, 10), Vector2D(0.3,0)); //0.3 va a depender de la duracion de la cancion
+	spritebarra = new FondoBarra(this,20, 20, Vector2D(20, 25), 0.3);
+	barraPuntos = new BarraPuntos(this, 20, 20, Vector2D(20, 100));
+
+	velFlechas = asignaVel(bh->getBeatTime());
 	ifstream file("resources/levels/prueba.txt");
 	int aux;
 	Flechas* flecha;
@@ -52,6 +60,9 @@ void DemoGame::initGame() {
 	bh->getBeatTime();
 
 	actors_.push_back(punto);
+	actors_.push_back(spritebarra);
+	actors_.push_back(indicador);
+	actors_.push_back(barraPuntos);
 }
 
 void DemoGame::closeGame() {
@@ -112,15 +123,33 @@ void DemoGame::handleInput(Uint32 time) {
 					if (event.type == SDL_KEYUP && event.key.keysym.sym == it->getKey())
 					{
 						if (abs(it->getPosition().getX() - punto->getPosition().getX()) <= 100)
+						if (abs(it->getPosition().getX() - punto->getPosition().getX()) <= 25)
+						{
+							cout << "perfecto" << endl;
+							barraPuntos->avanza(30);
+						}
+						else if (abs(it->getPosition().getX() - punto->getPosition().getX()) <= 50)
 						{
 							cout << "bien" << endl;
+							barraPuntos->avanza(20);
+						}
+						else if (abs(it->getPosition().getX() - punto->getPosition().getX()) <= 100)
+						{
+							cout << "regular" << endl;
+							barraPuntos->avanza(10);
 						}
 						else
 						{
-							cout << "mala punteria" << endl;
+							cout << "mala punteria" << endl;							
 						}
 						delete(it);
 						flechasPantalla_.remove(it);
+					}
+					else if (event.type == SDL_KEYUP)
+					{
+						delete(it);
+						flechasPantalla_.remove(it);
+						cout << "flecha incorrecta" << endl;					
 					}
 				}
 			}

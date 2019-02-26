@@ -2,9 +2,7 @@
 
 
 
-Point::Point()
-{
-}
+
 
 Point::Point(SDLGame* game, double width, double height, Vector2D pos) : GameObject(game)
 {

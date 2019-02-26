@@ -1,31 +1,34 @@
 #include "BarrasHUD.h"
 
-BarrasHUD::BarrasHUD(SDLGame* game)
+BarrasHUD::BarrasHUD(SDLGame* game, double width, double height, Vector2D pos, Vector2D vel):
+	GameObject(game), texture(texture)
 {
-	//sprite de la barra
-	//texture = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::);
+	
+	setWidth(width);
+	setHeight(height);
+	setPosition(pos);
+	setVelocity(vel);
+	texture = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::Nota);
+}
+void BarrasHUD::handleInput(Uint32 time, const SDL_Event& event) {
+
 
 }
-
-
 BarrasHUD::~BarrasHUD()
 {
 
 }
 
-int BarrasHUD::Avanza(int &valorBarra)
+void BarrasHUD::GetFrameBarra()
 {
-	return valorBarra; 
+
 }
-bool BarrasHUD::bolAvanza(int &valueBarra)
+
+void BarrasHUD::update(Uint32 time)
 {
-	valueBarra++;
-	if (valueBarra == 150)
-	{
-		findeNivel == true;
-	}
-	return findeNivel;
+	position_.set(position_ + velocity_);
 }
+
 void BarrasHUD::render(Uint32 time) {
-	//texture->render();
+	texture->render(getRect());
 }
