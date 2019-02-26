@@ -42,38 +42,44 @@ void PlayState::newGame()
 
 	int aux;
 	Flechas* flecha;
-	for (int i = 0; i < 25; i++) {
+	for (int i = 0; i < 50; i++) {
 		file >> aux;
 		switch (aux) {
+		case 0:
+			flecha = nullptr;
+			break;
 		case 1:
-			flecha = new Flechas(SDL_SCANCODE_LEFT, manager, 50, 50, posFlechaInicial, velFlechas);
+			flecha = new Flechas(SDL_CONTROLLER_BUTTON_DPAD_LEFT, manager, 50, 50, posFlechaInicial, velFlechas);
 			break;
 		case 2:
-			flecha = new Flechas(SDL_SCANCODE_RIGHT, manager, 50, 50, posFlechaInicial, velFlechas);
+			flecha = new Flechas(SDL_CONTROLLER_BUTTON_DPAD_RIGHT, manager, 50, 50, posFlechaInicial, velFlechas);
 			break;
 		case 3:
-			flecha = new Flechas(SDL_SCANCODE_UP, manager, 50, 50, posFlechaInicial, velFlechas);
+			flecha = new Flechas(SDL_CONTROLLER_BUTTON_DPAD_UP, manager, 50, 50, posFlechaInicial, velFlechas);
 			break;
 		case 4:
-			flecha = new Flechas(SDL_SCANCODE_DOWN, manager, 50, 50, posFlechaInicial, velFlechas);
+			flecha = new Flechas(SDL_CONTROLLER_BUTTON_DPAD_DOWN, manager, 50, 50, posFlechaInicial, velFlechas);
 			break;
 		}
 		flechasNivel_.push_back(flecha);
 	}
-	for (int i = 0; i < 25; i++) {
+	for (int i = 0; i < 50; i++) {
 		file >> aux;
 		switch (aux) {
+		case 0:
+			flecha = nullptr;
+			break;
 		case 1:
-			flecha = new Flechas(SDL_SCANCODE_A, manager, 50, 50, posBotonInicial, velFlechas);
+			flecha = new Flechas(SDL_CONTROLLER_BUTTON_A, manager, 50, 50, posBotonInicial, velFlechas);
 			break;
 		case 2:
-			flecha = new Flechas(SDL_SCANCODE_B, manager, 50, 50, posBotonInicial, velFlechas);
+			flecha = new Flechas(SDL_CONTROLLER_BUTTON_B, manager, 50, 50, posBotonInicial, velFlechas);
 			break;
 		case 3:
-			flecha = new Flechas(SDL_SCANCODE_X, manager, 50, 50, posBotonInicial, velFlechas);
+			flecha = new Flechas(SDL_CONTROLLER_BUTTON_X, manager, 50, 50, posBotonInicial, velFlechas);
 			break;
 		case 4:
-			flecha = new Flechas(SDL_SCANCODE_Y, manager, 50, 50, posBotonInicial, velFlechas);
+			flecha = new Flechas(SDL_CONTROLLER_BUTTON_Y, manager, 50, 50, posBotonInicial, velFlechas);
 			break;
 		}
 		botonesNivel_.push_back(flecha);
@@ -167,15 +173,14 @@ void PlayState::render(Uint32 time)
 
 	qteman->render(time);
 
-	for (Flechas* o : flechasPantalla_)
-	{
-		o->render(time);
-	}
-
-	for (Flechas* o : botonesPantalla_)
-	{
-		o->render(time);
-	}
+		for (Flechas* o : flechasPantalla_)
+		{
+			o->render(time);
+		}
+		for (Flechas* o : botonesPantalla_)
+		{
+			o->render(time);
+		}
 }
 
 void PlayState::DeleteAll()
@@ -211,9 +216,8 @@ void PlayState::generateFlechas()
 	if (!flechasNivel_.empty()) {
 		if (flechasNivel_.back() != nullptr) {
 			flechasPantalla_.push_back(flechasNivel_.back());
-			flechasNivel_.pop_back();
 		}
-		else flechasNivel_.pop_back();
+		flechasNivel_.pop_back();
 	}
 }
 
@@ -222,15 +226,14 @@ void PlayState::generateBotones()
 	if (!botonesNivel_.empty()) {
 		if (botonesNivel_.back() != nullptr) {
 			botonesPantalla_.push_back(botonesNivel_.back());
-			botonesNivel_.pop_back();
 		}
-		else botonesNivel_.pop_back();
+		botonesNivel_.pop_back();
 	}
 }
 
 Vector2D PlayState::asignaVel(double time)
 {
-	double distance = posFlechaInicial.getY() - (punto->getPosition().getY());
+	double distance = posFlechaInicial.getY() - (punto->getPosition().getY()+ punto->getHeight()/2);
 	double velocity = distance / bh->getBeatTime();
 	return Vector2D(0, -velocity * 4);
 }

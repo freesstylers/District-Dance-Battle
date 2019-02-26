@@ -17,6 +17,6 @@ private:
 	bool keyup = true;
 	bool keyup2 = true;
 	PlayState* level;
-
+	SDL_GameController* controller = NULL;
 };
 
