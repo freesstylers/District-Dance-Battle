@@ -6,7 +6,6 @@ Level::Level(PlayState* l, string n)
 {
 	level = l;
 	name = n;
-	init(n);
 }
 
 
@@ -18,12 +17,14 @@ void Level::playSong() {
 	level->playSong(song);
 }
 
-void Level::init(string n) {
+void Level::init() {
 	ifstream file("resources/levels/" + name + ".txt");
 	file >> bpm;
 	file >> tiempo;
 	file >> probqte;
-	velFlechas = level->asignaVel(60000 / bpm);
+	file >> song;
+	file >> puntMax;
+	velFlechas = level->asignaVel(60000/bpm);
 
 	int aux;
 	Flechas* flecha;

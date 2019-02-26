@@ -22,11 +22,10 @@ class PlayState : public GameState //Clase para las batallas y jugabilidad básic
 protected:
 
 	string level;
-	int songLength;
 	int maxPoints;
 	int currentPoints;
 	Timer* timer;
-	BeatHandeler* bh;
+
 	LevelInputManager* lip;
 	Vector2D velFlechas;
 	QTEManager* qteman;
@@ -42,13 +41,13 @@ public:
 	virtual void render(Uint32 time);
 	Vector2D asignaVel(double time);
 	void playSong(int song);
-	std::list<Flechas*> flechasPantalla_; //La otra lista (Actors) se hereda de GameState
+	std::list<Flechas*> flechasPantalla_;
 	std::list<Flechas*> botonesPantalla_;
-
 	std::list<Flechas*> flechasNivel_;
 	std::list<Flechas*> botonesNivel_;
 	Point* punto; //Pulsador
 	Point* puntobot;
+	BeatHandeler* bh;
 
 	Vector2D posFlechaInicial = Vector2D(310, 10);
 	Vector2D posBotonInicial = Vector2D(510, 10);

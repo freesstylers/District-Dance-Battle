@@ -29,6 +29,7 @@ void PlayState::newGame()
 	lip = new LevelInputManager(this);
 	perico = new Perico(manager, 33, 33, Vector2D(100, 50));
 	nivel = new Level(this, level);
+	nivel->init();
 
 	bh = new BeatHandeler(nivel->bpm);
 	qteman = new QTEManager(this, nivel->probqte);
@@ -141,7 +142,17 @@ void PlayState::DeleteAll()
 		delete o;
 	}
 
+	for (Flechas* o : botonesPantalla_)
+	{
+		delete o;
+	}
+
 	for (Flechas* o : flechasNivel_) //Por si se cierra el nivel antes de que acabe
+	{
+		delete o;
+	}
+
+	for (Flechas* o : botonesNivel_) //Por si se cierra el nivel antes de que acabe
 	{
 		delete o;
 	}
@@ -179,10 +190,11 @@ void PlayState::generateBotones()
 	}
 }
 
+
 Vector2D PlayState::asignaVel(double time)
 {
 	double distance = posFlechaInicial.getY() - (punto->getPosition().getY());
-	double velocity = distance / bh->getBeatTime();
+	double velocity = distance / (60000/nivel->bpm);
 	return Vector2D(0, -velocity * 4);
 }
 

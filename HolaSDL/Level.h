@@ -16,6 +16,8 @@ public:
 
 	void playSong();
 
+	void init();
+
 	int bpm;
 	int probqte;
 	int tiempo;
@@ -27,7 +29,6 @@ protected:
 
 	PlayState* level;
 
-	void init(string n);
 
 };
 
