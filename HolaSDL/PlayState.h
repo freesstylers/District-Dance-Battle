@@ -26,7 +26,9 @@ protected:
 	int currentPoints;
 	int probqte;
 	int bpm;
+	int tiempo;
 	std::list<Flechas*> flechasNivel_;
+	std::list<Flechas*> botonesNivel_;
 	Timer* timer;
 	BeatHandeler* bh;
 	LevelInputManager* lip;
@@ -42,13 +44,18 @@ public:
 	virtual bool handleEvent(Uint32 time, SDL_Event e);
 	virtual void render(Uint32 time);
 	std::list<Flechas*> flechasPantalla_; //La otra lista (Actors) se hereda de GameState
+	std::list<Flechas*> botonesPantalla_;
 	Point* punto; //Pulsador
+	Point* puntobot;
 
 protected:
 	void DeleteAll(); //Para borrado de objetos, por aquello de no dejar basura
 	int getPoints();
 	void changePoints(int data);
-	void generate();
+	void generateFlechas();
+	void generateBotones();
 	Vector2D asignaVel(double time);
-	Vector2D posFlechaInicial = Vector2D(375, 10);
+	Vector2D posFlechaInicial = Vector2D(310, 10);
+	Vector2D posBotonInicial = Vector2D(510, 10);
+
 };

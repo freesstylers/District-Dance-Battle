@@ -11,6 +11,10 @@ vector<Resources::ImageInfo> Resources::images_ {
 	{FlechaRight, "resources/images/FlechaRight.png"},
 	{FlechaUp, "resources/images/FlechaUp.png"},
 	{FlechaDown, "resources/images/FlechaDown.png"},
+	{BotonA, "resources/images/BotonA.png"},
+	{BotonB, "resources/images/BotonB.png"},
+	{BotonX, "resources/images/BotonX.png"},
+	{BotonY, "resources/images/BotonY.png"},
     {Point, "resources/images/Point.png"},
 	{AnimTest, "resources/images/AnimTest.png"}
 };

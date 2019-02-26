@@ -15,6 +15,10 @@ public:
 		FlechaRight,
 		FlechaUp,
 		FlechaDown,
+		BotonA,
+		BotonB,
+		BotonX,
+		BotonY,
 		Point,
 		AnimTest
 		// text

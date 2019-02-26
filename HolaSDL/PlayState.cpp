@@ -22,7 +22,8 @@ void PlayState::newGame()
 	*/
 
 	timer = Timer::Instance();
-	punto = new Point(manager, 80, 80, Vector2D(360, 465));
+	punto = new Point(manager, 80, 80, Vector2D(300, 465));
+	puntobot = new Point(manager, 80, 80, Vector2D(500, 465));
 	lip = new LevelInputManager(this);
 	perico = new Perico(manager, 33, 33, Vector2D(100, 50));
 
@@ -31,6 +32,7 @@ void PlayState::newGame()
 	ifstream file("resources/levels/" + level + ".txt");
 
 	file >> bpm;
+	file >> tiempo;
 	file >> probqte;
 
 	bh = new BeatHandeler(bpm);
@@ -59,10 +61,29 @@ void PlayState::newGame()
 		}
 		flechasNivel_.push_back(flecha);
 	}
+	for (int i = 0; i < 25; i++) {
+		file >> aux;
+		switch (aux) {
+		case 1:
+			flecha = new Flechas(SDLK_a, manager, 50, 50, posBotonInicial, velFlechas);
+			break;
+		case 2:
+			flecha = new Flechas(SDLK_b, manager, 50, 50, posBotonInicial, velFlechas);
+			break;
+		case 3:
+			flecha = new Flechas(SDLK_x, manager, 50, 50, posBotonInicial, velFlechas);
+			break;
+		case 4:
+			flecha = new Flechas(SDLK_y, manager, 50, 50, posBotonInicial, velFlechas);
+			break;
+		}
+		botonesNivel_.push_back(flecha);
+	}
 	file.close();
 
 
 	stage.push_back(punto);
+	stage.push_back(puntobot);
 	stage.push_back(perico);
 
 
@@ -87,6 +108,10 @@ void PlayState::update(Uint32 time)
 	{
 		o->update(time);
 	}
+	for (Flechas* o : botonesPantalla_)
+	{
+		o->update(time);
+	}
 	qteman->update(time);
 	if (!flechasPantalla_.empty() && flechasPantalla_.front()->getPosition().getY() > 550)
 	{
@@ -95,10 +120,18 @@ void PlayState::update(Uint32 time)
 		cout << "fuera" << endl;
 
 	}
+	if (!botonesPantalla_.empty() && botonesPantalla_.front()->getPosition().getY() > 550)
+	{
+
+		botonesPantalla_.pop_front();
+		cout << "fuera" << endl;
+
+	}
 	timer->Update();
 	if (timer->DeltaTime() < (bh->getBeatTime() / 1000) + 0.010 && timer->DeltaTime() > (bh->getBeatTime() / 1000) - 0.010)
 	{
-		generate();
+		generateFlechas();
+		generateBotones();
 		timer->Reset();
 	}
 }
@@ -139,6 +172,11 @@ void PlayState::render(Uint32 time)
 	{
 		o->render(time);
 	}
+
+	for (Flechas* o : botonesPantalla_)
+	{
+		o->render(time);
+	}
 }
 
 void PlayState::DeleteAll()
@@ -169,7 +207,7 @@ void PlayState::changePoints(int data)
 	currentPoints = currentPoints + data;
 }
 
-void PlayState::generate()
+void PlayState::generateFlechas()
 {
 	if (!flechasNivel_.empty()) {
 		if (flechasNivel_.back() != nullptr) {
@@ -177,6 +215,17 @@ void PlayState::generate()
 			flechasNivel_.pop_back();
 		}
 		else flechasNivel_.pop_back();
+	}
+}
+
+void PlayState::generateBotones()
+{
+	if (!botonesNivel_.empty()) {
+		if (botonesNivel_.back() != nullptr) {
+			botonesPantalla_.push_back(botonesNivel_.back());
+			botonesNivel_.pop_back();
+		}
+		else botonesNivel_.pop_back();
 	}
 }
 

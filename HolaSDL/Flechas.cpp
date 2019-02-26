@@ -25,6 +25,18 @@ Flechas::Flechas(SDL_Keycode key, SDLGame* game, double width, double height, Ve
 	case SDLK_DOWN:
 		animation.texture_ = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::FlechaDown);
 		break;
+	case SDLK_a:
+		animation.texture_ = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::BotonA);
+		break;
+	case SDLK_b:
+		animation.texture_ = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::BotonB);
+		break;
+	case SDLK_x:
+		animation.texture_ = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::BotonX);
+		break;
+	case SDLK_y:
+		animation.texture_ = getGame()->getServiceLocator()->getTextures()->getTexture(Resources::BotonY);
+		break;
 	}
 
 	animation.firstFrameX = 0;
