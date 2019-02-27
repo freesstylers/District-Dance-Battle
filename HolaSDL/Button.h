@@ -19,4 +19,6 @@ public:
 	virtual ~Button();
 
 	void checkButton(int x, int y);
+
+	void callCallback();
 };

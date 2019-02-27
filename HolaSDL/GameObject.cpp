@@ -69,8 +69,18 @@ const Vector2D& GameObject::getAcceleration() const {
 }
 
 void GameObject::scale(double s) {
+	double w = width_ / 2;
+	double h = height_ / 2;
 	width_ *= s;
 	height_ *= s;
+	double w1 = width_ / 2;
+	double h1 = height_ / 2;
+	if (s < 1) {
+		position_ = position_ + ((Vector2D(w, h) + position_) - (Vector2D(w1, h1) + position_));
+	}
+	else if (s > 1) {
+		position_ = position_ - ((Vector2D(w1, h1) + position_)- (Vector2D(w, h) + position_));
+	}
 }
 
 Texture* GameObject::getAnimation()

@@ -9,9 +9,9 @@ class GameManager;
 class GameState //Clase base para todos los estados, mismo funcionamiento que las practicas del primer cuatrimestre de TPV
 {
 protected:
-	list<GameObject*> stage;
 	GameManager* manager;
 public:
+	list<GameObject*> stage;
 	GameState(GameManager* g);
 	virtual ~GameState();
 	virtual void update(Uint32 time);

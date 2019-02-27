@@ -32,6 +32,11 @@ void Button::checkButton(int x, int y) {
 	}
 }
 
+void Button::callCallback()
+{
+	callback(gameManager_);
+}
+
 void Button::update(Uint32 time)
 {
 
