@@ -24,6 +24,7 @@ private:
 	GameManager* gameManager;
 	
 	void creaBotonesPrincipales();
+	void destruirBotones();
 	void nextButton();
 	void backButton();
 };
