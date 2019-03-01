@@ -43,6 +43,7 @@ void QTEManager::update(Uint32 time) {
 
 }
 
-void QTEManager::render(Uint32 time) {
-	if (flecha != nullptr) flecha->render(time);
+void QTEManager::render(Uint32 time, bool beatSync) {
+	if (flecha != nullptr)
+		flecha->render(time, beatSync);
 }

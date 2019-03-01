@@ -14,7 +14,7 @@ public:
 
 	void update(Uint32 time);
 	void handleInput(Uint32 time, const SDL_Event& event);
-	void render(Uint32 time);
+	void render(Uint32 time, bool beatSync = false);
 	Flechas* getFlecha() { return flecha; }
 
 private:

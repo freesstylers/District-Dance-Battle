@@ -43,13 +43,16 @@ protected:
 	FondoBarra* spriteBarra; //barra tiempo
 	BarraPuntos* barraPuntos; //barra puntuacion
 
+	bool beatSignal = false;	//bool usado para avisar de que se avance la animación según el ritmo de la canción
+	int animationFramesPerBeat = 2;	//int que determina cuántas frames de animación van entre cada beat
+
 public:
 	PlayState(GameManager* g); //Crea estado (tal vez para niveles de dificultad con un int o bool)
 	void newGame(); //Inicializa objetos
 	~PlayState();
 	virtual void update(Uint32 time);
 	virtual bool handleEvent(Uint32 time, SDL_Event e);
-	virtual void render(Uint32 time);
+	virtual void render(Uint32 time, bool beatSync = false);
 	std::list<Flechas*> flechasPantalla_; //La otra lista (Actors) se hereda de GameState
 	std::list<Flechas*> botonesPantalla_;
 	Point* punto; //Pulsador

@@ -46,7 +46,7 @@ public:
 	// abstract methods to be implemented in sub-classes
 	virtual bool handleInput(Uint32 time, const SDL_Event& event) = 0;
 	virtual void update(Uint32 time) = 0;
-	virtual void render(Uint32 time); //De momento no coge animaciones, se extiende en el futuro
+	virtual void render(Uint32 time, bool beatSync = false); 
 
 protected:
 	SDLGame* game_; // pointer to the game
@@ -65,4 +65,6 @@ protected:
 	Vector2D velocity_; // velocity
 	Vector2D acceleration_; // acceleration
 	double rotation_; // rotation (for the corresponding texture)
+
+	bool isAnimationSyncedToMusic = false;
 };

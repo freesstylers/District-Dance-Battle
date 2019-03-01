@@ -125,13 +125,13 @@ SDL_Rect GameObject::getRect()
 	return rect;
 }
 
-void GameObject::render(Uint32 time)
+void GameObject::render(Uint32 time, bool beatSync)
 {
 
 	animation.texture_->render(getRect(), getFrameRect());
 
 
-	if (time - lastRender >= 1000 / framesPerSecond) {	//animations update only when a certain time has passed
+	if ((!isAnimationSyncedToMusic && (time - lastRender) >= (1000 / framesPerSecond)) || (isAnimationSyncedToMusic && beatSync)) {	//animations update only when a certain time has passed OR when the "beatSync" signal is true
 		animation.currentFrame = (animation.currentFrame + 1) % animation.totalFrames;
 
 		lastRender = time;

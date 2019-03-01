@@ -150,6 +150,14 @@ void PlayState::update(Uint32 time)
 		generateFlechas();
 		generateBotones();
 		timer->Reset();
+
+		beatSignal = true;
+	}
+	else if (timer->DeltaTime() < (bh->getBeatTime() / animationFramesPerBeat / 1000) + 0.010 && timer->DeltaTime() > (bh->getBeatTime() / animationFramesPerBeat / 1000) - 0.010)
+	{
+		//aquí se divide el beatTime lo necesario para animar las frames especificadas entre cada beat
+
+		beatSignal = true;
 	}
 }
 
@@ -179,20 +187,24 @@ bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 	}
 }
 
-void PlayState::render(Uint32 time)
+void PlayState::render(Uint32 time, bool beatSync)
 {
-	GameState::render(time);
 
-	qteman->render(time);
+	GameState::render(time, beatSignal);
 
-		for (Flechas* o : flechasPantalla_)
-		{
-			o->render(time);
-		}
-		for (Flechas* o : botonesPantalla_)
-		{
-			o->render(time);
-		}
+	qteman->render(time, beatSignal);
+
+	for (Flechas* o : flechasPantalla_)
+	{
+		o->render(time, beatSignal);
+	}
+	for (Flechas* o : botonesPantalla_)
+	{
+		o->render(time, beatSignal);
+	}
+
+
+	beatSignal = false;
 }
 
 void PlayState::DeleteAll()
