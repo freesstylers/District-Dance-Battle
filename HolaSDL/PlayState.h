@@ -46,6 +46,11 @@ protected:
 	bool beatSignal = false;	//bool usado para avisar de que se avance la animación según el ritmo de la canción
 	int animationFramesPerBeat = 2;	//int que determina cuántas frames de animación van entre cada beat
 
+	int pointSize = 80;	//tamaño del pulsador/punto
+	int noteSize = 50;	//tamaño de nota 
+	int pointOffset = 100;	//offset entre las barras de notas y el centro de la pantalla
+	int initialNoteHeight = 10;	//altura a la cual se generan las notas en pantalla
+
 public:
 	PlayState(GameManager* g); //Crea estado (tal vez para niveles de dificultad con un int o bool)
 	void newGame(); //Inicializa objetos
@@ -55,8 +60,8 @@ public:
 	virtual void render(Uint32 time, bool beatSync = false);
 	std::list<Flechas*> flechasPantalla_; //La otra lista (Actors) se hereda de GameState
 	std::list<Flechas*> botonesPantalla_;
-	Point* punto; //Pulsador
-	Point* puntobot;
+	Point* leftPoint; //Pulsador
+	Point* rightPoint;
 
 protected:
 	void DeleteAll(); //Para borrado de objetos, por aquello de no dejar basura
@@ -65,7 +70,5 @@ protected:
 	void generateFlechas();
 	void generateBotones();
 	Vector2D asignaVel(double time);
-	Vector2D posFlechaInicial = Vector2D(310, 10);
-	Vector2D posBotonInicial = Vector2D(510, 10);
 
 };

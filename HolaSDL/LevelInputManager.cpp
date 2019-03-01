@@ -23,15 +23,15 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 			if (event.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, it->getKey()) && keyup)
 			{
 				keyup = false;
-				if (abs(it->getPosition().getY() - level->punto->getPosition().getY()) <= 25)
+				if (abs(it->getPosition().getY() - level->leftPoint->getPosition().getY()) <= 25)
 				{
 					cout << "perfecto" << endl;
 				}
-				else if (abs(it->getPosition().getY() - level->punto->getPosition().getY()) <= 50)
+				else if (abs(it->getPosition().getY() - level->leftPoint->getPosition().getY()) <= 50)
 				{
 					cout << "bien" << endl;
 				}
-				else if (abs(it->getPosition().getY() - level->punto->getPosition().getY()) <= 100)
+				else if (abs(it->getPosition().getY() - level->leftPoint->getPosition().getY()) <= 100)
 				{
 					cout << "regular" << endl;
 				}
@@ -63,15 +63,15 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 			if (event.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, it->getKey()) && keyup2)
 			{
 				keyup = false;
-				if (abs(it->getPosition().getY() - level->punto->getPosition().getY()) <= 25)
+				if (abs(it->getPosition().getY() - level->leftPoint->getPosition().getY()) <= 25)
 				{
 					cout << "perfecto" << endl;
 				}
-				else if (abs(it->getPosition().getY() - level->punto->getPosition().getY()) <= 50)
+				else if (abs(it->getPosition().getY() - level->leftPoint->getPosition().getY()) <= 50)
 				{
 					cout << "bien" << endl;
 				}
-				else if (abs(it->getPosition().getY() - level->punto->getPosition().getY()) <= 100)
+				else if (abs(it->getPosition().getY() - level->leftPoint->getPosition().getY()) <= 100)
 				{
 					cout << "regular" << endl;
 				}

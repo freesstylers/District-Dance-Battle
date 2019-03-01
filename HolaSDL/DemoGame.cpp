@@ -123,18 +123,18 @@ void DemoGame::handleInput(Uint32 time) {
 				{
 					if (event.type == SDL_CONTROLLERBUTTONUP && event.key.keysym.sym == it->getKey())
 					{
-						if (abs(it->getPosition().getX() - punto->getPosition().getX()) <= 100)
-						if (abs(it->getPosition().getX() - punto->getPosition().getX()) <= 25)
+						if (abs(it->getPosition().getX() - leftPoint->getPosition().getX()) <= 100)
+						if (abs(it->getPosition().getX() - leftPoint->getPosition().getX()) <= 25)
 						{
 							cout << "perfecto" << endl;
 							barraPuntos->avanza(30);
 						}
-						else if (abs(it->getPosition().getX() - punto->getPosition().getX()) <= 50)
+						else if (abs(it->getPosition().getX() - leftPoint->getPosition().getX()) <= 50)
 						{
 							cout << "bien" << endl;
 							barraPuntos->avanza(20);
 						}
-						else if (abs(it->getPosition().getX() - punto->getPosition().getX()) <= 100)
+						else if (abs(it->getPosition().getX() - leftPoint->getPosition().getX()) <= 100)
 						{
 							cout << "regular" << endl;
 							barraPuntos->avanza(10);

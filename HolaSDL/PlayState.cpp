@@ -21,13 +21,15 @@ void PlayState::newGame()
 	Pulsador/Logica de botones
 	*/
 
+	int leftNotesPos = manager->getWindowWidth() / 2 - pointOffset;
+	int rightNotesPos = manager->getWindowWidth() / 2 + pointOffset;
 	
 	
 
 
 	timer = Timer::Instance();
-	punto = new Point(manager, 80, 80, Vector2D(300, 465));
-	puntobot = new Point(manager, 80, 80, Vector2D(500, 465));
+	leftPoint = new Point(manager, pointSize, pointSize, Vector2D(leftNotesPos - pointSize / 2, 465));
+	rightPoint = new Point(manager, pointSize, pointSize, Vector2D(rightNotesPos - pointSize / 2, 465));
 	lip = new LevelInputManager(this);
 	perico = new Perico(manager, 33, 33, Vector2D(100, 50));
 
@@ -48,7 +50,8 @@ void PlayState::newGame()
 
 	velFlechas = asignaVel(bh->getBeatTime());
 
-
+	Vector2D leftNotesVector = Vector2D(leftNotesPos - noteSize / 2, initialNoteHeight);
+	Vector2D rightNotesVector = Vector2D(rightNotesPos - noteSize / 2, initialNoteHeight);
 	int aux;
 	Flechas* flecha;
 	for (int i = 0; i < 50; i++) {
@@ -58,16 +61,16 @@ void PlayState::newGame()
 			flecha = nullptr;
 			break;
 		case 1:
-			flecha = new Flechas(SDL_CONTROLLER_BUTTON_DPAD_LEFT, manager, 50, 50, posFlechaInicial, velFlechas);
+			flecha = new Flechas(SDL_CONTROLLER_BUTTON_DPAD_LEFT, manager, noteSize, noteSize, leftNotesVector, velFlechas);
 			break;
 		case 2:
-			flecha = new Flechas(SDL_CONTROLLER_BUTTON_DPAD_RIGHT, manager, 50, 50, posFlechaInicial, velFlechas);
+			flecha = new Flechas(SDL_CONTROLLER_BUTTON_DPAD_RIGHT, manager, noteSize, noteSize, leftNotesVector, velFlechas);
 			break;
 		case 3:
-			flecha = new Flechas(SDL_CONTROLLER_BUTTON_DPAD_UP, manager, 50, 50, posFlechaInicial, velFlechas);
+			flecha = new Flechas(SDL_CONTROLLER_BUTTON_DPAD_UP, manager, noteSize, noteSize, leftNotesVector, velFlechas);
 			break;
 		case 4:
-			flecha = new Flechas(SDL_CONTROLLER_BUTTON_DPAD_DOWN, manager, 50, 50, posFlechaInicial, velFlechas);
+			flecha = new Flechas(SDL_CONTROLLER_BUTTON_DPAD_DOWN, manager, noteSize, noteSize, leftNotesVector, velFlechas);
 			break;
 		}
 		flechasNivel_.push_back(flecha);
@@ -79,16 +82,16 @@ void PlayState::newGame()
 			flecha = nullptr;
 			break;
 		case 1:
-			flecha = new Flechas(SDL_CONTROLLER_BUTTON_A, manager, 50, 50, posBotonInicial, velFlechas);
+			flecha = new Flechas(SDL_CONTROLLER_BUTTON_A, manager, noteSize, noteSize, rightNotesVector, velFlechas);
 			break;
 		case 2:
-			flecha = new Flechas(SDL_CONTROLLER_BUTTON_B, manager, 50, 50, posBotonInicial, velFlechas);
+			flecha = new Flechas(SDL_CONTROLLER_BUTTON_B, manager, noteSize, noteSize, rightNotesVector, velFlechas);
 			break;
 		case 3:
-			flecha = new Flechas(SDL_CONTROLLER_BUTTON_X, manager, 50, 50, posBotonInicial, velFlechas);
+			flecha = new Flechas(SDL_CONTROLLER_BUTTON_X, manager, noteSize, noteSize, rightNotesVector, velFlechas);
 			break;
 		case 4:
-			flecha = new Flechas(SDL_CONTROLLER_BUTTON_Y, manager, 50, 50, posBotonInicial, velFlechas);
+			flecha = new Flechas(SDL_CONTROLLER_BUTTON_Y, manager, noteSize, noteSize, rightNotesVector, velFlechas);
 			break;
 		}
 		botonesNivel_.push_back(flecha);
@@ -96,8 +99,8 @@ void PlayState::newGame()
 	file.close();
 
 
-	stage.push_back(punto);
-	stage.push_back(puntobot);
+	stage.push_back(leftPoint);
+	stage.push_back(rightPoint);
 	stage.push_back(perico);
 	stage.push_back(barraPuntos);
 	stage.push_back(spriteBarra);
@@ -257,7 +260,7 @@ void PlayState::generateBotones()
 
 Vector2D PlayState::asignaVel(double time)
 {
-	double distance = posFlechaInicial.getY() - (punto->getPosition().getY()+ punto->getHeight()/2);
+	double distance = initialNoteHeight - (leftPoint->getPosition().getY()+ leftPoint->getHeight()/2);
 	double velocity = distance / bh->getBeatTime();
 	return Vector2D(0, -velocity * 4);
 }

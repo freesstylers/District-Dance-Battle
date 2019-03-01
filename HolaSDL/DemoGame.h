@@ -38,7 +38,7 @@ private:
 	Timer* timer;
 	Point* punto;
 	BeatHandeler* bh;
-	Vector2D posFlechaInicial =  Vector2D(700, 350);
+	Vector2D leftNotesVector =  Vector2D(700, 350);
 	Vector2D velFlechas;
 	BarrasHUD* indicador;
 	FondoBarra* spritebarra;
