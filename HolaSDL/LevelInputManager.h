@@ -1,5 +1,5 @@
 #pragma once
-
+#include "BarraPuntos.h"
 #include "GameObject.h"
 
 class PlayState;
@@ -18,5 +18,6 @@ private:
 	bool keyup2 = true;
 	PlayState* level;
 	SDL_GameController* controller = NULL;
+	BarraPuntos* puntos;
 };
 
