@@ -132,7 +132,7 @@ void PlayState::update(Uint32 time)
 	{
 		o->update(time);
 	}
-	qteman->update(time);
+	//qteman->update(time);
 	if (!flechasPantalla_.empty() && flechasPantalla_.front()->getPosition().getY() > 550)
 	{
 
