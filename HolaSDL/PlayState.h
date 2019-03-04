@@ -19,8 +19,7 @@
 #include "Feedback.h"
 
 //Constantes
-
-class PlayState : public GameState //Clase para las batallas y jugabilidad básica, render lo hereda de GameState, mantiene update y handleEvent independientes
+class PlayState : public GameState //Clase para las batallas y jugabilidad bï¿½sica, render lo hereda de GameState, mantiene update y handleEvent independientes
 {
 protected:
 
@@ -45,11 +44,11 @@ protected:
 	FondoBarra* spriteBarra; //barra tiempo
 	BarraPuntos* barraPuntos; //barra puntuacion
 
-	bool beatSignal = false;	//bool usado para avisar de que se avance la animación según el ritmo de la canción
-	int animationFramesPerBeat = 2;	//int que determina cuántas frames de animación van entre cada beat
+	bool beatSignal = false;	//bool usado para avisar de que se avance la animaciï¿½n segï¿½n el ritmo de la canciï¿½n
+	int animationFramesPerBeat = 2;	//int que determina cuï¿½ntas frames de animaciï¿½n van entre cada beat
 
-	int pointSize = 80;	//tamaño del pulsador/punto
-	int noteSize = 50;	//tamaño de nota 
+	int pointSize = 80;	//tamaï¿½o del pulsador/punto
+	int noteSize = 50;	//tamaï¿½o de nota 
 	int pointOffset = 100;	//offset entre las barras de notas y el centro de la pantalla
 	int initialNoteHeight = 10;	//altura a la cual se generan las notas en pantalla
 
@@ -64,6 +63,10 @@ public:
 	std::list<Flechas*> botonesPantalla_;
 	Point* leftPoint; //Pulsador
 	Point* rightPoint;
+	int getScoreInfo1() { return scoreInfo1; }
+	int getScoreInfo2() { return scoreInfo2; }
+	void changeScoreInfo1(int v) { scoreInfo1 = v; }
+	void changeScoreInfo2(int v) { scoreInfo2 = v; }
 
 protected:
 	void DeleteAll(); //Para borrado de objetos, por aquello de no dejar basura

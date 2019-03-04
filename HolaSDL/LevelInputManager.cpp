@@ -25,19 +25,19 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 				keyup = false;
 				if (abs(it->getPosition().getY() - level->leftPoint->getPosition().getY()) <= 25)
 				{
-					cout << "perfecto" << endl;
+					level->changeScoreInfo1(3);
 				}
 				else if (abs(it->getPosition().getY() - level->leftPoint->getPosition().getY()) <= 50)
 				{
-					cout << "bien" << endl;
+					level->changeScoreInfo1(2);
 				}
 				else if (abs(it->getPosition().getY() - level->leftPoint->getPosition().getY()) <= 100)
 				{
-					cout << "regular" << endl;
+					level->changeScoreInfo1(1);
 				}
 				else
 				{
-					cout << "mala punteria" << endl;
+					level->changeScoreInfo1(0);
 				}
 				delete(it);
 				level->flechasPantalla_.remove(it);
@@ -50,7 +50,7 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 					keyup = false;
 					delete(it);
 					level->flechasPantalla_.remove(it);
-					cout << "flecha incorrecta" << endl;
+					level->changeScoreInfo1(0);
 				}
 			}
 			if (event.type == SDL_CONTROLLERBUTTONUP) keyup = true;
@@ -65,19 +65,19 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 				keyup = false;
 				if (abs(it->getPosition().getY() - level->leftPoint->getPosition().getY()) <= 25)
 				{
-					cout << "perfecto" << endl;
+					level->changeScoreInfo2(3);
 				}
 				else if (abs(it->getPosition().getY() - level->leftPoint->getPosition().getY()) <= 50)
 				{
-					cout << "bien" << endl;
+					level->changeScoreInfo2(2);
 				}
 				else if (abs(it->getPosition().getY() - level->leftPoint->getPosition().getY()) <= 100)
 				{
-					cout << "regular" << endl;
+					level->changeScoreInfo2(1);
 				}
 				else
 				{
-					cout << "mala punteria" << endl;
+					level->changeScoreInfo2(0);
 				}
 				delete(it);
 				level->botonesPantalla_.remove(it);
@@ -90,7 +90,7 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 					keyup2 = false;
 					delete(it);
 					level->botonesPantalla_.remove(it);
-					cout << "flecha incorrecta" << endl;
+					level->changeScoreInfo2(0);
 				}
 			}
 			if (event.type == SDL_CONTROLLERBUTTONUP) keyup2 = true;
