@@ -23,7 +23,11 @@ vector<Resources::ImageInfo> Resources::images_ {
 	{Bar, "resources/images/enemy_mana_bar_001.png", 196, 16, 1, 1, 1},
 	{PericoIdle, "resources/images/PericoIdle.png", 60, 120, 3, 2, 4},
 	{PericoDab, "resources/images/PericoDab.png", 60, 120, 2, 1, 2},
-	{PericoBaile1, "resources/images/PericoBaile1.png", 60, 120, 2, 1, 2}
+	{PericoBaile1, "resources/images/PericoBaile1.png", 60, 120, 2, 1, 2},
+	{Good, "resources/images/Good.png", 64, 64, 1, 2, 2},
+	{Perfect, "resources/images/Perfect.png", 64, 64, 1, 2, 2},
+	{Regular, "resources/images/Regular.png", 64, 64, 1, 2, 2},
+	{Bad, "resources/images/Bad.png", 64, 64, 1, 2, 2}
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {

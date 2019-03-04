@@ -24,12 +24,16 @@ void PlayState::newGame()
 	int leftNotesPos = manager->getWindowWidth() / 2 - pointOffset;
 	int rightNotesPos = manager->getWindowWidth() / 2 + pointOffset;
 	
+	scoreInfo1 = 1;
+	scoreInfo2 = 2;
 	
 
 
 	timer = Timer::Instance();
 	leftPoint = new Point(manager, pointSize, pointSize, Vector2D(leftNotesPos - pointSize / 2, 465));
 	rightPoint = new Point(manager, pointSize, pointSize, Vector2D(rightNotesPos - pointSize / 2, 465));
+	score1 = new ScoreIcons(manager, pointSize, pointSize, Vector2D(leftNotesPos - pointSize / 2 - 100, 465), this, true);
+	score2 = new ScoreIcons(manager, pointSize, pointSize, Vector2D(rightNotesPos - pointSize / 2 + 100, 465), this, false);
 	lip = new LevelInputManager(this);
 	perico = new Perico(manager, 33, 33, Vector2D(100, 50));
 
@@ -105,6 +109,9 @@ void PlayState::newGame()
 	stage.push_back(barraPuntos);
 	stage.push_back(spriteBarra);
 	stage.push_back(indicador);
+	stage.push_back(score1);
+	stage.push_back(score2);
+
 
 
 
@@ -138,6 +145,7 @@ void PlayState::update(Uint32 time)
 
 		flechasPantalla_.pop_front();
 		cout << "fuera" << endl;
+		scoreInfo1 = 0;
 
 	}
 	if (!botonesPantalla_.empty() && botonesPantalla_.front()->getPosition().getY() > 550)
@@ -145,6 +153,7 @@ void PlayState::update(Uint32 time)
 
 		botonesPantalla_.pop_front();
 		cout << "fuera" << endl;
+		scoreInfo2 = 0;
 
 	}
 	timer->Update();

@@ -16,9 +16,9 @@
 #include "BarrasHUD.h"
 #include "FondoBarra.h"
 #include "BarraPuntos.h"
+#include "ScoreIcons.h"
 
 //Constantes
-
 class PlayState : public GameState //Clase para las batallas y jugabilidad básica, render lo hereda de GameState, mantiene update y handleEvent independientes
 {
 protected:
@@ -38,6 +38,10 @@ protected:
 	Vector2D velFlechas;
 	QTEManager* qteman;
 	Perico* perico;
+	ScoreIcons* score1;
+	ScoreIcons* score2;
+	int scoreInfo1;
+	int scoreInfo2;
 
 	BarrasHUD* indicador; //nota indicadora
 	FondoBarra* spriteBarra; //barra tiempo
@@ -62,6 +66,10 @@ public:
 	std::list<Flechas*> botonesPantalla_;
 	Point* leftPoint; //Pulsador
 	Point* rightPoint;
+	int getScoreInfo1() { return scoreInfo1; }
+	int getScoreInfo2() { return scoreInfo2; }
+	void changeScoreInfo1(int v) { scoreInfo1 = v; }
+	void changeScoreInfo2(int v) { scoreInfo2 = v; }
 
 protected:
 	void DeleteAll(); //Para borrado de objetos, por aquello de no dejar basura

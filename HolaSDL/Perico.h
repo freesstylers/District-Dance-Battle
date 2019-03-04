@@ -2,6 +2,8 @@
 #include "GameObject.h"
 class Perico: public GameObject
 {
+private:
+	
 public:
 	Perico(SDLGame* game, double width, double height, Vector2D pos);
 	virtual ~Perico();

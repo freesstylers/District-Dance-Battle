@@ -24,7 +24,11 @@ public:
 		Bar,
 		PericoIdle,
 		PericoDab,
-		PericoBaile1
+		PericoBaile1,
+		Good,
+		Perfect,
+		Regular,
+		Bad
 		// text
 	};
 
