@@ -42,10 +42,8 @@ void PlayState::newGame()
 	file >> probqte;
 
 	barraPuntos = new BarraPuntos(manager, 20, 20, Vector2D(20, 100));
-	//spriteBarra = new FondoBarra(manager, 20, 20, Vector2D(20, 25), tiempo / (manager->getWindowWidth() - 40+50), Resources::Bar);
-	//indicador = new BarrasHUD(manager, 50, 50, Vector2D(20, 10), Vector2D(tiempo/(manager->getWindowWidth()-40+50), 0),spriteBarra); //0.3 va a depender de la duracion de la cancion
-	//spriteBarra = new FondoBarra(manager, 20, 20, Vector2D(20, 25), tiempo / (manager->getWindowWidth() - 40 + 50), Resources::Bar);
-	indicador = new BarrasHUD(manager, 50, 50, Vector2D(20, 10), Vector2D(20, 0), spriteBarra);
+	spriteBarra = new FondoBarra(manager, 20, 20, Vector2D(20, 25), (((manager->getWindowWidth()/ tiempo )) /70.5), Resources::Bar); //70.5 es la constante para ajustar la velocidad de la barra al tiempo de la cancion
+	indicador = new BarrasHUD(manager, 50, 50, Vector2D(20, 10), Vector2D((((manager->getWindowWidth()/ tiempo )) / 70.5), 0),spriteBarra); 
 
 	bh = new BeatHandeler(bpm);
 	qteman = new QTEManager(manager, probqte);
