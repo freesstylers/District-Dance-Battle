@@ -24,7 +24,8 @@ public:
 		Bar,
 		PericoIdle,
 		PericoDab,
-		PericoBaile1
+		PericoBaile1,
+		PericoMaxPower
 		// text
 	};
 

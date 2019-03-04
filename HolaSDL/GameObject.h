@@ -2,6 +2,7 @@
 
 #include "SDLGame.h"
 #include "Vector2D.h"
+#include <queue>
 
 class GameObject {
 
@@ -48,6 +49,10 @@ public:
 	virtual void update(Uint32 time) = 0;
 	virtual void render(Uint32 time, bool beatSync = false); 
 
+	virtual void queueAnimationChange(int animationTag);
+
+	std::queue<int> queuedAnimations;
+
 protected:
 	SDLGame* game_; // pointer to the game
 
@@ -67,4 +72,6 @@ protected:
 	double rotation_; // rotation (for the corresponding texture)
 
 	bool isAnimationSyncedToMusic = false;
+
+	virtual void changeAnimation(int animationTag);
 };

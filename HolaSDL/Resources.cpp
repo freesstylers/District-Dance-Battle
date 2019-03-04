@@ -23,7 +23,8 @@ vector<Resources::ImageInfo> Resources::images_ {
 	{Bar, "resources/images/enemy_mana_bar_001.png", 196, 16, 1, 1, 1},
 	{PericoIdle, "resources/images/PericoIdle.png", 60, 120, 3, 2, 4},
 	{PericoDab, "resources/images/PericoDab.png", 60, 120, 2, 1, 2},
-	{PericoBaile1, "resources/images/PericoBaile1.png", 60, 120, 2, 1, 2}
+	{PericoBaile1, "resources/images/PericoBaile1.png", 60, 120, 2, 1, 2},
+	{PericoMaxPower, "resources/images/PericoMaxPower.png", 69, 120, 2, 2, 3}
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {
