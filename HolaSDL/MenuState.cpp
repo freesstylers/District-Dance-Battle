@@ -23,19 +23,19 @@ MenuState::~MenuState()
 
 bool MenuState::handleEvent(Uint32 time, SDL_Event e)
 {
-	if (e.type == SDL_CONTROLLERBUTTONDOWN) {
-		if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT)) {
+	//if (e.type == SDL_CONTROLLERBUTTONDOWN) {
+		if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) || e.key.keysym.sym == SDLK_RIGHT) {
 			nextButton();
 		}
-		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT)) {
+		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT) || e.key.keysym.sym == SDLK_LEFT) {
 			backButton();
 		}
-		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A)) {
+		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A)|| e.key.keysym.sym == SDLK_RETURN) {
 			static_cast<Button*>((*botonActual))->callCallback();
-		}else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B)) {
+		}else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B)|| e.key.keysym.sym == SDLK_DELETE) {
 			creaBotonesPrincipales();
 		}
-	}
+	//}
 	return GameState::handleEvent(time, e);
 }
 
@@ -68,9 +68,8 @@ void MenuState::creaBotonesPrincipales()
 void MenuState::nextButton()
 {
 	(*botonActual)->scale(0.5);
-	botonActual++;
-	if (botonActual == stage.end()) {
-		botonActual = primerBoton;
+	if ((*botonActual) != stage.back()) {
+		botonActual++;
 	}
 	(*botonActual)->scale(2);
 }
@@ -78,12 +77,7 @@ void MenuState::nextButton()
 void MenuState::backButton()
 {
 	(*botonActual)->scale(0.5);
-	if (botonActual == primerBoton) {
-		while ((*botonActual) != stage.back()) {
-			botonActual++;
-		}
-	}
-	else {
+	if (botonActual != primerBoton) {
 		botonActual--;
 	}
 	(*botonActual)->scale(2);
