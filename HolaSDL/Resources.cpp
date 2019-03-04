@@ -28,6 +28,7 @@ vector<Resources::ImageInfo> Resources::images_ {
 	{Perfect, "resources/images/Perfect.png", 64, 64, 1, 2, 2},
 	{Regular, "resources/images/Regular.png", 64, 64, 1, 2, 2},
 	{Bad, "resources/images/Bad.png", 64, 64, 1, 2, 2}
+	{PericoMaxPower, "resources/images/PericoMaxPower.png", 69, 120, 2, 2, 3}
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {

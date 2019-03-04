@@ -29,6 +29,7 @@ public:
 		Perfect,
 		Regular,
 		Bad
+		PericoMaxPower
 		// text
 	};
 

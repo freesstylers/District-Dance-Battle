@@ -132,8 +132,28 @@ void GameObject::render(Uint32 time, bool beatSync)
 
 
 	if ((!isAnimationSyncedToMusic && (time - lastRender) >= (1000 / framesPerSecond)) || (isAnimationSyncedToMusic && beatSync)) {	//animations update only when a certain time has passed OR when the "beatSync" signal is true
-		animation.currentFrame = (animation.currentFrame + 1) % animation.totalFrames;
+		animation.currentFrame = animation.currentFrame + 1;
+
+		if (animation.currentFrame == animation.totalFrames) {
+			animation.currentFrame = 0;
+
+			if (queuedAnimations.size() > 0) {
+				changeAnimation(queuedAnimations.front());
+			}
+		}
 
 		lastRender = time;
 	}
+}
+
+void GameObject::queueAnimationChange(int animationTag)
+{
+	queuedAnimations.push(animationTag);
+}
+
+void GameObject::changeAnimation(int animationTag)
+{
+	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(animationTag);
+	
+	queuedAnimations.pop();
 }
