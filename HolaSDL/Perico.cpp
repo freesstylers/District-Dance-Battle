@@ -5,8 +5,8 @@
 Perico::Perico(SDLGame* game, double width, double height, Vector2D pos) :
 	GameObject(game)
 {
-	setWidth(60*4);
-	setHeight(120*4);
+	setWidth(width);
+	setHeight(height);
 	setPosition(pos);
 	setVelocity(Vector2D(0, 0));
 

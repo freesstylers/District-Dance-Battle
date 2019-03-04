@@ -16,6 +16,7 @@
 #include "BarrasHUD.h"
 #include "FondoBarra.h"
 #include "BarraPuntos.h"
+#include "Feedback.h"
 
 //Constantes
 
@@ -38,6 +39,7 @@ protected:
 	Vector2D velFlechas;
 	QTEManager* qteman;
 	Perico* perico;
+	Feedback* a;
 
 	BarrasHUD* indicador; //nota indicadora
 	FondoBarra* spriteBarra; //barra tiempo

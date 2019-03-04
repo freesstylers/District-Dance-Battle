@@ -25,7 +25,11 @@ public:
 		PericoIdle,
 		PericoDab,
 		PericoBaile1,
-		PericoMaxPower
+		PericoMaxPower,
+		FeedbackGood,
+		FeedbackBad,
+		FeedbackRegular,
+		FeedbackPerfect
 		// text
 	};
 

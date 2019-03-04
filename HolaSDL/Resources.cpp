@@ -24,7 +24,11 @@ vector<Resources::ImageInfo> Resources::images_ {
 	{PericoIdle, "resources/images/PericoIdle.png", 60, 120, 3, 2, 4},
 	{PericoDab, "resources/images/PericoDab.png", 60, 120, 2, 1, 2},
 	{PericoBaile1, "resources/images/PericoBaile1.png", 60, 120, 2, 1, 2},
-	{PericoMaxPower, "resources/images/PericoMaxPower.png", 69, 120, 2, 2, 3}
+	{PericoMaxPower, "resources/images/PericoMaxPower.png", 69, 120, 2, 2, 3},
+	{FeedbackBad, "resources/images/Bad.png", 64, 64, 2, 1, 2},
+	{FeedbackRegular, "resources/images/Regular.png", 64, 64, 2, 1, 2},
+	{FeedbackPerfect, "resources/images/Perfect.png", 64, 64, 2, 1, 2},
+	{FeedbackGood, "resources/images/Good.png", 64, 64, 2, 1, 2}
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {

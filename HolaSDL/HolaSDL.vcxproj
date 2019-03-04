@@ -18,6 +18,7 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="CutSceneState.h" />
     <ClInclude Include="DemoGame.h" />
+    <ClInclude Include="Feedback.h" />
     <ClInclude Include="FondoBarra.h" />
     <ClInclude Include="EnemigoBaile.h" />
     <ClInclude Include="Font.h" />
@@ -59,6 +60,7 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="CutSceneState.cpp" />
     <ClCompile Include="DemoGame.cpp" />
+    <ClCompile Include="Feedback.cpp" />
     <ClCompile Include="FondoBarra.cpp" />
     <ClCompile Include="EnemigoBaile.cpp" />
     <ClCompile Include="Font.cpp" />
