@@ -25,13 +25,14 @@ void PlayState::newGame()
 	int rightNotesPos = manager->getWindowWidth() / 2 + pointOffset;
 	
 	
-
+	
 
 	timer = Timer::Instance();
 	leftPoint = new Point(manager, pointSize, pointSize, Vector2D(leftNotesPos - pointSize / 2, 465));
 	rightPoint = new Point(manager, pointSize, pointSize, Vector2D(rightNotesPos - pointSize / 2, 465));
 	lip = new LevelInputManager(this);
 	perico = new Perico(manager, 33, 33, Vector2D(100, 50));
+	minigame = new MiniGame(manager, this);
 
 	cin >> level;
 
@@ -133,35 +134,41 @@ void PlayState::update(Uint32 time)
 		o->update(time);
 	}
 	//qteman->update(time);
-	if (!flechasPantalla_.empty() && flechasPantalla_.front()->getPosition().getY() > 550)
-	{
+	if (miniActive == false) {
+		if (!flechasPantalla_.empty() && flechasPantalla_.front()->getPosition().getY() > 550)
+		{
 
-		flechasPantalla_.pop_front();
-		cout << "fuera" << endl;
+			flechasPantalla_.pop_front();
+			cout << "fuera" << endl;
 
+		}
+		if (!botonesPantalla_.empty() && botonesPantalla_.front()->getPosition().getY() > 550)
+		{
+
+			botonesPantalla_.pop_front();
+			cout << "fuera" << endl;
+
+		}
+		timer->Update();
+		if (timer->DeltaTime() < (bh->getBeatTime() / 1000) + 0.010 && timer->DeltaTime() > (bh->getBeatTime() / 1000) - 0.010)
+		{
+			generateFlechas();
+			generateBotones();
+			timer->Reset();
+
+			beatSignal = true;
+		}
+		else if (timer->DeltaTime() < (bh->getBeatTime() / animationFramesPerBeat / 1000) + 0.010 && timer->DeltaTime() > (bh->getBeatTime() / animationFramesPerBeat / 1000) - 0.010)
+		{
+			//aquí se divide el beatTime lo necesario para animar las frames especificadas entre cada beat
+
+			beatSignal = true;
+		}
 	}
-	if (!botonesPantalla_.empty() && botonesPantalla_.front()->getPosition().getY() > 550)
-	{
-
-		botonesPantalla_.pop_front();
-		cout << "fuera" << endl;
-
+	else {
+		minigame->update(time);
 	}
-	timer->Update();
-	if (timer->DeltaTime() < (bh->getBeatTime() / 1000) + 0.010 && timer->DeltaTime() > (bh->getBeatTime() / 1000) - 0.010)
-	{
-		generateFlechas();
-		generateBotones();
-		timer->Reset();
-
-		beatSignal = true;
-	}
-	else if (timer->DeltaTime() < (bh->getBeatTime() / animationFramesPerBeat / 1000) + 0.010 && timer->DeltaTime() > (bh->getBeatTime() / animationFramesPerBeat / 1000) - 0.010)
-	{
-		//aquí se divide el beatTime lo necesario para animar las frames especificadas entre cada beat
-
-		beatSignal = true;
-	}
+	
 }
 
 bool PlayState::handleEvent(Uint32 time, SDL_Event e)
@@ -184,7 +191,9 @@ bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 	{
 		lip->handleInput(time, e);
 		qteman->handleInput(time, e);
-
+		if (miniActive) {
+			minigame->handleInput(time, e);
+		}
 		GameState::handleEvent(time, e);
 		return false;
 	}
@@ -205,7 +214,9 @@ void PlayState::render(Uint32 time, bool beatSync)
 	{
 		o->render(time, beatSignal);
 	}
-
+	if (miniActive) {
+		minigame->render(time);
+	}
 
 	beatSignal = false;
 }

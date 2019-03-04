@@ -15,6 +15,7 @@
 #include "Perico.h"
 #include "BarrasHUD.h"
 #include "FondoBarra.h"
+#include "MiniGame.h"
 #include "BarraPuntos.h"
 
 //Constantes
@@ -30,13 +31,13 @@ protected:
 	int probqte;
 	int bpm;
 	double tiempo;
+	bool miniActive = false;
 	std::list<Flechas*> flechasNivel_;
 	std::list<Flechas*> botonesNivel_;
-	Timer* timer;
-	BeatHandeler* bh;
 	LevelInputManager* lip;
 	Vector2D velFlechas;
 	QTEManager* qteman;
+	MiniGame* minigame;
 	Perico* perico;
 
 	BarrasHUD* indicador; //nota indicadora
@@ -52,6 +53,8 @@ protected:
 	int initialNoteHeight = 10;	//altura a la cual se generan las notas en pantalla
 
 public:
+	BeatHandeler* bh;
+	Timer* timer;
 	PlayState(GameManager* g); //Crea estado (tal vez para niveles de dificultad con un int o bool)
 	void newGame(); //Inicializa objetos
 	~PlayState();
