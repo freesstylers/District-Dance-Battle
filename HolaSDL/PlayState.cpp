@@ -1,7 +1,7 @@
 #include "PlayState.h"
 #include "GameManager.h"
 
-PlayState::PlayState(GameManager* g) :GameState(g) //Asigna game y llama a inicialización
+PlayState::PlayState(GameManager* g) :GameState(g) //Asigna game y llama a inicializaciï¿½n
 {
 	newGame();
 }
@@ -23,14 +23,17 @@ void PlayState::newGame()
 
 	int leftNotesPos = manager->getWindowWidth() / 2 - pointOffset;
 	int rightNotesPos = manager->getWindowWidth() / 2 + pointOffset;
-	
+	Vector2D leftNotesVector = Vector2D(leftNotesPos - noteSize / 2, initialNoteHeight);
+	Vector2D rightNotesVector = Vector2D(rightNotesPos - noteSize / 2, initialNoteHeight);
 
 
 	timer = Timer::Instance();
 	leftPoint = new Point(manager, pointSize, pointSize, Vector2D(leftNotesPos - pointSize / 2, 465));
 	rightPoint = new Point(manager, pointSize, pointSize, Vector2D(rightNotesPos - pointSize / 2, 465));
 	lip = new LevelInputManager(this);
-	perico = new Perico(manager, 33, 33, Vector2D(100, 50));
+	perico = new Perico(manager, 200, 400, Vector2D(70, 130));
+	leftSquare = new Squares(manager, pointSize + 10, 575, Vector2D(leftNotesVector.getX()-19, leftNotesVector.getY()));
+	rightSquare = new Squares(manager, pointSize + 10, 575, Vector2D(rightNotesVector.getX() - 19, rightNotesVector.getY()));
 
 	//cin >> level;
 	level = "prueba";
@@ -51,7 +54,7 @@ void PlayState::newGame()
 	qteman = new QTEManager(manager, probqte);
 
 	velFlechas = asignaVel(bh->getBeatTime());
-
+	
 	effectVaporWave = new EmptyObject(manager, Vector2D(0, 0), Resources::EffectVaporWave, manager->getWindowWidth(), manager->getWindowHeight());
 
 	Vector2D leftNotesVector = Vector2D(leftNotesPos - noteSize / 2, initialNoteHeight);
@@ -102,7 +105,8 @@ void PlayState::newGame()
 	}
 	file.close();
 
-
+	stage.push_back(leftSquare);
+	stage.push_back(rightSquare);
 	stage.push_back(leftPoint);
 	stage.push_back(rightPoint);
 	stage.push_back(perico);
@@ -165,7 +169,7 @@ void PlayState::update(Uint32 time)
 	}
 	else if (timer->DeltaTime() < (bh->getBeatTime() / animationFramesPerBeat / 1000) + 0.010 && timer->DeltaTime() > (bh->getBeatTime() / animationFramesPerBeat / 1000) - 0.010)
 	{
-		//aquí se divide el beatTime lo necesario para animar las frames especificadas entre cada beat
+		//aquï¿½ se divide el beatTime lo necesario para animar las frames especificadas entre cada beat
 
 		beatSignal = true;
 	}

@@ -18,6 +18,7 @@
 #include "BarraPuntos.h"
 #include "Feedback.h"
 #include "EmptyObject.h"
+#include "Squares.h"
 
 //Constantes
 class PlayState : public GameState //Clase para las batallas y jugabilidad b�sica, render lo hereda de GameState, mantiene update y handleEvent independientes
@@ -71,6 +72,8 @@ public:
 	std::list<Flechas*> botonesPantalla_;
 	Point* leftPoint; //Pulsador
 	Point* rightPoint;
+	Squares* leftSquare;
+	Squares* rightSquare;
 	void changeFeedback1(int animTag) { feedback1->queueAnimationChange(animTag); }
 	void changeFeedback2(int animTag) { feedback2->queueAnimationChange(animTag); }
 

@@ -31,7 +31,8 @@ public:
 		FeedbackRegular,
 		FeedbackPerfect,
 		Blank,
-		EffectVaporWave
+		EffectVaporWave,
+		Square
 		// text
 	};
 
