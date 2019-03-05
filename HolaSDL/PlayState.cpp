@@ -31,7 +31,7 @@ void PlayState::newGame()
 	leftPoint = new Point(manager, pointSize, pointSize, Vector2D(leftNotesPos - pointSize / 2, 465));
 	rightPoint = new Point(manager, pointSize, pointSize, Vector2D(rightNotesPos - pointSize / 2, 465));
 	lip = new LevelInputManager(this);
-	perico = new Perico(manager, 33, 33, Vector2D(100, 50));
+	perico = new Perico(manager, 200, 400, Vector2D(70, 130));
 	leftSquare = new Squares(manager, pointSize + 10, 575, Vector2D(leftNotesVector.getX()-19, leftNotesVector.getY()));
 	rightSquare = new Squares(manager, pointSize + 10, 575, Vector2D(rightNotesVector.getX() - 19, rightNotesVector.getY()));
 
