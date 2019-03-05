@@ -41,7 +41,7 @@ void PlayState::newGame()
 	file >> tiempo;
 	file >> probqte;
 
-	barraPuntos = new BarraPuntos(manager, 20, 20, Vector2D(20, 100));
+	barraPuntos = new BarraPuntos(manager, 20, 20, Vector2D(20, 500));
 	spriteBarra = new FondoBarra(manager, 20, 20, Vector2D(20, 25), (((manager->getWindowWidth()/ tiempo )) /70.5), Resources::Bar); //70.5 es la constante para ajustar la velocidad de la barra al tiempo de la cancion
 	indicador = new BarrasHUD(manager, 50, 50, Vector2D(20, 10), Vector2D((((manager->getWindowWidth()/ tiempo )) / 70.5), 0),spriteBarra); 
 
@@ -145,7 +145,7 @@ void PlayState::update(Uint32 time)
 
 		botonesPantalla_.pop_front();
 		cout << "fuera" << endl;
-
+		barraPuntos->avanza(5);
 	}
 	timer->Update();
 	if (timer->DeltaTime() < (bh->getBeatTime() / 1000) + 0.010 && timer->DeltaTime() > (bh->getBeatTime() / 1000) - 0.010)

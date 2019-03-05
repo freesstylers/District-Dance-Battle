@@ -13,6 +13,7 @@ bool BarraPuntos::handleInput(Uint32 time, const SDL_Event& event) {
 void BarraPuntos::avanza(int punt)
 {
 	setHeight(height_ + punt);	
+	position_.set(position_ - Vector2D(0, punt));
 }
 
 void BarraPuntos::update(Uint32 time)
