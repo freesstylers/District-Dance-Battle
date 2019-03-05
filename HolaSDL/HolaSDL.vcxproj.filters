@@ -42,6 +42,7 @@
     <ClCompile Include="Feedback.cpp" />
     <ClCompile Include="EmptyObject.cpp" />
     <ClCompile Include="Squares.cpp" />
+    <ClCompile Include="EndState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioManager.h" />
@@ -86,5 +87,6 @@
     <ClInclude Include="Feedback.h" />
     <ClInclude Include="EmptyObject.h" />
     <ClInclude Include="Squares.h" />
+    <ClInclude Include="EndState.h" />
   </ItemGroup>
 </Project>

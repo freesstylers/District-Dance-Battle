@@ -216,7 +216,7 @@ void PlayState::render(Uint32 time, bool beatSync)
 	{
 		o->render(time, beatSignal);
 	}
-	if(effect)
+	if(!effect)
 		effectVaporWave->render(time, beatSync);
 	beatSignal = false;
 }

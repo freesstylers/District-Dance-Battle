@@ -77,6 +77,8 @@ public:
 	void changeFeedback1(int animTag) { feedback1->queueAnimationChange(animTag); }
 	void changeFeedback2(int animTag) { feedback2->queueAnimationChange(animTag); }
 
+	
+
 protected:
 	void DeleteAll(); //Para borrado de objetos, por aquello de no dejar basura
 	int getPoints();
