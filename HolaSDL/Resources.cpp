@@ -29,7 +29,9 @@ vector<Resources::ImageInfo> Resources::images_ {
 	{FeedbackRegular, "resources/images/Regular.png", 64, 64, 2, 1, 2},
 	{FeedbackPerfect, "resources/images/Perfect.png", 64, 64, 2, 1, 2},
 	{FeedbackGood, "resources/images/Good.png", 64, 64, 2, 1, 2},
-	{Blank, "resources/images/blank.png", 64, 64, 1, 1, 1}
+	{Blank, "resources/images/blank.png", 64, 64, 1, 1, 1},
+	//{EffectVaporWave, "resources/images/spriteSheetVaporWaveTrasparente.png", 800, 450, 5, 10, 48 }
+	{EffectVaporWave, "resources/images/VW2.png", 450, 338, 5, 9, 42 }
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {

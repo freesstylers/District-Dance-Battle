@@ -52,6 +52,8 @@ void PlayState::newGame()
 
 	velFlechas = asignaVel(bh->getBeatTime());
 
+	effectVaporWave = new EmptyObject(manager, Vector2D(0, 0), Resources::EffectVaporWave, manager->getWindowWidth(), manager->getWindowHeight());
+
 	Vector2D leftNotesVector = Vector2D(leftNotesPos - noteSize / 2, initialNoteHeight);
 	Vector2D rightNotesVector = Vector2D(rightNotesPos - noteSize / 2, initialNoteHeight);
 	int aux;
@@ -116,7 +118,7 @@ void PlayState::newGame()
 	/////////////////////////
 
 	//exit_ = false;
-	manager->getServiceLocator()->getAudios()->playChannel(Resources::Pruebas, -1);
+	manager->getServiceLocator()->getAudios()->playChannel(Resources::Pruebas, 1);
 	manager->getServiceLocator()->getAudios()->setChannelVolume(70);
 }
 
@@ -210,8 +212,8 @@ void PlayState::render(Uint32 time, bool beatSync)
 	{
 		o->render(time, beatSignal);
 	}
-
-
+	if(effect)
+		effectVaporWave->render(time, beatSync);
 	beatSignal = false;
 }
 

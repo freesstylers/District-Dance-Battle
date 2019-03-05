@@ -17,6 +17,7 @@
 #include "FondoBarra.h"
 #include "BarraPuntos.h"
 #include "Feedback.h"
+#include "EmptyObject.h"
 
 //Constantes
 class PlayState : public GameState //Clase para las batallas y jugabilidad b�sica, render lo hereda de GameState, mantiene update y handleEvent independientes
@@ -30,8 +31,11 @@ protected:
 	int probqte;
 	int bpm;
 	double tiempo;
+	bool effect = false;
+
 	std::list<Flechas*> flechasNivel_;
 	std::list<Flechas*> botonesNivel_;
+
 	Timer* timer;
 	BeatHandeler* bh;
 	LevelInputManager* lip;
@@ -39,6 +43,8 @@ protected:
 	QTEManager* qteman;
 	Perico* perico;
 	Feedback* a;
+	EmptyObject* effectVaporWave;
+
 
 	BarrasHUD* indicador; //nota indicadora
 	FondoBarra* spriteBarra; //barra tiempo
