@@ -51,6 +51,8 @@ protected:
 	int noteSize = 50;	//tama�o de nota 
 	int pointOffset = 100;	//offset entre las barras de notas y el centro de la pantalla
 	int initialNoteHeight = 10;	//altura a la cual se generan las notas en pantalla
+	Feedback* feedback1;
+	Feedback* feedback2;
 
 public:
 	PlayState(GameManager* g); //Crea estado (tal vez para niveles de dificultad con un int o bool)
@@ -63,10 +65,8 @@ public:
 	std::list<Flechas*> botonesPantalla_;
 	Point* leftPoint; //Pulsador
 	Point* rightPoint;
-	int getScoreInfo1() { return scoreInfo1; }
-	int getScoreInfo2() { return scoreInfo2; }
-	void changeScoreInfo1(int v) { scoreInfo1 = v; }
-	void changeScoreInfo2(int v) { scoreInfo2 = v; }
+	void changeFeedback1(int animTag) { feedback1->queueAnimationChange(animTag); }
+	void changeFeedback2(int animTag) { feedback2->queueAnimationChange(animTag); }
 
 protected:
 	void DeleteAll(); //Para borrado de objetos, por aquello de no dejar basura

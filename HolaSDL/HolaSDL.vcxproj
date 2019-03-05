@@ -40,7 +40,6 @@
     <ClInclude Include="QuickTimeEvents.h" />
     <ClInclude Include="RandomNumberGenerator.h" />
     <ClInclude Include="Resources.h" />
-    <ClInclude Include="ScoreIcons.h" />
     <ClInclude Include="SDLAudioManager.h" />
     <ClInclude Include="SDLFontsManager.h" />
     <ClInclude Include="SDLGame.h" />
@@ -83,7 +82,6 @@
     <ClCompile Include="QuickTimeEvents.cpp" />
     <ClCompile Include="RandomNumberGenerator.cpp" />
     <ClCompile Include="Resources.cpp" />
-    <ClCompile Include="ScoreIcons.cpp" />
     <ClCompile Include="SDLAudioManager.cpp" />
     <ClCompile Include="SDLFontsManager.cpp" />
     <ClCompile Include="SDLGame.cpp" />

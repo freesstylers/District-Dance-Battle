@@ -25,19 +25,20 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 				keyup = false;
 				if (abs(it->getPosition().getY() - level->leftPoint->getPosition().getY()) <= 25)
 				{
-					level->changeScoreInfo1(3);
+					
+					level->changeFeedback1(Resources::FeedbackPerfect);
 				}
 				else if (abs(it->getPosition().getY() - level->leftPoint->getPosition().getY()) <= 50)
 				{
-					level->changeScoreInfo1(2);
+					level->changeFeedback1(Resources::FeedbackGood);
 				}
 				else if (abs(it->getPosition().getY() - level->leftPoint->getPosition().getY()) <= 100)
 				{
-					level->changeScoreInfo1(1);
+					level->changeFeedback1(Resources::FeedbackRegular);
 				}
 				else
 				{
-					level->changeScoreInfo1(0);
+					level->changeFeedback1(Resources::FeedbackBad);
 				}
 				delete(it);
 				level->flechasPantalla_.remove(it);
@@ -50,7 +51,7 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 					keyup = false;
 					delete(it);
 					level->flechasPantalla_.remove(it);
-					level->changeScoreInfo1(0);
+					level->changeFeedback1(Resources::FeedbackBad);
 				}
 			}
 			if (event.type == SDL_CONTROLLERBUTTONUP) keyup = true;
@@ -65,19 +66,19 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 				keyup = false;
 				if (abs(it->getPosition().getY() - level->leftPoint->getPosition().getY()) <= 25)
 				{
-					level->changeScoreInfo2(3);
+					level->changeFeedback2(Resources::FeedbackPerfect);
 				}
 				else if (abs(it->getPosition().getY() - level->leftPoint->getPosition().getY()) <= 50)
 				{
-					level->changeScoreInfo2(2);
+					level->changeFeedback2(Resources::FeedbackGood);
 				}
 				else if (abs(it->getPosition().getY() - level->leftPoint->getPosition().getY()) <= 100)
 				{
-					level->changeScoreInfo2(1);
+					level->changeFeedback2(Resources::FeedbackRegular);
 				}
 				else
 				{
-					level->changeScoreInfo2(0);
+					level->changeFeedback2(Resources::FeedbackBad);
 				}
 				delete(it);
 				level->botonesPantalla_.remove(it);
@@ -90,7 +91,7 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 					keyup2 = false;
 					delete(it);
 					level->botonesPantalla_.remove(it);
-					level->changeScoreInfo2(0);
+					level->changeFeedback2(Resources::FeedbackBad);
 				}
 			}
 			if (event.type == SDL_CONTROLLERBUTTONUP) keyup2 = true;

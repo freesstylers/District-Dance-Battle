@@ -24,16 +24,11 @@ void PlayState::newGame()
 	int leftNotesPos = manager->getWindowWidth() / 2 - pointOffset;
 	int rightNotesPos = manager->getWindowWidth() / 2 + pointOffset;
 	
-	scoreInfo1 = 1;
-	scoreInfo2 = 2;
-	
 
 
 	timer = Timer::Instance();
 	leftPoint = new Point(manager, pointSize, pointSize, Vector2D(leftNotesPos - pointSize / 2, 465));
 	rightPoint = new Point(manager, pointSize, pointSize, Vector2D(rightNotesPos - pointSize / 2, 465));
-	score1 = new ScoreIcons(manager, pointSize, pointSize, Vector2D(leftNotesPos - pointSize / 2 - 100, 465), this, true);
-	score2 = new ScoreIcons(manager, pointSize, pointSize, Vector2D(rightNotesPos - pointSize / 2 + 100, 465), this, false);
 	lip = new LevelInputManager(this);
 	perico = new Perico(manager, 33, 33, Vector2D(100, 50));
 
@@ -45,11 +40,14 @@ void PlayState::newGame()
 	file >> tiempo;
 	file >> probqte;
 
+	bh = new BeatHandeler(bpm);
+
 	barraPuntos = new BarraPuntos(manager, 20, 20, Vector2D(20, 100));
 	spriteBarra = new FondoBarra(manager, 20, 20, Vector2D(20, 25), tiempo / (manager->getWindowWidth() - 40+50), Resources::Bar);
 	indicador = new BarrasHUD(manager, 50, 50, Vector2D(20, 10), Vector2D(tiempo/(manager->getWindowWidth()-40+50), 0),spriteBarra); //0.3 va a depender de la duracion de la cancion
+	feedback1 = new Feedback(manager, pointSize, pointSize, Vector2D(leftNotesPos - pointSize / 2 - pointSize, 465));
+	feedback2 = new Feedback(manager, pointSize, pointSize, Vector2D(rightNotesPos - pointSize / 2 + pointSize, 465));
 
-	bh = new BeatHandeler(bpm);
 	qteman = new QTEManager(manager, probqte);
 
 	velFlechas = asignaVel(bh->getBeatTime());
@@ -109,8 +107,8 @@ void PlayState::newGame()
 	stage.push_back(barraPuntos);
 	stage.push_back(spriteBarra);
 	stage.push_back(indicador);
-	stage.push_back(score1);
-	stage.push_back(score2);
+	stage.push_back(feedback1);
+	stage.push_back(feedback2);
 
 
 
@@ -144,16 +142,14 @@ void PlayState::update(Uint32 time)
 	{
 
 		flechasPantalla_.pop_front();
-		cout << "fuera" << endl;
-		scoreInfo1 = 0;
+		changeFeedback1(Resources::FeedbackBad);
 
 	}
 	if (!botonesPantalla_.empty() && botonesPantalla_.front()->getPosition().getY() > 550)
 	{
 
 		botonesPantalla_.pop_front();
-		cout << "fuera" << endl;
-		scoreInfo2 = 0;
+		changeFeedback2(Resources::FeedbackBad);
 
 	}
 	timer->Update();

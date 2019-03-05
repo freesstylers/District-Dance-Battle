@@ -10,10 +10,12 @@ Feedback::Feedback(SDLGame* game, double width, double height, Vector2D pos) :
 	setVelocity(Vector2D(0, 0));
 
 
-	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::FeedbackGood);
+	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::Blank);
 
 	framesPerSecond = 4;
 	isAnimationSyncedToMusic = true;
+
+	timer = Timer::Instance();
 }
 
 void Feedback::render(Uint32 time, bool beatSync)
@@ -37,17 +39,22 @@ void Feedback::render(Uint32 time, bool beatSync)
 	}
 }
 
+void Feedback::update(Uint32 time)
+{
+}
 Feedback::~Feedback()
 {
 }
 
 void Feedback::changeAnimation(int animationTag)
 {
+	timer->Reset();
+
 	int currentFrame = animation.currentFrame;
 
 	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(animationTag);
-
-	queuedAnimations.pop();
+	if(!queuedAnimations.empty())
+		queuedAnimations.pop();
 
 	animation.currentFrame = currentFrame;
 }

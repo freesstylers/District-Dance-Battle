@@ -28,7 +28,8 @@ vector<Resources::ImageInfo> Resources::images_ {
 	{FeedbackBad, "resources/images/Bad.png", 64, 64, 2, 1, 2},
 	{FeedbackRegular, "resources/images/Regular.png", 64, 64, 2, 1, 2},
 	{FeedbackPerfect, "resources/images/Perfect.png", 64, 64, 2, 1, 2},
-	{FeedbackGood, "resources/images/Good.png", 64, 64, 2, 1, 2}
+	{FeedbackGood, "resources/images/Good.png", 64, 64, 2, 1, 2},
+	{Blank, "resources/images/blank.png", 64, 64, 1, 1, 1}
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {
@@ -37,7 +38,8 @@ vector<Resources::TextMsgInfo> Resources::messages_ {
 
 vector<Resources::MusicInfo> Resources::musics_ {
 	{Pruebas , "resources/sound/TutorialJuego.wav"},
-	{Sunflower, "resources/sound/sunflower.mp3"}
+	{Sunflower, "resources/sound/sunflower.mp3"},
+	{Bad, "resources/sound/negative.wav"}
 };
 
 vector<Resources::SoundInfo> Resources::sounds_ {

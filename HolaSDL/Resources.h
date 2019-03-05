@@ -29,14 +29,16 @@ public:
 		FeedbackGood,
 		FeedbackBad,
 		FeedbackRegular,
-		FeedbackPerfect
+		FeedbackPerfect,
+		Blank
 		// text
 	};
 
 	enum AudioId {
 		// music
 		Pruebas,
-		Sunflower
+		Sunflower,
+		Bad
 		// sound effects
 
 	};
