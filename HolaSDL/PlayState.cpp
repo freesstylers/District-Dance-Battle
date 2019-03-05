@@ -87,7 +87,7 @@ void PlayState::update(Uint32 time)
 	{
 		o->update(time);
 	}
-	qteman->update(time);
+	//qteman->update(time);
 	if (!flechasPantalla_.empty() && flechasPantalla_.front()->getPosition().getY() > 550)
 	{
 
@@ -160,7 +160,7 @@ void PlayState::render(Uint32 time, bool beatSync)
 	{
 		o->render(time, beatSignal);
 	}
-	if(effect)
+	if(!effect)
 		effectVaporWave->render(time, beatSync);
 	beatSignal = false;
 }
