@@ -57,8 +57,6 @@ void PlayState::newGame()
 	
 	effectVaporWave = new EmptyObject(manager, Vector2D(0, 0), Resources::EffectVaporWave, manager->getWindowWidth(), manager->getWindowHeight());
 
-	/*leftNotesVector = Vector2D(leftNotesPos - noteSize / 2, initialNoteHeight);
-	rightNotesVector = Vector2D(rightNotesPos - noteSize / 2, initialNoteHeight);*/
 	int aux;
 	Flechas* flecha;
 	for (int i = 0; i < 50; i++) {
@@ -143,7 +141,7 @@ void PlayState::update(Uint32 time)
 	{
 		o->update(time);
 	}
-	qteman->update(time);
+	//qteman->update(time);
 	if (!flechasPantalla_.empty() && flechasPantalla_.front()->getPosition().getY() > 550)
 	{
 
@@ -216,7 +214,7 @@ void PlayState::render(Uint32 time, bool beatSync)
 	{
 		o->render(time, beatSignal);
 	}
-	if(effect)
+	if(!effect)
 		effectVaporWave->render(time, beatSync);
 	beatSignal = false;
 }

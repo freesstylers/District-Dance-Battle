@@ -48,8 +48,6 @@ Feedback::~Feedback()
 
 void Feedback::changeAnimation(int animationTag)
 {
-	timer->Reset();
-
 	int currentFrame = animation.currentFrame;
 
 	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(animationTag);
