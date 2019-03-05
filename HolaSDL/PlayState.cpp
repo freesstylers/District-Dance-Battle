@@ -124,7 +124,7 @@ PlayState::~PlayState()
 void PlayState::update(Uint32 time)
 {
 	GameState::update(time);
-
+	if (miniActive == false) {
 	for (Flechas* o : flechasPantalla_)
 	{
 		o->update(time);
@@ -134,7 +134,7 @@ void PlayState::update(Uint32 time)
 		o->update(time);
 	}
 	//qteman->update(time);
-	if (miniActive == false) {
+	
 		if (!flechasPantalla_.empty() && flechasPantalla_.front()->getPosition().getY() > 550)
 		{
 
@@ -167,7 +167,7 @@ void PlayState::update(Uint32 time)
 	}
 	else {
 		minigame->update(time);
-
+		lip->update();
 		if (lip->getFallado()) {
 			lip->setMinigameActive(false);
 		}
@@ -193,13 +193,15 @@ bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 	}
 	else
 	{
-		lip->handleInput(time, e);
-		qteman->handleInput(time, e);
 		if (miniActive) {
 			lip->setMinigameActive(true);
-
 		}
-		GameState::handleEvent(time, e);
+		
+		
+			lip->handleInput(time, e);
+			//qteman->handleInput(time, e);
+			GameState::handleEvent(time, e);
+		
 		return false;
 	}
 }

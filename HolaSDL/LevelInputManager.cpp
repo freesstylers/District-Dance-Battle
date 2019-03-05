@@ -1,5 +1,6 @@
 #include "LevelInputManager.h"
 #include "PlayState.h"
+#include "GameManager.h"
 
 
 LevelInputManager::LevelInputManager(PlayState* l)
@@ -131,8 +132,22 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 				}
 				if (event.type == SDL_CONTROLLERBUTTONUP) keyup2 = true;
 			}
+			
 		}
 		
 		
+	}
+}
+void LevelInputManager::update() {
+	if (minigameActive) {
+		if (!level->getMinigame()->botonesPantalla_.empty())
+		{
+			if (level->getMinigame()->botonesPantalla_.front()->getPosition().getX() < -3 || level->getMinigame()->botonesPantalla_.front()->getPosition().getX() > level->getGameManager()->getWindowWidth() || level->getMinigame()->botonesPantalla_.front()->getPosition().getY() < -3 || level->getMinigame()->botonesPantalla_.front()->getPosition().getY() > level->getGameManager()->getWindowHeight()) {
+				level->getMinigame()->botonesPantalla_.pop_front();
+				cout << "fuera" << endl;
+				fallado = true;
+
+			}
+		}
 	}
 }

@@ -13,50 +13,53 @@ MiniGame::MiniGame(GameManager* g, PlayState* p)
 	int aux;
 	Flechas* flecha;
 
+	int auxX=0;
+	int auxY=0;
+
 	for (int i = 0; i < 15; i++) {
 		aux = rand() % 8;
 
-		/*
-		if (aux + 1 < g->getWindowHeight / 2)
+		
+		if (aux + 1 < g->getWindowHeight() / 2)
 		{
-			//+y
+			auxY = 1;
 		}
 		else
 		{
-			//-y
+			auxY =- 1;
 		}
-		if (aux + 1 < g->getWindowWidth / 2)
+		if (aux + 1 < g->getWindowWidth() / 2)
 		{
-			//+x
+			 auxX = 1;
 		}
 		else
 		{
-			//-x
-		}*/
+			auxX =- 1;
+		}
 		switch (aux) {
 		case 0:
-			flecha = new Flechas(SDL_CONTROLLER_BUTTON_A, manager, 75, 75, Vector2D(g->getWindowWidth() / (aux + 1), 0), Vector2D(7, 7));
+			flecha = new Flechas(SDL_CONTROLLER_BUTTON_A, manager, 75, 75, Vector2D(g->getWindowWidth() / (aux + 1), 0), Vector2D((auxX*((g->getWindowWidth() / 2) - g->getWindowWidth() / (aux + 1))) / 25, 7));
 			break;
 		case 1:
-			flecha = new Flechas(SDL_CONTROLLER_BUTTON_B, manager, 75, 75, Vector2D(g->getWindowWidth() /( aux + 1), 0), Vector2D(-7, -7));
+			flecha = new Flechas(SDL_CONTROLLER_BUTTON_B, manager, 75, 75, Vector2D(g->getWindowWidth() /( aux + 1), 0), Vector2D((auxX*((g->getWindowWidth() / 2) - g->getWindowWidth() / (aux + 1))) / 25, -7));
 			break;
 		case 2:
-			flecha = new Flechas(SDL_CONTROLLER_BUTTON_X, manager, 75, 75, Vector2D(g->getWindowWidth() /( aux + 1), 0), Vector2D(7, -7));
+			flecha = new Flechas(SDL_CONTROLLER_BUTTON_X, manager, 75, 75, Vector2D(g->getWindowWidth() /( aux + 1), 0), Vector2D((auxX*((g->getWindowWidth() / 2) - g->getWindowWidth() / (aux + 1))) / 25, -7));
 			break;
 		case 3:
-			flecha = new Flechas(SDL_CONTROLLER_BUTTON_Y, manager, 75, 75, Vector2D(g->getWindowWidth()/(aux + 1), 0),Vector2D(-7, 7));
+			flecha = new Flechas(SDL_CONTROLLER_BUTTON_Y, manager, 75, 75, Vector2D(g->getWindowWidth()/(aux + 1), 0),Vector2D((auxX*((g->getWindowWidth() / 2) - g->getWindowWidth() / (aux + 1)))/ 25, 7));
 			break;
 		case 4:
-			flecha = new Flechas(SDL_CONTROLLER_BUTTON_A, manager, 75, 75, Vector2D(0, g->getWindowHeight() /( aux + 1)), Vector2D(g->getWindowWidth() /aux * 7, aux));
+			flecha = new Flechas(SDL_CONTROLLER_BUTTON_A, manager, 75, 75, Vector2D(0, g->getWindowHeight() /( aux + 1)), Vector2D( 7, auxY*((g->getWindowHeight() / 2) - (g->getWindowHeight() / (aux + 1)))/ 25));
 			break;
 		case 5:
-			flecha = new Flechas(SDL_CONTROLLER_BUTTON_B, manager, 75, 75, Vector2D(0, g->getWindowHeight() /( aux + 1)), Vector2D(g->getWindowWidth() / aux * 7, - aux));
+			flecha = new Flechas(SDL_CONTROLLER_BUTTON_B, manager, 75, 75, Vector2D(0, g->getWindowHeight() /( aux + 1)), Vector2D(7, auxY*((g->getWindowHeight() / 2) - (g->getWindowHeight() / (aux + 1)))/ 25));
 			break;
 		case 6:
-			flecha = new Flechas(SDL_CONTROLLER_BUTTON_X, manager, 75, 75, Vector2D(0, g->getWindowHeight() / (aux + 1)), Vector2D(g->getWindowWidth() / aux * 7, -aux));
+			flecha = new Flechas(SDL_CONTROLLER_BUTTON_X, manager, 75, 75, Vector2D(0, g->getWindowHeight() / (aux + 1)), Vector2D( 7, auxY*((g->getWindowHeight() / 2) - (g->getWindowHeight() / (aux + 1)))/ 25));
 			break;
 		case 7:
-			flecha = new Flechas(SDL_CONTROLLER_BUTTON_Y, manager, 75, 75, Vector2D(0, g->getWindowHeight() /( aux + 1)), Vector2D(g->getWindowWidth() / aux * 7, -aux));
+			flecha = new Flechas(SDL_CONTROLLER_BUTTON_Y, manager, 75, 75, Vector2D(0, g->getWindowHeight() /( aux + 1)), Vector2D( 7, (auxY*((g->getWindowHeight() / 2) - (g->getWindowHeight() / (aux + 1)))) / 25));
 			break;
 		}
 		botonesNivel_.push_back(flecha);
@@ -65,21 +68,21 @@ MiniGame::MiniGame(GameManager* g, PlayState* p)
 }
 
 void MiniGame::update(Uint32 time) {
-	//if (fallado == false) {
-	for (Flechas* o : botonesPantalla_)
-	{
-		o->update(time);
-	
+	if (!botonesPantalla_.empty()) {
+		for (Flechas* o : botonesPantalla_)
+		{
+			o->update(time);
+		}
 	}
 
-	if (rand() % 1000 + 1 > 1 && rand() % 1000 + 1 < 2)
+	if (rand() % 1000 + 1 > 1 && rand() % 1000 + 1 < 10 && botonesPantalla_.empty())
 	{
 		generaBotones();
 		playS->timer->Reset();
 
 
 	}
-	//}
+	
 }
 
 

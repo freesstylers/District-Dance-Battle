@@ -15,6 +15,8 @@ public:
 
 	bool getFallado() { return fallado; }
 
+	void update();
+
 	void setMinigameActive(bool active) { 
 		minigameActive = active;
 	}
