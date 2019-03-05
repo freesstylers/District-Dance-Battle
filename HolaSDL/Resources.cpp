@@ -29,7 +29,8 @@ vector<Resources::ImageInfo> Resources::images_ {
 	{FeedbackRegular, "resources/images/Regular.png", 64, 64, 2, 1, 2},
 	{FeedbackPerfect, "resources/images/Perfect.png", 64, 64, 2, 1, 2},
 	{FeedbackGood, "resources/images/Good.png", 64, 64, 2, 1, 2},
-	{Blank, "resources/images/blank.png", 64, 64, 1, 1, 1}
+	{Blank, "resources/images/blank.png", 64, 64, 1, 1, 1},
+	{Square, "resources/images/Recuadro.png", 32, 100, 2, 1, 2}
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {

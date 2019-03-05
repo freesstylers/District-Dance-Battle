@@ -23,7 +23,8 @@ void PlayState::newGame()
 
 	int leftNotesPos = manager->getWindowWidth() / 2 - pointOffset;
 	int rightNotesPos = manager->getWindowWidth() / 2 + pointOffset;
-	
+	Vector2D leftNotesVector = Vector2D(leftNotesPos - noteSize / 2, initialNoteHeight);
+	Vector2D rightNotesVector = Vector2D(rightNotesPos - noteSize / 2, initialNoteHeight);
 
 
 	timer = Timer::Instance();
@@ -31,6 +32,8 @@ void PlayState::newGame()
 	rightPoint = new Point(manager, pointSize, pointSize, Vector2D(rightNotesPos - pointSize / 2, 465));
 	lip = new LevelInputManager(this);
 	perico = new Perico(manager, 33, 33, Vector2D(100, 50));
+	leftSquare = new Squares(manager, pointSize + 10, 575, Vector2D(leftNotesVector.getX()-19, leftNotesVector.getY()));
+	rightSquare = new Squares(manager, pointSize + 10, 575, Vector2D(rightNotesVector.getX() - 19, rightNotesVector.getY()));
 
 	//cin >> level;
 	level = "prueba";
@@ -52,8 +55,6 @@ void PlayState::newGame()
 
 	velFlechas = asignaVel(bh->getBeatTime());
 
-	Vector2D leftNotesVector = Vector2D(leftNotesPos - noteSize / 2, initialNoteHeight);
-	Vector2D rightNotesVector = Vector2D(rightNotesPos - noteSize / 2, initialNoteHeight);
 	int aux;
 	Flechas* flecha;
 	for (int i = 0; i < 50; i++) {
@@ -100,7 +101,8 @@ void PlayState::newGame()
 	}
 	file.close();
 
-
+	stage.push_back(leftSquare);
+	stage.push_back(rightSquare);
 	stage.push_back(leftPoint);
 	stage.push_back(rightPoint);
 	stage.push_back(perico);

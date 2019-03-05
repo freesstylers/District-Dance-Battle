@@ -40,6 +40,7 @@
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Vector2D.cpp" />
     <ClCompile Include="Feedback.cpp" />
+    <ClCompile Include="Squares.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioManager.h" />
@@ -82,5 +83,6 @@
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Vector2D.h" />
     <ClInclude Include="Feedback.h" />
+    <ClInclude Include="Squares.h" />
   </ItemGroup>
 </Project>

@@ -30,7 +30,8 @@ public:
 		FeedbackBad,
 		FeedbackRegular,
 		FeedbackPerfect,
-		Blank
+		Blank,
+		Square
 		// text
 	};
 
