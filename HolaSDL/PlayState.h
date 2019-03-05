@@ -19,6 +19,7 @@
 #include "Feedback.h"
 #include "EmptyObject.h"
 #include "Squares.h"
+#include "Background.h"
 
 //Constantes
 class PlayState : public GameState //Clase para las batallas y jugabilidad b�sica, render lo hereda de GameState, mantiene update y handleEvent independientes
@@ -60,6 +61,7 @@ protected:
 	int initialNoteHeight = 10;	//altura a la cual se generan las notas en pantalla
 	Feedback* feedback1;
 	Feedback* feedback2;
+	Background* bg;
 
 public:
 	PlayState(GameManager* g); //Crea estado (tal vez para niveles de dificultad con un int o bool)

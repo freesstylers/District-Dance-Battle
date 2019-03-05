@@ -31,9 +31,10 @@ void PlayState::newGame()
 	leftPoint = new Point(manager, pointSize, pointSize, Vector2D(leftNotesPos - pointSize / 2, 465));
 	rightPoint = new Point(manager, pointSize, pointSize, Vector2D(rightNotesPos - pointSize / 2, 465));
 	lip = new LevelInputManager(this);
-	perico = new Perico(manager, 200, 400, Vector2D(70, 130));
+	perico = new Perico(manager, 200, 400, Vector2D(70, 170));
 	leftSquare = new Squares(manager, pointSize + 10, 575, Vector2D(leftNotesVector.getX()-19, leftNotesVector.getY()));
 	rightSquare = new Squares(manager, pointSize + 10, 575, Vector2D(rightNotesVector.getX() - 19, rightNotesVector.getY()));
+	bg = new Background(manager, manager->getWindowWidth(), manager->getWindowHeight(), Vector2D(0, 0));
 
 	//cin >> level;
 	level = "prueba";
@@ -46,8 +47,8 @@ void PlayState::newGame()
 	bh = new BeatHandeler(bpm);
 
 	barraPuntos = new BarraPuntos(manager, 20, 20, Vector2D(20, 100));
-	spriteBarra = new FondoBarra(manager, 20, 20, Vector2D(20, 25), tiempo / (manager->getWindowWidth() - 40+50), Resources::Bar);
-	indicador = new BarrasHUD(manager, 50, 50, Vector2D(20, 10), Vector2D(tiempo/(manager->getWindowWidth()-40+50), 0),spriteBarra); //0.3 va a depender de la duracion de la cancion
+	spriteBarra = new FondoBarra(manager, 20, 20, Vector2D(20, 35), tiempo / (manager->getWindowWidth() - 40+50), Resources::Bar);
+	indicador = new BarrasHUD(manager, 50, 50, Vector2D(20, 20), Vector2D(tiempo/(manager->getWindowWidth()-40+50), 0),spriteBarra); //0.3 va a depender de la duracion de la cancion
 	feedback1 = new Feedback(manager, pointSize, pointSize, Vector2D(leftNotesPos - pointSize / 2 - pointSize, 465));
 	feedback2 = new Feedback(manager, pointSize, pointSize, Vector2D(rightNotesPos - pointSize / 2 + pointSize, 465));
 
@@ -103,6 +104,7 @@ void PlayState::newGame()
 	}
 	file.close();
 
+	stage.push_back(bg);
 	stage.push_back(leftSquare);
 	stage.push_back(rightSquare);
 	stage.push_back(leftPoint);

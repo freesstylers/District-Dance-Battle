@@ -43,6 +43,7 @@
     <ClCompile Include="EmptyObject.cpp" />
     <ClCompile Include="Squares.cpp" />
     <ClCompile Include="TimerNoSingleton.cpp" />
+    <ClCompile Include="Background.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioManager.h" />
@@ -88,5 +89,6 @@
     <ClInclude Include="EmptyObject.h" />
     <ClInclude Include="Squares.h" />
     <ClInclude Include="TimerNoSingleton.h" />
+    <ClInclude Include="Background.h" />
   </ItemGroup>
 </Project>

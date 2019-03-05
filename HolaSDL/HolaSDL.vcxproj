@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioManager.h" />
+    <ClInclude Include="Background.h" />
     <ClInclude Include="BarraPuntos.h" />
     <ClInclude Include="BarrasHUD.h" />
     <ClInclude Include="BeatHandeler.h" />
@@ -57,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AudioManager.cpp" />
+    <ClCompile Include="Background.cpp" />
     <ClCompile Include="BarraPuntos.cpp" />
     <ClCompile Include="BarrasHUD.cpp" />
     <ClCompile Include="BeatHandeler.cpp" />
