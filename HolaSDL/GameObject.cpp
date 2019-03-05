@@ -127,27 +127,33 @@ SDL_Rect GameObject::getRect()
 
 void GameObject::render(Uint32 time, bool beatSync)
 {
+	if(isRenderActive)
+	{
 
-	animation.texture_->render(getRect(), getFrameRect());
+		animation.texture_->render(getRect(), getFrameRect());
 
 
-	if ((!isAnimationSyncedToMusic && (time - lastRender) >= (1000 / framesPerSecond)) || (isAnimationSyncedToMusic && beatSync)) {	//animations update only when a certain time has passed OR when the "beatSync" signal is true
-		animation.currentFrame = animation.currentFrame + 1;
+		if ((!isAnimationSyncedToMusic && (time - lastRender) >= (1000 / framesPerSecond)) || (isAnimationSyncedToMusic && beatSync)) {	//animations update only when a certain time has passed OR when the "beatSync" signal is true
+			animation.currentFrame = animation.currentFrame + 1;
 
-		if (animation.currentFrame == animation.totalFrames) {
-			animation.currentFrame = 0;
+			if (animation.currentFrame == animation.totalFrames) {
+				animation.currentFrame = 0;
 
-			if (queuedAnimations.size() > 0) {
-				changeAnimation(queuedAnimations.front());
+				if (queuedAnimations.size() > 0) {
+					changeAnimation(queuedAnimations.front());
+				}
 			}
-		}
 
-		lastRender = time;
+			lastRender = time;
+		}
 	}
 }
 
 void GameObject::queueAnimationChange(int animationTag)
 {
+	if (!isRenderActive)
+		isRenderActive = true;
+
 	queuedAnimations.push(animationTag);
 }
 

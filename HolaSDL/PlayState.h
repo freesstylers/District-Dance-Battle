@@ -38,7 +38,6 @@ protected:
 	Vector2D velFlechas;
 	QTEManager* qteman;
 	Perico* perico;
-	Feedback* a;
 
 	BarrasHUD* indicador; //nota indicadora
 	FondoBarra* spriteBarra; //barra tiempo
@@ -63,10 +62,8 @@ public:
 	std::list<Flechas*> botonesPantalla_;
 	Point* leftPoint; //Pulsador
 	Point* rightPoint;
-	int getScoreInfo1() { return scoreInfo1; }
-	int getScoreInfo2() { return scoreInfo2; }
-	void changeScoreInfo1(int v) { scoreInfo1 = v; }
-	void changeScoreInfo2(int v) { scoreInfo2 = v; }
+	Feedback* feedbackLeft;
+	Feedback* feedbackRight;
 
 protected:
 	void DeleteAll(); //Para borrado de objetos, por aquello de no dejar basura

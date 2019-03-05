@@ -24,16 +24,14 @@ void PlayState::newGame()
 	int leftNotesPos = manager->getWindowWidth() / 2 - pointOffset;
 	int rightNotesPos = manager->getWindowWidth() / 2 + pointOffset;
 	
-	scoreInfo1 = 1;
-	scoreInfo2 = 2;
 	
 
 
 	timer = Timer::Instance();
 	leftPoint = new Point(manager, pointSize, pointSize, Vector2D(leftNotesPos - pointSize / 2, 465));
 	rightPoint = new Point(manager, pointSize, pointSize, Vector2D(rightNotesPos - pointSize / 2, 465));
-	score1 = new ScoreIcons(manager, pointSize, pointSize, Vector2D(leftNotesPos - pointSize / 2 - 100, 465), this, true);
-	score2 = new ScoreIcons(manager, pointSize, pointSize, Vector2D(rightNotesPos - pointSize / 2 + 100, 465), this, false);
+	feedbackLeft = new Feedback(manager, pointSize, pointSize, Vector2D(leftNotesPos - pointSize / 2 - 100, 465));
+	feedbackRight = new Feedback(manager, pointSize, pointSize, Vector2D(rightNotesPos - pointSize / 2 + 100, 465));
 	lip = new LevelInputManager(this);
 	perico = new Perico(manager, 33, 33, Vector2D(100, 50));
 
@@ -109,8 +107,8 @@ void PlayState::newGame()
 	stage.push_back(barraPuntos);
 	stage.push_back(spriteBarra);
 	stage.push_back(indicador);
-	stage.push_back(score1);
-	stage.push_back(score2);
+	stage.push_back(feedbackLeft);
+	stage.push_back(feedbackRight);
 
 
 
@@ -140,21 +138,26 @@ void PlayState::update(Uint32 time)
 		o->update(time);
 	}
 	qteman->update(time);
+
 	if (!flechasPantalla_.empty() && flechasPantalla_.front()->getPosition().getY() > 550)
 	{
+		Flechas* aux = flechasPantalla_.front();
 
 		flechasPantalla_.pop_front();
 		cout << "fuera" << endl;
-		scoreInfo1 = 0;
 
+		feedbackLeft->queueAnimationChange(Resources::FeedbackBad);
+		delete aux;
 	}
 	if (!botonesPantalla_.empty() && botonesPantalla_.front()->getPosition().getY() > 550)
 	{
+		Flechas* aux = botonesPantalla_.front();
 
 		botonesPantalla_.pop_front();
 		cout << "fuera" << endl;
-		scoreInfo2 = 0;
 
+		feedbackRight->queueAnimationChange(Resources::FeedbackBad);
+		delete aux;
 	}
 	timer->Update();
 	if (timer->DeltaTime() < (bh->getBeatTime() / 1000) + 0.010 && timer->DeltaTime() > (bh->getBeatTime() / 1000) - 0.010)

@@ -6,6 +6,8 @@
 
 class GameObject {
 
+private:
+
 public:
 	GameObject();
 	GameObject(SDLGame* game);
@@ -51,6 +53,8 @@ public:
 
 	virtual void queueAnimationChange(int animationTag);
 
+	virtual void isActive(bool active) { isRenderActive = active; }
+
 	std::queue<int> queuedAnimations;
 
 protected:
@@ -72,6 +76,8 @@ protected:
 	double rotation_; // rotation (for the corresponding texture)
 
 	bool isAnimationSyncedToMusic = false;
+
+	bool isRenderActive = true;
 
 	virtual void changeAnimation(int animationTag);
 };
