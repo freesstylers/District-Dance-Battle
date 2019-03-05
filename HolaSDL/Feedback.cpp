@@ -23,7 +23,7 @@ void Feedback::render(Uint32 time, bool beatSync)
 	if (queuedAnimations.size() > 0) {
 		changeAnimation(queuedAnimations.front());
 	}
-	if (active_)
+	if (active_){
 		animation.texture_->render(getRect(), getFrameRect());
 
 
