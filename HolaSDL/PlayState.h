@@ -31,10 +31,13 @@ protected:
 	int probqte;
 	int bpm;
 	double tiempo;
-	bool miniActive = false;
+	bool miniActive = true;
 	std::list<Flechas*> flechasNivel_;
 	std::list<Flechas*> botonesNivel_;
 	LevelInputManager* lip;
+
+
+
 	Vector2D velFlechas;
 	QTEManager* qteman;
 	MiniGame* minigame;
@@ -65,6 +68,8 @@ public:
 	std::list<Flechas*> botonesPantalla_;
 	Point* leftPoint; //Pulsador
 	Point* rightPoint;
+	MiniGame* getMinigame() { return minigame; }
+	GameManager* getGameManager() { return manager; }
 
 protected:
 	void DeleteAll(); //Para borrado de objetos, por aquello de no dejar basura

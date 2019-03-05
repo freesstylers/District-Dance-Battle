@@ -167,6 +167,10 @@ void PlayState::update(Uint32 time)
 	}
 	else {
 		minigame->update(time);
+
+		if (lip->getFallado()) {
+			lip->setMinigameActive(false);
+		}
 	}
 	
 }
@@ -192,7 +196,8 @@ bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 		lip->handleInput(time, e);
 		qteman->handleInput(time, e);
 		if (miniActive) {
-			minigame->handleInput(time, e);
+			lip->setMinigameActive(true);
+
 		}
 		GameState::handleEvent(time, e);
 		return false;
