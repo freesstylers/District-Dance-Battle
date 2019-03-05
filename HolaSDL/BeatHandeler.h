@@ -12,13 +12,13 @@ protected:
 	double beatTime;
 public:
 	BeatHandeler();
-	BeatHandeler(int bmp) :bmp(bmp) {beatTime = 60000 / bmp;};
+ 	BeatHandeler(int bmp) :bmp(bmp) {beatTime = 60000 / bmp;};
 	~BeatHandeler();
 	//Este es el método que controla cuando y a que velocidad se va a lanzar cada botón
 	void beatRateButton(int &currentBeats/*aqui debería de entrar la cola con los botones y los tiempos*/);
 	//Metodo que combierte los bpm a el tiempo transcurrido entre beat y beat
 	//Devuelve el beattime
-	double getBeatTime() { return beatTime; };
+	double getBeatTime() { return 60000/bmp; };
 
 };
 //CODIGO PARA PONER EN EL DEMO GAME O EN EL MUSIC TIMER

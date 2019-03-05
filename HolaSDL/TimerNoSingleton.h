@@ -1,23 +1,17 @@
 #pragma once
 #include <SDL.h>
-class Timer
+class TimerNoSingleton
 {
 private:
-	static Timer* _Instance;
 	unsigned int _StartTicks;
 	unsigned int _ElapsedTicks;
 	float _DeltaTime;
 	float _TimeScale;
 	float _lastItTimer;
-	Timer();
-	~Timer();
 
 public:
-
-
-	static Timer* Instance();
-	static void Release();
-
+	TimerNoSingleton();
+	~TimerNoSingleton();
 	void Reset();
 	float DeltaTime();
 
@@ -27,3 +21,4 @@ public:
 	double getLastTIme() { return _lastItTimer; }
 	void Update();
 };
+

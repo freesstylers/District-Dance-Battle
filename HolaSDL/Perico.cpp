@@ -15,6 +15,7 @@ Perico::Perico(SDLGame* game, double width, double height, Vector2D pos) :
 
 	framesPerSecond = 4;
 	isAnimationSyncedToMusic = true;
+	animation.currentFrame = 1;
 }
 
 
