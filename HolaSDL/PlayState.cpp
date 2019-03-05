@@ -57,8 +57,8 @@ void PlayState::newGame()
 	
 	effectVaporWave = new EmptyObject(manager, Vector2D(0, 0), Resources::EffectVaporWave, manager->getWindowWidth(), manager->getWindowHeight());
 
-	Vector2D leftNotesVector = Vector2D(leftNotesPos - noteSize / 2, initialNoteHeight);
-	Vector2D rightNotesVector = Vector2D(rightNotesPos - noteSize / 2, initialNoteHeight);
+	/*leftNotesVector = Vector2D(leftNotesPos - noteSize / 2, initialNoteHeight);
+	rightNotesVector = Vector2D(rightNotesPos - noteSize / 2, initialNoteHeight);*/
 	int aux;
 	Flechas* flecha;
 	for (int i = 0; i < 50; i++) {
