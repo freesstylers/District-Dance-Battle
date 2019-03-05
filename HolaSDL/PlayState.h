@@ -17,6 +17,9 @@
 #include "FondoBarra.h"
 #include "BarraPuntos.h"
 #include "Feedback.h"
+#include "EmptyObject.h"
+#include "Squares.h"
+#include "Level.h"
 
 //Constantes
 class PlayState : public GameState //Clase para las batallas y jugabilidad b�sica, render lo hereda de GameState, mantiene update y handleEvent independientes
@@ -24,20 +27,18 @@ class PlayState : public GameState //Clase para las batallas y jugabilidad b�s
 protected:
 
 	string level;
-	int songLength;
-	int maxPoints;
 	int currentPoints;
-	int probqte;
-	int bpm;
-	double tiempo;
-	std::list<Flechas*> flechasNivel_;
-	std::list<Flechas*> botonesNivel_;
+	bool effect = false;
+
 	Timer* timer;
 	BeatHandeler* bh;
 	LevelInputManager* lip;
 	Vector2D velFlechas;
 	QTEManager* qteman;
 	Perico* perico;
+	Feedback* a;
+	EmptyObject* effectVaporWave;
+	Level* nivel;
 
 	BarrasHUD* indicador; //nota indicadora
 	FondoBarra* spriteBarra; //barra tiempo
@@ -50,20 +51,31 @@ protected:
 	int noteSize = 50;	//tama�o de nota 
 	int pointOffset = 100;	//offset entre las barras de notas y el centro de la pantalla
 	int initialNoteHeight = 10;	//altura a la cual se generan las notas en pantalla
+	Feedback* feedback1;
+	Feedback* feedback2;
 
 public:
+
 	PlayState(GameManager* g); //Crea estado (tal vez para niveles de dificultad con un int o bool)
 	void newGame(); //Inicializa objetos
 	~PlayState();
 	virtual void update(Uint32 time);
 	virtual bool handleEvent(Uint32 time, SDL_Event e);
 	virtual void render(Uint32 time, bool beatSync = false);
+	void playSong(int song);
+	Vector2D asignaVel(double time);
+	std::list<Flechas*> flechasNivel_;
+	std::list<Flechas*> botonesNivel_;
 	std::list<Flechas*> flechasPantalla_; //La otra lista (Actors) se hereda de GameState
 	std::list<Flechas*> botonesPantalla_;
 	Point* leftPoint; //Pulsador
 	Point* rightPoint;
 	Feedback* feedbackLeft;
 	Feedback* feedbackRight;
+	Squares* leftSquare;
+	Squares* rightSquare;
+	Vector2D leftNotesVector;
+	Vector2D rightNotesVector;
 
 protected:
 	void DeleteAll(); //Para borrado de objetos, por aquello de no dejar basura
@@ -71,6 +83,5 @@ protected:
 	void changePoints(int data);
 	void generateFlechas();
 	void generateBotones();
-	Vector2D asignaVel(double time);
 
 };

@@ -127,9 +127,7 @@ SDL_Rect GameObject::getRect()
 
 void GameObject::render(Uint32 time, bool beatSync)
 {
-	if(isRenderActive)
-	{
-
+	if(active_)
 		animation.texture_->render(getRect(), getFrameRect());
 
 

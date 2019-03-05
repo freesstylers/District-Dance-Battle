@@ -9,9 +9,9 @@ private:
 	float _DeltaTime;
 	float _TimeScale;
 	float _lastItTimer;
-
 	Timer();
 	~Timer();
+
 public:
 
 
