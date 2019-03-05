@@ -38,12 +38,13 @@ void PlayState::newGame()
 	ifstream file("resources/levels/" + level + ".txt");
 
 	file >> bpm;
-	file >> tiempo;
+	file >> songLength;
 	file >> probqte;
+	//file >> numNotas;
 
-	barraPuntos = new BarraPuntos(manager, 20, 20, Vector2D(20, 500));
-	spriteBarra = new FondoBarra(manager, 20, 20, Vector2D(20, 25), (((manager->getWindowWidth()/ tiempo )) /70.5), Resources::Bar); //70.5 es la constante para ajustar la velocidad de la barra al tiempo de la cancion
-	indicador = new BarrasHUD(manager, 50, 50, Vector2D(20, 10), Vector2D((((manager->getWindowWidth()/ tiempo )) / 70.5), 0),spriteBarra); 
+	barraPuntos = new BarraPuntos(manager, 20, 1, Vector2D(20, 500), numNotas, 2000);
+	spriteBarra = new FondoBarra(manager, 20, 20, Vector2D(20, 25), (((manager->getWindowWidth()/ songLength )) /70.5), Resources::Bar); //70.5 es la constante para ajustar la velocidad de la barra al tiempo de la cancion
+	indicador = new BarrasHUD(manager, 50, 50, Vector2D(20, 10), Vector2D((((manager->getWindowWidth()/ songLength )) / 70.5), 0), spriteBarra); 
 
 	bh = new BeatHandeler(bpm);
 	qteman = new QTEManager(manager, probqte);
@@ -138,14 +139,14 @@ void PlayState::update(Uint32 time)
 
 		flechasPantalla_.pop_front();
 		cout << "fuera" << endl;
-
+		//barraPuntos->avanza(5);
 	}
 	if (!botonesPantalla_.empty() && botonesPantalla_.front()->getPosition().getY() > 550)
 	{
 
 		botonesPantalla_.pop_front();
 		cout << "fuera" << endl;
-		barraPuntos->avanza(5);
+		//barraPuntos->avanza(5);
 	}
 	timer->Update();
 	if (timer->DeltaTime() < (bh->getBeatTime() / 1000) + 0.010 && timer->DeltaTime() > (bh->getBeatTime() / 1000) - 0.010)

@@ -30,9 +30,6 @@ void BarrasHUD::update(Uint32 time)
 {
 	if (position_.getX() < game_->getWindowWidth()-20-width_ ) {
 		position_.set(position_ + velocity_); 
-	}
-	if (bar->getPosition().getX() < game_->getWindowWidth() - 20- width_) {
 		bar->setWidth(bar->getWidth() + velocity_.getX());
-	}
-	
+	} 
 }

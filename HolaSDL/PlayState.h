@@ -24,12 +24,14 @@ class PlayState : public GameState //Clase para las batallas y jugabilidad básic
 protected:
 
 	string level;
-	int songLength;
+
 	int maxPoints;
 	int currentPoints;
 	int probqte;
 	int bpm;
-	double tiempo;
+	double songLength;
+	int numNotas = 50;
+
 	std::list<Flechas*> flechasNivel_;
 	std::list<Flechas*> botonesNivel_;
 	Timer* timer;
@@ -41,7 +43,6 @@ protected:
 
 	BarrasHUD* indicador; //nota indicadora
 	FondoBarra* spriteBarra; //barra tiempo
-	BarraPuntos* barraPuntos; //barra puntuacion
 
 	bool beatSignal = false;	//bool usado para avisar de que se avance la animación según el ritmo de la canción
 	int animationFramesPerBeat = 2;	//int que determina cuántas frames de animación van entre cada beat
@@ -52,6 +53,7 @@ protected:
 	int initialNoteHeight = 10;	//altura a la cual se generan las notas en pantalla
 
 public:
+	BarraPuntos* barraPuntos; //barra puntuacion
 	PlayState(GameManager* g); //Crea estado (tal vez para niveles de dificultad con un int o bool)
 	void newGame(); //Inicializa objetos
 	~PlayState();

@@ -18,6 +18,5 @@ private:
 	bool keyup2 = true;
 	PlayState* level;
 	SDL_GameController* controller = NULL;
-	BarraPuntos* puntos;
 };
 

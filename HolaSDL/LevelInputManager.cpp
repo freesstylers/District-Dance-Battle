@@ -1,5 +1,6 @@
 #include "LevelInputManager.h"
 #include "PlayState.h"
+#include <string>
 
 
 LevelInputManager::LevelInputManager(PlayState* l)
@@ -25,18 +26,18 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 				keyup = false;
 				if (abs(it->getPosition().getY() - level->leftPoint->getPosition().getY()) <= 25)
 				{
-					cout << "perfecto" << endl;
-					puntos->avanza(25);
+					cout << "perfecto" << endl;					
+					level->barraPuntos->avanza(1);
 				}
 				else if (abs(it->getPosition().getY() - level->leftPoint->getPosition().getY()) <= 50)
 				{
 					cout << "bien" << endl;
-					puntos->avanza(15);
+					level->barraPuntos->avanza(2);
 				}
 				else if (abs(it->getPosition().getY() - level->leftPoint->getPosition().getY()) <= 100)
 				{
 					cout << "regular" << endl;
-					puntos->avanza(5);
+					level->barraPuntos->avanza(3);
 				}
 				else
 				{
@@ -69,17 +70,18 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 				if (abs(it->getPosition().getY() - level->leftPoint->getPosition().getY()) <= 25)
 				{
 					cout << "perfecto" << endl;
-					puntos->avanza(25);
+					level->barraPuntos->avanza(1);
+					
 				}
 				else if (abs(it->getPosition().getY() - level->leftPoint->getPosition().getY()) <= 50)
 				{
 					cout << "bien" << endl;
-					puntos->avanza(15);
+					level->barraPuntos->avanza(2);
 				}
 				else if (abs(it->getPosition().getY() - level->leftPoint->getPosition().getY()) <= 100)
 				{
 					cout << "regular" << endl;
-					puntos->avanza(5);
+					level->barraPuntos->avanza(3);
 				}
 				else
 				{
