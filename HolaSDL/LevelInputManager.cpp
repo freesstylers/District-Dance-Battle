@@ -2,11 +2,12 @@
 #include "PlayState.h"
 
 
-LevelInputManager::LevelInputManager(PlayState* l)
+LevelInputManager::LevelInputManager(PlayState* l, int numctrl)
 {
+	numctrl_ = numctrl;
 	level = l;
 	keystates = SDL_GetKeyboardState(NULL);
-	controller = SDL_GameControllerOpen(0);
+	controller = SDL_GameControllerOpen(numctrl_);
 }
 
 
@@ -15,7 +16,6 @@ LevelInputManager::~LevelInputManager()
 }
 
 void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
-
 	if (!level->flechasPantalla_.empty()) 
 	{
 		auto it = level->flechasPantalla_.front();
@@ -23,17 +23,17 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 			if (event.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, it->getKey()) && keyup)
 			{
 				keyup = false;
-				if (abs(it->getPosition().getY() - level->leftPoint->getPosition().getY()) <= 25)
+				if (abs((it->getPosition().getY() + it->getHeight() / 2) - (level->rightPoint->getPosition().getY() + level->rightPoint->getHeight() / 2)) <= 25)
 				{
 					cout << "perfecto" << endl;
 					level->feedbackLeft->queueAnimationChange(Resources::FeedbackPerfect);
 				}
-				else if (abs(it->getPosition().getY() - level->leftPoint->getPosition().getY()) <= 50)
+				else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (level->rightPoint->getPosition().getY() + level->rightPoint->getHeight() / 2)) <= 50)
 				{
 					cout << "bien" << endl;
 					level->feedbackLeft->queueAnimationChange(Resources::FeedbackGood);
 				}
-				else if (abs(it->getPosition().getY() - level->leftPoint->getPosition().getY()) <= 100)
+				else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (level->rightPoint->getPosition().getY() + level->rightPoint->getHeight() / 2)) <= 100)
 				{
 					cout << "regular" << endl;
 					level->feedbackLeft->queueAnimationChange(Resources::FeedbackRegular);
@@ -70,17 +70,17 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 			if (event.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, it->getKey()) && keyup2)
 			{
 				keyup = false;
-				if (abs(it->getPosition().getY() - level->rightPoint->getPosition().getY()) <= 25)
+				if (abs((it->getPosition().getY() + it->getHeight()/2) - (level->rightPoint->getPosition().getY() + level->rightPoint->getHeight()/2)) <= 25)
 				{
 					cout << "perfecto" << endl;
 					level->feedbackRight->queueAnimationChange(Resources::FeedbackPerfect);
 				}
-				else if (abs(it->getPosition().getY() - level->rightPoint->getPosition().getY()) <= 50)
+				else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (level->rightPoint->getPosition().getY() + level->rightPoint->getHeight() / 2)) <= 50)
 				{
 					cout << "bien" << endl;
 					level->feedbackRight->queueAnimationChange(Resources::FeedbackGood);
 				}
-				else if (abs(it->getPosition().getY() - level->rightPoint->getPosition().getY()) <= 100)
+				else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (level->rightPoint->getPosition().getY() + level->rightPoint->getHeight() / 2)) <= 100)
 				{
 					cout << "regular" << endl;
 					level->feedbackRight->queueAnimationChange(Resources::FeedbackRegular);

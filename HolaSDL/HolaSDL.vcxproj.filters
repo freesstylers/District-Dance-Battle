@@ -46,6 +46,7 @@
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="TimerNoSingleton.cpp" />
     <ClCompile Include="Background.cpp" />
+    <ClCompile Include="Playstate2P.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioManager.h" />
@@ -94,5 +95,6 @@
     <ClInclude Include="Level.h" />
     <ClInclude Include="TimerNoSingleton.h" />
     <ClInclude Include="Background.h" />
+    <ClInclude Include="Playstate2P.h" />
   </ItemGroup>
 </Project>

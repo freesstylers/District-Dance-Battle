@@ -37,6 +37,7 @@
     <ClInclude Include="MenuState.h" />
     <ClInclude Include="Perico.h" />
     <ClInclude Include="PlayState.h" />
+    <ClInclude Include="Playstate2P.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Pulsador.h" />
     <ClInclude Include="Puntuacion.h" />
@@ -86,6 +87,7 @@
     <ClCompile Include="MenuState.cpp" />
     <ClCompile Include="Perico.cpp" />
     <ClCompile Include="PlayState.cpp" />
+    <ClCompile Include="Playstate2P.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Puntuacion.cpp" />
     <ClCompile Include="QTEManager.cpp" />

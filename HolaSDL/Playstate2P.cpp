@@ -1,12 +1,12 @@
-#include "PlayState.h"
+﻿#include "PlayState2P.h"
 #include "GameManager.h"
 
-PlayState::PlayState(GameManager* g) :GameState(g) //Asigna game y llama a inicializaci�n
+PlayState2P::PlayState2P(GameManager* g) :PlayState(g) //Asigna game y llama a inicializaci�n
 {
 	newGame();
 }
 
-void PlayState::newGame()
+void PlayState2P::newGame()
 {
 	/*
 	Inicializar:
@@ -35,7 +35,7 @@ void PlayState::newGame()
 	nivel = new Level(this, manager, level);
 	nivel->init();
 	timer = Timer::Instance();
-	lip = new LevelInputManager(this,0);
+	lip = new LevelInputManager(static_cast<PlayState*>(this),0);
 	perico = new Perico(manager, 200, 400, Vector2D(70, 130));
 	leftSquare = new Squares(manager, pointSize + 10, 575, Vector2D(leftNotesVector.getX() - 19, leftNotesVector.getY()));
 	rightSquare = new Squares(manager, pointSize + 10, 575, Vector2D(rightNotesVector.getX() - 19, rightNotesVector.getY()));
@@ -45,8 +45,6 @@ void PlayState::newGame()
 	barraPuntos = new BarraPuntos(manager, 20, 20, Vector2D(20, 100));
 	spriteBarra = new FondoBarra(manager, 20, 20, Vector2D(20, 25), nivel->tiempo / (manager->getWindowWidth() - 40 + 50), Resources::Bar);
 	indicador = new BarrasHUD(manager, 50, 50, Vector2D(20, 10), Vector2D(nivel->tiempo / (manager->getWindowWidth() - 40 + 50), 0), spriteBarra); //0.3 va a depender de la duracion de la cancion
-	feedback1 = new Feedback(manager, pointSize, pointSize, Vector2D(leftNotesPos - pointSize / 2 - pointSize, 465));
-	feedback2 = new Feedback(manager, pointSize, pointSize, Vector2D(rightNotesPos - pointSize / 2 + pointSize, 465));
 
 	qteman = new QTEManager(manager, nivel->probqte);
 
@@ -75,17 +73,11 @@ void PlayState::newGame()
 }
 
 
-PlayState::~PlayState()
+PlayState2P::~PlayState2P()
 {
-	DeleteAll();
-	delete lip;
-	delete bh;
-	delete qteman;
-	delete effectVaporWave;
-	delete nivel;
 }
 
-void PlayState::update(Uint32 time)
+void PlayState2P::update(Uint32 time)
 {
 	GameState::update(time);
 
@@ -134,7 +126,7 @@ void PlayState::update(Uint32 time)
 	}
 }
 
-bool PlayState::handleEvent(Uint32 time, SDL_Event e)
+bool PlayState2P::handleEvent(Uint32 time, SDL_Event e)
 {
 	if (e.type == SDL_QUIT || e.key.keysym.sym == SDLK_ESCAPE) {
 		manager->stop();
@@ -160,7 +152,7 @@ bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 	}
 }
 
-void PlayState::render(Uint32 time, bool beatSync)
+void PlayState2P::render(Uint32 time, bool beatSync)
 {
 
 	GameState::render(time, beatSignal);
@@ -180,8 +172,13 @@ void PlayState::render(Uint32 time, bool beatSync)
 	beatSignal = false;
 }
 
-void PlayState::DeleteAll()
+void PlayState2P::DeleteAll()
 {
+	for (GameObject* o : stage)
+	{
+		delete o;
+	}
+
 	for (Flechas* o : flechasPantalla_)
 	{
 		delete o;
@@ -193,17 +190,17 @@ void PlayState::DeleteAll()
 	}
 }
 
-int PlayState::getPoints()
+int PlayState2P::getPoints()
 {
 	return currentPoints;
 }
 
-void PlayState::changePoints(int data)
+void PlayState2P::changePoints(int data)
 {
 	currentPoints = currentPoints + data;
 }
 
-void PlayState::generateFlechas()
+void PlayState2P::generateFlechas()
 {
 	if (!flechasNivel_.empty()) {
 		if (flechasNivel_.back() != nullptr) {
@@ -213,7 +210,7 @@ void PlayState::generateFlechas()
 	}
 }
 
-void PlayState::generateBotones()
+void PlayState2P::generateBotones()
 {
 	if (!botonesNivel_.empty()) {
 		if (botonesNivel_.back() != nullptr) {
@@ -221,16 +218,4 @@ void PlayState::generateBotones()
 		}
 		botonesNivel_.pop_back();
 	}
-}
-
-Vector2D PlayState::asignaVel(double time)
-{
-	double distance = initialNoteHeight - (leftPoint->getPosition().getY() + leftPoint->getHeight() / 2);
-	double velocity = distance / time;
-	return Vector2D(0, -velocity * 4);
-}
-
-void PlayState::playSong(int song) {
-	manager->getServiceLocator()->getAudios()->playChannel(song, 0);
-	manager->getServiceLocator()->getAudios()->setChannelVolume(70);
 }
