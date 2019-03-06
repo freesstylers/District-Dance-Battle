@@ -69,7 +69,7 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 		if (it != nullptr) {
 			if (event.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, it->getKey()) && keyup2)
 			{
-				keyup = false;
+				keyup2 = false;
 				if (abs(it->getPosition().getY() - level->rightPoint->getPosition().getY()) <= 25)
 				{
 					cout << "perfecto" << endl;
