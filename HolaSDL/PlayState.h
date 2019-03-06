@@ -20,6 +20,7 @@
 #include "EmptyObject.h"
 #include "Squares.h"
 #include "Level.h"
+#include "Background.h"
 
 //Constantes
 class PlayState : public GameState //Clase para las batallas y jugabilidad b�sica, render lo hereda de GameState, mantiene update y handleEvent independientes
@@ -74,6 +75,7 @@ public:
 	Feedback* feedbackRight;
 	Squares* leftSquare;
 	Squares* rightSquare;
+	Background* bg;
 	Vector2D leftNotesVector;
 	Vector2D rightNotesVector;
 

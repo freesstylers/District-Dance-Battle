@@ -32,7 +32,8 @@ public:
 		FeedbackPerfect,
 		Blank,
 		EffectVaporWave,
-		Square
+		Square,
+		FondoPrueba
 		// text
 	};
 
