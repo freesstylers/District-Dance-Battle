@@ -42,6 +42,8 @@
     <ClCompile Include="Feedback.cpp" />
     <ClCompile Include="EmptyObject.cpp" />
     <ClCompile Include="Squares.cpp" />
+    <ClCompile Include="EndState.cpp" />
+    <ClCompile Include="Level.cpp" />
     <ClCompile Include="TimerNoSingleton.cpp" />
     <ClCompile Include="Background.cpp" />
   </ItemGroup>
@@ -88,6 +90,8 @@
     <ClInclude Include="Feedback.h" />
     <ClInclude Include="EmptyObject.h" />
     <ClInclude Include="Squares.h" />
+    <ClInclude Include="EndState.h" />
+    <ClInclude Include="Level.h" />
     <ClInclude Include="TimerNoSingleton.h" />
     <ClInclude Include="Background.h" />
   </ItemGroup>
