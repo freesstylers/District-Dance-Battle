@@ -20,7 +20,7 @@ void PlayState::newGame()
 	Pulsador/Logica de botones
 	*/
 
-	level = "prueba";
+	level = "level";
 
 	int leftNotesPos = manager->getWindowWidth() / 2 - pointOffset;
 	int rightNotesPos = manager->getWindowWidth() / 2 + pointOffset;
