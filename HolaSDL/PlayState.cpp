@@ -31,6 +31,7 @@ void PlayState::newGame()
 	rightPoint = new Point(manager, pointSize, pointSize, Vector2D(rightNotesPos - pointSize / 2, 465));
 	feedbackLeft = new Feedback(manager, pointSize, pointSize, Vector2D(leftNotesPos - pointSize / 2 - 100, 465));
 	feedbackRight = new Feedback(manager, pointSize, pointSize, Vector2D(rightNotesPos - pointSize / 2 + 100, 465));
+	bg = new Background(manager, manager->getWindowWidth(), manager->getWindowHeight(), Vector2D(0, 0));
 	nivel = new Level(this, manager, level);
 	nivel->init();
 	timer = Timer::Instance();
@@ -51,6 +52,7 @@ void PlayState::newGame()
 
 	effectVaporWave = new EmptyObject(manager, Vector2D(0, 0), Resources::EffectVaporWave, manager->getWindowWidth(), manager->getWindowHeight());
 
+	stage.push_back(bg);
 	stage.push_back(leftSquare);
 	stage.push_back(rightSquare);
 	stage.push_back(leftPoint);
