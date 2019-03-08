@@ -44,9 +44,10 @@
     <ClCompile Include="Squares.cpp" />
     <ClCompile Include="EndState.cpp" />
     <ClCompile Include="Level.cpp" />
-    <ClCompile Include="TimerNoSingleton.cpp" />
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="Playstate2P.cpp" />
+    <ClCompile Include="MiniGame.cpp" />
+    <ClCompile Include="TimerNoSingleton.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioManager.h" />
@@ -96,5 +97,7 @@
     <ClInclude Include="TimerNoSingleton.h" />
     <ClInclude Include="Background.h" />
     <ClInclude Include="Playstate2P.h" />
+    <ClInclude Include="MiniGame.h" />
+
   </ItemGroup>
 </Project>

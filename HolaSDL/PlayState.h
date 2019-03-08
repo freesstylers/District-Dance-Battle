@@ -15,6 +15,7 @@
 #include "Perico.h"
 #include "BarrasHUD.h"
 #include "FondoBarra.h"
+#include "MiniGame.h"
 #include "BarraPuntos.h"
 #include "Feedback.h"
 #include "EmptyObject.h"
@@ -34,8 +35,20 @@ protected:
 	Timer* timer;
 	BeatHandeler* bh;
 	LevelInputManager* lip;
+	int probqte;
+	int bpm;
+	double tiempo;
+	bool miniActive = true;
+
+
+	//Se usa para cuando al volver de un minijuego se sepa si es la primera flecha
+	bool primeraFlecha = true;
+
+
+
 	Vector2D velFlechas;
 	QTEManager* qteman;
+	MiniGame* minigame;
 	Perico* perico;
 	Feedback* a;
 	EmptyObject* effectVaporWave;
@@ -56,7 +69,6 @@ protected:
 	Feedback* feedback2;
 
 public:
-
 	PlayState(GameManager* g); //Crea estado (tal vez para niveles de dificultad con un int o bool)
 	void newGame(); //Inicializa objetos
 	~PlayState();
@@ -78,6 +90,8 @@ public:
 	Background* bg;
 	Vector2D leftNotesVector;
 	Vector2D rightNotesVector;
+	MiniGame* getMinigame() { return minigame; }
+	GameManager* getGameManager() { return manager; }
 
 protected:
 	void DeleteAll(); //Para borrado de objetos, por aquello de no dejar basura

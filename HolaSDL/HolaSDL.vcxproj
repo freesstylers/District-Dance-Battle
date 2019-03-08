@@ -35,6 +35,7 @@
     <ClInclude Include="LevelInputManager.h" />
     <ClInclude Include="MapState.h" />
     <ClInclude Include="MenuState.h" />
+    <ClInclude Include="MiniGame.h" />
     <ClInclude Include="Perico.h" />
     <ClInclude Include="PlayState.h" />
     <ClInclude Include="Playstate2P.h" />
@@ -85,6 +86,7 @@
     <ClCompile Include="Flechas.cpp" />
     <ClCompile Include="MapState.cpp" />
     <ClCompile Include="MenuState.cpp" />
+    <ClCompile Include="MiniGame.cpp" />
     <ClCompile Include="Perico.cpp" />
     <ClCompile Include="PlayState.cpp" />
     <ClCompile Include="Playstate2P.cpp" />
@@ -111,7 +113,7 @@
     <ProjectGuid>{28A4C5CD-307A-4FE6-81E4-4CE1F1E49AB4}</ProjectGuid>
     <RootNamespace>HolaSDL</RootNamespace>
     <ProjectName>HolaSDL</ProjectName>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

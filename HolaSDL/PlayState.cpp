@@ -24,6 +24,7 @@ void PlayState::newGame()
 
 	int leftNotesPos = manager->getWindowWidth() / 2 - pointOffset;
 	int rightNotesPos = manager->getWindowWidth() / 2 + pointOffset;
+
 	leftNotesVector = Vector2D(leftNotesPos - noteSize / 2, initialNoteHeight);
 	rightNotesVector = Vector2D(rightNotesPos - noteSize / 2, initialNoteHeight);
 
@@ -36,9 +37,18 @@ void PlayState::newGame()
 	nivel->init();
 	timer = Timer::Instance();
 	lip = new LevelInputManager(this,0);
+
 	perico = new Perico(manager, 200, 400, Vector2D(70, 130));
 	leftSquare = new Squares(manager, pointSize + 10, 575, Vector2D(leftNotesVector.getX() - 19, leftNotesVector.getY()));
 	rightSquare = new Squares(manager, pointSize + 10, 575, Vector2D(rightNotesVector.getX() - 19, rightNotesVector.getY()));
+	
+	
+	lip->setMinigameActive(true);
+	minigame = new MiniGame(manager, this);
+
+	cin >> level;
+
+	ifstream file("resources/levels/" + level + ".txt");
 
 	bh = new BeatHandeler(nivel->bpm);
 
@@ -71,7 +81,6 @@ void PlayState::newGame()
 	/////////////////////////
 
 	//exit_ = false;
-
 }
 
 
@@ -88,7 +97,7 @@ PlayState::~PlayState()
 void PlayState::update(Uint32 time)
 {
 	GameState::update(time);
-
+	if (miniActive == false) {
 	for (Flechas* o : flechasPantalla_)
 	{
 		o->update(time);
@@ -111,8 +120,8 @@ void PlayState::update(Uint32 time)
 	{
 		Flechas* aux = botonesPantalla_.front();
 
-		botonesPantalla_.pop_front();
-		cout << "fuera" << endl;
+			botonesPantalla_.pop_front();
+			cout << "fuera" << endl;
 
 		feedbackRight->queueAnimationChange(Resources::FeedbackBad);
 		delete aux;
@@ -124,14 +133,28 @@ void PlayState::update(Uint32 time)
 		generateBotones();
 		timer->Reset();
 
-		beatSignal = true;
-	}
+			beatSignal = true;
+		}
+	
 	else if (timer->DeltaTime() < (bh->getBeatTime() / animationFramesPerBeat / 1000) + 0.010 && timer->DeltaTime() > (bh->getBeatTime() / animationFramesPerBeat / 1000) - 0.010)
 	{
 		//aqu� se divide el beatTime lo necesario para animar las frames especificadas entre cada beat
 
 		beatSignal = true;
 	}
+	}
+	else {
+		minigame->update(time);
+		lip->update();
+		if (minigame->getFallado()) {
+			lip->setMinigameActive(false);
+			miniActive = false;
+			timer->Reset();
+			
+			
+		}
+	}
+	
 }
 
 bool PlayState::handleEvent(Uint32 time, SDL_Event e)
@@ -152,10 +175,15 @@ bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 	}
 	else
 	{
-		lip->handleInput(time, e);
-		qteman->handleInput(time, e);
-
-		GameState::handleEvent(time, e);
+		if (miniActive) {
+			lip->setMinigameActive(true);
+		}
+		
+		
+			lip->handleInput(time, e);
+			//qteman->handleInput(time, e);
+			GameState::handleEvent(time, e);
+		
 		return false;
 	}
 }
@@ -177,6 +205,10 @@ void PlayState::render(Uint32 time, bool beatSync)
 	}
 	if (!effect)
 		effectVaporWave->render(time, beatSync);
+	if (miniActive) {
+		minigame->render(time);
+	}
+
 	beatSignal = false;
 }
 
