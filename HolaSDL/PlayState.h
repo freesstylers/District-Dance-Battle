@@ -35,6 +35,9 @@ protected:
 	std::list<Flechas*> flechasNivel_;
 	std::list<Flechas*> botonesNivel_;
 
+	//Se usa para cuando al volver de un minijuego se sepa si es la primera flecha
+	bool primeraFlecha = true;
+
 
 
 	Vector2D velFlechas;

@@ -28,6 +28,7 @@ void PlayState::newGame()
 	
 
 	timer = Timer::Instance();
+	timer->Reset();
 	leftPoint = new Point(manager, pointSize, pointSize, Vector2D(leftNotesPos - pointSize / 2, 465));
 	rightPoint = new Point(manager, pointSize, pointSize, Vector2D(rightNotesPos - pointSize / 2, 465));
 	lip = new LevelInputManager(this);
@@ -115,6 +116,8 @@ void PlayState::newGame()
 	//exit_ = false;
 	manager->getServiceLocator()->getAudios()->playChannel(Resources::Pruebas, -1);
 	manager->getServiceLocator()->getAudios()->setChannelVolume(70);
+
+	
 }
 
 
@@ -151,7 +154,8 @@ void PlayState::update(Uint32 time)
 
 		}
 		timer->Update();
-		if (timer->DeltaTime() < (bh->getBeatTime() / 1000) + 0.010 && timer->DeltaTime() > (bh->getBeatTime() / 1000) - 0.010)
+		
+		if ( timer->DeltaTime() > (bh->getBeatTime() / 1000) - 0.005 && timer->DeltaTime() < (bh->getBeatTime() / 1000) + 0.005)
 		{
 			generateFlechas();
 			generateBotones();
@@ -169,9 +173,12 @@ void PlayState::update(Uint32 time)
 	else {
 		minigame->update(time);
 		lip->update();
-		if (lip->getFallado()) {
+		if (minigame->getFallado()) {
 			lip->setMinigameActive(false);
 			miniActive = false;
+			timer->Reset();
+			
+			
 		}
 	}
 	

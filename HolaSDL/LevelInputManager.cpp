@@ -111,7 +111,7 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 					if (abs(it->getPosition().getY()) > 0 && abs(it->getPosition().getY()) < level->leftPoint->getGame()->getWindowHeight() && abs(it->getPosition().getX()) > 0 && abs(it->getPosition().getX()) < level->leftPoint->getGame()->getWindowWidth())
 					{
 						cout << "perfecto" << endl;
-
+						fallado = false;
 					}
 					
 
@@ -142,7 +142,7 @@ void LevelInputManager::update() {
 	if (minigameActive) {
 		if (!level->getMinigame()->botonesPantalla_.empty())
 		{
-			if (level->getMinigame()->botonesPantalla_.front()->getPosition().getX() < -3 || level->getMinigame()->botonesPantalla_.front()->getPosition().getX() > level->getGameManager()->getWindowWidth() || level->getMinigame()->botonesPantalla_.front()->getPosition().getY() < -3 || level->getMinigame()->botonesPantalla_.front()->getPosition().getY() > level->getGameManager()->getWindowHeight()) {
+			if (level->getMinigame()->botonesPantalla_.front()->getPosition().getX() < -3 || level->getMinigame()->botonesPantalla_.front()->getPosition().getX() > level->getGameManager()->getWindowWidth() || level->getMinigame()->botonesPantalla_.front()->getPosition().getY() < -75 || level->getMinigame()->botonesPantalla_.front()->getPosition().getY() > level->getGameManager()->getWindowHeight() +75) {
 				level->getMinigame()->botonesPantalla_.pop_front();
 				cout << "fuera" << endl;
 				fallado = true;

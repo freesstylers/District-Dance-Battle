@@ -6,6 +6,7 @@
 #include <string>
 #include "GameObject.h"
 #include "Timer.h"
+#include "TimerNoSingleton.h"
 #include "Flechas.h"
 
 
@@ -27,10 +28,15 @@ protected:
 	GameManager* manager;
 	PlayState* playS;
 
+	int nFlechas = 15;
+
+	TimerNoSingleton* timer;
+
 
 public:
+	bool getFallado() { return fallado; };
 	MiniGame(GameManager* g, PlayState* p );
-	~MiniGame();
+	~MiniGame() { delete timer; };
 	std::list<Flechas*> botonesNivel_;
 	std::list<Flechas*> botonesPantalla_;
 	void generaBotones();
