@@ -59,7 +59,7 @@ void MiniGame::update(Uint32 time) {
 		}
 	}
 
-	if (timer->DeltaTime() > (playS->bh->getBeatTime() / 1000) && nFlechas > 0)
+	if (timer->DeltaTime() > (playS->bh->getBeatTime() / 1000)*2 && nFlechas > 0)
 	{
 		generaBotones();
 		

@@ -22,6 +22,7 @@
 #include "Squares.h"
 #include "Level.h"
 #include "Background.h"
+#include "TimerNoSingleton.h"
 
 //Constantes
 class PlayState : public GameState //Clase para las batallas y jugabilidad b�sica, render lo hereda de GameState, mantiene update y handleEvent independientes
@@ -30,15 +31,15 @@ protected:
 
 	string level;
 	int currentPoints;
-	bool effect = false;
+	bool effect = true;
 
 	Timer* timer;
-	BeatHandeler* bh;
 	LevelInputManager* lip;
 	int probqte;
 	int bpm;
 	double tiempo;
 	bool miniActive = true;
+	TimerNoSingleton* minigameController;
 
 
 	//Se usa para cuando al volver de un minijuego se sepa si es la primera flecha
@@ -69,6 +70,7 @@ protected:
 	Feedback* feedback2;
 
 public:
+	BeatHandeler* bh;
 	PlayState(GameManager* g); //Crea estado (tal vez para niveles de dificultad con un int o bool)
 	void newGame(); //Inicializa objetos
 	~PlayState();

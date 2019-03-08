@@ -20,7 +20,7 @@ void PlayState::newGame()
 	Pulsador/Logica de botones
 	*/
 
-	level = "level";
+	level = "prueba";
 
 	int leftNotesPos = manager->getWindowWidth() / 2 - pointOffset;
 	int rightNotesPos = manager->getWindowWidth() / 2 + pointOffset;
@@ -45,10 +45,9 @@ void PlayState::newGame()
 	
 	lip->setMinigameActive(true);
 	minigame = new MiniGame(manager, this);
+	minigameController = new TimerNoSingleton();
 
-	cin >> level;
-
-	ifstream file("resources/levels/" + level + ".txt");
+	
 
 	bh = new BeatHandeler(nivel->bpm);
 
@@ -97,51 +96,52 @@ PlayState::~PlayState()
 void PlayState::update(Uint32 time)
 {
 	GameState::update(time);
-	if (miniActive == false) {
-	for (Flechas* o : flechasPantalla_)
+	if (miniActive == false) 
 	{
-		o->update(time);
-	}
-	for (Flechas* o : botonesPantalla_)
-	{
-		o->update(time);
-	}
-	//qteman->update(time);
-	if (!flechasPantalla_.empty() && flechasPantalla_.front()->getPosition().getY() > 550)
-	{
-		Flechas* aux = flechasPantalla_.front();
+		for (Flechas* o : flechasPantalla_)
+		{
+			o->update(time);
+		}
+		for (Flechas* o : botonesPantalla_)
+		{
+			o->update(time);
+		}
+		//qteman->update(time);
+		if (!flechasPantalla_.empty() && flechasPantalla_.front()->getPosition().getY() > 550)
+		{
+			Flechas* aux = flechasPantalla_.front();
 
-		flechasPantalla_.pop_front();
-		cout << "fuera" << endl;
-		feedbackLeft->queueAnimationChange(Resources::FeedbackBad);
-		delete aux;
-	}
-	if (!botonesPantalla_.empty() && botonesPantalla_.front()->getPosition().getY() > 550)
-	{
-		Flechas* aux = botonesPantalla_.front();
-
-			botonesPantalla_.pop_front();
+			flechasPantalla_.pop_front();
 			cout << "fuera" << endl;
+			feedbackLeft->queueAnimationChange(Resources::FeedbackBad);
+			delete aux;
+		}
+		if (!botonesPantalla_.empty() && botonesPantalla_.front()->getPosition().getY() > 550)
+		{
+			Flechas* aux = botonesPantalla_.front();
 
-		feedbackRight->queueAnimationChange(Resources::FeedbackBad);
-		delete aux;
-	}
-	timer->Update();
-	if (timer->DeltaTime() < (bh->getBeatTime() / 1000) + 0.010 && timer->DeltaTime() > (bh->getBeatTime() / 1000) - 0.010)
-	{
-		generateFlechas();
-		generateBotones();
-		timer->Reset();
+				botonesPantalla_.pop_front();
+				cout << "fuera" << endl;
+
+			feedbackRight->queueAnimationChange(Resources::FeedbackBad);
+			delete aux;
+		}
+		timer->Update();
+		if (timer->DeltaTime() < (bh->getBeatTime() / 1000) + 0.010 && timer->DeltaTime() > (bh->getBeatTime() / 1000) - 0.010)
+		{
+			generateFlechas();
+			generateBotones();
+			timer->Reset();
+
+				beatSignal = true;
+			}
+	
+		else if (timer->DeltaTime() < (bh->getBeatTime() / animationFramesPerBeat / 1000) + 0.010 && timer->DeltaTime() > (bh->getBeatTime() / animationFramesPerBeat / 1000) - 0.010)
+		{
+			//aqu� se divide el beatTime lo necesario para animar las frames especificadas entre cada beat
 
 			beatSignal = true;
 		}
-	
-	else if (timer->DeltaTime() < (bh->getBeatTime() / animationFramesPerBeat / 1000) + 0.010 && timer->DeltaTime() > (bh->getBeatTime() / animationFramesPerBeat / 1000) - 0.010)
-	{
-		//aqu� se divide el beatTime lo necesario para animar las frames especificadas entre cada beat
-
-		beatSignal = true;
-	}
 	}
 	else {
 		minigame->update(time);
@@ -150,8 +150,6 @@ void PlayState::update(Uint32 time)
 			lip->setMinigameActive(false);
 			miniActive = false;
 			timer->Reset();
-			
-			
 		}
 	}
 	
@@ -203,10 +201,9 @@ void PlayState::render(Uint32 time, bool beatSync)
 	{
 		o->render(time, beatSignal);
 	}
-	if (!effect)
-		effectVaporWave->render(time, beatSync);
 	if (miniActive) {
 		minigame->render(time);
+		effectVaporWave->render(time, beatSync);
 	}
 
 	beatSignal = false;

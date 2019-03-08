@@ -41,7 +41,7 @@ public:
 		// music
 		Pruebas,
 		Sunflower,
-		Bad
+		Bill
 		// sound effects
 
 	};

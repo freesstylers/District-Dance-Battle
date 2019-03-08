@@ -42,7 +42,7 @@ vector<Resources::TextMsgInfo> Resources::messages_ {
 vector<Resources::MusicInfo> Resources::musics_ {
 	{Pruebas , "resources/sound/TutorialJuego.wav"},
 	{Sunflower, "resources/sound/sunflower.mp3"},
-	{Bad, "resources/sound/negative.wav"}
+	{Bill, "resources/sound/billijean.mp3"}
 };
 
 vector<Resources::SoundInfo> Resources::sounds_ {
