@@ -5,7 +5,6 @@
 class Feedback : public GameObject
 {
 private:
-	virtual void changeAnimation(int animationTag);
 
 	int lastUpdate = 0;	//time since the object was last updated, resets when queueAnimationChange is called
 
@@ -14,10 +13,9 @@ private:
 public:
 	Feedback(SDLGame* game, double width, double height, Vector2D pos);
 	virtual ~Feedback();
-	virtual void render(Uint32 time, bool beatSync);
 	virtual void update(Uint32 time);
 	virtual bool handleInput(Uint32 time, const SDL_Event& event) { return false; }
 
-	virtual void queueAnimationChange(int animationTag);
+	virtual void queueAnimationChange(int animationTag, bool waitForAnimationEnd = true);
 };
 

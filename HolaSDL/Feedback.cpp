@@ -15,29 +15,7 @@ Feedback::Feedback(SDLGame* game, double width, double height, Vector2D pos) :
 	framesPerSecond = 4;
 	isAnimationSyncedToMusic = true;
 
-	isRenderActive = false;
-}
-
-void Feedback::render(Uint32 time, bool beatSync)
-{
-	if (queuedAnimations.size() > 0) {
-		changeAnimation(queuedAnimations.front());
-	}
-	if (active_){
-		animation.texture_->render(getRect(), getFrameRect());
-
-
-
-		if ((!isAnimationSyncedToMusic && (time - lastRender) >= (1000 / framesPerSecond)) || (isAnimationSyncedToMusic && beatSync)) {	//animations update only when a certain time has passed OR when the "beatSync" signal is true
-			animation.currentFrame = animation.currentFrame + 1;
-
-			if (animation.currentFrame == animation.totalFrames) {
-				animation.currentFrame = 0;
-			}
-
-			lastRender = time;
-		}
-	}
+	active_ = false;
 }
 
 void Feedback::update(Uint32 time)
@@ -53,23 +31,9 @@ Feedback::~Feedback()
 {
 }
 
-void Feedback::queueAnimationChange(int animationTag)
+void Feedback::queueAnimationChange(int animationTag, bool waitForAnimationEnd)
 {
-	GameObject::queueAnimationChange(animationTag);
-
-	if(!active_)
-		setActive(true);
+	GameObject::queueAnimationChange(animationTag, false);
 
 	lastUpdate = 0;
-}
-
-void Feedback::changeAnimation(int animationTag)
-{
-	int currentFrame = animation.currentFrame;
-
-	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(animationTag);
-	if(!queuedAnimations.empty())
-		queuedAnimations.pop();
-
-	animation.currentFrame = currentFrame;
 }
