@@ -34,7 +34,6 @@ protected:
 	bool miniActive = true;
 	std::list<Flechas*> flechasNivel_;
 	std::list<Flechas*> botonesNivel_;
-	LevelInputManager* lip;
 
 
 
@@ -56,6 +55,7 @@ protected:
 	int initialNoteHeight = 10;	//altura a la cual se generan las notas en pantalla
 
 public:
+	LevelInputManager* lip;
 	BeatHandeler* bh;
 	Timer* timer;
 	PlayState(GameManager* g); //Crea estado (tal vez para niveles de dificultad con un int o bool)

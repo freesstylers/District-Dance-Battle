@@ -35,7 +35,7 @@ public:
 	std::list<Flechas*> botonesPantalla_;
 	void generaBotones();
 	void render(Uint32 time);
-	virtual void update(Uint32 time);
+	virtual void update(Uint32 time); 
 
 	//list<Flechas*> getList() { return flechas; };
 

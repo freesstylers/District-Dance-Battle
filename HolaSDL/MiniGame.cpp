@@ -82,6 +82,9 @@ void MiniGame::update(Uint32 time) {
 
 
 	}
+	if (playS->lip->getFallado()) {
+		fallado = true;
+	}
 	
 }
 
