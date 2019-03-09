@@ -17,7 +17,8 @@ GameManager::~GameManager()
 
 void GameManager::start() {
 	//entra el primer estado, aunque por ahora sera el PlayState
-	machine->pushState(new PlayState(this));
+	machine->pushState(new MenuState(this));
+	//machine->pushState(new PlayState(this, "level"));
 	run();
 }
 

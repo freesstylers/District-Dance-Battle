@@ -13,7 +13,8 @@ public:
 	std::list<GameObject*>::iterator botonActual;
 
 private:
-	static void play(GameManager* gameManager);
+	static void playLevel(GameManager* gameManager);
+	static void playPrueba(GameManager* gameManager);
 	static void creaBotones(GameManager* gameManager);
 	static void load(GameManager* gameManager);
 	static void exit(GameManager* gameManager);

@@ -15,7 +15,7 @@ protected:
 
 public:
 
-	PlayState2P(GameManager* g); //Crea estado (tal vez para niveles de dificultad con un int o bool)
+	PlayState2P(GameManager* g, string nivel); //Crea estado (tal vez para niveles de dificultad con un int o bool)
 	void newGame(); //Inicializa objetos
 	~PlayState2P();
 	virtual void update(Uint32 time);

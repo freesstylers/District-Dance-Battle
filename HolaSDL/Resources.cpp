@@ -18,6 +18,8 @@ vector<Resources::ImageInfo> Resources::images_ {
 	{BotonB, "resources/images/BotonB.png", 32, 32, 1, 1, 1},
 	{BotonX, "resources/images/BotonX.png", 32, 32, 1, 1, 1},
 	{BotonY, "resources/images/BotonY.png", 32, 32, 1, 1, 1},
+	{BotonLevel, "resources/images/BotonLevel.png", 50, 50, 1, 1, 1},
+	{BotonPrueba, "resources/images/BotonPrueba.png", 50, 50, 1, 1, 1},
     {Point, "resources/images/Point.png", 32, 32, 1, 1, 1},
 	{Nota, "resources/images/Nota.png", 9, 11, 1, 1, 1},
 	{Bar, "resources/images/enemy_mana_bar_001.png", 196, 16, 1, 1, 1},

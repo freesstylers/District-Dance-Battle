@@ -4,10 +4,15 @@ Button::Button()
 {
 }
 
-Button::Button(GameManager* game, double width, double height, Vector2D pos, Callback* callback) :
+Button::Button(GameManager* game, double width, double height, Vector2D pos, Callback* callback, int num) :
 	GameObject(game),  callback(callback), gameManager_(game)
 {
-	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::BotonY);
+	if (num == 0) {
+		animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::BotonLevel);
+	}
+	else if (num == 1) {
+		animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::BotonPrueba);
+	} else animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::BotonY);
 
 	setWidth(width);
 	setHeight(height);

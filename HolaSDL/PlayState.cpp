@@ -1,26 +1,25 @@
 #include "PlayState.h"
 #include "GameManager.h"
 
-PlayState::PlayState(GameManager* g) :GameState(g) //Asigna game y llama a inicializaci�n
+PlayState::PlayState(GameManager* g, string nivel) :GameState(g) //Asigna game y llama a inicializaci�n
 {
+	level = nivel;
 	newGame();
+
 }
 
 void PlayState::newGame()
 {
 	/*
 	Inicializar:
+	Nivel (cancion y flechas)
 	Barra de puntuacion
 	Barra de la cancion
 	Perico
 	Enemigo
 	Fondo
-	Cancion
-	Flechas
 	Pulsador/Logica de botones
 	*/
-
-	level = "level";
 
 	int leftNotesPos = manager->getWindowWidth() / 2 - pointOffset;
 	int rightNotesPos = manager->getWindowWidth() / 2 + pointOffset;

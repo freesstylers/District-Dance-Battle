@@ -8,9 +8,9 @@ MenuState::MenuState(GameManager* g) :GameState(g)
 	controller = SDL_GameControllerOpen(0);
 	/*int width = 100;
 	int height = 100;
-	stage.push_back(new Button(gameManager, width, height, Vector2D((2 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - height / 2, gameManager->getWindowHeight() / 2 - height / 2), play));
+	stage.push_back(new Button(gameManager, width, height, Vector2D((2 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - height / 2, gameManager->getWindowHeight() / 2 - height / 2), playLevel));
 	primerBoton = stage.begin();
-	stage.push_back(new Button(gameManager, width, height, Vector2D((4 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - height / 2, gameManager->getWindowHeight() / 2 - height / 2), play));
+	stage.push_back(new Button(gameManager, width, height, Vector2D((4 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - height / 2, gameManager->getWindowHeight() / 2 - height / 2), playPrueba));
 	stage.push_back(new Button(gameManager, width, height, Vector2D((6 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - height / 2, gameManager->getWindowHeight() / 2 - height / 2), creaBotones));
 	botonActual = primerBoton;
 	(*botonActual)->scale(2);*/
@@ -57,10 +57,10 @@ void MenuState::creaBotonesPrincipales()
 	destruirBotones();
 	int width = 100;
 	int height = 100;
-	stage.push_back(new Button(gameManager, width, height, Vector2D((2 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - height / 2, gameManager->getWindowHeight() / 2 - height / 2), play));
+	stage.push_back(new Button(gameManager, width, height, Vector2D((2 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - height / 2, gameManager->getWindowHeight() / 2 - height / 2), playLevel, 0));
 	primerBoton = stage.begin();
-	stage.push_back(new Button(gameManager, width, height, Vector2D((4 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - height / 2, gameManager->getWindowHeight() / 2 - height / 2), play));
-	stage.push_back(new Button(gameManager, width, height, Vector2D((6 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - height / 2, gameManager->getWindowHeight() / 2 - height / 2), creaBotones));
+	stage.push_back(new Button(gameManager, width, height, Vector2D((4 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - height / 2, gameManager->getWindowHeight() / 2 - height / 2), playPrueba, 2));
+	stage.push_back(new Button(gameManager, width, height, Vector2D((6 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - height / 2, gameManager->getWindowHeight() / 2 - height / 2), playPrueba, 1));
 	botonActual = primerBoton;
 	(*botonActual)->scale(2);
 }
@@ -83,9 +83,14 @@ void MenuState::backButton()
 	(*botonActual)->scale(2);
 }
 
-void MenuState::play(GameManager* game) {
+void MenuState::playLevel(GameManager* game) {
 	cout << "jugando" << endl;
-	game->getMachine()->pushState(new PlayState(game));
+	game->getMachine()->pushState(new PlayState(game, "level"));
+}
+
+void MenuState::playPrueba(GameManager* game) {
+	cout << "jugando" << endl;
+	game->getMachine()->pushState(new PlayState(game, "prueba"));
 }
 
 void MenuState::creaBotones(GameManager * gameManager)
@@ -93,10 +98,10 @@ void MenuState::creaBotones(GameManager * gameManager)
 	static_cast<MenuState*>(gameManager->getMachine()->currentState())->destruirBotones();
 	int width = 50;
 	int height = 50;
-	gameManager->getMachine()->currentState()->stage.push_back(new Button(gameManager, width, height, Vector2D((4 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - width / 2, gameManager->getWindowHeight() / 3 - height / 2), play));
+	gameManager->getMachine()->currentState()->stage.push_back(new Button(gameManager, width, height, Vector2D((4 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - width / 2, gameManager->getWindowHeight() / 3 - height / 2), playLevel, 0));
 	static_cast<MenuState*>(gameManager->getMachine()->currentState())->primerBoton = gameManager->getMachine()->currentState()->stage.begin();
-	gameManager->getMachine()->currentState()->stage.push_back(new Button(gameManager, width, height, Vector2D((5 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - width / 2, gameManager->getWindowHeight() / 3 - height / 2), play));
-	gameManager->getMachine()->currentState()->stage.push_back(new Button(gameManager, width, height, Vector2D((6 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - width / 2, gameManager->getWindowHeight() / 3 - height / 2), play));
+	gameManager->getMachine()->currentState()->stage.push_back(new Button(gameManager, width, height, Vector2D((5 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - width / 2, gameManager->getWindowHeight() / 3 - height / 2), playPrueba, 2));
+	gameManager->getMachine()->currentState()->stage.push_back(new Button(gameManager, width, height, Vector2D((6 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - width / 2, gameManager->getWindowHeight() / 3 - height / 2), playPrueba, 1));
 	static_cast<MenuState*>(gameManager->getMachine()->currentState())->botonActual = static_cast<MenuState*>(gameManager->getMachine()->currentState())->primerBoton;
 	(*static_cast<MenuState*>(gameManager->getMachine()->currentState())->botonActual)->scale(2);
 

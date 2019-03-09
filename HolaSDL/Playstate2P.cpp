@@ -1,9 +1,10 @@
 ﻿#include "PlayState2P.h"
 #include "GameManager.h"
 
-PlayState2P::PlayState2P(GameManager* g) :PlayState(g) //Asigna game y llama a inicializaci�n
+PlayState2P::PlayState2P(GameManager* g, string nivel) :PlayState(g, nivel) //Asigna game y llama a inicializaci�n
 {
 	newGame();
+	level = nivel;
 }
 
 void PlayState2P::newGame()

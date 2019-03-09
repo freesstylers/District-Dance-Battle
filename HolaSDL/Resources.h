@@ -19,6 +19,8 @@ public:
 		BotonB,
 		BotonX,
 		BotonY,
+		BotonLevel,
+		BotonPrueba,
 		Point,
 		Nota,
 		Bar,

@@ -13,7 +13,7 @@ private:
 public:
 
 	Button();
-	Button(GameManager* game, double width, double height, Vector2D pos, Callback* callback);
+	Button(GameManager* game, double width, double height, Vector2D pos, Callback* callback, int num);
 	virtual bool handleInput(Uint32 time, const SDL_Event& event);
 	virtual void update(Uint32 time);
 	virtual ~Button();
