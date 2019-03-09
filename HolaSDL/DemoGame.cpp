@@ -28,8 +28,8 @@ void DemoGame::initGame() {
 	bh = new BeatHandeler(112);
 
 	spritebarra = new FondoBarra(this,20, 20, Vector2D(20, 25), 0.3, Resources::Bar);
-	indicador = new BarrasHUD(this, 50, 50, Vector2D(20, 10), Vector2D(0.3,0),spritebarra); //0.3 va a depender de la duracion de la cancion
-	barraPuntos = new BarraPuntos(this, 20, 20, Vector2D(20, 100));
+	indicador = new BarrasHUD(this, 50, 50, Vector2D(20, 10), Vector2D(0.3,0), spritebarra); //0.3 va a depender de la duracion de la cancion
+	barraPuntos = new BarraPuntos(this, 20, 20, Vector2D(20, 100), 40, 500);
 
 	//velFlechas = asignaVel(bh->getBeatTime());
 	ifstream file("resources/levels/prueba.txt");
