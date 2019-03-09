@@ -1,6 +1,7 @@
 #include "LevelInputManager.h"
 #include "PlayState.h"
 #include "GameManager.h"
+#include <string>
 
 
 LevelInputManager::LevelInputManager(PlayState* l, int numctrl)
@@ -30,16 +31,19 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 					{
 						cout << "perfecto" << endl;
 						level->feedbackLeft->queueAnimationChange(Resources::FeedbackPerfect);
+						level->barraPuntos->avanza(1);
 					}
 					else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (level->rightPoint->getPosition().getY() + level->rightPoint->getHeight() / 2)) <= 50)
 					{
 						cout << "bien" << endl;
 						level->feedbackLeft->queueAnimationChange(Resources::FeedbackGood);
+						level->barraPuntos->avanza(2);
 					}
 					else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (level->rightPoint->getPosition().getY() + level->rightPoint->getHeight() / 2)) <= 100)
 					{
 						cout << "regular" << endl;
 						level->feedbackLeft->queueAnimationChange(Resources::FeedbackRegular);
+						level->barraPuntos->avanza(3);
 					}
 					else
 					{
@@ -76,16 +80,20 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 				{
 					cout << "perfecto" << endl;
 					level->feedbackRight->queueAnimationChange(Resources::FeedbackPerfect);
+					level->barraPuntos->avanza(1);
+					
 				}
 				else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (level->rightPoint->getPosition().getY() + level->rightPoint->getHeight() / 2)) <= 50)
 				{
 					cout << "bien" << endl;
 					level->feedbackRight->queueAnimationChange(Resources::FeedbackGood);
+					level->barraPuntos->avanza(2);
 				}
 				else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (level->rightPoint->getPosition().getY() + level->rightPoint->getHeight() / 2)) <= 100)
 				{
 					cout << "regular" << endl;
 					level->feedbackRight->queueAnimationChange(Resources::FeedbackRegular);
+					level->barraPuntos->avanza(3);
 				}
 				else
 				{

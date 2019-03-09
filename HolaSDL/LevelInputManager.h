@@ -1,5 +1,6 @@
 #pragma once
 #include "MiniGame.h"
+#include "BarraPuntos.h"
 #include "GameObject.h"
 
 class PlayState;

@@ -51,11 +51,69 @@ void PlayState::newGame()
 
 	bh = new BeatHandeler(nivel->bpm);
 
-	barraPuntos = new BarraPuntos(manager, 20, 20, Vector2D(20, 100));
-	spriteBarra = new FondoBarra(manager, 20, 20, Vector2D(20, 25), nivel->tiempo / (manager->getWindowWidth() - 40 + 50), Resources::Bar);
-	indicador = new BarrasHUD(manager, 50, 50, Vector2D(20, 10), Vector2D(nivel->tiempo / (manager->getWindowWidth() - 40 + 50), 0), spriteBarra); //0.3 va a depender de la duracion de la cancion
 	feedback1 = new Feedback(manager, pointSize, pointSize, Vector2D(leftNotesPos - pointSize / 2 - pointSize, 465));
 	feedback2 = new Feedback(manager, pointSize, pointSize, Vector2D(rightNotesPos - pointSize / 2 + pointSize, 465));
+	file >> bpm;
+	file >> songLength;
+	file >> probqte;
+	//file >> numNotas;
+
+	barraPuntos = new BarraPuntos(manager, 20, 1, Vector2D(20, 500), numNotas, 2000);
+	spriteBarra = new FondoBarra(manager, 20, 20, Vector2D(20, 25), (((manager->getWindowWidth()/ songLength )) /70.5), Resources::Bar); //70.5 es la constante para ajustar la velocidad de la barra al tiempo de la cancion
+	indicador = new BarrasHUD(manager, 50, 50, Vector2D(20, 10), Vector2D((((manager->getWindowWidth()/ songLength )) / 70.5), 0), spriteBarra); 
+
+	bh = new BeatHandeler(bpm);
+	qteman = new QTEManager(manager, probqte);
+
+	velFlechas = asignaVel(bh->getBeatTime());
+
+	Vector2D leftNotesVector = Vector2D(leftNotesPos - noteSize / 2, initialNoteHeight);
+	Vector2D rightNotesVector = Vector2D(rightNotesPos - noteSize / 2, initialNoteHeight);
+	int aux;
+	Flechas* flecha;
+	for (int i = 0; i < 50; i++) {
+		file >> aux;
+		switch (aux) {
+		case 0:
+			flecha = nullptr;
+			break;
+		case 1:
+			flecha = new Flechas(SDL_CONTROLLER_BUTTON_DPAD_LEFT, manager, noteSize, noteSize, leftNotesVector, velFlechas);
+			break;
+		case 2:
+			flecha = new Flechas(SDL_CONTROLLER_BUTTON_DPAD_RIGHT, manager, noteSize, noteSize, leftNotesVector, velFlechas);
+			break;
+		case 3:
+			flecha = new Flechas(SDL_CONTROLLER_BUTTON_DPAD_UP, manager, noteSize, noteSize, leftNotesVector, velFlechas);
+			break;
+		case 4:
+			flecha = new Flechas(SDL_CONTROLLER_BUTTON_DPAD_DOWN, manager, noteSize, noteSize, leftNotesVector, velFlechas);
+			break;
+		}
+		flechasNivel_.push_back(flecha);
+	}
+	for (int i = 0; i < 50; i++) {
+		file >> aux;
+		switch (aux) {
+		case 0:
+			flecha = nullptr;
+			break;
+		case 1:
+			flecha = new Flechas(SDL_CONTROLLER_BUTTON_A, manager, noteSize, noteSize, rightNotesVector, velFlechas);
+			break;
+		case 2:
+			flecha = new Flechas(SDL_CONTROLLER_BUTTON_B, manager, noteSize, noteSize, rightNotesVector, velFlechas);
+			break;
+		case 3:
+			flecha = new Flechas(SDL_CONTROLLER_BUTTON_X, manager, noteSize, noteSize, rightNotesVector, velFlechas);
+			break;
+		case 4:
+			flecha = new Flechas(SDL_CONTROLLER_BUTTON_Y, manager, noteSize, noteSize, rightNotesVector, velFlechas);
+			break;
+		}
+		botonesNivel_.push_back(flecha);
+	}
+	file.close();
 
 	qteman = new QTEManager(manager, nivel->probqte);
 
@@ -139,6 +197,16 @@ void PlayState::update(Uint32 time)
 		else if (timer->DeltaTime() < (bh->getBeatTime() / animationFramesPerBeat / 1000) + 0.010 && timer->DeltaTime() > (bh->getBeatTime() / animationFramesPerBeat / 1000) - 0.010)
 		{
 			//aqu� se divide el beatTime lo necesario para animar las frames especificadas entre cada beat
+		botonesPantalla_.pop_front();
+		cout << "fuera" << endl;
+		//barraPuntos->avanza(5);
+	}
+	timer->Update();
+	if (timer->DeltaTime() < (bh->getBeatTime() / 1000) + 0.010 && timer->DeltaTime() > (bh->getBeatTime() / 1000) - 0.010)
+	{
+		generateFlechas();
+		generateBotones();
+		timer->Reset();
 
 			beatSignal = true;
 		}
