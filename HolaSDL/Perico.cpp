@@ -11,7 +11,7 @@ Perico::Perico(SDLGame* game, double width, double height, Vector2D pos) :
 	setVelocity(Vector2D(0, 0));
 
 
-	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::PericoDab);
+	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::PericoIdle);
 
 	framesPerSecond = 4;
 	isAnimationSyncedToMusic = true;
