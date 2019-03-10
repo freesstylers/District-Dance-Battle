@@ -10,7 +10,7 @@ EndState::EndState(GameManager * g, int actualScore, int maxScore, int percentag
 		perico->queueAnimationChange(Resources::PericoBaile1, false);
 	}
 	else {
-	perico->queueAnimationChange(Resources::PericoDab, false);
+		perico->queueAnimationChange(Resources::PericoDab, false);
 	}
 
 	stage.push_back(perico);
@@ -22,5 +22,5 @@ EndState::~EndState()
 
 void EndState::backToMenu(GameManager * gameManager)
 {
-	gameManager->getMachine()->pushState(new PlayState(gameManager));
+	gameManager->getMachine()->popState();
 }

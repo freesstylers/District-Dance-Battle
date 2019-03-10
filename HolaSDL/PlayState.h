@@ -30,9 +30,6 @@ class PlayState : public GameState //Clase para las batallas y jugabilidad b�s
 protected:
 
 	string level;
-
-	int maxPoints;
-	int currentPoints;
 	bool effect = true;
 
 	Timer* timer;
@@ -67,6 +64,10 @@ protected:
 	Feedback* feedback1;
 	Feedback* feedback2;
 
+	int maxScore = 100000;
+	int currentScore = 0;
+	int maxNoteValue = 0;
+
 public:
 	BeatHandeler* bh;
 	BarraPuntos* barraPuntos; //barra puntuacion
@@ -96,12 +97,15 @@ public:
 
 	double msDiff = 0.0;  //Son los milisegundos que  hay de diferencia entre el beat que queremos y cuando realmente sale
 
+	void updateScore(int accuracy) { currentScore += maxNoteValue * (1 / accuracy); }
+
 protected:
 	void DeleteAll(); //Para borrado de objetos, por aquello de no dejar basura
-	int getPoints();
-	void changePoints(int data);
+	int getScore();
 	void generateFlechas();
 	void generateBotones();
+
+	void songOver();
 private:
 
 };

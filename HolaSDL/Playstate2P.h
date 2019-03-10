@@ -34,8 +34,6 @@ public:
 
 protected:
 	void DeleteAll(); //Para borrado de objetos, por aquello de no dejar basura
-	int getPoints();
-	void changePoints(int data);
 	void generateFlechas();
 	void generateBotones();
 

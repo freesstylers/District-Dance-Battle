@@ -18,7 +18,7 @@ public:
 	virtual void update(Uint32 time);
 	virtual ~Button();
 
-	void checkButton(int x, int y);
+	bool checkButton(int x, int y);
 
 	void callCallback();
 };

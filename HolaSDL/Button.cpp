@@ -17,19 +17,21 @@ Button::Button(GameManager* game, double width, double height, Vector2D pos, Cal
 
 bool Button::handleInput(Uint32 time, const SDL_Event& event) {
 	if (event.type == SDL_MOUSEBUTTONDOWN && event.button.button == SDL_BUTTON_LEFT) {
-		checkButton(event.button.x, event.button.y);
+		return checkButton(event.button.x, event.button.y);
 	}
 	return false;
 }
 
 
-void Button::checkButton(int x, int y) {
+bool Button::checkButton(int x, int y) {
 	SDL_Rect auxRect = getRect();
 
 	//Si pulsa dentro del rect�ngulo
 	if ((x > auxRect.x) && (x < auxRect.x + auxRect.w) && (y > auxRect.y) && (y < auxRect.y + auxRect.h)) {
 		callback(gameManager_);	//llama a la funci�n callback
+		return true;
 	}
+	return false;
 }
 
 void Button::callCallback()

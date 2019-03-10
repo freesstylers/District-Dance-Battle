@@ -190,16 +190,6 @@ void PlayState2P::DeleteAll()
 	}
 }
 
-int PlayState2P::getPoints()
-{
-	return currentPoints;
-}
-
-void PlayState2P::changePoints(int data)
-{
-	currentPoints = currentPoints + data;
-}
-
 void PlayState2P::generateFlechas()
 {
 	if (!flechasNivel_.empty()) {

@@ -36,9 +36,10 @@ void PlayState::newGame()
 	nivel = new Level(this, manager, level);
 	nivel->init();
 	timer = Timer::Instance();
-	lip = new LevelInputManager(this,0);
+	lip = new LevelInputManager(this, 0);
+	maxNoteValue = maxScore / nivel->numNotas;
 
-	barraPuntos = new BarraPuntos(manager, 20, 1, Vector2D(20, 500), nivel->numNotas, 2000);
+	barraPuntos = new BarraPuntos(manager, 20, 1, Vector2D(20, 500), nivel->numNotas, maxScore);
 	spriteBarra = new FondoBarra(manager, 20, 20, Vector2D(20, 25), (((manager->getWindowWidth() / nivel->songLength)) / 70.5), Resources::Bar); //70.5 es la constante para ajustar la velocidad de la barra al tiempo de la cancion
 	indicador = new BarrasHUD(manager, 50, 50, Vector2D(20, 10), Vector2D((((manager->getWindowWidth() / nivel->songLength)) / 70.5), 0), spriteBarra);
 
@@ -93,49 +94,55 @@ void PlayState::update(Uint32 time)
 	GameState::update(time);
 	if (!miniActive) 
 	{
-		for (Flechas* o : flechasPantalla_)
-		{
-			o->update(time);
+		if (flechasNivel_.empty() && botonesNivel_.empty()) {
+			songOver();
 		}
-		for (Flechas* o : botonesPantalla_)
-		{
-			o->update(time);
-		}
-		//qteman->update(time);
-		if (!flechasPantalla_.empty() && flechasPantalla_.front()->getPosition().getY() > 550)
-		{
-			Flechas* aux = flechasPantalla_.front();
 
-			flechasPantalla_.pop_front();
-			cout << "fuera" << endl;
-			feedbackLeft->queueAnimationChange(Resources::FeedbackBad);
-			delete aux;
-		}
-		if (!botonesPantalla_.empty() && botonesPantalla_.front()->getPosition().getY() > 550)
-		{
-			Flechas* aux = botonesPantalla_.front();
+		else {
+			for (Flechas* o : flechasPantalla_)
+			{
+				o->update(time);
+			}
+			for (Flechas* o : botonesPantalla_)
+			{
+				o->update(time);
+			}
+			//qteman->update(time);
+			if (!flechasPantalla_.empty() && flechasPantalla_.front()->getPosition().getY() > 550)
+			{
+				Flechas* aux = flechasPantalla_.front();
+
+				flechasPantalla_.pop_front();
+				cout << "fuera" << endl;
+				feedbackLeft->queueAnimationChange(Resources::FeedbackBad);
+				delete aux;
+			}
+			if (!botonesPantalla_.empty() && botonesPantalla_.front()->getPosition().getY() > 550)
+			{
+				Flechas* aux = botonesPantalla_.front();
 
 				botonesPantalla_.pop_front();
 				cout << "fuera" << endl;
 
-			feedbackRight->queueAnimationChange(Resources::FeedbackBad);
-			delete aux;
-		}
-		timer->Update();
-		if (timer->DeltaTime() > (bh->getBeatTime() / 1000.0) - msDiff)
-		{
-			msDiff += timer->DeltaTime() - (bh->getBeatTime() / 1000.0);
-			generateFlechas();
-			generateBotones();
-			timer->Reset();
+				feedbackRight->queueAnimationChange(Resources::FeedbackBad);
+				delete aux;
+			}
+			timer->Update();
+			if (timer->DeltaTime() > (bh->getBeatTime() / 1000.0) - msDiff)
+			{
+				msDiff += timer->DeltaTime() - (bh->getBeatTime() / 1000.0);
+				generateFlechas();
+				generateBotones();
+				timer->Reset();
 
-			beatSignal = true;
-		}
-		else if (timer->DeltaTime() > ((bh->getBeatTime() / 1000.0) / (animationFramesPerBeat / 1000)) - msDiff)
-		{
-			//aqu� se divide el beatTime lo necesario para animar las frames especificadas entre cada beat
+				beatSignal = true;
+			}
+			else if (timer->DeltaTime() > ((bh->getBeatTime() / 1000.0) / (animationFramesPerBeat / 1000)) - msDiff)
+			{
+				//aqu� se divide el beatTime lo necesario para animar las frames especificadas entre cada beat
 
-			beatSignal = true;
+				beatSignal = true;
+			}
 		}
 	}
 	else {
@@ -218,14 +225,9 @@ void PlayState::DeleteAll()
 	}
 }
 
-int PlayState::getPoints()
+int PlayState::getScore()
 {
-	return currentPoints;
-}
-
-void PlayState::changePoints(int data)
-{
-	currentPoints = currentPoints + data;
+	return currentScore;
 }
 
 //Al generar las flechas y los botones, los mueve en proporcion al tiempo perdido por cada vuelta
@@ -249,6 +251,11 @@ void PlayState::generateBotones()
 		}
 		botonesNivel_.pop_front();
 	}
+}
+
+void PlayState::songOver()
+{
+	manager->getMachine()->pushState(new EndState(manager, currentScore, maxScore, 70));
 }
 
 Vector2D PlayState::asignaVel(double time)
