@@ -18,7 +18,6 @@
     <ClInclude Include="BeatHandeler.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="CutSceneState.h" />
-    <ClInclude Include="DemoGame.h" />
     <ClInclude Include="EmptyObject.h" />
     <ClInclude Include="EndState.h" />
     <ClInclude Include="Feedback.h" />
@@ -68,7 +67,6 @@
     <ClCompile Include="BeatHandeler.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="CutSceneState.cpp" />
-    <ClCompile Include="DemoGame.cpp" />
     <ClCompile Include="EmptyObject.cpp" />
     <ClCompile Include="EndState.cpp" />
     <ClCompile Include="Feedback.cpp" />

@@ -1,4 +1,3 @@
-#include "DemoGame.h"
 #include "GameManager.h"
 
 using namespace std;
