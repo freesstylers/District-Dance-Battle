@@ -94,11 +94,14 @@ public:
 	MiniGame* getMinigame() { return minigame; }
 	GameManager* getGameManager() { return manager; }
 
+	double msDiff = 0.0;  //Son los milisegundos que  hay de diferencia entre el beat que queremos y cuando realmente sale
+
 protected:
 	void DeleteAll(); //Para borrado de objetos, por aquello de no dejar basura
 	int getPoints();
 	void changePoints(int data);
 	void generateFlechas();
 	void generateBotones();
+private:
 
 };

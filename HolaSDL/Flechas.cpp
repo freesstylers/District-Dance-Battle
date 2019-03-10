@@ -54,6 +54,7 @@ bool Flechas::handleInput(Uint32 time, const SDL_Event& event) {
 }
 
 void Flechas::update(Uint32 time) {
-	position_.set(position_ + velocity_);
+	double deltaTime = getGame()->deltaTime;
+	position_.set(position_ + velocity_ * deltaTime);
 }
 
