@@ -129,13 +129,6 @@ void PlayState::update(Uint32 time)
 			timer->Reset();
 
 				beatSignal = true;
-			}
-	
-		else if (timer->DeltaTime() < (bh->getBeatTime() / animationFramesPerBeat / 1000) + 0.010 && timer->DeltaTime() > (bh->getBeatTime() / animationFramesPerBeat / 1000) - 0.010)
-		{
-			//aqu� se divide el beatTime lo necesario para animar las frames especificadas entre cada beat
-
-			beatSignal = true;
 		}
 	}
 	else {
@@ -230,20 +223,20 @@ void PlayState::changePoints(int data)
 void PlayState::generateFlechas()
 {
 	if (!flechasNivel_.empty()) {
-		if (flechasNivel_.back() != nullptr) {
-			flechasPantalla_.push_back(flechasNivel_.back());
+		if (flechasNivel_.front() != nullptr) {
+			flechasPantalla_.push_back(flechasNivel_.front());
 		}
-		flechasNivel_.pop_back();
+		flechasNivel_.pop_front();
 	}
 }
 
 void PlayState::generateBotones()
 {
 	if (!botonesNivel_.empty()) {
-		if (botonesNivel_.back() != nullptr) {
-			botonesPantalla_.push_back(botonesNivel_.back());
+		if (botonesNivel_.front() != nullptr) {
+			botonesPantalla_.push_back(botonesNivel_.front());
 		}
-		botonesNivel_.pop_back();
+		botonesNivel_.pop_front();
 	}
 }
 
