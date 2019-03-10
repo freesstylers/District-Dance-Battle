@@ -38,22 +38,19 @@ void PlayState::newGame()
 	timer = Timer::Instance();
 	lip = new LevelInputManager(this,0);
 
+	barraPuntos = new BarraPuntos(manager, 20, 1, Vector2D(20, 500), nivel->numNotas, 2000);
+	spriteBarra = new FondoBarra(manager, 20, 20, Vector2D(20, 25), (((manager->getWindowWidth() / nivel->songLength)) / 70.5), Resources::Bar); //70.5 es la constante para ajustar la velocidad de la barra al tiempo de la cancion
+	indicador = new BarrasHUD(manager, 50, 50, Vector2D(20, 10), Vector2D((((manager->getWindowWidth() / nivel->songLength)) / 70.5), 0), spriteBarra);
+
 	perico = new Perico(manager, 200, 400, Vector2D(70, 130));
 	leftSquare = new Squares(manager, pointSize + 10, 575, Vector2D(leftNotesVector.getX() - 19, leftNotesVector.getY()));
 	rightSquare = new Squares(manager, pointSize + 10, 575, Vector2D(rightNotesVector.getX() - 19, rightNotesVector.getY()));
-	
 	
 	lip->setMinigameActive(true);
 	minigame = new MiniGame(manager, this);
 	minigameController = new TimerNoSingleton();
 
-	
-
 	bh = new BeatHandeler(nivel->bpm);
-
-	feedback1 = new Feedback(manager, pointSize, pointSize, Vector2D(leftNotesPos - pointSize / 2 - pointSize, 465));
-	feedback2 = new Feedback(manager, pointSize, pointSize, Vector2D(rightNotesPos - pointSize / 2 + pointSize, 465));
-	
 
 	qteman = new QTEManager(manager, nivel->probqte);
 
@@ -94,7 +91,7 @@ PlayState::~PlayState()
 void PlayState::update(Uint32 time)
 {
 	GameState::update(time);
-	if (miniActive == false) 
+	if (!miniActive) 
 	{
 		for (Flechas* o : flechasPantalla_)
 		{

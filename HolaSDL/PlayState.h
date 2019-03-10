@@ -38,8 +38,6 @@ protected:
 	Timer* timer;
 	LevelInputManager* lip;
 	int probqte;
-	int bpm;
-	double songLength;
 	bool miniActive = true;
 	TimerNoSingleton* minigameController;
 
