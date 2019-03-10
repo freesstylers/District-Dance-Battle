@@ -128,7 +128,7 @@ void PlayState::update(Uint32 time)
 			generateBotones();
 			timer->Reset();
 
-				beatSignal = true;
+			beatSignal = true;
 		}
 	}
 	else {
