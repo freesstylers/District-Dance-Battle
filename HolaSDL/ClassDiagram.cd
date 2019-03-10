@@ -1,0 +1,333 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AudioManager" Collapsed="true">
+    <Position X="13" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAQgABAAEAAAAACIAgAFYEACAQQA=</HashCode>
+      <FileName>AudioManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Background" Collapsed="true">
+    <Position X="5.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAgAAAEAAA=</HashCode>
+      <FileName>Background.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BarraPuntos" Collapsed="true">
+    <Position X="8.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIIAAAAAAAAAAAACAAAAAAEAEAAAAwAAAAAAAAAEAAA=</HashCode>
+      <FileName>BarraPuntos.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BarrasHUD" Collapsed="true">
+    <Position X="13" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAICAAAACAAAABAAAAAAACAAAAAAgAAAAAAAAAEAAA=</HashCode>
+      <FileName>BarrasHUD.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BeatHandeler" Collapsed="true">
+    <Position X="18" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>DAAAAAAAAAAEAAIAAAAAAAAAAAAAAAAAAAAAgAAACAA=</HashCode>
+      <FileName>BeatHandeler.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Button" Collapsed="true">
+    <Position X="20.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AMBAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAgAAEEAAA=</HashCode>
+      <FileName>Button.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CutSceneState" Collapsed="true">
+    <Position X="3" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABCAAAAAAAAAAAAAAAAgAAAAAAAEAAA=</HashCode>
+      <FileName>CutSceneState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EmptyObject" Collapsed="true">
+    <Position X="2.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAEAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAUAAA=</HashCode>
+      <FileName>EmptyObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EndState" Collapsed="true">
+    <Position X="4.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAACAIA=</HashCode>
+      <FileName>EndState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Feedback" Collapsed="true">
+    <Position X="10" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AKAAAAAAAAAAAAAQAAECAAAAAAAAEAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Feedback.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FondoBarra" Collapsed="true">
+    <Position X="14.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAQAAAAAAAAAAAAAAAAAAAAAAAgAAQAAQAAAEAAA=</HashCode>
+      <FileName>FondoBarra.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemigoBaile" Collapsed="true">
+    <Position X="17.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAIAAAAAAAAAAAAAAAAAEAAAAAAAAAAUAAA=</HashCode>
+      <FileName>EnemigoBaile.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Font" Collapsed="true">
+    <Position X="19.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEgAIAAAAAAAAAAAAAAAAAAAAAAAIAAAAACAAE=</HashCode>
+      <FileName>Font.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FontsManager" Collapsed="true">
+    <Position X="13" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEIAAEAAAIAAAAACAAAAAA=</HashCode>
+      <FileName>FontsManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameManager" Collapsed="true">
+    <Position X="10.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAgAAAAAAQBAgAAAABBAEAAAgAAAAAAAAAARUAAA=</HashCode>
+      <FileName>GameManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameObject" Collapsed="true">
+    <Position X="11.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>5NAAJIAAAKAMBAAgSAGBIJBCCAIAQAAmAARAAINUAAg=</HashCode>
+      <FileName>GameObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Flechas" Collapsed="true">
+    <Position X="11.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAEAAAAAABAAEAAAAAAAAAAAAAAEAAAAEAAA=</HashCode>
+      <FileName>Flechas.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameState" Collapsed="true">
+    <Position X="5.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAAAAAAEAAgACAAAAAAAAAAUIAA=</HashCode>
+      <FileName>GameState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameStateMachine" Collapsed="true">
+    <Position X="21.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAIAQAAIAAAgAAAIAAAAEAAAAAAAA=</HashCode>
+      <FileName>GameStateMachine.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Level" Collapsed="true">
+    <Position X="23.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAgAAAAAABEAAAAAAEAEAAAEMAAMBAAAJAAAAAAA=</HashCode>
+      <FileName>Level.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LevelInputManager" Collapsed="true">
+    <Position X="18" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AJAAAAQAAAAAAAEAAAgQAAAAAAMACAAAAAEAAoAEAAA=</HashCode>
+      <FileName>LevelInputManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapState" Collapsed="true">
+    <Position X="3" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAABAAAAAAAAAAIAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>MapState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MenuState" Collapsed="true">
+    <Position X="6.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEABAARAAIAIABEAAiAAAAAAAQCAAAAAAEBAACAAAAA=</HashCode>
+      <FileName>MenuState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiniGame" Collapsed="true">
+    <Position X="19.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQBAABAAAAAAAEAAEgAAAAEAAEAQAAgAAEAQoAUAAA=</HashCode>
+      <FileName>MiniGame.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Perico" Collapsed="true">
+    <Position X="16" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAABAAAAAACAAAAAAAAAEAAA=</HashCode>
+      <FileName>Perico.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayState" Collapsed="true">
+    <Position X="8.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAaWDgAkCAYgAFIwgEAJABMEIAEAkxGphJAIQAA0BBA=</HashCode>
+      <FileName>PlayState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayState2P" Collapsed="true">
+    <Position X="8.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAEAAAgABAwAAAhAEEgAEgAAAAJAJAAQBA0BAA=</HashCode>
+      <FileName>Playstate2P.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Point" Collapsed="true">
+    <Position X="22" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAgAACAAAAAAAAAAAAAgAAAAAAAAAEAAA=</HashCode>
+      <FileName>Point.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Pulsador" Collapsed="true">
+    <Position X="4" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAQAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAUAAA=</HashCode>
+      <FileName>Pulsador.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Puntuacion" Collapsed="true">
+    <Position X="7" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAUgAA=</HashCode>
+      <FileName>Puntuacion.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QTEManager" Collapsed="true">
+    <Position X="21.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQAAAAAAAAAAAAAAAgAACAAAAMIAAAAAAAAKAAUAAA=</HashCode>
+      <FileName>QTEManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuickTimeEvents" Collapsed="true">
+    <Position X="11.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>QuickTimeEvents.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RandomNumberGenerator" Collapsed="true">
+    <Position X="10.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RandomNumberGenerator.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Resources" Collapsed="true">
+    <Position X="23.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAACAAAAAAAAAAAAAAAAAAAAABAAAAAAAYAAA=</HashCode>
+      <FileName>Resources.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SDLAudioManager" Collapsed="true">
+    <Position X="13" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAABABAgAIAQgABAAEAAAAACIAgABYEQAAQQA=</HashCode>
+      <FileName>SDLAudioManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SDLFontsManager" Collapsed="true">
+    <Position X="13" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAIAAAAAAAQEAAAIAAAAACAAQAAA=</HashCode>
+      <FileName>SDLFontsManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SDLGame" Collapsed="true">
+    <Position X="10.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIACAAAAUEEAAAAgSAAAAAABCAAgEAAAAAEgAIA4gEI=</HashCode>
+      <FileName>SDLGame.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SDLTexturesManager" Collapsed="true">
+    <Position X="15.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAABAAACBAACAAAAAAAAIAAAIAAAAAABAQAAA=</HashCode>
+      <FileName>SDLTexturesManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ServiceLocator" Collapsed="true">
+    <Position X="18" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQEAAAAAACAABAAABAAAAEgBABQAAABAQARA=</HashCode>
+      <FileName>ServiceLocator.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Squares" Collapsed="true">
+    <Position X="19" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAACABAAAAAAEAAA=</HashCode>
+      <FileName>Squares.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SRandBasedGenerator" Collapsed="true">
+    <Position X="10.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAABAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SRandBasedGenerator.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Texture" Collapsed="true">
+    <Position X="19.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAgAAgQCAAAAAAAAAIQAAAAMIAABAQgAA=</HashCode>
+      <FileName>Texture.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TexturesManager" Collapsed="true">
+    <Position X="15.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAACAAAAAAAAIAAAIAAAAIABAAAAA=</HashCode>
+      <FileName>TexturesManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Timer" Collapsed="true">
+    <Position X="21.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAABgARQBAEAEAAAAIAAAAAQAAIAFAUAAA=</HashCode>
+      <FileName>Timer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TimerNoSingleton" Collapsed="true">
+    <Position X="23.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQQAAAAAAAABgARQBAAAEAAAAIAAAAAAAAIAQAQAAA=</HashCode>
+      <FileName>TimerNoSingleton.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vector2D" Collapsed="true">
+    <Position X="18" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAQEAAAAAQWAAYAAAAAAAAAAQAgAGBAAAA=</HashCode>
+      <FileName>Vector2D.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Animation" Collapsed="true">
+    <Position X="18" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAAAAAhAAAAAAAAAQAAgCEAAAAAAAAA=</HashCode>
+      <FileName>TexturesManager.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

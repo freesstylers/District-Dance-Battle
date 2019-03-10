@@ -97,4 +97,7 @@
     <ClInclude Include="Playstate2P.h" />
     <ClInclude Include="MiniGame.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+  </ItemGroup>
 </Project>
