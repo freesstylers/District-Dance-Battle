@@ -255,6 +255,7 @@ void PlayState::generateBotones()
 
 void PlayState::songOver()
 {
+	manager->getServiceLocator()->getAudios()->haltChannel(0);
 	manager->getMachine()->pushState(new EndState(manager, currentScore, maxScore, 70));
 }
 
