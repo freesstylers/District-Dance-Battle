@@ -122,16 +122,16 @@ void PlayState::update(Uint32 time)
 			delete aux;
 		}
 		timer->Update();
-		if (timer->DeltaTime() < (bh->getBeatTime() / 1000) + 0.010 && timer->DeltaTime() > (bh->getBeatTime() / 1000) - 0.010)
+		if (timer->DeltaTime() > (bh->getBeatTime() / 1000.0) - msDiff)
 		{
+			msDiff += timer->DeltaTime() - (bh->getBeatTime() / 1000.0);
 			generateFlechas();
 			generateBotones();
 			timer->Reset();
 
-				beatSignal = true;
-			}
-	
-		else if (timer->DeltaTime() < (bh->getBeatTime() / animationFramesPerBeat / 1000) + 0.010 && timer->DeltaTime() > (bh->getBeatTime() / animationFramesPerBeat / 1000) - 0.010)
+			beatSignal = true;
+		}
+		else if (timer->DeltaTime() > ((bh->getBeatTime() / 1000.0) / (animationFramesPerBeat / 1000)) - msDiff)
 		{
 			//aqu� se divide el beatTime lo necesario para animar las frames especificadas entre cada beat
 
@@ -144,6 +144,7 @@ void PlayState::update(Uint32 time)
 		if (minigame->getFallado()) {
 			lip->setMinigameActive(false);
 			miniActive = false;
+			msDiff = 0;
 			timer->Reset();
 		}
 	}
@@ -227,31 +228,34 @@ void PlayState::changePoints(int data)
 	currentPoints = currentPoints + data;
 }
 
+//Al generar las flechas y los botones, los mueve en proporcion al tiempo perdido por cada vuelta
 void PlayState::generateFlechas()
 {
 	if (!flechasNivel_.empty()) {
-		if (flechasNivel_.back() != nullptr) {
-			flechasPantalla_.push_back(flechasNivel_.back());
+		if (flechasNivel_.front() != nullptr) {
+			flechasPantalla_.push_back(flechasNivel_.front());
+			flechasPantalla_.back()->setPosition(flechasPantalla_.back()->getPosition() + flechasPantalla_.back()->getVelocity()*msDiff);
 		}
-		flechasNivel_.pop_back();
+		flechasNivel_.pop_front();
 	}
 }
 
 void PlayState::generateBotones()
 {
 	if (!botonesNivel_.empty()) {
-		if (botonesNivel_.back() != nullptr) {
-			botonesPantalla_.push_back(botonesNivel_.back());
+		if (botonesNivel_.front() != nullptr) {
+			botonesPantalla_.push_back(botonesNivel_.front());
+			botonesPantalla_.back()->setPosition(botonesPantalla_.back()->getPosition() + botonesPantalla_.back()->getVelocity()*msDiff);
 		}
-		botonesNivel_.pop_back();
+		botonesNivel_.pop_front();
 	}
 }
 
 Vector2D PlayState::asignaVel(double time)
 {
-	double distance = initialNoteHeight - (leftPoint->getPosition().getY() + leftPoint->getHeight() / 2);
-	double velocity = distance / time;
-	return Vector2D(0, -velocity * 4);
+	double distance = leftPoint->getPosition().getY() - initialNoteHeight + 25.0; //El 25 es la mitad de la altura de la flecha/boton
+	double velocity = distance / (time / 1000.0);
+	return Vector2D(0, velocity / 4.0);
 }
 
 void PlayState::playSong(int song) {

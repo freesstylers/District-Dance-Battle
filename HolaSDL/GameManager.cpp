@@ -39,8 +39,14 @@ void GameManager::run()
 		render(startTime);
 
 		Uint32 frameTime = SDL_GetTicks() - startTime;
-		if (frameTime < 10)
-			SDL_Delay(10 - frameTime);
+		double frames = (1.0 / (double)MAXFPS)*1000.0;
+		if (frameTime < frames) {
+			SDL_Delay(frames - frameTime);
+			deltaTime = frames / 1000.0;
+		}
+		else {
+			deltaTime = frameTime / 1000.0;
+		}
 	}
 }
 

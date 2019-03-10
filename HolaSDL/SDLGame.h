@@ -12,6 +12,8 @@
 
 using namespace std;
 
+const int MAXFPS = 144;
+
 class SDLGame {
 public:
 	SDLGame(string windowTitle_, int width, int height);
@@ -26,6 +28,8 @@ public:
 	// abstract methods to be implemented by subclasses
 	virtual void start() = 0; // start the game
 	virtual void stop() = 0;  // stop the game
+
+	double deltaTime = 1; //Va cambiando segun el tiempo de refresco (se le multiplica a lazs velocidades)
 
 private:
 	void initSDL(); // initialize SDL (ttf, mixer, image, create window and renderer, etc)
