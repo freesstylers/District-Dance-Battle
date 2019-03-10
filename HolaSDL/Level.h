@@ -21,10 +21,10 @@ public:
 
 	int bpm;
 	int probqte;
-	double tiempo;
+	double songLength;
 	int song;
 	int puntMax;
-	int numnotas;
+	int numNotas;
 
 protected:
 	string name;

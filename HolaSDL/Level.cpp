@@ -22,14 +22,14 @@ void Level::playSong() {
 void Level::init() {
 	ifstream file("resources/levels/" + name + ".txt");
 	file >> bpm;
-	file >> tiempo;
+	file >> songLength;
 	file >> song;
 
 	velFlechas = level->asignaVel(60000/bpm);
 
 	int aux;
 	Flechas* flecha;
-	for (int i = 0; i < round(bpm*(tiempo/60)); i++) {
+	for (int i = 0; i < round(bpm*(songLength/60)); i++) {
 		file >> aux;
 		switch (aux) {
 		case 0:
@@ -49,8 +49,10 @@ void Level::init() {
 			break;
 		}
 		level->flechasNivel_.push_back(flecha);
+
+		numNotas++;
 	}
-	for (int i = 0; i < round(bpm*(tiempo/60)); i++) {
+	for (int i = 0; i < round(bpm*(songLength/60)); i++) {
 		file >> aux;
 		switch (aux) {
 		case 0:
@@ -70,6 +72,8 @@ void Level::init() {
 			break;
 		}
 		level->botonesNivel_.push_back(flecha);
+
+		numNotas++;
 	}
 	file.close();
 

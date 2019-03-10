@@ -39,7 +39,7 @@ protected:
 	LevelInputManager* lip;
 	int probqte;
 	int bpm;
-	double tiempo;
+	double songLength;
 	bool miniActive = true;
 	TimerNoSingleton* minigameController;
 
@@ -49,19 +49,10 @@ protected:
 
 
 
-	double songLength;
-	int numNotas = 50;
-
-	std::list<Flechas*> flechasNivel_;
-	std::list<Flechas*> botonesNivel_;
-	Timer* timer;
-	BeatHandeler* bh;
-	LevelInputManager* lip;
 	Vector2D velFlechas;
 	QTEManager* qteman;
 	MiniGame* minigame;
 	Perico* perico;
-	Feedback* a;
 	EmptyObject* effectVaporWave;
 	Level* nivel;
 

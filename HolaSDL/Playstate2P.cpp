@@ -42,9 +42,9 @@ void PlayState2P::newGame()
 
 	bh = new BeatHandeler(nivel->bpm);
 
-	barraPuntos = new BarraPuntos(manager, 20, 20, Vector2D(20, 100));
-	spriteBarra = new FondoBarra(manager, 20, 20, Vector2D(20, 25), nivel->tiempo / (manager->getWindowWidth() - 40 + 50), Resources::Bar);
-	indicador = new BarrasHUD(manager, 50, 50, Vector2D(20, 10), Vector2D(nivel->tiempo / (manager->getWindowWidth() - 40 + 50), 0), spriteBarra); //0.3 va a depender de la duracion de la cancion
+	/*barraPuntos = new BarraPuntos(manager, 20, 20, Vector2D(20, 100), nivel->numNotas, 100);
+	spriteBarra = new FondoBarra(manager, 20, 20, Vector2D(20, 25), nivel->songLength / (manager->getWindowWidth() - 40 + 50), Resources::Bar);*/
+	indicador = new BarrasHUD(manager, 50, 50, Vector2D(20, 10), Vector2D(nivel->songLength / (manager->getWindowWidth() - 40 + 50), 0), spriteBarra); //0.3 va a depender de la duracion de la cancion
 
 	qteman = new QTEManager(manager, nivel->probqte);
 
