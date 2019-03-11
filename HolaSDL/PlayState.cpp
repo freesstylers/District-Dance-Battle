@@ -41,7 +41,7 @@ void PlayState::newGame()
 
 	barraPuntos = new BarraPuntos(manager, 20, 1, Vector2D(50, 465 + pointSize), nivel->numNotas, maxScore);
 
-	spriteBarra = new FondoBarra(manager, 1, 14, Vector2D(50, 35), (((manager->getWindowWidth() - 50) / nivel->songLength) / 70.5), Resources::Bar); //70.5 es la constante para ajustar la velocidad de la barra al tiempo de la cancion
+	spriteBarra = new FondoBarra(manager, 1, 14, Vector2D(50, 35), (((manager->getWindowWidth() - 50) / nivel->songLength) / 70.5), Resources::Bluebar); //70.5 es la constante para ajustar la velocidad de la barra al tiempo de la cancion
 	indicador = new BarrasHUD(manager, 18, 22, Vector2D(41, 31), Vector2D((((manager->getWindowWidth() / nivel->songLength)) / 70.5), 0), spriteBarra);
 
 	perico = new Perico(manager, 240, 480, Vector2D(30, initialNoteHeight + 20), Resources::PericoIdle);
