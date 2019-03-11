@@ -8,6 +8,7 @@
 #include "Timer.h"
 #include "TimerNoSingleton.h"
 #include "Flechas.h"
+#include "Feedback.h"
 
 
 
@@ -29,6 +30,7 @@ protected:
 	PlayState* playS;
 
 	int nFlechas = 15;
+	int flechasMax = nFlechas;
 
 	TimerNoSingleton* timer;
 
@@ -43,6 +45,8 @@ public:
 	void render(Uint32 time);
 	virtual void update(Uint32 time); 
 	void creaLista();
+	void borraLista();
+	Feedback* fback;
 	//list<Flechas*> getList() { return flechas; };
 
 };

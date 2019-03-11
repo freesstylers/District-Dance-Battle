@@ -53,8 +53,7 @@ public:
 
 	virtual void queueAnimationChange(int animationTag, bool waitForAnimationEnd = true);
 
-	std::queue<int> queuedAnimations;
-
+	virtual void cleanAnimationQueue() { while (!queuedAnimations.empty()) { queuedAnimations.pop(); } }
 protected:
 	SDLGame* game_; // pointer to the game
 
@@ -76,4 +75,5 @@ protected:
 	bool isAnimationSyncedToMusic = false;
 
 	virtual void changeAnimation(int animationTag);
+	std::queue<int> queuedAnimations;
 };

@@ -37,8 +37,8 @@ void PlayState2P::newGame()
 	timer = Timer::Instance();
 	lip = new LevelInputManager(static_cast<PlayState*>(this),0);
 	perico = new Perico(manager, 200, 400, Vector2D(70, 130), Resources::PericoIdle);
-	leftSquare = new Squares(manager, pointSize + 10, 575, Vector2D(leftNotesVector.getX() - 19, leftNotesVector.getY()));
-	rightSquare = new Squares(manager, pointSize + 10, 575, Vector2D(rightNotesVector.getX() - 19, rightNotesVector.getY()));
+	leftNoteBar = new Squares(manager, pointSize + 10, 575, Vector2D(leftNotesVector.getX() - 19, leftNotesVector.getY()));
+	rightNoteBar = new Squares(manager, pointSize + 10, 575, Vector2D(rightNotesVector.getX() - 19, rightNotesVector.getY()));
 
 	bh = new BeatHandeler(nivel->bpm);
 
@@ -51,8 +51,8 @@ void PlayState2P::newGame()
 	effectVaporWave = new EmptyObject(manager, Vector2D(0, 0), Resources::EffectVaporWave, manager->getWindowWidth(), manager->getWindowHeight());
 
 	stage.push_back(bg);
-	stage.push_back(leftSquare);
-	stage.push_back(rightSquare);
+	stage.push_back(leftNoteBar);
+	stage.push_back(rightNoteBar);
 	stage.push_back(leftPoint);
 	stage.push_back(rightPoint);
 	stage.push_back(perico);

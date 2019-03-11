@@ -20,22 +20,23 @@ vector<Resources::ImageInfo> Resources::images_ {
 	{BotonY, "resources/images/BotonY.png", 32, 32, 1, 1, 1},
     {Point, "resources/images/Point.png", 32, 32, 1, 1, 1},
 	{Nota, "resources/images/Nota.png", 9, 11, 1, 1, 1},
-	{Bar, "resources/images/enemy_mana_bar_001.png", 196, 16, 1, 1, 1},
+	{Bluebar, "resources/images/enemy_mana_bar_001.png", 196, 16, 1, 1, 1},
+	{Yellowbar, "resources/images/enemy_mana_bar_002.png", 196, 16, 1, 1, 1},
 	{PericoIdle, "resources/images/PericoIdle.png", 60, 120, 3, 2, 4},
 	{PericoDab, "resources/images/PericoDab.png", 60, 120, 2, 1, 2},
 	{PericoBaile1, "resources/images/PericoBaile1.png", 60, 120, 2, 1, 2},
-	{PericoMaxPower, "resources/images/PericoMaxPower.png", 69, 120, 2, 2, 3},
+	{PericoMaxPower, "resources/images/PericoMaxPower.png", 60, 120, 2, 2, 3},
 	{FeedbackBad, "resources/images/Bad.png", 64, 64, 2, 1, 2},
 	{FeedbackRegular, "resources/images/Regular.png", 64, 64, 2, 1, 2},
 	{FeedbackPerfect, "resources/images/Perfect.png", 64, 64, 2, 1, 2},
 	{FeedbackGood, "resources/images/Good.png", 64, 64, 2, 1, 2},
 	{Blank, "resources/images/blank.png", 64, 64, 1, 1, 1},
 	{EffectVaporWave, "resources/images/VW2.png", 450, 338, 5, 9, 42 },
-	{Square, "resources/images/Recuadro.png", 32, 100, 2, 1, 2},
+	{Square, "resources/images/Recuadro.png", 32, 100, 4, 1, 4},
 	{FondoPrueba, "resources/images/FondoPrueba.png", 128, 100, 2, 1, 2},
 	{FondoPixel, "resources/images/FondoPixel.png", 128, 100, 2, 1, 2},
-	{RobotIdle, "resources/images/RobotVaporwave.png", 76, 120, 2, 1, 2},
-	{RobotDance, "resources/images/VaporwaveDance.png", 76, 120, 3, 2, 4}
+	{RobotIdle, "resources/images/RobotVaporwave.png", 60, 120, 2, 1, 2},
+	{RobotDance, "resources/images/VaporwaveDance.png", 60, 120, 3, 2, 4}
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {
@@ -45,7 +46,7 @@ vector<Resources::TextMsgInfo> Resources::messages_ {
 vector<Resources::MusicInfo> Resources::musics_ {
 	{Pruebas , "resources/sound/TutorialJuego.wav"},
 	{Sunflower, "resources/sound/sunflower.mp3"},
-	{Bill, "resources/sound/billijean.mp3"},
+	{Bill, "resources/sound/billijean_noGlitch.mp3"},
 	{Error, "resources/sound/Error.WAV"}
 };
 

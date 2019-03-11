@@ -8,7 +8,7 @@ MiniGame::MiniGame(GameManager* g, PlayState* p)
 {
 	manager = g;
 	playS = p;
-
+	fback = new Feedback(g, 150, 150, Vector2D(g->getWindowWidth() / 2 - 150 / 2, g->getWindowHeight() / 2 - 150 / 2));
 	timer = new TimerNoSingleton();
 
 
@@ -21,6 +21,7 @@ void MiniGame::creaLista()
 	int aux;
 	fallado = false;
 	nFlechas = 15;
+	flechasMax = nFlechas;
 	Flechas* flecha;
 	for (int i = 0; i < 15; i++) {
 		aux = rand() % 8;
@@ -61,18 +62,17 @@ void MiniGame::update(Uint32 time) {
 			o->update(time);
 		}
 	}
-
+	Timer::Instance()->Update();
 	timer->Update();
 	if (timer->DeltaTime() > (playS->bh->getBeatTime() / 1000.0) && nFlechas > 0)
 	{
-		//playS->msDiff += timer->DeltaTime() - (playS->bh->getBeatTime() / 1000.0);
 		generaBotones();
 		
 		timer->Reset();
 
 		nFlechas--;
 	}
-	else if (botonesNivel_.empty()&& botonesPantalla_.empty() && nFlechas <= 0) {
+	if (Timer::Instance()->DeltaTime() > (playS->bh->getBeatTime() / 1000.0)*(flechasMax+4)) {
 		fallado = true;
 	}
 	
@@ -84,6 +84,7 @@ void MiniGame::render(Uint32 time) {
 	{
 		o->render(time);
 	}
+	fback->render(time);
 }
 
 void MiniGame::generaBotones() {
@@ -95,4 +96,14 @@ void MiniGame::generaBotones() {
 	}
 }
 
+void MiniGame::borraLista() {
+	for (auto o = botonesPantalla_.begin(); o != botonesPantalla_.end();)
+	{
+		auto next = o;
+		++next;
+		delete (*o);
+		botonesPantalla_.remove(*o);
+		o = next;
+	}
+}
 
