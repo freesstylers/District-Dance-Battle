@@ -101,7 +101,6 @@ void PlayState::update(Uint32 time)
 		if (flechasNivel_.empty() && botonesNivel_.empty()) {
 			songOver();
 		}
-
 		else {
 			for (Flechas* o : flechasPantalla_)
 			{

@@ -8,6 +8,7 @@
 #include "Timer.h"
 #include "TimerNoSingleton.h"
 #include "Flechas.h"
+#include "Feedback.h"
 
 
 
@@ -43,6 +44,7 @@ public:
 	void render(Uint32 time);
 	virtual void update(Uint32 time); 
 	void creaLista();
+	Feedback* fback;
 	//list<Flechas*> getList() { return flechas; };
 
 };
