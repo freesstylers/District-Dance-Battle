@@ -39,14 +39,15 @@ void PlayState::newGame()
 	lip = new LevelInputManager(this, 0);
 	maxNoteValue = maxScore / nivel->numNotas;
 
-	barraPuntos = new BarraPuntos(manager, 20, 1, Vector2D(20, 500), nivel->numNotas, maxScore);
-	spriteBarra = new FondoBarra(manager, 20, 20, Vector2D(20, 25), (((manager->getWindowWidth() / nivel->songLength)) / 70.5), Resources::Bar); //70.5 es la constante para ajustar la velocidad de la barra al tiempo de la cancion
-	indicador = new BarrasHUD(manager, 50, 50, Vector2D(20, 10), Vector2D((((manager->getWindowWidth() / nivel->songLength)) / 70.5), 0), spriteBarra);
+	barraPuntos = new BarraPuntos(manager, 20, 1, Vector2D(50, 465 + pointSize), nivel->numNotas, maxScore);
+
+	spriteBarra = new FondoBarra(manager, 1, 14, Vector2D(50, 35), (((manager->getWindowWidth() - 50) / nivel->songLength) / 70.5), Resources::Bar); //70.5 es la constante para ajustar la velocidad de la barra al tiempo de la cancion
+	indicador = new BarrasHUD(manager, 18, 22, Vector2D(41, 31), Vector2D((((manager->getWindowWidth() / nivel->songLength)) / 70.5), 0), spriteBarra);
 
 	perico = new Perico(manager, 240, 480, Vector2D(30, 130), Resources::PericoIdle);
 	robot = new Perico(manager, 304, 480, Vector2D(manager->getWindowWidth() - 280, 130), Resources::RobotIdle);
-	leftSquare = new Squares(manager, pointSize + 10, 575, Vector2D(leftNotesVector.getX() - 19, leftNotesVector.getY()));
-	rightSquare = new Squares(manager, pointSize + 10, 575, Vector2D(rightNotesVector.getX() - 19, rightNotesVector.getY()));
+	leftNoteBar = new Squares(manager, noteBarWidth, 465 + 0.6 * pointSize, Vector2D(leftNotesPos + 1 - noteBarWidth / 2, leftNotesVector.getY()));
+	rightNoteBar = new Squares(manager, noteBarWidth, 465 + 0.6 * pointSize, Vector2D(rightNotesPos + 1 - noteBarWidth / 2, rightNotesVector.getY()));
 	
 	minigame = new MiniGame(manager, this);
 	minigameController = new TimerNoSingleton();
@@ -58,8 +59,8 @@ void PlayState::newGame()
 	effectVaporWave = new EmptyObject(manager, Vector2D(0, 0), Resources::EffectVaporWave, manager->getWindowWidth(), manager->getWindowHeight());
 
 	stage.push_back(bg);
-	stage.push_back(leftSquare);
-	stage.push_back(rightSquare);
+	stage.push_back(leftNoteBar);
+	stage.push_back(rightNoteBar);
 	stage.push_back(leftPoint);
 	stage.push_back(rightPoint);
 	stage.push_back(perico);
@@ -284,6 +285,7 @@ Vector2D PlayState::asignaVel(double time)
 {
 	double distance = leftPoint->getPosition().getY() + leftPoint->getHeight()/2 - initialNoteHeight + 25.0; //El 25 es la mitad de la altura de la flecha/boton
 	double velocity = distance / (time / 1000.0);
+
 	return Vector2D(0, velocity / 4.0);
 }
 
@@ -294,6 +296,8 @@ void PlayState::playSong(int song) {
 
 void PlayState::showError()
 {
+	bg->cleanAnimationQueue();
+
 	bg->queueAnimationChange(Resources::FondoPixel, false);
 	bg->queueAnimationChange(Resources::FondoPrueba);
 	manager->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0);

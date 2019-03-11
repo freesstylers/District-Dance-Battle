@@ -60,9 +60,10 @@ protected:
 	int animationFramesPerBeat = 2;	//int que determina cu�ntas frames de animaci�n van entre cada beat
 
 	int pointSize = 80;	//tama�o del pulsador/punto
+	int noteBarWidth = pointSize +33;
 	int noteSize = 50;	//tama�o de nota 
 	int pointOffset = 70;	//offset entre las barras de notas y el centro de la pantalla
-	int initialNoteHeight = 10;	//altura a la cual se generan las notas en pantalla
+	int initialNoteHeight = 70;	//altura a la cual se generan las notas en pantalla
 	Feedback* feedback1;
 	Feedback* feedback2;
 
@@ -90,8 +91,8 @@ public:
 	Point* rightPoint;
 	Feedback* feedbackLeft;
 	Feedback* feedbackRight;
-	Squares* leftSquare;
-	Squares* rightSquare;
+	Squares* leftNoteBar;
+	Squares* rightNoteBar;
 	Background* bg;
 	Vector2D leftNotesVector;
 	Vector2D rightNotesVector;

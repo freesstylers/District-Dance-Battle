@@ -120,7 +120,7 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 						keyup2 = false;
 						delete(it);
 						level->botonesPantalla_.remove(it);
-						level->feedbackRight->queueAnimationChange(Resources::FeedbackRegular);
+						level->feedbackRight->queueAnimationChange(Resources::FeedbackBad);
 						cout << "boton incorrecta" << endl;
 						level->showError();
 					}
