@@ -48,7 +48,6 @@ void PlayState::newGame()
 	leftSquare = new Squares(manager, pointSize + 10, 575, Vector2D(leftNotesVector.getX() - 19, leftNotesVector.getY()));
 	rightSquare = new Squares(manager, pointSize + 10, 575, Vector2D(rightNotesVector.getX() - 19, rightNotesVector.getY()));
 	
-	lip->setMinigameActive(true);
 	minigame = new MiniGame(manager, this);
 	minigameController = new TimerNoSingleton();
 
@@ -153,6 +152,7 @@ void PlayState::update(Uint32 time)
 		miniActive=true;
 		if (!animationMiniGame)
 		{
+			lip->setMinigameActive(true);
 			robot->queueAnimationChange(Resources::RobotDance);
 			perico->queueAnimationChange(Resources::PericoBaile1);
 			animationMiniGame = true;
@@ -283,7 +283,7 @@ void PlayState::songOver()
 
 Vector2D PlayState::asignaVel(double time)
 {
-	double distance = leftPoint->getPosition().getY() + leftPoint->getHeight()/2 - initialNoteHeight - 25.0; //El 25 es la mitad de la altura de la flecha/boton
+	double distance = leftPoint->getPosition().getY() + leftPoint->getHeight()/2 - initialNoteHeight + 25.0; //El 25 es la mitad de la altura de la flecha/boton
 	double velocity = distance / (time / 1000.0);
 	return Vector2D(0, velocity / 4.0);
 }
