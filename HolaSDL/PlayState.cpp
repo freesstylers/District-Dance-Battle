@@ -20,7 +20,7 @@ void PlayState::newGame()
 	Pulsador/Logica de botones
 	*/
 
-	level = "prueba";
+	level = "level";
 
 	int leftNotesPos = manager->getWindowWidth() / 2 - pointOffset;
 	int rightNotesPos = manager->getWindowWidth() / 2 + pointOffset;
@@ -165,6 +165,7 @@ void PlayState::update(Uint32 time)
 			miniActive = false;
 			msDiff = 0;
 			timer->Reset();
+			minigame->borraLista();
 			minigame->creaLista();
 			minigameController->Reset();
 			robot->queueAnimationChange(Resources::RobotIdle);
@@ -284,7 +285,7 @@ void PlayState::songOver()
 
 Vector2D PlayState::asignaVel(double time)
 {
-	double distance = leftPoint->getPosition().getY() + leftPoint->getHeight()/2 - initialNoteHeight + 25.0; //El 25 es la mitad de la altura de la flecha/boton
+	double distance = leftPoint->getPosition().getY() + leftPoint->getHeight()/2 - initialNoteHeight - 25.0; //El 25 es la mitad de la altura de la flecha/boton
 	double velocity = distance / (time / 1000.0);
 
 	return Vector2D(0, velocity / 4.0);
