@@ -7,7 +7,7 @@ BarraPuntos::BarraPuntos(SDLGame* game, double width, double height, Vector2D po
 	setPosition(pos);
 	numNotas_ = numNotas;
 	maxHeight_ = game->getWindowHeight();
-	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::Bar);
+	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::Yellowbar);
 }
 
 bool BarraPuntos::handleInput(Uint32 time, const SDL_Event& event) {
