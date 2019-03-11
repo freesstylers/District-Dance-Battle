@@ -1,6 +1,6 @@
 #include "BarrasHUD.h"
 
-BarrasHUD::BarrasHUD(SDLGame* game, double width, double height, Vector2D pos, Vector2D vel,FondoBarra* fondo):
+BarrasHUD::BarrasHUD(SDLGame* game, double width, double height, Vector2D pos, Vector2D vel, FondoBarra* fondo):
 	GameObject(game), texture(texture)
 {
 	

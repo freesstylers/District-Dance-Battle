@@ -31,7 +31,7 @@ vector<Resources::ImageInfo> Resources::images_ {
 	{FeedbackGood, "resources/images/Good.png", 64, 64, 2, 1, 2},
 	{Blank, "resources/images/blank.png", 64, 64, 1, 1, 1},
 	{EffectVaporWave, "resources/images/VW2.png", 450, 338, 5, 9, 42 },
-	{Square, "resources/images/Recuadro.png", 32, 100, 2, 1, 2},
+	{Square, "resources/images/Recuadro.png", 32, 100, 4, 1, 4},
 	{FondoPrueba, "resources/images/FondoPrueba.png", 128, 100, 2, 1, 2},
 	{FondoPixel, "resources/images/FondoPixel.png", 128, 100, 2, 1, 2},
 	{RobotIdle, "resources/images/RobotVaporwave.png", 76, 120, 2, 1, 2},
