@@ -43,7 +43,8 @@ void PlayState::newGame()
 	spriteBarra = new FondoBarra(manager, 20, 20, Vector2D(20, 25), (((manager->getWindowWidth() / nivel->songLength)) / 70.5), Resources::Bar); //70.5 es la constante para ajustar la velocidad de la barra al tiempo de la cancion
 	indicador = new BarrasHUD(manager, 50, 50, Vector2D(20, 10), Vector2D((((manager->getWindowWidth() / nivel->songLength)) / 70.5), 0), spriteBarra);
 
-	perico = new Perico(manager, 200, 400, Vector2D(70, 130));
+	perico = new Perico(manager, 240, 480, Vector2D(30, 130), Resources::PericoIdle);
+	robot = new Perico(manager, 304, 480, Vector2D(manager->getWindowWidth() - 280, 130), Resources::RobotIdle);
 	leftSquare = new Squares(manager, pointSize + 10, 575, Vector2D(leftNotesVector.getX() - 19, leftNotesVector.getY()));
 	rightSquare = new Squares(manager, pointSize + 10, 575, Vector2D(rightNotesVector.getX() - 19, rightNotesVector.getY()));
 	
@@ -63,6 +64,7 @@ void PlayState::newGame()
 	stage.push_back(leftPoint);
 	stage.push_back(rightPoint);
 	stage.push_back(perico);
+	stage.push_back(robot);
 	stage.push_back(barraPuntos);
 	stage.push_back(spriteBarra);
 	stage.push_back(indicador);
@@ -87,13 +89,16 @@ PlayState::~PlayState()
 	delete qteman;
 	delete effectVaporWave;
 	delete nivel;
+	delete minigame;
+	delete minigameController;
 }
 
 void PlayState::update(Uint32 time)
 {
 	GameState::update(time);
-	if (!miniActive) 
+	if (!miniActive && minigameController->DeltaTime() < 6) 
 	{
+		minigameController->Update();
 		if (flechasNivel_.empty() && botonesNivel_.empty()) {
 			songOver();
 		}
@@ -114,6 +119,9 @@ void PlayState::update(Uint32 time)
 
 				flechasPantalla_.pop_front();
 				cout << "fuera" << endl;
+
+				showError();
+
 				feedbackLeft->queueAnimationChange(Resources::FeedbackBad);
 				delete aux;
 			}
@@ -123,6 +131,8 @@ void PlayState::update(Uint32 time)
 
 				botonesPantalla_.pop_front();
 				cout << "fuera" << endl;
+
+				showError();
 
 				feedbackRight->queueAnimationChange(Resources::FeedbackBad);
 				delete aux;
@@ -137,15 +147,16 @@ void PlayState::update(Uint32 time)
 
 				beatSignal = true;
 			}
-			else if (timer->DeltaTime() > ((bh->getBeatTime() / 1000.0) / (animationFramesPerBeat / 1000)) - msDiff)
-			{
-				//aqu� se divide el beatTime lo necesario para animar las frames especificadas entre cada beat
-
-				beatSignal = true;
-			}
 		}
 	}
 	else {
+		miniActive=true;
+		if (!animationMiniGame)
+		{
+			robot->queueAnimationChange(Resources::RobotDance);
+			perico->queueAnimationChange(Resources::PericoBaile1);
+			animationMiniGame = true;
+		}
 		minigame->update(time);
 		lip->update();
 		if (minigame->getFallado()) {
@@ -153,8 +164,19 @@ void PlayState::update(Uint32 time)
 			miniActive = false;
 			msDiff = 0;
 			timer->Reset();
+			minigame->creaLista();
+			minigameController->Reset();
+			robot->queueAnimationChange(Resources::RobotIdle);
+			perico->queueAnimationChange(Resources::PericoIdle);
+			animationMiniGame = false;
 		}
 	}
+	if (timer->DeltaTime() > ((bh->getBeatTime() / 1000.0) / (animationFramesPerBeat / 1000)) - msDiff)
+		{
+		//aqu� se divide el beatTime lo necesario para animar las frames especificadas entre cada beat
+
+		beatSignal = true;
+		}
 	
 }
 
@@ -261,7 +283,7 @@ void PlayState::songOver()
 
 Vector2D PlayState::asignaVel(double time)
 {
-	double distance = leftPoint->getPosition().getY() - initialNoteHeight + 25.0; //El 25 es la mitad de la altura de la flecha/boton
+	double distance = leftPoint->getPosition().getY() + leftPoint->getHeight()/2 - initialNoteHeight - 25.0; //El 25 es la mitad de la altura de la flecha/boton
 	double velocity = distance / (time / 1000.0);
 	return Vector2D(0, velocity / 4.0);
 }
@@ -269,4 +291,11 @@ Vector2D PlayState::asignaVel(double time)
 void PlayState::playSong(int song) {
 	manager->getServiceLocator()->getAudios()->playChannel(song, 0);
 	manager->getServiceLocator()->getAudios()->setChannelVolume(70);
+}
+
+void PlayState::showError()
+{
+	bg->queueAnimationChange(Resources::FondoPixel, false);
+	bg->queueAnimationChange(Resources::FondoPrueba);
+	manager->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0);
 }

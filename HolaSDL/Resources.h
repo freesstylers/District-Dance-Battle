@@ -33,7 +33,10 @@ public:
 		Blank,
 		EffectVaporWave,
 		Square,
-		FondoPrueba
+		FondoPrueba,
+		FondoPixel,
+		RobotIdle,
+		RobotDance
 		// text
 	};
 
@@ -41,7 +44,8 @@ public:
 		// music
 		Pruebas,
 		Sunflower,
-		Bill
+		Bill,
+		Error
 		// sound effects
 
 	};

@@ -42,7 +42,7 @@ public:
 	void generaBotones();
 	void render(Uint32 time);
 	virtual void update(Uint32 time); 
-
+	void creaLista();
 	//list<Flechas*> getList() { return flechas; };
 
 };
