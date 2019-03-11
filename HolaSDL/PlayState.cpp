@@ -95,7 +95,7 @@ PlayState::~PlayState()
 void PlayState::update(Uint32 time)
 {
 	GameState::update(time);
-	if (!miniActive && minigameController->DeltaTime() < 6) 
+	if (!miniActive && minigameController->DeltaTime() < 100) 
 	{
 		minigameController->Update();
 		if (flechasNivel_.empty() && botonesNivel_.empty()) {
@@ -115,26 +115,24 @@ void PlayState::update(Uint32 time)
 			if (!flechasPantalla_.empty() && flechasPantalla_.front()->getPosition().getY() > 550)
 			{
 				Flechas* aux = flechasPantalla_.front();
-
+				delete aux;
 				flechasPantalla_.pop_front();
 				cout << "fuera" << endl;
 
 				showError();
 
 				feedbackLeft->queueAnimationChange(Resources::FeedbackBad);
-				delete aux;
 			}
 			if (!botonesPantalla_.empty() && botonesPantalla_.front()->getPosition().getY() > 550)
 			{
 				Flechas* aux = botonesPantalla_.front();
-
+				delete aux;
 				botonesPantalla_.pop_front();
 				cout << "fuera" << endl;
 
 				showError();
 
 				feedbackRight->queueAnimationChange(Resources::FeedbackBad);
-				delete aux;
 			}
 			timer->Update();
 			if (timer->DeltaTime() > (bh->getBeatTime() / 1000.0) - msDiff)
@@ -285,7 +283,7 @@ Vector2D PlayState::asignaVel(double time)
 {
 	double distance = leftPoint->getPosition().getY() + leftPoint->getHeight()/2 - initialNoteHeight + 25.0; //El 25 es la mitad de la altura de la flecha/boton
 	double velocity = distance / (time / 1000.0);
-	return Vector2D(0, velocity / 4.0);
+	return Vector2D(0, velocity / 8.0);
 }
 
 void PlayState::playSong(int song) {

@@ -26,22 +26,21 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 			if (it != nullptr) {
 				if (event.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, it->getKey()) && keyup)
 				{
-					keyup = false;
-					if (abs((it->getPosition().getY() + it->getHeight() / 2) - (level->rightPoint->getPosition().getY() + level->rightPoint->getHeight() / 2)) <= 25)
+					if (abs((it->getPosition().getY() + it->getHeight() / 2) - (level->rightPoint->getPosition().getY() + level->rightPoint->getHeight() / 2)) <= 10)
 					{
 						cout << "perfecto" << endl;
 						level->feedbackLeft->queueAnimationChange(Resources::FeedbackPerfect);
 						level->barraPuntos->avanza(1);
 						level->updateScore(1);
 					}
-					else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (level->rightPoint->getPosition().getY() + level->rightPoint->getHeight() / 2)) <= 50)
+					else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (level->rightPoint->getPosition().getY() + level->rightPoint->getHeight() / 2)) <= 25)
 					{
 						cout << "bien" << endl;
 						level->feedbackLeft->queueAnimationChange(Resources::FeedbackGood);
 						level->barraPuntos->avanza(2);
 						level->updateScore(2);
 					}
-					else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (level->rightPoint->getPosition().getY() + level->rightPoint->getHeight() / 2)) <= 100)
+					else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (level->rightPoint->getPosition().getY() + level->rightPoint->getHeight() / 2)) <= 50)
 					{
 						cout << "regular" << endl;
 						level->feedbackLeft->queueAnimationChange(Resources::FeedbackRegular);
@@ -54,6 +53,7 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 						level->feedbackLeft->queueAnimationChange(Resources::FeedbackBad);
 						level->showError();
 					}
+						keyup = false;
 						delete(it);
 						level->flechasPantalla_.remove(it);
 					
@@ -71,61 +71,60 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 						level->showError();
 					}
 				}
-				if (event.type == SDL_CONTROLLERBUTTONUP) keyup = true;
+				else if (event.type == SDL_CONTROLLERBUTTONUP) keyup = true;
 			}
 		}
 		if (!level->botonesPantalla_.empty())
 		{
 				auto it = level->botonesPantalla_.front();
-		if (it != nullptr) {
-			if (event.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, it->getKey()) && keyup2)
-			{
-				keyup2 = false;
-				if (abs((it->getPosition().getY() + it->getHeight()/2) - (level->rightPoint->getPosition().getY() + level->rightPoint->getHeight()/2)) <= 25)
+				if (it != nullptr) {
+				if (event.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, it->getKey()) && keyup2)
 				{
-					cout << "perfecto" << endl;
-					level->feedbackRight->queueAnimationChange(Resources::FeedbackPerfect);
-					level->barraPuntos->avanza(1);
-					level->updateScore(1);
-					
-				}
-				else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (level->rightPoint->getPosition().getY() + level->rightPoint->getHeight() / 2)) <= 50)
-				{
-					cout << "bien" << endl;
-					level->feedbackRight->queueAnimationChange(Resources::FeedbackGood);
-					level->barraPuntos->avanza(2);
-					level->updateScore(2);
-				}
-				else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (level->rightPoint->getPosition().getY() + level->rightPoint->getHeight() / 2)) <= 100)
-				{
-					cout << "regular" << endl;
-					level->feedbackRight->queueAnimationChange(Resources::FeedbackRegular);
-					level->barraPuntos->avanza(3);
-					level->updateScore(3);
-				}
-				else
-				{
+					if (abs((it->getPosition().getY() + it->getHeight() / 2) - (level->rightPoint->getPosition().getY() + level->rightPoint->getHeight() / 2)) <= 10)
+					{
+						cout << "perfecto" << endl;
+						level->feedbackRight->queueAnimationChange(Resources::FeedbackPerfect);
+						level->barraPuntos->avanza(1);
+						level->updateScore(1);
+
+					}
+					else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (level->rightPoint->getPosition().getY() + level->rightPoint->getHeight() / 2)) <= 25)
+					{
+						cout << "bien" << endl;
+						level->feedbackRight->queueAnimationChange(Resources::FeedbackGood);
+						level->barraPuntos->avanza(2);
+						level->updateScore(2);
+					}
+					else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (level->rightPoint->getPosition().getY() + level->rightPoint->getHeight() / 2)) <= 50)
+					{
+						cout << "regular" << endl;
+						level->feedbackRight->queueAnimationChange(Resources::FeedbackRegular);
+						level->barraPuntos->avanza(3);
+						level->updateScore(3);
+					}
+					else
+					{
 						cout << "mala punteria" << endl;
 						level->feedbackRight->queueAnimationChange(Resources::FeedbackBad);
 						level->showError();
-				}
-	
+					}
+					delete it;
 					level->botonesPantalla_.remove(it);
+					keyup2 = false;
 				}
 				else if (event.type == SDL_CONTROLLERBUTTONDOWN && keyup2)
 				{
 					if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B) ||
 						SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_X) || SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_Y))
 					{
-						keyup2 = false;
 						delete(it);
 						level->botonesPantalla_.remove(it);
-						level->feedbackRight->queueAnimationChange(Resources::FeedbackRegular);
+						level->feedbackRight->queueAnimationChange(Resources::FeedbackBad);
 						cout << "boton incorrecta" << endl;
 						level->showError();
 					}
 				}
-				if (event.type == SDL_CONTROLLERBUTTONUP) keyup2 = true;
+				else if (event.type == SDL_CONTROLLERBUTTONUP) keyup2 = true;
 			}
 		}
 	}
@@ -137,13 +136,12 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 			if (it != nullptr) {
 				if (event.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, it->getKey()) && keyup2)
 				{
-					keyup = false;
+					keyup2 = false;
 					if (abs(it->getPosition().getY()) > 0 && abs(it->getPosition().getY()) < level->leftPoint->getGame()->getWindowHeight() && abs(it->getPosition().getX()) > 0 && abs(it->getPosition().getX()) < level->leftPoint->getGame()->getWindowWidth())
 					{
 						cout << "perfecto" << endl;
 						fallado = false;
 					}
-					
 
 					delete(it);
 					level->getMinigame()->botonesPantalla_.remove(it);
@@ -160,7 +158,7 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 						fallado = true;
 					}
 				}
-				if (event.type == SDL_CONTROLLERBUTTONUP) keyup2 = true;
+				else if (event.type == SDL_CONTROLLERBUTTONUP) keyup2 = true;
 			}
 			
 		}
@@ -176,7 +174,6 @@ void LevelInputManager::update() {
 				level->getMinigame()->botonesPantalla_.pop_front();
 				cout << "fuera" << endl;
 				fallado = true;
-
 			}
 		}
 	}

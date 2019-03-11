@@ -51,7 +51,7 @@ void MiniGame::creaLista()
 			flecha = new Flechas(SDL_CONTROLLER_BUTTON_Y, manager, 75, 75, Vector2D(manager->getWindowWidth(), manager->getWindowHeight()), Vector2D(-200, -200));
 			break;
 		}
-		botonesNivel_.push_back(flecha);
+		botonesNivel_.push_front(flecha);
 	}
 }
 void MiniGame::update(Uint32 time) {

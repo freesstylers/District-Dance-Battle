@@ -27,6 +27,7 @@ private:
 	const Uint8 *keystates;
 	bool keyup = true;
 	bool keyup2 = true;
+	bool pressed = false;
 	PlayState* level;
 	SDL_GameController* controller = NULL;
 };
