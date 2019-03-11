@@ -52,6 +52,7 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 					{
 						cout << "mala punteria" << endl;
 						level->feedbackLeft->queueAnimationChange(Resources::FeedbackBad);
+						level->showError();
 					}
 						delete(it);
 						level->flechasPantalla_.remove(it);
@@ -67,6 +68,7 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 						level->flechasPantalla_.remove(it);
 						level->feedbackLeft->queueAnimationChange(Resources::FeedbackBad);
 						cout << "flecha incorrecta" << endl;
+						level->showError();
 					}
 				}
 				if (event.type == SDL_CONTROLLERBUTTONUP) keyup = true;
@@ -105,6 +107,7 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 				{
 						cout << "mala punteria" << endl;
 						level->feedbackRight->queueAnimationChange(Resources::FeedbackBad);
+						level->showError();
 				}
 	
 					level->botonesPantalla_.remove(it);
@@ -119,6 +122,7 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 						level->botonesPantalla_.remove(it);
 						level->feedbackRight->queueAnimationChange(Resources::FeedbackRegular);
 						cout << "boton incorrecta" << endl;
+						level->showError();
 					}
 				}
 				if (event.type == SDL_CONTROLLERBUTTONUP) keyup2 = true;

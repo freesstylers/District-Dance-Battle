@@ -35,7 +35,7 @@ protected:
 	Timer* timer;
 	LevelInputManager* lip;
 	int probqte;
-	bool miniActive = true;
+	bool miniActive = false;
 	TimerNoSingleton* minigameController;
 
 
@@ -48,6 +48,7 @@ protected:
 	QTEManager* qteman;
 	MiniGame* minigame;
 	Perico* perico;
+	Perico* robot;
 	EmptyObject* effectVaporWave;
 	Level* nivel;
 
@@ -55,11 +56,12 @@ protected:
 	FondoBarra* spriteBarra; //barra tiempo
 
 	bool beatSignal = false;	//bool usado para avisar de que se avance la animaci�n seg�n el ritmo de la canci�n
+	bool animationMiniGame = false;
 	int animationFramesPerBeat = 2;	//int que determina cu�ntas frames de animaci�n van entre cada beat
 
 	int pointSize = 80;	//tama�o del pulsador/punto
 	int noteSize = 50;	//tama�o de nota 
-	int pointOffset = 100;	//offset entre las barras de notas y el centro de la pantalla
+	int pointOffset = 70;	//offset entre las barras de notas y el centro de la pantalla
 	int initialNoteHeight = 10;	//altura a la cual se generan las notas en pantalla
 	Feedback* feedback1;
 	Feedback* feedback2;
@@ -78,6 +80,7 @@ public:
 	virtual bool handleEvent(Uint32 time, SDL_Event e);
 	virtual void render(Uint32 time, bool beatSync = false);
 	void playSong(int song);
+	void showError();
 	Vector2D asignaVel(double time);
 	std::list<Flechas*> flechasNivel_;
 	std::list<Flechas*> botonesNivel_;

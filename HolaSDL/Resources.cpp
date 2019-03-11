@@ -32,7 +32,10 @@ vector<Resources::ImageInfo> Resources::images_ {
 	{Blank, "resources/images/blank.png", 64, 64, 1, 1, 1},
 	{EffectVaporWave, "resources/images/VW2.png", 450, 338, 5, 9, 42 },
 	{Square, "resources/images/Recuadro.png", 32, 100, 2, 1, 2},
-	{FondoPrueba, "resources/images/FondoPrueba.png", 128, 100, 2, 1, 2}
+	{FondoPrueba, "resources/images/FondoPrueba.png", 128, 100, 2, 1, 2},
+	{FondoPixel, "resources/images/FondoPixel.png", 128, 100, 2, 1, 2},
+	{RobotIdle, "resources/images/RobotVaporwave.png", 76, 120, 2, 1, 2},
+	{RobotDance, "resources/images/VaporwaveDance.png", 76, 120, 3, 2, 4}
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {
@@ -42,7 +45,8 @@ vector<Resources::TextMsgInfo> Resources::messages_ {
 vector<Resources::MusicInfo> Resources::musics_ {
 	{Pruebas , "resources/sound/TutorialJuego.wav"},
 	{Sunflower, "resources/sound/sunflower.mp3"},
-	{Bill, "resources/sound/billijean.mp3"}
+	{Bill, "resources/sound/billijean.mp3"},
+	{Error, "resources/sound/Error.WAV"}
 };
 
 vector<Resources::SoundInfo> Resources::sounds_ {

@@ -36,7 +36,7 @@ void PlayState2P::newGame()
 	nivel->init();
 	timer = Timer::Instance();
 	lip = new LevelInputManager(static_cast<PlayState*>(this),0);
-	perico = new Perico(manager, 200, 400, Vector2D(70, 130));
+	perico = new Perico(manager, 200, 400, Vector2D(70, 130), Resources::PericoIdle);
 	leftSquare = new Squares(manager, pointSize + 10, 575, Vector2D(leftNotesVector.getX() - 19, leftNotesVector.getY()));
 	rightSquare = new Squares(manager, pointSize + 10, 575, Vector2D(rightNotesVector.getX() - 19, rightNotesVector.getY()));
 
