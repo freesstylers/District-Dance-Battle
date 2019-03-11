@@ -13,7 +13,7 @@ Feedback::Feedback(SDLGame* game, double width, double height, Vector2D pos) :
 	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::Blank);
 
 	framesPerSecond = 4;
-	isAnimationSyncedToMusic = true;
+	//isAnimationSyncedToMusic = true;
 
 	active_ = false;
 }

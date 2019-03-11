@@ -147,6 +147,7 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 
 					delete(it);
 					level->getMinigame()->botonesPantalla_.remove(it);
+					level->getMinigame()->fback->queueAnimationChange(Resources::FeedbackGood);
 				}
 				else if (event.type == SDL_CONTROLLERBUTTONDOWN && keyup2)
 				{
@@ -158,6 +159,7 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 						level->getMinigame()->botonesPantalla_.remove(it);
 						cout << "flecha incorrecta" << endl;
 						fallado = true;
+						level->getMinigame()->fback->queueAnimationChange(Resources::FeedbackBad);
 					}
 				}
 				if (event.type == SDL_CONTROLLERBUTTONUP) keyup2 = true;
@@ -173,8 +175,10 @@ void LevelInputManager::update() {
 		if (!level->getMinigame()->botonesPantalla_.empty())
 		{
 			if (level->getMinigame()->botonesPantalla_.front()->getPosition().getX() < -3 || level->getMinigame()->botonesPantalla_.front()->getPosition().getX() > level->getGameManager()->getWindowWidth() || level->getMinigame()->botonesPantalla_.front()->getPosition().getY() < -75 || level->getMinigame()->botonesPantalla_.front()->getPosition().getY() > level->getGameManager()->getWindowHeight() +75) {
+				delete level->getMinigame()->botonesPantalla_.front();
 				level->getMinigame()->botonesPantalla_.pop_front();
 				cout << "fuera" << endl;
+				level->getMinigame()->fback->queueAnimationChange(Resources::FeedbackBad);
 				fallado = true;
 
 			}
