@@ -2,7 +2,7 @@
 
 
 
-GameManager::GameManager(): SDLGame("FreeStylers", _WINDOW_WIDTH_, _WINDOW_HEIGHT_)
+GameManager::GameManager(): SDLGame("District Dance Battle", _WINDOW_WIDTH_, _WINDOW_HEIGHT_)
 {
 	machine = new GameStateMachine();
 	exit_ = false;
