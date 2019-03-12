@@ -8,6 +8,9 @@ BarraPuntos::BarraPuntos(SDLGame* game, double width, double height, Vector2D po
 	numNotas_ = numNotas;
 	maxHeight_ = game->getWindowHeight();
 	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::Yellowbar);
+
+	currentHeight = height;
+	originalHeight = pos.getY();
 }
 
 bool BarraPuntos::handleInput(Uint32 time, const SDL_Event& event) {
@@ -20,8 +23,10 @@ void BarraPuntos::avanza(int punt)
 
 	porcentaje = (maxHeight_ / numNotas_) * (1 / punt);
 
-	setHeight(height_ + porcentaje);	
-	position_.set(position_ - Vector2D(0, porcentaje));
+	currentHeight = currentHeight + porcentaje;
+
+	setHeight(currentHeight);
+	position_.setY(originalHeight - currentHeight);
 }
 
 void BarraPuntos::update(Uint32 time)
