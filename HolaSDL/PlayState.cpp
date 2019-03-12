@@ -30,8 +30,8 @@ void PlayState::newGame()
 
 	leftPoint = new Point(manager, pointSize, pointSize, Vector2D(leftNotesPos - pointSize / 2, 465));
 	rightPoint = new Point(manager, pointSize, pointSize, Vector2D(rightNotesPos - pointSize / 2, 465));
-	feedbackLeft = new Feedback(manager, pointSize * 0.6, pointSize * 0.6, Vector2D(leftNotesPos - (pointSize * 0.6) - (pointSize * 0.6), 465 + pointSize / 2));
-	feedbackRight = new Feedback(manager, pointSize * 0.6, pointSize * 0.6, Vector2D(rightNotesPos + (pointSize * 0.6), 465 + pointSize / 2));
+	feedbackLeft = new Feedback(manager, pointSize * 0.8, pointSize * 0.8, Vector2D(leftNotesPos - (pointSize * 0.8) - (pointSize * 0.8), 465 + pointSize / 2));
+	feedbackRight = new Feedback(manager, pointSize * 0.8, pointSize * 0.8, Vector2D(rightNotesPos + (pointSize * 0.8), 465 + pointSize / 2));
 	bg = new Background(manager, manager->getWindowWidth(), manager->getWindowHeight(), Vector2D(0, 0));
 	nivel = new Level(this, manager, level);
 	nivel->init();
@@ -39,13 +39,13 @@ void PlayState::newGame()
 	lip = new LevelInputManager(this, 0);
 	maxNoteValue = maxScore / nivel->numNotas;
 
-	barraPuntos = new BarraPuntos(manager, 20, 1, Vector2D(50, 465 + pointSize), nivel->numNotas, maxScore);
+	barraPuntos = new BarraPuntos(manager, 20, 1, Vector2D(20, 465 + pointSize), nivel->numNotas, maxScore);
 
 	spriteBarra = new FondoBarra(manager, 1, 14, Vector2D(50, 35), (((manager->getWindowWidth() - 50) / nivel->songLength) / 70.5), Resources::Bluebar); //70.5 es la constante para ajustar la velocidad de la barra al tiempo de la cancion
 	indicador = new BarrasHUD(manager, 18, 22, Vector2D(41, 31), Vector2D((((manager->getWindowWidth() / nivel->songLength)) / 70.5), 0), spriteBarra);
 
-	perico = new Perico(manager, 180, 360, Vector2D(90, initialNoteHeight + 39 + 100), Resources::PericoIdle);
-	robot = new Perico(manager, 180, 360, Vector2D(manager->getWindowWidth() - 250, initialNoteHeight + 100), Resources::RobotIdle);
+	perico = new Perico(manager, 240, 480, Vector2D(40, initialNoteHeight + 100), Resources::PericoIdle);
+	robot = new Perico(manager, 240, 480, Vector2D(manager->getWindowWidth() - 275, initialNoteHeight + 40), Resources::RobotIdle);
 	leftNoteBar = new Squares(manager, noteBarWidth, 465 + 0.6 * pointSize, Vector2D(leftNotesPos + 1 - noteBarWidth / 2, leftNotesVector.getY()));
 	rightNoteBar = new Squares(manager, noteBarWidth, 465 + 0.6 * pointSize, Vector2D(rightNotesPos + 1 - noteBarWidth / 2, rightNotesVector.getY()));
 	
