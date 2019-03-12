@@ -55,7 +55,7 @@ void Level::init() {
 			}
 			level->flechasNivel_.push_back(flecha);
 
-			numNotas++;
+			if(aux!=0) numNotas++;
 		}
 	}
 
@@ -88,7 +88,7 @@ void Level::init() {
 
 			level->botonesNivel_.push_back(flecha);
 
-			numNotas++;
+			if (aux != 0) numNotas++;
 		} 
 	}
 	file.close();
