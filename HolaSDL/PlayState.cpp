@@ -20,7 +20,7 @@ void PlayState::newGame()
 	Pulsador/Logica de botones
 	*/
 
-	level = "level";
+	level = "prueba";
 
 	int leftNotesPos = manager->getWindowWidth() / 2 - pointOffset;
 	int rightNotesPos = manager->getWindowWidth() / 2 + pointOffset;
@@ -96,7 +96,7 @@ PlayState::~PlayState()
 void PlayState::update(Uint32 time)
 {
 	GameState::update(time);
-	if (!miniActive && minigameController->DeltaTime() < 100) 
+	if (!miniActive && minigameController->DeltaTime() < nivel->songLength/3) 
 	{
 		minigameController->Update();
 		if (flechasNivel_.empty() && botonesNivel_.empty()) {
