@@ -3,14 +3,14 @@
 EndState::EndState(GameManager * g, int actualScore, int maxScore, int percentage): GameState(g)
 {
 	int scoreLimit = (percentage * maxScore)/ 100;
-	Button* cont = new Button(g, 100, 100, Vector2D(400, 100),backToMenu);
-	Perico* perico = new Perico(g, 80, 150, Vector2D(400, 150), Resources::PericoDab);
+	Button* cont = new Button(g, 100, 100, Vector2D(400, 100), backToMenu);
+	Character* perico = new Character(g, 80, 150, Vector2D(400, 150), Resources::PericoDab);
 	stage.push_back(cont);
 	if (actualScore >= scoreLimit) {
-		perico->queueAnimationChange(Resources::PericoBaile1, false);
+		perico->forceAnimationChange(Resources::PericoDance1);
 	}
 	else {
-		perico->queueAnimationChange(Resources::PericoDab, false);
+		perico->forceAnimationChange(Resources::PericoDab);
 	}
 
 	stage.push_back(perico);

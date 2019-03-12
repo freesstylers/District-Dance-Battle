@@ -7,7 +7,7 @@
 #include "GameObject.h"
 #include "Timer.h"
 #include "TimerNoSingleton.h"
-#include "Flechas.h"
+#include "Note.h"
 #include "Feedback.h"
 
 
@@ -24,29 +24,29 @@ protected:
 	SDL_GameController* controller = NULL;
 	bool keyup = true;
 	bool keyup2 = true;
-	bool fallado = false;
+	bool failed = false;
 	string level;
 	GameManager* manager;
 	PlayState* playS;
 
-	int nFlechas = 15;
-	int flechasMax = nFlechas;
+	int noteAmount = 15;
+	int maxNotes = noteAmount;
 
 	TimerNoSingleton* timer;
 
 
 public:
-	bool getFallado() { return fallado; };
+	bool getFailed() { return failed; };
 	MiniGame(GameManager* g, PlayState* p );
 	~MiniGame() { delete timer; };
-	std::list<Flechas*> botonesNivel_;
-	std::list<Flechas*> botonesPantalla_;
-	void generaBotones();
+	std::list<Note*> levelButtons_;
+	std::list<Note*> screenButtons_;
+	void generateButtons();
 	void render(Uint32 time);
 	virtual void update(Uint32 time); 
-	void creaLista();
-	void borraLista();
+	void createList();
+	void deleteList();
 	Feedback* fback;
-	//list<Flechas*> getList() { return flechas; };
+	//list<Note*> getList() { return flechas; };
 
 };

@@ -1,7 +1,7 @@
 #pragma once
 #include "GameState.h"
 #include "Button.h"
-#include "Perico.h"
+#include "Character.h"
 
 class EndState :
 	public GameState

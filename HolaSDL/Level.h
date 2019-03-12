@@ -23,12 +23,12 @@ public:
 	int probqte;
 	double songLength;
 	int song;
-	int puntMax;
-	int numNotas;
+	int maxScore;
+	int noteAmount;
 
 protected:
 	string name;
-	Vector2D velFlechas;
+	Vector2D noteVel;
 
 	PlayState* level;
 	SDLGame* gm;

@@ -24,7 +24,7 @@ bool CutSceneState::handleEvent(SDL_Event e)
 
 //Script
 
-//Handle input para skipear script
+//Handle input to skip script
 
 //Menu
 

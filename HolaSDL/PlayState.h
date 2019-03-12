@@ -7,16 +7,15 @@
 #include <string>
 #include "GameObject.h"
 #include "Timer.h"
-#include "Flechas.h"
+#include "Note.h"
 #include "Point.h"
 #include "BeatHandeler.h"
 #include "LevelInputManager.h"
-#include "QTEManager.h"
-#include "Perico.h"
-#include "BarrasHUD.h"
-#include "FondoBarra.h"
+#include "Character.h"
+#include "SongBar.h"
+#include "BarBackground.h"
 #include "MiniGame.h"
-#include "BarraPuntos.h"
+#include "ScoreBar.h"
 #include "Feedback.h"
 #include "EmptyObject.h"
 #include "Squares.h"
@@ -24,12 +23,11 @@
 #include "Background.h"
 #include "TimerNoSingleton.h"
 
-//Constantes
-class PlayState : public GameState //Clase para las batallas y jugabilidad b�sica, render lo hereda de GameState, mantiene update y handleEvent independientes
+class PlayState : public GameState //main game class, where most of the gameplay will take place
 {
 protected:
 
-	string level;
+	string levelName;
 	bool effect = true;
 
 	Timer* timer;
@@ -39,55 +37,51 @@ protected:
 	TimerNoSingleton* minigameController;
 
 
-	//Se usa para cuando al volver de un minijuego se sepa si es la primera flecha
-	bool primeraFlecha = true;
+	bool firstNote = true;
 
 
 
-	Vector2D velFlechas;
-	QTEManager* qteman;
+	Vector2D noteVel;
 	MiniGame* minigame;
-	Perico* perico;
-	Perico* robot;
+	Character* perico;
+	Character* robot;
 	EmptyObject* effectVaporWave;
-	Level* nivel;
+	Level* level;
 
-	BarrasHUD* indicador; //nota indicadora
-	FondoBarra* spriteBarra; //barra tiempo
+	SongBar* songBar; //indicates time left, shaped like a note
+	BarBackground* songBarBG;
 
-	bool beatSignal = false;	//bool usado para avisar de que se avance la animaci�n seg�n el ritmo de la canci�n
+	bool beatSignal = false;	//used to signal animations to advance
 	bool animationMiniGame = false;
-	int animationFramesPerBeat = 2;	//int que determina cu�ntas frames de animaci�n van entre cada beat
+	int animationFramesPerBeat = 2;	//determines how many animation frames to advance each beat
 
-	int pointSize = 80;	//tama�o del pulsador/punto
-	int noteBarWidth = pointSize +33;
-	int noteSize = 50;	//tama�o de nota 
-	int pointOffset = 70;	//offset entre las barras de notas y el centro de la pantalla
-	int initialNoteHeight = 70;	//altura a la cual se generan las notas en pantalla
-	Feedback* feedback1;
-	Feedback* feedback2;
+	int pointSize = 80;	//size of the point 
+	int noteBarWidth = pointSize + 33;
+	int noteSize = 50;	//size of the notes
+	int pointOffset = 70;	//offset between the note bars and the center of the screen
+	int initialNoteHeight = 70;	//height at which new notes will be generated
 
-	int maxScore = 100000;
+	int maxScore = 400;
 	int currentScore = 0;
 	int maxNoteValue = 0;
 
 public:
 	BeatHandeler* bh;
-	BarraPuntos* barraPuntos; //barra puntuacion
-	PlayState(GameManager* g); //Crea estado (tal vez para niveles de dificultad con un int o bool)
-	void newGame(); //Inicializa objetos
+	ScoreBar* scoreBar;
+	PlayState(GameManager* g);
+	void newGame();
 	~PlayState();
 	virtual void update(Uint32 time);
 	virtual bool handleEvent(Uint32 time, SDL_Event e);
 	virtual void render(Uint32 time, bool beatSync = false);
 	void playSong(int song);
 	void showError();
-	Vector2D asignaVel(double time);
-	std::list<Flechas*> flechasNivel_;
-	std::list<Flechas*> botonesNivel_;
-	std::list<Flechas*> flechasPantalla_; //La otra lista (Actors) se hereda de GameState
-	std::list<Flechas*> botonesPantalla_;
-	Point* leftPoint; //Pulsador
+	Vector2D setVel(double time);
+	std::list<Note*> levelArrows_;
+	std::list<Note*> levelButtons_;
+	std::list<Note*> screenArrows_; 
+	std::list<Note*> screenButtons_;
+	Point* leftPoint; 
 	Point* rightPoint;
 	Feedback* feedbackLeft;
 	Feedback* feedbackRight;
@@ -99,15 +93,15 @@ public:
 	MiniGame* getMinigame() { return minigame; }
 	GameManager* getGameManager() { return manager; }
 
-	double msDiff = 0.0;  //Son los milisegundos que  hay de diferencia entre el beat que queremos y cuando realmente sale
+	double msDiff = 0.0;  //difference between the time of a beat and the time when a note is created, in ms
 
 	void updateScore(int accuracy) { currentScore += maxNoteValue * (1 / accuracy); }
 
 protected:
-	void DeleteAll(); //Para borrado de objetos, por aquello de no dejar basura
+	void deleteAll();
 	int getScore();
-	void generateFlechas();
-	void generateBotones();
+	void generateArrows();
+	void generateButtons();
 
 	void songOver();
 private:

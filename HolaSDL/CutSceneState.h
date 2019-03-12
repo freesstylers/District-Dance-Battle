@@ -1,7 +1,7 @@
 #pragma once
 #include "MapState.h"
 
-class CutSceneState: public MapState //Hereda de MapState por similitud de funcionalidad, render lo hereda de GameState, mantiene update y handleEvent independientes
+class CutSceneState: public MapState //Inherits from MapState due to similar functionality, render is inherited from GameState
 {
 public:
 	CutSceneState(GameManager* g);

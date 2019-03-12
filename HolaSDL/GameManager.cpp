@@ -16,7 +16,7 @@ GameManager::~GameManager()
 }
 
 void GameManager::start() {
-	//entra el primer estado, aunque por ahora sera el PlayState
+	//supposed to push the first MapState, temporarily pushes a PlayState
 	machine->pushState(new PlayState(this));
 	run();
 }

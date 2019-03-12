@@ -1,6 +1,6 @@
 #pragma once
 #include "MiniGame.h"
-#include "BarraPuntos.h"
+#include "ScoreBar.h"
 #include "GameObject.h"
 
 class PlayState;
@@ -13,7 +13,7 @@ public:
 
 	void handleInput(Uint32 time, const SDL_Event& event);
 
-	bool getFallado() { return fallado; }
+	bool getFailed() { return failed; }
 
 	void update();
 
@@ -22,7 +22,7 @@ public:
 	}
 private:
 	int numctrl_;
-	bool fallado = false;
+	bool failed = false;
 	bool minigameActive = false;
 	const Uint8 *keystates;
 	bool keyup = true;

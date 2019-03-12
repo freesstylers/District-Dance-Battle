@@ -12,15 +12,15 @@ void PlayState::newGame()
 	Inicializar:
 	Barra de puntuacion
 	Barra de la cancion
-	Perico
+	Character
 	Enemigo
 	Fondo
 	Cancion
-	Flechas
+	Note
 	Pulsador/Logica de botones
 	*/
 
-	level = "prueba";
+	levelName = "prueba";
 
 	int leftNotesPos = manager->getWindowWidth() / 2 - pointOffset;
 	int rightNotesPos = manager->getWindowWidth() / 2 + pointOffset;
@@ -33,28 +33,26 @@ void PlayState::newGame()
 	feedbackLeft = new Feedback(manager, pointSize * 0.8, pointSize * 0.8, Vector2D(leftNotesPos - (pointSize * 0.8) - (pointSize * 0.8), 465 + pointSize / 2));
 	feedbackRight = new Feedback(manager, pointSize * 0.8, pointSize * 0.8, Vector2D(rightNotesPos + (pointSize * 0.8), 465 + pointSize / 2));
 	bg = new Background(manager, manager->getWindowWidth(), manager->getWindowHeight(), Vector2D(0, 0));
-	nivel = new Level(this, manager, level);
-	nivel->init();
+	level = new Level(this, manager, levelName);
+	level->init();
 	timer = Timer::Instance();
 	lip = new LevelInputManager(this, 0);
-	maxNoteValue = maxScore / nivel->numNotas;
+	maxNoteValue = maxScore / level->noteAmount;
 
-	barraPuntos = new BarraPuntos(manager, 20, 1, Vector2D(50, 465 + pointSize), nivel->numNotas, maxScore);
+	scoreBar = new ScoreBar(manager, 20, 1, Vector2D(50, 465 + pointSize), level->noteAmount, maxScore);
 
-	spriteBarra = new FondoBarra(manager, 1, 14, Vector2D(50, 35), (((manager->getWindowWidth() - 50) / nivel->songLength) / 70.5), Resources::Bluebar); //70.5 es la constante para ajustar la velocidad de la barra al tiempo de la cancion
-	indicador = new BarrasHUD(manager, 18, 22, Vector2D(41, 31), Vector2D((((manager->getWindowWidth() / nivel->songLength)) / 70.5), 0), spriteBarra);
+	songBarBG = new BarBackground(manager, 1, 14, Vector2D(50, 35), (((manager->getWindowWidth() - 50) / level->songLength) / 70.5), Resources::BlueBar); //70.5 es la constante para ajustar la velocidad de la barra al tiempo de la cancion
+	songBar = new SongBar(manager, 18, 22, Vector2D(41, 31), Vector2D((((manager->getWindowWidth() / level->songLength)) / 70.5), 0), songBarBG);
 
-	perico = new Perico(manager, 60 * 3.5, 120 * 3.5, Vector2D(75, initialNoteHeight + 30 + 70), Resources::PericoIdle);
-	robot = new Perico(manager, 60 * 3.5, 120 * 3.5, Vector2D(manager->getWindowWidth() - 270, initialNoteHeight - 29 + 70), Resources::RobotIdle);
+	perico = new Character(manager, 60 * 3.5, 120 * 3.5, Vector2D(75, initialNoteHeight + 30 + 70), Resources::PericoIdle);
+	robot = new Character(manager, 60 * 3.5, 120 * 3.5, Vector2D(manager->getWindowWidth() - 270, initialNoteHeight - 29 + 70), Resources::RobotIdle);
 	leftNoteBar = new Squares(manager, noteBarWidth, 465 + 0.6 * pointSize, Vector2D(leftNotesPos + 1 - noteBarWidth / 2, leftNotesVector.getY()));
 	rightNoteBar = new Squares(manager, noteBarWidth, 465 + 0.6 * pointSize, Vector2D(rightNotesPos + 1 - noteBarWidth / 2, rightNotesVector.getY()));
 	
 	minigame = new MiniGame(manager, this);
 	minigameController = new TimerNoSingleton();
 
-	bh = new BeatHandeler(nivel->bpm);
-
-	qteman = new QTEManager(manager, nivel->probqte);
+	bh = new BeatHandeler(level->bpm);
 
 	effectVaporWave = new EmptyObject(manager, Vector2D(0, 0), Resources::EffectVaporWave, manager->getWindowWidth(), manager->getWindowHeight());
 
@@ -65,15 +63,15 @@ void PlayState::newGame()
 	stage.push_back(rightPoint);
 	stage.push_back(perico);
 	stage.push_back(robot);
-	stage.push_back(barraPuntos);
-	stage.push_back(spriteBarra);
-	stage.push_back(indicador);
+	stage.push_back(scoreBar);
+	stage.push_back(songBarBG);
+	stage.push_back(songBar);
 	stage.push_back(feedbackLeft);
 	stage.push_back(feedbackRight);
 
 
 
-	nivel->playSong();
+	level->playSong();
 
 	/////////////////////////
 
@@ -83,12 +81,11 @@ void PlayState::newGame()
 
 PlayState::~PlayState()
 {
-	DeleteAll();
+	deleteAll();
 	delete lip;
 	delete bh;
-	delete qteman;
 	delete effectVaporWave;
-	delete nivel;
+	delete level;
 	delete minigame;
 	delete minigameController;
 }
@@ -96,38 +93,38 @@ PlayState::~PlayState()
 void PlayState::update(Uint32 time)
 {
 	GameState::update(time);
-	if (!miniActive && minigameController->DeltaTime() < nivel->songLength/3) 
+	if (!miniActive && minigameController->DeltaTime() < level->songLength/3) 
 	{
 		minigameController->Update();
-		if (flechasNivel_.empty() && botonesNivel_.empty()) {
+		if (levelArrows_.empty() && levelButtons_.empty()) {
 			songOver();
 		}
 		else {
-			for (Flechas* o : flechasPantalla_)
+			for (Note* o : screenArrows_)
 			{
 				o->update(time);
 			}
-			for (Flechas* o : botonesPantalla_)
+			for (Note* o : screenButtons_)
 			{
 				o->update(time);
 			}
 			//qteman->update(time);
-			if (!flechasPantalla_.empty() && flechasPantalla_.front()->getPosition().getY() > 550)
+			if (!screenArrows_.empty() && screenArrows_.front()->getPosition().getY() > 550)
 			{
-				Flechas* aux = flechasPantalla_.front();
+				Note* aux = screenArrows_.front();
 				delete aux;
-				flechasPantalla_.pop_front();
+				screenArrows_.pop_front();
 				cout << "fuera" << endl;
 
 				showError();
 
 				feedbackLeft->queueAnimationChange(Resources::FeedbackBad);
 			}
-			if (!botonesPantalla_.empty() && botonesPantalla_.front()->getPosition().getY() > 550)
+			if (!screenButtons_.empty() && screenButtons_.front()->getPosition().getY() > 550)
 			{
-				Flechas* aux = botonesPantalla_.front();
+				Note* aux = screenButtons_.front();
 				delete aux;
-				botonesPantalla_.pop_front();
+				screenButtons_.pop_front();
 				cout << "fuera" << endl;
 
 				showError();
@@ -138,8 +135,8 @@ void PlayState::update(Uint32 time)
 			if (timer->DeltaTime() > (bh->getBeatTime() / 1000.0) - msDiff)
 			{
 				msDiff += timer->DeltaTime() - (bh->getBeatTime() / 1000.0);
-				generateFlechas();
-				generateBotones();
+				generateArrows();
+				generateButtons();
 				timer->Reset();
 
 				beatSignal = true;
@@ -152,18 +149,18 @@ void PlayState::update(Uint32 time)
 		{
 			lip->setMinigameActive(true);
 			robot->queueAnimationChange(Resources::RobotDance);
-			perico->queueAnimationChange(Resources::PericoBaile1);
+			perico->queueAnimationChange(Resources::PericoDance1);
 			animationMiniGame = true;
 		}
 		minigame->update(time);
 		lip->update();
-		if (minigame->getFallado()) {
+		if (minigame->getFailed()) {
 			lip->setMinigameActive(false);
 			miniActive = false;
 			msDiff = 0;
 			timer->Reset();
-			minigame->borraLista();
-			minigame->creaLista();
+			minigame->deleteList();
+			minigame->createList();
 			minigameController->Reset();
 			robot->queueAnimationChange(Resources::RobotIdle);
 			perico->queueAnimationChange(Resources::PericoIdle);
@@ -215,13 +212,11 @@ void PlayState::render(Uint32 time, bool beatSync)
 
 	GameState::render(time, beatSignal);
 
-	qteman->render(time, beatSignal);
-
-	for (Flechas* o : flechasPantalla_)
+	for (Note* o : screenArrows_)
 	{
 		o->render(time, beatSignal);
 	}
-	for (Flechas* o : botonesPantalla_)
+	for (Note* o : screenButtons_)
 	{
 		o->render(time, beatSignal);
 	}
@@ -233,14 +228,14 @@ void PlayState::render(Uint32 time, bool beatSync)
 	beatSignal = false;
 }
 
-void PlayState::DeleteAll()
+void PlayState::deleteAll()
 {
-	for (Flechas* o : flechasPantalla_)
+	for (Note* o : screenArrows_)
 	{
 		delete o;
 	}
 
-	for (Flechas* o : flechasNivel_) //Por si se cierra el nivel antes de que acabe
+	for (Note* o : levelArrows_) //Por si se cierra el levelName antes de que acabe
 	{
 		delete o;
 	}
@@ -252,25 +247,25 @@ int PlayState::getScore()
 }
 
 //Al generar las flechas y los botones, los mueve en proporcion al tiempo perdido por cada vuelta
-void PlayState::generateFlechas()
+void PlayState::generateArrows()
 {
-	if (!flechasNivel_.empty()) {
-		if (flechasNivel_.front() != nullptr) {
-			flechasPantalla_.push_back(flechasNivel_.front());
-			flechasPantalla_.back()->setPosition(flechasPantalla_.back()->getPosition() + flechasPantalla_.back()->getVelocity()*msDiff);
+	if (!levelArrows_.empty()) {
+		if (levelArrows_.front() != nullptr) {
+			screenArrows_.push_back(levelArrows_.front());
+			screenArrows_.back()->setPosition(screenArrows_.back()->getPosition() + screenArrows_.back()->getVelocity()*msDiff);
 		}
-		flechasNivel_.pop_front();
+		levelArrows_.pop_front();
 	}
 }
 
-void PlayState::generateBotones()
+void PlayState::generateButtons()
 {
-	if (!botonesNivel_.empty()) {
-		if (botonesNivel_.front() != nullptr) {
-			botonesPantalla_.push_back(botonesNivel_.front());
-			botonesPantalla_.back()->setPosition(botonesPantalla_.back()->getPosition() + botonesPantalla_.back()->getVelocity()*msDiff);
+	if (!levelButtons_.empty()) {
+		if (levelButtons_.front() != nullptr) {
+			screenButtons_.push_back(levelButtons_.front());
+			screenButtons_.back()->setPosition(screenButtons_.back()->getPosition() + screenButtons_.back()->getVelocity()*msDiff);
 		}
-		botonesNivel_.pop_front();
+		levelButtons_.pop_front();
 	}
 }
 
@@ -280,9 +275,9 @@ void PlayState::songOver()
 	manager->getMachine()->pushState(new EndState(manager, currentScore, maxScore, 70));
 }
 
-Vector2D PlayState::asignaVel(double time)
+Vector2D PlayState::setVel(double time)
 {
-	double distance = leftPoint->getPosition().getY() + leftPoint->getHeight()/2 - initialNoteHeight - 25.0; //El 25 es la mitad de la altura de la flecha/boton
+	double distance = leftPoint->getPosition().getY() + leftPoint->getHeight()/2 - initialNoteHeight - 25.0; //El 25 es la mitad de la altura de la note/boton
 	double velocity = distance / (time / 1000.0);
 	return Vector2D(0, velocity / 8.0);
 }
@@ -296,7 +291,7 @@ void PlayState::showError()
 {
 	bg->cleanAnimationQueue();
 
-	bg->queueAnimationChange(Resources::FondoPixel, false);
-	bg->queueAnimationChange(Resources::FondoPrueba);
+	bg->forceAnimationChange(Resources::PixelatedTextBG);
+	bg->queueAnimationChange(Resources::testBG);
 	manager->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0);
 }

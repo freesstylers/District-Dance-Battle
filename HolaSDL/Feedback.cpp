@@ -12,8 +12,7 @@ Feedback::Feedback(SDLGame* game, double width, double height, Vector2D pos) :
 
 	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::Blank);
 
-	framesPerSecond = 4;
-	//isAnimationSyncedToMusic = true;
+	isAnimationSyncedToMusic = true;
 
 	active_ = false;
 }
@@ -27,13 +26,14 @@ void Feedback::update(Uint32 time)
 		setActive(false);
 	}
 }
+
 Feedback::~Feedback()
 {
 }
 
-void Feedback::queueAnimationChange(int animationTag, bool waitForAnimationEnd)
+void Feedback::forceAnimationChange(int animationTag)
 {
-	GameObject::queueAnimationChange(animationTag, false);
+	GameObject::forceAnimationChange(animationTag);
 
 	lastUpdate = 0;
 }

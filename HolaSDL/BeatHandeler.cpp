@@ -11,7 +11,7 @@ BeatHandeler::~BeatHandeler()
 {
 }
 void BeatHandeler::beatRateButton(int &currentBeats) {
-	if (currentBeats > /*cola.beatsDeEspera*/ 0) {
+	if (currentBeats >  0) {
 		cout << currentBeats << " ";
 		currentBeats = 0;
 	}

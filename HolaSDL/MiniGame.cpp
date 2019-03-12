@@ -12,97 +12,97 @@ MiniGame::MiniGame(GameManager* g, PlayState* p)
 	timer = new TimerNoSingleton();
 
 
-	creaLista();
+	createList();
 }
 
-void MiniGame::creaLista()
+void MiniGame::createList()
 {
 	int newpos;
 	int aux;
-	fallado = false;
-	nFlechas = 15;
-	flechasMax = nFlechas;
-	Flechas* flecha;
+	failed = false;
+	noteAmount = 15;
+	maxNotes = noteAmount;
+	Note* note;
 	for (int i = 0; i < 8; i++) {
 		aux = rand() % 8;
 
 		switch (aux) {
 		case 0:
-			flecha = new Flechas(SDL_CONTROLLER_BUTTON_A, manager, 75, 75, Vector2D(0, 0), Vector2D(200, 200));
+			note = new Note(SDL_CONTROLLER_BUTTON_A, manager, 75, 75, Vector2D(0, 0), Vector2D(200, 200));
 			break;
 		case 1:
-			flecha = new Flechas(SDL_CONTROLLER_BUTTON_B, manager, 75, 75, Vector2D(0, 0), Vector2D(200, 200));
+			note = new Note(SDL_CONTROLLER_BUTTON_B, manager, 75, 75, Vector2D(0, 0), Vector2D(200, 200));
 			break;
 		case 2:
-			flecha = new Flechas(SDL_CONTROLLER_BUTTON_X, manager, 75, 75, Vector2D(manager->getWindowWidth(), 0), Vector2D(-200, 200));
+			note = new Note(SDL_CONTROLLER_BUTTON_X, manager, 75, 75, Vector2D(manager->getWindowWidth(), 0), Vector2D(-200, 200));
 			break;
 		case 3:
-			flecha = new Flechas(SDL_CONTROLLER_BUTTON_Y, manager, 75, 75, Vector2D(manager->getWindowWidth(), 0), Vector2D(-200, 200));
+			note = new Note(SDL_CONTROLLER_BUTTON_Y, manager, 75, 75, Vector2D(manager->getWindowWidth(), 0), Vector2D(-200, 200));
 			break;
 		case 4:
-			flecha = new Flechas(SDL_CONTROLLER_BUTTON_A, manager, 75, 75, Vector2D(0, manager->getWindowHeight()), Vector2D(200, -200));
+			note = new Note(SDL_CONTROLLER_BUTTON_A, manager, 75, 75, Vector2D(0, manager->getWindowHeight()), Vector2D(200, -200));
 			break;
 		case 5:
-			flecha = new Flechas(SDL_CONTROLLER_BUTTON_B, manager, 75, 75, Vector2D(0, manager->getWindowHeight()), Vector2D(200, -200));
+			note = new Note(SDL_CONTROLLER_BUTTON_B, manager, 75, 75, Vector2D(0, manager->getWindowHeight()), Vector2D(200, -200));
 			break;
 		case 6:
-			flecha = new Flechas(SDL_CONTROLLER_BUTTON_X, manager, 75, 75, Vector2D(manager->getWindowWidth(), manager->getWindowHeight()), Vector2D(-200, -200));
+			note = new Note(SDL_CONTROLLER_BUTTON_X, manager, 75, 75, Vector2D(manager->getWindowWidth(), manager->getWindowHeight()), Vector2D(-200, -200));
 			break;
 		case 7:
-			flecha = new Flechas(SDL_CONTROLLER_BUTTON_Y, manager, 75, 75, Vector2D(manager->getWindowWidth(), manager->getWindowHeight()), Vector2D(-200, -200));
+			note = new Note(SDL_CONTROLLER_BUTTON_Y, manager, 75, 75, Vector2D(manager->getWindowWidth(), manager->getWindowHeight()), Vector2D(-200, -200));
 			break;
 		}
-		botonesNivel_.push_front(flecha);
+		levelButtons_.push_front(note);
 	}
 }
 void MiniGame::update(Uint32 time) {
-	if (!botonesPantalla_.empty()) {
-		for (Flechas* o : botonesPantalla_)
+	if (!screenButtons_.empty()) {
+		for (Note* o : screenButtons_)
 		{
 			o->update(time);
 		}
 	}
 	Timer::Instance()->Update();
 	timer->Update();
-	if (timer->DeltaTime() > (playS->bh->getBeatTime() / 1000.0) && nFlechas > 0)
+	if (timer->DeltaTime() > (playS->bh->getBeatTime() / 1000.0) && noteAmount > 0)
 	{
-		generaBotones();
+		generateButtons();
 		
 		timer->Reset();
 
-		nFlechas--;
+		noteAmount--;
 	}
-	if (Timer::Instance()->DeltaTime() > (playS->bh->getBeatTime() / 1000.0)*(flechasMax+4)) {
-		fallado = true;
+	if (Timer::Instance()->DeltaTime() > (playS->bh->getBeatTime() / 1000.0)*(maxNotes+4)) {
+		failed = true;
 	}
 	
 }
 
 
 void MiniGame::render(Uint32 time) {
-	for (Flechas* o : botonesPantalla_)
+	for (Note* o : screenButtons_)
 	{
 		o->render(time);
 	}
 	fback->render(time);
 }
 
-void MiniGame::generaBotones() {
-	if (!botonesNivel_.empty()) {
-		if (botonesNivel_.back() != nullptr) {
-			botonesPantalla_.push_back(botonesNivel_.back());
+void MiniGame::generateButtons() {
+	if (!levelButtons_.empty()) {
+		if (levelButtons_.back() != nullptr) {
+			screenButtons_.push_back(levelButtons_.back());
 		}
-		botonesNivel_.pop_back();
+		levelButtons_.pop_back();
 	}
 }
 
-void MiniGame::borraLista() {
-	for (auto o = botonesPantalla_.begin(); o != botonesPantalla_.end();)
+void MiniGame::deleteList() {
+	for (auto o = screenButtons_.begin(); o != screenButtons_.end();)
 	{
 		auto next = o;
 		++next;
 		delete (*o);
-		botonesPantalla_.remove(*o);
+		screenButtons_.remove(*o);
 		o = next;
 	}
 }

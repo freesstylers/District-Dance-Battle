@@ -1,10 +1,10 @@
 #include "EmptyObject.h"
 
 
-EmptyObject::EmptyObject(SDLGame* game, Vector2D pos, int textura, int width, int height): GameObject(game)
+EmptyObject::EmptyObject(SDLGame* game, Vector2D pos, int width, int height, int texture): GameObject(game)
 {
 	setPosition(pos);
-	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(textura);
+	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(texture);
 	setWidth(width);
 	setHeight(height);
 }

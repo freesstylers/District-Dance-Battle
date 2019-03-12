@@ -16,6 +16,6 @@ public:
 	virtual void update(Uint32 time);
 	virtual bool handleInput(Uint32 time, const SDL_Event& event) { return false; }
 
-	virtual void queueAnimationChange(int animationTag, bool waitForAnimationEnd = true);
+	virtual void forceAnimationChange(int animationTag);
 };
 

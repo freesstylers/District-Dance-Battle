@@ -1,8 +1,8 @@
-#include "Perico.h"
+#include "Character.h"
 
 
 
-Perico::Perico(SDLGame* game, double width, double height, Vector2D pos, int i) :
+Character::Character(SDLGame* game, double width, double height, Vector2D pos, int i) :
 	GameObject(game)
 {
 	setWidth(width);
@@ -19,16 +19,16 @@ Perico::Perico(SDLGame* game, double width, double height, Vector2D pos, int i) 
 }
 
 
-Perico::~Perico()
+Character::~Character()
 {
 }
 
-bool Perico::handleInput(Uint32 time, const SDL_Event& event) {
+bool Character::handleInput(Uint32 time, const SDL_Event& event) {
 
 	return false;
 }
 
-void Perico::update(Uint32 time) {
+void Character::update(Uint32 time) {
 
 
 }

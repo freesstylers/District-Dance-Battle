@@ -11,21 +11,21 @@ public:
 
 	enum TextureId {
 		// images
-		FlechaLeft,
-		FlechaRight,
-		FlechaUp,
-		FlechaDown,
-		BotonA,
-		BotonB,
-		BotonX,
-		BotonY,
+		LeftArrow,
+		RightArrow,
+		UpArrow,
+		DownArrow,
+		AButton,
+		BButton,
+		XButton,
+		YButton,
 		Point,
-		Nota,
-		Bluebar,
-		Yellowbar,
+		NoteIcon,
+		BlueBar,
+		YellowBar,
 		PericoIdle,
 		PericoDab,
-		PericoBaile1,
+		PericoDance1,
 		PericoMaxPower,
 		FeedbackGood,
 		FeedbackBad,
@@ -34,8 +34,8 @@ public:
 		Blank,
 		EffectVaporWave,
 		Square,
-		FondoPrueba,
-		FondoPixel,
+		testBG,
+		PixelatedTextBG,
 		RobotIdle,
 		RobotDance
 		// text
@@ -43,7 +43,7 @@ public:
 
 	enum AudioId {
 		// music
-		Pruebas,
+		Test,
 		Sunflower,
 		Bill,
 		Error

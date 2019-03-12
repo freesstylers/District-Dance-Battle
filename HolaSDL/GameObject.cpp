@@ -147,21 +147,26 @@ void GameObject::render(Uint32 time, bool beatSync)
 	}
 }
 
-void GameObject::queueAnimationChange(int animationTag, bool waitForAnimationEnd)
+void GameObject::queueAnimationChange(int animationTag)
+{
+	if (!active_)
+		setActive(true);
+
+	queuedAnimations.push(animationTag);
+}
+
+void GameObject::forceAnimationChange(int animationTag)
 {
 	if (!active_)
 		setActive(true);
 
 	queuedAnimations.push(animationTag);
 
-	if (!waitForAnimationEnd) {
+	int currentFrame = animation.currentFrame;
 
-		int currentFrame = animation.currentFrame;
+	changeAnimation(animationTag);
 
-		changeAnimation(animationTag);
-
-		animation.currentFrame = currentFrame;
-	}
+	animation.currentFrame = currentFrame;
 }
 
 void GameObject::changeAnimation(int animationTag)

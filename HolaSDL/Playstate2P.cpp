@@ -1,7 +1,7 @@
 ﻿#include "PlayState2P.h"
 #include "GameManager.h"
 
-PlayState2P::PlayState2P(GameManager* g) :PlayState(g) //Asigna game y llama a inicializaci�n
+PlayState2P::PlayState2P(GameManager* g) :PlayState(g)
 {
 	newGame();
 }
@@ -12,15 +12,15 @@ void PlayState2P::newGame()
 	Inicializar:
 	Barra de puntuacion
 	Barra de la cancion
-	Perico
+	Character
 	Enemigo
 	Fondo
 	Cancion
-	Flechas
+	Note
 	Pulsador/Logica de botones
 	*/
 
-	level = "prueba";
+	levelName = "prueba";
 
 	int leftNotesPos = manager->getWindowWidth() / 2 - pointOffset;
 	int rightNotesPos = manager->getWindowWidth() / 2 + pointOffset;
@@ -32,21 +32,20 @@ void PlayState2P::newGame()
 	feedbackLeft = new Feedback(manager, pointSize, pointSize, Vector2D(leftNotesPos - pointSize / 2 - 100, 465));
 	feedbackRight = new Feedback(manager, pointSize, pointSize, Vector2D(rightNotesPos - pointSize / 2 + 100, 465));
 	bg = new Background(manager, manager->getWindowWidth(), manager->getWindowHeight(), Vector2D(0, 0));
-	nivel = new Level(this, manager, level);
-	nivel->init();
+	level = new Level(this, manager, levelName);
+	level->init();
 	timer = Timer::Instance();
 	lip = new LevelInputManager(static_cast<PlayState*>(this),0);
-	perico = new Perico(manager, 200, 400, Vector2D(70, 130), Resources::PericoIdle);
+	perico = new Character(manager, 200, 400, Vector2D(70, 130), Resources::PericoIdle);
 	leftNoteBar = new Squares(manager, pointSize + 10, 575, Vector2D(leftNotesVector.getX() - 19, leftNotesVector.getY()));
 	rightNoteBar = new Squares(manager, pointSize + 10, 575, Vector2D(rightNotesVector.getX() - 19, rightNotesVector.getY()));
 
-	bh = new BeatHandeler(nivel->bpm);
+	bh = new BeatHandeler(level->bpm);
 
-	/*barraPuntos = new BarraPuntos(manager, 20, 20, Vector2D(20, 100), nivel->numNotas, 100);
-	spriteBarra = new FondoBarra(manager, 20, 20, Vector2D(20, 25), nivel->songLength / (manager->getWindowWidth() - 40 + 50), Resources::Bar);*/
-	indicador = new BarrasHUD(manager, 50, 50, Vector2D(20, 10), Vector2D(nivel->songLength / (manager->getWindowWidth() - 40 + 50), 0), spriteBarra); //0.3 va a depender de la duracion de la cancion
+	/*scoreBar = new ScoreBar(manager, 20, 20, Vector2D(20, 100), levelName->noteAmount, 100);
+	songBarBG = new BarBackground(manager, 20, 20, Vector2D(20, 25), levelName->songLength / (manager->getWindowWidth() - 40 + 50), Resources::Bar);*/
+	songBar = new SongBar(manager, 50, 50, Vector2D(20, 10), Vector2D(level->songLength / (manager->getWindowWidth() - 40 + 50), 0), songBarBG); //0.3 va a depender de la duracion de la cancion
 
-	qteman = new QTEManager(manager, nivel->probqte);
 
 	effectVaporWave = new EmptyObject(manager, Vector2D(0, 0), Resources::EffectVaporWave, manager->getWindowWidth(), manager->getWindowHeight());
 
@@ -56,15 +55,15 @@ void PlayState2P::newGame()
 	stage.push_back(leftPoint);
 	stage.push_back(rightPoint);
 	stage.push_back(perico);
-	stage.push_back(barraPuntos);
-	stage.push_back(spriteBarra);
-	stage.push_back(indicador);
+	stage.push_back(scoreBar);
+	stage.push_back(songBarBG);
+	stage.push_back(songBar);
 	stage.push_back(feedbackLeft);
 	stage.push_back(feedbackRight);
 
 
 
-	nivel->playSong();
+	level->playSong();
 
 	/////////////////////////
 
@@ -81,29 +80,29 @@ void PlayState2P::update(Uint32 time)
 {
 	GameState::update(time);
 
-	for (Flechas* o : flechasPantalla_)
+	for (Note* o : screenArrows_)
 	{
 		o->update(time);
 	}
-	for (Flechas* o : botonesPantalla_)
+	for (Note* o : screenButtons_)
 	{
 		o->update(time);
 	}
 	//qteman->update(time);
-	if (!flechasPantalla_.empty() && flechasPantalla_.front()->getPosition().getY() > 550)
+	if (!screenArrows_.empty() && screenArrows_.front()->getPosition().getY() > 550)
 	{
-		Flechas* aux = flechasPantalla_.front();
+		Note* aux = screenArrows_.front();
 
-		flechasPantalla_.pop_front();
+		screenArrows_.pop_front();
 		cout << "fuera" << endl;
 		feedbackLeft->queueAnimationChange(Resources::FeedbackBad);
 		delete aux;
 	}
-	if (!botonesPantalla_.empty() && botonesPantalla_.front()->getPosition().getY() > 550)
+	if (!screenButtons_.empty() && screenButtons_.front()->getPosition().getY() > 550)
 	{
-		Flechas* aux = botonesPantalla_.front();
+		Note* aux = screenButtons_.front();
 
-		botonesPantalla_.pop_front();
+		screenButtons_.pop_front();
 		cout << "fuera" << endl;
 
 		feedbackRight->queueAnimationChange(Resources::FeedbackBad);
@@ -112,8 +111,8 @@ void PlayState2P::update(Uint32 time)
 	timer->Update();
 	if (timer->DeltaTime() < (bh->getBeatTime() / 1000) + 0.010 && timer->DeltaTime() > (bh->getBeatTime() / 1000) - 0.010)
 	{
-		generateFlechas();
-		generateBotones();
+		generateArrows();
+		generateButtons();
 		timer->Reset();
 
 		beatSignal = true;
@@ -145,7 +144,6 @@ bool PlayState2P::handleEvent(Uint32 time, SDL_Event e)
 	else
 	{
 		lip->handleInput(time, e);
-		qteman->handleInput(time, e);
 
 		GameState::handleEvent(time, e);
 		return false;
@@ -157,13 +155,11 @@ void PlayState2P::render(Uint32 time, bool beatSync)
 
 	GameState::render(time, beatSignal);
 
-	qteman->render(time, beatSignal);
-
-	for (Flechas* o : flechasPantalla_)
+	for (Note* o : screenArrows_)
 	{
 		o->render(time, beatSignal);
 	}
-	for (Flechas* o : botonesPantalla_)
+	for (Note* o : screenButtons_)
 	{
 		o->render(time, beatSignal);
 	}
@@ -172,40 +168,40 @@ void PlayState2P::render(Uint32 time, bool beatSync)
 	beatSignal = false;
 }
 
-void PlayState2P::DeleteAll()
+void PlayState2P::deleteAll()
 {
 	for (GameObject* o : stage)
 	{
 		delete o;
 	}
 
-	for (Flechas* o : flechasPantalla_)
+	for (Note* o : screenArrows_)
 	{
 		delete o;
 	}
 
-	for (Flechas* o : flechasNivel_) //Por si se cierra el nivel antes de que acabe
+	for (Note* o : levelArrows_) //Por si se cierra el levelName antes de que acabe
 	{
 		delete o;
 	}
 }
 
-void PlayState2P::generateFlechas()
+void PlayState2P::generateArrows()
 {
-	if (!flechasNivel_.empty()) {
-		if (flechasNivel_.back() != nullptr) {
-			flechasPantalla_.push_back(flechasNivel_.back());
+	if (!levelArrows_.empty()) {
+		if (levelArrows_.back() != nullptr) {
+			screenArrows_.push_back(levelArrows_.back());
 		}
-		flechasNivel_.pop_back();
+		levelArrows_.pop_back();
 	}
 }
 
-void PlayState2P::generateBotones()
+void PlayState2P::generateButtons()
 {
-	if (!botonesNivel_.empty()) {
-		if (botonesNivel_.back() != nullptr) {
-			botonesPantalla_.push_back(botonesNivel_.back());
+	if (!levelButtons_.empty()) {
+		if (levelButtons_.back() != nullptr) {
+			screenButtons_.push_back(levelButtons_.back());
 		}
-		botonesNivel_.pop_back();
+		levelButtons_.pop_back();
 	}
 }

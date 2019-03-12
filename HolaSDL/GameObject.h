@@ -51,7 +51,8 @@ public:
 	virtual void update(Uint32 time) = 0;
 	virtual void render(Uint32 time, bool beatSync = false); 
 
-	virtual void queueAnimationChange(int animationTag, bool waitForAnimationEnd = true);
+	virtual void queueAnimationChange(int animationTag);
+	virtual void forceAnimationChange(int animationTag);
 
 	virtual void cleanAnimationQueue() { while (!queuedAnimations.empty()) { queuedAnimations.pop(); } }
 protected:

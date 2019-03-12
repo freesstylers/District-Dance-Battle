@@ -13,21 +13,20 @@
   <ItemGroup>
     <ClInclude Include="AudioManager.h" />
     <ClInclude Include="Background.h" />
-    <ClInclude Include="BarraPuntos.h" />
-    <ClInclude Include="BarrasHUD.h" />
+    <ClInclude Include="ScoreBar.h" />
+    <ClInclude Include="SongBar.h" />
     <ClInclude Include="BeatHandeler.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="CutSceneState.h" />
     <ClInclude Include="EmptyObject.h" />
     <ClInclude Include="EndState.h" />
     <ClInclude Include="Feedback.h" />
-    <ClInclude Include="FondoBarra.h" />
-    <ClInclude Include="EnemigoBaile.h" />
+    <ClInclude Include="BarBackground.h" />
     <ClInclude Include="Font.h" />
     <ClInclude Include="FontsManager.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameObject.h" />
-    <ClInclude Include="Flechas.h" />
+    <ClInclude Include="Note.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GameStateMachine.h" />
     <ClInclude Include="Level.h" />
@@ -35,14 +34,10 @@
     <ClInclude Include="MapState.h" />
     <ClInclude Include="MenuState.h" />
     <ClInclude Include="MiniGame.h" />
-    <ClInclude Include="Perico.h" />
+    <ClInclude Include="Character.h" />
     <ClInclude Include="PlayState.h" />
     <ClInclude Include="Playstate2P.h" />
     <ClInclude Include="Point.h" />
-    <ClInclude Include="Pulsador.h" />
-    <ClInclude Include="Puntuacion.h" />
-    <ClInclude Include="QTEManager.h" />
-    <ClInclude Include="QuickTimeEvents.h" />
     <ClInclude Include="RandomNumberGenerator.h" />
     <ClInclude Include="Resources.h" />
     <ClInclude Include="SDLAudioManager.h" />
@@ -62,16 +57,15 @@
   <ItemGroup>
     <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="Background.cpp" />
-    <ClCompile Include="BarraPuntos.cpp" />
-    <ClCompile Include="BarrasHUD.cpp" />
+    <ClCompile Include="ScoreBar.cpp" />
+    <ClCompile Include="SongBar.cpp" />
     <ClCompile Include="BeatHandeler.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="CutSceneState.cpp" />
     <ClCompile Include="EmptyObject.cpp" />
     <ClCompile Include="EndState.cpp" />
     <ClCompile Include="Feedback.cpp" />
-    <ClCompile Include="FondoBarra.cpp" />
-    <ClCompile Include="EnemigoBaile.cpp" />
+    <ClCompile Include="BarBackground.cpp" />
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="FontsManager.cpp" />
     <ClCompile Include="GameManager.cpp" />
@@ -81,17 +75,14 @@
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="LevelInputManager.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Flechas.cpp" />
+    <ClCompile Include="Note.cpp" />
     <ClCompile Include="MapState.cpp" />
     <ClCompile Include="MenuState.cpp" />
     <ClCompile Include="MiniGame.cpp" />
-    <ClCompile Include="Perico.cpp" />
+    <ClCompile Include="Character.cpp" />
     <ClCompile Include="PlayState.cpp" />
     <ClCompile Include="Playstate2P.cpp" />
     <ClCompile Include="Point.cpp" />
-    <ClCompile Include="Puntuacion.cpp" />
-    <ClCompile Include="QTEManager.cpp" />
-    <ClCompile Include="QuickTimeEvents.cpp" />
     <ClCompile Include="RandomNumberGenerator.cpp" />
     <ClCompile Include="Resources.cpp" />
     <ClCompile Include="SDLAudioManager.cpp" />
@@ -114,7 +105,7 @@
     <ProjectGuid>{28A4C5CD-307A-4FE6-81E4-4CE1F1E49AB4}</ProjectGuid>
     <RootNamespace>HolaSDL</RootNamespace>
     <ProjectName>HolaSDL</ProjectName>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

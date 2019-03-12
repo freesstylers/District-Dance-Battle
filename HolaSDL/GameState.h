@@ -6,7 +6,7 @@ using namespace std;
 
 class GameManager;
 
-class GameState //Clase base para todos los estados, mismo funcionamiento que las practicas del primer cuatrimestre de TPV
+class GameState //Base class for all states, similar to the ones used last quarter in TPV
 {
 protected:
 	GameManager* manager;

@@ -24,12 +24,12 @@ bool MapState::handleEvent(SDL_Event e)
 
 /*
 
-//Cargar zona (que será un PlayState con parámetros)
+//Load Playstate
 
-//Lanzar menús
+//show menus
 
-//Elegir zona
+//chooose levelName
 
-//Menu de guardar/cargar partida/ajustes/salir
+//options/save/load menu
 
 */

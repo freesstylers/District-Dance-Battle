@@ -9,12 +9,12 @@ MenuState::MenuState(GameManager* g) :GameState(g)
 	/*int width = 100;
 	int height = 100;
 	stage.push_back(new Button(gameManager, width, height, Vector2D((2 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - height / 2, gameManager->getWindowHeight() / 2 - height / 2), play));
-	primerBoton = stage.begin();
+	firstButton = stage.begin();
 	stage.push_back(new Button(gameManager, width, height, Vector2D((4 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - height / 2, gameManager->getWindowHeight() / 2 - height / 2), play));
-	stage.push_back(new Button(gameManager, width, height, Vector2D((6 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - height / 2, gameManager->getWindowHeight() / 2 - height / 2), creaBotones));
-	botonActual = primerBoton;
-	(*botonActual)->scale(2);*/
-	creaBotonesPrincipales();
+	stage.push_back(new Button(gameManager, width, height, Vector2D((6 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - height / 2, gameManager->getWindowHeight() / 2 - height / 2), createButtons));
+	selectedButton = firstButton;
+	(*selectedButton)->scale(2);*/
+	createMainButtons();
 }
 
 MenuState::~MenuState()
@@ -31,56 +31,56 @@ bool MenuState::handleEvent(Uint32 time, SDL_Event e)
 			backButton();
 		}
 		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A)|| e.key.keysym.sym == SDLK_RETURN) {
-			static_cast<Button*>((*botonActual))->callCallback();
+			static_cast<Button*>((*selectedButton))->callCallback();
 		}else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B)|| e.key.keysym.sym == SDLK_DELETE) {
-			creaBotonesPrincipales();
+			createMainButtons();
 		}
 	//}
 	return GameState::handleEvent(time, e);
 }
 
-void MenuState::destruirBotones()
+void MenuState::deleteButtons()
 {
 	if (!stage.empty()) {
-		botonActual = primerBoton;
-		auto it = botonActual;
-		while (botonActual != stage.end()) {
+		selectedButton = firstButton;
+		auto it = selectedButton;
+		while (selectedButton != stage.end()) {
 			it++;
-			stage.erase(botonActual);
-			botonActual = it;
+			stage.erase(selectedButton);
+			selectedButton = it;
 		}
 	}
 }
 
-void MenuState::creaBotonesPrincipales()
+void MenuState::createMainButtons()
 {
-	destruirBotones();
+	deleteButtons();
 	int width = 100;
 	int height = 100;
 	stage.push_back(new Button(gameManager, width, height, Vector2D((2 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - height / 2, gameManager->getWindowHeight() / 2 - height / 2), play));
-	primerBoton = stage.begin();
+	firstButton = stage.begin();
 	stage.push_back(new Button(gameManager, width, height, Vector2D((4 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - height / 2, gameManager->getWindowHeight() / 2 - height / 2), play));
-	stage.push_back(new Button(gameManager, width, height, Vector2D((6 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - height / 2, gameManager->getWindowHeight() / 2 - height / 2), creaBotones));
-	botonActual = primerBoton;
-	(*botonActual)->scale(2);
+	stage.push_back(new Button(gameManager, width, height, Vector2D((6 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - height / 2, gameManager->getWindowHeight() / 2 - height / 2), createButtons));
+	selectedButton = firstButton;
+	(*selectedButton)->scale(2);
 }
 
 void MenuState::nextButton()
 {
-	(*botonActual)->scale(0.5);
-	if ((*botonActual) != stage.back()) {
-		botonActual++;
+	(*selectedButton)->scale(0.5);
+	if ((*selectedButton) != stage.back()) {
+		selectedButton++;
 	}
-	(*botonActual)->scale(2);
+	(*selectedButton)->scale(2);
 }
 
 void MenuState::backButton()
 {
-	(*botonActual)->scale(0.5);
-	if (botonActual != primerBoton) {
-		botonActual--;
+	(*selectedButton)->scale(0.5);
+	if (selectedButton != firstButton) {
+		selectedButton--;
 	}
-	(*botonActual)->scale(2);
+	(*selectedButton)->scale(2);
 }
 
 void MenuState::play(GameManager* game) {
@@ -88,17 +88,17 @@ void MenuState::play(GameManager* game) {
 	game->getMachine()->pushState(new PlayState(game));
 }
 
-void MenuState::creaBotones(GameManager * gameManager)
+void MenuState::createButtons(GameManager * gameManager)
 {
-	static_cast<MenuState*>(gameManager->getMachine()->currentState())->destruirBotones();
+	static_cast<MenuState*>(gameManager->getMachine()->currentState())->deleteButtons();
 	int width = 50;
 	int height = 50;
 	gameManager->getMachine()->currentState()->stage.push_back(new Button(gameManager, width, height, Vector2D((4 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - width / 2, gameManager->getWindowHeight() / 3 - height / 2), play));
-	static_cast<MenuState*>(gameManager->getMachine()->currentState())->primerBoton = gameManager->getMachine()->currentState()->stage.begin();
+	static_cast<MenuState*>(gameManager->getMachine()->currentState())->firstButton = gameManager->getMachine()->currentState()->stage.begin();
 	gameManager->getMachine()->currentState()->stage.push_back(new Button(gameManager, width, height, Vector2D((5 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - width / 2, gameManager->getWindowHeight() / 3 - height / 2), play));
 	gameManager->getMachine()->currentState()->stage.push_back(new Button(gameManager, width, height, Vector2D((6 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - width / 2, gameManager->getWindowHeight() / 3 - height / 2), play));
-	static_cast<MenuState*>(gameManager->getMachine()->currentState())->botonActual = static_cast<MenuState*>(gameManager->getMachine()->currentState())->primerBoton;
-	(*static_cast<MenuState*>(gameManager->getMachine()->currentState())->botonActual)->scale(2);
+	static_cast<MenuState*>(gameManager->getMachine()->currentState())->selectedButton = static_cast<MenuState*>(gameManager->getMachine()->currentState())->firstButton;
+	(*static_cast<MenuState*>(gameManager->getMachine()->currentState())->selectedButton)->scale(2);
 
 }
 
@@ -118,14 +118,14 @@ void MenuState::exit(GameManager* game)
 
 /*
 
-//Nueva partida
+//new game
 
-//Cargar partida
+//load game
 
-//Ajustes
+//settings
 
-//Salir
+//exit
 
-//¿Extras?
+//others?
 
 */

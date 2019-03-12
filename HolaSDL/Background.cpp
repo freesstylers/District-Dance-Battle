@@ -11,7 +11,7 @@ Background::Background(SDLGame* game, double width, double height, Vector2D pos)
 	setWidth(width);
 	setHeight(height);
 	setPosition(pos);
-	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::FondoPrueba);
+	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::testBG);
 }
 
 Background::~Background()

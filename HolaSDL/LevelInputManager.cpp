@@ -20,9 +20,9 @@ LevelInputManager::~LevelInputManager()
 void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 
 	if (!minigameActive) {
-		if (!level->flechasPantalla_.empty())
+		if (!level->screenArrows_.empty())
 		{
-			auto it = level->flechasPantalla_.front();
+			auto it = level->screenArrows_.front();
 			if (it != nullptr) {
 				if (event.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, it->getKey()) && keyup)
 				{
@@ -30,21 +30,21 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 					{
 						cout << "perfecto" << endl;
 						level->feedbackLeft->queueAnimationChange(Resources::FeedbackPerfect);
-						level->barraPuntos->avanza(1);
+						level->scoreBar->updateBar(1);
 						level->updateScore(1);
 					}
 					else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (level->rightPoint->getPosition().getY() + level->rightPoint->getHeight() / 2)) <= 25)
 					{
 						cout << "bien" << endl;
 						level->feedbackLeft->queueAnimationChange(Resources::FeedbackGood);
-						level->barraPuntos->avanza(2);
+						level->scoreBar->updateBar(2);
 						level->updateScore(2);
 					}
 					else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (level->rightPoint->getPosition().getY() + level->rightPoint->getHeight() / 2)) <= 50)
 					{
 						cout << "regular" << endl;
 						level->feedbackLeft->queueAnimationChange(Resources::FeedbackRegular);
-						level->barraPuntos->avanza(3);
+						level->scoreBar->updateBar(3);
 						level->updateScore(3);
 					}
 					else
@@ -55,7 +55,7 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 					}
 						keyup = false;
 						delete(it);
-						level->flechasPantalla_.remove(it);
+						level->screenArrows_.remove(it);
 					
 				}
 				else if (event.type == SDL_CONTROLLERBUTTONDOWN && keyup)
@@ -65,7 +65,7 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 					{
 						keyup = false;
 						delete(it);
-						level->flechasPantalla_.remove(it);
+						level->screenArrows_.remove(it);
 						level->feedbackLeft->queueAnimationChange(Resources::FeedbackBad);
 						cout << "flecha incorrecta" << endl;
 						level->showError();
@@ -74,9 +74,9 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 				else if (event.type == SDL_CONTROLLERBUTTONUP) keyup = true;
 			}
 		}
-		if (!level->botonesPantalla_.empty())
+		if (!level->screenButtons_.empty())
 		{
-				auto it = level->botonesPantalla_.front();
+				auto it = level->screenButtons_.front();
 				if (it != nullptr) {
 				if (event.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, it->getKey()) && keyup2)
 				{
@@ -84,7 +84,7 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 					{
 						cout << "perfecto" << endl;
 						level->feedbackRight->queueAnimationChange(Resources::FeedbackPerfect);
-						level->barraPuntos->avanza(1);
+						level->scoreBar->updateBar(1);
 						level->updateScore(1);
 
 					}
@@ -92,14 +92,14 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 					{
 						cout << "bien" << endl;
 						level->feedbackRight->queueAnimationChange(Resources::FeedbackGood);
-						level->barraPuntos->avanza(2);
+						level->scoreBar->updateBar(2);
 						level->updateScore(2);
 					}
 					else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (level->rightPoint->getPosition().getY() + level->rightPoint->getHeight() / 2)) <= 50)
 					{
 						cout << "regular" << endl;
 						level->feedbackRight->queueAnimationChange(Resources::FeedbackRegular);
-						level->barraPuntos->avanza(3);
+						level->scoreBar->updateBar(3);
 						level->updateScore(3);
 					}
 					else
@@ -109,7 +109,7 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 						level->showError();
 					}
 					delete it;
-					level->botonesPantalla_.remove(it);
+					level->screenButtons_.remove(it);
 					keyup2 = false;
 				}
 				else if (event.type == SDL_CONTROLLERBUTTONDOWN && keyup2)
@@ -118,7 +118,7 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 						SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_X) || SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_Y))
 					{
 						delete(it);
-						level->botonesPantalla_.remove(it);
+						level->screenButtons_.remove(it);
 						level->feedbackRight->queueAnimationChange(Resources::FeedbackBad);
 						cout << "boton incorrecta" << endl;
 						level->showError();
@@ -130,9 +130,9 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 	}
 	else {
 
-		if (!level->getMinigame()->botonesPantalla_.empty())
+		if (!level->getMinigame()->screenButtons_.empty())
 		{
-			auto it = level->getMinigame()->botonesPantalla_.front();
+			auto it = level->getMinigame()->screenButtons_.front();
 			if (it != nullptr) {
 				if (event.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, it->getKey()) && keyup2)
 				{
@@ -140,11 +140,11 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 					if (abs(it->getPosition().getY()) > 0 && abs(it->getPosition().getY()) < level->leftPoint->getGame()->getWindowHeight() && abs(it->getPosition().getX()) > 0 && abs(it->getPosition().getX()) < level->leftPoint->getGame()->getWindowWidth())
 					{
 						cout << "perfecto" << endl;
-						fallado = false;
+						failed = false;
 					}
 
 					delete(it);
-					level->getMinigame()->botonesPantalla_.remove(it);
+					level->getMinigame()->screenButtons_.remove(it);
 					level->getMinigame()->fback->queueAnimationChange(Resources::FeedbackGood);
 				}
 				else if (event.type == SDL_CONTROLLERBUTTONDOWN && keyup2)
@@ -154,9 +154,9 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 					{
 						keyup2 = false;
 						delete(it);
-						level->getMinigame()->botonesPantalla_.remove(it);
+						level->getMinigame()->screenButtons_.remove(it);
 						cout << "flecha incorrecta" << endl;
-						fallado = true;
+						failed = true;
 						level->getMinigame()->fback->queueAnimationChange(Resources::FeedbackBad);
 					}
 				}
@@ -170,14 +170,14 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 }
 void LevelInputManager::update() {
 	if (minigameActive) {
-		if (!level->getMinigame()->botonesPantalla_.empty())
+		if (!level->getMinigame()->screenButtons_.empty())
 		{
-			if (level->getMinigame()->botonesPantalla_.front()->getPosition().getX() < -3 || level->getMinigame()->botonesPantalla_.front()->getPosition().getX() > level->getGameManager()->getWindowWidth() || level->getMinigame()->botonesPantalla_.front()->getPosition().getY() < -75 || level->getMinigame()->botonesPantalla_.front()->getPosition().getY() > level->getGameManager()->getWindowHeight() +75) {
-				delete level->getMinigame()->botonesPantalla_.front();
-				level->getMinigame()->botonesPantalla_.pop_front();
+			if (level->getMinigame()->screenButtons_.front()->getPosition().getX() < -3 || level->getMinigame()->screenButtons_.front()->getPosition().getX() > level->getGameManager()->getWindowWidth() || level->getMinigame()->screenButtons_.front()->getPosition().getY() < -75 || level->getMinigame()->screenButtons_.front()->getPosition().getY() > level->getGameManager()->getWindowHeight() +75) {
+				delete level->getMinigame()->screenButtons_.front();
+				level->getMinigame()->screenButtons_.pop_front();
 				cout << "fuera" << endl;
 				level->getMinigame()->fback->queueAnimationChange(Resources::FeedbackBad);
-				fallado = true;
+				failed = true;
 			}
 		}
 	}
