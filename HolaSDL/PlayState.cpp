@@ -54,7 +54,7 @@ void PlayState::newGame()
 
 	bh = new BeatHandeler(level->bpm);
 
-	effectVaporWave = new EmptyObject(manager, Vector2D(0, 0), Resources::EffectVaporWave, manager->getWindowWidth(), manager->getWindowHeight());
+	effectVaporWave = new EmptyObject(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::EffectVaporWave);
 
 	stage.push_back(bg);
 	stage.push_back(leftNoteBar);
