@@ -16,7 +16,7 @@
 #include "BarBackground.h"
 #include "MiniGame.h"
 #include "ScoreBar.h"
-#include "Feedback.h"
+#include "FeedbackPool.h"
 #include "EmptyObject.h"
 #include "Squares.h"
 #include "Level.h"
@@ -64,6 +64,8 @@ protected:
 	int maxScore = 400;
 	int currentScore = 0;
 	int maxNoteValue = 0;
+	
+	double feedbackVel = 0.1;
 
 public:
 	BeatHandeler* bh;
@@ -83,8 +85,8 @@ public:
 	std::list<Note*> screenButtons_;
 	Point* leftPoint; 
 	Point* rightPoint;
-	Feedback* feedbackLeft;
-	Feedback* feedbackRight;
+	FeedbackPool* feedbackLeft;
+	FeedbackPool* feedbackRight;
 	Squares* leftNoteBar;
 	Squares* rightNoteBar;
 	Background* bg;
