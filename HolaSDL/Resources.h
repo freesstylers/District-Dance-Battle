@@ -36,7 +36,8 @@ public:
 		testBG,
 		PixelatedTextBG,
 		RobotIdle,
-		RobotDance
+		RobotDance,
+		Mira
 		// text
 	};
 

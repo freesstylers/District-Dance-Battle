@@ -1,8 +1,13 @@
 #pragma once
-class MinigameHipHop
+#include "MiniGame.h"
+
+class PlayState;
+class GameManager;
+
+class MinigameHipHop : public MiniGame
 {
 public:
-	MinigameHipHop();
+	MinigameHipHop(GameManager* g, PlayState* p);;
 	~MinigameHipHop();
 };
 

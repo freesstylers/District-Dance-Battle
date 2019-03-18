@@ -3,7 +3,6 @@
 
 class PlayState;
 class GameManager;
-class LevelInputManager;
 
 class MinigameVaporwave: public MiniGame
 {

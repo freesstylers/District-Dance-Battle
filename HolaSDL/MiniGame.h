@@ -13,7 +13,6 @@
 using namespace std;
 class PlayState;
 class GameManager;
-class LevelInputManager;
 
 class MiniGame
 {
