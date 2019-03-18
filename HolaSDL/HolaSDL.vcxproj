@@ -13,6 +13,11 @@
   <ItemGroup>
     <ClInclude Include="AudioManager.h" />
     <ClInclude Include="Background.h" />
+    <ClInclude Include="MinigameHardbass.h" />
+    <ClInclude Include="MinigameHipHop.h" />
+    <ClInclude Include="MinigameLatina.h" />
+    <ClInclude Include="MinigameRock.h" />
+    <ClInclude Include="MinigameVaporwave.h" />
     <ClInclude Include="ScoreBar.h" />
     <ClInclude Include="SongBar.h" />
     <ClInclude Include="BeatHandeler.h" />
@@ -57,6 +62,11 @@
   <ItemGroup>
     <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="Background.cpp" />
+    <ClCompile Include="MinigameHardbass.cpp" />
+    <ClCompile Include="MinigameHipHop.cpp" />
+    <ClCompile Include="MinigameLatina.cpp" />
+    <ClCompile Include="MinigameRock.cpp" />
+    <ClCompile Include="MinigameVaporwave.cpp" />
     <ClCompile Include="ScoreBar.cpp" />
     <ClCompile Include="SongBar.cpp" />
     <ClCompile Include="BeatHandeler.cpp" />
@@ -105,7 +115,7 @@
     <ProjectGuid>{28A4C5CD-307A-4FE6-81E4-4CE1F1E49AB4}</ProjectGuid>
     <RootNamespace>HolaSDL</RootNamespace>
     <ProjectName>HolaSDL</ProjectName>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
