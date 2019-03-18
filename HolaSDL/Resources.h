@@ -21,7 +21,6 @@ public:
 		YButton,
 		Point,
 		NoteIcon,
-		BlueBar,
 		YellowBar,
 		PericoIdle,
 		PericoDab,
