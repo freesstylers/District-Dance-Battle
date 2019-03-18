@@ -4,8 +4,8 @@ Button::Button()
 {
 }
 
-Button::Button(GameManager* game, double width, double height, Vector2D pos, Callback* callback) :
-	GameObject(game),  callback(callback), gameManager_(game)
+Button::Button(GameManager* game, double width, double height, Vector2D pos, Callback* callback, bool active):
+	GameObject(game),  callback(callback), gameManager_(game), active_(active)
 {
 	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::YButton);
 
@@ -16,7 +16,7 @@ Button::Button(GameManager* game, double width, double height, Vector2D pos, Cal
 }
 
 bool Button::handleInput(Uint32 time, const SDL_Event& event) {
-	if (event.type == SDL_MOUSEBUTTONDOWN && event.button.button == SDL_BUTTON_LEFT) {
+	if (active_ && event.type == SDL_MOUSEBUTTONDOWN && event.button.button == SDL_BUTTON_LEFT) {
 		return checkButton(event.button.x, event.button.y);
 	}
 	return false;
@@ -41,9 +41,12 @@ void Button::callCallback()
 
 void Button::update(Uint32 time)
 {
+	if (active_) {
 
+	}
 }
 
 Button::~Button()
 {
+
 }

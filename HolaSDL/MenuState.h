@@ -14,7 +14,6 @@ public:
 
 private:
 	static void play(GameManager* gameManager);
-	static void createButtons(GameManager* gameManager);
 	static void load(GameManager* gameManager);
 	static void exit(GameManager* gameManager);
 
