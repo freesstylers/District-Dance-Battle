@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClInclude Include="AudioManager.h" />
     <ClInclude Include="Background.h" />
+    <ClInclude Include="DialogState.h" />
     <ClInclude Include="MinigameHardbass.h" />
     <ClInclude Include="MinigameHipHop.h" />
     <ClInclude Include="MinigameLatina.h" />
@@ -62,6 +63,7 @@
   <ItemGroup>
     <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="Background.cpp" />
+    <ClCompile Include="DialogState.cpp" />
     <ClCompile Include="MinigameHardbass.cpp" />
     <ClCompile Include="MinigameHipHop.cpp" />
     <ClCompile Include="MinigameLatina.cpp" />

@@ -37,6 +37,7 @@ vector<Resources::ImageInfo> Resources::images_ {
 	{RobotIdle, "resources/images/RobotVaporwave.png", 60, 120, 2, 1, 2},
 	{RobotDance, "resources/images/VaporwaveDance.png", 60, 120, 3, 2, 4},
 	{Mira, "resources/images/mira.png", 60, 120, 3, 2, 4},
+	{TextboxPrueba, "resources/images/textbox1.png",32, 32, 1, 1, 1}
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {
