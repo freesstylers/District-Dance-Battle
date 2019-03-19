@@ -3,6 +3,7 @@
 
 class PlayState;
 class GameManager;
+class LevelInputManager;
 
 class MinigameVaporwave: public MiniGame
 {
@@ -14,8 +15,6 @@ public:
 	bool getFailed() { return failed; };
 	MinigameVaporwave(GameManager* g, PlayState* p);
 	~MinigameVaporwave() { delete timer; };
-	std::list<Note*> levelButtons_;
-	//std::list<Note*> screenButtons_;
 	void generateButtons();
 	void render(Uint32 time);
 	virtual void update(Uint32 time);

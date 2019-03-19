@@ -1,6 +1,7 @@
 #include "MiniGame.h"
 #include "GameManager.h"
 #include "PlayState.h"
+#include "LevelInputManager.h"
 
 
 MiniGame::MiniGame(GameManager* g, PlayState* p)
