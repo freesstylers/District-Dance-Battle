@@ -8,7 +8,7 @@
 #include "GameObject.h"
 #include "Timer.h"
 #include "Note.h"
-#include "BeatHandeler.h"
+#include "BeatHandler.h"
 #include "LevelInputManager.h"
 #include "Character.h"
 #include "SongBar.h"
@@ -65,7 +65,7 @@ protected:
 	int maxNoteValue = 0;
 
 public:
-	BeatHandeler* bh;
+	BeatHandler* bh;
 	ScoreBar* scoreBar;
 	PlayState(GameManager* g);
 	void newGame();

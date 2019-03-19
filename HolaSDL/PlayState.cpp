@@ -38,7 +38,7 @@ void PlayState::newGame()
 	minigame = new MiniGame(manager, this);
 	minigameController = new TimerNoSingleton();
 
-	bh = new BeatHandeler(level->bpm);
+	bh = new BeatHandler(level->bpm);
 
 	effectVaporWave = new EmptyObject(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::EffectVaporWave);
 

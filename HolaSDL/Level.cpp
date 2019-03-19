@@ -1,7 +1,8 @@
 #include "Level.h"
 
 #include "PlayState.h"
-#include <math.h>
+#include <cmath> // esto es C++
+//#include <math.h> // esto es C
 
 Level::Level(PlayState* l, SDLGame* gam, string n)
 {
