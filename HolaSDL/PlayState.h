@@ -54,10 +54,10 @@ protected:
 	bool animationMiniGame = false;
 	int animationFramesPerBeat = 2;	//determines how many animation frames to advance each beat
 
-	int pointSize = 80;	//size of the point 
-	int noteBarWidth = pointSize + 33;
-	int noteSize = 50;	//size of the notes
-	int pointOffset = 70;	//offset between the note bars and the center of the screen
+	int pointSize = 50;	//size of the point 
+	int noteBarWidth = pointSize + 13;
+	int noteSize = 30;	//size of the notes
+	int pointOffset = 50;	//offset between the note bars and the center of the screen
 	int initialNoteHeight = 70;	//height at which new notes will be generated
 
 	int maxScore = 400;
@@ -78,12 +78,17 @@ public:
 	Vector2D setVel(double time);
 	std::list<Note*> levelArrows_;
 	std::list<Note*> levelButtons_;
+	std::list<Note*> levelArrows2_;
+	std::list<Note*> levelButtons2_;
 	Feedback* feedbackLeft;
 	Feedback* feedbackRight;
 	Background* bg;
 	PlayerPack* player1;
+	PlayerPack* player2;
 	Vector2D leftNotesVector;
 	Vector2D rightNotesVector;
+	Vector2D leftNotesVector2;
+	Vector2D rightNotesVector2;
 	MiniGame* getMinigame() { return minigame; }
 	GameManager* getGameManager() { return manager; }
 

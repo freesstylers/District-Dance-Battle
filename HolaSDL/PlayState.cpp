@@ -11,16 +11,21 @@ void PlayState::newGame()
 
 	levelName = "prueba";
 
-	int leftNotesPos = manager->getWindowWidth() / 2 - pointOffset;
-	int rightNotesPos = manager->getWindowWidth() / 2 + pointOffset;
+	int leftNotesPos = manager->getWindowWidth() / 3 - pointOffset;
+	int rightNotesPos = manager->getWindowWidth() / 3 + pointOffset;
 
 	leftNotesVector = Vector2D(leftNotesPos - 50 / 2, 70);
 	rightNotesVector = Vector2D(rightNotesPos - 50 / 2, 70);
+
+	leftNotesVector2 = Vector2D(leftNotesPos - 50 / 2 + 100, 70);
+	rightNotesVector2 = Vector2D(rightNotesPos - 50 / 2 + 100, 70);
+
 
 	feedbackLeft = new Feedback(manager, pointSize * 0.8, pointSize * 0.8, Vector2D(leftNotesPos - (pointSize * 0.8) - (pointSize * 0.8), 465 + pointSize / 2));
 	feedbackRight = new Feedback(manager, pointSize * 0.8, pointSize * 0.8, Vector2D(rightNotesPos + (pointSize * 0.8), 465 + pointSize / 2));
 	bg = new Background(manager, manager->getWindowWidth(), manager->getWindowHeight(), Vector2D(0, 0));
 	player1 = new PlayerPack(manager, leftNotesPos, rightNotesPos, pointSize, noteBarWidth);
+	player2 = new PlayerPack(manager, leftNotesPos + 200, rightNotesPos + 200, pointSize, noteBarWidth);
 	level = new Level(this, manager, levelName);
 	level->init();
 	timer = Timer::Instance();
@@ -44,6 +49,7 @@ void PlayState::newGame()
 
 	stage.push_back(bg);
 	stage.push_back(player1);
+	stage.push_back(player2);
 	stage.push_back(perico);
 	stage.push_back(robot);
 	stage.push_back(scoreBar);
@@ -186,7 +192,13 @@ void PlayState::generateArrows()
 		if (levelArrows_.front() != nullptr) {
 			player1->screenArrows_.push_back(levelArrows_.front());
 			player1->screenArrows_.back()->setPosition(player1->screenArrows_.back()->getPosition() + player1->screenArrows_.back()->getVelocity()*msDiff);
+			if (player2 != nullptr && levelArrows2_.front()!=nullptr)
+			{
+				player2->screenArrows_.push_back(levelArrows2_.front());
+				player2->screenArrows_.back()->setPosition(player2->screenArrows_.back()->getPosition() + player2->screenArrows_.back()->getVelocity()*msDiff);
+			}
 		}
+		levelArrows2_.pop_front();
 		levelArrows_.pop_front();
 	}
 }
@@ -197,6 +209,11 @@ void PlayState::generateButtons()
 		if (levelButtons_.front() != nullptr) {
 			player1->screenButtons_.push_back(levelButtons_.front());
 			player1->screenButtons_.back()->setPosition(player1->screenButtons_.back()->getPosition() + player1->screenButtons_.back()->getVelocity()*msDiff);
+			if (player2 != nullptr)
+			{
+				player2->screenButtons_.push_back(levelButtons2_.front());
+				player2->screenButtons_.back()->setPosition(player2->screenButtons_.back()->getPosition() + player2->screenButtons_.back()->getVelocity()*msDiff);
+			}
 		}
 		levelButtons_.pop_front();
 	}
