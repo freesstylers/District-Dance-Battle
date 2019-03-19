@@ -222,7 +222,7 @@ void PlayState::render(Uint32 time, bool beatSync)
 	}
 	if (miniActive) {
 		minigame->render(time);
-		effectVaporWave->render(time, beatSync);
+		effectVaporWave->render(time, true);
 	}
 
 	beatSignal = false;
