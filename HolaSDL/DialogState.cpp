@@ -4,18 +4,21 @@
 #include "GameManager.h"
 #include "Character.h"
 #include "Squares.h"
+#include "TextBox.h"
 #include <iostream>
 using namespace std;
 
 
-DialogState::DialogState(GameManager* g, string txt):GameState(g)
+DialogState::DialogState(GameManager* g, string txt, int numctrl):GameState(g)
 {
 	archivo = txt;
+	controller = SDL_GameControllerOpen(numctrl);
 	init();
 }
 
 void DialogState::init() 
 {
+
 	Dialog d;
 	int aux;
 	int sp;
@@ -38,7 +41,7 @@ void DialogState::init()
 			file >> sp;
 			//Hay que crear una nueva clase que sea textBox
 			file >> textAux;
-			box.insert(pair<string, GameObject*>(textAux, new Character(manager, manager->getWindowWidth(), manager->getWindowHeight(), Vector2D(10, 400), sp)));
+			box.insert(pair<string, GameObject*>(textAux, new TextBox(manager, manager->getWindowWidth(), manager->getWindowHeight(), Vector2D(10, 400), sp)));
 		}
 
 		file >> textAux;
@@ -57,12 +60,33 @@ void DialogState::init()
 			//file >> textAux;
 		}
 		file.close();
-
+		actualBox = box[dialogo.front().box];
+		actualText = dialogo.front().text;
+		dialogo.pop_front();
 	}
+	
 	
 	
 }
 
 DialogState::~DialogState()
 {
+	delete actualBox;
 }
+
+void DialogState::render(Uint32 time, bool beatSync = false) {
+	for (auto it : sprites) {
+		it->render(time, beatSync);
+	}
+	actualBox->render(time, beatSync);
+}
+
+bool DialogState::handleEvent(Uint32 time, SDL_Event e) {
+	if (e.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) && keyup)
+	{
+
+	}
+}
+
+
+

@@ -49,6 +49,7 @@
     <ClCompile Include="MinigameRock.cpp" />
     <ClCompile Include="MinigameHardbass.cpp" />
     <ClCompile Include="DialogState.cpp" />
+    <ClCompile Include="TextBox.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioManager.h" />
@@ -99,6 +100,7 @@
     <ClInclude Include="MinigameRock.h" />
     <ClInclude Include="MinigameHardbass.h" />
     <ClInclude Include="DialogState.h" />
+    <ClInclude Include="TextBox.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

@@ -54,6 +54,7 @@
     <ClInclude Include="ServiceLocator.h" />
     <ClInclude Include="Squares.h" />
     <ClInclude Include="SRandBasedGenerator.h" />
+    <ClInclude Include="TextBox.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TexturesManager.h" />
     <ClInclude Include="Timer.h" />
@@ -104,6 +105,7 @@
     <ClCompile Include="ServiceLocator.cpp" />
     <ClCompile Include="Squares.cpp" />
     <ClCompile Include="SRandBasedGenerator.cpp" />
+    <ClCompile Include="TextBox.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TexturesManager.cpp" />
     <ClCompile Include="Timer.cpp" />
