@@ -18,6 +18,7 @@
     <ClInclude Include="MinigameLatina.h" />
     <ClInclude Include="MinigameRock.h" />
     <ClInclude Include="MinigameVaporwave.h" />
+    <ClInclude Include="Mirilla.h" />
     <ClInclude Include="ScoreBar.h" />
     <ClInclude Include="SongBar.h" />
     <ClInclude Include="BeatHandeler.h" />
@@ -67,6 +68,7 @@
     <ClCompile Include="MinigameLatina.cpp" />
     <ClCompile Include="MinigameRock.cpp" />
     <ClCompile Include="MinigameVaporwave.cpp" />
+    <ClCompile Include="Mirilla.cpp" />
     <ClCompile Include="ScoreBar.cpp" />
     <ClCompile Include="SongBar.cpp" />
     <ClCompile Include="BeatHandeler.cpp" />

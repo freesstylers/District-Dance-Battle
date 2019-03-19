@@ -33,6 +33,7 @@ public:
 	~MiniGame() { delete timer; };
 	virtual void render(Uint32 time);
 	virtual void update(Uint32 time); 
+	virtual void handleInput(Uint32 time, SDL_Event e);
 	bool getFailed() { return failed; };
 	virtual void createList();
 	virtual void deleteList();

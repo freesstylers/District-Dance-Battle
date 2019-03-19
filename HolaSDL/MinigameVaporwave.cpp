@@ -1,7 +1,5 @@
 #include "MinigameVaporwave.h"
 #include "GameManager.h"
-#include "PlayState.h"
-#include "LevelInputManager.h"
 
 MinigameVaporwave::MinigameVaporwave(GameManager * g, PlayState * p): MiniGame(g, p)
 {

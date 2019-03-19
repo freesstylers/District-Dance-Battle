@@ -48,6 +48,7 @@
     <ClCompile Include="MinigameLatina.cpp" />
     <ClCompile Include="MinigameRock.cpp" />
     <ClCompile Include="MinigameHardbass.cpp" />
+    <ClCompile Include="Mirilla.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioManager.h" />
@@ -97,6 +98,7 @@
     <ClInclude Include="MinigameLatina.h" />
     <ClInclude Include="MinigameRock.h" />
     <ClInclude Include="MinigameHardbass.h" />
+    <ClInclude Include="Mirilla.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
