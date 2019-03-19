@@ -5,6 +5,15 @@ Note::Note()
 {
 
 }
+Note::Note(SDLGame* game, double width, double height, Vector2D pos, Vector2D vel) :
+	GameObject(game) 
+{
+	setWidth(width);
+	setHeight(height);
+	setPosition(pos);
+	setVelocity(vel);
+	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::FlechaEspBomba);
+}
 Note::Note(SDL_GameControllerButton key, SDLGame* game, double width, double height, Vector2D pos, Vector2D vel) :
 	GameObject(game), key(key)
 {

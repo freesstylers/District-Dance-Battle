@@ -3,6 +3,7 @@
 #include "PlayState.h"
 #include <math.h>
 
+
 Level::Level(PlayState* l, SDLGame* gam, string n)
 {
 	level = l;
@@ -34,6 +35,8 @@ void Level::init() {
 		file >> aux;
 
 		if (aux >= 0) {
+			/*if(aux!=0)
+				aux = 5;*/
 			switch (aux) {
 			case 0:
 				note = nullptr;
@@ -49,6 +52,9 @@ void Level::init() {
 				break;
 			case 4:
 				note = new Note(SDL_CONTROLLER_BUTTON_DPAD_DOWN, gm, 50, 50, level->leftNotesVector, noteVel);
+				break;
+			case 5:
+				note = new Note(gm, 50, 50, level->leftNotesVector, noteVel);
 				break;
 			default:
 				break;
@@ -66,6 +72,8 @@ void Level::init() {
 		file >> aux;
 
 		if (aux >= 0) {
+			/*if (aux != 0)
+					aux = 5*/;
 			switch (aux) {
 			case 0:
 				note = nullptr;
@@ -81,6 +89,9 @@ void Level::init() {
 				break;
 			case 4:
 				note = new Note(SDL_CONTROLLER_BUTTON_Y, gm, 50, 50, level->rightNotesVector, noteVel);
+				break;
+			case 5:
+				note = new Note(gm, 50, 50, level->rightNotesVector, noteVel);
 				break;
 			default:
 				break;

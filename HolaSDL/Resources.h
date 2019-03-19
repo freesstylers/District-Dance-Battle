@@ -19,6 +19,7 @@ public:
 		BButton,
 		XButton,
 		YButton,
+		FlechaEspBomba,
 		Point,
 		NoteIcon,
 		YellowBar,
