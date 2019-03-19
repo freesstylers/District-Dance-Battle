@@ -8,7 +8,6 @@
 #include "GameObject.h"
 #include "Timer.h"
 #include "Note.h"
-#include "Point.h"
 #include "BeatHandeler.h"
 #include "LevelInputManager.h"
 #include "Character.h"
@@ -18,10 +17,10 @@
 #include "ScoreBar.h"
 #include "Feedback.h"
 #include "EmptyObject.h"
-#include "Squares.h"
 #include "Level.h"
 #include "Background.h"
 #include "TimerNoSingleton.h"
+#include "PlayerPack.h"
 
 class PlayState : public GameState //main game class, where most of the gameplay will take place
 {
@@ -79,15 +78,10 @@ public:
 	Vector2D setVel(double time);
 	std::list<Note*> levelArrows_;
 	std::list<Note*> levelButtons_;
-	std::list<Note*> screenArrows_; 
-	std::list<Note*> screenButtons_;
-	Point* leftPoint; 
-	Point* rightPoint;
 	Feedback* feedbackLeft;
 	Feedback* feedbackRight;
-	Squares* leftNoteBar;
-	Squares* rightNoteBar;
 	Background* bg;
+	PlayerPack* player1;
 	Vector2D leftNotesVector;
 	Vector2D rightNotesVector;
 	MiniGame* getMinigame() { return minigame; }

@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClInclude Include="AudioManager.h" />
     <ClInclude Include="Background.h" />
+    <ClInclude Include="PlayerPack.h" />
     <ClInclude Include="ScoreBar.h" />
     <ClInclude Include="SongBar.h" />
     <ClInclude Include="BeatHandeler.h" />
@@ -36,7 +37,6 @@
     <ClInclude Include="MiniGame.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="PlayState.h" />
-    <ClInclude Include="Playstate2P.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="RandomNumberGenerator.h" />
     <ClInclude Include="Resources.h" />
@@ -57,6 +57,7 @@
   <ItemGroup>
     <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="Background.cpp" />
+    <ClCompile Include="PlayerPack.cpp" />
     <ClCompile Include="ScoreBar.cpp" />
     <ClCompile Include="SongBar.cpp" />
     <ClCompile Include="BeatHandeler.cpp" />
@@ -81,7 +82,6 @@
     <ClCompile Include="MiniGame.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="PlayState.cpp" />
-    <ClCompile Include="Playstate2P.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="RandomNumberGenerator.cpp" />
     <ClCompile Include="Resources.cpp" />

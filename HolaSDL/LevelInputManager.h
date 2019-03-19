@@ -2,13 +2,14 @@
 #include "MiniGame.h"
 #include "ScoreBar.h"
 #include "GameObject.h"
+#include "PlayerPack.h"
 
 class PlayState;
 
 class LevelInputManager
 {
 public:
-	LevelInputManager(PlayState* l, int numctrl);
+	LevelInputManager(PlayState* l, PlayerPack* pl, int numctrl);
 	~LevelInputManager();
 
 	void handleInput(Uint32 time, const SDL_Event& event);
@@ -29,6 +30,7 @@ private:
 	bool keyup2 = true;
 	bool pressed = false;
 	PlayState* level;
+	PlayerPack* player;
 	SDL_GameController* controller = NULL;
 };
 
