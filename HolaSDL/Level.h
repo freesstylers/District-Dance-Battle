@@ -3,6 +3,8 @@
 #include <string>
 
 #include"Vector2D.h"
+#include"SRandBasedGenerator.h"
+
 
 using namespace std;
 
@@ -25,6 +27,7 @@ public:
 	int song;
 	int maxScore;
 	int noteAmount;
+	SRandBasedGenerator random;
 
 protected:
 	string name;

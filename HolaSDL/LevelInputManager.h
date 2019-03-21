@@ -30,5 +30,6 @@ private:
 	bool pressed = false;
 	PlayState* level;
 	SDL_GameController* controller = NULL;
+	
 };
 

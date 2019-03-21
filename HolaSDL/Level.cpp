@@ -1,7 +1,8 @@
 #include "Level.h"
 
 #include "PlayState.h"
-#include <math.h>
+#include "SRandBasedGenerator.h"
+//#include <math.h>
 
 
 Level::Level(PlayState* l, SDLGame* gam, string n)
@@ -20,6 +21,7 @@ void Level::playSong() {
 	level->playSong(song);
 }
 
+
 void Level::init() {
 	ifstream file("resources/levels/" + name + ".txt");
 	file >> bpm;
@@ -29,14 +31,21 @@ void Level::init() {
 	noteVel = level->setVel(60000/bpm);
 
 	int aux = 0;
-
 	while (aux >= 0) {
 		Note* note;
 		file >> aux;
 
 		if (aux >= 0) {
-			/*if(aux!=0)
-				aux = 5;*/
+			if (aux != 0) 
+			{
+				//If aux is going to change
+				int probChange = random.nextInt(0, 10);
+				if (probChange == 9) {
+					//If aux change,it chooses the valor of aux
+					int change = random.nextInt(0,1);
+					aux = change+5;
+				}
+			}
 			switch (aux) {
 			case 0:
 				note = nullptr;
@@ -54,7 +63,7 @@ void Level::init() {
 				note = new Note(SDL_CONTROLLER_BUTTON_DPAD_DOWN, gm, 50, 50, level->leftNotesVector, noteVel);
 				break;
 			case 5:
-				note = new Note(gm, 50, 50, level->leftNotesVector, noteVel);
+				note = new Note(gm, 50, 50, level->leftNotesVector, noteVel,aux);
 				break;
 			default:
 				break;
@@ -72,8 +81,14 @@ void Level::init() {
 		file >> aux;
 
 		if (aux >= 0) {
-			/*if (aux != 0)
-					aux = 5*/;
+			if (aux != 0) {
+				
+				int probChange = random.nextInt(0, 10);
+				if (probChange == 9) {
+					int change = random.nextInt(0,1);
+					aux = change+5;
+				}
+			}
 			switch (aux) {
 			case 0:
 				note = nullptr;
@@ -91,7 +106,7 @@ void Level::init() {
 				note = new Note(SDL_CONTROLLER_BUTTON_Y, gm, 50, 50, level->rightNotesVector, noteVel);
 				break;
 			case 5:
-				note = new Note(gm, 50, 50, level->rightNotesVector, noteVel);
+				note = new Note(gm, 50, 50, level->rightNotesVector, noteVel,aux);
 				break;
 			default:
 				break;
@@ -106,3 +121,4 @@ void Level::init() {
 
 
 }
+

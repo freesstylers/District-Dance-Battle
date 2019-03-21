@@ -27,7 +27,7 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 				if (event.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, it->getKey()) && keyup)
 				{
 					if (abs((it->getPosition().getY() + it->getHeight() / 2) - (level->rightPoint->getPosition().getY() + level->rightPoint->getHeight() / 2)) <= 10)
-					{
+					{	
 						cout << "perfecto" << endl;
 						level->feedbackLeft->queueAnimationChange(Resources::FeedbackPerfect);
 						level->scoreBar->updateBar(1);
