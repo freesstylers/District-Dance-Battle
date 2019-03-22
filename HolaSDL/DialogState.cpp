@@ -84,8 +84,12 @@ void DialogState::render(Uint32 time, bool beatSync = false) {
 bool DialogState::handleEvent(Uint32 time, SDL_Event e) {
 	if (e.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) && keyup)
 	{
-
+		dialogo.pop_front();
+		actualBox = box[dialogo.front().box];
+		actualText = dialogo.front().text;
+		keyup = false;
 	}
+	else if (e.type == SDL_CONTROLLERBUTTONUP) keyup = true;
 }
 
 
