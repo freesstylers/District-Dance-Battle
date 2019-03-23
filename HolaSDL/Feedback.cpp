@@ -1,6 +1,9 @@
 #include "Feedback.h"
 
+Feedback::Feedback() : GameObject() {
 
+
+}
 Feedback::Feedback(SDLGame* game, double width, double height, Vector2D pos) :
 	GameObject(game)
 {
@@ -9,7 +12,10 @@ Feedback::Feedback(SDLGame* game, double width, double height, Vector2D pos) :
 	setPosition(pos);
 	setVelocity(Vector2D(0, 0));
 
+	init();
+}
 
+void Feedback::init() {
 	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::Blank);
 
 	isAnimationSyncedToMusic = true;
@@ -19,11 +25,18 @@ Feedback::Feedback(SDLGame* game, double width, double height, Vector2D pos) :
 
 void Feedback::update(Uint32 time)
 {
-	if (lastUpdate == 0)
-		lastUpdate = time;
+	if (active_) {
+		if (lastUpdate == 0)
+			lastUpdate = time;
 
-	if (time - lastUpdate >= feedbackDecayTime && active_) {
-		setActive(false);
+		position_ = position_ + velocity_;
+
+		if (time - lastUpdate >= feedbackDecayTime) {
+			if (getAlpha() == 0)
+				setActive(false);
+			else
+				changeAlpha(alphaUpdate);
+		}
 	}
 }
 

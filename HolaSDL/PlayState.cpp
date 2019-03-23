@@ -30,8 +30,8 @@ void PlayState::newGame()
 
 	leftPoint = new Point(manager, pointSize, pointSize, Vector2D(leftNotesPos - pointSize / 2, 465));
 	rightPoint = new Point(manager, pointSize, pointSize, Vector2D(rightNotesPos - pointSize / 2, 465));
-	feedbackLeft = new Feedback(manager, pointSize * 0.8, pointSize * 0.8, Vector2D(leftNotesPos - (pointSize * 0.8) - (pointSize * 0.8), 465 + pointSize / 2));
-	feedbackRight = new Feedback(manager, pointSize * 0.8, pointSize * 0.8, Vector2D(rightNotesPos + (pointSize * 0.8), 465 + pointSize / 2));
+	feedbackLeft = new FeedbackPool(manager, pointSize * 0.8, pointSize * 0.8, Vector2D(leftNotesPos - (pointSize * 0.8) - (pointSize * 0.8), 465 + pointSize / 2));
+	feedbackRight = new FeedbackPool(manager, pointSize * 0.8, pointSize * 0.8, Vector2D(rightNotesPos + (pointSize * 0.8), 465 + pointSize / 2));
 	bg = new Background(manager, manager->getWindowWidth(), manager->getWindowHeight(), Vector2D(0, 0));
 	level = new Level(this, manager, levelName);
 	level->init();
@@ -118,7 +118,7 @@ void PlayState::update(Uint32 time)
 
 				showError();
 
-				feedbackLeft->queueAnimationChange(Resources::FeedbackBad);
+				feedbackLeft->addFeedback(Resources::FeedbackBad);
 			}
 			if (!screenButtons_.empty() && screenButtons_.front()->getPosition().getY() > 550)
 			{
@@ -129,7 +129,7 @@ void PlayState::update(Uint32 time)
 
 				showError();
 
-				feedbackRight->queueAnimationChange(Resources::FeedbackBad);
+				feedbackRight->addFeedback(Resources::FeedbackBad);
 			}
 			timer->Update();
 			if (timer->DeltaTime() > (bh->getBeatTime() / 1000.0) - msDiff)

@@ -48,6 +48,8 @@
     <ClCompile Include="MinigameLatina.cpp" />
     <ClCompile Include="MinigameRock.cpp" />
     <ClCompile Include="MinigameHardbass.cpp" />
+    <ClCompile Include="GameObjectPool.cpp" />
+    <ClCompile Include="FeedbackPool.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioManager.h" />
@@ -97,6 +99,8 @@
     <ClInclude Include="MinigameLatina.h" />
     <ClInclude Include="MinigameRock.h" />
     <ClInclude Include="MinigameHardbass.h" />
+    <ClInclude Include="GameObjectPool.h" />
+    <ClInclude Include="FeedbackPool.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

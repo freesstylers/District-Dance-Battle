@@ -50,11 +50,16 @@ public:
 	virtual bool handleInput(Uint32 time, const SDL_Event& event) = 0;
 	virtual void update(Uint32 time) = 0;
 	virtual void render(Uint32 time, bool beatSync = false); 
+	virtual void init() {}
 
 	virtual void queueAnimationChange(int animationTag);
 	virtual void forceAnimationChange(int animationTag);
 
 	virtual void cleanAnimationQueue() { while (!queuedAnimations.empty()) { queuedAnimations.pop(); } }
+
+	void setAlpha(int alpha) { alpha_ = alpha; }
+	void changeAlpha(int alphaChange);
+	int getAlpha() { return alpha_; };
 protected:
 	SDLGame* game_; // pointer to the game
 
@@ -64,6 +69,7 @@ protected:
 
 	double width_;  // width
 	double height_; // height
+	int alpha_;
 
 	int lastRender = 0; //saves the last time the object was rendered
 	int framesPerSecond = 1; //times the object should be rendered every second

@@ -6,7 +6,7 @@ GameObject::GameObject() :
 
 GameObject::GameObject(SDLGame* game) :
 		game_(game), active_(true), width_(), height_(), position_(), velocity_(), acceleration_(0, 0),
-			rotation_(0.0) {
+			rotation_(0.0), alpha_(255) {
 }
 
 GameObject::~GameObject() {
@@ -128,7 +128,7 @@ SDL_Rect GameObject::getRect()
 void GameObject::render(Uint32 time, bool beatSync)
 {
 	if(active_){
-		animation.texture_->render(getRect(), getFrameRect());
+		animation.texture_->render(getRect(), getFrameRect(), alpha_);
 
 
 		if ((!isAnimationSyncedToMusic && (time - lastRender) >= (1000 / framesPerSecond)) || (isAnimationSyncedToMusic && beatSync)) {	//animations update only when a certain time has passed OR when the "beatSync" signal is true
@@ -175,3 +175,14 @@ void GameObject::changeAnimation(int animationTag)
 	
 	queuedAnimations.pop();
 }
+
+void GameObject::changeAlpha(int alphaChange)
+{
+	if (alpha_ + alphaChange < 0)
+		alpha_ = 0;
+	else if (alpha_ + alphaChange > 255)
+		alpha_ = 255;
+	else
+		alpha_ = alpha_ + alphaChange;
+}
+

@@ -86,17 +86,18 @@ void Texture::render(SDL_Renderer* renderer, int x, int y) const {
 	render(renderer, dest);
 }
 
-void Texture::render(const SDL_Rect& dest, SDL_Rect* clip) const {
-	render(renderer_, dest, clip);
+void Texture::render(const SDL_Rect& dest, SDL_Rect* clip, Uint8 alpha) const {
+	render(renderer_, dest, clip, alpha);
 }
 
 void Texture::render(SDL_Renderer* renderer, const SDL_Rect& dest,
-		SDL_Rect* clip) const {
+		SDL_Rect* clip, Uint8 alpha) const {
 	if (texture_) {
 		SDL_Rect default_clip = { 0, 0, width_, height_ };
 		if (clip == nullptr) {
 			clip = &default_clip;
 		}
+		SDL_SetTextureAlphaMod(texture_, alpha);
 		SDL_RenderCopy(renderer, texture_, clip, &dest);
 	}
 }

@@ -18,6 +18,7 @@
 #include "MinigameVaporwave.h"
 #include "ScoreBar.h"
 #include "Feedback.h"
+#include "FeedbackPool.h"
 #include "EmptyObject.h"
 #include "Squares.h"
 #include "Level.h"
@@ -84,8 +85,8 @@ public:
 	std::list<Note*> screenButtons_;
 	Point* leftPoint; 
 	Point* rightPoint;
-	Feedback* feedbackLeft;
-	Feedback* feedbackRight;
+	FeedbackPool* feedbackLeft;
+	FeedbackPool* feedbackRight;
 	Squares* leftNoteBar;
 	Squares* rightNoteBar;
 	Background* bg;

@@ -31,9 +31,9 @@ public:
 	// render part of the texture (clip) to a destination rectangle, if no
 	// clip provided it renders all texture (scaled to dest). We either provide
 	// a renderer or use the one used at construction
-	void render(SDL_Rect const& dest, SDL_Rect* clip = nullptr) const;
+	void render(SDL_Rect const& dest, SDL_Rect* clip = nullptr, Uint8 alpha = 255) const;
 	void render(SDL_Renderer* renderer, SDL_Rect const& dest, SDL_Rect* clip =
-			nullptr) const;
+			nullptr, Uint8 alpha = 255) const;
 
 	// render part of the texture (clip) to a destination rectangle with a rotation,
 	// if no clip provided it renders all texture (scaled to dest). We either provide

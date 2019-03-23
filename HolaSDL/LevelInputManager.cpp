@@ -29,34 +29,34 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 					if (abs((it->getPosition().getY() + it->getHeight() / 2) - (level->rightPoint->getPosition().getY() + level->rightPoint->getHeight() / 2)) <= 10)
 					{	
 						cout << "perfecto" << endl;
-						level->feedbackLeft->queueAnimationChange(Resources::FeedbackPerfect);
+						level->feedbackLeft->addFeedback(Resources::FeedbackPerfect);
 						level->scoreBar->updateBar(1);
 						level->updateScore(1);
 					}
 					else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (level->rightPoint->getPosition().getY() + level->rightPoint->getHeight() / 2)) <= 25)
 					{
 						cout << "bien" << endl;
-						level->feedbackLeft->queueAnimationChange(Resources::FeedbackGood);
+						level->feedbackLeft->addFeedback(Resources::FeedbackGood);
 						level->scoreBar->updateBar(2);
 						level->updateScore(2);
 					}
 					else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (level->rightPoint->getPosition().getY() + level->rightPoint->getHeight() / 2)) <= 50)
 					{
 						cout << "regular" << endl;
-						level->feedbackLeft->queueAnimationChange(Resources::FeedbackRegular);
+						level->feedbackLeft->addFeedback(Resources::FeedbackRegular);
 						level->scoreBar->updateBar(3);
 						level->updateScore(3);
 					}
 					else
 					{
 						cout << "mala punteria" << endl;
-						level->feedbackLeft->queueAnimationChange(Resources::FeedbackBad);
+						level->feedbackLeft->addFeedback(Resources::FeedbackBad);
 						level->showError();
 					}
-						keyup = false;
-						delete(it);
-						level->screenArrows_.remove(it);
-					
+					keyup = false;
+					delete(it);
+					level->screenArrows_.remove(it);
+
 				}
 				else if (event.type == SDL_CONTROLLERBUTTONDOWN && keyup)
 				{
@@ -66,7 +66,7 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 						keyup = false;
 						delete(it);
 						level->screenArrows_.remove(it);
-						level->feedbackLeft->queueAnimationChange(Resources::FeedbackBad);
+						level->feedbackLeft->addFeedback(Resources::FeedbackBad);
 						cout << "flecha incorrecta" << endl;
 						level->showError();
 					}
@@ -76,14 +76,14 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 		}
 		if (!level->screenButtons_.empty())
 		{
-				auto it = level->screenButtons_.front();
-				if (it != nullptr) {
+			auto it = level->screenButtons_.front();
+			if (it != nullptr) {
 				if (event.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, it->getKey()) && keyup2)
 				{
 					if (abs((it->getPosition().getY() + it->getHeight() / 2) - (level->rightPoint->getPosition().getY() + level->rightPoint->getHeight() / 2)) <= 10)
 					{
 						cout << "perfecto" << endl;
-						level->feedbackRight->queueAnimationChange(Resources::FeedbackPerfect);
+						level->feedbackRight->addFeedback(Resources::FeedbackPerfect);
 						level->scoreBar->updateBar(1);
 						level->updateScore(1);
 
@@ -91,21 +91,21 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 					else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (level->rightPoint->getPosition().getY() + level->rightPoint->getHeight() / 2)) <= 25)
 					{
 						cout << "bien" << endl;
-						level->feedbackRight->queueAnimationChange(Resources::FeedbackGood);
+						level->feedbackRight->addFeedback(Resources::FeedbackGood);
 						level->scoreBar->updateBar(2);
 						level->updateScore(2);
 					}
 					else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (level->rightPoint->getPosition().getY() + level->rightPoint->getHeight() / 2)) <= 50)
 					{
 						cout << "regular" << endl;
-						level->feedbackRight->queueAnimationChange(Resources::FeedbackRegular);
+						level->feedbackRight->addFeedback(Resources::FeedbackRegular);
 						level->scoreBar->updateBar(3);
 						level->updateScore(3);
 					}
 					else
 					{
 						cout << "mala punteria" << endl;
-						level->feedbackRight->queueAnimationChange(Resources::FeedbackBad);
+						level->feedbackRight->addFeedback(Resources::FeedbackBad);
 						level->showError();
 					}
 					delete it;
@@ -119,7 +119,7 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 					{
 						delete(it);
 						level->screenButtons_.remove(it);
-						level->feedbackRight->queueAnimationChange(Resources::FeedbackBad);
+						level->feedbackRight->addFeedback(Resources::FeedbackBad);
 						cout << "boton incorrecta" << endl;
 						level->showError();
 					}
