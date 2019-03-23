@@ -49,7 +49,7 @@ void PlayState::newGame()
 	leftNoteBar = new Squares(manager, noteBarWidth, 465 + 0.6 * pointSize, Vector2D(leftNotesPos + 1 - noteBarWidth / 2, leftNotesVector.getY()));
 	rightNoteBar = new Squares(manager, noteBarWidth, 465 + 0.6 * pointSize, Vector2D(rightNotesPos + 1 - noteBarWidth / 2, rightNotesVector.getY()));
 	
-	minigame = new MiniGame(manager, this);
+	minigame = new MinigameVaporwave(manager, this);
 	minigameController = new TimerNoSingleton();
 
 	bh = new BeatHandeler(level->bpm);
@@ -93,7 +93,7 @@ PlayState::~PlayState()
 void PlayState::update(Uint32 time)
 {
 	GameState::update(time);
-	if (!miniActive && minigameController->DeltaTime() < level->songLength/3) 
+	if (!miniActive && minigameController->DeltaTime() < level->songLength/15) 
 	{
 		minigameController->Update();
 		if (levelArrows_.empty() && levelButtons_.empty()) {

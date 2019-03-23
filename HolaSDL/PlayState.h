@@ -15,6 +15,7 @@
 #include "SongBar.h"
 #include "BarBackground.h"
 #include "MiniGame.h"
+#include "MinigameVaporwave.h"
 #include "ScoreBar.h"
 #include "Feedback.h"
 #include "EmptyObject.h"

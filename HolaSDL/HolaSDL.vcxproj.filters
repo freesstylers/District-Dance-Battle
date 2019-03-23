@@ -43,6 +43,11 @@
     <ClCompile Include="Note.cpp" />
     <ClCompile Include="BarBackground.cpp" />
     <ClCompile Include="Character.cpp" />
+    <ClCompile Include="MinigameVaporwave.cpp" />
+    <ClCompile Include="MinigameHipHop.cpp" />
+    <ClCompile Include="MinigameLatina.cpp" />
+    <ClCompile Include="MinigameRock.cpp" />
+    <ClCompile Include="MinigameHardbass.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioManager.h" />
@@ -87,6 +92,11 @@
     <ClInclude Include="Note.h" />
     <ClInclude Include="BarBackground.h" />
     <ClInclude Include="Character.h" />
+    <ClInclude Include="MinigameVaporwave.h" />
+    <ClInclude Include="MinigameHipHop.h" />
+    <ClInclude Include="MinigameLatina.h" />
+    <ClInclude Include="MinigameRock.h" />
+    <ClInclude Include="MinigameHardbass.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

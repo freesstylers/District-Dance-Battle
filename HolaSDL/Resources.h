@@ -19,6 +19,7 @@ public:
 		BButton,
 		XButton,
 		YButton,
+		FlechaEspBomba,
 		Point,
 		NoteIcon,
 		YellowBar,
@@ -36,7 +37,8 @@ public:
 		testBG,
 		PixelatedTextBG,
 		RobotIdle,
-		RobotDance
+		RobotDance,
+		Mira
 		// text
 	};
 

@@ -18,6 +18,7 @@ vector<Resources::ImageInfo> Resources::images_ {
 	{BButton, "resources/images/BotonB.png", 32, 32, 1, 1, 1},
 	{XButton, "resources/images/BotonX.png", 32, 32, 1, 1, 1},
 	{YButton, "resources/images/BotonY.png", 32, 32, 1, 1, 1},
+	{FlechaEspBomba, "resources/images/FlechaEspBomba.png", 32, 32, 1, 1, 1},
     {Point, "resources/images/Point.png", 32, 32, 1, 1, 1},
 	{NoteIcon, "resources/images/Nota.png", 9, 11, 1, 1, 1},
 	{YellowBar, "resources/images/enemy_mana_bar_002.png", 196, 16, 1, 1, 1},
@@ -35,7 +36,8 @@ vector<Resources::ImageInfo> Resources::images_ {
 	{testBG, "resources/images/FondoPrueba.png", 128, 100, 2, 1, 2},
 	{PixelatedTextBG, "resources/images/FondoPixel.png", 128, 100, 2, 1, 2},
 	{RobotIdle, "resources/images/RobotVaporwave.png", 60, 120, 2, 1, 2},
-	{RobotDance, "resources/images/VaporwaveDance.png", 60, 120, 3, 2, 4}
+	{RobotDance, "resources/images/VaporwaveDance.png", 60, 120, 3, 2, 4},
+	{Mira, "resources/images/mira.png", 60, 120, 3, 2, 4},
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {
