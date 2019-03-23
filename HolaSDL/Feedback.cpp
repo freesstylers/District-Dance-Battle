@@ -1,22 +1,15 @@
 #include "Feedback.h"
 
 
-Feedback::Feedback()
-{
-	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::Blank);
-
-	isAnimationSyncedToMusic = true;
-
-	active_ = false;
-}
-
-Feedback::Feedback(SDLGame* game, double width, double height, Vector2D pos, Vector2D vel) :
+Feedback::Feedback(SDLGame* game, double width, double height, Vector2D pos) :
 	GameObject(game)
 {
 	setWidth(width);
 	setHeight(height);
 	setPosition(pos);
-	setVelocity(vel);
+	setVelocity(Vector2D(0, 0));
+
+
 	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::Blank);
 
 	isAnimationSyncedToMusic = true;
@@ -29,10 +22,9 @@ void Feedback::update(Uint32 time)
 	if (lastUpdate == 0)
 		lastUpdate = time;
 
-	position_ = position_ + velocity_;
-
-	if (time - lastUpdate >= feedbackDecayTime && active_)
+	if (time - lastUpdate >= feedbackDecayTime && active_) {
 		setActive(false);
+	}
 }
 
 Feedback::~Feedback()

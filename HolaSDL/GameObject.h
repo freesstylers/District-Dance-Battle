@@ -49,7 +49,7 @@ public:
 	// abstract methods to be implemented in sub-classes
 	virtual bool handleInput(Uint32 time, const SDL_Event& event) = 0;
 	virtual void update(Uint32 time) = 0;
-	virtual void render(Uint32 time, bool beatSync = false);
+	virtual void render(Uint32 time, bool beatSync = false); 
 
 	virtual void queueAnimationChange(int animationTag);
 	virtual void forceAnimationChange(int animationTag);

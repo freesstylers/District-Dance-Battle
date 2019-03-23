@@ -11,8 +11,7 @@ private:
 	int feedbackDecayTime = 3500;	//maximum time the object is allowed to stay on screen without changing (in ms)
 
 public:
-	Feedback();
-	Feedback(SDLGame* game, double width, double height, Vector2D pos, Vector2D vel);
+	Feedback(SDLGame* game, double width, double height, Vector2D pos);
 	virtual ~Feedback();
 	virtual void update(Uint32 time);
 	virtual bool handleInput(Uint32 time, const SDL_Event& event) { return false; }

@@ -8,7 +8,7 @@ MiniGame::MiniGame(GameManager* g, PlayState* p)
 {
 	manager = g;
 	playS = p;
-	fback = new Feedback(g, 150, 150, Vector2D(g->getWindowWidth() / 2 - 150 / 2, g->getWindowHeight() / 2 - 150 / 2), Vector2D(0, 0));
+	fback = new Feedback(g, 150, 150, Vector2D(g->getWindowWidth() / 2 - 150 / 2, g->getWindowHeight() / 2 - 150 / 2));
 	timer = new TimerNoSingleton();
 
 
