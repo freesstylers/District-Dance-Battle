@@ -8,6 +8,7 @@ MinigameHipHop::MinigameHipHop(GameManager * g, PlayState * p): MiniGame(g, p)
 	fback = new Feedback(g, 150, 150, Vector2D(g->getWindowWidth() / 2 - 150 / 2, g->getWindowHeight() / 2 - 150 / 2));
 	timer = new TimerNoSingleton();
 	mira = new Mirilla(g, 20, 20, Vector2D(300, 400));
+	//playS->stage.push_back(mira);
 	createList();
 
 	/*
@@ -22,6 +23,7 @@ MinigameHipHop::MinigameHipHop(GameManager * g, PlayState * p): MiniGame(g, p)
 
 MinigameHipHop::~MinigameHipHop()
 {
+	playS->stage.pop_back();
 }
 
 void MinigameHipHop::render(Uint32 time)
@@ -31,7 +33,7 @@ void MinigameHipHop::render(Uint32 time)
 		o->render(time);
 	}*/
 	//fback->render(time);
-	mira->render(time);
+	//mira->render(time);
 }
 
 void MinigameHipHop::update(Uint32 time)

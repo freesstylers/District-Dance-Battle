@@ -54,7 +54,7 @@ void PlayState::newGame()
 
 	bh = new BeatHandeler(level->bpm);
 
-	effectVaporWave = new EmptyObject(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::EffectVaporWave);
+	//effectVaporWave = new EmptyObject(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::EffectVaporWave);
 
 	stage.push_back(bg);
 	stage.push_back(leftNoteBar);
@@ -224,7 +224,7 @@ void PlayState::render(Uint32 time, bool beatSync)
 	}
 	if (miniActive) {
 		minigame->render(time);
-		effectVaporWave->render(time, beatSync);
+		//effectVaporWave->render(time, beatSync);
 	}
 
 	beatSignal = false;
