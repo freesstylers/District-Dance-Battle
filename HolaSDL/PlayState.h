@@ -37,6 +37,7 @@ protected:
 	int probqte;
 	bool miniActive = false;
 	TimerNoSingleton* minigameController;
+	TimerNoSingleton* animationTimer;
 
 
 	bool firstNote = true;
@@ -98,6 +99,7 @@ public:
 	double msDiff = 0.0;  //difference between the time of a beat and the time when a note is created, in ms
 
 	void updateScore(int accuracy) { currentScore += maxNoteValue * (1 / accuracy); }
+	void activateBeatSignal() { beatSignal = true; }
 
 protected:
 	void deleteAll();

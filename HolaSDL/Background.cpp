@@ -13,6 +13,8 @@ Background::Background(SDLGame* game, double width, double height, Vector2D pos)
 	setPosition(pos);
 	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::testBG); //el fondo es un objeto vacio, solo tiene un sprite, deberiamos cambiar la llamada de la textura(?)
 																								 //hacer la llamada de textura en el PlayState como hace BarBackground
+
+	isAnimationSyncedToMusic = true;
 }
 
 Background::~Background()

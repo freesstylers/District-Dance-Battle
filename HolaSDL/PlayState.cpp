@@ -51,6 +51,7 @@ void PlayState::newGame()
 	
 	minigame = new MinigameVaporwave(manager, this);
 	minigameController = new TimerNoSingleton();
+	animationTimer = new TimerNoSingleton();
 
 	bh = new BeatHandeler(level->bpm);
 
@@ -104,11 +105,12 @@ void PlayState::update(Uint32 time)
 			{
 				o->update(time);
 			}
+
 			for (Note* o : screenButtons_)
 			{
 				o->update(time);
 			}
-			//qteman->update(time);
+
 			if (!screenArrows_.empty() && screenArrows_.front()->getPosition().getY() > 550)
 			{
 				Note* aux = screenArrows_.front();
@@ -120,6 +122,7 @@ void PlayState::update(Uint32 time)
 
 				feedbackLeft->addFeedback(Resources::FeedbackBad);
 			}
+
 			if (!screenButtons_.empty() && screenButtons_.front()->getPosition().getY() > 550)
 			{
 				Note* aux = screenButtons_.front();
@@ -131,29 +134,35 @@ void PlayState::update(Uint32 time)
 
 				feedbackRight->addFeedback(Resources::FeedbackBad);
 			}
+
 			timer->Update();
+
 			if (timer->DeltaTime() > (bh->getBeatTime() / 1000.0) - msDiff)
 			{
 				msDiff += timer->DeltaTime() - (bh->getBeatTime() / 1000.0);
+				timer->Reset();
 				generateArrows();
 				generateButtons();
-				timer->Reset();
-
 				beatSignal = true;
 			}
 		}
 	}
+
 	else {
+
 		miniActive=true;
+
 		if (!animationMiniGame)
 		{
 			lip->setMinigameActive(true);
-			robot->queueAnimationChange(Resources::RobotDance);
-			perico->queueAnimationChange(Resources::PericoDance1);
+			robot->forceAnimationChange(Resources::RobotDance);
+			perico->forceAnimationChange(Resources::PericoDance1);
 			animationMiniGame = true;
 		}
+
 		minigame->update(time);
 		lip->update();
+
 		if (minigame->getFailed()) {
 			lip->setMinigameActive(false);
 			miniActive = false;
@@ -162,18 +171,11 @@ void PlayState::update(Uint32 time)
 			minigame->deleteList();
 			minigame->createList();
 			minigameController->Reset();
-			robot->queueAnimationChange(Resources::RobotIdle);
-			perico->queueAnimationChange(Resources::PericoIdle);
+			robot->forceAnimationChange(Resources::RobotIdle);
+			perico->forceAnimationChange(Resources::PericoIdle);
 			animationMiniGame = false;
 		}
 	}
-	if (timer->DeltaTime() > ((bh->getBeatTime() / 1000.0) / (animationFramesPerBeat / 1000)) - msDiff)
-		{
-		//aqu� se divide el beatTime lo necesario para animar las frames especificadas entre cada beat
-
-		beatSignal = true;
-		}
-	
 }
 
 bool PlayState::handleEvent(Uint32 time, SDL_Event e)
@@ -182,7 +184,7 @@ bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 		manager->stop();
 	}
 	// Pressing f to toggle fullscreen.
-	else if (e.key.keysym.sym == SDLK_f)
+	/*else if (e.key.keysym.sym == SDLK_f)
 	{
 		int flags = SDL_GetWindowFlags(manager->getWindow());
 		if (flags & SDL_WINDOW_FULLSCREEN) {
@@ -191,17 +193,15 @@ bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 		else {
 			SDL_SetWindowFullscreen(manager->getWindow(), SDL_WINDOW_FULLSCREEN);
 		}
-	}
+	}*/
+
 	else
 	{
-		if (miniActive) {
+		if (miniActive) 
 			lip->setMinigameActive(true);
-		}
 		
-		
-			lip->handleInput(time, e);
-			//qteman->handleInput(time, e);
-			GameState::handleEvent(time, e);
+		lip->handleInput(time, e);
+		GameState::handleEvent(time, e);
 		
 		return false;
 	}
@@ -209,7 +209,6 @@ bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 
 void PlayState::render(Uint32 time, bool beatSync)
 {
-
 	GameState::render(time, beatSignal);
 
 	for (Note* o : screenArrows_)
@@ -222,7 +221,7 @@ void PlayState::render(Uint32 time, bool beatSync)
 	}
 	if (miniActive) {
 		minigame->render(time);
-		effectVaporWave->render(time, beatSync);
+		effectVaporWave->render(time, beatSignal);
 	}
 
 	beatSignal = false;

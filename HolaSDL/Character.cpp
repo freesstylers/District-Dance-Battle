@@ -12,9 +12,8 @@ Character::Character(SDLGame* game, double width, double height, Vector2D pos, i
 
 
 	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(i);
-
-	framesPerSecond = 4;
-	//isAnimationSyncedToMusic = true;
+	
+	isAnimationSyncedToMusic = true;
 	animation.currentFrame = 1;
 }
 

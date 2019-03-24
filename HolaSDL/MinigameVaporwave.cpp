@@ -42,13 +42,17 @@ void MinigameVaporwave::update(Uint32 time)
 	}
 	Timer::Instance()->Update();
 	timer->Update();
-	if (timer->DeltaTime() > (playS->bh->getBeatTime() / 1000.0) && noteAmount > 0)
-	{
-		generateButtons();
 
+	if (timer->DeltaTime() > (playS->bh->getBeatTime() / 1000.0))
+	{
+		if (noteAmount > 0) {
+			generateButtons();
+
+			noteAmount--;
+		}
 		timer->Reset();
 
-		noteAmount--;
+		playS->activateBeatSignal();
 	}
 	if (Timer::Instance()->DeltaTime() > (playS->bh->getBeatTime() / 1000.0)*(maxNotes + 4)) {
 		failed = true;
