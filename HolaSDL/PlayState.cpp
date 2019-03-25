@@ -117,8 +117,9 @@ void PlayState::update(Uint32 time)
 				delete aux;
 				screenArrows_.pop_front();
 				cout << "fuera" << endl;
-
+			
 				showError();
+				errorLeft();
 
 				feedbackLeft->addFeedback(Resources::FeedbackBad);
 			}
@@ -131,6 +132,7 @@ void PlayState::update(Uint32 time)
 				cout << "fuera" << endl;
 
 				showError();
+				errorRight();
 
 				feedbackRight->addFeedback(Resources::FeedbackBad);
 			}
@@ -289,8 +291,21 @@ void PlayState::playSong(int song) {
 void PlayState::showError()
 {
 	bg->cleanAnimationQueue();
-
 	bg->forceAnimationChange(Resources::PixelatedTextBG);
 	bg->queueAnimationChange(Resources::testBG);
+
 	manager->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0);
+}
+
+void PlayState::errorLeft()
+{
+	leftNoteBar->cleanAnimationQueue();
+	leftNoteBar->forceAnimationChange(Resources::SquareMiss);
+	leftNoteBar->queueAnimationChange(Resources::Square);
+}
+
+void PlayState::errorRight() {
+	rightNoteBar->cleanAnimationQueue();
+	rightNoteBar->forceAnimationChange(Resources::SquareMiss);
+	rightNoteBar->queueAnimationChange(Resources::Square);
 }

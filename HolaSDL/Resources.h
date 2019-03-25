@@ -34,6 +34,7 @@ public:
 		Blank,
 		EffectVaporWave,
 		Square,
+		SquareMiss,
 		testBG,
 		PixelatedTextBG,
 		RobotIdle,
