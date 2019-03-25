@@ -35,9 +35,9 @@ void Level::init() {
 		Note* note;
 		
 		file >> aux;
-		int select;
+		int select=0;
 		if (aux >= 0) {
-			if (aux != 0) 
+			/*if (aux != 0) 
 			{
 				//If aux is going to change
 				int probChange = random.nextInt(0, 10);
@@ -46,37 +46,41 @@ void Level::init() {
 					int change = random.nextInt(0,1);
 					aux = change+5;
 				}
-			}
+			}*/
 			switch (aux) {
 			case 0:
-				select =0;
+				
 				note = nullptr;
 				break;
 			case 1:
-				select = 0;
-				note = new Note(SDL_CONTROLLER_BUTTON_DPAD_LEFT, gm, 50, 50, level->leftNotesVector, noteVel);
+
+				note = new Note(SDL_CONTROLLER_BUTTON_DPAD_LEFT, gm, 50, 50, level->leftNotesVector, noteVel,aux,select);
+				level->selectArrows_.push_back(select);
 				break;
 			case 2:
-				select = 0;
-				note = new Note(SDL_CONTROLLER_BUTTON_DPAD_RIGHT, gm, 50, 50, level->leftNotesVector, noteVel);
+				
+				note = new Note(SDL_CONTROLLER_BUTTON_DPAD_RIGHT, gm, 50, 50, level->leftNotesVector, noteVel,aux,select);
+				level->selectArrows_.push_back(select);
 				break;
 			case 3:
-				select = 0;
-				note = new Note(SDL_CONTROLLER_BUTTON_DPAD_UP, gm, 50, 50, level->leftNotesVector, noteVel);
+				
+				note = new Note(SDL_CONTROLLER_BUTTON_DPAD_UP, gm, 50, 50, level->leftNotesVector, noteVel,aux,select);
+				level->selectArrows_.push_back(select);
 				break;
 			case 4:
-				select = 0;
-				note = new Note(SDL_CONTROLLER_BUTTON_DPAD_DOWN, gm, 50, 50, level->leftNotesVector, noteVel);
+				
+				note = new Note(SDL_CONTROLLER_BUTTON_DPAD_DOWN, gm, 50, 50, level->leftNotesVector, noteVel,aux,select);
+				level->selectArrows_.push_back(select);
 				break;
 			case 5:
-				select = 5;
-				note = new Note(gm, 50, 50, level->leftNotesVector, noteVel,aux);
+				note = new Note(SDL_CONTROLLER_BUTTON_A,gm, 50, 50, level->leftNotesVector, noteVel,aux,select);
+				level->selectArrows_.push_back(select);
 				break;
 			default:
 				break;
 			}
 			level->levelArrows_.push_back(note);
-			level->selectArrows_.push_back(select);
+			//level->selectArrows_.push_back(select);
 			if(aux!=0) noteAmount++;
 		}
 	}
@@ -85,48 +89,52 @@ void Level::init() {
 
 	while (aux >= 0) {
 		Note* note;
-		int select;
+		int select=0;
 		file >> aux;
 		if (aux >= 0) {
-			if (aux != 0) {
+			/*if (aux != 0) {
 				
 				int probChange = random.nextInt(0, 10);
 				if (probChange == 9) {
 					int change = random.nextInt(0,1);
 					aux = change+5;
 				}
-			}
+			}*/
 			switch (aux) {
 			case 0:
-				select = 0;
+				
 				note = nullptr;
 				break;
 			case 1:
-				select = 0;
-				note = new Note(SDL_CONTROLLER_BUTTON_A, gm, 50, 50, level->rightNotesVector, noteVel);
+				
+				note = new Note(SDL_CONTROLLER_BUTTON_A, gm, 50, 50, level->rightNotesVector, noteVel,aux,select);
+				level->selectButtons_.push_back(select);
 				break;
 			case 2:
-				 select = 0;
-				note = new Note(SDL_CONTROLLER_BUTTON_B, gm, 50, 50, level->rightNotesVector, noteVel);
+				 
+				note = new Note(SDL_CONTROLLER_BUTTON_B, gm, 50, 50, level->rightNotesVector, noteVel,aux,select);
+				level->selectButtons_.push_back(select);
 				break;
 			case 3:
-				select = 0;
-				note = new Note(SDL_CONTROLLER_BUTTON_X, gm, 50, 50, level->rightNotesVector, noteVel);
+				
+				note = new Note(SDL_CONTROLLER_BUTTON_X, gm, 50, 50, level->rightNotesVector, noteVel,aux, select);
+				level->selectButtons_.push_back(select);
 				break;
 			case 4:
-				select = 0;
-				note = new Note(SDL_CONTROLLER_BUTTON_Y, gm, 50, 50, level->rightNotesVector, noteVel);
+				
+				note = new Note(SDL_CONTROLLER_BUTTON_Y, gm, 50, 50, level->rightNotesVector, noteVel,aux,select);
+				level->selectButtons_.push_back(select);
 				break;
 			case 5:
-				select = 5;
-				note = new Note(gm, 50, 50, level->rightNotesVector, noteVel,aux);
+				note = new Note(SDL_CONTROLLER_BUTTON_A,gm, 50, 50, level->rightNotesVector, noteVel,aux,select);
+				level->selectButtons_.push_back(select);
 				break;
 			default:
 				break;
 			}
 
 			level->levelButtons_.push_back(note);
-			level->selectButtons_.push_back(select);
+			//level->selectButtons_.push_back(select);
 
 			if (aux != 0) noteAmount++;
 		} 

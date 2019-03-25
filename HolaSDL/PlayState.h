@@ -84,7 +84,7 @@ public:
 	std::list<Note*> levelButtons_;
 	std::list<Note*> screenArrows_; 
 	std::list<Note*> screenButtons_;
-	std::list<int> selectArrows_;
+	std::list<int>selectArrows_;
 	std::list<int>selectButtons_;
 	Point* leftPoint; 
 	Point* rightPoint;

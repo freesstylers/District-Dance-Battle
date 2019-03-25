@@ -20,24 +20,29 @@ LevelInputManager::~LevelInputManager()
 void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 
 	if (!minigameActive) {
-		if (!level->screenArrows_.empty()&& !level->selectArrows_.empty())
+		if (!level->screenArrows_.empty())
 		{
 			auto it = level->screenArrows_.front();
 			auto it2 = level->selectArrows_.front();
 			if (it != nullptr) 
 			{
-				/*if (it2==5) 
+				if (it2==5) 
 				{
-						//if (event.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, it->getKey()) && keyup)
-							cout << "bomba" << endl;
-							keyup = false;
-							delete(it);
-		
-							level->screenArrows_.remove(it);
-							level->selectArrows_.remove(it2);
+					/*if (event.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN) && keyup ||
+						event.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_UP) && keyup ||
+						event.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) && keyup ||
+						event.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT) && keyup)
+					{*/
+						cout << "bomba" << endl;
+					//}
+						keyup = false;
+						delete(it);
+	
+						level->screenArrows_.remove(it);
+						level->selectArrows_.remove(it2);
 				}
 				else 
-				{*/
+				{
 						if (event.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, it->getKey()) && keyup)
 						{
 							if (abs((it->getPosition().getY() + it->getHeight() / 2) - (level->rightPoint->getPosition().getY() + level->rightPoint->getHeight() / 2)) <= 10)
@@ -70,7 +75,7 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 							keyup = false;
 							delete(it);
 							level->screenArrows_.remove(it);
-							//level->selectArrows_.remove(it2);
+							level->selectArrows_.remove(it2);
 							
 
 						}
@@ -82,19 +87,25 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 								keyup = false;
 								delete(it);
 								level->screenArrows_.remove(it);
+								level->selectArrows_.remove(it2);
 								level->feedbackLeft->addFeedback(Resources::FeedbackBad);
 								cout << "flecha incorrecta" << endl;
 								level->showError();
 							}
 						}
-						else if (event.type == SDL_CONTROLLERBUTTONUP) keyup = true;
-				//}
+						else if (event.type == SDL_CONTROLLERBUTTONUP)
+						{
+							keyup = true;
+							//level->selectArrows_.remove(it2);
+						}
+				}
 				
 			}
 		}
 		if (!level->screenButtons_.empty())
 		{
 			auto it = level->screenButtons_.front();
+			auto it2 = level->selectButtons_.front();
 			if (it != nullptr) {
 				if (event.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, it->getKey()) && keyup2)
 				{
@@ -128,6 +139,7 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 					}
 					delete it;
 					level->screenButtons_.remove(it);
+					level->selectButtons_.remove(it2);
 					keyup2 = false;
 				}
 				else if (event.type == SDL_CONTROLLERBUTTONDOWN && keyup2)

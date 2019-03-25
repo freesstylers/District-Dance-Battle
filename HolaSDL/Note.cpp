@@ -5,26 +5,28 @@ Note::Note()
 {
 
 }
-Note::Note(SDLGame* game, double width, double height, Vector2D pos, Vector2D vel,int aux) :
+/*Note::Note(SDLGame* game, double width, double height, Vector2D pos, Vector2D vel,int aux,int& select) :
 	GameObject(game) 
 {
 	setWidth(width);
 	setHeight(height);
 	setPosition(pos);
 	setVelocity(vel);
+	select = aux;
 	switch (aux) {
 	case 5:
 		animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::FlechaEspBomba);
 		break;
 	}
-}
-Note::Note(SDL_GameControllerButton key, SDLGame* game, double width, double height, Vector2D pos, Vector2D vel) :
+}*/
+Note::Note(SDL_GameControllerButton key, SDLGame* game, double width, double height, Vector2D pos, Vector2D vel,int aux,int& select) :
 	GameObject(game), key(key)
 {
 	setWidth(width);
 	setHeight(height);
 	setPosition(pos);
 	setVelocity(vel);
+	select = 0;
 	switch (key) {
 	case SDL_CONTROLLER_BUTTON_DPAD_LEFT:
 		animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::LeftArrow);
@@ -39,7 +41,15 @@ Note::Note(SDL_GameControllerButton key, SDLGame* game, double width, double hei
 		animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::DownArrow);
 		break;
 	case SDL_CONTROLLER_BUTTON_A:
-		animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::AButton);
+		if (aux == 5)
+		{
+			select = aux;
+			animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::FlechaEspBomba);
+
+		}
+		else {
+			animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::AButton);
+		}
 		break;
 	case SDL_CONTROLLER_BUTTON_B:
 		animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::BButton);
