@@ -41,11 +41,14 @@ void MenuState::render(Uint32 time, bool beatSync)
 
 void MenuState::createMainButtons()
 {
-	buttons[0] = EmptyObject(gameManager, Vector2D(50, 50), 100, 50, Resources::YButton);
-	buttons[1] = EmptyObject(gameManager, Vector2D(150, 50), 100, 50, Resources::YButton);
-	buttons[2] = EmptyObject(gameManager, Vector2D(250, 50), 100, 50, Resources::YButton);
-	buttons[3] = EmptyObject(gameManager, Vector2D(350, 50), 100, 50, Resources::YButton);
-	buttons[4] = EmptyObject(gameManager, Vector2D(450, 50), 100, 50, Resources::YButton);
+	int ang = 360 / 5;
+	int angIni = 180;
+	int angulo;
+	int r =  100;
+	for (int i = 0; i < 5; i++) {
+		angulo = angIni + ang * i;
+		buttons[i] = EmptyObject(gameManager, Vector2D(gameManager->getWindowWidth()/2 + r * cos(((angulo*M_PI)/180)), gameManager->getWindowHeight()/2 + r * sin(((angulo*M_PI) / 180))), 100, 50, Resources::YButton);
+	}
 	buttons[5] = EmptyObject(gameManager, Vector2D(50, 100), 100, 50, Resources::YButton);
 	buttons[6] = EmptyObject(gameManager, Vector2D(150, 100), 100, 50, Resources::YButton);
 	buttons[7] = EmptyObject(gameManager, Vector2D(50, 150), 100, 50, Resources::YButton);
