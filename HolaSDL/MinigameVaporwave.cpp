@@ -69,6 +69,7 @@ void MinigameVaporwave::createList()
 		noteAmount = 15;
 		maxNotes = noteAmount;
 		Note* note;
+		bool detectedBomb;
 		for (int i = 0; i < 8; i++) {
 			aux = rand() % 8;
 

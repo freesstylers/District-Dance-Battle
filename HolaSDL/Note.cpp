@@ -5,14 +5,14 @@ Note::Note()
 {
 
 }
-Note::Note(SDLGame* game, double width, double height, Vector2D pos, Vector2D vel,int select) :
+Note::Note(SDLGame* game, double width, double height, Vector2D pos, Vector2D vel,int aux) :
 	GameObject(game) 
 {
 	setWidth(width);
 	setHeight(height);
 	setPosition(pos);
 	setVelocity(vel);
-	switch (select) {
+	switch (aux) {
 	case 5:
 		animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::FlechaEspBomba);
 		break;
@@ -25,7 +25,6 @@ Note::Note(SDL_GameControllerButton key, SDLGame* game, double width, double hei
 	setHeight(height);
 	setPosition(pos);
 	setVelocity(vel);
-
 	switch (key) {
 	case SDL_CONTROLLER_BUTTON_DPAD_LEFT:
 		animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::LeftArrow);
@@ -70,4 +69,5 @@ void Note::update(Uint32 time) {
 	double deltaTime = getGame()->deltaTime;
 	position_.set(position_ + velocity_ * deltaTime);
 }
+
 

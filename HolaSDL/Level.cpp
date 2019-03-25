@@ -33,8 +33,9 @@ void Level::init() {
 	int aux = 0;
 	while (aux >= 0) {
 		Note* note;
+		
 		file >> aux;
-
+		int select;
 		if (aux >= 0) {
 			if (aux != 0) 
 			{
@@ -48,28 +49,34 @@ void Level::init() {
 			}
 			switch (aux) {
 			case 0:
+				select =0;
 				note = nullptr;
 				break;
 			case 1:
+				select = 0;
 				note = new Note(SDL_CONTROLLER_BUTTON_DPAD_LEFT, gm, 50, 50, level->leftNotesVector, noteVel);
 				break;
 			case 2:
+				select = 0;
 				note = new Note(SDL_CONTROLLER_BUTTON_DPAD_RIGHT, gm, 50, 50, level->leftNotesVector, noteVel);
 				break;
 			case 3:
+				select = 0;
 				note = new Note(SDL_CONTROLLER_BUTTON_DPAD_UP, gm, 50, 50, level->leftNotesVector, noteVel);
 				break;
 			case 4:
+				select = 0;
 				note = new Note(SDL_CONTROLLER_BUTTON_DPAD_DOWN, gm, 50, 50, level->leftNotesVector, noteVel);
 				break;
 			case 5:
+				select = 5;
 				note = new Note(gm, 50, 50, level->leftNotesVector, noteVel,aux);
 				break;
 			default:
 				break;
 			}
 			level->levelArrows_.push_back(note);
-
+			level->selectArrows_.push_back(select);
 			if(aux!=0) noteAmount++;
 		}
 	}
@@ -78,8 +85,8 @@ void Level::init() {
 
 	while (aux >= 0) {
 		Note* note;
+		int select;
 		file >> aux;
-
 		if (aux >= 0) {
 			if (aux != 0) {
 				
@@ -91,21 +98,27 @@ void Level::init() {
 			}
 			switch (aux) {
 			case 0:
+				select = 0;
 				note = nullptr;
 				break;
 			case 1:
+				select = 0;
 				note = new Note(SDL_CONTROLLER_BUTTON_A, gm, 50, 50, level->rightNotesVector, noteVel);
 				break;
 			case 2:
+				 select = 0;
 				note = new Note(SDL_CONTROLLER_BUTTON_B, gm, 50, 50, level->rightNotesVector, noteVel);
 				break;
 			case 3:
+				select = 0;
 				note = new Note(SDL_CONTROLLER_BUTTON_X, gm, 50, 50, level->rightNotesVector, noteVel);
 				break;
 			case 4:
+				select = 0;
 				note = new Note(SDL_CONTROLLER_BUTTON_Y, gm, 50, 50, level->rightNotesVector, noteVel);
 				break;
 			case 5:
+				select = 5;
 				note = new Note(gm, 50, 50, level->rightNotesVector, noteVel,aux);
 				break;
 			default:
@@ -113,6 +126,7 @@ void Level::init() {
 			}
 
 			level->levelButtons_.push_back(note);
+			level->selectButtons_.push_back(select);
 
 			if (aux != 0) noteAmount++;
 		} 
