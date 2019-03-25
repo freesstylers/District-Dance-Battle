@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "GameState.h"
 #include <cstdlib>
 #include <fstream>
@@ -31,6 +31,7 @@ protected:
 
 	Timer* timer;
 	LevelInputManager* lip;
+	LevelInputManager* lip2;
 	int probqte;
 	bool miniActive = false;
 	TimerNoSingleton* minigameController;
@@ -54,11 +55,17 @@ protected:
 	bool animationMiniGame = false;
 	int animationFramesPerBeat = 2;	//determines how many animation frames to advance each beat
 
-	int pointSize = 50;	//size of the point 
-	int noteBarWidth = pointSize + 13;
-	int noteSize = 30;	//size of the notes
-	int pointOffset = 50;	//offset between the note bars and the center of the screen
-	int initialNoteHeight = 70;	//height at which new notes will be generated
+	int pointSize2P = 50;	//size of the point 
+	int noteBarWidth2P = pointSize + 13;
+	int noteSize2P = 30;	//size of the notes
+	int pointOffset2P = 50;	//offset between the note bars and the center of the screen
+	int initialNoteHeight2P = 70;	//height at which new notes will be generated
+	
+	int pointSize = 80;	//tama�o del pulsador/punto
+	int noteBarWidth = pointSize + 33;
+	int noteSize = 50;	//tama�o de nota 
+	int pointOffset = 70;	//offset entre las barras de notas y el centro de la pantalla
+	int initialNoteHeight = 70;	//altura a la cual se generan las notas en pantalla
 
 	int maxScore = 400;
 	int currentScore = 0;
@@ -69,6 +76,7 @@ public:
 	ScoreBar* scoreBar;
 	PlayState(GameManager* g);
 	void newGame();
+	void newGame2P();
 	~PlayState();
 	virtual void update(Uint32 time);
 	virtual bool handleEvent(Uint32 time, SDL_Event e);

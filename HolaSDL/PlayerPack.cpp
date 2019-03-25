@@ -41,10 +41,12 @@ void PlayerPack::update(Uint32 time)
 	rightNoteBar->update(time);
 	for (Note* o : screenArrows_)
 	{
+		if (o != nullptr)
 		o->update(time);
 	}
 	for (Note* o : screenButtons_)
 	{
+		if (o != nullptr)
 		o->update(time);
 	}
 	if (!screenArrows_.empty() && screenArrows_.front()->getPosition().getY() > 550)
