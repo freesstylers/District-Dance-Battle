@@ -42,12 +42,12 @@ void MenuState::render(Uint32 time, bool beatSync)
 void MenuState::createMainButtons()
 {
 	int ang = 360 / 5;
-	int angIni = 180;
+	int angIni = 270;
 	int angulo;
-	int r =  100;
+	int r =  150;
 	for (int i = 0; i < 5; i++) {
 		angulo = angIni + ang * i;
-		buttons[i] = EmptyObject(gameManager, Vector2D(gameManager->getWindowWidth()/2 + r * cos(((angulo*M_PI)/180)), gameManager->getWindowHeight()/2 + r * sin(((angulo*M_PI) / 180))), 100, 50, Resources::YButton);
+		buttons[i] = EmptyObject(gameManager, Vector2D((gameManager->getWindowWidth()/2 + r * cos(((angulo*M_PI)/180)))-25, (gameManager->getWindowHeight()/2 + r * sin(((angulo*M_PI) / 180)))-25), 50, 50, Resources::YButton);
 	}
 	buttons[5] = EmptyObject(gameManager, Vector2D(50, 100), 100, 50, Resources::YButton);
 	buttons[6] = EmptyObject(gameManager, Vector2D(150, 100), 100, 50, Resources::YButton);
@@ -71,6 +71,9 @@ void MenuState::nextButton()
 	if (index < max) {
 		index++;
 	}
+	else {
+		index = min;
+	}
 	buttons[index].scale(2);
 }
 
@@ -79,6 +82,9 @@ void MenuState::backButton()
 	buttons[index].scale(0.5);
 	if (index > min) {
 		index--;
+	}
+	else {
+		index = max;
 	}
 	buttons[index].scale(2);
 }
