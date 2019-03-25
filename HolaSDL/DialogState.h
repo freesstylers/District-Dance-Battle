@@ -14,7 +14,7 @@ public:
 	void init();
 	virtual void update(Uint32 time) {};
 	virtual bool handleEvent(Uint32 time, SDL_Event e);
-	virtual void render(Uint32 time, bool beatSync = false);
+	virtual void render(Uint32 time, bool beatsync = false);
 protected:
 	SDL_GameController* controller = NULL;
 	struct Dialog
@@ -24,10 +24,9 @@ protected:
 	};
 	bool keyup = true;
 	list<Dialog> dialogo;
-	list <GameObject*> sprites;
 	map<string, GameObject*> box;
 	GameObject* actualBox;
-	string actualText;
+	Texture* actualText;
 	string archivo;
 };
 

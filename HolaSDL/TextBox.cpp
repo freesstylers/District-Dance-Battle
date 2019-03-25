@@ -13,9 +13,10 @@ TextBox::TextBox(SDLGame* game, double width, double height, Vector2D pos, int i
 
 	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(i);
 
-	framesPerSecond = 4;
+	framesPerSecond = 1;
 	//isAnimationSyncedToMusic = true;
-	animation.currentFrame = 1;
+	//Cambiar current frame si no se renderiza bien
+	animation.currentFrame = 0;
 }
 
 

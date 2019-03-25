@@ -16,6 +16,9 @@ SDLFontsManager::~SDLFontsManager() {
 
 	TTF_Quit();
 }
+Font* SDLFontsManager::getFont(int tag) {
+	return fonts_[tag];
+}
 
 bool SDLFontsManager::init() {
 	if (initialized_)
