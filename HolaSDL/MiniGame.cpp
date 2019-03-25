@@ -25,6 +25,10 @@ void MiniGame::deleteList()
 {
 }
 
+void MiniGame::resetMinigame()
+{
+}
+
 
 void MiniGame::render(Uint32 time) {
 	

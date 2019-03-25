@@ -15,6 +15,7 @@ public:
 
 	virtual void createList();
 	virtual void deleteList();
+	virtual void resetMinigame();
 
 protected:
 	int noteAmount = 15;

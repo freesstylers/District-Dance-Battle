@@ -151,6 +151,7 @@ void PlayState::update(Uint32 time)
 			robot->queueAnimationChange(Resources::RobotDance);
 			perico->queueAnimationChange(Resources::PericoDance1);
 			animationMiniGame = true;
+			minigame->resetMinigame();
 		}
 		minigame->update(time);
 		lip->update();

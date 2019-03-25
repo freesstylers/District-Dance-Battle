@@ -37,6 +37,7 @@ public:
 	bool getFailed() { return failed; };
 	virtual void createList();
 	virtual void deleteList();
+	virtual void resetMinigame();
 
 	std::list<Note*> screenButtons_;
 	std::list<Note*> levelButtons_;

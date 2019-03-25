@@ -7,8 +7,7 @@ MinigameHipHop::MinigameHipHop(GameManager * g, PlayState * p): MiniGame(g, p)
 	playS = p;
 	fback = new Feedback(g, 150, 150, Vector2D(g->getWindowWidth() / 2 - 150 / 2, g->getWindowHeight() / 2 - 150 / 2));
 	timer = new TimerNoSingleton();
-	mira = new Mirilla(g, 20, 20, Vector2D(300, 400));
-	//playS->stage.push_back(mira);
+	mira = new Mirilla(g, 50, 50, Vector2D(300, 400));
 	createList();
 
 	/*
@@ -23,27 +22,31 @@ MinigameHipHop::MinigameHipHop(GameManager * g, PlayState * p): MiniGame(g, p)
 
 MinigameHipHop::~MinigameHipHop()
 {
-	playS->stage.pop_back();
+	delete mira;
 }
 
 void MinigameHipHop::render(Uint32 time)
 {
-	/*for (Note* o : screenButtons_)
+	for (Note* o : screenButtons_)
 	{
 		o->render(time);
-	}*/
-	//fback->render(time);
-	//mira->render(time);
+	}
+	fback->render(time);
+	mira->render(time);
 }
 
 void MinigameHipHop::update(Uint32 time)
 {
 	if (!screenButtons_.empty()) {
+
 		for (Note* o : screenButtons_)
 		{
 			o->update(time);
 		}
 	}
+
+	mira->update(time);
+
 	Timer::Instance()->Update();
 	timer->Update();
 	if (timer->DeltaTime() > (playS->bh->getBeatTime() / 1000.0) && noteAmount > 0)
@@ -61,7 +64,16 @@ void MinigameHipHop::update(Uint32 time)
 
 void MinigameHipHop::handleInput(Uint32 time, SDL_Event e)
 {
-	mira->handleInput(time, e);
+	for (Note* o : screenButtons_)
+	{
+		if (SDL_HasIntersection(&o->getRect(), &mira->getRect()))
+			mira->superpuesto = true;
+		else
+			mira->superpuesto = false;
+
+		mira->handleInput(time, e, o);
+
+	}
 }
 
 void MinigameHipHop::generateButtons()
@@ -80,36 +92,40 @@ void MinigameHipHop::createList()
 		int newpos;
 		int aux;
 		failed = false;
-		noteAmount = 15;
+		noteAmount = 5;
 		maxNotes = noteAmount;
 		Note* note;
 		for (int i = 0; i < 8; i++) {
 			aux = rand() % 8;
 
+			Vector2D pos = Vector2D(double(manager->getServiceLocator()->getRandomGenerator()->nextInt(1, manager->getWindowWidth())), double(manager->getServiceLocator()->getRandomGenerator()->nextInt(1, manager->getWindowHeight())));
+			
+			Vector2D vel = Vector2D(double(manager->getServiceLocator()->getRandomGenerator()->nextInt(-pos.getX() / 10, pos.getX() / 10)), double(manager->getServiceLocator()->getRandomGenerator()->nextInt(-pos.getX() / 10, pos.getX() / 10)));
+
 			switch (aux) {
 			case 0:
-				note = new Note(SDL_CONTROLLER_BUTTON_A, manager, 75, 75, Vector2D(0, 0), Vector2D(200, 200));
+				note = new Note(SDL_CONTROLLER_BUTTON_A, manager, 75, 75, pos, vel);
 				break;
 			case 1:
-				note = new Note(SDL_CONTROLLER_BUTTON_B, manager, 75, 75, Vector2D(0, 0), Vector2D(200, 200));
+				note = new Note(SDL_CONTROLLER_BUTTON_B, manager, 75, 75, pos, vel);
 				break;
 			case 2:
-				note = new Note(SDL_CONTROLLER_BUTTON_X, manager, 75, 75, Vector2D(manager->getWindowWidth(), 0), Vector2D(-200, 200));
+				note = new Note(SDL_CONTROLLER_BUTTON_X, manager, 75, 75, pos, vel);
 				break;
 			case 3:
-				note = new Note(SDL_CONTROLLER_BUTTON_Y, manager, 75, 75, Vector2D(manager->getWindowWidth(), 0), Vector2D(-200, 200));
+				note = new Note(SDL_CONTROLLER_BUTTON_Y, manager, 75, 75, pos, vel);
 				break;
 			case 4:
-				note = new Note(SDL_CONTROLLER_BUTTON_A, manager, 75, 75, Vector2D(0, manager->getWindowHeight()), Vector2D(200, -200));
+				note = new Note(SDL_CONTROLLER_BUTTON_A, manager, 75, 75, pos, vel);
 				break;
 			case 5:
-				note = new Note(SDL_CONTROLLER_BUTTON_B, manager, 75, 75, Vector2D(0, manager->getWindowHeight()), Vector2D(200, -200));
+				note = new Note(SDL_CONTROLLER_BUTTON_B, manager, 75, 75, pos, vel);
 				break;
 			case 6:
-				note = new Note(SDL_CONTROLLER_BUTTON_X, manager, 75, 75, Vector2D(manager->getWindowWidth(), manager->getWindowHeight()), Vector2D(-200, -200));
+				note = new Note(SDL_CONTROLLER_BUTTON_X, manager, 75, 75, pos, vel);
 				break;
 			case 7:
-				note = new Note(SDL_CONTROLLER_BUTTON_Y, manager, 75, 75, Vector2D(manager->getWindowWidth(), manager->getWindowHeight()), Vector2D(-200, -200));
+				note = new Note(SDL_CONTROLLER_BUTTON_Y, manager, 75, 75, pos, vel);
 				break;
 			}
 			levelButtons_.push_front(note);
@@ -127,4 +143,9 @@ void MinigameHipHop::deleteList()
 		screenButtons_.remove(*o);
 		o = next;
 	}
+}
+
+void MinigameHipHop::resetMinigame()
+{
+	mira->setVelocity(Vector2D(0, 0));
 }
