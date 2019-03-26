@@ -49,7 +49,7 @@ void PlayState::newGame()
 	leftNoteBar = new Squares(manager, noteBarWidth, 465 + 0.6 * pointSize, Vector2D(leftNotesPos + 1 - noteBarWidth / 2, leftNotesVector.getY()));
 	rightNoteBar = new Squares(manager, noteBarWidth, 465 + 0.6 * pointSize, Vector2D(rightNotesPos + 1 - noteBarWidth / 2, rightNotesVector.getY()));
 	
-	minigame = new MinigameHipHop(manager, this);
+	minigame = new MinigameVaporwave(manager, this);
 	minigameController = new TimerNoSingleton();
 
 	bh = new BeatHandeler(level->bpm);

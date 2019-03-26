@@ -128,57 +128,7 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 			}
 		}
 	}
-	else {
-
-		if (!level->getMinigame()->screenButtons_.empty())
-		{
-			auto it = level->getMinigame()->screenButtons_.front();
-			if (it != nullptr) {
-				if (event.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, it->getKey()) && keyup2)
-				{
-					keyup2 = false;
-					if (abs(it->getPosition().getY()) > 0 && abs(it->getPosition().getY()) < level->leftPoint->getGame()->getWindowHeight() && abs(it->getPosition().getX()) > 0 && abs(it->getPosition().getX()) < level->leftPoint->getGame()->getWindowWidth())
-					{
-						cout << "perfecto" << endl;
-						failed = false;
-					}
-
-					delete(it);
-					level->getMinigame()->screenButtons_.remove(it);
-					level->getMinigame()->fback->queueAnimationChange(Resources::FeedbackGood);
-				}
-				else if (event.type == SDL_CONTROLLERBUTTONDOWN && keyup2)
-				{
-					if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B) ||
-						SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_X) || SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_Y))
-					{
-						keyup2 = false;
-						delete(it);
-						level->getMinigame()->screenButtons_.remove(it);
-						cout << "flecha incorrecta" << endl;
-						failed = true;
-						level->getMinigame()->fback->queueAnimationChange(Resources::FeedbackBad);
-					}
-				}
-				else if (event.type == SDL_CONTROLLERBUTTONUP) keyup2 = true;
-			}
-			
-		}
-		
-		
-	}
 }
 void LevelInputManager::update() {
-	if (minigameActive) {
-		if (!level->getMinigame()->screenButtons_.empty())
-		{
-			if (level->getMinigame()->screenButtons_.front()->getPosition().getX() < -3 || level->getMinigame()->screenButtons_.front()->getPosition().getX() > level->getGameManager()->getWindowWidth() || level->getMinigame()->screenButtons_.front()->getPosition().getY() < -75 || level->getMinigame()->screenButtons_.front()->getPosition().getY() > level->getGameManager()->getWindowHeight() +75) {
-				delete level->getMinigame()->screenButtons_.front();
-				level->getMinigame()->screenButtons_.pop_front();
-				cout << "fuera" << endl;
-				level->getMinigame()->fback->queueAnimationChange(Resources::FeedbackBad);
-				failed = true;
-			}
-		}
-	}
+
 }
