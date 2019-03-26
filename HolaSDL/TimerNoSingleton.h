@@ -1,6 +1,6 @@
 #pragma once
 #include <SDL.h>
-class TimerNoSingleton
+class TimerNoSingleton //19 marzo, revision, deberiamos utilizar otro nombre 
 {
 private:
 	unsigned int _StartTicks;

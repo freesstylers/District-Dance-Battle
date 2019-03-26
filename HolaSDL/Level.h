@@ -1,5 +1,4 @@
 #pragma once
-
 #include <string>
 
 #include"Vector2D.h"
@@ -14,7 +13,7 @@ class SDLGame;
 class Level
 {
 public:
-	Level(PlayState* l, SDLGame* gam, string n);
+	Level(PlayState* l, SDLGame* gam,string n);
 	~Level();
 
 	void playSong();

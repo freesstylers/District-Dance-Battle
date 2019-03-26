@@ -2,7 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="AudioManager.cpp" />
-    <ClCompile Include="BeatHandeler.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="CutSceneState.cpp" />
     <ClCompile Include="Font.cpp" />
@@ -35,7 +34,6 @@
     <ClCompile Include="EndState.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Background.cpp" />
-    <ClCompile Include="Playstate2P.cpp" />
     <ClCompile Include="MiniGame.cpp" />
     <ClCompile Include="TimerNoSingleton.cpp" />
     <ClCompile Include="ScoreBar.cpp" />
@@ -50,10 +48,11 @@
     <ClCompile Include="MinigameHardbass.cpp" />
     <ClCompile Include="GameObjectPool.cpp" />
     <ClCompile Include="FeedbackPool.cpp" />
+    <ClCompile Include="PlayerPack.cpp" />
+    <ClCompile Include="BeatHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioManager.h" />
-    <ClInclude Include="BeatHandeler.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="CutSceneState.h" />
     <ClInclude Include="Font.h" />
@@ -87,7 +86,6 @@
     <ClInclude Include="Level.h" />
     <ClInclude Include="TimerNoSingleton.h" />
     <ClInclude Include="Background.h" />
-    <ClInclude Include="Playstate2P.h" />
     <ClInclude Include="MiniGame.h" />
     <ClInclude Include="ScoreBar.h" />
     <ClInclude Include="SongBar.h" />
@@ -101,6 +99,8 @@
     <ClInclude Include="MinigameHardbass.h" />
     <ClInclude Include="GameObjectPool.h" />
     <ClInclude Include="FeedbackPool.h" />
+    <ClInclude Include="PlayerPack.h" />
+    <ClInclude Include="BeatHandler.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
