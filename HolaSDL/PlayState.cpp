@@ -116,8 +116,7 @@ void PlayState::update(Uint32 time)
 				Note* aux = screenArrows_.front();
 				delete aux;
 				screenArrows_.pop_front();
-				cout << "fuera" << endl;
-			
+				cout << "fuera" << endl;		
 				showError();
 				errorLeft();
 
@@ -130,7 +129,6 @@ void PlayState::update(Uint32 time)
 				delete aux;
 				screenButtons_.pop_front();
 				cout << "fuera" << endl;
-
 				showError();
 				errorRight();
 
