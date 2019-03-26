@@ -38,7 +38,9 @@ public:
 		RobotIdle,
 		RobotDance,
 		Mira,
-		TextboxPerico
+		TextboxPerico,
+		TextBoxRobot,
+		TextBoxBlanc
 		// text
 	};
 

@@ -15,7 +15,7 @@ DialogState::DialogState(GameManager* g, string txt, int numctrl):GameState(g)
 	controller = SDL_GameControllerOpen(numctrl);
 	init();
 }
-//EL máximo de caracteres por cuadro es 46
+//EL máximo de caracteres por cuadro es 35*2 = 70, contando espacios y el primer espacio
 void DialogState::init() 
 {
 	
@@ -67,7 +67,7 @@ void DialogState::init()
 
 	}
 		//dialogo.pop_front();
-		stage.push_back(actualBox);
+		//stage.push_back(actualBox);
 }
 	
 	
@@ -85,24 +85,56 @@ void DialogState::render(Uint32 time, bool beatSync) {
 	}
 	actualBox->render(time, beatSync);
 	if (!dialogo.empty()) {
-		if (dialogo.front().text.size() <= 29) {
-			Texture msg0(manager->getRenderer(),
-				dialogo.front().text,
-				*(manager->getServiceLocator()->getFonts()->getFont(
-					Resources::PIXEL30)), { COLOR(0xffffffff) });
-			actualText = &msg0;
-			actualText->render(manager->getRenderer(),
-				manager->getWindowWidth() / 20 - 25, manager->getWindowHeight() / 1.31);
-		}
-		else {
+		if (dialogo.front().text.size() <= 35) {
+		
 			Texture msg0(manager->getRenderer(),
 				dialogo.front().text,
 				*(manager->getServiceLocator()->getFonts()->getFont(
 					Resources::PIXEL20)), { COLOR(0xffffffff) });
 			actualText = &msg0;
 			actualText->render(manager->getRenderer(),
-				manager->getWindowWidth() / 20 - 20, manager->getWindowHeight() / 1.40);
+				manager->getWindowWidth() / 40 , manager->getWindowHeight() / 1.37);
 		}
+		else {
+			string aux1="";
+			string aux2="";
+			int intaux;
+			for (int i = 0; i < 35; i++) {
+				aux1 += dialogo.front().text[i];
+				intaux = i;
+			}
+			intaux++;
+			while (intaux < dialogo.front().text.size()) {
+				aux2 += dialogo.front().text[intaux];
+				intaux++;
+			}
+			Texture msg0(manager->getRenderer(),
+				aux1,
+				*(manager->getServiceLocator()->getFonts()->getFont(
+					Resources::PIXEL20)), { COLOR(0xffffffff) });
+			actualText = &msg0;
+			actualText->render(manager->getRenderer(),
+				manager->getWindowWidth() / 40 , manager->getWindowHeight() / 1.37);
+			if (aux2 != "") {
+				Texture msg1(manager->getRenderer(),
+					aux2,
+					*(manager->getServiceLocator()->getFonts()->getFont(
+						Resources::PIXEL20)), { COLOR(0xffffffff) });
+				actualText = &msg1;
+				actualText->render(manager->getRenderer(),
+					manager->getWindowWidth() / 20, manager->getWindowHeight() / 1.27);
+			}
+			
+		}
+	}
+	else {
+		Texture msg0(manager->getRenderer(),
+			" COMIENZA LA BATALLA",
+			*(manager->getServiceLocator()->getFonts()->getFont(
+				Resources::PIXEL30)), { COLOR(0xffffffff) });
+		actualText = &msg0;
+		actualText->render(manager->getRenderer(),
+			manager->getWindowWidth() / 40, manager->getWindowHeight() / 1.37);
 	}
 }
 
@@ -110,8 +142,12 @@ bool DialogState::handleEvent(Uint32 time, SDL_Event e) {
 	if (e.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) && keyup)
 	{
 		if (!dialogo.empty()) {
-			actualBox = box[dialogo.front().box];
 			dialogo.pop_front();
+			if (!dialogo.empty()) {
+				actualBox = box[dialogo.front().box];
+			}
+			else actualBox = new TextBox(manager, manager->getWindowWidth() - 20, 65 * 5.5, Vector2D(10, 200),29);
+
 		
 			keyup = false;
 		}
