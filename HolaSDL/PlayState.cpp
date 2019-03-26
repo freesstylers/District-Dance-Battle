@@ -20,8 +20,8 @@ void PlayState::newGame()
 	leftNotesVector2 = Vector2D(leftNotesPos - 50 / 2 + 200, 70);
 	rightNotesVector2 = Vector2D(rightNotesPos - 50 / 2 + 200, 70);
 	player1 = new PlayerPack(manager, leftNotesPos, rightNotesPos, pointSize, noteBarWidth);
-	feedbackLeft = new Feedback(manager, pointSize * 0.8, pointSize * 0.8, Vector2D(leftNotesPos - (pointSize * 0.8) - (pointSize * 0.8), 465 + pointSize / 2));
-	feedbackRight = new Feedback(manager, pointSize * 0.8, pointSize * 0.8, Vector2D(rightNotesPos + (pointSize * 0.8), 465 + pointSize / 2));
+	feedbackLeft = new FeedbackPool(manager, pointSize * 0.8, pointSize * 0.8, Vector2D(leftNotesPos - (pointSize * 0.8) - (pointSize * 0.8), 465 + pointSize / 2));
+	feedbackRight = new FeedbackPool(manager, pointSize * 0.8, pointSize * 0.8, Vector2D(rightNotesPos + (pointSize * 0.8), 465 + pointSize / 2));
 	bg = new Background(manager, manager->getWindowWidth(), manager->getWindowHeight(), Vector2D(0, 0));
 	level = new Level(this, manager, levelName);
 	level->init();
@@ -76,9 +76,6 @@ void PlayState::newGame2P()
 	leftNotesVector2 = Vector2D(leftNotesPos - 50 / 2 + 200, 70);
 	rightNotesVector2 = Vector2D(rightNotesPos - 50 / 2 + 200, 70);
 
-
-	feedbackLeft = new Feedback(manager, pointSize2P * 0.8, pointSize2P * 0.8, Vector2D(leftNotesPos - (pointSize2P * 0.8) - (pointSize2P * 0.8), 465 + pointSize2P / 2));
-	feedbackRight = new Feedback(manager, pointSize2P * 0.8, pointSize2P * 0.8, Vector2D(rightNotesPos + (pointSize2P * 0.8), 465 + pointSize2P / 2));
 	bg = new Background(manager, manager->getWindowWidth(), manager->getWindowHeight(), Vector2D(0, 0));
 	player1 = new PlayerPack(manager, leftNotesPos, rightNotesPos, pointSize2P, noteBarWidth*0.75);
 	player2 = new PlayerPack(manager, leftNotesPos + 200, rightNotesPos + 200, pointSize2P, noteBarWidth*0.75);
@@ -113,8 +110,8 @@ void PlayState::newGame2P()
 	stage.push_back(scoreBar);
 	stage.push_back(songBarBG);
 	stage.push_back(songBar);
-	stage.push_back(feedbackLeft);
-	stage.push_back(feedbackRight);
+	//stage.push_back(feedbackLeft);
+	//stage.push_back(feedbackRight);
 
 
 
