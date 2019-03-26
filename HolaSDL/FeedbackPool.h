@@ -17,5 +17,7 @@ public:
 	virtual ~FeedbackPool();
 
 	virtual void addFeedback(int animation);
+
+	virtual void updateResolution(double wScale, double hScale);
 };
 

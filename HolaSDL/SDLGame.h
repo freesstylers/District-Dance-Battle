@@ -24,6 +24,10 @@ public:
 
 	int getWindowWidth() const; // returns the window width
 	int getWindowHeight() const; // returns the window height
+	int getDefaultWindowWidth() const; // returns the default window width (800)
+	int getDefaultWindowHeight() const; // returns the default window height (600)
+	double getWidthScale() const;
+	double getHeightScale() const;
 	const ServiceLocator* getServiceLocator() const; // returns a pointer to the resources
 	// abstract methods to be implemented by subclasses
 	virtual void start() = 0; // start the game
@@ -50,5 +54,8 @@ protected:
 	string windowTitle_; // window title
 	int width_; // window width
 	int height_; // window height
+
+	double widthScale_;
+	double heightScale_;
 };
 

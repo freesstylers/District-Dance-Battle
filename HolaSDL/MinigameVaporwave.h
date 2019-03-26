@@ -21,5 +21,6 @@ public:
 	virtual void createList();
 	virtual void deleteList();
 
+	virtual void updateResolution(double wScale, double hScale);
 };
 

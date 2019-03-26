@@ -60,6 +60,7 @@ public:
 	void setAlpha(int alpha) { alpha_ = alpha; }
 	void changeAlpha(int alphaChange);
 	int getAlpha() { return alpha_; };
+	virtual void updateResolution(double wScale, double hScale);
 protected:
 	SDLGame* game_; // pointer to the game
 

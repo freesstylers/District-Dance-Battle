@@ -29,3 +29,22 @@ void FeedbackPool::addFeedback(int animation)
 	f->forceAnimationChange(animation);
 	f->setAlpha(255);
 }
+
+void FeedbackPool::updateResolution(double wScale, double hScale) {
+
+	for (auto feedback : getAllObjects()) {
+
+		Vector2D pos = feedback->getPosition();
+
+		pos.setX(pos.getX() * wScale);
+
+		pos.setY(pos.getY() * hScale);
+
+		Vector2D vel = Vector2D(0, -feedbackMaxHeight * hScale / feedbackDecayTime);
+
+		feedback->setWidth(feedback->getWidth() * wScale);
+		feedback->setHeight(feedback->getHeight() * hScale);
+		feedback->setPosition(pos);
+		feedback->setVelocity(vel);
+	}
+}

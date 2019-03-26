@@ -8,10 +8,10 @@ MenuState::MenuState(GameManager* g) :GameState(g)
 	controller = SDL_GameControllerOpen(0);
 	/*int width = 100;
 	int height = 100;
-	stage.push_back(new Button(gameManager, width, height, Vector2D((2 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - height / 2, gameManager->getWindowHeight() / 2 - height / 2), play));
+	stage.push_back(new Button(gameManager, width, height, Vector2D((2 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - height / 2, gameManager->getDefaultWindowHeight() / 2 - height / 2), play));
 	firstButton = stage.begin();
-	stage.push_back(new Button(gameManager, width, height, Vector2D((4 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - height / 2, gameManager->getWindowHeight() / 2 - height / 2), play));
-	stage.push_back(new Button(gameManager, width, height, Vector2D((6 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - height / 2, gameManager->getWindowHeight() / 2 - height / 2), createButtons));
+	stage.push_back(new Button(gameManager, width, height, Vector2D((4 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - height / 2, gameManager->getDefaultWindowHeight() / 2 - height / 2), play));
+	stage.push_back(new Button(gameManager, width, height, Vector2D((6 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - height / 2, gameManager->getDefaultWindowHeight() / 2 - height / 2), createButtons));
 	selectedButton = firstButton;
 	(*selectedButton)->scale(2);*/
 	createMainButtons();
@@ -57,10 +57,10 @@ void MenuState::createMainButtons()
 	deleteButtons();
 	int width = 100;
 	int height = 100;
-	stage.push_back(new Button(gameManager, width, height, Vector2D((2 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - height / 2, gameManager->getWindowHeight() / 2 - height / 2), play));
+	stage.push_back(new Button(gameManager, width, height, Vector2D((2 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - height / 2, gameManager->getDefaultWindowHeight() / 2 - height / 2), play));
 	firstButton = stage.begin();
-	stage.push_back(new Button(gameManager, width, height, Vector2D((4 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - height / 2, gameManager->getWindowHeight() / 2 - height / 2), play));
-	stage.push_back(new Button(gameManager, width, height, Vector2D((6 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - height / 2, gameManager->getWindowHeight() / 2 - height / 2), createButtons));
+	stage.push_back(new Button(gameManager, width, height, Vector2D((4 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - height / 2, gameManager->getDefaultWindowHeight() / 2 - height / 2), play));
+	stage.push_back(new Button(gameManager, width, height, Vector2D((6 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - height / 2, gameManager->getDefaultWindowHeight() / 2 - height / 2), createButtons));
 	selectedButton = firstButton;
 	(*selectedButton)->scale(2);
 }
@@ -93,10 +93,10 @@ void MenuState::createButtons(GameManager * gameManager)
 	static_cast<MenuState*>(gameManager->getMachine()->currentState())->deleteButtons();
 	int width = 50;
 	int height = 50;
-	gameManager->getMachine()->currentState()->stage.push_back(new Button(gameManager, width, height, Vector2D((4 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - width / 2, gameManager->getWindowHeight() / 3 - height / 2), play));
+	gameManager->getMachine()->currentState()->stage.push_back(new Button(gameManager, width, height, Vector2D((4 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - width / 2, gameManager->getDefaultWindowHeight() / 3 - height / 2), play));
 	static_cast<MenuState*>(gameManager->getMachine()->currentState())->firstButton = gameManager->getMachine()->currentState()->stage.begin();
-	gameManager->getMachine()->currentState()->stage.push_back(new Button(gameManager, width, height, Vector2D((5 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - width / 2, gameManager->getWindowHeight() / 3 - height / 2), play));
-	gameManager->getMachine()->currentState()->stage.push_back(new Button(gameManager, width, height, Vector2D((6 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - width / 2, gameManager->getWindowHeight() / 3 - height / 2), play));
+	gameManager->getMachine()->currentState()->stage.push_back(new Button(gameManager, width, height, Vector2D((5 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - width / 2, gameManager->getDefaultWindowHeight() / 3 - height / 2), play));
+	gameManager->getMachine()->currentState()->stage.push_back(new Button(gameManager, width, height, Vector2D((6 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - width / 2, gameManager->getDefaultWindowHeight() / 3 - height / 2), play));
 	static_cast<MenuState*>(gameManager->getMachine()->currentState())->selectedButton = static_cast<MenuState*>(gameManager->getMachine()->currentState())->firstButton;
 	(*static_cast<MenuState*>(gameManager->getMachine()->currentState())->selectedButton)->scale(2);
 

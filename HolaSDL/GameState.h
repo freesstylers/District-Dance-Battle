@@ -17,5 +17,7 @@ public:
 	virtual void update(Uint32 time);
 	virtual bool handleEvent(Uint32 time, SDL_Event e);
 	virtual void render(Uint32 time, bool beatSync = false);
+
+	virtual void updateResolution();
 };
 

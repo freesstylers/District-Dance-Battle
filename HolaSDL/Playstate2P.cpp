@@ -22,8 +22,8 @@ void PlayState2P::newGame()
 
 	levelName = "prueba";
 
-	int leftNotesPos = manager->getWindowWidth() / 2 - pointOffset;
-	int rightNotesPos = manager->getWindowWidth() / 2 + pointOffset;
+	int leftNotesPos = manager->getDefaultWindowWidth() / 2 - pointOffset;
+	int rightNotesPos = manager->getDefaultWindowWidth() / 2 + pointOffset;
 	leftNotesVector = Vector2D(leftNotesPos - noteSize / 2, initialNoteHeight);
 	rightNotesVector = Vector2D(rightNotesPos - noteSize / 2, initialNoteHeight);
 
@@ -31,7 +31,7 @@ void PlayState2P::newGame()
 	rightPoint = new Point(manager, pointSize, pointSize, Vector2D(rightNotesPos - pointSize / 2, 465));
 	feedbackLeft = new FeedbackPool(manager, pointSize, pointSize, Vector2D(leftNotesPos - pointSize / 2 - 100, 465));
 	feedbackRight = new FeedbackPool(manager, pointSize, pointSize, Vector2D(rightNotesPos - pointSize / 2 + 100, 465));
-	bg = new Background(manager, manager->getWindowWidth(), manager->getWindowHeight(), Vector2D(0, 0));
+	bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0));
 	level = new Level(this, manager, levelName);
 	level->init();
 	timer = Timer::Instance();
@@ -43,11 +43,11 @@ void PlayState2P::newGame()
 	bh = new BeatHandeler(level->bpm);
 
 	/*scoreBar = new ScoreBar(manager, 20, 20, Vector2D(20, 100), levelName->noteAmount, 100);
-	songBarBG = new BarBackground(manager, 20, 20, Vector2D(20, 25), levelName->songLength / (manager->getWindowWidth() - 40 + 50), Resources::Bar);*/
-	songBar = new SongBar(manager, 50, 50, Vector2D(20, 10), Vector2D(level->songLength / (manager->getWindowWidth() - 40 + 50), 0), songBarBG); //0.3 va a depender de la duracion de la cancion
+	songBarBG = new BarBackground(manager, 20, 20, Vector2D(20, 25), levelName->songLength / (manager->getDefaultWindowWidth() - 40 + 50), Resources::Bar);*/
+	songBar = new SongBar(manager, 50, 50, Vector2D(20, 10), Vector2D(level->songLength / (manager->getDefaultWindowWidth() - 40 + 50), 0), songBarBG); //0.3 va a depender de la duracion de la cancion
 
 
-	effectVaporWave = new EmptyObject(manager, Vector2D(0, 0), Resources::EffectVaporWave, manager->getWindowWidth(), manager->getWindowHeight());
+	effectVaporWave = new EmptyObject(manager, Vector2D(0, 0), Resources::EffectVaporWave, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight());
 
 	stage.push_back(bg);
 	stage.push_back(leftNoteBar);

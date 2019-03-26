@@ -185,3 +185,12 @@ void GameObject::changeAlpha(int alphaChange)
 		alpha_ = alpha_ + alphaChange;
 }
 
+void GameObject::updateResolution(double wScale, double hScale) {
+
+	width_ = width_ * wScale;
+	position_.setX(position_.getX() * wScale);
+
+	height_ = height_ * hScale;
+	position_.setY(position_.getY() * hScale);
+}
+

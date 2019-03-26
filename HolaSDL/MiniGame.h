@@ -40,6 +40,7 @@ public:
 	std::list<Note*> screenButtons_;
 	std::list<Note*> levelButtons_;
 
-	Feedback* fback;
+	virtual void updateResolution(double wScale, double hScale);
 
+	Feedback* fback;
 };

@@ -7,7 +7,7 @@ MinigameVaporwave::MinigameVaporwave(GameManager * g, PlayState * p): MiniGame(g
 {
 	manager = g;
 	playS = p;
-	fback = new Feedback(g, 150, 150, Vector2D(g->getWindowWidth() / 2 - 150 / 2, g->getWindowHeight() / 2 - 150 / 2));
+	fback = new Feedback(g, 150, 150, Vector2D(g->getDefaultWindowWidth() / 2 - 150 / 2, g->getDefaultWindowHeight() / 2 - 150 / 2));
 	timer = new TimerNoSingleton();
 
 	createList();
@@ -26,9 +26,8 @@ void MinigameVaporwave::generateButtons()
 void MinigameVaporwave::render(Uint32 time)
 {
 	for (Note* o : screenButtons_)
-	{
 		o->render(time);
-	}
+
 	fback->render(time);
 }
 
@@ -62,45 +61,43 @@ void MinigameVaporwave::update(Uint32 time)
 
 void MinigameVaporwave::createList()
 {
-	{
-		int newpos;
-		int aux;
-		failed = false;
-		noteAmount = 15;
-		maxNotes = noteAmount;
-		Note* note;
-		int select=0;
-		for (int i = 0; i < 8; i++) {
-			aux = rand() % 8;
+	int newpos;
+	int aux;
+	failed = false;
+	noteAmount = 15;
+	maxNotes = noteAmount;
+	Note* note;
+	int select=0;
+	for (int i = 0; i < 8; i++) {
+		aux = rand() % 8;
 
-			switch (aux) {
-			case 0:
-				note = new Note(SDL_CONTROLLER_BUTTON_A, manager, 75, 75, Vector2D(0, 0), Vector2D(200, 200),aux,select);
-				break;
-			case 1:
-				note = new Note(SDL_CONTROLLER_BUTTON_B, manager, 75, 75, Vector2D(0, 0), Vector2D(200, 200),aux,select);
-				break;
-			case 2:
-				note = new Note(SDL_CONTROLLER_BUTTON_X, manager, 75, 75, Vector2D(manager->getWindowWidth(), 0), Vector2D(-200, 200),aux,select);
-				break;
-			case 3:
-				note = new Note(SDL_CONTROLLER_BUTTON_Y, manager, 75, 75, Vector2D(manager->getWindowWidth(), 0), Vector2D(-200, 200),aux,select);
-				break;
-			case 4:
-				note = new Note(SDL_CONTROLLER_BUTTON_A, manager, 75, 75, Vector2D(0, manager->getWindowHeight()), Vector2D(200, -200),aux,select);
-				break;
-			case 5:
-				note = new Note(SDL_CONTROLLER_BUTTON_B, manager, 75, 75, Vector2D(0, manager->getWindowHeight()), Vector2D(200, -200),aux,select);
-				break;
-			case 6:
-				note = new Note(SDL_CONTROLLER_BUTTON_X, manager, 75, 75, Vector2D(manager->getWindowWidth(), manager->getWindowHeight()), Vector2D(-200, -200),aux,select);
-				break;
-			case 7:
-				note = new Note(SDL_CONTROLLER_BUTTON_Y, manager, 75, 75, Vector2D(manager->getWindowWidth(), manager->getWindowHeight()), Vector2D(-200, -200),aux,select);
-				break;
-			}
-			levelButtons_.push_front(note);
+		switch (aux) {
+		case 0:
+			note = new Note(SDL_CONTROLLER_BUTTON_A, manager, 75, 75, Vector2D(0, 0), Vector2D(200, 200),aux,select);
+			break;
+		case 1:
+			note = new Note(SDL_CONTROLLER_BUTTON_B, manager, 75, 75, Vector2D(0, 0), Vector2D(200, 200),aux,select);
+			break;
+		case 2:
+			note = new Note(SDL_CONTROLLER_BUTTON_X, manager, 75, 75, Vector2D(manager->getDefaultWindowWidth(), 0), Vector2D(-200, 200),aux,select);
+			break;
+		case 3:
+			note = new Note(SDL_CONTROLLER_BUTTON_Y, manager, 75, 75, Vector2D(manager->getDefaultWindowWidth(), 0), Vector2D(-200, 200),aux,select);
+			break;
+		case 4:
+			note = new Note(SDL_CONTROLLER_BUTTON_A, manager, 75, 75, Vector2D(0, manager->getDefaultWindowHeight()), Vector2D(200, -200),aux,select);
+			break;
+		case 5:
+			note = new Note(SDL_CONTROLLER_BUTTON_B, manager, 75, 75, Vector2D(0, manager->getDefaultWindowHeight()), Vector2D(200, -200),aux,select);
+			break;
+		case 6:
+			note = new Note(SDL_CONTROLLER_BUTTON_X, manager, 75, 75, Vector2D(manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight()), Vector2D(-200, -200),aux,select);
+			break;
+		case 7:
+			note = new Note(SDL_CONTROLLER_BUTTON_Y, manager, 75, 75, Vector2D(manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight()), Vector2D(-200, -200),aux,select);
+			break;
 		}
+		levelButtons_.push_front(note);
 	}
 }
 
@@ -114,4 +111,11 @@ void MinigameVaporwave::deleteList()
 		screenButtons_.remove(*o);
 		o = next;
 	}
+}
+
+void MinigameVaporwave::updateResolution(double wScale, double hScale)
+{
+	MiniGame::updateResolution(wScale, hScale);
+
+
 }

@@ -22,8 +22,8 @@ void PlayState::newGame()
 
 	levelName = "prueba";
 
-	int leftNotesPos = manager->getWindowWidth() / 2 - pointOffset;
-	int rightNotesPos = manager->getWindowWidth() / 2 + pointOffset;
+	int leftNotesPos = manager->getDefaultWindowWidth() / 2 - pointOffset;
+	int rightNotesPos = manager->getDefaultWindowWidth() / 2 + pointOffset;
 
 	leftNotesVector = Vector2D(leftNotesPos - noteSize / 2, initialNoteHeight);
 	rightNotesVector = Vector2D(rightNotesPos - noteSize / 2, initialNoteHeight);
@@ -32,7 +32,7 @@ void PlayState::newGame()
 	rightPoint = new Point(manager, pointSize, pointSize, Vector2D(rightNotesPos - pointSize / 2, 465));
 	feedbackLeft = new FeedbackPool(manager, pointSize * 0.8, pointSize * 0.8, Vector2D(leftNotesPos - (pointSize * 0.8) - (pointSize * 0.8), 465 + pointSize / 2));
 	feedbackRight = new FeedbackPool(manager, pointSize * 0.8, pointSize * 0.8, Vector2D(rightNotesPos + (pointSize * 0.8), 465 + pointSize / 2));
-	bg = new Background(manager, manager->getWindowWidth(), manager->getWindowHeight(), Vector2D(0, 0));
+	bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0));
 	level = new Level(this, manager, levelName);
 	level->init();
 	timer = Timer::Instance();
@@ -41,11 +41,11 @@ void PlayState::newGame()
 
 	scoreBar = new ScoreBar(manager, 20, 1, Vector2D(50, 465 + pointSize), level->noteAmount, maxScore);
 
-	songBarBG = new BarBackground(manager, 1, 14, Vector2D(50, 35), (((manager->getWindowWidth() - 50) / level->songLength) / 70.5), Resources::YellowBar); //70.5 es la constante para ajustar la velocidad de la barra al tiempo de la cancion
-	songBar = new SongBar(manager, 18, 22, Vector2D(41, 31), Vector2D((((manager->getWindowWidth() / level->songLength)) / 70.5), 0), songBarBG);
+	songBarBG = new BarBackground(manager, 1, 14, Vector2D(50, 35), (((manager->getDefaultWindowWidth() - 50) / level->songLength) / 70.5), Resources::YellowBar); //70.5 es la constante para ajustar la velocidad de la barra al tiempo de la cancion
+	songBar = new SongBar(manager, 18, 22, Vector2D(41, 31), Vector2D((((manager->getDefaultWindowWidth() / level->songLength)) / 70.5), 0), songBarBG);
 
 	perico = new Character(manager, 60 * 3.5, 120 * 3.5, Vector2D(75, initialNoteHeight + 70), Resources::PericoIdle);
-	robot = new Character(manager, 60 * 3.5, 120 * 3.5, Vector2D(manager->getWindowWidth() - 270, initialNoteHeight + 70), Resources::RobotIdle);
+	robot = new Character(manager, 60 * 3.5, 120 * 3.5, Vector2D(manager->getDefaultWindowWidth() - 270, initialNoteHeight + 70), Resources::RobotIdle);
 	leftNoteBar = new Squares(manager, noteBarWidth, 465 + 0.6 * pointSize, Vector2D(leftNotesPos + 1 - noteBarWidth / 2, leftNotesVector.getY()));
 	rightNoteBar = new Squares(manager, noteBarWidth, 465 + 0.6 * pointSize, Vector2D(rightNotesPos + 1 - noteBarWidth / 2, rightNotesVector.getY()));
 	
@@ -55,7 +55,7 @@ void PlayState::newGame()
 
 	bh = new BeatHandeler(level->bpm);
 
-	effectVaporWave = new EmptyObject(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::EffectVaporWave);
+	effectVaporWave = new EmptyObject(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::EffectVaporWave);
 
 	stage.push_back(bg);
 	stage.push_back(leftNoteBar);
@@ -71,12 +71,13 @@ void PlayState::newGame()
 	stage.push_back(feedbackRight);
 
 
-
 	level->playSong();
 
 	/////////////////////////
 
 	//exit_ = false;
+
+	updateResolution();
 }
 
 
@@ -272,6 +273,16 @@ void PlayState::songOver()
 {
 	manager->getServiceLocator()->getAudios()->haltChannel(0);
 	manager->getMachine()->pushState(new EndState(manager, currentScore, maxScore, 70));
+}
+
+void PlayState::updateResolution()
+{
+	GameState::updateResolution();
+
+	double wScale = manager->getWidthScale();
+	double hScale = manager->getHeightScale();
+
+	effectVaporWave->updateResolution(wScale, hScale);
 }
 
 Vector2D PlayState::setVel(double time)

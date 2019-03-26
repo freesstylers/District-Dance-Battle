@@ -21,6 +21,19 @@ void MiniGame::deleteList()
 {
 }
 
+void MiniGame::updateResolution(double wScale, double hScale)
+{
+	for (Note* n : screenButtons_) {
+		n->updateResolution(wScale, hScale);
+	}
+
+	for (Note* n : levelButtons_) {
+		n->updateResolution(wScale, hScale);
+	}
+
+	fback->updateResolution(wScale, hScale);
+}
+
 
 void MiniGame::render(Uint32 time) {
 	

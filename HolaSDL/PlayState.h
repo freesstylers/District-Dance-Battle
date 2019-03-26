@@ -110,6 +110,8 @@ protected:
 	void generateButtons();
 
 	void songOver();
+
+	virtual void updateResolution();
 private:
 
 };
