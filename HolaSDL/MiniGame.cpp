@@ -13,6 +13,10 @@ void MiniGame::update(Uint32 time) {
 	
 }
 
+void MiniGame::handleInput(Uint32 time, SDL_Event e)
+{
+}
+
 void MiniGame::createList()
 {
 }

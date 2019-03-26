@@ -136,7 +136,7 @@ PlayState::~PlayState()
 void PlayState::update(Uint32 time)
 {
 	GameState::update(time);
-	if (!miniActive && minigameController->DeltaTime() < level->songLength/3) 
+	if (!miniActive && minigameController->DeltaTime() < level->songLength/50) 
 	{
 		minigameController->Update();
 		if (levelArrows_.empty() && levelButtons_.empty()) {
@@ -163,6 +163,7 @@ void PlayState::update(Uint32 time)
 			robot->queueAnimationChange(Resources::RobotDance);
 			perico->queueAnimationChange(Resources::PericoDance1);
 			animationMiniGame = true;
+			minigame->resetMinigame();
 		}
 		minigame->update(time);
 		lip->update();
@@ -208,6 +209,8 @@ bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 	{
 		if (miniActive) {
 			lip->setMinigameActive(true);
+
+			minigame->handleInput(time, e);
 		}
 			lip->handleInput(time, e);
 			if (lip2 != nullptr)
@@ -224,7 +227,7 @@ void PlayState::render(Uint32 time, bool beatSync)
 	GameState::render(time, beatSignal);
 	if (miniActive) {
 		minigame->render(time);
-		effectVaporWave->render(time, beatSync);
+		//effectVaporWave->render(time, beatSync);
 	}
 
 	beatSignal = false;
@@ -286,12 +289,12 @@ void PlayState::songOver()
 
 void PlayState::updateResolution()
 {
-	GameState::updateResolution();
+	GameState::updateResolution();/*
 
 	double wScale = manager->getWidthScale();
 	double hScale = manager->getHeightScale();
 
-	effectVaporWave->updateResolution(wScale, hScale);
+	effectVaporWave->updateResolution(wScale, hScale);*/
 }
 
 Vector2D PlayState::setVel(double time)

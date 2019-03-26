@@ -1,9 +1,6 @@
 #pragma once
 #include "MiniGame.h"
 
-class PlayState;
-class GameManager;
-class LevelInputManager;
 
 class MinigameVaporwave: public MiniGame
 {
@@ -12,12 +9,15 @@ protected:
 	int maxNotes = noteAmount;
 
 public:
-	bool getFailed() { return failed; };
 	MinigameVaporwave(GameManager* g, PlayState* p);
 	~MinigameVaporwave() { delete timer; };
-	void generateButtons();
 	void render(Uint32 time);
 	virtual void update(Uint32 time);
+	virtual void handleInput(Uint32 time, SDL_Event e);
+
+	void generateButtons();
+	bool getFailed() { return failed; };
+
 	virtual void createList();
 	virtual void deleteList();
 

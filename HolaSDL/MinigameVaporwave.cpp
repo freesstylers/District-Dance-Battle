@@ -1,7 +1,5 @@
 #include "MinigameVaporwave.h"
 #include "GameManager.h"
-#include "PlayState.h"
-#include "LevelInputManager.h"
 
 MinigameVaporwave::MinigameVaporwave(GameManager * g, PlayState * p): MiniGame(g, p)
 {
@@ -57,6 +55,45 @@ void MinigameVaporwave::update(Uint32 time)
 		failed = true;
 	}
 
+}
+
+void MinigameVaporwave::handleInput(Uint32 time, SDL_Event e)
+{
+	if (!screenButtons_.empty())
+	{
+		auto it = screenButtons_.front();
+
+		if (it != nullptr)
+		{
+			if (e.type == SDL_CONTROLLERBUTTONDOWN)
+			{
+				if (abs(it->getPosition().getY()) > 0 && abs(it->getPosition().getY()) < manager->getWindowHeight() && abs(it->getPosition().getX()) > 0 && abs(it->getPosition().getX()) < manager->getWindowWidth())
+				{
+					if (e.cbutton.button == it->getKey())
+					{
+						cout << "bien minigame" << endl;
+						fback->queueAnimationChange(Resources::FeedbackGood);
+						failed = false;
+					}
+					else
+					{
+						cout << "flecha incorrecta" << endl;
+						failed = true;
+						fback->queueAnimationChange(Resources::FeedbackBad);
+					}
+				}
+				else
+				{
+					cout << "fuera" << endl;
+					failed = true;
+					fback->queueAnimationChange(Resources::FeedbackBad);
+				}
+				delete (it);
+				screenButtons_.remove(it);
+
+			}
+		}
+	}
 }
 
 void MinigameVaporwave::createList()

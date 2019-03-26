@@ -22,6 +22,7 @@
     <ClInclude Include="MinigameVaporwave.h" />
     <ClInclude Include="BeatHandler.h" />
     <ClInclude Include="PlayerPack.h" />
+    <ClInclude Include="Mirilla.h" />
     <ClInclude Include="ScoreBar.h" />
     <ClInclude Include="SongBar.h" />
     <ClInclude Include="Button.h" />
@@ -73,6 +74,7 @@
     <ClCompile Include="MinigameVaporwave.cpp" />
     <ClCompile Include="BeatHandler.cpp" />
     <ClCompile Include="PlayerPack.cpp" />
+    <ClCompile Include="Mirilla.cpp" />
     <ClCompile Include="ScoreBar.cpp" />
     <ClCompile Include="SongBar.cpp" />
     <ClCompile Include="Button.cpp" />
