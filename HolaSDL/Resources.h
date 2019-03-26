@@ -23,6 +23,7 @@ public:
 		Point,
 		NoteIcon,
 		YellowBar,
+		GreenBar, //barra para jugador2
 		PericoIdle,
 		PericoDab,
 		PericoDance1,

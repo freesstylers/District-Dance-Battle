@@ -1,13 +1,13 @@
 #include "ScoreBar.h"
 
-ScoreBar::ScoreBar(SDLGame* game, double width, double height, Vector2D pos, int noteAmount, int maxHeight) : GameObject(game)
+ScoreBar::ScoreBar(SDLGame* game, double width, double height, Vector2D pos, int noteAmount, int maxHeight, int texture) : GameObject(game)
 {
 	setWidth(width);
 	setHeight(height);
 	setPosition(pos);
 	noteAmount_ = noteAmount;
 	maxHeight_ = maxHeight;
-	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::YellowBar);
+	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(texture);
 
 	currentHeight = height;
 	originalHeight = pos.getY();

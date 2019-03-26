@@ -71,6 +71,8 @@ protected:
 public:
 	BeatHandeler* bh;
 	ScoreBar* scoreBar;
+	ScoreBar* scoreBar2;
+
 	PlayState(GameManager* g);
 	void newGame();
 	~PlayState();

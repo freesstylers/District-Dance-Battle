@@ -22,6 +22,7 @@ vector<Resources::ImageInfo> Resources::images_ {
     {Point, "resources/images/Point.png", 32, 32, 1, 1, 1},
 	{NoteIcon, "resources/images/Nota.png", 9, 11, 1, 1, 1},
 	{YellowBar, "resources/images/enemy_mana_bar_002.png", 196, 16, 1, 1, 1},
+	{GreenBar, "resources/images/enemy_mana_bar_003.png", 196, 16, 1, 1, 1},
 	{PericoIdle, "resources/images/PericoIdle.png", 60, 120, 3, 2, 4},
 	{PericoDab, "resources/images/PericoDab.png", 60, 120, 2, 1, 2},
 	{PericoDance1, "resources/images/PericoBaile1.png", 60, 120, 2, 1, 2},
