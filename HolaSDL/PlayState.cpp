@@ -49,12 +49,12 @@ void PlayState::newGame()
 	leftNoteBar = new Squares(manager, noteBarWidth, 465 + 0.6 * pointSize, Vector2D(leftNotesPos + 1 - noteBarWidth / 2, leftNotesVector.getY()));
 	rightNoteBar = new Squares(manager, noteBarWidth, 465 + 0.6 * pointSize, Vector2D(rightNotesPos + 1 - noteBarWidth / 2, rightNotesVector.getY()));
 	
-	minigame = new MinigameHipHop(manager, this);
+	minigame = new MinigameVaporwave(manager, this);
 	minigameController = new TimerNoSingleton();
 
 	bh = new BeatHandeler(level->bpm);
 
-	//effectVaporWave = new EmptyObject(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::EffectVaporWave);
+	effectVaporWave = new EmptyObject(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::EffectVaporWave);
 
 	stage.push_back(bg);
 	stage.push_back(leftNoteBar);

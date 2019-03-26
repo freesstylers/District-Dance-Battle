@@ -54,6 +54,10 @@ void MinigameVaporwave::update(Uint32 time)
 
 }
 
+void MinigameVaporwave::handleInput(Uint32 time, SDL_Event e)
+{
+}
+
 void MinigameVaporwave::createList()
 {
 	{

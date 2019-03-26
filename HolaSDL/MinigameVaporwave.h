@@ -11,8 +11,9 @@ protected:
 public:
 	MinigameVaporwave(GameManager* g, PlayState* p);
 	~MinigameVaporwave() { delete timer; };
-	void render(Uint32 time);
+	virtual void render(Uint32 time);
 	virtual void update(Uint32 time);
+	virtual void handleInput(Uint32 time, SDL_Event e);
 
 	void generateButtons();
 	bool getFailed() { return failed; };
