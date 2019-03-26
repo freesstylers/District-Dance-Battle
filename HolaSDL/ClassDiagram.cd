@@ -32,7 +32,7 @@
     <Position X="18" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>DAAAAAAAAAAEAAIAAAAAAAAAAAAAAAAAAAAAgAAACAA=</HashCode>
-      <FileName>BeatHandeler.h</FileName>
+      <FileName>BeatHandler.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Button" Collapsed="true">
@@ -66,7 +66,7 @@
   <Class Name="Feedback" Collapsed="true">
     <Position X="10" Y="2.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AKAAAAAAAAAAAAAQAAECAAAAAAAAEAAAAAAAAAAEAAA=</HashCode>
+      <HashCode>AKAAAAAAAAAAAAAQAAACAAAAAAAAEAAAAAAAAAAEAAI=</HashCode>
       <FileName>Feedback.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -108,7 +108,7 @@
   <Class Name="GameObject" Collapsed="true">
     <Position X="11.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>5NAAJIAAAKAMBAAgSAGBIJBCCAIAQAAmAARAAINUAAg=</HashCode>
+      <HashCode>5NAAJIAAAKAMBAAgSAGBIJBCCAIAQAAmAARAAINUEAo=</HashCode>
       <FileName>GameObject.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -136,14 +136,14 @@
   <Class Name="Level" Collapsed="true">
     <Position X="23.25" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AACAAgAAAAAABEAAAAAAEAEAAAEMAAMBAAAJAAAAAAA=</HashCode>
+      <HashCode>AACAAAAACAAAAEAAAAAgEAAAAAEMQAMBAAAJAAAAAAA=</HashCode>
       <FileName>Level.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="LevelInputManager" Collapsed="true">
     <Position X="18" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AJAAAAQAAAAAAAEAAAgQAAAAAAMACAAAAAEAAoAEAAA=</HashCode>
+      <HashCode>AJQAAAQAAAAAAAEQAAgQAAAAAAMAGAABAAEAAAAEAAA=</HashCode>
       <FileName>LevelInputManager.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -157,14 +157,14 @@
   <Class Name="MenuState" Collapsed="true">
     <Position X="6.5" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AEABAARAAIAIABEAAiAAAAAAAQCAAAAAAEBAACAAAAA=</HashCode>
+      <HashCode>AEABAAQAAIACABEgAiAAAAAAEQCAAAACAAAAACAAAAA=</HashCode>
       <FileName>MenuState.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MiniGame" Collapsed="true">
     <Position X="19.75" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQBAABAAAAAAAEAAEgAAAAEAAEAQAAgAAEAQoAUAAA=</HashCode>
+      <HashCode>IARJAACAgAAQAAEQAEggAAAEAAEAUAAAAAAAAAAUAAA=</HashCode>
       <FileName>MiniGame.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -178,7 +178,7 @@
   <Class Name="PlayState" Collapsed="true">
     <Position X="8.25" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>gAaWDgAkCAYgAFIwgEAJABMEIAEAkxGphJAIQAA0BBA=</HashCode>
+      <HashCode>gATSDAAgiAggAFIAgMANABMEIgFAy1GBBJgIAhB0BCA=</HashCode>
       <FileName>PlayState.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -192,7 +192,7 @@
   <Class Name="Point" Collapsed="true">
     <Position X="22" Y="2.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAgAACAAAAAAAAAAAAAgAAAAAAAAAEAAA=</HashCode>
+      <HashCode>AIAAAAAAAAAAgAACAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
       <FileName>Point.h</FileName>
     </TypeIdentifier>
   </Class>

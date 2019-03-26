@@ -2,8 +2,8 @@
 
 #include "PlayState.h"
 #include "SRandBasedGenerator.h"
-//#include <math.h>
-
+#include <cmath> // esto es C++
+//#include <math.h> // esto es C
 
 Level::Level(PlayState* l, SDLGame* gam, string n)
 {
@@ -33,7 +33,7 @@ void Level::init() {
 	int aux = 0;
 	while (aux >= 0) {
 		Note* note;
-		
+		Note* note2;
 		file >> aux;
 		int select=0;
 		if (aux >= 0) {
@@ -51,36 +51,30 @@ void Level::init() {
 			case 0:
 				
 				note = nullptr;
+				note2 = nullptr;
 				break;
 			case 1:
-
-				note = new Note(SDL_CONTROLLER_BUTTON_DPAD_LEFT, gm, 50, 50, level->leftNotesVector, noteVel,aux,select);
-				level->selectArrows_.push_back(select);
+				note = new Note(SDL_CONTROLLER_BUTTON_DPAD_LEFT, gm, 50, 50, level->leftNotesVector, noteVel);
+				note2 = new Note(SDL_CONTROLLER_BUTTON_DPAD_LEFT, gm, 50, 50, level->leftNotesVector2, noteVel);
 				break;
 			case 2:
-				
-				note = new Note(SDL_CONTROLLER_BUTTON_DPAD_RIGHT, gm, 50, 50, level->leftNotesVector, noteVel,aux,select);
-				level->selectArrows_.push_back(select);
+				note = new Note(SDL_CONTROLLER_BUTTON_DPAD_RIGHT, gm, 50, 50, level->leftNotesVector, noteVel);
+				note2 = new Note(SDL_CONTROLLER_BUTTON_DPAD_RIGHT, gm, 50, 50, level->leftNotesVector2, noteVel);
 				break;
 			case 3:
-				
-				note = new Note(SDL_CONTROLLER_BUTTON_DPAD_UP, gm, 50, 50, level->leftNotesVector, noteVel,aux,select);
-				level->selectArrows_.push_back(select);
+				note = new Note(SDL_CONTROLLER_BUTTON_DPAD_UP, gm, 50, 50, level->leftNotesVector, noteVel);
+				note2 = new Note(SDL_CONTROLLER_BUTTON_DPAD_UP, gm, 50, 50, level->leftNotesVector2, noteVel);
 				break;
 			case 4:
-				
-				note = new Note(SDL_CONTROLLER_BUTTON_DPAD_DOWN, gm, 50, 50, level->leftNotesVector, noteVel,aux,select);
-				level->selectArrows_.push_back(select);
-				break;
-			case 5:
-				note = new Note(SDL_CONTROLLER_BUTTON_A,gm, 50, 50, level->leftNotesVector, noteVel,aux,select);
-				level->selectArrows_.push_back(select);
+				note = new Note(SDL_CONTROLLER_BUTTON_DPAD_DOWN, gm, 50, 50, level->leftNotesVector, noteVel);
+				note2 = new Note(SDL_CONTROLLER_BUTTON_DPAD_DOWN, gm, 50, 50, level->leftNotesVector2, noteVel);
 				break;
 			default:
 				break;
 			}
 			level->levelArrows_.push_back(note);
-			//level->selectArrows_.push_back(select);
+			level->levelArrows2_.push_back(note2);
+
 			if(aux!=0) noteAmount++;
 		}
 	}
@@ -90,6 +84,7 @@ void Level::init() {
 	while (aux >= 0) {
 		Note* note;
 		int select=0;
+		Note* note2;
 		file >> aux;
 		if (aux >= 0) {
 			/*if (aux != 0) {
@@ -104,37 +99,30 @@ void Level::init() {
 			case 0:
 				
 				note = nullptr;
+				note2 = nullptr;
 				break;
 			case 1:
-				
-				note = new Note(SDL_CONTROLLER_BUTTON_A, gm, 50, 50, level->rightNotesVector, noteVel,aux,select);
-				level->selectButtons_.push_back(select);
+				note = new Note(SDL_CONTROLLER_BUTTON_A, gm, 50, 50, level->rightNotesVector, noteVel);
+				note2 = new Note(SDL_CONTROLLER_BUTTON_A, gm, 50, 50, level->rightNotesVector2, noteVel);
 				break;
 			case 2:
-				 
-				note = new Note(SDL_CONTROLLER_BUTTON_B, gm, 50, 50, level->rightNotesVector, noteVel,aux,select);
-				level->selectButtons_.push_back(select);
+				note = new Note(SDL_CONTROLLER_BUTTON_B, gm, 50, 50, level->rightNotesVector, noteVel);
+				note2 = new Note(SDL_CONTROLLER_BUTTON_B, gm, 50, 50, level->rightNotesVector2, noteVel);
 				break;
 			case 3:
-				
-				note = new Note(SDL_CONTROLLER_BUTTON_X, gm, 50, 50, level->rightNotesVector, noteVel,aux, select);
-				level->selectButtons_.push_back(select);
+				note = new Note(SDL_CONTROLLER_BUTTON_X, gm, 50, 50, level->rightNotesVector, noteVel);
+				note2 = new Note(SDL_CONTROLLER_BUTTON_X, gm, 50, 50, level->rightNotesVector2, noteVel);
 				break;
 			case 4:
-				
-				note = new Note(SDL_CONTROLLER_BUTTON_Y, gm, 50, 50, level->rightNotesVector, noteVel,aux,select);
-				level->selectButtons_.push_back(select);
-				break;
-			case 5:
-				note = new Note(SDL_CONTROLLER_BUTTON_A,gm, 50, 50, level->rightNotesVector, noteVel,aux,select);
-				level->selectButtons_.push_back(select);
+				note = new Note(SDL_CONTROLLER_BUTTON_Y, gm, 50, 50, level->rightNotesVector, noteVel);
+				note2 = new Note(SDL_CONTROLLER_BUTTON_Y, gm, 50, 50, level->rightNotesVector2, noteVel);
 				break;
 			default:
 				break;
 			}
 
 			level->levelButtons_.push_back(note);
-			//level->selectButtons_.push_back(select);
+			level->levelButtons2_.push_back(note2);
 
 			if (aux != 0) noteAmount++;
 		} 
