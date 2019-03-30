@@ -19,7 +19,7 @@ void PlayState::newGame()
 
 	leftNotesVector2 = Vector2D(leftNotesPos - 50 / 2 + 200, 70);
 	rightNotesVector2 = Vector2D(rightNotesPos - 50 / 2 + 200, 70);
-	player1 = new PlayerPack(manager, leftNotesPos, rightNotesPos, pointSize, noteBarWidth);
+	player1 = new PlayerPack(manager,this, leftNotesPos, rightNotesPos, pointSize, noteBarWidth);
 	feedbackLeft = new FeedbackPool(manager, pointSize * 0.8, pointSize * 0.8, Vector2D(leftNotesPos - (pointSize * 0.8) - (pointSize * 0.8), 465 + pointSize / 2));
 	feedbackRight = new FeedbackPool(manager, pointSize * 0.8, pointSize * 0.8, Vector2D(rightNotesPos + (pointSize * 0.8), 465 + pointSize / 2));
 	bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0));
@@ -38,12 +38,12 @@ void PlayState::newGame()
 	perico = new Character(manager, 60 * 3.5, 120 * 3.5, Vector2D(75, initialNoteHeight + 70), Resources::PericoIdle);
 	robot = new Character(manager, 60 * 3.5, 120 * 3.5, Vector2D(manager->getDefaultWindowWidth() - 270, initialNoteHeight + 70), Resources::RobotIdle);
 	
-	minigame = new MiniGame(manager, this);
+	minigame = new MinigameVaporwave(manager, this);
 	minigameController = new TimerNoSingleton();
 
 	bh = new BeatHandler(level->bpm);
 
-	effectVaporWave = new EmptyObject(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::EffectVaporWave);
+	effectVaporWave = new EmptyObject(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::EffectVaporWave);
 
 
 	stage.push_back(bg);
@@ -80,8 +80,8 @@ void PlayState::newGame2P()
 	rightNotesVector2 = Vector2D(rightNotesPos - 50 / 2 + 200, 70);
 
 	bg = new Background(manager, manager->getWindowWidth(), manager->getWindowHeight(), Vector2D(0, 0));
-	player1 = new PlayerPack(manager, leftNotesPos, rightNotesPos, pointSize2P, noteBarWidth*0.75);
-	player2 = new PlayerPack(manager, leftNotesPos + 200, rightNotesPos + 200, pointSize2P, noteBarWidth*0.75);
+	player1 = new PlayerPack(manager,this, leftNotesPos, rightNotesPos, pointSize2P, noteBarWidth*0.75);
+	player2 = new PlayerPack(manager,this, leftNotesPos + 200, rightNotesPos + 200, pointSize2P, noteBarWidth*0.75);
 	level = new Level(this, manager, levelName);
 	level->init();
 	timer = Timer::Instance();
@@ -98,7 +98,7 @@ void PlayState::newGame2P()
 	perico = new Character(manager, 60 * 3.5, 120 * 3.5, Vector2D(75, initialNoteHeight + 30 + 70), Resources::PericoIdle);
 	robot = new Character(manager, 60 * 3.5, 120 * 3.5, Vector2D(manager->getWindowWidth() - 270, initialNoteHeight - 29 + 70), Resources::RobotIdle);
 
-	minigame = new MiniGame(manager, this);
+	minigame = new MinigameVaporwave(manager, this);
 	minigameController = new TimerNoSingleton();
 
 	bh = new BeatHandler(level->bpm);
@@ -166,7 +166,6 @@ void PlayState::update(Uint32 time)
 			minigame->resetMinigame();
 		}
 		minigame->update(time);
-		lip->update();
 		if (minigame->getFailed()) {
 			lip->setMinigameActive(false);
 			miniActive = false;
@@ -212,11 +211,13 @@ bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 
 			minigame->handleInput(time, e);
 		}
+		else
+		{
 			lip->handleInput(time, e);
 			if (lip2 != nullptr)
 				lip2->handleInput(time, e);
 			GameState::handleEvent(time, e);
-		
+		}
 		return false;
 	}
 }
@@ -227,7 +228,7 @@ void PlayState::render(Uint32 time, bool beatSync)
 	GameState::render(time, beatSignal);
 	if (miniActive) {
 		minigame->render(time);
-		//effectVaporWave->render(time, beatSync);
+		effectVaporWave->render(time, beatSync);
 	}
 
 	beatSignal = false;

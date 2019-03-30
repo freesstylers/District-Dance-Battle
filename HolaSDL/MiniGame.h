@@ -30,14 +30,14 @@ protected:
 
 public:
 	MiniGame(GameManager* g, PlayState* p );
-	~MiniGame() { delete timer; };
+	~MiniGame() { };
 	virtual void render(Uint32 time);
 	virtual void update(Uint32 time); 
 	virtual void handleInput(Uint32 time, SDL_Event e);
 	bool getFailed() { return failed; };
 	virtual void createList();
 	virtual void deleteList();
-	virtual void resetMinigame();
+	virtual void resetMinigame() {};
 
 	std::list<Note*> screenButtons_;
 	std::list<Note*> levelButtons_;

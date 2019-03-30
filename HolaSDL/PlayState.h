@@ -46,7 +46,7 @@ protected:
 
 
 	Vector2D noteVel;
-	MiniGame* minigame;
+	MinigameVaporwave* minigame;
 	Character* perico;
 	Character* robot;
 	EmptyObject* effectVaporWave;
@@ -103,13 +103,14 @@ public:
 	Vector2D rightNotesVector;
 	Vector2D leftNotesVector2;
 	Vector2D rightNotesVector2;
-	MiniGame* getMinigame() { return minigame; }
+	MinigameVaporwave* getMinigame() { return minigame; }
 	GameManager* getGameManager() { return manager; }
 
 	double msDiff = 0.0;  //difference between the time of a beat and the time when a note is created, in ms
 
 	void updateScore(int accuracy) { currentScore += maxNoteValue * (1 / accuracy); }
 	void activateBeatSignal() { beatSignal = true; }
+	bool getMiniActive() { return miniActive; }
 
 protected:
 	void deleteAll();

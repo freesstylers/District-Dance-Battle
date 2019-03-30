@@ -1,12 +1,11 @@
 #include "PlayerPack.h"
-
-
+#include "PlayState.h"
 
 PlayerPack::PlayerPack()
 {
 }
 
-PlayerPack::PlayerPack(SDLGame* manager, int leftNotesPos, int rightNotesPos, int pointSize, int squareWidth): GameObject(manager)
+PlayerPack::PlayerPack(SDLGame* manager, PlayState* ps, int leftNotesPos, int rightNotesPos, int pointSize, int squareWidth): GameObject(manager), playstate_(ps)
 {
 
 	leftNotesVector = Vector2D(leftNotesPos - 50 / 2, 70);
@@ -35,37 +34,40 @@ void PlayerPack::render(Uint32 time, bool beatSync)
 
 void PlayerPack::update(Uint32 time)
 {
-	leftNoteBar->update(time);
-	rightNoteBar->update(time);
-	leftPoint->update(time);
-	rightNoteBar->update(time);
-	for (Note* o : screenArrows_)
+	if (!playstate_->getMiniActive())
 	{
-		if (o != nullptr)
-		o->update(time);
-	}
-	for (Note* o : screenButtons_)
-	{
-		if (o != nullptr)
-		o->update(time);
-	}
-	if (!screenArrows_.empty() && screenArrows_.front()->getPosition().getY() > 550)
-	{
-		Note* aux = screenArrows_.front();
-		delete aux;
-		screenArrows_.pop_front();
-		cout << "fuera" << endl;
+		leftNoteBar->update(time);
+		rightNoteBar->update(time);
+		leftPoint->update(time);
+		rightNoteBar->update(time);
+		for (Note* o : screenArrows_)
+		{
+			if (o != nullptr)
+				o->update(time);
+		}
+		for (Note* o : screenButtons_)
+		{
+			if (o != nullptr)
+				o->update(time);
+		}
+		if (!screenArrows_.empty() && screenArrows_.front()->getPosition().getY() > 550)
+		{
+			Note* aux = screenArrows_.front();
+			delete aux;
+			screenArrows_.pop_front();
+			cout << "fuera" << endl;
 
-		game_->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0);
-	}
-	if (!screenButtons_.empty() && screenButtons_.front()->getPosition().getY() > 550)
-	{
-		Note* aux = screenButtons_.front();
-		delete aux;
-		screenButtons_.pop_front();
-		cout << "fuera" << endl;
+			game_->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0);
+		}
+		if (!screenButtons_.empty() && screenButtons_.front()->getPosition().getY() > 550)
+		{
+			Note* aux = screenButtons_.front();
+			delete aux;
+			screenButtons_.pop_front();
+			cout << "fuera" << endl;
 
-		game_->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0);
+			game_->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0);
+		}
 	}
 }
 

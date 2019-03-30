@@ -5,6 +5,7 @@
 #include "Vector2D.h"
 #include "GameObject.h"
 #include <list>
+class PlayState;
 class PlayerPack : public GameObject
 {
 protected:
@@ -14,10 +15,12 @@ protected:
 	Point* rightPoint;
 	Squares* leftNoteBar;
 	Squares* rightNoteBar;
+	PlayState* playstate_;
+	
 
 public:
 	PlayerPack();
-	PlayerPack(SDLGame* manager, int leftNotesPos, int rightNotesPos, int pointSize, int squareWidth);
+	PlayerPack(SDLGame* manager, PlayState* ps, int leftNotesPos, int rightNotesPos, int pointSize, int squareWidth);
 	~PlayerPack();
 	virtual void render(Uint32 time, bool beatSync);
 	virtual void update(Uint32 time);

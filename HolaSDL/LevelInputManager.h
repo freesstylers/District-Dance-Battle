@@ -16,8 +16,6 @@ public:
 
 	bool getFailed() { return failed; }
 
-	void update();
-
 	void setMinigameActive(bool active) { 
 		minigameActive = active;
 	}

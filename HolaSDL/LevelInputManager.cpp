@@ -20,7 +20,6 @@ LevelInputManager::~LevelInputManager()
 
 void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 
-	if (!minigameActive) {
 		if (!player->screenArrows_.empty())
 		{
 			auto it = player->screenArrows_.front();
@@ -131,10 +130,6 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 					}
 				}
 				else if (event.type == SDL_CONTROLLERBUTTONUP) keyup2 = true;
-			}
 		}
 	}
-}
-void LevelInputManager::update() {
-
 }
