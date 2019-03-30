@@ -35,8 +35,9 @@ void MenuState::render(Uint32 time, bool beatSync)
 {
 	GameState::render(time);
 	for (auto o : buttons) {
-		o.render(time, false);
+		o.first.render(time, false);
 	}
+	buttons[index].second.render(time, false);
 }
 
 void MenuState::createMainButtons()
@@ -47,9 +48,10 @@ void MenuState::createMainButtons()
 	int r =  150;
 	for (int i = 0; i < 5; i++) {
 		angulo = angIni + ang * i;
-		buttons[i] = EmptyObject(gameManager, Vector2D((gameManager->getWindowWidth()/2 + r * cos(((angulo*M_PI)/180)))-25, (gameManager->getWindowHeight()/2 + r * sin(((angulo*M_PI) / 180)))-25), 50, 50, Resources::YButton);
+		buttons[i].first = EmptyObject(gameManager, Vector2D((gameManager->getWindowWidth()/2 + r * cos(((angulo*M_PI)/180)))-25, (gameManager->getWindowHeight()/2 + r * sin(((angulo*M_PI) / 180)))-25), 50, 50, Resources::YButton);
+		buttons[i].second = Panel(gameManager, buttons[i].first.getPosition(), Resources::DownArrow, "asdf", 3, "D3SP4C1T0");
 	}
-	buttons[5] = EmptyObject(gameManager, Vector2D(50, 100), 100, 50, Resources::YButton);
+	/*buttons[5] = EmptyObject(gameManager, Vector2D(50, 100), 100, 50, Resources::YButton);
 	buttons[6] = EmptyObject(gameManager, Vector2D(150, 100), 100, 50, Resources::YButton);
 	buttons[7] = EmptyObject(gameManager, Vector2D(50, 150), 100, 50, Resources::YButton);
 	buttons[8] = EmptyObject(gameManager, Vector2D(150, 150), 100, 50, Resources::YButton);
@@ -58,35 +60,35 @@ void MenuState::createMainButtons()
 	buttons[11] = EmptyObject(gameManager, Vector2D(50, 250), 100, 50, Resources::YButton);
 	buttons[12] = EmptyObject(gameManager, Vector2D(150, 250), 100, 50, Resources::YButton);
 	buttons[13] = EmptyObject(gameManager, Vector2D(50, 300), 100, 50, Resources::YButton);
-	buttons[14] = EmptyObject(gameManager, Vector2D(150, 300), 100, 50, Resources::YButton);
+	buttons[14] = EmptyObject(gameManager, Vector2D(150, 300), 100, 50, Resources::YButton);*/
 
 	reset();
 
-	buttons[0].scale(2);
+	buttons[0].first.scale(2);
 }
 
 void MenuState::nextButton()
 {
-	buttons[index].scale(0.5);
+	buttons[index].first.scale(0.5);
 	if (index < max) {
 		index++;
 	}
 	else {
 		index = min;
 	}
-	buttons[index].scale(2);
+	buttons[index].first.scale(2);
 }
 
 void MenuState::backButton()
 {
-	buttons[index].scale(0.5);
+	buttons[index].first.scale(0.5);
 	if (index > min) {
 		index--;
 	}
 	else {
 		index = max;
 	}
-	buttons[index].scale(2);
+	buttons[index].first.scale(2);
 }
 
 void MenuState::reset() {
@@ -96,14 +98,14 @@ void MenuState::reset() {
 }
 
 void MenuState::deactivateAll() {
-	for (int i = 0; i < 15; i++) {
+	/*for (int i = 0; i < 15; i++) {
 		buttons[i].setActive(false);
-	}
+	}*/
 }
 
 void MenuState::activate(int first, int last) {
 
-	deactivateAll();
+	/*deactivateAll();
 
 	buttons[index].scale(0.5);
 
@@ -115,7 +117,7 @@ void MenuState::activate(int first, int last) {
 	index = min;
 	max = last;
 
-	buttons[index].scale(2);
+	buttons[index].scale(2);*/
 }
 
 void MenuState::buttonUse() {
