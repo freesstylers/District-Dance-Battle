@@ -304,7 +304,6 @@ void PlayState::updateResolution()
 		if (n != nullptr){
 			n->updateResolution(wScale, hScale);
 			n->setVelocity(noteVel);
-			n->setPosition
 		}
 	}
 	for (Note* n : levelButtons_) {
