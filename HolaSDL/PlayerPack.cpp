@@ -29,6 +29,7 @@ void PlayerPack::render(Uint32 time, bool beatSync)
 	for (Note* o : screenButtons_)
 	{
 		o->render(time, beatSync);
+		
 	}
 }
 
@@ -42,18 +43,30 @@ void PlayerPack::update(Uint32 time)
 		rightNoteBar->update(time);
 		for (Note* o : screenArrows_)
 		{
-			if (o != nullptr)
+			if (o != nullptr) {
 				o->update(time);
+				x = selectScreenArrows.front();
+			}
+			
 		}
 		for (Note* o : screenButtons_)
 		{
 			if (o != nullptr)
+			{
 				o->update(time);
+				y = selectScreenButtons.front();
+			}
 		}
 		if (!screenArrows_.empty() && screenArrows_.front()->getPosition().getY() > 550)
 		{
 			Note* aux = screenArrows_.front();
+			if (x == 5) {
+				playstate_->feedbackLeft->addFeedback(Resources::FeedbackPerfect);
+				playstate_->scoreBar->updateBar(1);
+				playstate_->updateScore(1);
+			}
 			delete aux;
+			selectScreenArrows.pop_front();
 			screenArrows_.pop_front();
 			cout << "fuera" << endl;
 
@@ -62,6 +75,13 @@ void PlayerPack::update(Uint32 time)
 		if (!screenButtons_.empty() && screenButtons_.front()->getPosition().getY() > 550)
 		{
 			Note* aux = screenButtons_.front();
+			if (y == 5) {
+				playstate_->feedbackRight->addFeedback(Resources::FeedbackPerfect);
+				playstate_->scoreBar->updateBar(1);
+				playstate_->updateScore(1);
+			}
+
+			selectScreenButtons.pop_front();
 			delete aux;
 			screenButtons_.pop_front();
 			cout << "fuera" << endl;
