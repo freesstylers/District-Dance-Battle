@@ -154,5 +154,4 @@ void MinigameVaporwave::updateResolution(double wScale, double hScale)
 {
 	MiniGame::updateResolution(wScale, hScale);
 
-
 }

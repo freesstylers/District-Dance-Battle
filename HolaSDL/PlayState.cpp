@@ -119,6 +119,8 @@ void PlayState::newGame2P()
 
 
 	level->playSong();
+
+	updateResolution();
 }
 
 PlayState::~PlayState()
@@ -160,8 +162,8 @@ void PlayState::update(Uint32 time)
 		if (!animationMiniGame)
 		{
 			lip->setMinigameActive(true);
-			robot->queueAnimationChange(Resources::RobotDance);
-			perico->queueAnimationChange(Resources::PericoDance1);
+			robot->forceAnimationChange(Resources::RobotDance);
+			perico->forceAnimationChange(Resources::PericoDance1);
 			animationMiniGame = true;
 			minigame->resetMinigame();
 		}
@@ -290,12 +292,41 @@ void PlayState::songOver()
 
 void PlayState::updateResolution()
 {
-	GameState::updateResolution();/*
+	GameState::updateResolution();
 
 	double wScale = manager->getWidthScale();
 	double hScale = manager->getHeightScale();
 
-	effectVaporWave->updateResolution(wScale, hScale);*/
+	minigame->updateResolution(wScale, hScale);
+	Vector2D noteVel = setVel(60000 / level->bpm);
+
+	for (Note* n : levelArrows_) {
+		if (n != nullptr){
+			n->updateResolution(wScale, hScale);
+			n->setVelocity(noteVel);
+			n->setPosition
+		}
+	}
+	for (Note* n : levelButtons_) {
+		if (n != nullptr) {
+			n->updateResolution(wScale, hScale);
+			n->setVelocity(noteVel);
+		}
+	}
+	for (Note* n : levelArrows2_) {
+		if (n != nullptr) {
+			n->updateResolution(wScale, hScale);
+			n->setVelocity(noteVel);
+		}
+	}
+	for (Note* n : levelButtons2_) {
+		if (n != nullptr) {
+			n->updateResolution(wScale, hScale);
+			n->setVelocity(noteVel);
+		}
+	}
+
+	initialNoteHeight = initialNoteHeight * hScale;
 }
 
 Vector2D PlayState::setVel(double time)

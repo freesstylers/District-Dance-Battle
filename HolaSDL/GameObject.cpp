@@ -171,6 +171,8 @@ void GameObject::forceAnimationChange(int animationTag)
 void GameObject::changeAnimation(int animationTag)
 {
 	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(animationTag);
+
+	animation.currentFrame = animation.currentFrame % animation.totalFrames;
 	
 	queuedAnimations.pop();
 }
