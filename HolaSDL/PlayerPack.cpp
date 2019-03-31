@@ -15,6 +15,8 @@ PlayerPack::PlayerPack(SDLGame* manager, PlayState* ps, int leftNotesPos, int ri
 	rightPoint = new Point(manager, pointSize, pointSize, Vector2D(rightNotesPos - pointSize / 2, 465));
 	leftNoteBar = new Squares(manager, squareWidth, 465 + 0.6 * pointSize, Vector2D(leftNotesPos + 1 - squareWidth / 2, leftNotesVector.getY()));
 	rightNoteBar = new Squares(manager, squareWidth, 465 + 0.6 * pointSize, Vector2D(rightNotesPos + 1 - squareWidth / 2, rightNotesVector.getY()));
+
+	noteYLimit = leftPoint->getPosition().getY() + leftPoint->getHeight();
 }
 void PlayerPack::render(Uint32 time, bool beatSync)
 {
@@ -57,7 +59,7 @@ void PlayerPack::update(Uint32 time)
 				y = selectScreenButtons.front();
 			}
 		}
-		if (!screenArrows_.empty() && screenArrows_.front()->getPosition().getY() > 550)
+		if (!screenArrows_.empty() && screenArrows_.front()->getPosition().getY() > noteYLimit)
 		{
 			Note* aux = screenArrows_.front();
 			if (x == 5) {
@@ -72,7 +74,7 @@ void PlayerPack::update(Uint32 time)
 
 			game_->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0);
 		}
-		if (!screenButtons_.empty() && screenButtons_.front()->getPosition().getY() > 550)
+		if (!screenButtons_.empty() && screenButtons_.front()->getPosition().getY() > noteYLimit)
 		{
 			Note* aux = screenButtons_.front();
 			if (y == 5) {
@@ -107,6 +109,29 @@ bool PlayerPack::handleInput(Uint32 time, const SDL_Event& event)
 	rightNoteBar->handleInput(time, event);
 	return false;
 }
+
+void PlayerPack::updateResolution(double wScale, double hScale)
+{
+	leftNoteBar->updateResolution(wScale, hScale);
+	rightNoteBar->updateResolution(wScale, hScale);
+	leftPoint->updateResolution(wScale, hScale);
+	rightPoint->updateResolution(wScale, hScale);
+
+	Vector2D noteVel = playstate_->setVel(60000 / playstate_->getBPM());
+
+	for (Note* n : screenArrows_){
+		n->updateResolution(wScale, hScale);
+		n->setVelocity(noteVel);
+	}
+
+	for (Note* n : screenButtons_) {
+		n->updateResolution(wScale, hScale);
+		n->setVelocity(noteVel);
+	}
+
+	noteYLimit = leftPoint->getPosition().getY() + leftPoint->getHeight();
+}
+
 PlayerPack::~PlayerPack()
 {
 	delete leftNoteBar;

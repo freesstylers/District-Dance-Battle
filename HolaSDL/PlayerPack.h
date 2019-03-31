@@ -17,6 +17,7 @@ protected:
 	Squares* rightNoteBar;
 	PlayState* playstate_;
 	
+	int noteYLimit;
 
 public:
 	PlayerPack();
@@ -33,6 +34,8 @@ public:
 	std::list<int>selectScreenButtons;
 	int x;
 	int y;
+
+	virtual void updateResolution(double wScale, double hScale);
 
 };
 

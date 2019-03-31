@@ -113,7 +113,10 @@ public:
 	void updateScore(int accuracy) { currentScore += maxNoteValue * (1 / accuracy); }
 	void activateBeatSignal() { beatSignal = true; }
 	bool getMiniActive() { return miniActive; }
+
 	int getScore();
+	int getBPM() { return level->bpm; }
+
 
 protected:
 	void deleteAll();
