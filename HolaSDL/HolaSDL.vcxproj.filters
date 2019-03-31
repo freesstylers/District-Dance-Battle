@@ -43,6 +43,7 @@
     <ClCompile Include="Note.cpp" />
     <ClCompile Include="BarBackground.cpp" />
     <ClCompile Include="Character.cpp" />
+    <ClCompile Include="PanelMap.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioManager.h" />
@@ -87,6 +88,7 @@
     <ClInclude Include="Note.h" />
     <ClInclude Include="BarBackground.h" />
     <ClInclude Include="Character.h" />
+    <ClInclude Include="PanelMap.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClInclude Include="AudioManager.h" />
     <ClInclude Include="Background.h" />
+    <ClInclude Include="PanelMap.h" />
     <ClInclude Include="ScoreBar.h" />
     <ClInclude Include="SongBar.h" />
     <ClInclude Include="BeatHandeler.h" />
@@ -57,6 +58,7 @@
   <ItemGroup>
     <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="Background.cpp" />
+    <ClCompile Include="PanelMap.cpp" />
     <ClCompile Include="ScoreBar.cpp" />
     <ClCompile Include="SongBar.cpp" />
     <ClCompile Include="BeatHandeler.cpp" />
