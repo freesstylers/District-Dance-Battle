@@ -35,8 +35,8 @@ public:
 	std::list<int>selectScreenButtons;
 	int x;
 	int y;
-	//int currentScore = 0;
-	void updateScore(int accuracy) { playState_->currentScore += maxNoteValue * (1 / accuracy); }
+	int currentScore = 0;
+	void updateScore(int accuracy) {playstate_->currentScore += playstate_->maxNoteValue * (1 / accuracy); }
 	virtual void updateResolution(double wScale, double hScale);
 
 };

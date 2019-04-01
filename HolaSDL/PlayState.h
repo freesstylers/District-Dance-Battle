@@ -75,7 +75,7 @@ protected:
 	int maxNoteValue = 0;
 
 public:
-	//int currentScore = 0;
+	int currentScore = 0;
 	BeatHandler* bh;
 	ScoreBar* scoreBar;
 	PlayState(GameManager* g);
