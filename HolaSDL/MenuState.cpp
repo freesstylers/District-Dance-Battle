@@ -7,6 +7,7 @@ MenuState::MenuState(GameManager* g) :GameState(g)
 	keystates = SDL_GetKeyboardState(NULL);
 	controller = SDL_GameControllerOpen(0);
 	createMainButtons();
+	activeLevels[0] = true;
 }
 
 MenuState::~MenuState()
@@ -17,13 +18,21 @@ bool MenuState::handleEvent(Uint32 time, SDL_Event e)
 {
 	if (e.type == SDL_CONTROLLERBUTTONDOWN) {
 		if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) || e.key.keysym.sym == SDLK_RIGHT) {
+			buttons[index].second.reset();
 			nextButton();
 		}
 		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT) || e.key.keysym.sym == SDLK_LEFT) {
+			buttons[index].second.reset();
 			backButton();
 		}
+		if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_UP) || e.key.keysym.sym == SDLK_UP) {
+			buttons[index].second.nextSwitch();
+		}
+		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN) || e.key.keysym.sym == SDLK_DOWN) {
+			buttons[index].second.prevSwitch();
+		}
 		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A)|| e.key.keysym.sym == SDLK_RETURN) {
-			buttonUse();
+			buttons[index].second.selectButton();
 		}else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B)|| e.key.keysym.sym == SDLK_DELETE) {
 			reset();
 		}

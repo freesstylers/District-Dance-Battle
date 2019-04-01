@@ -7,47 +7,6 @@
 
 using namespace std;
 
-//struct Panel {
-//	EmptyObject  switches[3];
-//	EmptyObject fondo_;
-//	EmptyObject photo_;
-//	int height = 250;
-//	int width = 100;
-//	int difficulty_;
-//	bool oneP_ = true;
-//	bool facil_ = true;
-//	string name_;
-//	Panel() : difficulty_(1), name_("") {
-//		fondo_ = EmptyObject(nullptr, { 0,0 }, 0, 0, Resources::Point);
-//		for (int i = 0; i < 3; i++) {
-//			switches[i] = EmptyObject(nullptr, { 0,0 }, 0, 0, Resources::Point);
-//		}
-//		photo_ = EmptyObject(nullptr, { 0,0 }, 0, 0, Resources::Point);
-//	}
-//
-//	Panel(GameManager* gm, Vector2D panelPos, int photo, string description, int difficulty, string name) : difficulty_(difficulty), name_(name) {
-//		fondo_ = EmptyObject(gm, panelPos, width, height, Resources::Point);
-//		for (int i = 0; i < 3; i++) {
-//			switches[i] = EmptyObject(gm, Vector2D(((panelPos.getX() + width / 2) - width / 4), (panelPos.getY() + height / 2) + 2 * i*(height / 10)), width / 2, height / 10, Resources::Point);
-//		}
-//		photo_ = EmptyObject(gm, Vector2D(panelPos.getX() + width / 2, panelPos.getY() + height / 10), 2 * (width / 3), 7 * height / 10, photo);
-//	}
-//
-//	void render(Uint32 time, bool beatHandler) {
-//		fondo_.render(time, beatHandler);
-//		for (int i = 0; i < 3; i++) {
-//			switches[i].render(time, beatHandler);
-//		}
-//		photo_.render(time, beatHandler);
-//	}
-//};
-
-//struct Par {
-//	EmptyObject first;
-//	PanelMap second;
-//	
-//};
-
 class MenuState : public GameState //main class for menus
 {
 public:
@@ -60,15 +19,18 @@ public:
 private:
 	
 	struct Panel {
-		EmptyObject  switches[3];
+		EmptyObject switches[3];
 		EmptyObject fondo_;
 		EmptyObject photo_;
 		int height = 250;
 		int width = 100;
 		int difficulty_;
+		int index = 0;
 		bool oneP_ = true;
-		bool facil_ = true;
+		bool hardMode_ = false;
+		bool difActive = false;
 		string name_;
+		string description_;
 		Panel() : difficulty_(1), name_("") {
 			fondo_ = EmptyObject();
 			for (int i = 0; i < 3; i++) {
@@ -80,9 +42,10 @@ private:
 		Panel(SDLGame* gm, Vector2D panelPos, int photo, string description, int difficulty, string name) : difficulty_(difficulty), name_(name) {
 			fondo_ = EmptyObject(gm, panelPos, width, height, Resources::Point);
 			for (int i = 0; i < 3; i++) {
-				switches[i] = EmptyObject(gm, Vector2D(((panelPos.getX() + width / 2) - width / 4), (panelPos.getY() + height / 2) + 2 * i*(height / 10)), width / 2, height / 10, Resources::Point);
+				switches[i] = EmptyObject(gm, Vector2D(((panelPos.getX() + width / 2) - width / 4), (panelPos.getY() + height / 2) + 2 * i*(height / 10)), width / 2, height / 10, Resources::FeedbackBad);
 			}
 			photo_ = EmptyObject(gm, Vector2D(panelPos.getX() + width / 2, panelPos.getY() + height / 10), 2 * (width / 3), 3 * height / 10, photo);
+			switches[index].scale(2);
 		}
 
 		void render(Uint32 time, bool beatHandler) {
@@ -92,8 +55,45 @@ private:
 			}
 			photo_.render(time, beatHandler);
 		}
+
+		void reset() { 
+			switches[index].scale(0.5);
+			index = 0; 
+			switches[index].scale(2);
+		}
+
+		void prevSwitch() {
+			switches[index].scale(0.5);
+			if (index >= 2) { index = 0; }
+			else { index++; }
+			switches[index].scale(2);
+		}
+
+		void nextSwitch() {
+			switches[index].scale(0.5);
+			if (index <= 0) { index = 2; }
+			else { index--; }
+			switches[index].scale(2);
+		}
+
+		void selectButton() {
+			switch (index)
+			{
+			case 0:
+				oneP_ = !oneP_;
+				break;
+			case 1:
+				if(difActive){ hardMode_ = !hardMode_; }
+				break;
+			case 2:
+				//Cuando se pulsa va al play state con el nivel correspondiente
+				break;
+			}
+		}
 	};
+
 	pair <EmptyObject, Panel> buttons[5];
+	bool activeLevels[5];
 
 	int index = 0;
 	int min = 0;
