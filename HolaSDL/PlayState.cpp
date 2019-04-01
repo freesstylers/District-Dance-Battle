@@ -136,7 +136,7 @@ PlayState::~PlayState()
 void PlayState::update(Uint32 time)
 {
 	GameState::update(time);
-	if (!miniActive && minigameController->DeltaTime() < level->songLength/50) 
+	if (!miniActive && minigameController->DeltaTime() < level->songLength/3) 
 	{
 		minigameController->Update();
 		if (levelArrows_.empty() && levelButtons_.empty()) {

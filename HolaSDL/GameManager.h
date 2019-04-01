@@ -22,7 +22,7 @@ protected:
 	GameStateMachine* machine;
 	bool exit_;
 private:
-	const static int _WINDOW_WIDTH_ = 1000;
-	const static int _WINDOW_HEIGHT_ = 1000;
+	const static int _WINDOW_WIDTH_ = 800;
+	const static int _WINDOW_HEIGHT_ = 600;
 };
 
