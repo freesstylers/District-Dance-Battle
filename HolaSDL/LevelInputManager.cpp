@@ -45,6 +45,7 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 							}
 							level->feedbackLeft->addFeedback(Resources::FeedbackBad);
 							level->showError();
+							player->errorLeft();
 						}
 				}
 				else 
@@ -77,6 +78,7 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 							cout << "mala punteria" << endl;
 							level->feedbackLeft->addFeedback(Resources::FeedbackBad);
 							level->showError();
+							player->errorLeft();
 						}
 						keyup = false;
 						delete(it);
@@ -95,6 +97,7 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 							level->feedbackLeft->addFeedback(Resources::FeedbackBad);
 							cout << "flecha incorrecta" << endl;
 							level->showError();
+							player->errorLeft();
 						}
 					}
 					else if (event.type == SDL_CONTROLLERBUTTONUP)
@@ -131,6 +134,7 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 								}
 								level->feedbackRight->addFeedback(Resources::FeedbackBad);
 								level->showError();
+								player->errorRight();
 							}
 						}
 						
@@ -166,7 +170,7 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 								cout << "mala punteria" << endl;
 								level->feedbackRight->addFeedback(Resources::FeedbackBad);
 								level->showError();
-								level->errorLeft();
+								player->errorRight();
 							}
 							delete it;
 							player->selectScreenButtons.pop_front();
@@ -185,7 +189,7 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 								player->screenButtons_.remove(it);
 								cout << "boton incorrecta" << endl;
 								level->showError();
-								level->errorLeft();
+								player->errorRight();
 							}
 						}
 						else if (event.type == SDL_CONTROLLERBUTTONUP) keyup2 = true;

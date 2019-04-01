@@ -71,6 +71,7 @@ void PlayerPack::update(Uint32 time)
 			selectScreenArrows.pop_front();
 			screenArrows_.pop_front();
 			cout << "fuera" << endl;
+			errorLeft();
 
 			game_->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0);
 		}
@@ -87,7 +88,7 @@ void PlayerPack::update(Uint32 time)
 			delete aux;
 			screenButtons_.pop_front();
 			cout << "fuera" << endl;
-
+			errorRight();
 			game_->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0);
 		}
 	}
@@ -146,4 +147,17 @@ PlayerPack::~PlayerPack()
 	{
 		delete o;
 	}
+}
+
+void PlayerPack::errorLeft()
+{
+	leftNoteBar->cleanAnimationQueue();
+	leftNoteBar->forceAnimationChange(Resources::SquareMiss);
+	leftNoteBar->queueAnimationChange(Resources::Square);
+}
+
+void PlayerPack::errorRight() {
+	rightNoteBar->cleanAnimationQueue();
+	rightNoteBar->forceAnimationChange(Resources::SquareMiss);
+	rightNoteBar->queueAnimationChange(Resources::Square);
 }
