@@ -378,8 +378,21 @@ void PlayState::playSong(int song) {
 void PlayState::showError()
 {
 	bg->cleanAnimationQueue();
-
 	bg->forceAnimationChange(Resources::PixelatedTextBG);
 	bg->queueAnimationChange(Resources::testBG);
+
 	manager->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0);
+}
+
+void PlayState::errorLeft()
+{
+	leftNoteBar->cleanAnimationQueue();
+	leftNoteBar->forceAnimationChange(Resources::SquareMiss);
+	leftNoteBar->queueAnimationChange(Resources::Square);
+}
+
+void PlayState::errorRight() {
+	rightNoteBar->cleanAnimationQueue();
+	rightNoteBar->forceAnimationChange(Resources::SquareMiss);
+	rightNoteBar->queueAnimationChange(Resources::Square);
 }
