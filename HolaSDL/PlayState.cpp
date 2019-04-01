@@ -90,7 +90,7 @@ void PlayState::newGame2P(int lvl)
 	leftNotesVector2 = Vector2D(leftNotesPos - 50 / 2 + 200, 70);
 	rightNotesVector2 = Vector2D(rightNotesPos - 50 / 2 + 200, 70);
 
-	bg = new Background(manager, manager->getWindowWidth(), manager->getWindowHeight(), Vector2D(0, 0),23);
+	bg = new Background(manager, manager->getWindowWidth(), manager->getWindowHeight(), Vector2D(0, 0),Resources::testBG);
 	player1 = new PlayerPack(manager,this, leftNotesPos, rightNotesPos, pointSize2P, noteBarWidth*0.75);
 	player2 = new PlayerPack(manager,this, leftNotesPos + 200, rightNotesPos + 200, pointSize2P, noteBarWidth*0.75);
 	level = new Level(this, manager, levelName);
@@ -393,17 +393,4 @@ void PlayState::showError()
 	bg->queueAnimationChange(Resources::testBG);
 
 	manager->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0);
-}
-
-void PlayState::errorLeft()
-{
-	leftNoteBar->cleanAnimationQueue();
-	leftNoteBar->forceAnimationChange(Resources::SquareMiss);
-	leftNoteBar->queueAnimationChange(Resources::Square);
-}
-
-void PlayState::errorRight() {
-	rightNoteBar->cleanAnimationQueue();
-	rightNoteBar->forceAnimationChange(Resources::SquareMiss);
-	rightNoteBar->queueAnimationChange(Resources::Square);
 }

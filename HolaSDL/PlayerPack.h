@@ -34,6 +34,8 @@ public:
 	std::list<int>selectScreenButtons;
 	int x;
 	int y;
+	void errorLeft();
+	void errorRight();
 
 	virtual void updateResolution(double wScale, double hScale);
 
