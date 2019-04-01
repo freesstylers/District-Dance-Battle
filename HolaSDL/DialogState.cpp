@@ -25,7 +25,9 @@ void DialogState::init()
 	string textAux;
 	
 	ifstream file("resources/dialog/" + archivo + ".txt");
+	
 	if (file.is_open()) {
+		file >> nlevel;
 		file >> aux;
 		for (int i = 0; i < aux; i++) {
 			file >> sp;
@@ -90,10 +92,10 @@ void DialogState::render(Uint32 time, bool beatSync) {
 			Texture msg0(manager->getRenderer(),
 				dialogo.front().text,
 				*(manager->getServiceLocator()->getFonts()->getFont(
-					Resources::PIXEL30)), { COLOR(0xffffffff) });
+					Resources::PIXEL20)), { COLOR(0xffffffff) });
 			actualText = &msg0;
 			actualText->render(manager->getRenderer(),
-				manager->getWindowWidth() / 40 , manager->getWindowHeight() - 65 * 1.9);
+				manager->getWindowWidth() / 39, manager->getWindowHeight() - 65 * 1.9);
 		}
 		else {
 			string aux1="";
@@ -111,18 +113,19 @@ void DialogState::render(Uint32 time, bool beatSync) {
 			Texture msg0(manager->getRenderer(),
 				aux1,
 				*(manager->getServiceLocator()->getFonts()->getFont(
-					Resources::PIXEL30)), { COLOR(0xffffffff) });
+					Resources::PIXEL20)), { COLOR(0xffffffff) });
 			actualText = &msg0;
 			actualText->render(manager->getRenderer(),
-				manager->getWindowWidth() / 40 , manager->getWindowHeight() - 65 * 1.9);
+				manager->getWindowWidth() / 39, manager->getWindowHeight() - 65 * 1.9);
 			if (aux2 != "") {
 				Texture msg1(manager->getRenderer(),
 					aux2,
 					*(manager->getServiceLocator()->getFonts()->getFont(
-						Resources::PIXEL30)), { COLOR(0xffffffff) });
+						Resources::PIXEL20)), { COLOR(0xffffffff) });
 				actualText = &msg1;
 				actualText->render(manager->getRenderer(),
-					manager->getWindowWidth() / 20, (manager->getWindowHeight() - 65 * 1.9) + 40);
+					manager->getWindowWidth() / 19, (manager->getWindowHeight() - 65 * 1.9) + 40);
+				
 			}
 			
 		}
@@ -131,10 +134,11 @@ void DialogState::render(Uint32 time, bool beatSync) {
 		Texture msg0(manager->getRenderer(),
 			" COMIENZA LA BATALLA",
 			*(manager->getServiceLocator()->getFonts()->getFont(
-				Resources::PIXEL30)), { COLOR(0xffffffff) });
+				Resources::PIXEL20)), { COLOR(0xffffffff) });
 		actualText = &msg0;
 		actualText->render(manager->getRenderer(),
-			manager->getWindowWidth() / 40, manager->getWindowHeight() - 65 * 1.9);
+			manager->getWindowWidth() / 39, manager->getWindowHeight() - 65 * 1.9);
+		end = true;
 	}
 }
 
@@ -150,6 +154,9 @@ bool DialogState::handleEvent(Uint32 time, SDL_Event e) {
 
 		
 			keyup = false;
+		}
+		if (end == true) {
+			manager->getMachine()->changeState(new PlayState(manager, nlevel));
 		}
 		
 	}

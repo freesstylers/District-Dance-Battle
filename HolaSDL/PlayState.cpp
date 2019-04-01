@@ -1,15 +1,26 @@
 #include "PlayState.h"
 #include "GameManager.h"
 
-PlayState::PlayState(GameManager* g) :GameState(g) //Asigna game y llama a inicializaci�n
+PlayState::PlayState(GameManager* g,int lvl) :GameState(g) //Asigna game y llama a inicializaci�n
 {
-	newGame();
+	newGame(lvl);
 }
 
-void PlayState::newGame()
+void PlayState::newGame(int lvl)
 {
-
-	levelName = "prueba";
+	switch (lvl)
+	{
+	case 0:
+		levelName = "prueba";
+		effectVaporWave = new EmptyObject(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::EffectVaporWave);
+		minigame = new MinigameVaporwave(manager, this);
+		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), 23);
+		robot = new Character(manager, 60 * 3.5, 120 * 3.5, Vector2D(manager->getDefaultWindowWidth() - 270, initialNoteHeight + 70), Resources::RobotIdle);
+		break;
+	default:
+		break;
+	}
+	
 
 	int leftNotesPos = manager->getDefaultWindowWidth() / 2 - pointOffset;
 	int rightNotesPos = manager->getDefaultWindowWidth() / 2 + pointOffset;
@@ -22,7 +33,7 @@ void PlayState::newGame()
 	player1 = new PlayerPack(manager,this, leftNotesPos, rightNotesPos, pointSize, noteBarWidth);
 	feedbackLeft = new FeedbackPool(manager, pointSize * 0.8, pointSize * 0.8, Vector2D(leftNotesPos - (pointSize * 0.8) - (pointSize * 0.8), 465 + pointSize / 2));
 	feedbackRight = new FeedbackPool(manager, pointSize * 0.8, pointSize * 0.8, Vector2D(rightNotesPos + (pointSize * 0.8), 465 + pointSize / 2));
-	bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0),23);
+	
 	level = new Level(this, manager, levelName);
 	level->init();
 	player2 = nullptr;
@@ -36,14 +47,14 @@ void PlayState::newGame()
 	songBar = new SongBar(manager, 18, 22, Vector2D(41, 31), Vector2D((((manager->getDefaultWindowWidth() / level->songLength)) / 70.5), 0), songBarBG);
 
 	perico = new Character(manager, 60 * 3.5, 120 * 3.5, Vector2D(75, initialNoteHeight + 70), Resources::PericoIdle);
-	robot = new Character(manager, 60 * 3.5, 120 * 3.5, Vector2D(manager->getDefaultWindowWidth() - 270, initialNoteHeight + 70), Resources::RobotIdle);
 	
-	minigame = new MinigameVaporwave(manager, this);
+	
+	
 	minigameController = new TimerNoSingleton();
 
 	bh = new BeatHandler(level->bpm);
 
-	effectVaporWave = new EmptyObject(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::EffectVaporWave);
+	
 
 
 	stage.push_back(bg);
@@ -66,7 +77,7 @@ void PlayState::newGame()
 	updateResolution();
 }
 
-void PlayState::newGame2P()
+void PlayState::newGame2P(int lvl)
 {
 	levelName = "prueba";
 
