@@ -72,7 +72,7 @@ protected:
 	int initialNoteHeight = 70;	//altura a la cual se generan las notas en pantalla
 
 	int maxScore = 400;
-	int currentScore = 0;
+	
 	int maxNoteValue = 0;
 
 public:
@@ -94,6 +94,8 @@ public:
 	std::list<Note*> levelButtons2_;
 	std::list<int>selectArrows_;
 	std::list<int>selectButtons_;
+	std::list<int>selectArrows2_;
+	std::list<int>selectButtons2_;
 	FeedbackPool* feedbackLeft;
 	FeedbackPool* feedbackRight;
 	Background* bg;
@@ -107,16 +109,22 @@ public:
 	GameManager* getGameManager() { return manager; }
 
 	double msDiff = 0.0;  //difference between the time of a beat and the time when a note is created, in ms
-
+	int currentScore = 0;
 	void updateScore(int accuracy) { currentScore += maxNoteValue * (1 / accuracy); }
 	void activateBeatSignal() { beatSignal = true; }
 	bool getMiniActive() { return miniActive; }
 
+	int getScore();
+	int getBPM() { return level->bpm; }
+
+
 protected:
 	void deleteAll();
-	int getScore();
+	
 	void generateArrows();
 	void generateButtons();
+	void generateSelectArrows();
+	void generateSelectButtons();
 
 	void songOver();
 

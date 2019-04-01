@@ -51,6 +51,8 @@
     <ClCompile Include="PlayerPack.cpp" />
     <ClCompile Include="BeatHandler.cpp" />
     <ClCompile Include="Mirilla.cpp" />
+    <ClCompile Include="DialogState.cpp" />
+    <ClCompile Include="TextBox.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioManager.h" />
@@ -103,6 +105,8 @@
     <ClInclude Include="PlayerPack.h" />
     <ClInclude Include="BeatHandler.h" />
     <ClInclude Include="Mirilla.h" />
+    <ClInclude Include="DialogState.h" />
+    <ClInclude Include="TextBox.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

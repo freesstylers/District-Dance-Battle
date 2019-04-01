@@ -17,6 +17,7 @@ protected:
 	Squares* rightNoteBar;
 	PlayState* playstate_;
 	
+	int noteYLimit;
 
 public:
 	PlayerPack();
@@ -29,6 +30,12 @@ public:
 	Point* getRightPoint() { return rightPoint; }
 	std::list<Note*> screenArrows_;
 	std::list<Note*> screenButtons_;
+	std::list<int> selectScreenArrows;
+	std::list<int>selectScreenButtons;
+	int x;
+	int y;
+
+	virtual void updateResolution(double wScale, double hScale);
 
 };
 

@@ -38,7 +38,10 @@ public:
 		PixelatedTextBG,
 		RobotIdle,
 		RobotDance,
-		Mira
+		Mira,
+		TextboxPerico,
+		TextBoxRobot,
+		TextBoxBlanc
 		// text
 	};
 
@@ -54,6 +57,10 @@ public:
 
 	enum FontId {
 		//Ejemplo de fuentes --> ARIAL16
+		ARIAL16,
+		ARIAL24,
+		PIXEL30,
+		PIXEL20
 	};
 
 

@@ -15,6 +15,8 @@ PlayerPack::PlayerPack(SDLGame* manager, PlayState* ps, int leftNotesPos, int ri
 	rightPoint = new Point(manager, pointSize, pointSize, Vector2D(rightNotesPos - pointSize / 2, 465));
 	leftNoteBar = new Squares(manager, squareWidth, 465 + 0.6 * pointSize, Vector2D(leftNotesPos + 1 - squareWidth / 2, leftNotesVector.getY()));
 	rightNoteBar = new Squares(manager, squareWidth, 465 + 0.6 * pointSize, Vector2D(rightNotesPos + 1 - squareWidth / 2, rightNotesVector.getY()));
+
+	noteYLimit = leftPoint->getPosition().getY() + leftPoint->getHeight();
 }
 void PlayerPack::render(Uint32 time, bool beatSync)
 {
@@ -29,6 +31,7 @@ void PlayerPack::render(Uint32 time, bool beatSync)
 	for (Note* o : screenButtons_)
 	{
 		o->render(time, beatSync);
+		
 	}
 }
 
@@ -42,26 +45,45 @@ void PlayerPack::update(Uint32 time)
 		rightNoteBar->update(time);
 		for (Note* o : screenArrows_)
 		{
-			if (o != nullptr)
+			if (o != nullptr) {
 				o->update(time);
+				x = selectScreenArrows.front();
+			}
+			
 		}
 		for (Note* o : screenButtons_)
 		{
 			if (o != nullptr)
+			{
 				o->update(time);
+				y = selectScreenButtons.front();
+			}
 		}
-		if (!screenArrows_.empty() && screenArrows_.front()->getPosition().getY() > 550)
+		if (!screenArrows_.empty() && screenArrows_.front()->getPosition().getY() > noteYLimit)
 		{
 			Note* aux = screenArrows_.front();
+			if (x == 5) {
+				playstate_->feedbackLeft->addFeedback(Resources::FeedbackPerfect);
+				playstate_->scoreBar->updateBar(1);
+				playstate_->updateScore(1);
+			}
 			delete aux;
+			selectScreenArrows.pop_front();
 			screenArrows_.pop_front();
 			cout << "fuera" << endl;
 
 			game_->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0);
 		}
-		if (!screenButtons_.empty() && screenButtons_.front()->getPosition().getY() > 550)
+		if (!screenButtons_.empty() && screenButtons_.front()->getPosition().getY() > noteYLimit)
 		{
 			Note* aux = screenButtons_.front();
+			if (y == 5) {
+				playstate_->feedbackRight->addFeedback(Resources::FeedbackPerfect);
+				playstate_->scoreBar->updateBar(1);
+				playstate_->updateScore(1);
+			}
+
+			selectScreenButtons.pop_front();
 			delete aux;
 			screenButtons_.pop_front();
 			cout << "fuera" << endl;
@@ -87,6 +109,29 @@ bool PlayerPack::handleInput(Uint32 time, const SDL_Event& event)
 	rightNoteBar->handleInput(time, event);
 	return false;
 }
+
+void PlayerPack::updateResolution(double wScale, double hScale)
+{
+	leftNoteBar->updateResolution(wScale, hScale);
+	rightNoteBar->updateResolution(wScale, hScale);
+	leftPoint->updateResolution(wScale, hScale);
+	rightPoint->updateResolution(wScale, hScale);
+
+	Vector2D noteVel = playstate_->setVel(60000 / playstate_->getBPM());
+
+	for (Note* n : screenArrows_){
+		n->updateResolution(wScale, hScale);
+		n->setVelocity(noteVel);
+	}
+
+	for (Note* n : screenButtons_) {
+		n->updateResolution(wScale, hScale);
+		n->setVelocity(noteVel);
+	}
+
+	noteYLimit = leftPoint->getPosition().getY() + leftPoint->getHeight();
+}
+
 PlayerPack::~PlayerPack()
 {
 	delete leftNoteBar;

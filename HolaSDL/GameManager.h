@@ -4,6 +4,7 @@
 #include "PlayState.h"
 #include "MenuState.h"
 #include "EndState.h"
+#include "DialogState.h"
 
 class GameManager: public SDLGame
 {
