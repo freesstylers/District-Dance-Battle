@@ -3,6 +3,10 @@
 #include "sdl_includes.h"
 
 vector<Resources::FontInfo> Resources::fonts_ {
+		{ ARIAL16, "resources/fonts/ARIAL.ttf", 16 },
+	{ ARIAL24, "resources/fonts/ARIAL.ttf", 40 },
+	{PIXEL30, "resources/fonts/NES-Chimera.ttf",25},
+	{PIXEL20, "resources/fonts/NES-Chimera.ttf",20}
 	//{ ARIAL16, "resources/fonts/ARIAL.ttf", 16 }
 };
 
@@ -38,6 +42,9 @@ vector<Resources::ImageInfo> Resources::images_ {
 	{RobotIdle, "resources/images/RobotVaporwave.png", 60, 120, 2, 1, 2},
 	{RobotDance, "resources/images/VaporwaveDance.png", 60, 120, 3, 2, 4},
 	{Mira, "resources/images/mira.png", 512, 512, 1, 1, 1},
+	{TextboxPerico, "resources/images/perico_dialog.png",153, 65, 1, 1, 1}, //Cuadro de texto perico
+	{TextBoxRobot, "resources/images/robot_dialog.png", 153, 65, 1, 1, 1},
+	{TextBoxBlanc, "resources/images/blanc_dialog.png", 153, 65, 1, 1, 1}
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {

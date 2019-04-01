@@ -6,15 +6,15 @@ Background::Background()
 {
 }
 
-Background::Background(SDLGame* game, double width, double height, Vector2D pos) : GameObject(game)
+Background::Background(SDLGame* game, double width, double height, Vector2D pos, int texture) : GameObject(game)
 {
 	setWidth(width);
 	setHeight(height);
 	setPosition(pos);
-	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::testBG); //el fondo es un objeto vacio, solo tiene un sprite, deberiamos cambiar la llamada de la textura(?)
-																								 //hacer la llamada de textura en el PlayState como hace BarBackground
-
+	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(texture); //el fondo es un objeto vacio, solo tiene un sprite, deberiamos cambiar la llamada de la textura(?)
+																					  //hacer la llamada de textura en el PlayState como hace BarBackground
 	isAnimationSyncedToMusic = true;
+	animation.currentFrame = 1;
 }
 
 Background::~Background()

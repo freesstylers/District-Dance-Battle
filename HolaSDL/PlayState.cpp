@@ -22,7 +22,7 @@ void PlayState::newGame()
 	player1 = new PlayerPack(manager,this, leftNotesPos, rightNotesPos, pointSize, noteBarWidth);
 	feedbackLeft = new FeedbackPool(manager, pointSize * 0.8, pointSize * 0.8, Vector2D(leftNotesPos - (pointSize * 0.8) - (pointSize * 0.8), 465 + pointSize / 2));
 	feedbackRight = new FeedbackPool(manager, pointSize * 0.8, pointSize * 0.8, Vector2D(rightNotesPos + (pointSize * 0.8), 465 + pointSize / 2));
-	bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0));
+	bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0),23);
 	level = new Level(this, manager, levelName);
 	level->init();
 	player2 = nullptr;
@@ -79,7 +79,7 @@ void PlayState::newGame2P()
 	leftNotesVector2 = Vector2D(leftNotesPos - 50 / 2 + 200, 70);
 	rightNotesVector2 = Vector2D(rightNotesPos - 50 / 2 + 200, 70);
 
-	bg = new Background(manager, manager->getWindowWidth(), manager->getWindowHeight(), Vector2D(0, 0));
+	bg = new Background(manager, manager->getWindowWidth(), manager->getWindowHeight(), Vector2D(0, 0),23);
 	player1 = new PlayerPack(manager,this, leftNotesPos, rightNotesPos, pointSize2P, noteBarWidth*0.75);
 	player2 = new PlayerPack(manager,this, leftNotesPos + 200, rightNotesPos + 200, pointSize2P, noteBarWidth*0.75);
 	level = new Level(this, manager, levelName);

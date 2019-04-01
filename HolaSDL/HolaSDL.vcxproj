@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClInclude Include="AudioManager.h" />
     <ClInclude Include="Background.h" />
+    <ClInclude Include="DialogState.h" />
     <ClInclude Include="FeedbackPool.h" />
     <ClInclude Include="GameObjectPool.h" />
     <ClInclude Include="MinigameHardbass.h" />
@@ -56,6 +57,7 @@
     <ClInclude Include="ServiceLocator.h" />
     <ClInclude Include="Squares.h" />
     <ClInclude Include="SRandBasedGenerator.h" />
+    <ClInclude Include="TextBox.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TexturesManager.h" />
     <ClInclude Include="Timer.h" />
@@ -65,6 +67,7 @@
   <ItemGroup>
     <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="Background.cpp" />
+    <ClCompile Include="DialogState.cpp" />
     <ClCompile Include="FeedbackPool.cpp" />
     <ClCompile Include="GameObjectPool.cpp" />
     <ClCompile Include="MinigameHardbass.cpp" />
@@ -108,6 +111,7 @@
     <ClCompile Include="ServiceLocator.cpp" />
     <ClCompile Include="Squares.cpp" />
     <ClCompile Include="SRandBasedGenerator.cpp" />
+    <ClCompile Include="TextBox.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TexturesManager.cpp" />
     <ClCompile Include="Timer.cpp" />
@@ -121,8 +125,7 @@
     <ProjectGuid>{28A4C5CD-307A-4FE6-81E4-4CE1F1E49AB4}</ProjectGuid>
     <RootNamespace>HolaSDL</RootNamespace>
     <ProjectName>HolaSDL</ProjectName>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
-
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
