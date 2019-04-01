@@ -50,7 +50,7 @@
     <ClCompile Include="FeedbackPool.cpp" />
     <ClCompile Include="PlayerPack.cpp" />
     <ClCompile Include="BeatHandler.cpp" />
-    <ClCompile Include="Mirilla.cpp" />
+    <ClCompile Include="Crosshair.cpp" />
     <ClCompile Include="DialogState.cpp" />
     <ClCompile Include="TextBox.cpp" />
   </ItemGroup>
@@ -104,7 +104,7 @@
     <ClInclude Include="FeedbackPool.h" />
     <ClInclude Include="PlayerPack.h" />
     <ClInclude Include="BeatHandler.h" />
-    <ClInclude Include="Mirilla.h" />
+    <ClInclude Include="Crosshair.h" />
     <ClInclude Include="DialogState.h" />
     <ClInclude Include="TextBox.h" />
   </ItemGroup>

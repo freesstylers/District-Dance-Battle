@@ -1,8 +1,8 @@
-#include "Mirilla.h"
+#include "Crosshair.h"
 
 
 
-Mirilla::Mirilla(SDLGame* game, double width, double height, Vector2D pos) : GameObject(game)
+Crosshair::Crosshair(SDLGame* game, double width, double height, Vector2D pos) : GameObject(game)
 {
 	setWidth(width);
 	setHeight(height);
@@ -14,16 +14,16 @@ Mirilla::Mirilla(SDLGame* game, double width, double height, Vector2D pos) : Gam
 }
 
 
-Mirilla::~Mirilla()
+Crosshair::~Crosshair()
 {
 }
 
-bool Mirilla::handleInput(Uint32 time, const SDL_Event & event)
+bool Crosshair::handleInput(Uint32 time, const SDL_Event & event)
 {
 	return false;
 }
 
-bool Mirilla::handleInput(Uint32 time, const SDL_Event & event, Note* nota)
+bool Crosshair::handleInput(Uint32 time, const SDL_Event & event, Note* nota)
 {
 	if (event.type == SDL_CONTROLLERAXISMOTION)
 	{
@@ -108,12 +108,12 @@ bool Mirilla::handleInput(Uint32 time, const SDL_Event & event, Note* nota)
 
 	/*
 
-	Movimiento stick -> Movimiento mirilla
+	Movimiento stick -> Movimiento Crosshair
 	Check encima -> Pulsar -> "Destruir"
 	*/
 }
 
-void Mirilla::update(Uint32 time)
+void Crosshair::update(Uint32 time)
 {
 	position_ = position_ + velocity_;
 }
