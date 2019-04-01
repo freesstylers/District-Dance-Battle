@@ -166,6 +166,7 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 								cout << "mala punteria" << endl;
 								level->feedbackRight->addFeedback(Resources::FeedbackBad);
 								level->showError();
+								level->errorLeft();
 							}
 							delete it;
 							player->selectScreenButtons.pop_front();
@@ -184,6 +185,7 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 								player->screenButtons_.remove(it);
 								cout << "boton incorrecta" << endl;
 								level->showError();
+								level->errorLeft();
 							}
 						}
 						else if (event.type == SDL_CONTROLLERBUTTONUP) keyup2 = true;

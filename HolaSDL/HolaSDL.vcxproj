@@ -23,7 +23,7 @@
     <ClInclude Include="MinigameVaporwave.h" />
     <ClInclude Include="BeatHandler.h" />
     <ClInclude Include="PlayerPack.h" />
-    <ClInclude Include="Mirilla.h" />
+    <ClInclude Include="Crosshair.h" />
     <ClInclude Include="ScoreBar.h" />
     <ClInclude Include="SongBar.h" />
     <ClInclude Include="Button.h" />
@@ -77,7 +77,7 @@
     <ClCompile Include="MinigameVaporwave.cpp" />
     <ClCompile Include="BeatHandler.cpp" />
     <ClCompile Include="PlayerPack.cpp" />
-    <ClCompile Include="Mirilla.cpp" />
+    <ClCompile Include="Crosshair.cpp" />
     <ClCompile Include="ScoreBar.cpp" />
     <ClCompile Include="SongBar.cpp" />
     <ClCompile Include="Button.cpp" />
@@ -125,7 +125,7 @@
     <ProjectGuid>{28A4C5CD-307A-4FE6-81E4-4CE1F1E49AB4}</ProjectGuid>
     <RootNamespace>HolaSDL</RootNamespace>
     <ProjectName>HolaSDL</ProjectName>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

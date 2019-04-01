@@ -87,6 +87,8 @@ public:
 	virtual void render(Uint32 time, bool beatSync = false);
 	void playSong(int song);
 	void showError();
+	void errorLeft();
+	void errorRight();
 	Vector2D setVel(double time);
 	std::list<Note*> levelArrows_;
 	std::list<Note*> levelButtons_;

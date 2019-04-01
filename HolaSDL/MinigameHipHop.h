@@ -1,6 +1,6 @@
 #pragma once
 #include "MiniGame.h"
-#include "Mirilla.h"
+#include "Crosshair.h"
 
 class MinigameHipHop : public MiniGame
 {
@@ -20,6 +20,6 @@ public:
 protected:
 	int noteAmount = 15;
 	int maxNotes = noteAmount;
-	Mirilla* mira;
+	Crosshair* mira;
 };
 
