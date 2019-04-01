@@ -37,7 +37,7 @@ void MenuState::render(Uint32 time, bool beatSync)
 	for (auto o : buttons) {
 		o.first.render(time, false);
 	}
-	//buttons[index].second.render(time, false);
+	buttons[index].second.render(time, false);
 }
 
 void MenuState::createMainButtons()
@@ -49,7 +49,7 @@ void MenuState::createMainButtons()
 	for (int i = 0; i < 5; i++) {
 		angulo = angIni + ang * i;
 		buttons[i].first = EmptyObject(gameManager, Vector2D((gameManager->getWindowWidth()/2 + r * cos(((angulo*M_PI)/180)))-25, (gameManager->getWindowHeight()/2 + r * sin(((angulo*M_PI) / 180)))-25), 50, 50, Resources::YButton);
-		buttons[i].second = PanelMap(gameManager, buttons[i].first.getPosition(), Resources::DownArrow, "asdf", 3, "D3SP4C1T0");
+		buttons[i].second = Panel(gameManager, buttons[i].first.getPosition(), Resources::DownArrow, "asdf", 3, "D3SP4C1T0");
 	}
 	/*buttons[5] = EmptyObject(gameManager, Vector2D(50, 100), 100, 50, Resources::YButton);
 	buttons[6] = EmptyObject(gameManager, Vector2D(150, 100), 100, 50, Resources::YButton);
