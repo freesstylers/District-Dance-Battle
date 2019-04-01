@@ -23,6 +23,7 @@ public:
 		Point,
 		NoteIcon,
 		YellowBar,
+		GreenBar,
 		PericoIdle,
 		PericoDab,
 		PericoDance1,

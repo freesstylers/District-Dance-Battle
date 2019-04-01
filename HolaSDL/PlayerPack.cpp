@@ -65,7 +65,7 @@ void PlayerPack::update(Uint32 time)
 			if (x == 5) {
 				playstate_->feedbackLeft->addFeedback(Resources::FeedbackPerfect);
 				playstate_->scoreBar->updateBar(1);
-				playstate_->updateScore(1);
+				//playstate_->updateScore(1);
 			}
 			delete aux;
 			selectScreenArrows.pop_front();
@@ -80,7 +80,7 @@ void PlayerPack::update(Uint32 time)
 			if (y == 5) {
 				playstate_->feedbackRight->addFeedback(Resources::FeedbackPerfect);
 				playstate_->scoreBar->updateBar(1);
-				playstate_->updateScore(1);
+				//playstate_->updateScore(1);
 			}
 
 			selectScreenButtons.pop_front();

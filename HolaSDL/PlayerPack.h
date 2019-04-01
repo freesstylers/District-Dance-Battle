@@ -4,6 +4,7 @@
 #include "Squares.h"
 #include "Vector2D.h"
 #include "GameObject.h"
+#include "ScoreBar.h"
 #include <list>
 class PlayState;
 class PlayerPack : public GameObject
@@ -18,7 +19,7 @@ protected:
 	PlayState* playstate_;
 	
 	int noteYLimit;
-
+	//int maxNoteValue = 0;
 public:
 	PlayerPack();
 	PlayerPack(SDLGame* manager, PlayState* ps, int leftNotesPos, int rightNotesPos, int pointSize, int squareWidth);
@@ -34,7 +35,8 @@ public:
 	std::list<int>selectScreenButtons;
 	int x;
 	int y;
-
+	//int currentScore = 0;
+	void updateScore(int accuracy) { playState_->currentScore += maxNoteValue * (1 / accuracy); }
 	virtual void updateResolution(double wScale, double hScale);
 
 };

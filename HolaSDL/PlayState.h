@@ -16,7 +16,6 @@
 #include "MiniGame.h"
 #include "MinigameVaporwave.h"
 #include "MinigameHipHop.h"
-#include "ScoreBar.h"
 #include "Feedback.h"
 #include "FeedbackPool.h"
 #include "EmptyObject.h"
@@ -76,6 +75,7 @@ protected:
 	int maxNoteValue = 0;
 
 public:
+	//int currentScore = 0;
 	BeatHandler* bh;
 	ScoreBar* scoreBar;
 	PlayState(GameManager* g);
@@ -111,8 +111,8 @@ public:
 	GameManager* getGameManager() { return manager; }
 
 	double msDiff = 0.0;  //difference between the time of a beat and the time when a note is created, in ms
-	int currentScore = 0;
-	void updateScore(int accuracy) { currentScore += maxNoteValue * (1 / accuracy); }
+	
+	//void updateScore(int accuracy) { currentScore += maxNoteValue * (1 / accuracy); }
 	void activateBeatSignal() { beatSignal = true; }
 	bool getMiniActive() { return miniActive; }
 
