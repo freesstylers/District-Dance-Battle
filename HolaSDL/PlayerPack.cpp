@@ -17,6 +17,12 @@ PlayerPack::PlayerPack(SDLGame* manager, PlayState* ps, int leftNotesPos, int ri
 	rightNoteBar = new Squares(manager, squareWidth, 465 + 0.6 * pointSize, Vector2D(rightNotesPos + 1 - squareWidth / 2, rightNotesVector.getY()));
 
 	noteYLimit = leftPoint->getPosition().getY() + leftPoint->getHeight();
+
+	comboPosition = Vector2D(manager->getDefaultWindowWidth() / 2, manager->getDefaultWindowHeight() / 2 - 60);
+
+	comboTxt = new ComboText(manager, manager->getServiceLocator()->getFonts()->getFont(Resources::PIXEL20), comboPosition);
+
+	updateCombo(100);
 }
 void PlayerPack::render(Uint32 time, bool beatSync)
 {
@@ -24,6 +30,7 @@ void PlayerPack::render(Uint32 time, bool beatSync)
 	rightNoteBar->render(time);
 	leftPoint->render(time);
 	rightPoint->render(time);
+	comboTxt->render(time);
 	for (Note* o : screenArrows_)
 	{
 		o->render(time, beatSync);
@@ -134,6 +141,11 @@ void PlayerPack::updateResolution(double wScale, double hScale)
 	}
 
 	noteYLimit = leftPoint->getPosition().getY() + leftPoint->getHeight();
+}
+
+void PlayerPack::updateCombo(int newCombo)
+{
+	comboTxt->updateCombo(newCombo);
 }
 
 PlayerPack::~PlayerPack()

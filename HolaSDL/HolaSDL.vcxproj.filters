@@ -3,7 +3,6 @@
   <ItemGroup>
     <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="Button.cpp" />
-    <ClCompile Include="CutSceneState.cpp" />
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="FontsManager.cpp" />
     <ClCompile Include="GameManager.cpp" />
@@ -53,11 +52,12 @@
     <ClCompile Include="Crosshair.cpp" />
     <ClCompile Include="DialogState.cpp" />
     <ClCompile Include="TextBox.cpp" />
+    <ClCompile Include="TextObject.cpp" />
+    <ClCompile Include="ComboText.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioManager.h" />
     <ClInclude Include="Button.h" />
-    <ClInclude Include="CutSceneState.h" />
     <ClInclude Include="Font.h" />
     <ClInclude Include="FontsManager.h" />
     <ClInclude Include="GameManager.h" />
@@ -107,6 +107,8 @@
     <ClInclude Include="Crosshair.h" />
     <ClInclude Include="DialogState.h" />
     <ClInclude Include="TextBox.h" />
+    <ClInclude Include="TextObject.h" />
+    <ClInclude Include="ComboText.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
