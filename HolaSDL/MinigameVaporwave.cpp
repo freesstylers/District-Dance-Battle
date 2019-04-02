@@ -23,6 +23,28 @@ void MinigameVaporwave::generateButtons()
 
 void MinigameVaporwave::render(Uint32 time)
 {
+	
+	if (!screenButtons_.empty()) {
+		switch (screenButtons_.front()->getKey())
+		{
+		case SDL_CONTROLLER_BUTTON_A:
+			screenButtons_.front()->setAnimation(Resources::AButton1);
+			break;
+		case SDL_CONTROLLER_BUTTON_B:
+			screenButtons_.front()->setAnimation(Resources::BButton1);
+			break;
+		case SDL_CONTROLLER_BUTTON_X:
+			screenButtons_.front()->setAnimation(Resources::XButton1);
+			break;
+		case SDL_CONTROLLER_BUTTON_Y:
+			screenButtons_.front()->setAnimation(Resources::YButton1);
+			break;
+	
+		}
+		
+		
+	
+	}
 	for (Note* o : screenButtons_)
 		o->render(time);
 
@@ -52,7 +74,7 @@ void MinigameVaporwave::update(Uint32 time)
 		playS->activateBeatSignal();
 	}
 	if (Timer::Instance()->DeltaTime() > (playS->bh->getBeatTime() / 1000.0)*(maxNotes + 4)) {
-		failed = true;
+		end = true;
 	}
 
 }

@@ -21,6 +21,11 @@ LevelInputManager::~LevelInputManager()
 
 void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 
+		if (event.type == SDL_CONTROLLERBUTTONDOWN && keyup) {
+			level->getGameManager()->getServiceLocator()->getAudios()->playChannel(Resources::Snare, 0);
+			level->getGameManager()->getServiceLocator()->getAudios()->setChannelVolume(70);
+		}
+
 		if (!player->screenArrows_.empty())
 		{
 			auto it = player->screenArrows_.front();

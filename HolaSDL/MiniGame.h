@@ -21,6 +21,7 @@ protected:
 	SDL_GameController* controller = NULL;
 	bool keyup = true;
 	bool keyup2 = true;
+	bool end = false;
 	bool failed = false;
 	string level;
 	GameManager* manager;
@@ -37,7 +38,7 @@ public:
 	bool getFailed() { return failed; };
 	virtual void createList();
 	virtual void deleteList();
-	virtual void resetMinigame() {};
+	virtual void resetMinigame() { end = false; };
 
 	std::list<Note*> screenButtons_;
 	std::list<Note*> levelButtons_;

@@ -195,4 +195,7 @@ void GameObject::updateResolution(double wScale, double hScale) {
 	height_ = height_ * hScale;
 	position_.setY(position_.getY() * hScale);
 }
+void GameObject::setAnimation(int texture) {
+	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(texture);
+}
 

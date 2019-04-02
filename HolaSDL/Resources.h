@@ -42,7 +42,11 @@ public:
 		Mira,
 		TextboxPerico,
 		TextBoxRobot,
-		TextBoxBlanc
+		TextBoxBlanc,
+		AButton1,
+		BButton1,
+		XButton1,
+		YButton1
 		// text
 	};
 
@@ -51,7 +55,8 @@ public:
 		Test,
 		Sunflower,
 		Bill,
-		Error
+		Error,
+		Snare,
 		// sound effects
 
 	};
