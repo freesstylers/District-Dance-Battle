@@ -23,7 +23,7 @@ private:
 		EmptyObject fondo_;
 		EmptyObject photo_;
 		int height = 250;
-		int width = 100;
+		int width = 200;
 		int difficulty_;
 		int index = 0;
 		bool oneP_ = true;
@@ -40,11 +40,11 @@ private:
 		}
 
 		Panel(SDLGame* gm, Vector2D panelPos, int photo, string description, int difficulty, string name) : difficulty_(difficulty), name_(name) {
-			fondo_ = EmptyObject(gm, panelPos, width, height, Resources::Point);
+			fondo_ = EmptyObject(gm, panelPos, width, height, Resources::YellowBar);
 			for (int i = 0; i < 3; i++) {
 				switches[i] = EmptyObject(gm, Vector2D(((panelPos.getX() + width / 2) - width / 4), (panelPos.getY() + height / 2) + 2 * i*(height / 10)), width / 2, height / 10, Resources::FeedbackBad);
 			}
-			photo_ = EmptyObject(gm, Vector2D(panelPos.getX() + width / 2, panelPos.getY() + height / 10), 2 * (width / 3), 3 * height / 10, photo);
+			photo_ = EmptyObject(gm, Vector2D(panelPos.getX() + width / 2, panelPos.getY() + height / 10), 2 * (width / 6), 3 * height / 10, photo);
 			switches[index].scale(2);
 		}
 
@@ -58,6 +58,14 @@ private:
 
 		void reset() { 
 			switches[index].scale(0.5);
+			if (!oneP_) {
+				oneP_ = true;
+				switches[0].changeFrame();
+			}
+			if (hardMode_) {
+				hardMode_ = false;
+				switches[1].changeFrame();
+			}
 			index = 0; 
 			switches[index].scale(2);
 		}
@@ -81,9 +89,13 @@ private:
 			{
 			case 0:
 				oneP_ = !oneP_;
+				switches[index].changeFrame();
 				break;
 			case 1:
-				if(difActive){ hardMode_ = !hardMode_; }
+				if(difActive) { 
+					hardMode_ = !hardMode_; 
+					switches[index].changeFrame();
+				}
 				break;
 			case 2:
 				//Cuando se pulsa va al play state con el nivel correspondiente
@@ -113,9 +125,5 @@ private:
 	void createMainButtons();
 	void nextButton();
 	void backButton();
-	void reset();
-	void deactivateAll();
-	void activate(int first, int last);
-	void buttonUse();
 
 };

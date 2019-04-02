@@ -47,7 +47,7 @@ void PlayState2P::newGame()
 	songBar = new SongBar(manager, 50, 50, Vector2D(20, 10), Vector2D(level->songLength / (manager->getWindowWidth() - 40 + 50), 0), songBarBG); //0.3 va a depender de la duracion de la cancion
 
 
-	effectVaporWave = new EmptyObject(manager, Vector2D(0, 0), Resources::EffectVaporWave, manager->getWindowWidth(), manager->getWindowHeight());
+	effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), Resources::EffectVaporWave, manager->getWindowWidth(), manager->getWindowHeight());
 
 	stage.push_back(bg);
 	stage.push_back(leftNoteBar);

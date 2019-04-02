@@ -17,7 +17,7 @@
 #include "MiniGame.h"
 #include "ScoreBar.h"
 #include "Feedback.h"
-#include "EmptyObject.h"
+#include "EffectVaporwave.h"
 #include "Squares.h"
 #include "Level.h"
 #include "Background.h"
@@ -45,7 +45,7 @@ protected:
 	MiniGame* minigame;
 	Character* perico;
 	Character* robot;
-	EmptyObject* effectVaporWave;
+	EffectVaporwave* effectVaporWave;
 	Level* level;
 
 	SongBar* songBar; //indicates time left, shaped like a note
