@@ -105,28 +105,28 @@ void MinigameHipHop::createList()
 
 			switch (aux) {
 			case 0:
-				note = new Note(SDL_CONTROLLER_BUTTON_A, manager, 75, 75, pos, vel, aux, select);
+				note = new Note(SDL_CONTROLLER_BUTTON_A, manager, 75, 75, pos, vel);
 				break;
 			case 1:
-				note = new Note(SDL_CONTROLLER_BUTTON_B, manager, 75, 75, pos, vel, aux, select);
+				note = new Note(SDL_CONTROLLER_BUTTON_B, manager, 75, 75, pos, vel);
 				break;
 			case 2:
-				note = new Note(SDL_CONTROLLER_BUTTON_X, manager, 75, 75, pos, vel, aux, select);
+				note = new Note(SDL_CONTROLLER_BUTTON_X, manager, 75, 75, pos, vel);
 				break;
 			case 3:
-				note = new Note(SDL_CONTROLLER_BUTTON_Y, manager, 75, 75, pos, vel, aux, select);
+				note = new Note(SDL_CONTROLLER_BUTTON_Y, manager, 75, 75, pos, vel);
 				break;
 			case 4:
-				note = new Note(SDL_CONTROLLER_BUTTON_A, manager, 75, 75, pos, vel, aux, select);
+				note = new Note(SDL_CONTROLLER_BUTTON_A, manager, 75, 75, pos, vel);
 				break;
 			case 5:
-				note = new Note(SDL_CONTROLLER_BUTTON_B, manager, 75, 75, pos, vel, aux, select);
+				note = new Note(SDL_CONTROLLER_BUTTON_B, manager, 75, 75, pos, vel);
 				break;
 			case 6:
-				note = new Note(SDL_CONTROLLER_BUTTON_X, manager, 75, 75, pos, vel, aux, select);
+				note = new Note(SDL_CONTROLLER_BUTTON_X, manager, 75, 75, pos, vel);
 				break;
 			case 7:
-				note = new Note(SDL_CONTROLLER_BUTTON_Y, manager, 75, 75, pos, vel, aux, select);
+				note = new Note(SDL_CONTROLLER_BUTTON_Y, manager, 75, 75, pos, vel);
 				break;
 			}
 			levelButtons_.push_front(note);

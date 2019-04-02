@@ -92,10 +92,6 @@ public:
 	std::list<Note*> levelButtons_;
 	std::list<Note*> levelArrows2_;
 	std::list<Note*> levelButtons2_;
-	std::list<int>selectArrows_;
-	std::list<int>selectButtons_;
-	std::list<int>selectArrows2_;
-	std::list<int>selectButtons2_;
 	FeedbackPool* feedbackLeft;
 	FeedbackPool* feedbackRight;
 	Background* bg;
@@ -123,8 +119,6 @@ protected:
 	
 	void generateArrows();
 	void generateButtons();
-	void generateSelectArrows();
-	void generateSelectButtons();
 
 	void songOver();
 

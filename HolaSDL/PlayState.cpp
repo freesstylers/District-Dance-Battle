@@ -151,8 +151,6 @@ void PlayState::update(Uint32 time)
 				msDiff += timer->DeltaTime() - (bh->getBeatTime() / 1000.0);
 				generateArrows();
 				generateButtons();
-				generateSelectArrows();
-				generateSelectButtons();
 				timer->Reset();
 
 				beatSignal = true;
@@ -286,38 +284,7 @@ void PlayState::generateButtons()
 		levelButtons2_.pop_front();
 	}
 }
-void PlayState::generateSelectArrows()
-{
-	while (!selectArrows_.empty())
-	{
-		if (selectArrows_.front() != -1) {
-			player1->selectScreenArrows.push_back(selectArrows_.front());
-			if (player2!=nullptr && selectArrows2_.front()!=-1)
-			{
-				player2->selectScreenArrows.push_back(selectArrows2_.front());
-				selectArrows2_.pop_front();
-			}
-			
-		}
-		selectArrows_.pop_front();
-	}
-}
-void PlayState::generateSelectButtons()
-{
-	while (!selectButtons_.empty())
-	{
-		if (selectButtons_.front() != -1) {
-			player1->selectScreenButtons.push_back(selectButtons_.front());
-			if (player2 != nullptr && selectButtons2_.front() != -1)
-			{
-				player2->selectScreenButtons.push_back(selectButtons2_.front());
-				selectButtons2_.pop_front();
-			}
 
-		}
-		selectButtons_.pop_front();
-	}
-}
 
 void PlayState::songOver()
 {
