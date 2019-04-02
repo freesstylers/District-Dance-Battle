@@ -73,6 +73,8 @@ void PlayerPack::update(Uint32 time)
 			delete aux;
 			screenArrows_.pop_front();
 			cout << "fuera" << endl;
+			errorLeft();
+
 		}
 		if (!screenButtons_.empty() && screenButtons_.front()->getPosition().getY() > noteYLimit)
 		{
@@ -90,6 +92,7 @@ void PlayerPack::update(Uint32 time)
 			delete aux;
 			screenButtons_.pop_front();
 			cout << "fuera" << endl;
+			errorRight();
 		}
 	}
 }
@@ -147,4 +150,17 @@ PlayerPack::~PlayerPack()
 	{
 		delete o;
 	}
+}
+
+void PlayerPack::errorLeft()
+{
+	leftNoteBar->cleanAnimationQueue();
+	leftNoteBar->forceAnimationChange(Resources::SquareMiss);
+	leftNoteBar->queueAnimationChange(Resources::Square);
+}
+
+void PlayerPack::errorRight() {
+	rightNoteBar->cleanAnimationQueue();
+	rightNoteBar->forceAnimationChange(Resources::SquareMiss);
+	rightNoteBar->queueAnimationChange(Resources::Square);
 }

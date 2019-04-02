@@ -17,7 +17,8 @@ GameManager::~GameManager()
 
 void GameManager::start() {
 	//supposed to push the first MapState, temporarily pushes a PlayState
-	machine->pushState(new PlayState(this));
+	machine->pushState(new PlayState(this, 0));
+	//machine->pushState(new DialogState(this,"Dialog0",0));
 	run();
 }
 

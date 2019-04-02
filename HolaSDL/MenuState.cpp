@@ -85,7 +85,7 @@ void MenuState::backButton()
 
 void MenuState::play(GameManager* game) {
 	cout << "jugando" << endl;
-	game->getMachine()->pushState(new PlayState(game));
+	//game->getMachine()->pushState(new PlayState(game, ));
 }
 
 void MenuState::createButtons(GameManager * gameManager)

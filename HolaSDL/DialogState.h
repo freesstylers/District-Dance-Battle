@@ -27,7 +27,9 @@ protected:
 	map<string, GameObject*> box;
 	GameObject* actualBox;
 	Texture* actualText;
+	int nlevel;
 	bool end = false;
+	bool endlevel = false;
 	string archivo;
 };
 

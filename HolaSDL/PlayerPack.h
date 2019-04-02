@@ -30,6 +30,8 @@ public:
 	Point* getRightPoint() { return rightPoint; }
 	std::list<Note*> screenArrows_;
 	std::list<Note*> screenButtons_;
+	void errorLeft();
+	void errorRight();
 
 	virtual void updateResolution(double wScale, double hScale);
 
