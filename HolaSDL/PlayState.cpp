@@ -41,7 +41,7 @@ void PlayState::newGame(int lvl)
 	lip = new LevelInputManager(this, player1, 0);
 	maxNoteValue = maxScore / level->noteAmount;
 
-	scoreBar = new ScoreBar(manager, 20, 1, Vector2D(50, 465 + pointSize), level->noteAmount, maxScore);
+	//scoreBar = new ScoreBar(manager, 20, 1, Vector2D(50, 465 + pointSize), level->noteAmount, maxScore);
 
 	songBarBG = new BarBackground(manager, 1, 14, Vector2D(50, 35), (((manager->getDefaultWindowWidth() - 50) / level->songLength) / 70.5), Resources::YellowBar); //70.5 es la constante para ajustar la velocidad de la barra al tiempo de la cancion
 	songBar = new SongBar(manager, 18, 22, Vector2D(41, 31), Vector2D((((manager->getDefaultWindowWidth() / level->songLength)) / 70.5), 0), songBarBG);
@@ -61,7 +61,7 @@ void PlayState::newGame(int lvl)
 	stage.push_back(player1);
 	stage.push_back(perico);
 	stage.push_back(robot);
-	stage.push_back(scoreBar);
+	//stage.push_back(scoreBar);
 	stage.push_back(songBarBG);
 	stage.push_back(songBar);
 	stage.push_back(feedbackLeft);
@@ -83,6 +83,7 @@ void PlayState::newGame2P(int lvl)
 
 	int leftNotesPos = manager->getWindowWidth() / 3 - pointOffset2P;
 	int rightNotesPos = manager->getWindowWidth() / 3 + pointOffset2P;
+	int posBarra = 50;
 
 	leftNotesVector = Vector2D(leftNotesPos - 50 / 2, 70);
 	rightNotesVector = Vector2D(rightNotesPos - 50 / 2, 70);
@@ -92,6 +93,7 @@ void PlayState::newGame2P(int lvl)
 
 	bg = new Background(manager, manager->getWindowWidth(), manager->getWindowHeight(), Vector2D(0, 0),Resources::testBG);
 	player1 = new PlayerPack(manager,this, leftNotesPos, rightNotesPos, pointSize2P, noteBarWidth*0.75);
+	posBarra = 50;
 	player2 = new PlayerPack(manager,this, leftNotesPos + 200, rightNotesPos + 200, pointSize2P, noteBarWidth*0.75);
 	level = new Level(this, manager, levelName);
 	level->init();
@@ -101,7 +103,7 @@ void PlayState::newGame2P(int lvl)
 		lip2 = new LevelInputManager(this, player2, 1);
 	maxNoteValue = maxScore / level->noteAmount;
 
-	scoreBar = new ScoreBar(manager, 20, 1, Vector2D(50, 465 + pointSize), level->noteAmount, maxScore);
+	//scoreBar = new ScoreBar(manager, 20, 1, Vector2D(50, 465 + pointSize), level->noteAmount, maxScore);
 
 	songBarBG = new BarBackground(manager, 1, 14, Vector2D(50, 35), (((manager->getWindowWidth() - 50) / level->songLength) / 70.5), Resources::YellowBar); //70.5 es la constante para ajustar la velocidad de la barra al tiempo de la cancion
 	songBar = new SongBar(manager, 18, 22, Vector2D(41, 31), Vector2D((((manager->getWindowWidth() / level->songLength)) / 70.5), 0), songBarBG);
@@ -121,7 +123,7 @@ void PlayState::newGame2P(int lvl)
 	stage.push_back(player2);
 	stage.push_back(perico);
 	stage.push_back(robot);
-	stage.push_back(scoreBar);
+	//stage.push_back(scoreBar);
 	stage.push_back(songBarBG);
 	stage.push_back(songBar);
 	//stage.push_back(feedbackLeft);

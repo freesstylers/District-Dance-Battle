@@ -39,7 +39,7 @@ protected:
 	bool miniActive = false;
 	TimerNoSingleton* minigameController;
 	TimerNoSingleton* animationTimer;
-
+	
 
 	bool firstNote = true;
 
@@ -70,14 +70,14 @@ protected:
 	int noteSize = 50;	//tama�o de nota 
 	int pointOffset = 70;	//offset entre las barras de notas y el centro de la pantalla
 	int initialNoteHeight = 70;	//altura a la cual se generan las notas en pantalla
-
+	int posBarra = 0;
 	int maxScore = 400;
 	
 	int maxNoteValue = 0;
 
 public:
 	BeatHandler* bh;
-	ScoreBar* scoreBar;
+	//ScoreBar* scoreBar;
 	PlayState(GameManager* g,int lvl);
 	void newGame(int lvl);
 	void newGame2P(int lvl);
@@ -112,8 +112,9 @@ public:
 
 	int getScore();
 	int getBPM() { return level->bpm; }
-
-
+	int getNoteAmount() { return level->noteAmount;} //level nullptr?
+	int getMaxScore() { return maxScore;}
+	int getPosBarra() { return posBarra;}
 protected:
 	void deleteAll();
 	

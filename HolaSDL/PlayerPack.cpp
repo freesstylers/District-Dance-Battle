@@ -15,7 +15,7 @@ PlayerPack::PlayerPack(SDLGame* manager, PlayState* ps, int leftNotesPos, int ri
 	rightPoint = new Point(manager, pointSize, pointSize, Vector2D(rightNotesPos - pointSize / 2, 465));
 	leftNoteBar = new Squares(manager, squareWidth, 465 + 0.6 * pointSize, Vector2D(leftNotesPos + 1 - squareWidth / 2, leftNotesVector.getY()));
 	rightNoteBar = new Squares(manager, squareWidth, 465 + 0.6 * pointSize, Vector2D(rightNotesPos + 1 - squareWidth / 2, rightNotesVector.getY()));
-
+	scorebar = new ScoreBar(manager, 20, 1, Vector2D(50 + playstate_->getPosBarra(), 465 + pointSize), playstate_->getNoteAmount(), playstate_->getMaxScore());
 	noteYLimit = leftPoint->getPosition().getY() + leftPoint->getHeight();
 }
 void PlayerPack::render(Uint32 time, bool beatSync)
@@ -24,6 +24,7 @@ void PlayerPack::render(Uint32 time, bool beatSync)
 	rightNoteBar->render(time);
 	leftPoint->render(time);
 	rightPoint->render(time);
+	scorebar->render(time);
 	for (Note* o : screenArrows_)
 	{
 		o->render(time, beatSync);
@@ -63,7 +64,7 @@ void PlayerPack::update(Uint32 time)
 			SDL_GameControllerButton x = aux->getKey();
 			if (x == SDL_CONTROLLER_BUTTON_INVALID) {
 				playstate_->feedbackLeft->addFeedback(Resources::FeedbackPerfect);
-				playstate_->scoreBar->updateBar(1);
+				scorebar->updateBar(1);
 				playstate_->updateScore(1);
 			}
 			else
@@ -82,7 +83,7 @@ void PlayerPack::update(Uint32 time)
 			SDL_GameControllerButton y = aux->getKey();
 			if (y == SDL_CONTROLLER_BUTTON_INVALID) {
 				playstate_->feedbackRight->addFeedback(Resources::FeedbackPerfect);
-				playstate_->scoreBar->updateBar(1);
+				scorebar->updateBar(1);
 				playstate_->updateScore(1);
 			}
 			else
@@ -142,6 +143,7 @@ PlayerPack::~PlayerPack()
 	delete rightNoteBar;
 	delete leftPoint;
 	delete rightPoint;
+	delete scorebar;
 	for (Note* o : screenArrows_)
 	{
 		delete o;

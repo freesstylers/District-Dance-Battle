@@ -33,21 +33,21 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 						{
 							cout << "perfecto" << endl;
 							level->feedbackLeft->addFeedback(Resources::FeedbackPerfect);
-							level->scoreBar->updateBar(1);
+							player->scorebar->updateBar(1);
 							level->updateScore(1);
 						}
 						else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getLeftPoint()->getPosition().getY() + player->getLeftPoint()->getHeight() / 2)) <= 25)
 						{
 							cout << "bien" << endl;
 							level->feedbackLeft->addFeedback(Resources::FeedbackGood);
-							level->scoreBar->updateBar(2);
+							player->scorebar->updateBar(2);
 							level->updateScore(2);
 						}
 						else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getLeftPoint()->getPosition().getY() + player->getLeftPoint()->getHeight() / 2)) <= 50)
 						{
 							cout << "regular" << endl;
 							level->feedbackLeft->addFeedback(Resources::FeedbackRegular);
-							level->scoreBar->updateBar(3);
+							player->scorebar->updateBar(3);
 							level->updateScore(3);
 						}
 						else
@@ -92,7 +92,7 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 							{
 								cout << "perfecto" << endl;
 								level->feedbackRight->addFeedback(Resources::FeedbackPerfect);
-								level->scoreBar->updateBar(1);
+								player->scorebar->updateBar(1);
 								level->updateScore(1);
 
 							}
@@ -100,14 +100,14 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 							{
 								cout << "bien" << endl;
 								level->feedbackRight->addFeedback(Resources::FeedbackGood);
-								level->scoreBar->updateBar(2);
+								player->scorebar->updateBar(2);
 								level->updateScore(2);
 							}
 							else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getRightPoint()->getPosition().getY() + player->getRightPoint()->getHeight() / 2)) <= 50)
 							{
 								cout << "regular" << endl;
 								level->feedbackRight->addFeedback(Resources::FeedbackRegular);
-								level->scoreBar->updateBar(3);
+								player->scorebar->updateBar(3);
 								level->updateScore(3);
 							}
 							else

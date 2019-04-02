@@ -3,6 +3,7 @@
 #include "Note.h"
 #include "Squares.h"
 #include "Vector2D.h"
+#include "ScoreBar.h"
 #include "GameObject.h"
 #include <list>
 class PlayState;
@@ -19,7 +20,9 @@ protected:
 	
 	int noteYLimit;
 
-public:
+
+public:	
+	ScoreBar* scorebar;
 	PlayerPack();
 	PlayerPack(SDLGame* manager, PlayState* ps, int leftNotesPos, int rightNotesPos, int pointSize, int squareWidth);
 	~PlayerPack();
