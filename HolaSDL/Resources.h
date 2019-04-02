@@ -42,7 +42,12 @@ public:
 		Mira,
 		TextboxPerico,
 		TextBoxRobot,
-		TextBoxBlanc
+		TextBoxBlanc,
+		LetraA,
+		LetraB,
+		LetraC,
+		LetraD,
+		LetraS
 		// text
 	};
 

@@ -45,7 +45,13 @@ vector<Resources::ImageInfo> Resources::images_ {
 	{Mira, "resources/images/mira.png", 512, 512, 1, 1, 1},
 	{TextboxPerico, "resources/images/perico_dialog.png",153, 65, 1, 1, 1}, //Cuadro de texto perico
 	{TextBoxRobot, "resources/images/robot_dialog.png", 153, 65, 1, 1, 1},
-	{TextBoxBlanc, "resources/images/blanc_dialog.png", 153, 65, 1, 1, 1}
+	{TextBoxBlanc, "resources/images/blanc_dialog.png", 153, 65, 1, 1, 1},
+	{LetraA, "resources/images/Letra_A.png", 32, 32, 1, 1, 1},
+	{LetraB, "resources/images/Letra_B.png", 32, 32, 1, 1, 1},
+	{LetraC, "resources/images/Letra_C.png", 32, 32, 1, 1, 1},
+	{LetraD, "resources/images/Letra_D.png", 32, 32, 1, 1, 1},
+	{LetraS, "resources/images/Letra_S.png", 32, 32, 1, 1, 1},
+
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {
