@@ -16,12 +16,13 @@ public:
 	void handleEvent(Uint32 time);
 	void render(Uint32 time);
 	bool checkExit();
+	bool exit_;
 	virtual void start(); // start the game
 	virtual void stop();  // stop the game
 	GameStateMachine* getMachine();
 protected:
 	GameStateMachine* machine;
-	bool exit_;
+	
 private:
 	const static int _WINDOW_WIDTH_ = 800;
 	const static int _WINDOW_HEIGHT_ = 600;
