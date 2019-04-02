@@ -47,6 +47,11 @@ public:
 		BButton1,
 		XButton1,
 		YButton1
+		LetraA,
+		LetraB,
+		LetraC,
+		LetraD,
+		LetraS
 		// text
 	};
 

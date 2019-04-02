@@ -50,6 +50,12 @@ vector<Resources::ImageInfo> Resources::images_ {
 	{BButton1,  "resources/images/BotonB_1.png", 32, 32, 1, 1, 1}, //Cuadro de texto perico
 	{XButton1, "resources/images/BotonX_1.png", 32, 32, 1, 1, 1},
 	{YButton1, "resources/images/BotonY_1.png", 32, 32, 1, 1, 1}
+	{LetraA, "resources/images/Letra_A.png", 32, 32, 1, 1, 1},
+	{LetraB, "resources/images/Letra_B.png", 32, 32, 1, 1, 1},
+	{LetraC, "resources/images/Letra_C.png", 32, 32, 1, 1, 1},
+	{LetraD, "resources/images/Letra_D.png", 32, 32, 1, 1, 1},
+	{LetraS, "resources/images/Letra_S.png", 32, 32, 1, 1, 1},
+
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {
