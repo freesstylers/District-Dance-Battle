@@ -35,7 +35,9 @@ vector<Resources::ImageInfo> Resources::images_ {
 	{testBG, "resources/images/FondoPrueba.png", 128, 100, 2, 1, 2},
 	{PixelatedTextBG, "resources/images/FondoPixel.png", 128, 100, 2, 1, 2},
 	{RobotIdle, "resources/images/RobotVaporwave.png", 60, 120, 2, 1, 2},
-	{RobotDance, "resources/images/VaporwaveDance.png", 60, 120, 3, 2, 4}
+	{RobotDance, "resources/images/VaporwaveDance.png", 60, 120, 3, 2, 4},
+	{NumPlayersSwitch, "resources/images/1P2P.png", 960, 960, 2, 1, 2},
+	{Star, "resources/images/Star.png", 40, 38, 1, 1, 1 }
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {

@@ -22,7 +22,7 @@ private:
 		EmptyObject switches[3];
 		EmptyObject fondo_;
 		EmptyObject photo_;
-		int height = 250;
+		int height = 300;
 		int width = 200;
 		int difficulty_;
 		int index = 0;
@@ -41,9 +41,9 @@ private:
 
 		Panel(SDLGame* gm, Vector2D panelPos, int photo, string description, int difficulty, string name) : difficulty_(difficulty), name_(name) {
 			fondo_ = EmptyObject(gm, panelPos, width, height, Resources::YellowBar);
-			for (int i = 0; i < 3; i++) {
-				switches[i] = EmptyObject(gm, Vector2D(((panelPos.getX() + width / 2) - width / 4), (panelPos.getY() + height / 2) + 2 * i*(height / 10)), width / 2, height / 10, Resources::FeedbackBad);
-			}
+			switches[0] = EmptyObject(gm, Vector2D(((panelPos.getX() + width / 2) - width / 6), (panelPos.getY() + height / 2) + (height / 24)), width / 3, height / 12, Resources::NumPlayersSwitch);
+			switches[1] = EmptyObject(gm, Vector2D(((panelPos.getX() + width / 2) - width / 6), (panelPos.getY() + height / 2) + 5*(height / 24)), width / 3, height / 12, Resources::NumPlayersSwitch);
+			switches[2] = EmptyObject(gm, Vector2D(((panelPos.getX() + width / 2) - width / 6), (panelPos.getY() + height / 2) + 9*(height / 24)), width / 3, height / 12, Resources::NumPlayersSwitch);
 			photo_ = EmptyObject(gm, Vector2D(panelPos.getX() + width / 2, panelPos.getY() + height / 10), 2 * (width / 6), 3 * height / 10, photo);
 			switches[index].scale(2);
 		}
@@ -52,6 +52,9 @@ private:
 			fondo_.render(time, beatHandler);
 			for (int i = 0; i < 3; i++) {
 				switches[i].render(time, beatHandler);
+			}
+			for (int i = 0; i < difficulty_; i++) {
+
 			}
 			photo_.render(time, beatHandler);
 		}

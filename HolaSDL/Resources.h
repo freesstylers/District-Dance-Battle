@@ -36,7 +36,9 @@ public:
 		testBG,
 		PixelatedTextBG,
 		RobotIdle,
-		RobotDance
+		RobotDance,
+		NumPlayersSwitch,
+		Star
 		// text
 	};
 
