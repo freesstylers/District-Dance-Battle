@@ -32,7 +32,6 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="CutSceneState.h" />
     <ClInclude Include="EffectVaporwave.h" />
-    <ClInclude Include="EmptyObject.h" />
     <ClInclude Include="EndState.h" />
     <ClInclude Include="Feedback.h" />
     <ClInclude Include="BarBackground.h" />
@@ -91,7 +90,6 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="CutSceneState.cpp" />
     <ClCompile Include="EffectVaporwave.cpp" />
-    <ClCompile Include="EmptyObject.cpp" />
     <ClCompile Include="EndState.cpp" />
     <ClCompile Include="Feedback.cpp" />
     <ClCompile Include="BarBackground.cpp" />
