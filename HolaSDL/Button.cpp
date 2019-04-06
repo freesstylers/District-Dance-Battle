@@ -4,8 +4,8 @@ Button::Button()
 {
 }
 
-Button::Button(GameManager* game, double width, double height, Vector2D pos, Callback* callback, bool active):
-	GameObject(game),  callback(callback), gameManager_(game), active_(active)
+Button::Button(GameManager* game, double width, double height, Vector2D pos, Callback* callback):
+	GameObject(game),  callback(callback), gameManager_(game)
 {
 	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::YButton);
 
@@ -41,9 +41,8 @@ void Button::callCallback()
 
 void Button::update(Uint32 time)
 {
-	if (active_) {
+	
 
-	}
 }
 
 Button::~Button()

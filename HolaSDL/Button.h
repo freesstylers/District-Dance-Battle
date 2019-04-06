@@ -8,13 +8,12 @@ private:
 	int type;
 	GameManager* gameManager_;
 	Callback* callback;
-	bool active_;
 
 
 public:
 
 	Button();
-	Button(GameManager* game, double width, double height, Vector2D pos, Callback* callback, bool active);
+	Button(GameManager* game, double width, double height, Vector2D pos, Callback* callback);
 	virtual bool handleInput(Uint32 time, const SDL_Event& event);
 	virtual void update(Uint32 time);
 	virtual ~Button();
