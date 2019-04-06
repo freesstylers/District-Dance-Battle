@@ -1,9 +1,16 @@
 #include "PlayState.h"
 #include "GameManager.h"
 
-PlayState::PlayState(GameManager* g,int lvl) :GameState(g) //Asigna game y llama a inicializaci�n
+PlayState::PlayState(GameManager* g,int lvl,int twoPlayers) :GameState(g) //Asigna game y llama a inicializaci�n
 {
-	newGame(lvl);
+	tPlayers = twoPlayers;
+	if (tPlayers == 1) {
+		newGame2P(lvl);
+	}
+	else {
+		newGame(lvl);
+	}
+	
 }
 
 void PlayState::newGame(int lvl)
@@ -179,7 +186,7 @@ void PlayState::update(Uint32 time)
 			minigame->resetMinigame();
 		}
 		minigame->update(time);
-		if (minigame->getFailed()) {
+		if (minigame->getEnd()) {
 			lip->setMinigameActive(false);
 			miniActive = false;
 			msDiff = 0;

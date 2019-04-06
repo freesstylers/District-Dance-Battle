@@ -28,6 +28,7 @@ void DialogState::init()
 	
 	if (file.is_open()) {
 		file >> nlevel;
+		file >> twoPlayers;
 		file >> aux;
 		for (int i = 0; i < aux; i++) {
 			file >> sp;
@@ -156,7 +157,7 @@ bool DialogState::handleEvent(Uint32 time, SDL_Event e) {
 			keyup = false;
 		}
 		if (end == true) {
-			manager->getMachine()->changeState(new PlayState(manager, nlevel));
+			manager->getMachine()->changeState(new PlayState(manager, nlevel,twoPlayers));
 		}
 		
 	}

@@ -7,6 +7,7 @@ class MinigameVaporwave: public MiniGame
 protected:
 	int noteAmount = 15;
 	int maxNotes = noteAmount;
+	Texture * textureButton;
 
 public:
 	MinigameVaporwave(GameManager* g, PlayState* p);
@@ -17,6 +18,7 @@ public:
 
 	void generateButtons();
 	bool getFailed() { return failed; };
+	bool getEnd() { return end; }
 
 	virtual void createList();
 	virtual void deleteList();

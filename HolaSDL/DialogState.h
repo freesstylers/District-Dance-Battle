@@ -23,6 +23,7 @@ protected:
 		string box;
 	};
 	bool keyup = true;
+	int twoPlayers;
 	list<Dialog> dialogo;
 	map<string, GameObject*> box;
 	GameObject* actualBox;

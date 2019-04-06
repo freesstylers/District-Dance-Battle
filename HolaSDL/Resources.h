@@ -43,6 +43,10 @@ public:
 		TextboxPerico,
 		TextBoxRobot,
 		TextBoxBlanc,
+		AButton1,
+		BButton1,
+		XButton1,
+		YButton1
 		LetraA,
 		LetraB,
 		LetraC,
@@ -56,7 +60,8 @@ public:
 		Test,
 		Sunflower,
 		Bill,
-		Error
+		Error,
+		Snare,
 		// sound effects
 
 	};

@@ -32,6 +32,8 @@ protected:
 	string levelName;
 	bool effect = true;
 
+	int tPlayers;
+
 	Timer* timer;
 	LevelInputManager* lip;
 	LevelInputManager* lip2;
@@ -78,7 +80,7 @@ protected:
 public:
 	BeatHandler* bh;
 	ScoreBar* scoreBar;
-	PlayState(GameManager* g,int lvl);
+	PlayState(GameManager* g,int lvl, int twoPlayers);
 	void newGame(int lvl);
 	void newGame2P(int lvl);
 	~PlayState();

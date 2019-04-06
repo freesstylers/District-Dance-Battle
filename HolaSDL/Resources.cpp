@@ -46,6 +46,10 @@ vector<Resources::ImageInfo> Resources::images_ {
 	{TextboxPerico, "resources/images/perico_dialog.png",153, 65, 1, 1, 1}, //Cuadro de texto perico
 	{TextBoxRobot, "resources/images/robot_dialog.png", 153, 65, 1, 1, 1},
 	{TextBoxBlanc, "resources/images/blanc_dialog.png", 153, 65, 1, 1, 1},
+	{AButton1, "resources/images/BotonA_1.png", 32, 32, 1, 1, 1},
+	{BButton1,  "resources/images/BotonB_1.png", 32, 32, 1, 1, 1}, //Cuadro de texto perico
+	{XButton1, "resources/images/BotonX_1.png", 32, 32, 1, 1, 1},
+	{YButton1, "resources/images/BotonY_1.png", 32, 32, 1, 1, 1}
 	{LetraA, "resources/images/Letra_A.png", 32, 32, 1, 1, 1},
 	{LetraB, "resources/images/Letra_B.png", 32, 32, 1, 1, 1},
 	{LetraC, "resources/images/Letra_C.png", 32, 32, 1, 1, 1},
@@ -62,7 +66,8 @@ vector<Resources::MusicInfo> Resources::musics_ {
 	{Test , "resources/sound/TutorialJuego.wav"},
 	{Sunflower, "resources/sound/sunflower.mp3"},
 	{Bill, "resources/sound/billijean_noGlitch.mp3"},
-	{Error, "resources/sound/Error.WAV"}
+	{Error, "resources/sound/Error.wav"},
+	{Snare, "resources/sound/snare.wav"}
 };
 
 vector<Resources::SoundInfo> Resources::sounds_ {

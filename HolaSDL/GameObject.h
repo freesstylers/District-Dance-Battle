@@ -31,6 +31,8 @@ public:
 	Texture* getAnimation();
 	void setTexture(Texture* texture);
 
+	void setAnimation(int texture);
+
 	SDL_Rect* getFrameRect();
 
 	const Vector2D& getPosition() const;
