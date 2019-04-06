@@ -21,6 +21,10 @@ protected:
 	Vector2D comboPosition;
 	
 	int noteYLimit;
+	int comboTextX;
+
+	int combo;
+	void updateCombo(int newCombo);
 
 public:
 	PlayerPack();
@@ -37,7 +41,7 @@ public:
 	void errorRight();
 
 	virtual void updateResolution(double wScale, double hScale);
-	void updateCombo(int newCombo);
-
+	void addCombo(int i);
+	void resetCombo();
 };
 

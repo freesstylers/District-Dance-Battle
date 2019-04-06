@@ -43,18 +43,18 @@ vector<Resources::ImageInfo> Resources::images_ {
 	{RobotIdle, "resources/images/RobotVaporwave.png", 60, 120, 2, 1, 2},
 	{RobotDance, "resources/images/VaporwaveDance.png", 60, 120, 3, 2, 4},
 	{Mira, "resources/images/mira.png", 512, 512, 1, 1, 1},
-	{TextboxPerico, "resources/images/perico_dialog.png",153, 65, 1, 1, 1}, //Cuadro de texto perico
+	{TextboxPerico, "resources/images/perico_dialog.png",153, 65, 1, 1, 1}, 
 	{TextBoxRobot, "resources/images/robot_dialog.png", 153, 65, 1, 1, 1},
 	{TextBoxBlanc, "resources/images/blanc_dialog.png", 153, 65, 1, 1, 1},
 	{AButton1, "resources/images/BotonA_1.png", 32, 32, 1, 1, 1},
-	{BButton1,  "resources/images/BotonB_1.png", 32, 32, 1, 1, 1}, //Cuadro de texto perico
+	{BButton1,  "resources/images/BotonB_1.png", 32, 32, 1, 1, 1}, 
 	{XButton1, "resources/images/BotonX_1.png", 32, 32, 1, 1, 1},
-	{YButton1, "resources/images/BotonY_1.png", 32, 32, 1, 1, 1}
-	{LetraA, "resources/images/Letra_A.png", 32, 32, 1, 1, 1},
-	{LetraB, "resources/images/Letra_B.png", 32, 32, 1, 1, 1},
-	{LetraC, "resources/images/Letra_C.png", 32, 32, 1, 1, 1},
-	{LetraD, "resources/images/Letra_D.png", 32, 32, 1, 1, 1},
-	{LetraS, "resources/images/Letra_S.png", 32, 32, 1, 1, 1},
+	{YButton1, "resources/images/BotonY_1.png", 32, 32, 1, 1, 1},
+	{ScoreA, "resources/images/Letra_A.png", 32, 32, 1, 1, 1},
+	{ScoreB, "resources/images/Letra_B.png", 32, 32, 1, 1, 1},
+	{ScoreC, "resources/images/Letra_C.png", 32, 32, 1, 1, 1},
+	{ScoreD, "resources/images/Letra_D.png", 32, 32, 1, 1, 1},
+	{ScoreS, "resources/images/Letra_S.png", 32, 32, 1, 1, 1},
 
 };
 

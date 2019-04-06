@@ -4,10 +4,13 @@ class ComboText :
 	public TextObject
 {
 private:
-	int screentime = 60;
+	int screentime = 500;
 	int lastUpdate = 0;
-	double currentScale = 1;
+	double currentScale;
 	int alphaUpdate = -20;
+	Vector2D originalPos;
+	Vector2D centeredPos;
+	double deltaScale = 0.1;
 
 public:
 	ComboText(SDLGame* manager, Font* font, Vector2D pos);

@@ -14,10 +14,12 @@ void TextObject::render(Uint32 time, bool beatSync)
 
 void TextObject::setText(string txt)
 {
-	text->loadFromText(game_->getRenderer(), "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", *textFont, SDL_Color{(255), (255), (255), (255)});
+	text->loadFromText(game_->getRenderer(), txt, *textFont, SDL_Color{ (255), (255), (255), (255) });
 
 	animation.frameHeight = text->getHeight();
 	animation.frameWidth = text->getWidth();
+	setHeight(text->getHeight());
+	setWidth(text->getWidth());
 }
 
 

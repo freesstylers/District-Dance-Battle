@@ -71,7 +71,8 @@ void MinigameHipHop::handleInput(Uint32 time, SDL_Event e)
 		else
 			mira->superpuesto = false;
 
-		mira->handleInput(time, e, o);
+		if (mira->handleInput(time, e, o))
+			currentMinigameScore++;
 
 	}
 }
@@ -96,7 +97,7 @@ void MinigameHipHop::createList()
 		maxNotes = noteAmount;
 		int select = 0;
 		Note* note;
-		for (int i = 0; i < 8; i++) {
+		for (int i = 0; i < noteAmount; i++) {
 			aux = rand() % 8;
 
 			Vector2D pos = Vector2D(double(manager->getServiceLocator()->getRandomGenerator()->nextInt(1, manager->getWindowWidth())), double(manager->getServiceLocator()->getRandomGenerator()->nextInt(1, manager->getWindowHeight())));

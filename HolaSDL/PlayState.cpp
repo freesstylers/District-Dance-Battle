@@ -46,12 +46,15 @@ void PlayState::newGame(int lvl)
 	player2 = nullptr;
 	timer = Timer::Instance();
 	lip = new LevelInputManager(this, player1, 0);
-	maxNoteValue = maxScore / level->noteAmount;
 
-	scoreBar = new ScoreBar(manager, 20, 1, Vector2D(50, 465 + pointSize), level->noteAmount, maxScore);
+	maxMinigameValue = (maxScore * minigameScoreTotal) / minigameAmount;
+	maxNoteValue = (maxScore * (1 - minigameScoreTotal)) / level->noteAmount;
+
 
 	songBarBG = new BarBackground(manager, 1, 14, Vector2D(50, 35), (((manager->getDefaultWindowWidth() - 50) / level->songLength) / 70.5), Resources::YellowBar); //70.5 es la constante para ajustar la velocidad de la barra al tiempo de la cancion
 	songBar = new SongBar(manager, 18, 22, Vector2D(41, 31), Vector2D((((manager->getDefaultWindowWidth() / level->songLength)) / 70.5), 0), songBarBG);
+
+	scoreBar = new ScoreBar(manager, 20, 0, Vector2D(50, 465 + pointSize), maxScore, songBarBG->getPosition().getY() + songBarBG->getHeight() * 2);
 
 	perico = new Character(manager, 60 * 3.5, 120 * 3.5, Vector2D(75, initialNoteHeight + 70), Resources::PericoIdle);
 	
@@ -65,12 +68,12 @@ void PlayState::newGame(int lvl)
 
 
 	stage.push_back(bg);
-	stage.push_back(player1);
 	stage.push_back(perico);
 	stage.push_back(robot);
 	stage.push_back(scoreBar);
 	stage.push_back(songBarBG);
 	stage.push_back(songBar);
+	stage.push_back(player1);
 	stage.push_back(feedbackLeft);
 	stage.push_back(feedbackRight);
 
@@ -80,6 +83,8 @@ void PlayState::newGame(int lvl)
 	/////////////////////////
 
 	//exit_ = false;
+
+	combo = 0;
 
 	updateResolution();
 }
@@ -108,10 +113,10 @@ void PlayState::newGame2P(int lvl)
 		lip2 = new LevelInputManager(this, player2, 1);
 	maxNoteValue = maxScore / level->noteAmount;
 
-	scoreBar = new ScoreBar(manager, 20, 1, Vector2D(50, 465 + pointSize), level->noteAmount, maxScore);
-
 	songBarBG = new BarBackground(manager, 1, 14, Vector2D(50, 35), (((manager->getWindowWidth() - 50) / level->songLength) / 70.5), Resources::YellowBar); //70.5 es la constante para ajustar la velocidad de la barra al tiempo de la cancion
 	songBar = new SongBar(manager, 18, 22, Vector2D(41, 31), Vector2D((((manager->getWindowWidth() / level->songLength)) / 70.5), 0), songBarBG);
+
+	scoreBar = new ScoreBar(manager, 20, 0, Vector2D(50, 465 + pointSize), maxScore, songBarBG->getPosition().getY() + songBarBG->getHeight() * 2);
 
 	perico = new Character(manager, 60 * 3.5, 120 * 3.5, Vector2D(75, initialNoteHeight + 30 + 70), Resources::PericoIdle);
 	robot = new Character(manager, 60 * 3.5, 120 * 3.5, Vector2D(manager->getWindowWidth() - 270, initialNoteHeight - 29 + 70), Resources::RobotIdle);
@@ -124,19 +129,21 @@ void PlayState::newGame2P(int lvl)
 	effectVaporWave = new EmptyObject(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::EffectVaporWave);
 
 	stage.push_back(bg);
-	stage.push_back(player1);
-	stage.push_back(player2);
 	stage.push_back(perico);
 	stage.push_back(robot);
 	stage.push_back(scoreBar);
 	stage.push_back(songBarBG);
 	stage.push_back(songBar);
+	stage.push_back(player1);
+	stage.push_back(player2);
 	//stage.push_back(feedbackLeft);
 	//stage.push_back(feedbackRight);
 
 
 
 	level->playSong();
+
+	combo = 0;
 
 	updateResolution();
 }
@@ -156,7 +163,7 @@ PlayState::~PlayState()
 void PlayState::update(Uint32 time)
 {
 	GameState::update(time);
-	if (!miniActive && minigameController->DeltaTime() < level->songLength/3) 
+	if (!miniActive && minigameController->DeltaTime() < level->songLength / minigameAmount)
 	{
 		minigameController->Update();
 		if (levelArrows_.empty() && levelButtons_.empty()) {
@@ -197,6 +204,10 @@ void PlayState::update(Uint32 time)
 			robot->queueAnimationChange(Resources::RobotIdle);
 			perico->queueAnimationChange(Resources::PericoIdle);
 			animationMiniGame = false;
+
+			int aux = minigame->getAccuracy();
+			if (aux != 0)
+				updateScoreMinigame(aux);
 		}
 	}
 	if (timer->DeltaTime() > ((bh->getBeatTime() / 1000.0) / (animationFramesPerBeat / 1000)) - msDiff)
@@ -236,6 +247,9 @@ bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 			lip->handleInput(time, e);
 			if (lip2 != nullptr)
 				lip2->handleInput(time, e);
+			player1->handleInput(time, e);
+			if (player2 != nullptr)
+				player2->handleInput(time, e);
 			GameState::handleEvent(time, e);
 		}
 		return false;

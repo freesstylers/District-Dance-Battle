@@ -28,6 +28,10 @@ protected:
 	PlayState* playS;
 	TimerNoSingleton* timer;
 
+	int currentMinigameScore;
+	int noteAmount;
+	int maxNotes;
+
 
 public:
 	MiniGame(GameManager* g, PlayState* p );
@@ -39,6 +43,8 @@ public:
 	virtual void createList();
 	virtual void deleteList();
 	virtual void resetMinigame() { end = false; };
+
+	int getAccuracy() { if (currentMinigameScore == noteAmount) return 1; else if (currentMinigameScore >= noteAmount / 2) return 2; else return 0; }
 
 	std::list<Note*> screenButtons_;
 	std::list<Note*> levelButtons_;

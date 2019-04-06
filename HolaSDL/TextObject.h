@@ -3,7 +3,7 @@
 class TextObject :
 	public GameObject
 {
-private:
+protected:
 	Texture* text;
 	Font* textFont;
 

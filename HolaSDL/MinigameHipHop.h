@@ -18,8 +18,6 @@ public:
 	virtual void resetMinigame();
 
 protected:
-	int noteAmount = 15;
-	int maxNotes = noteAmount;
 	Crosshair* mira;
 };
 
