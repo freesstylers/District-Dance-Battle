@@ -3,8 +3,9 @@
 #include "Note.h"
 #include "Squares.h"
 #include "Vector2D.h"
-#include "GameObject.h"
 #include <list>
+#include "ComboText.h"
+
 class PlayState;
 class PlayerPack : public GameObject
 {
@@ -16,8 +17,14 @@ protected:
 	Squares* leftNoteBar;
 	Squares* rightNoteBar;
 	PlayState* playstate_;
+	ComboText* comboTxt;
+	Vector2D comboPosition;
 	
 	int noteYLimit;
+	int comboTextX;
+
+	int combo;
+	void updateCombo(int newCombo);
 
 public:
 	PlayerPack();
@@ -34,6 +41,7 @@ public:
 	void errorRight();
 
 	virtual void updateResolution(double wScale, double hScale);
-
+	void addCombo(int i);
+	void resetCombo();
 };
 

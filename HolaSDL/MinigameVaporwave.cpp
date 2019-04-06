@@ -96,6 +96,8 @@ void MinigameVaporwave::handleInput(Uint32 time, SDL_Event e)
 						cout << "bien minigame" << endl;
 						fback->queueAnimationChange(Resources::FeedbackGood);
 						failed = false;
+
+						currentMinigameScore++;
 					}
 					else
 					{
@@ -127,7 +129,7 @@ void MinigameVaporwave::createList()
 	maxNotes = noteAmount;
 	Note* note;
 	int select=0;
-	for (int i = 0; i < 8; i++) {
+	for (int i = 0; i < noteAmount; i++) {
 		aux = rand() % 8;
 
 		switch (aux) {

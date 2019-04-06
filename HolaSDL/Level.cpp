@@ -69,7 +69,7 @@ void Level::init() {
 			level->levelArrows_.push_back(note);
 			level->levelArrows2_.push_back(note2);
 
-			if(aux!=0) noteAmount++;
+			if(aux != 0) noteAmount++;
 		}
 	}
 

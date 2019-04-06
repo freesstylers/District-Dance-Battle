@@ -3,7 +3,6 @@
   <ItemGroup>
     <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="Button.cpp" />
-    <ClCompile Include="CutSceneState.cpp" />
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="FontsManager.cpp" />
     <ClCompile Include="GameManager.cpp" />
@@ -55,11 +54,12 @@
     <ClCompile Include="PanelMap.cpp" />
     <ClCompile Include="EffectVaporwave.cpp" />
     <ClCompile Include="EmptyObject.cpp" />
+    <ClCompile Include="TextObject.cpp" />
+    <ClCompile Include="ComboText.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioManager.h" />
     <ClInclude Include="Button.h" />
-    <ClInclude Include="CutSceneState.h" />
     <ClInclude Include="Font.h" />
     <ClInclude Include="FontsManager.h" />
     <ClInclude Include="GameManager.h" />
@@ -111,6 +111,8 @@
     <ClInclude Include="PanelMap.h" />
     <ClInclude Include="EffectVaporwave.h" />
     <ClInclude Include="EmptyObject.h" />
+    <ClInclude Include="TextObject.h" />
+    <ClInclude Include="ComboText.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

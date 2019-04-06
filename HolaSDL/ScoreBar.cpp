@@ -1,11 +1,11 @@
 #include "ScoreBar.h"
 
-ScoreBar::ScoreBar(SDLGame* game, double width, double height, Vector2D pos, int noteAmount, int maxHeight) : GameObject(game)
+ScoreBar::ScoreBar(SDLGame* game, double width, double height, Vector2D pos, int maxScore, int maxHeight) : GameObject(game)
 {
 	setWidth(width);
 	setHeight(height);
 	setPosition(pos);
-	noteAmount_ = noteAmount;
+	maxScore_ = maxScore;
 	maxHeight_ = maxHeight;
 	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::YellowBar);
 
@@ -21,15 +21,22 @@ void ScoreBar::updateBar(int punt)
 {
 	double fraction = 0;
 
-	fraction = ((double)maxHeight_ / (double)noteAmount_) * (1.0 / punt); //obtencion de crecimiento de puntuacion, se realiza un cociente para casos en los que la puntuacion no sea la maxima (>perfecto)
+	fraction = (punt * maxHeight_) / (double)maxScore_;
 
-	currentHeight = currentHeight + fraction;
+	currentHeight = fraction;
 
 	setHeight(currentHeight);
-	position_.setY(originalHeight - currentHeight); //restamos altura para que crezca en la direccion deseada, en este caso hacia arriba
+	position_.setY(originalHeight - currentHeight); 
 }
 
 
 ScoreBar::~ScoreBar()
 {
+}
+
+void ScoreBar::updateResolution(double wScale, double hScale)
+{
+	GameObject::updateResolution(wScale, hScale);
+
+	maxHeight_ = maxHeight_ * hScale;
 }

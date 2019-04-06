@@ -12,15 +12,15 @@ EndState::EndState(GameManager * g,  int actualScore, int maxScore, int percenta
 	controller = SDL_GameControllerOpen(0);
 	if (actualScore >= scoreLimit) {
 		perico->forceAnimationChange(Resources::PericoDance1);
-		Character*letra = new Character(g, 100, 100, Vector2D(400, 300), Resources::LetraS);
+		Character*letra = new Character(g, 100, 100, Vector2D(400, 300), Resources::ScoreS);
 		stage.push_back(letra);
 		
 	}
 	else {
 		perico->forceAnimationChange(Resources::PericoDab);
-		Character*letra = new Character(g, 100, 100, Vector2D(400, 300), Resources::LetraS);
+		Character*letra = new Character(g, 100, 100, Vector2D(400, 300), Resources::ScoreS);
 		stage.push_back(letra);
-		//Resources::LetraA;
+		//Resources::ScoreA;
 	}
 	stage.push_back(cont);
 	stage.push_back(sal);

@@ -75,9 +75,17 @@ protected:
 	int pointOffset = 70;	//offset entre las barras de notas y el centro de la pantalla
 	int initialNoteHeight = 70;	//altura a la cual se generan las notas en pantalla
 
-	int maxScore = 400;
+	int maxScore = 1000000;
 	
-	int maxNoteValue = 0;
+	double maxNoteValue = 0;
+	double maxMinigameValue = 0;
+	double currentScore = 0;
+
+	int minigameAmount = 3;
+
+	int combo;
+
+	double minigameScoreTotal = 0.25;
 
 public:
 	BeatHandler* bh;
@@ -109,8 +117,9 @@ public:
 	GameManager* getGameManager() { return manager; }
 
 	double msDiff = 0.0;  //difference between the time of a beat and the time when a note is created, in ms
-	int currentScore = 0;
-	void updateScore(int accuracy) { currentScore += maxNoteValue * (1 / accuracy); }
+
+	void updateScoreNote(int accuracy) { currentScore += maxNoteValue * (1 / accuracy); scoreBar->updateBar(currentScore); }
+	void updateScoreMinigame(int accuracy) { currentScore += maxMinigameValue * (1 / accuracy); scoreBar->updateBar(currentScore);	}
 	void activateBeatSignal() { beatSignal = true; }
 	bool getMiniActive() { return miniActive; }
 

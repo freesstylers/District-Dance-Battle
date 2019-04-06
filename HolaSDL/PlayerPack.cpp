@@ -17,6 +17,14 @@ PlayerPack::PlayerPack(SDLGame* manager, PlayState* ps, int leftNotesPos, int ri
 	rightNoteBar = new Squares(manager, squareWidth, 465 + 0.6 * pointSize, Vector2D(rightNotesPos + 1 - squareWidth / 2, rightNotesVector.getY()));
 
 	noteYLimit = leftPoint->getPosition().getY() + leftPoint->getHeight();
+
+	comboTextX = rightNoteBar->getPosition().getX() - ((rightNoteBar->getPosition().getX() - (leftNoteBar->getPosition().getX() + squareWidth)) / 2);
+
+	comboPosition = Vector2D(comboTextX, 465);	//the position of the Combo Text is anchored to the middle of the object's x coordinate
+
+	comboTxt = new ComboText(manager, manager->getServiceLocator()->getFonts()->getFont(Resources::PIXEL20), comboPosition);
+
+	combo = 0;
 }
 void PlayerPack::render(Uint32 time, bool beatSync)
 {
@@ -24,6 +32,7 @@ void PlayerPack::render(Uint32 time, bool beatSync)
 	rightNoteBar->render(time);
 	leftPoint->render(time);
 	rightPoint->render(time);
+	comboTxt->render(time);
 	for (Note* o : screenArrows_)
 	{
 		o->render(time, beatSync);
@@ -31,7 +40,6 @@ void PlayerPack::render(Uint32 time, bool beatSync)
 	for (Note* o : screenButtons_)
 	{
 		o->render(time, beatSync);
-		
 	}
 }
 
@@ -63,12 +71,13 @@ void PlayerPack::update(Uint32 time)
 			SDL_GameControllerButton x = aux->getKey();
 			if (x == SDL_CONTROLLER_BUTTON_INVALID) {
 				playstate_->feedbackLeft->addFeedback(Resources::FeedbackPerfect);
-				playstate_->scoreBar->updateBar(1);
-				playstate_->updateScore(1);
+				playstate_->updateScoreNote(1);
+				addCombo(1);
 			}
 			else
 			{
 				game_->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0);
+				resetCombo();
 			}
 			delete aux;
 			screenArrows_.pop_front();
@@ -82,12 +91,13 @@ void PlayerPack::update(Uint32 time)
 			SDL_GameControllerButton y = aux->getKey();
 			if (y == SDL_CONTROLLER_BUTTON_INVALID) {
 				playstate_->feedbackRight->addFeedback(Resources::FeedbackPerfect);
-				playstate_->scoreBar->updateBar(1);
-				playstate_->updateScore(1);
+				playstate_->updateScoreNote(1);
+				addCombo(1);
 			}
 			else
 			{
 				game_->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0);
+				resetCombo();
 			}
 			delete aux;
 			screenButtons_.pop_front();
@@ -111,6 +121,10 @@ bool PlayerPack::handleInput(Uint32 time, const SDL_Event& event)
 	rightNoteBar->handleInput(time, event);
 	leftPoint->handleInput(time, event);
 	rightNoteBar->handleInput(time, event);
+
+	if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_TAB)
+		updateCombo(combo);
+
 	return false;
 }
 
@@ -136,6 +150,27 @@ void PlayerPack::updateResolution(double wScale, double hScale)
 	noteYLimit = leftPoint->getPosition().getY() + leftPoint->getHeight();
 }
 
+void PlayerPack::addCombo(int i)
+{
+	combo += i;
+
+	if (combo == 10 || combo == 25 || combo == 50 || combo % 100 == 0)
+		updateCombo(combo);
+}
+
+void PlayerPack::resetCombo()
+{
+	if (combo != 0) {
+		combo = 0;
+		updateCombo(0);
+	}
+}
+
+void PlayerPack::updateCombo(int newCombo)
+{
+	comboTxt->updateCombo(newCombo);
+}
+
 PlayerPack::~PlayerPack()
 {
 	delete leftNoteBar;
@@ -154,13 +189,13 @@ PlayerPack::~PlayerPack()
 
 void PlayerPack::errorLeft()
 {
-	leftNoteBar->cleanAnimationQueue();
+	/*leftNoteBar->cleanAnimationQueue();
 	leftNoteBar->forceAnimationChange(Resources::SquareMiss);
-	leftNoteBar->queueAnimationChange(Resources::Square);
+	leftNoteBar->queueAnimationChange(Resources::Square);*/
 }
 
 void PlayerPack::errorRight() {
-	rightNoteBar->cleanAnimationQueue();
+	/*rightNoteBar->cleanAnimationQueue();
 	rightNoteBar->forceAnimationChange(Resources::SquareMiss);
-	rightNoteBar->queueAnimationChange(Resources::Square);
+	rightNoteBar->queueAnimationChange(Resources::Square);*/
 }

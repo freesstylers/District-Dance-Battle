@@ -5,8 +5,6 @@
 class MinigameVaporwave: public MiniGame
 {
 protected:
-	int noteAmount = 15;
-	int maxNotes = noteAmount;
 	Texture * textureButton;
 
 public:
