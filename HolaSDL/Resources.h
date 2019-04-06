@@ -46,12 +46,14 @@ public:
 		AButton1,
 		BButton1,
 		XButton1,
-		YButton1
+		YButton1,
 		LetraA,
 		LetraB,
 		LetraC,
 		LetraD,
-		LetraS
+		LetraS,
+		NumPlayersSwitch,
+		Star
 		// text
 	};
 

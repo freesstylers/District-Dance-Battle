@@ -19,7 +19,7 @@ void PlayState::newGame(int lvl)
 	{
 	case 0:
 		levelName = "prueba";
-		effectVaporWave = new EmptyObject(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::EffectVaporWave);
+		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::EffectVaporWave);
 		minigame = new MinigameVaporwave(manager, this);
 		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::testBG);
 		robot = new Character(manager, 60 * 3.5, 120 * 3.5, Vector2D(manager->getDefaultWindowWidth() - 270, initialNoteHeight + 70), Resources::RobotIdle);
@@ -121,7 +121,7 @@ void PlayState::newGame2P(int lvl)
 
 	bh = new BeatHandler(level->bpm);
 
-	effectVaporWave = new EmptyObject(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::EffectVaporWave);
+	effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::EffectVaporWave);
 
 	stage.push_back(bg);
 	stage.push_back(player1);
@@ -248,7 +248,7 @@ void PlayState::render(Uint32 time, bool beatSync)
 	GameState::render(time, beatSignal);
 	if (miniActive) {
 		minigame->render(time);
-		effectVaporWave->render(time, beatSync);
+		effectVaporWave->render(time, true);
 	}
 
 	beatSignal = false;

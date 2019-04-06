@@ -6,15 +6,8 @@ MenuState::MenuState(GameManager* g) :GameState(g)
 	gameManager = g;
 	keystates = SDL_GetKeyboardState(NULL);
 	controller = SDL_GameControllerOpen(0);
-	/*int width = 100;
-	int height = 100;
-	stage.push_back(new Button(gameManager, width, height, Vector2D((2 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - height / 2, gameManager->getDefaultWindowHeight() / 2 - height / 2), play));
-	firstButton = stage.begin();
-	stage.push_back(new Button(gameManager, width, height, Vector2D((4 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - height / 2, gameManager->getDefaultWindowHeight() / 2 - height / 2), play));
-	stage.push_back(new Button(gameManager, width, height, Vector2D((6 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - height / 2, gameManager->getDefaultWindowHeight() / 2 - height / 2), createButtons));
-	selectedButton = firstButton;
-	(*selectedButton)->scale(2);*/
 	createMainButtons();
+	activeLevels[0] = true;
 }
 
 MenuState::~MenuState()
@@ -23,64 +16,86 @@ MenuState::~MenuState()
 
 bool MenuState::handleEvent(Uint32 time, SDL_Event e)
 {
-	//if (e.type == SDL_CONTROLLERBUTTONDOWN) {
+	if (e.type == SDL_CONTROLLERBUTTONDOWN) {
 		if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) || e.key.keysym.sym == SDLK_RIGHT) {
+			buttons[index].second.reset();
 			nextButton();
 		}
 		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT) || e.key.keysym.sym == SDLK_LEFT) {
+			buttons[index].second.reset();
 			backButton();
 		}
-		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A)|| e.key.keysym.sym == SDLK_RETURN) {
-			static_cast<Button*>((*selectedButton))->callCallback();
-		}else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B)|| e.key.keysym.sym == SDLK_DELETE) {
-			createMainButtons();
+		if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_UP) || e.key.keysym.sym == SDLK_UP) {
+			buttons[index].second.nextSwitch();
 		}
-	//}
+		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN) || e.key.keysym.sym == SDLK_DOWN) {
+			buttons[index].second.prevSwitch();
+		}
+		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A)|| e.key.keysym.sym == SDLK_RETURN) {
+			buttons[index].second.selectButton();
+		}else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B)|| e.key.keysym.sym == SDLK_DELETE) {
+			
+		}
+	}
 	return GameState::handleEvent(time, e);
 }
 
-void MenuState::deleteButtons()
+void MenuState::render(Uint32 time, bool beatSync)
 {
-	if (!stage.empty()) {
-		selectedButton = firstButton;
-		auto it = selectedButton;
-		while (selectedButton != stage.end()) {
-			it++;
-			stage.erase(selectedButton);
-			selectedButton = it;
-		}
+	GameState::render(time);
+	for (auto o : buttons) {
+		o.first.render(time, false);
 	}
+	buttons[index].second.render(time, false);
 }
 
 void MenuState::createMainButtons()
 {
-	deleteButtons();
-	int width = 100;
-	int height = 100;
-	stage.push_back(new Button(gameManager, width, height, Vector2D((2 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - height / 2, gameManager->getDefaultWindowHeight() / 2 - height / 2), play));
-	firstButton = stage.begin();
-	stage.push_back(new Button(gameManager, width, height, Vector2D((4 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - height / 2, gameManager->getDefaultWindowHeight() / 2 - height / 2), play));
-	stage.push_back(new Button(gameManager, width, height, Vector2D((6 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - height / 2, gameManager->getDefaultWindowHeight() / 2 - height / 2), createButtons));
-	selectedButton = firstButton;
-	(*selectedButton)->scale(2);
+	int ang = 360 / 5;
+	int angIni = 270;
+	int angulo;
+	int r =  150;
+	for (int i = 0; i < 5; i++) {
+		angulo = angIni + ang * i;
+		buttons[i].first = EmptyObject(gameManager, Vector2D((gameManager->getWindowWidth()/2 + r * cos(((angulo*M_PI)/180)))-25, (gameManager->getWindowHeight()/2 + r * sin(((angulo*M_PI) / 180)))-25), 50, 50, Resources::YButton);
+		buttons[i].second = Panel(gameManager, buttons[i].first.getPosition(), Resources::DownArrow, "asdf", 3, "D3SP4C1T0");
+	}
+
+	buttons[0].first.scale(2);
 }
 
 void MenuState::nextButton()
 {
-	(*selectedButton)->scale(0.5);
-	if ((*selectedButton) != stage.back()) {
-		selectedButton++;
-	}
-	(*selectedButton)->scale(2);
+	buttons[index].first.scale(0.5);
+
+	do
+	{
+		if (index < max) {
+			index++;
+		}
+		else {
+			index = min;
+		}
+	} while (!activeLevels[index]);
+	
+	buttons[index].first.scale(2);
 }
 
 void MenuState::backButton()
 {
-	(*selectedButton)->scale(0.5);
-	if (selectedButton != firstButton) {
-		selectedButton--;
-	}
-	(*selectedButton)->scale(2);
+	buttons[index].first.scale(0.5);
+
+	do
+	{
+		if (index > min) {
+			index--;
+		}
+		else {
+			index = max;
+		}
+	} while (!activeLevels[index]);
+	
+	buttons[index].first.scale(2);
 }
 
 void MenuState::play(GameManager* game) {
@@ -88,44 +103,12 @@ void MenuState::play(GameManager* game) {
 	//game->getMachine()->pushState(new PlayState(game, ));
 }
 
-void MenuState::createButtons(GameManager * gameManager)
-{
-	static_cast<MenuState*>(gameManager->getMachine()->currentState())->deleteButtons();
-	int width = 50;
-	int height = 50;
-	gameManager->getMachine()->currentState()->stage.push_back(new Button(gameManager, width, height, Vector2D((4 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - width / 2, gameManager->getDefaultWindowHeight() / 3 - height / 2), play));
-	static_cast<MenuState*>(gameManager->getMachine()->currentState())->firstButton = gameManager->getMachine()->currentState()->stage.begin();
-	gameManager->getMachine()->currentState()->stage.push_back(new Button(gameManager, width, height, Vector2D((5 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - width / 2, gameManager->getDefaultWindowHeight() / 3 - height / 2), play));
-	gameManager->getMachine()->currentState()->stage.push_back(new Button(gameManager, width, height, Vector2D((6 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - width / 2, gameManager->getDefaultWindowHeight() / 3 - height / 2), play));
-	static_cast<MenuState*>(gameManager->getMachine()->currentState())->selectedButton = static_cast<MenuState*>(gameManager->getMachine()->currentState())->firstButton;
-	(*static_cast<MenuState*>(gameManager->getMachine()->currentState())->selectedButton)->scale(2);
-
-}
-
 void MenuState::load(GameManager* game)
 {
-	cout << "cargando" << endl;
-	//game->getMachine()->pushState(new PlayState(game, 1));
+
 }
 
 void MenuState::exit(GameManager* game)
 {
-	cout << "saliendo" << endl;
-	//game->exit();
+
 }
-
-///////////////////////////////////////////////////////////////////////
-
-/*
-
-//new game
-
-//load game
-
-//settings
-
-//exit
-
-//others?
-
-*/

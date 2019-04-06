@@ -20,6 +20,8 @@
 #include "Feedback.h"
 #include "FeedbackPool.h"
 #include "EmptyObject.h"
+#include "EffectVaporwave.h"
+#include "Squares.h"
 #include "Level.h"
 #include "Background.h"
 #include "TimerNoSingleton.h"
@@ -51,7 +53,7 @@ protected:
 	MinigameVaporwave* minigame;
 	Character* perico;
 	Character* robot;
-	EmptyObject* effectVaporWave;
+	EffectVaporwave* effectVaporWave;
 	Level* level;
 
 	SongBar* songBar; //indicates time left, shaped like a note

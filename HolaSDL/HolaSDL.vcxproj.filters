@@ -29,7 +29,6 @@
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Vector2D.cpp" />
     <ClCompile Include="Feedback.cpp" />
-    <ClCompile Include="EmptyObject.cpp" />
     <ClCompile Include="Squares.cpp" />
     <ClCompile Include="EndState.cpp" />
     <ClCompile Include="Level.cpp" />
@@ -53,6 +52,9 @@
     <ClCompile Include="Crosshair.cpp" />
     <ClCompile Include="DialogState.cpp" />
     <ClCompile Include="TextBox.cpp" />
+    <ClCompile Include="PanelMap.cpp" />
+    <ClCompile Include="EffectVaporwave.cpp" />
+    <ClCompile Include="EmptyObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioManager.h" />
@@ -83,7 +85,6 @@
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Vector2D.h" />
     <ClInclude Include="Feedback.h" />
-    <ClInclude Include="EmptyObject.h" />
     <ClInclude Include="Squares.h" />
     <ClInclude Include="EndState.h" />
     <ClInclude Include="Level.h" />
@@ -107,6 +108,9 @@
     <ClInclude Include="Crosshair.h" />
     <ClInclude Include="DialogState.h" />
     <ClInclude Include="TextBox.h" />
+    <ClInclude Include="PanelMap.h" />
+    <ClInclude Include="EffectVaporwave.h" />
+    <ClInclude Include="EmptyObject.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
