@@ -56,10 +56,11 @@ vector<Resources::ImageInfo> Resources::images_ {
 	{ScoreC, "resources/images/Letra_C.png", 32, 32, 1, 1, 1},
 	{ScoreD, "resources/images/Letra_D.png", 32, 32, 1, 1, 1},
 	{ScoreS, "resources/images/Letra_S.png", 32, 32, 1, 1, 1},
-	{NumPlayersSwitch, "resources/images/1P2P.png", 960, 960, 2, 1, 2},
+	{NumPlayersSwitch, "resources/images/1P2P.png", 34, 30, 2, 1, 2},
 	{Star, "resources/images/Star.png", 40, 38, 1, 1, 1 },
 	{PointPushed, "resources/images/PointPushed.png", 32, 32, 1, 1, 1 },
-	{Dance, "resources/images/BotonDance.png", 56, 37, 1, 2, 2 }
+	{Dance, "resources/images/BotonDance.png", 68, 30, 2, 1, 2 },
+	{Panel, "resources/images/Panel.png", 50, 75, 1, 1, 1 }
 
 };
 
