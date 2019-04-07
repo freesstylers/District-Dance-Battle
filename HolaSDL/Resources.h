@@ -55,7 +55,8 @@ public:
 		NumPlayersSwitch,
 		Star,
 		PointPushed,
-		Dance
+		Dance,
+		Panel
 		
 		// text
 	};
