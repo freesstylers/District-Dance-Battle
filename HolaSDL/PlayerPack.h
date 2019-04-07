@@ -5,6 +5,8 @@
 #include "Vector2D.h"
 #include <list>
 #include "ComboText.h"
+#include "FeedbackPool.h"
+#include "LevelInputManager.h"
 
 class PlayState;
 class PlayerPack : public GameObject
@@ -28,7 +30,7 @@ protected:
 
 public:
 	PlayerPack();
-	PlayerPack(SDLGame* manager, PlayState* ps, int leftNotesPos, int rightNotesPos, int pointSize, int squareWidth);
+	PlayerPack(SDLGame* manager, PlayState* ps, int leftNotesPos, int rightNotesPos, int pointSize, int squareWidth, int player);
 	~PlayerPack();
 	virtual void render(Uint32 time, bool beatSync);
 	virtual void update(Uint32 time);
@@ -37,11 +39,15 @@ public:
 	Point* getRightPoint() { return rightPoint; }
 	std::list<Note*> screenArrows_;
 	std::list<Note*> screenButtons_;
+	FeedbackPool* feedbackLeft;
+	FeedbackPool* feedbackRight;
 	void errorLeft();
 	void errorRight();
 
 	virtual void updateResolution(double wScale, double hScale);
 	void addCombo(int i);
 	void resetCombo();
+
+	LevelInputManager* lip;
 };
 

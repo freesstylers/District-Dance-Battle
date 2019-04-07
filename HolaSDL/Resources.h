@@ -54,6 +54,7 @@ public:
 		ScoreS,
 		NumPlayersSwitch,
 		Star,
+		PointPushed,
 		Dance
 		
 		// text

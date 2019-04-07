@@ -37,15 +37,12 @@ void PlayState::newGame(int lvl)
 
 	leftNotesVector2 = Vector2D(leftNotesPos - 50 / 2 + 200, 70);
 	rightNotesVector2 = Vector2D(rightNotesPos - 50 / 2 + 200, 70);
-	player1 = new PlayerPack(manager,this, leftNotesPos, rightNotesPos, pointSize, noteBarWidth);
-	feedbackLeft = new FeedbackPool(manager, pointSize * 0.8, pointSize * 0.8, Vector2D(leftNotesPos - (pointSize * 0.8) - (pointSize * 0.8), 465 + pointSize / 2));
-	feedbackRight = new FeedbackPool(manager, pointSize * 0.8, pointSize * 0.8, Vector2D(rightNotesPos + (pointSize * 0.8), 465 + pointSize / 2));
+	player1 = new PlayerPack(manager,this, leftNotesPos, rightNotesPos, pointSize, noteBarWidth,0);
 	
 	level = new Level(this, manager, levelName);
 	level->init();
 	player2 = nullptr;
 	timer = Timer::Instance();
-	lip = new LevelInputManager(this, player1, 0);
 
 	maxMinigameValue = (maxScore * minigameScoreTotal) / minigameAmount;
 	maxNoteValue = (maxScore * (1 - minigameScoreTotal)) / level->noteAmount;
@@ -74,8 +71,6 @@ void PlayState::newGame(int lvl)
 	stage.push_back(songBarBG);
 	stage.push_back(songBar);
 	stage.push_back(player1);
-	stage.push_back(feedbackLeft);
-	stage.push_back(feedbackRight);
 
 
 	level->playSong();
@@ -99,18 +94,15 @@ void PlayState::newGame2P(int lvl)
 	leftNotesVector = Vector2D(leftNotesPos - 50 / 2, 70);
 	rightNotesVector = Vector2D(rightNotesPos - 50 / 2, 70);
 
-	leftNotesVector2 = Vector2D(leftNotesPos - 50 / 2 + 200, 70);
-	rightNotesVector2 = Vector2D(rightNotesPos - 50 / 2 + 200, 70);
+	leftNotesVector2 = Vector2D(leftNotesPos - 50 / 2 + 250, 70);
+	rightNotesVector2 = Vector2D(rightNotesPos - 50 / 2 + 250, 70);
 
 	bg = new Background(manager, manager->getWindowWidth(), manager->getWindowHeight(), Vector2D(0, 0),Resources::testBG);
-	player1 = new PlayerPack(manager,this, leftNotesPos, rightNotesPos, pointSize2P, noteBarWidth*0.75);
-	player2 = new PlayerPack(manager,this, leftNotesPos + 200, rightNotesPos + 200, pointSize2P, noteBarWidth*0.75);
+	player1 = new PlayerPack(manager,this, leftNotesPos, rightNotesPos, pointSize2P, noteBarWidth*0.75,0);
+	player2 = new PlayerPack(manager,this, leftNotesPos + 250, rightNotesPos + 250, pointSize2P, noteBarWidth*0.75,1);
 	level = new Level(this, manager, levelName);
 	level->init();
 	timer = Timer::Instance();
-	lip = new LevelInputManager(this, player1, 0);
-	if (player2 != nullptr)
-		lip2 = new LevelInputManager(this, player2, 1);
 	maxNoteValue = maxScore / level->noteAmount;
 
 	songBarBG = new BarBackground(manager, 1, 14, Vector2D(50, 35), (((manager->getWindowWidth() - 50) / level->songLength) / 70.5), Resources::YellowBar); //70.5 es la constante para ajustar la velocidad de la barra al tiempo de la cancion
@@ -118,8 +110,9 @@ void PlayState::newGame2P(int lvl)
 
 	scoreBar = new ScoreBar(manager, 20, 0, Vector2D(50, 465 + pointSize), maxScore, songBarBG->getPosition().getY() + songBarBG->getHeight() * 2);
 
-	perico = new Character(manager, 60 * 3.5, 120 * 3.5, Vector2D(75, initialNoteHeight + 30 + 70), Resources::PericoIdle);
-	robot = new Character(manager, 60 * 3.5, 120 * 3.5, Vector2D(manager->getWindowWidth() - 270, initialNoteHeight - 29 + 70), Resources::RobotIdle);
+	perico = new Character(manager, 60 * 3, 120 * 3, Vector2D(40, initialNoteHeight + 100), Resources::PericoIdle);
+	robot = new Character(manager, 60 * 3, 120 * 3, Vector2D(manager->getWindowWidth() - 230, initialNoteHeight + 100), Resources::RobotIdle);
+
 
 	minigame = new MinigameVaporwave(manager, this);
 	minigameController = new TimerNoSingleton();
@@ -136,8 +129,6 @@ void PlayState::newGame2P(int lvl)
 	stage.push_back(songBar);
 	stage.push_back(player1);
 	stage.push_back(player2);
-	//stage.push_back(feedbackLeft);
-	//stage.push_back(feedbackRight);
 
 
 
@@ -151,8 +142,6 @@ void PlayState::newGame2P(int lvl)
 PlayState::~PlayState()
 {
 	deleteAll();
-	delete lip;
-	delete lip2;
 	delete bh;
 	delete effectVaporWave;
 	delete level;
@@ -186,7 +175,7 @@ void PlayState::update(Uint32 time)
 		miniActive=true;
 		if (!animationMiniGame)
 		{
-			lip->setMinigameActive(true);
+			player1->lip->setMinigameActive(true);
 			robot->forceAnimationChange(Resources::RobotDance);
 			perico->forceAnimationChange(Resources::PericoDance1);
 			animationMiniGame = true;
@@ -194,7 +183,7 @@ void PlayState::update(Uint32 time)
 		}
 		minigame->update(time);
 		if (minigame->getEnd()) {
-			lip->setMinigameActive(false);
+			player1->lip->setMinigameActive(false);
 			miniActive = false;
 			msDiff = 0;
 			timer->Reset();
@@ -235,18 +224,20 @@ bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 			SDL_SetWindowFullscreen(manager->getWindow(), SDL_WINDOW_FULLSCREEN);
 		}
 	}
+	/*else if (e.key.keysym.sym == SDLK_SPACE)
+		updateScoreNote(1);*/
 	else
 	{
 		if (miniActive) {
-			lip->setMinigameActive(true);
+			player1->lip->setMinigameActive(true);
 
 			minigame->handleInput(time, e);
 		}
 		else
 		{
-			lip->handleInput(time, e);
+			/*lip->handleInput(time, e);
 			if (lip2 != nullptr)
-				lip2->handleInput(time, e);
+				lip2->handleInput(time, e);*/
 			player1->handleInput(time, e);
 			if (player2 != nullptr)
 				player2->handleInput(time, e);
@@ -274,6 +265,18 @@ void PlayState::deleteAll()
 	{
 		delete o;
 	}
+}
+
+void PlayState::updateScoreNote(int accuracy)
+{
+	currentScore += maxNoteValue * (1 / accuracy);
+	scoreBar->updateBar(currentScore);
+}
+
+void PlayState::updateScoreMinigame(int accuracy)
+{
+	currentScore += maxMinigameValue * (1 / accuracy);
+	scoreBar->updateBar(currentScore);
 }
 
 int PlayState::getScore()
