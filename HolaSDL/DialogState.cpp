@@ -9,9 +9,9 @@
 using namespace std;
 
 
-DialogState::DialogState(GameManager* g, string txt, int numctrl):GameState(g)
+DialogState::DialogState(GameManager* g, int txt, int numctrl):GameState(g)
 {
-	archivo = txt;
+	archivo = levels[txt];
 	controller = SDL_GameControllerOpen(numctrl);
 	init();
 }

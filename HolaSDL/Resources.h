@@ -53,7 +53,8 @@ public:
 		ScoreD,
 		ScoreS,
 		NumPlayersSwitch,
-		Star
+		Star,
+		Dance
 		
 		// text
 	};
@@ -74,7 +75,8 @@ public:
 		ARIAL16,
 		ARIAL24,
 		PIXEL30,
-		PIXEL20
+		PIXEL20,
+		PIXEL10
 	};
 
 

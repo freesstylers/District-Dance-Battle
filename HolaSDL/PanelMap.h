@@ -1,27 +1,42 @@
 #pragma once
 #include "EmptyObject.h"
-#include "GameManager.h"
+
+class GameManager;
 
 class PanelMap
 {
 public:
 	PanelMap();
-	PanelMap(GameManager* gm, Vector2D panelPos, int photo, string description, int difficulty, string name);
+	PanelMap(GameManager* manager, Vector2D panelPos, int photo, int difficulty, string name, int level);
 	virtual ~PanelMap();
 	void render(Uint32 time, bool beatHandler);
+	void renderLetters(Uint32 time, bool beatHandler);
+	void reset();
+	void prevSwitch();
+	void nextSwitch();
+	void selectButton();
 	int index = 0;
 private:
-	//EmptyObject switches[3];
+	GameManager * manager_;
+
+	EmptyObject switches[3];
 	EmptyObject fondo_;
 	EmptyObject photo_;
+	EmptyObject star_;
 
-	int height = 250;
-	int width = 100;
+	vector<string> descripcion;
+
+	int height = 300;
+	int width = 200;
 	int difficulty_;
+	int lvl_;
+	int numLineas = 0;
 
 	bool oneP_ = true;
-	bool facil_ = true;
+	bool hardMode_ = false;
+	bool difActive = false;
 
 	string name_;
+	string description_;
 };
 
