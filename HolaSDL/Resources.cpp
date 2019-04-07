@@ -56,7 +56,8 @@ vector<Resources::ImageInfo> Resources::images_ {
 	{ScoreD, "resources/images/Letra_D.png", 32, 32, 1, 1, 1},
 	{ScoreS, "resources/images/Letra_S.png", 32, 32, 1, 1, 1},
 	{NumPlayersSwitch, "resources/images/1P2P.png", 960, 960, 2, 1, 2},
-	{Star, "resources/images/Star.png", 40, 38, 1, 1, 1 }
+	{Star, "resources/images/Star.png", 40, 38, 1, 1, 1 },
+	{PointPushed, "resources/images/PointPushed.png", 32, 32, 1, 1, 1 }
 
 };
 

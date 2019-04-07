@@ -5,17 +5,18 @@ PlayerPack::PlayerPack()
 {
 }
 
-PlayerPack::PlayerPack(SDLGame* manager, PlayState* ps, int leftNotesPos, int rightNotesPos, int pointSize, int squareWidth): GameObject(manager), playstate_(ps)
+PlayerPack::PlayerPack(SDLGame* manager, PlayState* ps, int leftNotesPos, int rightNotesPos, int pointSize, int squareWidth, int player): GameObject(manager), playstate_(ps)
 {
-
+	lip = new LevelInputManager(playstate_, this, player);
 	leftNotesVector = Vector2D(leftNotesPos - 50 / 2, 70);
 	rightNotesVector = Vector2D(rightNotesPos - 50 / 2, 70);
 
-	leftPoint = new Point(manager, pointSize, pointSize, Vector2D(leftNotesPos - pointSize / 2, 465));
-	rightPoint = new Point(manager, pointSize, pointSize, Vector2D(rightNotesPos - pointSize / 2, 465));
+	leftPoint = new Point(manager, pointSize, pointSize, Vector2D(leftNotesPos - pointSize / 2, 465), lip->getController(), true);
+	rightPoint = new Point(manager, pointSize, pointSize, Vector2D(rightNotesPos - pointSize / 2, 465), lip->getController(), false);
 	leftNoteBar = new Squares(manager, squareWidth, 465 + 0.6 * pointSize, Vector2D(leftNotesPos + 1 - squareWidth / 2, leftNotesVector.getY()));
 	rightNoteBar = new Squares(manager, squareWidth, 465 + 0.6 * pointSize, Vector2D(rightNotesPos + 1 - squareWidth / 2, rightNotesVector.getY()));
-
+	feedbackLeft = new FeedbackPool(manager, pointSize * 0.8, pointSize * 0.8, Vector2D(leftNotesPos - (pointSize * 0.8) - (pointSize * 0.8), 465 + pointSize / 2));
+	feedbackRight = new FeedbackPool(manager, pointSize * 0.8, pointSize * 0.8, Vector2D(rightNotesPos + (pointSize * 0.8), 465 + pointSize / 2));
 	noteYLimit = leftPoint->getPosition().getY() + leftPoint->getHeight();
 
 	comboTextX = rightNoteBar->getPosition().getX() - ((rightNoteBar->getPosition().getX() - (leftNoteBar->getPosition().getX() + squareWidth)) / 2);
@@ -33,6 +34,8 @@ void PlayerPack::render(Uint32 time, bool beatSync)
 	leftPoint->render(time);
 	rightPoint->render(time);
 	comboTxt->render(time);
+	feedbackLeft->render(time,false);
+	feedbackRight->render(time,false);
 	for (Note* o : screenArrows_)
 	{
 		o->render(time, beatSync);
@@ -51,6 +54,8 @@ void PlayerPack::update(Uint32 time)
 		rightNoteBar->update(time);
 		leftPoint->update(time);
 		rightNoteBar->update(time);
+		feedbackRight->update(time);
+		feedbackLeft->update(time);
 		for (Note* o : screenArrows_)
 		{
 			if (o != nullptr) {
@@ -70,7 +75,7 @@ void PlayerPack::update(Uint32 time)
 			Note* aux = screenArrows_.front();
 			SDL_GameControllerButton x = aux->getKey();
 			if (x == SDL_CONTROLLER_BUTTON_INVALID) {
-				playstate_->feedbackLeft->addFeedback(Resources::FeedbackPerfect);
+				feedbackLeft->addFeedback(Resources::FeedbackPerfect);
 				playstate_->updateScoreNote(1);
 				addCombo(1);
 			}
@@ -90,7 +95,7 @@ void PlayerPack::update(Uint32 time)
 			Note* aux = screenButtons_.front();
 			SDL_GameControllerButton y = aux->getKey();
 			if (y == SDL_CONTROLLER_BUTTON_INVALID) {
-				playstate_->feedbackRight->addFeedback(Resources::FeedbackPerfect);
+				feedbackRight->addFeedback(Resources::FeedbackPerfect);
 				playstate_->updateScoreNote(1);
 				addCombo(1);
 			}
@@ -109,6 +114,7 @@ void PlayerPack::update(Uint32 time)
 
 bool PlayerPack::handleInput(Uint32 time, const SDL_Event& event)
 {
+	lip->handleInput(time, event);
 	for (Note* o : screenArrows_)
 	{
 		o->handleInput(time, event);
@@ -120,7 +126,10 @@ bool PlayerPack::handleInput(Uint32 time, const SDL_Event& event)
 	leftNoteBar->handleInput(time, event);
 	rightNoteBar->handleInput(time, event);
 	leftPoint->handleInput(time, event);
+	rightPoint->handleInput(time, event);
 	rightNoteBar->handleInput(time, event);
+	feedbackLeft->handleInput(time, event);
+	feedbackRight->handleInput(time, event);
 
 	if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_TAB)
 		updateCombo(combo);
@@ -134,7 +143,8 @@ void PlayerPack::updateResolution(double wScale, double hScale)
 	rightNoteBar->updateResolution(wScale, hScale);
 	leftPoint->updateResolution(wScale, hScale);
 	rightPoint->updateResolution(wScale, hScale);
-
+	feedbackLeft->updateResolution(wScale, hScale);
+	feedbackRight->updateResolution(wScale, hScale);
 	Vector2D noteVel = playstate_->setVel(60000 / playstate_->getBPM());
 
 	for (Note* n : screenArrows_){
@@ -169,6 +179,22 @@ void PlayerPack::resetCombo()
 void PlayerPack::updateCombo(int newCombo)
 {
 	comboTxt->updateCombo(newCombo);
+	if (combo >= 0)
+	{
+		playstate_->getPerico()->setAnimation(Resources::PericoIdle);
+		if (combo >= 10)
+		{
+			playstate_->getPerico()->setAnimation(Resources::PericoDab);
+			if (combo >= 25)
+			{
+				playstate_->getPerico()->setAnimation(Resources::PericoDance1);
+				if (combo >= 50)
+				{
+					playstate_->getPerico()->setAnimation(Resources::PericoMaxPower);
+				}
+			}
+		}
+	}
 }
 
 PlayerPack::~PlayerPack()
@@ -177,6 +203,9 @@ PlayerPack::~PlayerPack()
 	delete rightNoteBar;
 	delete leftPoint;
 	delete rightPoint;
+	delete feedbackRight;
+	delete feedbackLeft;
+	delete lip;
 	for (Note* o : screenArrows_)
 	{
 		delete o;

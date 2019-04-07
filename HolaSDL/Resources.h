@@ -53,7 +53,8 @@ public:
 		ScoreD,
 		ScoreS,
 		NumPlayersSwitch,
-		Star
+		Star,
+		PointPushed
 		
 		// text
 	};
