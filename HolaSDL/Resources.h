@@ -56,7 +56,8 @@ public:
 		Star,
 		PointPushed,
 		Dance,
-		Panel
+		Panel,
+		CabezaVaporWave
 		
 		// text
 	};

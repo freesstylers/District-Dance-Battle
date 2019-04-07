@@ -19,6 +19,8 @@ public:
 private:
 	GameManager * manager_;
 
+	string types[6] = { "Tutorial", "VaporWave", "", "" , "" , "" };
+
 	EmptyObject switches[3];
 	EmptyObject fondo_;
 	EmptyObject photo_;

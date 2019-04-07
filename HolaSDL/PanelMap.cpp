@@ -12,11 +12,11 @@ PanelMap::PanelMap() : difficulty_(1), name_("") {
 
 PanelMap::PanelMap(GameManager* manager, Vector2D panelPos, int photo, int difficulty, string name, int level) : difficulty_(difficulty), name_(name), manager_(manager), lvl_(level) {
 	fondo_ = EmptyObject(manager_, panelPos, width, height, Resources::Panel);
-	star_ = EmptyObject(manager_, Vector2D(panelPos.getX() + width / 2, panelPos.getY() + 10), width / 10, width / 10, Resources::Star);
+	star_ = EmptyObject(manager_, Vector2D((panelPos.getX() + width / 2) + width / 40, panelPos.getY() + 10), width / 11, width / 11, Resources::Star);
 	switches[0] = EmptyObject(manager_, Vector2D(((panelPos.getX() + width / 2) - 34/2), (panelPos.getY() + height / 2) + (height / 24)), 34, 30, Resources::NumPlayersSwitch);
 	switches[1] = EmptyObject(manager_, Vector2D(((panelPos.getX() + width / 2) - 34/2), (panelPos.getY() + height / 2) + 5 * (height / 24)), 34, 30, Resources::NumPlayersSwitch);
 	switches[2] = EmptyObject(manager_, Vector2D(((panelPos.getX() + width / 2) - width/6), (panelPos.getY() + height / 2) + 9 * (height / 24) - 1), 68, 30, Resources::Dance);
-	photo_ = EmptyObject(manager_, Vector2D(panelPos.getX() + 5 + width / 2, panelPos.getY() + height / 10), (width / 2) - 10, 3 * height / 10, photo);
+	photo_ = EmptyObject(manager_, Vector2D((panelPos.getX() + ( width / 2)) - ((2*width / 5)/2), 10 + panelPos.getY() + height / 10), (2*width / 5), 3 * height / 11, photo);
 	switches[index].scale(2);
 	ifstream file("resources/levelsInfo/" + to_string(lvl_) + ".txt");
 	if (file.is_open()) {
@@ -28,15 +28,6 @@ PanelMap::PanelMap(GameManager* manager, Vector2D panelPos, int photo, int diffi
 		}
 	}
 	file.close();
-	Texture msg0(manager_->getRenderer(),
-		name_,
-		*(manager_->getServiceLocator()->getFonts()->getFont(
-			Resources::PIXEL20)), { COLOR(0x00000000) });
-	SDL_Rect dest;
-	dest.x = fondo_.getPosition().getX() + 5;
-	dest.y = fondo_.getPosition().getY() + 2;
-	dest.w = (fondo_.getWidth() / 2) - 10;
-	dest.h = fondo_.getWidth() / 10;
 }
 
 void PanelMap::render(Uint32 time, bool beatHandler) {
@@ -64,20 +55,17 @@ void PanelMap::renderLetters(Uint32 time, bool beatHandler) {
 	dest.y = fondo_.getPosition().getY() + 10;
 	dest.w = (fondo_.getWidth() / 2) - 10;
 	dest.h = fondo_.getWidth() / 10;
-
-
 	msg0.render(manager_->getRenderer(), dest);
-	dest.y = fondo_.getPosition().getY() + dest.h + 20;
-	dest.h = (((fondo_.getHeight() / 2) - dest.h) / (10)) - 3;
-	for (int i = 0; i < descripcion.size(); i++) {
+	dest.x = fondo_.getPosition().getX() + (fondo_.getWidth()/2) - ((types[lvl_].size()*15)/2);
+	dest.y = photo_.getPosition().getY() + photo_.getHeight();
+	dest.h = (fondo_.getPosition().getY()- dest.y +fondo_.getHeight() / 2);
 		Texture msg1(manager_->getRenderer(),
-			descripcion[i],
+			types[lvl_],
 			*(manager_->getServiceLocator()->getFonts()->getFont(
 				Resources::PIXEL10)), { COLOR(0x00000000) });
-		dest.w = descripcion[i].size() * 6;
+		dest.w = types[lvl_].size() * 15;
 		msg1.render(manager_->getRenderer(), dest);
 		dest.y = dest.y + (dest.h + 1);
-	}
 }
 
 void PanelMap::reset() {
