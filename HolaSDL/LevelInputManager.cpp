@@ -41,14 +41,14 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 				if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getLeftPoint()->getPosition().getY() + player->getLeftPoint()->getHeight() / 2)) <= 10)
 				{
 					cout << "perfecto" << endl;
-					level->feedbackLeft->addFeedback(Resources::FeedbackPerfect);
+					player->feedbackLeft->addFeedback(Resources::FeedbackPerfect);
 					level->updateScoreNote(1);
 					player->addCombo(1);
 				}
 				else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getLeftPoint()->getPosition().getY() + player->getLeftPoint()->getHeight() / 2)) <= 25)
 				{
 					cout << "bien" << endl;
-					level->feedbackLeft->addFeedback(Resources::FeedbackGood);
+					player->feedbackLeft->addFeedback(Resources::FeedbackGood);
 					level->updateScoreNote(2);
 					player->addCombo(1);
 				}
