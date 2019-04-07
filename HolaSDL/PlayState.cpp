@@ -235,6 +235,8 @@ bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 			SDL_SetWindowFullscreen(manager->getWindow(), SDL_WINDOW_FULLSCREEN);
 		}
 	}
+	/*else if (e.key.keysym.sym == SDLK_SPACE)
+		updateScoreNote(1);*/
 	else
 	{
 		if (miniActive) {
@@ -274,6 +276,18 @@ void PlayState::deleteAll()
 	{
 		delete o;
 	}
+}
+
+void PlayState::updateScoreNote(int accuracy)
+{
+	currentScore += maxNoteValue * (1 / accuracy);
+	scoreBar->updateBar(currentScore);
+}
+
+void PlayState::updateScoreMinigame(int accuracy)
+{
+	currentScore += maxMinigameValue * (1 / accuracy);
+	scoreBar->updateBar(currentScore);
 }
 
 int PlayState::getScore()

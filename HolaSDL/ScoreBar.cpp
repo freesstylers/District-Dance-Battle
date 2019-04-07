@@ -1,32 +1,32 @@
 #include "ScoreBar.h"
 
-ScoreBar::ScoreBar(SDLGame* game, double width, double height, Vector2D pos, int maxScore, int maxHeight) : GameObject(game)
+ScoreBar::ScoreBar(SDLGame* game, double width, double height, Vector2D pos, double maxScore, double maxY) : GameObject(game)
 {
 	setWidth(width);
 	setHeight(height);
 	setPosition(pos);
 	maxScore_ = maxScore;
-	maxHeight_ = maxHeight;
 	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::YellowBar);
 
 	currentHeight = height;
-	originalHeight = pos.getY();
+	originalY_ = pos.getY();
+	maxHeight_ = originalY_ - maxY;	//the maxY only represents the maximum y position, not the actual height (distance from the original y pos to the maximum y pos)
 }
 
 bool ScoreBar::handleInput(Uint32 time, const SDL_Event& event) {
 	return true;
 }
 
-void ScoreBar::updateBar(int punt)
+void ScoreBar::updateBar(double punt)
 {
 	double fraction = 0;
 
-	fraction = (punt * maxHeight_) / (double)maxScore_;
+	fraction = (punt * maxHeight_) / maxScore_;
 
 	currentHeight = fraction;
 
 	setHeight(currentHeight);
-	position_.setY(originalHeight - currentHeight); 
+	position_.setY(originalY_ - currentHeight); 
 }
 
 
