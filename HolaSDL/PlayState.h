@@ -111,8 +111,8 @@ public:
 
 	double msDiff = 0.0;  //difference between the time of a beat and the time when a note is created, in ms
 
-	void updateScoreNote(int accuracy) { currentScore += maxNoteValue * (1 / accuracy); scoreBar->updateBar(currentScore); }
-	void updateScoreMinigame(int accuracy) { currentScore += maxMinigameValue * (1 / accuracy); scoreBar->updateBar(currentScore);	}
+	void updateScoreNote(int accuracy);
+	void updateScoreMinigame(int accuracy);
 	void activateBeatSignal() { beatSignal = true; }
 	bool getMiniActive() { return miniActive; }
 	Character* getPerico() { return perico; }

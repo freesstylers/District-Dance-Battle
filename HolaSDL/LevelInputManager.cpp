@@ -36,21 +36,19 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 		auto it = player->screenArrows_.front();
 		if (it != nullptr) 
 		{
-			if (event.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, it->getKey()) && keyup)
+			if ((event.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, it->getKey()) && keyup)/* || event.type == SDL_KEYDOWN*/)
 			{
 				if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getLeftPoint()->getPosition().getY() + player->getLeftPoint()->getHeight() / 2)) <= 10)
 				{
 					cout << "perfecto" << endl;
-					player->feedbackLeft->addFeedback(Resources::FeedbackPerfect);
-					level->scoreBar->updateBar(1);
+					level->feedbackLeft->addFeedback(Resources::FeedbackPerfect);
 					level->updateScoreNote(1);
 					player->addCombo(1);
 				}
 				else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getLeftPoint()->getPosition().getY() + player->getLeftPoint()->getHeight() / 2)) <= 25)
 				{
 					cout << "bien" << endl;
-					player->feedbackLeft->addFeedback(Resources::FeedbackGood);
-					level->scoreBar->updateBar(2);
+					level->feedbackLeft->addFeedback(Resources::FeedbackGood);
 					level->updateScoreNote(2);
 					player->addCombo(1);
 				}
