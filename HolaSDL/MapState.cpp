@@ -7,7 +7,10 @@ MapState::MapState(GameManager* g) :GameState(g)
 	keystates = SDL_GetKeyboardState(NULL);
 	controller = SDL_GameControllerOpen(0);
 	createMainButtons();
+	fondo__ = EmptyObject(g, Vector2D(0, 0), g->getDefaultWindowWidth(), g->getDefaultWindowHeight(), Resources::Map);
+	stage.push_back(new EmptyObject(g, Vector2D(0, 0), g->getDefaultWindowWidth(), g->getDefaultWindowHeight(), Resources::Map));
 	activeLevels[0] = true;
+	activeLevels[1] = true;
 }
 
 MapState::~MapState()
@@ -52,15 +55,16 @@ void MapState::render(Uint32 time, bool beatSync)
 
 void MapState::createMainButtons()
 {
-	int ang = 360 / 5;
-	int angIni = 270;
-	int angulo;
-	int r = 150;
-	for (int i = 0; i < 5; i++) {
-		angulo = angIni + ang * i;
-		buttons[i].first = EmptyObject(manager, Vector2D((manager->getWindowWidth() / 2 + r * cos(((angulo*M_PI) / 180))) - 25, (manager->getWindowHeight() / 2 + r * sin(((angulo*M_PI) / 180))) - 25), 50, 50, Resources::YButton);
-		buttons[i].second = PanelMap(manager, buttons[i].first.getPosition(), Resources::CabezaVaporWave, 1, "D35P4C1T0", 3);
-	}
+	buttons[0].first = EmptyObject(manager, Vector2D(manager->getWindowWidth() / 2 - 50 , manager->getWindowHeight() / 2 - 30), 20, 20, Resources::PointPushed);
+	buttons[1].first = EmptyObject(manager, Vector2D(manager->getWindowWidth() / 2 + 25 , manager->getWindowHeight() / 2 + 100), 20, 20, Resources::PointPushed);
+	buttons[2].first = EmptyObject(manager, Vector2D(manager->getWindowWidth() / 2 + 75 , manager->getWindowHeight() / 2 - 85), 20, 20, Resources::PointPushed);
+	buttons[3].first = EmptyObject(manager, Vector2D(manager->getWindowWidth() / 2 - 180, manager->getWindowHeight() / 2 - 125), 20, 20, Resources::PointPushed);
+	buttons[4].first = EmptyObject(manager, Vector2D(manager->getWindowWidth() / 2 - 150, manager->getWindowHeight() / 2 - 75), 20, 20, Resources::PointPushed);
+	buttons[0].second = PanelMap(manager, buttons[0].first.getPosition() - Vector2D(200, -20), Resources::CabezaVaporWave, 1, "D35P4C1T0", 1);
+	buttons[1].second = PanelMap(manager, buttons[1].first.getPosition() - Vector2D(-30, 110), Resources::EminemciaHead, 3, "Eminemcia", 2);
+	buttons[2].second = PanelMap(manager, buttons[2].first.getPosition(), Resources::CabezaVaporWave, 1, "D35P4C1T0", 1);
+	buttons[3].second = PanelMap(manager, buttons[3].first.getPosition(), Resources::EminemciaHead, 3, "Eminemcia", 2);
+	buttons[4].second = PanelMap(manager, buttons[4].first.getPosition(), Resources::CabezaVaporWave, 1, "D35P4C1T0", 1);
 
 	buttons[0].first.scale(2);
 }

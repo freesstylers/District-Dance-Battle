@@ -63,7 +63,12 @@ public:
 		EminemciaDance, 
 		FondoVK,
 		EminemciaTextBox,
-		CleonTextBox
+		CleonTextBox,
+		EminemciaHead,
+		BackgroundHipHop,
+		BackgroundHipHopPixel,
+		HipHopEffect,
+		Map
 		// text
 	};
 

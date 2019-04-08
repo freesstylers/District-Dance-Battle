@@ -21,14 +21,18 @@ void PlayState::newGame(int lvl)
 		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::EffectVaporWave);
 		minigame = new MinigameVaporwave(manager, this);
 		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::testBG);
-		robot = new Character(manager, 60 * 3.5, 120 * 3.5, Vector2D(manager->getDefaultWindowWidth() - 270, initialNoteHeight + 70), Resources::RobotIdle);
+		bgT = Resources::testBG;
+		enemy = new Character(manager, 60 * 3.5, 120 * 3.5, Vector2D(manager->getDefaultWindowWidth() - 270, initialNoteHeight + 70), Resources::RobotIdle);
+		enemyT = Resources::RobotIdle;
 		break;
 	case 2:
 		levelName = "hiphop";
-		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::EffectVaporWave);
+		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::HipHopEffect);
 		minigame = new MinigameHipHop(manager, this);
-		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::Hiphop);
-		robot = new Character(manager, 60 * 3.5, 120 * 3.5, Vector2D(manager->getDefaultWindowWidth() - 270, initialNoteHeight + 70), Resources::RobotIdle);
+		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::BackgroundHipHop);
+		bgT = Resources::BackgroundHipHop;
+		enemy = new Character(manager, 60 * 3.5, 120 * 3.5, Vector2D(manager->getDefaultWindowWidth() - 270, initialNoteHeight + 70), Resources::EminemciaIdle);
+		enemyT = Resources::EminemciaIdle;
 		break;
 	default:
 		break;
@@ -69,7 +73,7 @@ void PlayState::newGame(int lvl)
 
 	stage.push_back(bg);
 	stage.push_back(perico);
-	stage.push_back(robot);
+	stage.push_back(enemy);
 	stage.push_back(scoreBar);
 	stage.push_back(songBarBG);
 	stage.push_back(songBar);
@@ -88,7 +92,30 @@ void PlayState::newGame(int lvl)
 
 void PlayState::newGame2P(int lvl)
 {
-	levelName = "prueba";
+	switch (lvl)
+	{
+	case 1:
+		levelName = "prueba";
+		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::EffectVaporWave);
+		minigame = new MinigameVaporwave(manager, this);
+		bg = new Background(manager, manager->getWindowWidth(), manager->getWindowHeight(), Vector2D(0, 0), Resources::testBG);
+		bgT = Resources::testBG;
+		enemy = new Character(manager, 60 * 3, 120 * 3, Vector2D(manager->getWindowWidth() - 230, initialNoteHeight + 100), Resources::RobotIdle);
+		enemyT = Resources::RobotIdle;
+		break;
+	case 2:
+		levelName = "hiphop";
+		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::HipHopEffect);
+		minigame = new MinigameHipHop(manager, this);
+		bg = new Background(manager, manager->getWindowWidth(), manager->getWindowHeight(), Vector2D(0, 0), Resources::BackgroundHipHop);
+		bgT = Resources::BackgroundHipHop;
+		enemy = new Character(manager, 60 * 3, 120 * 3, Vector2D(manager->getWindowWidth() - 230, initialNoteHeight + 100), Resources::EminemciaIdle);
+		enemyT = Resources::EminemciaIdle;
+		break;
+	default:
+		break;
+	}
+	
 
 	int leftNotesPos = manager->getWindowWidth() / 3 - pointOffset2P;
 	int rightNotesPos = manager->getWindowWidth() / 3 + pointOffset2P;
@@ -99,7 +126,6 @@ void PlayState::newGame2P(int lvl)
 	leftNotesVector2 = Vector2D(leftNotesPos - 50 / 2 + 250, 70);
 	rightNotesVector2 = Vector2D(rightNotesPos - 50 / 2 + 250, 70);
 
-	bg = new Background(manager, manager->getWindowWidth(), manager->getWindowHeight(), Vector2D(0, 0),Resources::testBG);
 	player1 = new PlayerPack(manager,this, leftNotesPos, rightNotesPos, pointSize2P, noteBarWidth*0.75,0);
 	player2 = new PlayerPack(manager,this, leftNotesPos + 250, rightNotesPos + 250, pointSize2P, noteBarWidth*0.75,1);
 	level = new Level(this, manager, levelName);
@@ -113,19 +139,16 @@ void PlayState::newGame2P(int lvl)
 	scoreBar = new ScoreBar(manager, 20, 0, Vector2D(50, 465 + pointSize), maxScore, songBarBG->getPosition().getY() + songBarBG->getHeight() * 2);
 
 	perico = new Character(manager, 60 * 3, 120 * 3, Vector2D(40, initialNoteHeight + 100), Resources::PericoIdle);
-	robot = new Character(manager, 60 * 3, 120 * 3, Vector2D(manager->getWindowWidth() - 230, initialNoteHeight + 100), Resources::RobotIdle);
 
 
-	minigame = new MinigameVaporwave(manager, this);
 	minigameController = new TimerNoSingleton();
 
 	bh = new BeatHandler(level->bpm);
 
-	effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::EffectVaporWave);
 
 	stage.push_back(bg);
 	stage.push_back(perico);
-	stage.push_back(robot);
+	stage.push_back(enemy);
 	stage.push_back(scoreBar);
 	stage.push_back(songBarBG);
 	stage.push_back(songBar);
@@ -188,7 +211,7 @@ void PlayState::update(Uint32 time)
 		{
 			player1->lip->setMinigameActive(true);
 			player1->setComboActive(false);
-			robot->forceAnimationChange(Resources::RobotDance);
+			enemy->forceAnimationChange((enemyT + 1));
 			perico->forceAnimationChange(Resources::PericoDance1);
 			animationMiniGame = true;
 			minigame->resetMinigame();
@@ -202,7 +225,7 @@ void PlayState::update(Uint32 time)
 			minigame->deleteList();
 			minigame->createList();
 			minigameController->Reset();
-			robot->queueAnimationChange(Resources::RobotIdle);
+			enemy->queueAnimationChange(enemyT);
 			perico->queueAnimationChange(Resources::PericoIdle);
 			animationMiniGame = false;
 			player1->setComboActive(true);
@@ -393,8 +416,8 @@ void PlayState::playSong(int song) {
 void PlayState::showError()
 {
 	bg->cleanAnimationQueue();
-	bg->forceAnimationChange(Resources::PixelatedTextBG);
-	bg->queueAnimationChange(Resources::testBG);
+	bg->forceAnimationChange(bgT+1);
+	bg->queueAnimationChange(bgT);
 
 	manager->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0);
 }

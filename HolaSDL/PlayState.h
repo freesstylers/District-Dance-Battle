@@ -47,7 +47,7 @@ protected:
 	Vector2D noteVel;
 	MiniGame* minigame;
 	Character* perico;
-	Character* robot;
+	Character* enemy;
 	EffectVaporwave* effectVaporWave;
 	Level* level;
 
@@ -133,5 +133,6 @@ protected:
 
 	virtual void updateResolution();
 private:
-
+	int bgT;
+	int enemyT;
 };

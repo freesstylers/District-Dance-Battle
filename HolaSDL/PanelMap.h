@@ -19,7 +19,7 @@ public:
 private:
 	GameManager * manager_;
 
-	string types[6] = { "Tutorial", "VaporWave", "HipHop", "" , "" , "" };
+	string types[6] = { "Tutorial", "VaporWave", "HipHop", "??????" , "A" , "A" };
 
 	EmptyObject switches[3];
 	EmptyObject fondo_;

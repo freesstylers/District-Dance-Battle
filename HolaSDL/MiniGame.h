@@ -43,7 +43,7 @@ public:
 	virtual void createList();
 	virtual void deleteList();
 	virtual void resetMinigame() { end = false; };
-	virtual bool getEnd() { return false; };
+	virtual bool getEnd() { return end; };
 	int getAccuracy() { if (currentMinigameScore == noteAmount) return 1; else if (currentMinigameScore >= noteAmount / 2) return 2; else return 0; }
 
 	std::list<Note*> screenButtons_;

@@ -67,8 +67,12 @@ vector<Resources::ImageInfo> Resources::images_ {
 	{EminemciaDance, "resources/images/EminemciaDance.png", 60, 120, 3, 2, 4 },
 	{FondoVK, "resources/images/FondoHipHop.png", 128, 100, 2, 1, 2},
 	{EminemciaTextBox, "resources/images/EminemciaBox.png", 153, 65, 1, 1, 1},
-	{CleonTextBox, "resources/images/CarlosBox.png", 153, 65, 1, 1, 1}
-
+	{CleonTextBox, "resources/images/CarlosBox.png", 153, 65, 1, 1, 1},
+	{EminemciaHead, "resources/images/EminemciaHead.png", 25, 36, 1, 1, 1 },
+	{BackgroundHipHop, "resources/images/FondoHipHop.png", 128, 100, 2, 1, 2 },
+	{BackgroundHipHopPixel, "resources/images/FondoHipHopPixel.png", 128, 100, 2, 1, 2 },
+	{HipHopEffect, "resources/images/HipHopEffect.png", 450, 338, 1, 1, 1},
+	{Map, "resources/images/Mapa.png", 400, 300, 1, 1, 1}
 
 };
 
