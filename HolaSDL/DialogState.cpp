@@ -91,7 +91,7 @@ void DialogState::render(Uint32 time, bool beatSync) {
 			Texture msg0(manager->getRenderer(),
 				dialogo.front().text,
 				*(manager->getServiceLocator()->getFonts()->getFont(
-					Resources::PIXEL20)), { COLOR(0xffffffff) });
+					Resources::PIXEL20)), { COLOR(0x00000000) });
 			actualText = &msg0;
 			actualText->render(manager->getRenderer(),
 				manager->getWindowWidth() / 39, manager->getWindowHeight() - 65 * 1.9);
@@ -112,7 +112,7 @@ void DialogState::render(Uint32 time, bool beatSync) {
 			Texture msg0(manager->getRenderer(),
 				aux1,
 				*(manager->getServiceLocator()->getFonts()->getFont(
-					Resources::PIXEL20)), { COLOR(0xffffffff) });
+					Resources::PIXEL20)), { COLOR(0x00000000) });
 			actualText = &msg0;
 			actualText->render(manager->getRenderer(),
 				manager->getWindowWidth() / 39, manager->getWindowHeight() - 65 * 1.9);
@@ -120,7 +120,7 @@ void DialogState::render(Uint32 time, bool beatSync) {
 				Texture msg1(manager->getRenderer(),
 					aux2,
 					*(manager->getServiceLocator()->getFonts()->getFont(
-						Resources::PIXEL20)), { COLOR(0xffffffff) });
+						Resources::PIXEL20)), { COLOR(0x00000000) });
 				actualText = &msg1;
 				actualText->render(manager->getRenderer(),
 					manager->getWindowWidth() / 19, (manager->getWindowHeight() - 65 * 1.9) + 40);
@@ -133,7 +133,7 @@ void DialogState::render(Uint32 time, bool beatSync) {
 		Texture msg0(manager->getRenderer(),
 			" COMIENZA LA BATALLA",
 			*(manager->getServiceLocator()->getFonts()->getFont(
-				Resources::PIXEL20)), { COLOR(0xffffffff) });
+				Resources::PIXEL20)), { COLOR(0x00000000) });
 		actualText = &msg0;
 		actualText->render(manager->getRenderer(),
 			manager->getWindowWidth() / 39, manager->getWindowHeight() - 65 * 1.9);

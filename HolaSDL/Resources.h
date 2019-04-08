@@ -62,7 +62,8 @@ public:
 		EminemciaIdle,
 		EminemciaDance, 
 		FondoVK,
-		EminemciaTextBox
+		EminemciaTextBox,
+		CleonTextBox
 		// text
 	};
 
