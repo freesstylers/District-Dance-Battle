@@ -56,6 +56,7 @@
     <ClCompile Include="EmptyObject.cpp" />
     <ClCompile Include="TextObject.cpp" />
     <ClCompile Include="ComboText.cpp" />
+    <ClCompile Include="CutSceneState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioManager.h" />
@@ -113,6 +114,7 @@
     <ClInclude Include="EmptyObject.h" />
     <ClInclude Include="TextObject.h" />
     <ClInclude Include="ComboText.h" />
+    <ClInclude Include="CutSceneState.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
