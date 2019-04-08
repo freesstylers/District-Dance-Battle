@@ -48,6 +48,8 @@ public:
 	void addCombo(int i);
 	void resetCombo();
 
+	void setComboActive(bool active) { comboTxt->setActive(active); if (active) updateCombo(0); }
+
 	LevelInputManager* lip;
 };
 

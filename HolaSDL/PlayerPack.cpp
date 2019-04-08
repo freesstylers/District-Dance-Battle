@@ -36,6 +36,7 @@ void PlayerPack::render(Uint32 time, bool beatSync)
 	comboTxt->render(time);
 	feedbackLeft->render(time,false);
 	feedbackRight->render(time,false);
+
 	for (Note* o : screenArrows_)
 	{
 		o->render(time, beatSync);
@@ -179,22 +180,20 @@ void PlayerPack::resetCombo()
 void PlayerPack::updateCombo(int newCombo)
 {
 	comboTxt->updateCombo(newCombo);
-	if (combo >= 0)
-	{
+	if (combo < 10) {
 		playstate_->getPerico()->setAnimation(Resources::PericoIdle);
-		if (combo >= 10)
-		{
-			playstate_->getPerico()->setAnimation(Resources::PericoDab);
-			if (combo >= 25)
-			{
-				playstate_->getPerico()->setAnimation(Resources::PericoDance1);
-				if (combo >= 50)
-				{
-					playstate_->getPerico()->setAnimation(Resources::PericoMaxPower);
-				}
-			}
-		}
+		comboTxt->toggleHideAnimation();
 	}
+
+	else if (combo < 50)
+		playstate_->getPerico()->setAnimation(Resources::PericoDab);
+
+	else if (combo < 100)
+		playstate_->getPerico()->setAnimation(Resources::PericoDance1);
+
+	else
+		playstate_->getPerico()->setAnimation(Resources::PericoMaxPower);
+
 }
 
 PlayerPack::~PlayerPack()

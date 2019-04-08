@@ -32,7 +32,7 @@ void ComboText::render(Uint32 time, bool beatSync)
 		setPosition(centeredPos);
 		scale(currentScale);
 
-		if (time - lastUpdate >= screentime) {
+		if (hideAnimation && time - lastUpdate >= screentime) {
 			if (getAlpha() == 0)
 				setActive(false);
 			else
