@@ -156,9 +156,20 @@ void PlayState::update(Uint32 time)
 	if (!miniActive && minigameController->DeltaTime() < level->songLength / minigameAmount)
 	{
 		minigameController->Update();
+
 		if (levelArrows_.empty() && levelButtons_.empty()) {
-			songOver();
+			if (player1->screenArrows_.empty() && player1->screenButtons_.empty()) {
+				if ((player2 == nullptr || (player2->screenArrows_.empty() && player2->screenButtons_.empty())))
+				{
+					if (songEndWaitTime == 0)
+						songEndWaitTime = time;
+
+					else if(time - songEndWaitTime >= 2000)
+						songOver();
+				}
+			}
 		}
+
 		else {
 			timer->Update();
 			if (timer->DeltaTime() > (bh->getBeatTime() / 1000.0) - msDiff)
@@ -177,6 +188,7 @@ void PlayState::update(Uint32 time)
 		if (!animationMiniGame)
 		{
 			player1->lip->setMinigameActive(true);
+			player1->setComboActive(false);
 			robot->forceAnimationChange(Resources::RobotDance);
 			perico->forceAnimationChange(Resources::PericoDance1);
 			animationMiniGame = true;
@@ -194,6 +206,7 @@ void PlayState::update(Uint32 time)
 			robot->queueAnimationChange(Resources::RobotIdle);
 			perico->queueAnimationChange(Resources::PericoIdle);
 			animationMiniGame = false;
+			player1->setComboActive(true);
 
 			int aux = minigame->getAccuracy();
 			if (aux != 0)

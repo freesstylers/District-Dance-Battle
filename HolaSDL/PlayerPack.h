@@ -26,7 +26,7 @@ protected:
 	int comboTextX;
 
 	int combo;
-	void updateCombo(int newCombo);
+	void updateCombo();
 
 public:
 	PlayerPack();
@@ -47,6 +47,8 @@ public:
 	virtual void updateResolution(double wScale, double hScale);
 	void addCombo(int i);
 	void resetCombo();
+
+	void setComboActive(bool active) { comboTxt->setActive(active); if (active) updateCombo(); }
 
 	LevelInputManager* lip;
 };
