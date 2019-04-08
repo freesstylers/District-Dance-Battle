@@ -45,7 +45,7 @@ protected:
 
 
 	Vector2D noteVel;
-	MinigameVaporwave* minigame;
+	MiniGame* minigame;
 	Character* perico;
 	Character* robot;
 	EffectVaporwave* effectVaporWave;
@@ -106,7 +106,7 @@ public:
 	Vector2D rightNotesVector;
 	Vector2D leftNotesVector2;
 	Vector2D rightNotesVector2;
-	MinigameVaporwave* getMinigame() { return minigame; }
+	MiniGame* getMinigame() { return minigame; }
 	GameManager* getGameManager() { return manager; }
 
 	double msDiff = 0.0;  //difference between the time of a beat and the time when a note is created, in ms
