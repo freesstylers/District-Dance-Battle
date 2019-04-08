@@ -28,6 +28,8 @@ void GameState::render(Uint32 time, bool beatSync)
 {
 	for (GameObject* o : stage)
 		o->render(time, beatSync);
+	for (GameObject* o : stage2)
+		o->render(time, beatSync);
 }
 
 bool GameState::handleEvent(Uint32 time, SDL_Event e)
