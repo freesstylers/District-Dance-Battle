@@ -181,18 +181,22 @@ void PlayerPack::updateCombo()
 
 	if (combo < 10) {
 		playstate_->getPerico()->setAnimation(Resources::PericoIdle);
-		comboTxt->toggleHideAnimation();
+		comboTxt->toggleHideAnimation(true);
 	}
 
-	else if (combo < 50)
-		playstate_->getPerico()->setAnimation(Resources::PericoDab);
-
-	else if (combo < 100)
-		playstate_->getPerico()->setAnimation(Resources::PericoDance1);
-
 	else
-		playstate_->getPerico()->setAnimation(Resources::PericoMaxPower);
+	{
+		comboTxt->toggleHideAnimation(false);
 
+		if (combo < 50)
+			playstate_->getPerico()->setAnimation(Resources::PericoDab);
+
+		else if (combo < 100)
+			playstate_->getPerico()->setAnimation(Resources::PericoDance1);
+
+		else
+			playstate_->getPerico()->setAnimation(Resources::PericoMaxPower);
+	}
 }
 
 PlayerPack::~PlayerPack()
