@@ -151,7 +151,7 @@ bool DialogState::handleEvent(Uint32 time, SDL_Event e) {
 			if (!dialogo.empty()) {
 				actualBox = box[dialogo.front().box];
 			}
-			else actualBox = new TextBox(manager, manager->getWindowWidth() - 20, 65 * 5.5, Vector2D(10, manager->getWindowHeight() - 65 * 5.5),30);
+			else actualBox = new TextBox(manager, manager->getWindowWidth() - 20, 65 * 5.5, Vector2D(10, manager->getWindowHeight() - 65 * 5.5),29);
 
 		
 			keyup = false;

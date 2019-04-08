@@ -61,7 +61,13 @@ vector<Resources::ImageInfo> Resources::images_ {
 	{PointPushed, "resources/images/PointPushed.png", 32, 32, 1, 1, 1 },
 	{Dance, "resources/images/BotonDance.png", 68, 30, 2, 1, 2 },
 	{Panel, "resources/images/Panel.png", 50, 75, 1, 1, 1 },
-	{CabezaVaporWave, "resources/images/RobotVaporwaveHead.png", 23, 30, 1, 1, 1 }
+	{CabezaVaporWave, "resources/images/RobotVaporwaveHead.png", 23, 30, 1, 1, 1 },
+	{GreyDialog, "resources/images/greyDialog.png",  153, 65, 1, 1, 1 },
+	{EminemciaIdle, "resources/images/EminemciaIdle.png", 60, 120, 2, 1, 2 },
+	{EminemciaDance, "resources/images/EminemciaDance.png", 60, 120, 3, 2, 4 },
+	{FondoVK, "resources/images/FondoHipHop.png", 128, 100, 2, 1, 2},
+	{EminemciaTextBox, "resources/images/EminemciaBox.png", 153, 65, 1, 1, 1},
+
 
 };
 

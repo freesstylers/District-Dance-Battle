@@ -18,7 +18,7 @@ void PlayState::newGame(int lvl)
 	switch (lvl)
 	{
 	case 0:
-		levelName = "hiphop";
+		levelName = "prueba";
 		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::EffectVaporWave);
 		minigame = new MinigameVaporwave(manager, this);
 		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::testBG);
@@ -80,7 +80,6 @@ void PlayState::newGame(int lvl)
 	level->playSong();
 
 	/////////////////////////
-
 	//exit_ = false;
 
 	combo = 0;
