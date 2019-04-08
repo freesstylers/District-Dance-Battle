@@ -2,8 +2,8 @@
 #include "MiniGame.h"
 #include "ScoreBar.h"
 #include "GameObject.h"
-#include "PlayerPack.h"
 
+class PlayerPack;
 class PlayState;
 
 class LevelInputManager
@@ -19,6 +19,7 @@ public:
 	void setMinigameActive(bool active) { 
 		minigameActive = active;
 	}
+	SDL_GameController* getController(){ return controller; }
 private:
 	int numctrl_;
 	bool failed = false;

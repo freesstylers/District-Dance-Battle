@@ -13,18 +13,21 @@ EndState::EndState(GameManager * g,  int actualScore, int maxScore, int percenta
 	if (actualScore >= scoreLimit) {
 		perico->forceAnimationChange(Resources::PericoDance1);
 		Character*letra = new Character(g, 100, 100, Vector2D(400, 300), Resources::ScoreS);
-		stage.push_back(letra);
+		stage2.push_back(letra);
 		
 	}
 	else {
 		perico->forceAnimationChange(Resources::PericoDab);
 		Character*letra = new Character(g, 100, 100, Vector2D(400, 300), Resources::ScoreS);
-		stage.push_back(letra);
+		stage2.push_back(letra);
 		//Resources::ScoreA;
 	}
 	stage.push_back(cont);
 	stage.push_back(sal);
-	stage.push_back(perico);
+	firstButton = stage.begin();
+	selectedButton = firstButton;
+	(*selectedButton)->scale(2);
+	stage2.push_back(perico);
 	
 }
 
@@ -40,7 +43,7 @@ void EndState::exit_(GameManager* gameManager) {
 	gameManager->exit_ = true;
 }
 
-/*bool EndState::handleEvent(Uint32 time, SDL_Event e) {
+bool EndState::handleEvent(Uint32 time, SDL_Event e) {
 	if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN) || e.key.keysym.sym == SDLK_DOWN) {
 		nextButton();
 	}
@@ -48,7 +51,7 @@ void EndState::exit_(GameManager* gameManager) {
 		backButton();
 	}
 	return GameState::handleEvent(time, e);
-}*/
+}
 
 /*void EndState::createButtons()
 {
@@ -60,7 +63,7 @@ void EndState::exit_(GameManager* gameManager) {
 	stage.push_back(new Button(gameManager, width, height, Vector2D((4 * gameManager->getWindowWidth() - gameManager->getWindowWidth()) / 6 - height / 2, gameManager->getDefaultWindowHeight() / 2 - height / 2), exit_(gameManager)));
 	selectedButton = firstButton;
 	(*selectedButton)->scale(2);
-}
+}*/
 
 void EndState::nextButton()
 {
@@ -78,4 +81,4 @@ void EndState::backButton()
 		selectedButton--;
 	}
 	(*selectedButton)->scale(2);
-}*/
+}

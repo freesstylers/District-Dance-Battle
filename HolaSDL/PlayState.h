@@ -9,7 +9,6 @@
 #include "Timer.h"
 #include "Note.h"
 #include "BeatHandler.h"
-#include "LevelInputManager.h"
 #include "Character.h"
 #include "SongBar.h"
 #include "BarBackground.h"
@@ -17,8 +16,6 @@
 #include "MinigameVaporwave.h"
 #include "MinigameHipHop.h"
 #include "ScoreBar.h"
-#include "Feedback.h"
-#include "FeedbackPool.h"
 #include "EmptyObject.h"
 #include "EffectVaporwave.h"
 #include "Squares.h"
@@ -37,8 +34,6 @@ protected:
 	int tPlayers;
 
 	Timer* timer;
-	LevelInputManager* lip;
-	LevelInputManager* lip2;
 	int probqte;
 	bool miniActive = false;
 	TimerNoSingleton* minigameController;
@@ -104,8 +99,6 @@ public:
 	std::list<Note*> levelButtons_;
 	std::list<Note*> levelArrows2_;
 	std::list<Note*> levelButtons2_;
-	FeedbackPool* feedbackLeft;
-	FeedbackPool* feedbackRight;
 	Background* bg;
 	PlayerPack* player1;
 	PlayerPack* player2;
@@ -118,10 +111,11 @@ public:
 
 	double msDiff = 0.0;  //difference between the time of a beat and the time when a note is created, in ms
 
-	void updateScoreNote(int accuracy) { currentScore += maxNoteValue * (1 / accuracy); scoreBar->updateBar(currentScore); }
-	void updateScoreMinigame(int accuracy) { currentScore += maxMinigameValue * (1 / accuracy); scoreBar->updateBar(currentScore);	}
+	void updateScoreNote(int accuracy);
+	void updateScoreMinigame(int accuracy);
 	void activateBeatSignal() { beatSignal = true; }
 	bool getMiniActive() { return miniActive; }
+	Character* getPerico() { return perico; }
 
 	int getScore();
 	int getBPM() { return level->bpm; }

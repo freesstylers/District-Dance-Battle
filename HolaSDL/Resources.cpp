@@ -6,7 +6,8 @@ vector<Resources::FontInfo> Resources::fonts_ {
 		{ ARIAL16, "resources/fonts/ARIAL.ttf", 16 },
 	{ ARIAL24, "resources/fonts/ARIAL.ttf", 40 },
 	{PIXEL30, "resources/fonts/NES-Chimera.ttf",25},
-	{PIXEL20, "resources/fonts/NES-Chimera.ttf",20}
+	{PIXEL20, "resources/fonts/NES-Chimera.ttf",20},
+	{PIXEL10, "resources/fonts/NES-Chimera.ttf",10 }
 	//{ ARIAL16, "resources/fonts/ARIAL.ttf", 16 }
 };
 
@@ -55,8 +56,12 @@ vector<Resources::ImageInfo> Resources::images_ {
 	{ScoreC, "resources/images/Letra_C.png", 32, 32, 1, 1, 1},
 	{ScoreD, "resources/images/Letra_D.png", 32, 32, 1, 1, 1},
 	{ScoreS, "resources/images/Letra_S.png", 32, 32, 1, 1, 1},
-	{NumPlayersSwitch, "resources/images/1P2P.png", 960, 960, 2, 1, 2},
-	{Star, "resources/images/Star.png", 40, 38, 1, 1, 1 }
+	{NumPlayersSwitch, "resources/images/1P2P.png", 34, 30, 2, 1, 2},
+	{Star, "resources/images/Star.png", 40, 38, 1, 1, 1 },
+	{PointPushed, "resources/images/PointPushed.png", 32, 32, 1, 1, 1 },
+	{Dance, "resources/images/BotonDance.png", 68, 30, 2, 1, 2 },
+	{Panel, "resources/images/Panel.png", 50, 75, 1, 1, 1 },
+	{CabezaVaporWave, "resources/images/RobotVaporwaveHead.png", 23, 30, 1, 1, 1 }
 
 };
 

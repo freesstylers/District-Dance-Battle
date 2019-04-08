@@ -2,6 +2,7 @@
 #include "PlayState.h"
 #include "GameManager.h"
 #include <string>
+#include "PlayerPack.h"
 
 
 LevelInputManager::LevelInputManager(PlayState* l, PlayerPack* pl, int numctrl)
@@ -25,42 +26,43 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 		level->getGameManager()->getServiceLocator()->getAudios()->playChannel(Resources::Snare, 0);
 		level->getGameManager()->getServiceLocator()->getAudios()->setChannelVolume(70);
 	}
-
+	if (event.type == SDL_CONTROLLERBUTTONUP)
+	{
+		keyup = true;
+		keyup2 = true;
+	}
 	if (!player->screenArrows_.empty())
 	{
 		auto it = player->screenArrows_.front();
-			
 		if (it != nullptr) 
 		{
-			if (event.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, it->getKey()) && keyup)
+			if ((event.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, it->getKey()) && keyup)/* || event.type == SDL_KEYDOWN*/)
 			{
 				if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getLeftPoint()->getPosition().getY() + player->getLeftPoint()->getHeight() / 2)) <= 10)
 				{
 					cout << "perfecto" << endl;
-					level->feedbackLeft->addFeedback(Resources::FeedbackPerfect);
-					level->scoreBar->updateBar(1);
+					player->feedbackLeft->addFeedback(Resources::FeedbackPerfect);
 					level->updateScoreNote(1);
 					player->addCombo(1);
 				}
 				else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getLeftPoint()->getPosition().getY() + player->getLeftPoint()->getHeight() / 2)) <= 25)
 				{
 					cout << "bien" << endl;
-					level->feedbackLeft->addFeedback(Resources::FeedbackGood);
-					level->scoreBar->updateBar(2);
+					player->feedbackLeft->addFeedback(Resources::FeedbackGood);
 					level->updateScoreNote(2);
 					player->addCombo(1);
 				}
 				else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getLeftPoint()->getPosition().getY() + player->getLeftPoint()->getHeight() / 2)) <= 50)
 				{
 					cout << "regular" << endl;
-					level->feedbackLeft->addFeedback(Resources::FeedbackRegular);
+					player->feedbackLeft->addFeedback(Resources::FeedbackRegular);
 					level->updateScoreNote(3);
 					player->addCombo(1);
 				}
 				else
 				{
 					cout << "mala punteria" << endl;
-					level->feedbackLeft->addFeedback(Resources::FeedbackBad);
+					player->feedbackLeft->addFeedback(Resources::FeedbackBad);
 					level->showError();
 					player->errorLeft();
 					player->resetCombo();
@@ -77,16 +79,12 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 					keyup = false;
 					delete(it);
 					player->screenArrows_.remove(it);
-					level->feedbackLeft->addFeedback(Resources::FeedbackBad);
+					player->feedbackLeft->addFeedback(Resources::FeedbackBad);
 					cout << "flecha incorrecta" << endl;
 					level->showError();
 					player->errorLeft();
 					player->resetCombo();
 				}
-			}
-			else if (event.type == SDL_CONTROLLERBUTTONUP)
-			{
-				keyup = true;
 			}
 		}
 	}
@@ -100,7 +98,7 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 				if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getRightPoint()->getPosition().getY() + player->getRightPoint()->getHeight() / 2)) <= 10)
 				{
 					cout << "perfecto" << endl;
-					level->feedbackRight->addFeedback(Resources::FeedbackPerfect);
+					player->feedbackRight->addFeedback(Resources::FeedbackPerfect);
 					level->updateScoreNote(1);
 					player->addCombo(1);
 
@@ -108,21 +106,21 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 				else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getRightPoint()->getPosition().getY() + player->getRightPoint()->getHeight() / 2)) <= 25)
 				{
 					cout << "bien" << endl;
-					level->feedbackRight->addFeedback(Resources::FeedbackGood);
+					player->feedbackRight->addFeedback(Resources::FeedbackGood);
 					level->updateScoreNote(2);
 					player->addCombo(1);
 				}
 				else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getRightPoint()->getPosition().getY() + player->getRightPoint()->getHeight() / 2)) <= 50)
 				{
 					cout << "regular" << endl;
-					level->feedbackRight->addFeedback(Resources::FeedbackRegular);
+					player->feedbackRight->addFeedback(Resources::FeedbackRegular);
 					level->updateScoreNote(3);
 					player->addCombo(1);
 				}
 				else
 				{
 					cout << "mala punteria" << endl;
-					level->feedbackRight->addFeedback(Resources::FeedbackBad);
+					player->feedbackRight->addFeedback(Resources::FeedbackBad);
 					level->showError();
 					player->errorRight();
 					player->resetCombo();
@@ -138,7 +136,7 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 				{
 					delete(it);
 
-					level->feedbackRight->addFeedback(Resources::FeedbackBad);
+					player->feedbackRight->addFeedback(Resources::FeedbackBad);
 					player->screenButtons_.remove(it);
 					cout << "boton incorrecta" << endl;
 					level->showError();
@@ -146,7 +144,6 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 					player->resetCombo();
 				}
 			}
-			else if (event.type == SDL_CONTROLLERBUTTONUP) keyup2 = true;
 		}
 	}
 }
