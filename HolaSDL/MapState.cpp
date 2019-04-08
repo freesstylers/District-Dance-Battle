@@ -59,7 +59,7 @@ void MapState::createMainButtons()
 	for (int i = 0; i < 5; i++) {
 		angulo = angIni + ang * i;
 		buttons[i].first = EmptyObject(manager, Vector2D((manager->getWindowWidth() / 2 + r * cos(((angulo*M_PI) / 180))) - 25, (manager->getWindowHeight() / 2 + r * sin(((angulo*M_PI) / 180))) - 25), 50, 50, Resources::YButton);
-		buttons[i].second = PanelMap(manager, buttons[i].first.getPosition(), Resources::CabezaVaporWave, 1, "D3SP4C1T0", 1);
+		buttons[i].second = PanelMap(manager, buttons[i].first.getPosition(), Resources::CabezaVaporWave, 1, "D35P4C1T0", 2);
 	}
 
 	buttons[0].first.scale(2);

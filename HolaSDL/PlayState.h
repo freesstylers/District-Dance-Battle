@@ -85,7 +85,7 @@ protected:
 public:
 	BeatHandler* bh;
 	ScoreBar* scoreBar;
-	PlayState(GameManager* g,int lvl, int twoPlayers);
+	PlayState(GameManager* g, int lvl, bool oneP, bool diff);
 	void newGame(int lvl);
 	void newGame2P(int lvl);
 	~PlayState();

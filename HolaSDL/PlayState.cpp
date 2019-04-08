@@ -1,14 +1,13 @@
 #include "PlayState.h"
 #include "GameManager.h"
 
-PlayState::PlayState(GameManager* g,int lvl,int twoPlayers) :GameState(g) //Asigna game y llama a inicializaci�n
+PlayState::PlayState(GameManager* g,int lvl,bool oneP, bool diff) :GameState(g) //Asigna game y llama a inicializaci�n
 {
-	tPlayers = twoPlayers;
-	if (tPlayers == 1) {
-		newGame2P(lvl);
+	if (oneP) {
+		newGame(lvl);
 	}
 	else {
-		newGame(lvl);
+		newGame2P(lvl);
 	}
 	
 }
@@ -17,18 +16,18 @@ void PlayState::newGame(int lvl)
 {
 	switch (lvl)
 	{
-	case 0:
-		levelName = "hiphop";
+	case 1:
+		levelName = "prueba";
 		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::EffectVaporWave);
 		minigame = new MinigameVaporwave(manager, this);
 		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::testBG);
 		robot = new Character(manager, 60 * 3.5, 120 * 3.5, Vector2D(manager->getDefaultWindowWidth() - 270, initialNoteHeight + 70), Resources::RobotIdle);
 		break;
-	case 1:
+	case 2:
 		levelName = "hiphop";
 		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::EffectVaporWave);
 		minigame = new MinigameHipHop(manager, this);
-		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::testBG);
+		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::Hiphop);
 		robot = new Character(manager, 60 * 3.5, 120 * 3.5, Vector2D(manager->getDefaultWindowWidth() - 270, initialNoteHeight + 70), Resources::RobotIdle);
 		break;
 	default:

@@ -9,7 +9,7 @@
 using namespace std;
 
 
-DialogState::DialogState(GameManager* g, int txt, int numctrl):GameState(g)
+DialogState::DialogState(GameManager* g, int txt, int numctrl, bool oneP, bool hardMode):GameState(g), oneP_(oneP), hardMode_(hardMode), nlevel(txt)
 {
 	archivo = levels[txt];
 	controller = SDL_GameControllerOpen(numctrl);
@@ -27,8 +27,6 @@ void DialogState::init()
 	ifstream file("resources/dialog/" + archivo + ".txt");
 	
 	if (file.is_open()) {
-		file >> nlevel;
-		file >> twoPlayers;
 		file >> aux;
 		for (int i = 0; i < aux; i++) {
 			file >> sp;
@@ -157,14 +155,14 @@ bool DialogState::handleEvent(Uint32 time, SDL_Event e) {
 			keyup = false;
 		}
 		if (end) {
-			manager->getMachine()->changeState(new PlayState(manager, nlevel,twoPlayers));
+			manager->getMachine()->changeState(new PlayState(manager, nlevel, oneP_, hardMode_));
 		}
 		
 	}
 	else if (e.type == SDL_CONTROLLERBUTTONUP) keyup = true;
 
 	else if(e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_TAB)
-		manager->getMachine()->changeState(new PlayState(manager, nlevel, twoPlayers));
+		manager->getMachine()->changeState(new PlayState(manager, nlevel, oneP_, hardMode_));
 	return true;
 }
 

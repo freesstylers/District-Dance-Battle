@@ -9,7 +9,7 @@
 class DialogState: public GameState
 {
 public:
-	DialogState(GameManager* g, int txt, int numctrl); //Entra el entero del nivel para cargar el dialog que toque
+	DialogState(GameManager* g, int txt, int numctrl, bool oneP, bool difficulty); //Entra el entero del nivel para cargar el dialog que toque
 	~DialogState();
 	void init();
 	virtual void update(Uint32 time) {};
@@ -22,9 +22,10 @@ protected:
 		string text;
 		string box;
 	};
-	string levels[6] = { "Dialog0", "Dialog1", "Dialog2", "Dialog3", "Dialog4", "Dialog5" }; //El dialogo 0 es el del tutoria, de ahi hasta el dialogo del nivel 5
+	string levels[6] = { "Dialog0", "Vapor1", "HipHop1", "Dialog3", "Dialog4", "Dialog5" }; //El dialogo 0 es el del tutoria, de ahi hasta el dialogo del nivel 5
 	bool keyup = true;
-	int twoPlayers;
+	bool oneP_;
+	bool hardMode_;
 	list<Dialog> dialogo;
 	map<string, GameObject*> box;
 	GameObject* actualBox;
