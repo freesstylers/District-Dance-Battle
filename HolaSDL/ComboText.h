@@ -22,6 +22,6 @@ public:
 
 	void updateCombo(int combo);
 
-	void toggleHideAnimation() { hideAnimation = true; }
+	void toggleHideAnimation(bool hide) { hideAnimation = hide; }
 };
 
