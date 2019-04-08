@@ -47,7 +47,7 @@ void PanelMap::render(Uint32 time, bool beatHandler) {
 
 void PanelMap::renderLetters(Uint32 time, bool beatHandler) {
 	Texture msg0(manager_->getRenderer(),
-		name_,
+		types[lvl_],
 		*(manager_->getServiceLocator()->getFonts()->getFont(
 			Resources::PIXEL20)), { COLOR(0x00000000) });
 	SDL_Rect dest;
@@ -60,7 +60,7 @@ void PanelMap::renderLetters(Uint32 time, bool beatHandler) {
 	dest.y = photo_.getPosition().getY() + photo_.getHeight();
 	dest.h = (fondo_.getPosition().getY()- dest.y +fondo_.getHeight() / 2);
 		Texture msg1(manager_->getRenderer(),
-			types[lvl_],
+			name_,
 			*(manager_->getServiceLocator()->getFonts()->getFont(
 				Resources::PIXEL10)), { COLOR(0x00000000) });
 		dest.w = types[lvl_].size() * 15;
