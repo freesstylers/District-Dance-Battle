@@ -16,7 +16,7 @@ MapState::~MapState()
 
 bool MapState::handleEvent(Uint32 time, SDL_Event e)
 {
-	if (e.type == SDL_CONTROLLERBUTTONDOWN) {
+	if (e.type == SDL_CONTROLLERBUTTONDOWN || e.type == SDL_KEYDOWN) {
 		if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) || e.key.keysym.sym == SDLK_RIGHT) {
 			buttons[index].second.reset();
 			nextButton();

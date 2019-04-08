@@ -57,8 +57,12 @@ public:
 		PointPushed,
 		Dance,
 		Panel,
-		CabezaVaporWave
-		
+		CabezaVaporWave,
+		GreyDialog,
+		EminemciaIdle,
+		EminemciaDance, 
+		FondoVK,
+		EminemciaTextBox
 		// text
 	};
 

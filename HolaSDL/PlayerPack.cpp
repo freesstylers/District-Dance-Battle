@@ -36,6 +36,7 @@ void PlayerPack::render(Uint32 time, bool beatSync)
 	comboTxt->render(time);
 	feedbackLeft->render(time,false);
 	feedbackRight->render(time,false);
+
 	for (Note* o : screenArrows_)
 	{
 		o->render(time, beatSync);
@@ -131,9 +132,6 @@ bool PlayerPack::handleInput(Uint32 time, const SDL_Event& event)
 	feedbackLeft->handleInput(time, event);
 	feedbackRight->handleInput(time, event);
 
-	if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_TAB)
-		updateCombo(combo);
-
 	return false;
 }
 
@@ -164,36 +162,40 @@ void PlayerPack::addCombo(int i)
 {
 	combo += i;
 
-	if (combo == 10 || combo == 25 || combo == 50 || combo % 100 == 0)
-		updateCombo(combo);
+	if (combo == 10 || combo == 25 || combo == 50 || combo % 100 == 0) {
+		comboTxt->updateCombo(combo);
+		updateCombo();
+	}
 }
 
 void PlayerPack::resetCombo()
 {
 	if (combo != 0) {
 		combo = 0;
-		updateCombo(0);
+		updateCombo();
 	}
 }
 
-void PlayerPack::updateCombo(int newCombo)
+void PlayerPack::updateCombo()
 {
-	comboTxt->updateCombo(newCombo);
-	if (combo >= 0)
-	{
+
+	if (combo < 10) {
 		playstate_->getPerico()->setAnimation(Resources::PericoIdle);
-		if (combo >= 10)
-		{
+		comboTxt->toggleHideAnimation(true);
+	}
+
+	else
+	{
+		comboTxt->toggleHideAnimation(false);
+
+		if (combo < 50)
 			playstate_->getPerico()->setAnimation(Resources::PericoDab);
-			if (combo >= 25)
-			{
-				playstate_->getPerico()->setAnimation(Resources::PericoDance1);
-				if (combo >= 50)
-				{
-					playstate_->getPerico()->setAnimation(Resources::PericoMaxPower);
-				}
-			}
-		}
+
+		else if (combo < 100)
+			playstate_->getPerico()->setAnimation(Resources::PericoDance1);
+
+		else
+			playstate_->getPerico()->setAnimation(Resources::PericoMaxPower);
 	}
 }
 
