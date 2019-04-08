@@ -25,12 +25,14 @@ void ComboText::render(Uint32 time, bool beatSync)
 		if (currentScale >= 1.53) {
 			deltaScale = -deltaScale;
 		}
-		
-		currentScale += (deltaScale / (screentime / 40));
-		setHeight(text->getHeight());
-		setWidth(text->getWidth());
-		setPosition(centeredPos);
-		scale(currentScale);
+
+		if (currentScale > 0.9) {
+			currentScale += (deltaScale / (screentime / 40));
+			setHeight(text->getHeight());
+			setWidth(text->getWidth());
+			setPosition(centeredPos);
+			scale(currentScale);
+		}
 
 		if (hideAnimation && time - lastUpdate >= screentime) {
 			if (getAlpha() == 0)
