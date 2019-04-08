@@ -82,6 +82,8 @@ protected:
 
 	double minigameScoreTotal = 0.25;
 
+	int songEndWaitTime = 0;
+
 public:
 	BeatHandler* bh;
 	ScoreBar* scoreBar;

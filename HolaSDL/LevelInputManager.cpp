@@ -36,7 +36,7 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 		auto it = player->screenArrows_.front();
 		if (it != nullptr) 
 		{
-			if ((event.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, it->getKey()) && keyup)/* || event.type == SDL_KEYDOWN*/)
+			if (event.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, it->getKey()) && keyup)
 			{
 				if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getLeftPoint()->getPosition().getY() + player->getLeftPoint()->getHeight() / 2)) <= 10)
 				{

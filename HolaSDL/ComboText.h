@@ -12,6 +12,8 @@ private:
 	Vector2D centeredPos;
 	double deltaScale = 0.1;
 
+	bool hideAnimation = false;
+
 public:
 	ComboText(SDLGame* manager, Font* font, Vector2D pos);
 	~ComboText();
@@ -19,5 +21,7 @@ public:
 	virtual void render(Uint32 time, bool beatSync = false);
 
 	void updateCombo(int combo);
+
+	void toggleHideAnimation(bool hide) { hideAnimation = hide; }
 };
 
