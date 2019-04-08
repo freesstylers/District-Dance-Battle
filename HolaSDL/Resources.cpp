@@ -74,7 +74,8 @@ vector<Resources::MusicInfo> Resources::musics_ {
 	{Sunflower, "resources/sound/sunflower.mp3"},
 	{Bill, "resources/sound/billijean_noGlitch.mp3"},
 	{Error, "resources/sound/Error.wav"},
-	{Snare, "resources/sound/snare.wav"}
+	{Snare, "resources/sound/snare.wav"},
+	{Hiphop, "resources/sound/hiphop.mp3"}
 };
 
 vector<Resources::SoundInfo> Resources::sounds_ {

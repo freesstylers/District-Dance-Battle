@@ -18,7 +18,7 @@ void PlayState::newGame(int lvl)
 	switch (lvl)
 	{
 	case 0:
-		levelName = "prueba";
+		levelName = "hiphop";
 		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::EffectVaporWave);
 		minigame = new MinigameVaporwave(manager, this);
 		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::testBG);
@@ -60,9 +60,6 @@ void PlayState::newGame(int lvl)
 	minigameController = new TimerNoSingleton();
 
 	bh = new BeatHandler(level->bpm);
-
-	
-
 
 	stage.push_back(bg);
 	stage.push_back(perico);
@@ -129,8 +126,6 @@ void PlayState::newGame2P(int lvl)
 	stage.push_back(songBar);
 	stage.push_back(player1);
 	stage.push_back(player2);
-
-
 
 	level->playSong();
 

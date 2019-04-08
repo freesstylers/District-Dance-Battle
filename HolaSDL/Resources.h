@@ -69,6 +69,7 @@ public:
 		Bill,
 		Error,
 		Snare,
+		Hiphop
 		// sound effects
 
 	};
