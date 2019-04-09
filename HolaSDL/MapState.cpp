@@ -4,6 +4,8 @@
 
 MapState::MapState(GameManager* g) :GameState(g)
 {
+	manager->getServiceLocator()->getAudios()->playChannel(Resources::Mapa, 1);
+	manager->getServiceLocator()->getAudios()->setChannelVolume(70);
 	keystates = SDL_GetKeyboardState(NULL);
 	controller = SDL_GameControllerOpen(0);
 	createMainButtons();

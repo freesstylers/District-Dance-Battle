@@ -82,7 +82,8 @@ public:
 		Bill,
 		Error,
 		Snare,
-		Hiphop
+		Hiphop,
+		Mapa
 		// sound effects
 
 	};

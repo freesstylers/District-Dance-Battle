@@ -105,6 +105,7 @@ void PanelMap::selectButton() {
 		break;
 	case 2:
 		//Cuando se pulsa va al play state con el nivel correspondiente
+		manager_->getServiceLocator()->getAudios()->haltChannel(0);
 		manager_->getMachine()->pushState(new DialogState(manager_, lvl_, 0, oneP_, hardMode_));
 		//MenuState::play(lvl_);
 		break;
