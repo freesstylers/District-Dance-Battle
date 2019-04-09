@@ -41,7 +41,7 @@ protected:
 
 
 	bool firstNote = true;
-
+	bool songIsOver = false;
 
 
 	Vector2D noteVel;

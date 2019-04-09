@@ -101,8 +101,8 @@ void MinigameHipHop::createList()
 		for (int i = 0; i < noteAmount; i++) {
 			aux = rand() % 8;
 
-			Vector2D pos = Vector2D(double(manager->getServiceLocator()->getRandomGenerator()->nextInt(1, manager->getWindowWidth())), double(manager->getServiceLocator()->getRandomGenerator()->nextInt(1, manager->getWindowHeight())));
-			
+			Vector2D pos = Vector2D(double(manager->getServiceLocator()->getRandomGenerator()->nextInt(10, manager->getWindowWidth())), double(manager->getServiceLocator()->getRandomGenerator()->nextInt(10, manager->getWindowHeight())));
+			//El numero debe estar entre 10 y el ancho/alto de la pantalla, por que si al generar el random de la velocidad, la posicion fue <10 al dividir entre 10, se redondea a 0 por la conversion a int
 			Vector2D vel = Vector2D(double(manager->getServiceLocator()->getRandomGenerator()->nextInt(-pos.getX() / 10, pos.getX() / 10)), double(manager->getServiceLocator()->getRandomGenerator()->nextInt(-pos.getX() / 10, pos.getX() / 10)));
 
 			switch (aux) {

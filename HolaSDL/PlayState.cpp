@@ -53,6 +53,7 @@ void PlayState::newGame(int lvl)
 	level->init();
 	player2 = nullptr;
 	timer = Timer::Instance();
+	timer->Reset();
 
 	maxMinigameValue = (maxScore * minigameScoreTotal) / minigameAmount;
 	maxNoteValue = (maxScore * (1 - minigameScoreTotal)) / level->noteAmount;
@@ -131,6 +132,7 @@ void PlayState::newGame2P(int lvl)
 	level = new Level(this, manager, levelName);
 	level->init();
 	timer = Timer::Instance();
+	timer->Reset();
 	maxNoteValue = maxScore / level->noteAmount;
 
 	songBarBG = new BarBackground(manager, 1, 14, Vector2D(50, 35), (((manager->getWindowWidth() - 50) / level->songLength) / 70.5), Resources::YellowBar); //70.5 es la constante para ajustar la velocidad de la barra al tiempo de la cancion
@@ -187,7 +189,8 @@ void PlayState::update(Uint32 time)
 						songEndWaitTime = time;
 
 					else if(time - songEndWaitTime >= 2000)
-						songOver();
+						songIsOver = true;
+						//songOver();
 				}
 			}
 		}
@@ -241,13 +244,16 @@ void PlayState::update(Uint32 time)
 
 		beatSignal = true;
 		}
+	if (songIsOver)
+		songOver();
 	
 }
 
 bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 {
 	if (e.type == SDL_QUIT || e.key.keysym.sym == SDLK_ESCAPE) {
-		manager->stop();
+		//manager->stop();
+		songIsOver = true;
 	}
 	// Pressing f to toggle fullscreen.
 	else if (e.key.keysym.sym == SDLK_f)
@@ -360,7 +366,9 @@ void PlayState::generateButtons()
 void PlayState::songOver()
 {
 	manager->getServiceLocator()->getAudios()->haltChannel(0);
-	manager->getMachine()->pushState(new EndState(manager, currentScore, maxScore, 70));
+	//manager->getMachine()->pushState(new EndState(manager, currentScore, maxScore, 70));
+	//manager->getMachine()->changeState(new MapState(manager));
+	manager->getMachine()->popState();
 }
 
 void PlayState::updateResolution()
