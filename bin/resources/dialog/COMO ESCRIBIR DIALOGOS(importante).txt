@@ -1,0 +1,23 @@
+////Esto es un ejemplo de como escribir un dialogo
+///(Los caracteres de cada cuadro de dialogo no pueden pasar de 70, contando espacios y el primer espacio tambien)
+
+//En la primera linea irá el numero de fondos o filtros que se quieren 
+1
+//En la siguiente linea iran los numeros relacionados con los fondos (los numeros asignados en resources)
+22
+//En la siguiente el numero de sprites
+2
+//EN la siguiente los numeros relacionados con los sprites
+11
+24
+//En la siguiente el numero de cuadros de texto
+2
+//En la siguiente el numero de sprite de cuadro de texto, y un identificador
+27 perico
+28 robot
+//Aqui ya empieza el dialogo, se pone un guion para cuadro de texto que habra, luego espacio, luego el identificador del cuadro de texto,
+//espacio, y luego el texto que nunca superara los 70 caracteres contando el primer espacio y todos los espacios
+- perico Ur mum gay
+- robot D e j a m e  m o r i r  e n  p a z
+//Al final un 0
+0
