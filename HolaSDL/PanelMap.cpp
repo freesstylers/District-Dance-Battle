@@ -14,7 +14,7 @@ PanelMap::PanelMap(GameManager* manager, Vector2D panelPos, int photo, int diffi
 	fondo_ = EmptyObject(manager_, panelPos, width, height, Resources::Panel);
 	star_ = EmptyObject(manager_, Vector2D((panelPos.getX() + width / 2) + width / 40, panelPos.getY() + 10), width / 11, width / 11, Resources::Star);
 	switches[0] = EmptyObject(manager_, Vector2D(((panelPos.getX() + width / 2) - 34/2), (panelPos.getY() + height / 2) + (height / 24)), 34, 30, Resources::NumPlayersSwitch);
-	switches[1] = EmptyObject(manager_, Vector2D(((panelPos.getX() + width / 2) - 34/2), (panelPos.getY() + height / 2) + 5 * (height / 24)), 34, 30, Resources::NumPlayersSwitch);
+	switches[1] = EmptyObject(manager_, Vector2D(((panelPos.getX() + width / 2) - 34/2), (panelPos.getY() + height / 2) + 5 * (height / 24)), 34, 30, Resources::Difficulty);
 	switches[2] = EmptyObject(manager_, Vector2D(((panelPos.getX() + width / 2) - width/6), (panelPos.getY() + height / 2) + 9 * (height / 24) - 1), 68, 30, Resources::Dance);
 	photo_ = EmptyObject(manager_, Vector2D((panelPos.getX() + ( width / 2)) - ((2*width / 5)/2), 10 + panelPos.getY() + height / 10), (2*width / 5), 3 * height / 11, photo);
 	switches[index].scale(2);
@@ -97,6 +97,10 @@ void PanelMap::selectButton() {
 		if (difActive) {
 			hardMode_ = !hardMode_;
 			switches[index].changeFrame();
+		}
+		else
+		{
+			manager_->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0);
 		}
 		break;
 	case 2:

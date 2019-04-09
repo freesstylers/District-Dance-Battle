@@ -55,11 +55,11 @@ void MapState::render(Uint32 time, bool beatSync)
 
 void MapState::createMainButtons()
 {
-	buttons[0].first = EmptyObject(manager, Vector2D(manager->getWindowWidth() / 2 - 50 , manager->getWindowHeight() / 2 - 30), 20, 20, Resources::PointPushed);
-	buttons[1].first = EmptyObject(manager, Vector2D(manager->getWindowWidth() / 2 + 25 , manager->getWindowHeight() / 2 + 100), 20, 20, Resources::PointPushed);
-	buttons[2].first = EmptyObject(manager, Vector2D(manager->getWindowWidth() / 2 + 75 , manager->getWindowHeight() / 2 - 85), 20, 20, Resources::PointPushed);
-	buttons[3].first = EmptyObject(manager, Vector2D(manager->getWindowWidth() / 2 - 180, manager->getWindowHeight() / 2 - 125), 20, 20, Resources::PointPushed);
-	buttons[4].first = EmptyObject(manager, Vector2D(manager->getWindowWidth() / 2 - 150, manager->getWindowHeight() / 2 - 75), 20, 20, Resources::PointPushed);
+	buttons[0].first = EmptyObject(manager, Vector2D(manager->getWindowWidth() / 2 - 50 , manager->getWindowHeight() / 2 - 30), 64, 64, Resources::MetroOn);
+	buttons[1].first = EmptyObject(manager, Vector2D(manager->getWindowWidth() / 2 + 25 , manager->getWindowHeight() / 2 + 100), 64, 64, Resources::MetroOn);
+	buttons[2].first = EmptyObject(manager, Vector2D(manager->getWindowWidth() / 2 + 75 , manager->getWindowHeight() / 2 - 85), 64, 64, Resources::MetroOn);
+	buttons[3].first = EmptyObject(manager, Vector2D(manager->getWindowWidth() / 2 - 180, manager->getWindowHeight() / 2 - 125), 64, 64, Resources::MetroOn);
+	buttons[4].first = EmptyObject(manager, Vector2D(manager->getWindowWidth() / 2 - 150, manager->getWindowHeight() / 2 - 75), 64, 64, Resources::MetroOn);
 	buttons[0].second = PanelMap(manager, buttons[0].first.getPosition() - Vector2D(200, -20), Resources::CabezaVaporWave, 1, "D35P4C1T0", 1);
 	buttons[1].second = PanelMap(manager, buttons[1].first.getPosition() - Vector2D(-30, 110), Resources::EminemciaHead, 3, "Eminemcia", 2);
 	buttons[2].second = PanelMap(manager, buttons[2].first.getPosition(), Resources::CabezaVaporWave, 1, "D35P4C1T0", 1);

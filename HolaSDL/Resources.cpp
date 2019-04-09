@@ -61,19 +61,21 @@ vector<Resources::ImageInfo> Resources::images_ {
 	{PointPushed, "resources/images/PointPushed.png", 32, 32, 1, 1, 1 },
 	{Dance, "resources/images/BotonDance.png", 68, 30, 2, 1, 2 },
 	{Panel, "resources/images/Panel.png", 50, 75, 1, 1, 1 },
-	{CabezaVaporWave, "resources/images/RobotVaporwaveHead.png", 23, 30, 1, 1, 1 },
+	{CabezaVaporWave, "resources/images/RobotVaporwaveHead.png", 40, 40, 1, 1, 1 },
 	{GreyDialog, "resources/images/greyDialog.png",  153, 65, 1, 1, 1 },
 	{EminemciaIdle, "resources/images/EminemciaIdle.png", 60, 120, 2, 1, 2 },
 	{EminemciaDance, "resources/images/EminemciaDance.png", 60, 120, 3, 2, 4 },
 	{FondoVK, "resources/images/FondoHipHop.png", 128, 100, 2, 1, 2},
 	{EminemciaTextBox, "resources/images/EminemciaBox.png", 153, 65, 1, 1, 1},
 	{CleonTextBox, "resources/images/CarlosBox.png", 153, 65, 1, 1, 1},
-	{EminemciaHead, "resources/images/EminemciaHead.png", 25, 36, 1, 1, 1 },
+	{EminemciaHead, "resources/images/EminemciaHead.png", 40, 40, 1, 1, 1 },
 	{BackgroundHipHop, "resources/images/FondoHipHop.png", 128, 100, 2, 1, 2 },
 	{BackgroundHipHopPixel, "resources/images/FondoHipHopPixel.png", 128, 100, 2, 1, 2 },
 	{HipHopEffect, "resources/images/HipHopEffect.png", 450, 338, 1, 1, 1},
-	{Map, "resources/images/Mapa.png", 400, 300, 1, 1, 1}
-
+	{Map, "resources/images/Mapa.png", 400, 300, 1, 1, 1},
+	{Difficulty, "resources/images/Easy-Hard.png", 34, 30, 2, 1, 2},
+	{MetroOn, "resources/images/metroOn.png", 64, 64, 1, 1, 1},
+	{MetroOff, "resources/images/metroOff.png", 64, 64, 1, 1, 1}
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {

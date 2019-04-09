@@ -68,7 +68,10 @@ public:
 		BackgroundHipHop,
 		BackgroundHipHopPixel,
 		HipHopEffect,
-		Map
+		Map,
+		Difficulty,
+		MetroOn,
+		MetroOff
 		// text
 	};
 

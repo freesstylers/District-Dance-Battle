@@ -7,7 +7,7 @@ MinigameHipHop::MinigameHipHop(GameManager * g, PlayState * p): MiniGame(g, p)
 	playS = p;
 	fback = new Feedback(g, 150, 150, Vector2D(g->getWindowWidth() / 2 - 150 / 2, g->getWindowHeight() / 2 - 150 / 2));
 	timer = new TimerNoSingleton();
-	mira = new Crosshair(g, 50, 50, Vector2D(300, 400));
+	mira = new Crosshair(g, 64, 64, Vector2D(300, 400));
 	createList();
 
 	/*
