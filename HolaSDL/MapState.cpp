@@ -20,25 +20,34 @@ MapState::~MapState()
 bool MapState::handleEvent(Uint32 time, SDL_Event e)
 {
 	if (e.type == SDL_CONTROLLERBUTTONDOWN || e.type == SDL_KEYDOWN) {
-		if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) || e.key.keysym.sym == SDLK_RIGHT) {
-			buttons[index].second.reset();
-			nextButton();
+		if(!buttons[index].second.selected)
+		{
+			if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_RETURN) {
+				buttons[index].second.selected = true;
+			}
+			if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) || e.key.keysym.sym == SDLK_RIGHT) {
+				//buttons[index].second.reset();
+				nextButton();
+			}
+			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT) || e.key.keysym.sym == SDLK_LEFT) {
+				//buttons[index].second.reset();
+				backButton();
+			}
 		}
-		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT) || e.key.keysym.sym == SDLK_LEFT) {
-			buttons[index].second.reset();
-			backButton();
-		}
-		if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_UP) || e.key.keysym.sym == SDLK_UP) {
-			buttons[index].second.nextSwitch();
-		}
-		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN) || e.key.keysym.sym == SDLK_DOWN) {
-			buttons[index].second.prevSwitch();
-		}
-		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_RETURN) {
-			buttons[index].second.selectButton();
-		}
-		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B) || e.key.keysym.sym == SDLK_DELETE) {
-
+		else
+		{
+			if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_UP) || e.key.keysym.sym == SDLK_UP) {
+				buttons[index].second.nextSwitch();
+			}
+			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN) || e.key.keysym.sym == SDLK_DOWN) {
+				buttons[index].second.prevSwitch();
+			}
+			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_RETURN) {
+				buttons[index].second.selectButton();
+			}
+			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B) || e.key.keysym.sym == SDLK_DELETE) {
+				buttons[index].second.selected = false;
+			}
 		}
 	}
 	return GameState::handleEvent(time, e);
@@ -50,7 +59,8 @@ void MapState::render(Uint32 time, bool beatSync)
 	for (auto o : buttons) {
 		o.first.render(time, false);
 	}
-	buttons[index].second.render(time, false);
+	if (buttons[index].second.selected)
+		buttons[index].second.render(time, false);
 }
 
 void MapState::createMainButtons()

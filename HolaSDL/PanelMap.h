@@ -16,6 +16,7 @@ public:
 	void nextSwitch();
 	void selectButton();
 	int index = 0;
+	bool selected = false;
 private:
 	GameManager * manager_;
 

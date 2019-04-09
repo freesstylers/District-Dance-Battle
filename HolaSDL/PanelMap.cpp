@@ -21,18 +21,18 @@ PanelMap::PanelMap(GameManager* manager, Vector2D panelPos, int photo, int diffi
 }
 
 void PanelMap::render(Uint32 time, bool beatHandler) {
-	fondo_.render(time, beatHandler);
-	for (int i = 0; i < 3; i++) {
-		switches[i].render(time, beatHandler);
-	}
-	Vector2D aux = star_.getPosition();
-	for (int i = 0; i < difficulty_; i++) {
-		star_.render(time, beatHandler);
-		star_.setPosition(Vector2D(star_.getPosition().getX() + star_.getWidth(), star_.getPosition().getY()));
-	}
-	star_.setPosition(aux);
-	renderLetters(time, beatHandler);
-	photo_.render(time, beatHandler);
+		fondo_.render(time, beatHandler);
+		for (int i = 0; i < 3; i++) {
+			switches[i].render(time, beatHandler);
+		}
+		Vector2D aux = star_.getPosition();
+		for (int i = 0; i < difficulty_; i++) {
+			star_.render(time, beatHandler);
+			star_.setPosition(Vector2D(star_.getPosition().getX() + star_.getWidth(), star_.getPosition().getY()));
+		}
+		star_.setPosition(aux);
+		renderLetters(time, beatHandler);
+		photo_.render(time, beatHandler);
 }
 
 void PanelMap::renderLetters(Uint32 time, bool beatHandler) {
