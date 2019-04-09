@@ -252,8 +252,8 @@ void PlayState::update(Uint32 time)
 bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 {
 	if (e.type == SDL_QUIT || e.key.keysym.sym == SDLK_ESCAPE) {
-		//manager->stop();
-		songIsOver = true;
+		manager->stop();
+		//songIsOver = true;
 	}
 	// Pressing f to toggle fullscreen.
 	else if (e.key.keysym.sym == SDLK_f)
