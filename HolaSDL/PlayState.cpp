@@ -3,6 +3,7 @@
 
 PlayState::PlayState(GameManager* g,int lvl,bool oneP, bool diff) :GameState(g) //Asigna game y llama a inicializaci�n
 {
+	nlevel = lvl;
 	if (oneP) {
 		newGame(lvl);
 	}
@@ -366,7 +367,7 @@ void PlayState::generateButtons()
 void PlayState::songOver()
 {
 	manager->getServiceLocator()->getAudios()->haltChannel(0);
-	//manager->getMachine()->pushState(new EndState(manager, currentScore, maxScore, 70));
+	//manager->getMachine()->pushState(new EndState(manager, currentScore, maxScore, 70,nlevel));
 	//manager->getMachine()->changeState(new MapState(manager));
 	manager->getMachine()->popState();
 }
@@ -420,6 +421,7 @@ void PlayState::playSong(int song) {
 	manager->getServiceLocator()->getAudios()->playChannel(song, 0);
 	manager->getServiceLocator()->getAudios()->setChannelVolume(70);
 }
+
 
 void PlayState::showError()
 {

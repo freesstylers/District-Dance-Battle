@@ -32,6 +32,7 @@ protected:
 	bool effect = true;
 
 	int tPlayers;
+	int nlevel;
 
 	Timer* timer;
 	int probqte;
@@ -74,7 +75,7 @@ protected:
 	
 	double maxNoteValue = 0;
 	double maxMinigameValue = 0;
-	double currentScore = 0;
+	
 
 	int minigameAmount = 3;
 
@@ -85,6 +86,7 @@ protected:
 	int songEndWaitTime = 0;
 
 public:
+	double currentScore = 0;
 	BeatHandler* bh;
 	ScoreBar* scoreBar;
 	PlayState(GameManager* g, int lvl, bool oneP, bool diff);
@@ -121,6 +123,8 @@ public:
 
 	int getScore();
 	int getBPM() { return level->bpm; }
+
+	
 
 
 protected:

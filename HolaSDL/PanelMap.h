@@ -16,6 +16,7 @@ public:
 	void nextSwitch();
 	void selectButton();
 	int index = 0;
+	int lvl_;
 	bool selected = false;
 private:
 	GameManager * manager_;
@@ -32,7 +33,7 @@ private:
 	int height = 300;
 	int width = 200;
 	int difficulty_;
-	int lvl_;
+	
 	int numLineas = 0;
 
 	bool oneP_ = true;
