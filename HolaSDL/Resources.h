@@ -71,7 +71,9 @@ public:
 		Map,
 		Difficulty,
 		MetroOn,
-		MetroOff
+		MetroOff,
+		BackMap,
+		Exit,
 		// text
 	};
 

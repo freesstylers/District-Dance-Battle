@@ -51,11 +51,11 @@ vector<Resources::ImageInfo> Resources::images_ {
 	{BButton1,  "resources/images/BotonB_1.png", 32, 32, 1, 1, 1}, 
 	{XButton1, "resources/images/BotonX_1.png", 32, 32, 1, 1, 1},
 	{YButton1, "resources/images/BotonY_1.png", 32, 32, 1, 1, 1},
-	{ScoreA, "resources/images/Letra_A.png", 32, 32, 1, 1, 1},
-	{ScoreB, "resources/images/Letra_B.png", 32, 32, 1, 1, 1},
-	{ScoreC, "resources/images/Letra_C.png", 32, 32, 1, 1, 1},
-	{ScoreD, "resources/images/Letra_D.png", 32, 32, 1, 1, 1},
-	{ScoreS, "resources/images/Letra_S.png", 32, 32, 1, 1, 1},
+	{ScoreA, "resources/images/Letra_A.png", 100, 100, 1, 1, 1},
+	{ScoreB, "resources/images/Letra_B.png", 100, 100, 1, 1, 1},
+	{ScoreC, "resources/images/Letra_C.png",100, 100, 1, 1, 1},
+	{ScoreD, "resources/images/Letra_D.png", 100, 100,1, 1, 1},
+	{ScoreS, "resources/images/Letra_S.png", 100, 100, 1, 1, 1},
 	{NumPlayersSwitch, "resources/images/1P2P.png", 34, 30, 2, 1, 2},
 	{Star, "resources/images/Star.png", 40, 38, 1, 1, 1 },
 	{PointPushed, "resources/images/PointPushed.png", 32, 32, 1, 1, 1 },
@@ -75,7 +75,10 @@ vector<Resources::ImageInfo> Resources::images_ {
 	{Map, "resources/images/Mapa.png", 400, 300, 1, 1, 1},
 	{Difficulty, "resources/images/Easy-Hard.png", 34, 30, 2, 1, 2},
 	{MetroOn, "resources/images/metroOn.png", 64, 64, 1, 1, 1},
-	{MetroOff, "resources/images/metroOff.png", 64, 64, 1, 1, 1}
+	{MetroOff, "resources/images/metroOff.png", 64, 64, 1, 1, 1},
+	{BackMap, "resources/images/backmap.png", 153, 65, 1, 1, 1},
+	{Exit, "resources/images/exit.png", 153, 65, 1, 1, 1}
+	
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {
