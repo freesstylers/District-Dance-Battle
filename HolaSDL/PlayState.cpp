@@ -39,7 +39,7 @@ void PlayState::newGame(int lvl)
 		break;
 	}
 	
-
+	particles = new ParticleEngine(40, Vector2D(70, 70), manager);
 	int leftNotesPos = manager->getDefaultWindowWidth() / 2 - pointOffset;
 	int rightNotesPos = manager->getDefaultWindowWidth() / 2 + pointOffset;
 
@@ -80,6 +80,7 @@ void PlayState::newGame(int lvl)
 	stage.push_back(songBarBG);
 	stage.push_back(songBar);
 	stage.push_back(player1);
+	stage.push_back(particles);
 
 
 	level->playSong();

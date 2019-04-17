@@ -23,6 +23,7 @@
 #include "Background.h"
 #include "TimerNoSingleton.h"
 #include "PlayerPack.h"
+#include "ParticleEngine.h"
 
 class PlayState : public GameState //main game class, where most of the gameplay will take place
 {
@@ -112,6 +113,7 @@ public:
 	Vector2D rightNotesVector2;
 	MiniGame* getMinigame() { return minigame; }
 	GameManager* getGameManager() { return manager; }
+	ParticleEngine* particles;
 
 	double msDiff = 0.0;  //difference between the time of a beat and the time when a note is created, in ms
 

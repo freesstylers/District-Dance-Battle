@@ -57,6 +57,8 @@
     <ClCompile Include="TextObject.cpp" />
     <ClCompile Include="ComboText.cpp" />
     <ClCompile Include="CutSceneState.cpp" />
+    <ClCompile Include="Particle.cpp" />
+    <ClCompile Include="ParticleEngine.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioManager.h" />
@@ -115,6 +117,8 @@
     <ClInclude Include="TextObject.h" />
     <ClInclude Include="ComboText.h" />
     <ClInclude Include="CutSceneState.h" />
+    <ClInclude Include="Particle.h" />
+    <ClInclude Include="ParticleEngine.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
