@@ -82,7 +82,7 @@ void PlayerPack::update(Uint32 time)
 			}
 			else
 			{
-				game_->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0);
+				//game_->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0);
 				resetCombo();
 			}
 			delete aux;
@@ -102,7 +102,7 @@ void PlayerPack::update(Uint32 time)
 			}
 			else
 			{
-				game_->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0);
+				//game_->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0);
 				resetCombo();
 			}
 			delete aux;

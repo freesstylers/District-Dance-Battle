@@ -18,7 +18,7 @@ void PlayState::newGame(int lvl)
 	switch (lvl)
 	{
 	case 1:
-		levelName = "prueba";
+		levelName = "allstar";
 		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::EffectVaporWave);
 		minigame = new MinigameVaporwave(manager, this);
 		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::testBG);
@@ -241,7 +241,7 @@ void PlayState::update(Uint32 time)
 	}
 	if (timer->DeltaTime() > ((bh->getBeatTime() / 1000.0) / (animationFramesPerBeat / 1000)) - msDiff)
 		{
-		//aqu� se divide el beatTime lo necesario para animar las frames especificadas entre cada beat
+		//aqui se divide el beatTime lo necesario para animar las frames especificadas entre cada beat
 
 		beatSignal = true;
 		}

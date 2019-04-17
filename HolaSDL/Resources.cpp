@@ -92,7 +92,8 @@ vector<Resources::MusicInfo> Resources::musics_ {
 	{Error, "resources/sound/Error.wav"},
 	{Snare, "resources/sound/snare.wav"},
 	{Hiphop, "resources/sound/hiphop.mp3"},
-	{Mapa, "resources/sound/Mapa.mp3"}
+	{Mapa, "resources/sound/Mapa.mp3"},
+	{AllStar, "resources/sound/allstar.mp3"}
 };
 
 vector<Resources::SoundInfo> Resources::sounds_ {

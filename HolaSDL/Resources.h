@@ -85,7 +85,8 @@ public:
 		Error,
 		Snare,
 		Hiphop,
-		Mapa
+		Mapa,
+		AllStar
 		// sound effects
 
 	};
