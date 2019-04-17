@@ -17,6 +17,7 @@ MapState::MapState(GameManager* g) :GameState(g)
 
 MapState::~MapState()
 {
+
 }
 
 bool MapState::handleEvent(Uint32 time, SDL_Event e)
@@ -115,6 +116,43 @@ void MapState::backButton()
 	buttons[index].first.scale(2);
 }
 
+//Leemos de un arhcivo el nivel, la dificultad, el numero de jugadores los puntos obtenidos y la nota obtenida
+void MapState::loadGame() {
+	ifstream archivo("partida.txt");
+	string line;
+	int level;
+	int mode;
+	int players;
+	int points;
+	char note;
+	while (getline(archivo, line)) {
+		archivo >> level >> mode >> players; //Primero se lee el nivel, la dificultad y los jugadores para guardar los numeros
+		activeLevels[level - 1] = true;
+		if (mode == 0) {
+			buttons[level - 1].second.difActive = true;					
+			archivo >> points >> note;
+			buttons[level - 1].second.scoreP1E_ = points;
+			buttons[level - 1].second.noteP1E_ = note;
+			if (players == 2) {
+				archivo >> points >> note;
+				buttons[level - 1].second.scoreP2E_ = points;
+				buttons[level - 1].second.noteP2E_ = note;
+			}
+		}
+		else {
+			buttons[level - 1].second.difActive = true;
+			archivo >> points >> note;
+			buttons[level - 1].second.scoreP1H_ = points;
+			buttons[level - 1].second.noteP1H_ = note;
+			if (players == 2) {
+				archivo >> points >> note;
+				buttons[level - 1].second.scoreP2H_ = points;
+				buttons[level - 1].second.noteP2H_ = note;
+			}
+		}
+	}
+}
+
 void MapState::play(int lvl_) {
 	cout << "jugando" << endl;
 	//gameManager->getMachine()->pushState(new PlayState(game, ));
@@ -130,3 +168,5 @@ void MapState::exit(GameManager* game)
 {
 
 }
+
+

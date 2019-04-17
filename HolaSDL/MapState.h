@@ -4,7 +4,7 @@
 #include "EmptyObject.h"
 #include "PanelMap.h"
 #include <iostream>
-#include <sstream>
+#include <fstream>
 #include <utility> 
 #include "PanelMap.h"
 
@@ -29,6 +29,7 @@ private:
 	int max = 4;
 
 	void play(int lvl_);
+	void loadGame();
 	static void load(GameManager* gameManager);
 	static void exit(GameManager* gameManager);
 
