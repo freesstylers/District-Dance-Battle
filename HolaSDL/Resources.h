@@ -74,6 +74,7 @@ public:
 		MetroOff,
 		BackMap,
 		Exit,
+		Particles
 		// text
 	};
 

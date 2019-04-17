@@ -23,6 +23,8 @@
     <ClInclude Include="MinigameRock.h" />
     <ClInclude Include="MinigameVaporwave.h" />
     <ClInclude Include="BeatHandler.h" />
+    <ClInclude Include="Particle.h" />
+    <ClInclude Include="ParticleEngine.h" />
     <ClInclude Include="PlayerPack.h" />
     <ClInclude Include="Crosshair.h" />
     <ClInclude Include="EmptyObject.h" />
@@ -81,6 +83,8 @@
     <ClCompile Include="MinigameRock.cpp" />
     <ClCompile Include="MinigameVaporwave.cpp" />
     <ClCompile Include="BeatHandler.cpp" />
+    <ClCompile Include="Particle.cpp" />
+    <ClCompile Include="ParticleEngine.cpp" />
     <ClCompile Include="PlayerPack.cpp" />
     <ClCompile Include="Crosshair.cpp" />
     <ClCompile Include="EmptyObject.cpp" />

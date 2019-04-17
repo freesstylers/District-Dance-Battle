@@ -77,7 +77,8 @@ vector<Resources::ImageInfo> Resources::images_ {
 	{MetroOn, "resources/images/metroOn.png", 64, 64, 1, 1, 1},
 	{MetroOff, "resources/images/metroOff.png", 64, 64, 1, 1, 1},
 	{BackMap, "resources/images/backmap.png", 153, 65, 1, 1, 1},
-	{Exit, "resources/images/exit.png", 153, 65, 1, 1, 1}
+	{Exit, "resources/images/exit.png", 153, 65, 1, 1, 1},
+	{Particles, "resources/images/Particles.png", 16, 16, 3, 2, 6}
 	
 };
 
