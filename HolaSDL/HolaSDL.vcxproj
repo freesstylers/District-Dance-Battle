@@ -17,18 +17,24 @@
     <ClInclude Include="DialogState.h" />
     <ClInclude Include="FeedbackPool.h" />
     <ClInclude Include="GameObjectPool.h" />
+    <ClInclude Include="HitNote.h" />
+    <ClInclude Include="HitNotePool.h" />
     <ClInclude Include="MinigameHardbass.h" />
     <ClInclude Include="MinigameHipHop.h" />
     <ClInclude Include="MinigameLatina.h" />
     <ClInclude Include="MinigameRock.h" />
     <ClInclude Include="MinigameVaporwave.h" />
     <ClInclude Include="BeatHandler.h" />
+    <ClInclude Include="Particle.h" />
+    <ClInclude Include="ParticleEngine.h" />
+    <ClInclude Include="PauseMenu.h" />
     <ClInclude Include="PlayerPack.h" />
     <ClInclude Include="Crosshair.h" />
     <ClInclude Include="EmptyObject.h" />
     <ClInclude Include="PanelMap.h" />
     <ClInclude Include="RedEffect.h" />
     <ClInclude Include="ScoreBar.h" />
+    <ClInclude Include="Slider.h" />
     <ClInclude Include="SongBar.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="CutSceneState.h" />
@@ -76,18 +82,24 @@
     <ClCompile Include="DialogState.cpp" />
     <ClCompile Include="FeedbackPool.cpp" />
     <ClCompile Include="GameObjectPool.cpp" />
+    <ClCompile Include="HitNote.cpp" />
+    <ClCompile Include="HitNotePool.cpp" />
     <ClCompile Include="MinigameHardbass.cpp" />
     <ClCompile Include="MinigameHipHop.cpp" />
     <ClCompile Include="MinigameLatina.cpp" />
     <ClCompile Include="MinigameRock.cpp" />
     <ClCompile Include="MinigameVaporwave.cpp" />
     <ClCompile Include="BeatHandler.cpp" />
+    <ClCompile Include="Particle.cpp" />
+    <ClCompile Include="ParticleEngine.cpp" />
+    <ClCompile Include="PauseMenu.cpp" />
     <ClCompile Include="PlayerPack.cpp" />
     <ClCompile Include="Crosshair.cpp" />
     <ClCompile Include="EmptyObject.cpp" />
     <ClCompile Include="PanelMap.cpp" />
     <ClCompile Include="RedEffect.cpp" />
     <ClCompile Include="ScoreBar.cpp" />
+    <ClCompile Include="Slider.cpp" />
     <ClCompile Include="SongBar.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="CutSceneState.cpp" />
@@ -135,7 +147,7 @@
     <ProjectGuid>{28A4C5CD-307A-4FE6-81E4-4CE1F1E49AB4}</ProjectGuid>
     <RootNamespace>HolaSDL</RootNamespace>
     <ProjectName>HolaSDL</ProjectName>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

@@ -17,6 +17,8 @@ PlayerPack::PlayerPack(SDLGame* manager, PlayState* ps, int leftNotesPos, int ri
 	rightNoteBar = new Squares(manager, squareWidth, 465 + 0.6 * pointSize, Vector2D(rightNotesPos + 1 - squareWidth / 2, rightNotesVector.getY()));
 	feedbackLeft = new FeedbackPool(manager, pointSize * 0.8, pointSize * 0.8, Vector2D(leftNotesPos - (pointSize * 0.8) - (pointSize * 0.8), 465 + pointSize / 2));
 	feedbackRight = new FeedbackPool(manager, pointSize * 0.8, pointSize * 0.8, Vector2D(rightNotesPos + (pointSize * 0.8), 465 + pointSize / 2));
+	hitLeft = new HitNotePool(manager, 70, 70);
+	hitRight = new HitNotePool(manager, 70, 70);
 	noteYLimit = leftPoint->getPosition().getY() + leftPoint->getHeight();
 
 	comboTextX = rightNoteBar->getPosition().getX() - ((rightNoteBar->getPosition().getX() - (leftNoteBar->getPosition().getX() + squareWidth)) / 2);
@@ -34,8 +36,10 @@ void PlayerPack::render(Uint32 time, bool beatSync)
 	leftPoint->render(time);
 	rightPoint->render(time);
 	comboTxt->render(time);
-	feedbackLeft->render(time,false);
-	feedbackRight->render(time,false);
+	feedbackLeft->render(time, false);
+	feedbackRight->render(time, false);
+	hitLeft->render(time, false);
+	hitRight->render(time, false);
 
 	for (Note* o : screenArrows_)
 	{
@@ -143,6 +147,8 @@ void PlayerPack::updateResolution(double wScale, double hScale)
 	rightPoint->updateResolution(wScale, hScale);
 	feedbackLeft->updateResolution(wScale, hScale);
 	feedbackRight->updateResolution(wScale, hScale);
+	hitLeft->updateResolution(wScale, hScale);
+	hitRight->updateResolution(wScale, hScale);
 	Vector2D noteVel = playstate_->setVel(60000 / playstate_->getBPM());
 
 	for (Note* n : screenArrows_){
@@ -207,6 +213,8 @@ PlayerPack::~PlayerPack()
 	delete rightPoint;
 	delete feedbackRight;
 	delete feedbackLeft;
+	delete hitRight;
+	delete hitLeft;
 	delete lip;
 	for (Note* o : screenArrows_)
 	{

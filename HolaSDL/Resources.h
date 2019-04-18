@@ -72,6 +72,13 @@ public:
 		Difficulty,
 		MetroOn,
 		MetroOff,
+		BackMap,
+		Exit,
+		Particles,
+		HitGold,
+		HitSilver,
+		HitCopper,
+		StarBar,
 		RedAura
 		// text
 	};

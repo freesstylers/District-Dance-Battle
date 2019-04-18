@@ -24,6 +24,7 @@
 #include "TimerNoSingleton.h"
 #include "PlayerPack.h"
 #include "RedEffect.h"
+#include "ParticleEngine.h"
 
 class PlayState : public GameState //main game class, where most of the gameplay will take place
 {
@@ -33,6 +34,7 @@ protected:
 	bool effect = true;
 
 	int tPlayers;
+	int nlevel;
 
 	Timer* timer;
 	int probqte;
@@ -76,7 +78,7 @@ protected:
 	
 	double maxNoteValue = 0;
 	double maxMinigameValue = 0;
-	double currentScore = 0;
+	
 
 	int minigameAmount = 3;
 
@@ -87,6 +89,7 @@ protected:
 	int songEndWaitTime = 0;
 
 public:
+	double currentScore = 0;
 	BeatHandler* bh;
 	ScoreBar* scoreBar;
 	PlayState(GameManager* g, int lvl, bool oneP, bool diff);
@@ -113,6 +116,7 @@ public:
 	Vector2D rightNotesVector2;
 	MiniGame* getMinigame() { return minigame; }
 	GameManager* getGameManager() { return manager; }
+	ParticleEngine* particles;
 
 	double msDiff = 0.0;  //difference between the time of a beat and the time when a note is created, in ms
 
@@ -124,6 +128,8 @@ public:
 
 	int getScore();
 	int getBPM() { return level->bpm; }
+
+	
 
 
 protected:

@@ -15,8 +15,23 @@ public:
 	void prevSwitch();
 	void nextSwitch();
 	void selectButton();
+	
 	int index = 0;
+	int lvl_;
+	int scoreP1E_ = 0;
+	char noteP1E_;
+
+	int scoreP1H_ = 0;
+	char noteP1H_;
+	
+	int scoreP2E_ = 0;
+	char noteP2E_;
+	
+	int scoreP2H_ = 0;
+	char noteP2H_;
+
 	bool selected = false;
+	bool difActive = false;
 private:
 	GameManager * manager_;
 
@@ -32,12 +47,11 @@ private:
 	int height = 300;
 	int width = 200;
 	int difficulty_;
-	int lvl_;
+	
 	int numLineas = 0;
 
 	bool oneP_ = true;
 	bool hardMode_ = false;
-	bool difActive = false;
 
 	string name_;
 	string description_;

@@ -3,6 +3,7 @@
 
 PlayState::PlayState(GameManager* g,int lvl,bool oneP, bool diff) :GameState(g) //Asigna game y llama a inicializaci�n
 {
+	nlevel = lvl;
 	if (oneP) {
 		newGame(lvl);
 	}
@@ -38,7 +39,7 @@ void PlayState::newGame(int lvl)
 		break;
 	}
 	
-
+	particles = new ParticleEngine(40, Vector2D(70, 70), manager);
 	int leftNotesPos = manager->getDefaultWindowWidth() / 2 - pointOffset;
 	int rightNotesPos = manager->getDefaultWindowWidth() / 2 + pointOffset;
 
@@ -62,7 +63,7 @@ void PlayState::newGame(int lvl)
 	songBarBG = new BarBackground(manager, 1, 14, Vector2D(50, 35), (((manager->getDefaultWindowWidth() - 50) / level->songLength) / 70.5), Resources::YellowBar); //70.5 es la constante para ajustar la velocidad de la barra al tiempo de la cancion
 	songBar = new SongBar(manager, 18, 22, Vector2D(41, 31), Vector2D((((manager->getDefaultWindowWidth() / level->songLength)) / 70.5), 0), songBarBG);
 
-	scoreBar = new ScoreBar(manager, 20, 0, Vector2D(50, 465 + pointSize), maxScore, songBarBG->getPosition().getY() + songBarBG->getHeight() * 2);
+	scoreBar = new ScoreBar(manager, 80, 0, Vector2D(6, 465 + pointSize), maxScore, songBarBG->getPosition().getY() + songBarBG->getHeight() * 2);
 
 	perico = new Character(manager, 60 * 3.5, 120 * 3.5, Vector2D(75, initialNoteHeight + 70), Resources::PericoIdle);
 	
@@ -82,7 +83,7 @@ void PlayState::newGame(int lvl)
 	stage.push_back(songBarBG);
 	stage.push_back(songBar);
 	stage.push_back(player1);
-	//stage.push_back(rf);
+	stage.push_back(particles);
 
 
 	level->playSong();
@@ -370,7 +371,7 @@ void PlayState::generateButtons()
 void PlayState::songOver()
 {
 	manager->getServiceLocator()->getAudios()->haltChannel(0);
-	//manager->getMachine()->pushState(new EndState(manager, currentScore, maxScore, 70));
+	//manager->getMachine()->pushState(new EndState(manager, currentScore, maxScore, 70,nlevel));
 	//manager->getMachine()->changeState(new MapState(manager));
 	manager->getMachine()->popState();
 }
@@ -424,6 +425,7 @@ void PlayState::playSong(int song) {
 	manager->getServiceLocator()->getAudios()->playChannel(song, 0);
 	manager->getServiceLocator()->getAudios()->setChannelVolume(70);
 }
+
 
 void PlayState::showError()
 {

@@ -4,9 +4,8 @@
 #include "EmptyObject.h"
 #include "PanelMap.h"
 #include <iostream>
-#include <sstream>
-#include <utility> 
-#include "PanelMap.h"
+#include <fstream>
+#include <utility>
 
 using namespace std;
 
@@ -18,9 +17,10 @@ public:
 	~MapState();
 	virtual bool handleEvent(Uint32 time, SDL_Event e);
 	virtual void render(Uint32 time, bool beatSync);
+	pair <EmptyObject, PanelMap> buttons[5];
 
 private:
-	pair <EmptyObject, PanelMap> buttons[5];
+	
 	bool activeLevels[5];
 
 	int index = 0;
@@ -28,13 +28,14 @@ private:
 	int max = 4;
 
 	void play(int lvl_);
+	void loadGame();
 	static void load(GameManager* gameManager);
 	static void exit(GameManager* gameManager);
 
 	const Uint8 *keystates;
 	SDL_GameController* controller = NULL;
 
-	EmptyObject fondo__;
+	EmptyObject* fondo__;
 
 	void createMainButtons();
 	void nextButton();
