@@ -26,7 +26,7 @@ vector<Resources::ImageInfo> Resources::images_{
 		{FlechaEspBomba, "resources/images/FlechaEspBomba.png", 32, 32, 1, 1, 1},
 		{Point, "resources/images/Point.png", 32, 32, 1, 1, 1},
 		{NoteIcon, "resources/images/Nota.png", 9, 11, 1, 1, 1},
-		{YellowBar, "resources/images/enemy_mana_bar_002.png", 20, 100, 4, 1, 2},
+		{YellowBar, "resources/images/enemy_mana_bar_002.png", 20, 100, 1, 1, 1},
 		{PericoIdle, "resources/images/PericoIdle.png", 60, 120, 3, 2, 4},
 		{PericoDab, "resources/images/PericoDab.png", 60, 120, 2, 1, 2},
 		{PericoDance1, "resources/images/PericoBaile1.png", 60, 120, 2, 1, 2},
@@ -81,7 +81,8 @@ vector<Resources::ImageInfo> Resources::images_{
 		{Particles, "resources/images/Particles.png", 16, 16, 3, 2, 6},
 		{HitGold, "resources/images/HitAnimationGold.png", 32, 32, 3, 1, 3},
 		{HitSilver, "resources/images/HitAnimationSilver.png", 32, 32, 3, 1, 3},
-		{HitCopper, "resources/images/HitAnimationCopper.png", 32, 32, 3, 1, 3}
+		{HitCopper, "resources/images/HitAnimationCopper.png", 32, 32, 3, 1, 3},
+		{StarBar, "resources/images/ScoreStars.png", 22, 102, 6, 6, 1}
 	
 };
 
