@@ -57,6 +57,7 @@
     <ClCompile Include="TextObject.cpp" />
     <ClCompile Include="ComboText.cpp" />
     <ClCompile Include="CutSceneState.cpp" />
+    <ClCompile Include="RedEffect.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioManager.h" />
@@ -115,6 +116,7 @@
     <ClInclude Include="TextObject.h" />
     <ClInclude Include="ComboText.h" />
     <ClInclude Include="CutSceneState.h" />
+    <ClInclude Include="RedEffect.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

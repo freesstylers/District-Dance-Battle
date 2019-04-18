@@ -71,7 +71,8 @@ public:
 		Map,
 		Difficulty,
 		MetroOn,
-		MetroOff
+		MetroOff,
+		RedAura
 		// text
 	};
 

@@ -75,7 +75,8 @@ vector<Resources::ImageInfo> Resources::images_ {
 	{Map, "resources/images/Mapa.png", 400, 300, 1, 1, 1},
 	{Difficulty, "resources/images/Easy-Hard.png", 34, 30, 2, 1, 2},
 	{MetroOn, "resources/images/metroOn.png", 64, 64, 1, 1, 1},
-	{MetroOff, "resources/images/metroOff.png", 64, 64, 1, 1, 1}
+	{MetroOff, "resources/images/metroOff.png", 64, 64, 1, 1, 1},
+	{RedAura, "resources/images/RedVignette.png", 800, 600, 1, 1, 1}
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {
