@@ -63,7 +63,7 @@ void PlayState::newGame(int lvl)
 	songBarBG = new BarBackground(manager, 1, 14, Vector2D(50, 35), (((manager->getDefaultWindowWidth() - 50) / level->songLength) / 70.5), Resources::YellowBar); //70.5 es la constante para ajustar la velocidad de la barra al tiempo de la cancion
 	songBar = new SongBar(manager, 18, 22, Vector2D(41, 31), Vector2D((((manager->getDefaultWindowWidth() / level->songLength)) / 70.5), 0), songBarBG);
 
-	scoreBar = new ScoreBar(manager, 20, 0, Vector2D(50, 465 + pointSize), maxScore, songBarBG->getPosition().getY() + songBarBG->getHeight() * 2);
+	scoreBar = new ScoreBar(manager, 80, 0, Vector2D(6, 465 + pointSize), maxScore, songBarBG->getPosition().getY() + songBarBG->getHeight() * 2);
 
 	perico = new Character(manager, 60 * 3.5, 120 * 3.5, Vector2D(75, initialNoteHeight + 70), Resources::PericoIdle);
 	

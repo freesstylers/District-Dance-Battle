@@ -9,6 +9,7 @@ class GameObject {
 private:
 
 public:
+	Animation animation;
 	GameObject();
 	GameObject(SDLGame* game);
 	virtual ~GameObject();
@@ -65,8 +66,6 @@ public:
 	virtual void updateResolution(double wScale, double hScale);
 protected:
 	SDLGame* game_; // pointer to the game
-
-	Animation animation;
 
 	bool active_;   // indicates if the object is active
 

@@ -77,7 +77,8 @@ public:
 		Particles,
 		HitGold,
 		HitSilver,
-		HitCopper
+		HitCopper,
+		StarBar
 		// text
 	};
 
