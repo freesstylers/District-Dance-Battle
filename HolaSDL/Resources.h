@@ -74,7 +74,10 @@ public:
 		MetroOff,
 		BackMap,
 		Exit,
-		Particles
+		Particles,
+		HitGold,
+		HitSilver,
+		HitCopper
 		// text
 	};
 

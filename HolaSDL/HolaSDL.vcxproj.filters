@@ -59,6 +59,9 @@
     <ClCompile Include="CutSceneState.cpp" />
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="ParticleEngine.cpp" />
+    <ClCompile Include="PauseMenu.cpp" />
+    <ClCompile Include="HitNote.cpp" />
+    <ClCompile Include="HitNotePool.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioManager.h" />
@@ -119,6 +122,9 @@
     <ClInclude Include="CutSceneState.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="ParticleEngine.h" />
+    <ClInclude Include="PauseMenu.h" />
+    <ClInclude Include="HitNote.h" />
+    <ClInclude Include="HitNotePool.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

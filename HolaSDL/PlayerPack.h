@@ -7,6 +7,7 @@
 #include "ComboText.h"
 #include "FeedbackPool.h"
 #include "LevelInputManager.h"
+#include "HitNotePool.h"
 
 class PlayState;
 class PlayerPack : public GameObject
@@ -40,7 +41,9 @@ public:
 	std::list<Note*> screenArrows_;
 	std::list<Note*> screenButtons_;
 	FeedbackPool* feedbackLeft;
+	HitNotePool* hitLeft;
 	FeedbackPool* feedbackRight;
+	HitNotePool* hitRight;
 	void errorLeft();
 	void errorRight();
 

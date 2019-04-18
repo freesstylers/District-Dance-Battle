@@ -70,7 +70,7 @@ inline void GameObjectPool<T, SIZE>::render(Uint32 time, bool beatSync){
 		return;
 	for (auto &o : objs_) {
 		if (o.isActive()) {
-			o.render(time);
+			o.render(time, beatSync);
 		}
 	}
 }
