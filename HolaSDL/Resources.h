@@ -86,7 +86,8 @@ public:
 		Snare,
 		Hiphop,
 		Mapa,
-		AllStar
+		AllStar,
+		Megalovania
 		// sound effects
 
 	};
