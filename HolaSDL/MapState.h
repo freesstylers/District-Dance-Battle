@@ -5,8 +5,7 @@
 #include "PanelMap.h"
 #include <iostream>
 #include <fstream>
-#include <utility> 
-#include "PanelMap.h"
+#include <utility>
 
 using namespace std;
 
@@ -36,7 +35,7 @@ private:
 	const Uint8 *keystates;
 	SDL_GameController* controller = NULL;
 
-	EmptyObject fondo__;
+	EmptyObject* fondo__;
 
 	void createMainButtons();
 	void nextButton();

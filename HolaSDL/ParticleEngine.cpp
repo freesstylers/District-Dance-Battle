@@ -6,17 +6,15 @@ ParticleEngine::ParticleEngine(int maxpart, Vector2D pos, SDLGame* gm) : GameObj
 {
 	setPosition(pos);
 	setVelocity(Vector2D(0, 0));
-	for (int i = 0;i < maxParticles;i++)  //create maxparticle number of particles with random values both for position, velocity, life, color
-		particles.push_back(new Particle(Vector2D(position_.getX() + rand() % 6 - 3, position_.getY() + rand() % 6 - 3), Vector2D(rand() % 10 + (float)rand() / (float)RAND_MAX - 5, rand() % 10 + (float)rand() / (float)RAND_MAX - 5), 500 + rand() % 2000, 16, 16, game_));
 }
 ParticleEngine::~ParticleEngine()
 {
 	for (int i = 0;i < particles.size();i++)
 		delete particles[i];
 }
-void ParticleEngine::generate()
+void ParticleEngine::generate(int num)
 {
-	for (int i = 0;i < maxParticles;i++)  //create maxparticle number of particles with random values both for position, velocity, life, color
+	for (int i = 0;i < num;i++)  //create maxparticle number of particles with random values both for position, velocity, life, color
 		particles.push_back(new Particle(Vector2D(position_.getX() + rand() % 6 - 3, position_.getY() + rand() % 6 - 3), Vector2D(rand() % 10 + (float)rand() / (float)RAND_MAX - 5, rand() % 10 + (float)rand() / (float)RAND_MAX - 5), 500 + rand() % 2000, 16, 16, game_));
 }
 void ParticleEngine::render(Uint32 time, bool beatSync)

@@ -9,8 +9,8 @@ MapState::MapState(GameManager* g) :GameState(g)
 	keystates = SDL_GetKeyboardState(NULL);
 	controller = SDL_GameControllerOpen(0);
 	createMainButtons();
-	fondo__ = EmptyObject(g, Vector2D(0, 0), g->getDefaultWindowWidth(), g->getDefaultWindowHeight(), Resources::Map);
-	stage.push_back(new EmptyObject(g, Vector2D(0, 0), g->getDefaultWindowWidth(), g->getDefaultWindowHeight(), Resources::Map));
+	fondo__ = new EmptyObject(g, Vector2D(0, 0), g->getDefaultWindowWidth(), g->getDefaultWindowHeight(), Resources::Map);
+	stage.push_back(fondo__);
 	activeLevels[0] = true;
 	activeLevels[1] = true;
 	loadGame();

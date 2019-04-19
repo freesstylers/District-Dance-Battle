@@ -78,7 +78,8 @@ public:
 		HitGold,
 		HitSilver,
 		HitCopper,
-		StarBar
+		StarBar,
+		RedAura
 		// text
 	};
 
@@ -90,9 +91,10 @@ public:
 		Error,
 		Snare,
 		Hiphop,
-		Mapa
+		Mapa,
+		StarSound,
+		ComboSound
 		// sound effects
-
 	};
 
 	enum FontId {

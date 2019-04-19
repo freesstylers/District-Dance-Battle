@@ -3,6 +3,7 @@
 #include "GameManager.h"
 #include <string>
 #include "PlayerPack.h"
+#include "RedEffect.h"
 
 
 LevelInputManager::LevelInputManager(PlayState* l, PlayerPack* pl, int numctrl)
@@ -25,7 +26,7 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 	if (event.type == SDL_CONTROLLERBUTTONDOWN && keyup) {
 		level->getGameManager()->getServiceLocator()->getAudios()->playChannel(Resources::Snare, 0);
 		level->getGameManager()->getServiceLocator()->getAudios()->setChannelVolume(70);
-		level->particles->generate();
+		//level->particles->generate();
 	}
 	if (event.type == SDL_CONTROLLERBUTTONUP)
 	{

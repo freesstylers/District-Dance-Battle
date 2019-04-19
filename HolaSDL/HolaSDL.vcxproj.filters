@@ -57,11 +57,13 @@
     <ClCompile Include="TextObject.cpp" />
     <ClCompile Include="ComboText.cpp" />
     <ClCompile Include="CutSceneState.cpp" />
+    <ClCompile Include="RedEffect.cpp" />
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="ParticleEngine.cpp" />
     <ClCompile Include="PauseMenu.cpp" />
     <ClCompile Include="HitNote.cpp" />
     <ClCompile Include="HitNotePool.cpp" />
+    <ClCompile Include="Slider.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioManager.h" />
@@ -120,11 +122,13 @@
     <ClInclude Include="TextObject.h" />
     <ClInclude Include="ComboText.h" />
     <ClInclude Include="CutSceneState.h" />
+    <ClInclude Include="RedEffect.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="ParticleEngine.h" />
     <ClInclude Include="PauseMenu.h" />
     <ClInclude Include="HitNote.h" />
     <ClInclude Include="HitNotePool.h" />
+    <ClInclude Include="Slider.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

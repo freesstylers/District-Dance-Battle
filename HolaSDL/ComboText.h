@@ -1,5 +1,6 @@
 #pragma once
 #include "TextObject.h"
+#include "ParticleEngine.h"
 class ComboText :
 	public TextObject
 {
@@ -13,6 +14,7 @@ private:
 	double deltaScale = 0.1;
 
 	bool hideAnimation = false;
+	ParticleEngine* particles;
 
 public:
 	ComboText(SDLGame* manager, Font* font, Vector2D pos);

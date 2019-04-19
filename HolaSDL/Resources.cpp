@@ -82,7 +82,8 @@ vector<Resources::ImageInfo> Resources::images_{
 		{HitGold, "resources/images/HitAnimationGold.png", 32, 32, 3, 1, 3},
 		{HitSilver, "resources/images/HitAnimationSilver.png", 32, 32, 3, 1, 3},
 		{HitCopper, "resources/images/HitAnimationCopper.png", 32, 32, 3, 1, 3},
-		{StarBar, "resources/images/ScoreStars.png", 22, 102, 6, 6, 1}
+		{StarBar, "resources/images/ScoreStars.png", 22, 102, 6, 6, 1},
+		{RedAura, "resources/images/RedVignette.png", 800, 600, 1, 1, 1}
 	
 };
 
@@ -97,7 +98,9 @@ vector<Resources::MusicInfo> Resources::musics_ {
 	{Error, "resources/sound/Error.wav"},
 	{Snare, "resources/sound/snare.wav"},
 	{Hiphop, "resources/sound/hiphop.mp3"},
-	{Mapa, "resources/sound/Mapa.mp3"}
+	{Mapa, "resources/sound/Mapa.mp3"},
+	{StarSound, "resources/sound/Star.wav"},
+	{ComboSound, "resources/sound/Combo.wav"}
 };
 
 vector<Resources::SoundInfo> Resources::sounds_ {

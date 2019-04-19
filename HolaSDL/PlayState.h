@@ -23,6 +23,7 @@
 #include "Background.h"
 #include "TimerNoSingleton.h"
 #include "PlayerPack.h"
+#include "RedEffect.h"
 #include "ParticleEngine.h"
 
 class PlayState : public GameState //main game class, where most of the gameplay will take place
@@ -45,6 +46,7 @@ protected:
 	bool firstNote = true;
 	bool songIsOver = false;
 
+	RedEffect* rf;
 
 	Vector2D noteVel;
 	MiniGame* minigame;
@@ -99,6 +101,7 @@ public:
 	virtual void render(Uint32 time, bool beatSync = false);
 	void playSong(int song);
 	void showError();
+	void changeRedeffect();
 	Vector2D setVel(double time);
 	std::list<Note*> levelArrows_;
 	std::list<Note*> levelButtons_;

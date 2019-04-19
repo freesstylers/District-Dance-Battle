@@ -15,7 +15,7 @@ public:
 	virtual void update(Uint32 time);
 	virtual bool handleInput(Uint32 time, const SDL_Event& event) { return false; };
 	virtual void render(Uint32 time, bool beatSync);
-	void generate();
+	void generate(int num);
 	~ParticleEngine();
 };
 

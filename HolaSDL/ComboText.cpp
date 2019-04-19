@@ -7,6 +7,7 @@ ComboText::ComboText(SDLGame* manager, Font* font, Vector2D pos) : TextObject(ma
 	setActive(false);
 	originalPos = pos;
 	centeredPos = pos;
+	particles = new ParticleEngine(60, pos, manager);
 }
 
 
@@ -40,7 +41,10 @@ void ComboText::render(Uint32 time, bool beatSync)
 			else
 				changeAlpha(alphaUpdate);
 		}
+		particles->render(time, false);
 	}
+	particles->update(time);
+	
 }
 
 void ComboText::updateCombo(int combo)
@@ -57,6 +61,24 @@ void ComboText::updateCombo(int combo)
 	setPosition(centeredPos);
 
 	scale(currentScale);
-
+	game_->getServiceLocator()->getAudios()->playChannel(Resources::ComboSound, 0);
+	switch (combo)
+	{
+	case 10:
+		particles->generate(40);
+		break;
+	case 25:
+		particles->generate(60);
+		break;
+	case 50:
+		particles->generate(100);
+		break;
+	case 100:
+		particles->generate(150);
+		break;
+	case 200:
+		particles->generate(250);
+		break;
+	}
 	setActive(true);
 }

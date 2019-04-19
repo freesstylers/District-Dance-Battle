@@ -71,6 +71,9 @@ void PlayState::newGame(int lvl)
 	
 	minigameController = new TimerNoSingleton();
 
+	//rf = new RedEffect();
+	//rf->init();
+
 	bh = new BeatHandler(level->bpm);
 
 	stage.push_back(bg);
@@ -431,4 +434,14 @@ void PlayState::showError()
 	bg->queueAnimationChange(bgT);
 
 	manager->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0);
+}
+
+void PlayState::changeRedeffect()
+{
+	if (rf->isActive() == false) {
+		rf->setActive(true);
+	}
+	else {
+
+	}
 }
