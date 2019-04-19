@@ -98,7 +98,9 @@ vector<Resources::MusicInfo> Resources::musics_ {
 	{Error, "resources/sound/Error.wav"},
 	{Snare, "resources/sound/snare.wav"},
 	{Hiphop, "resources/sound/hiphop.mp3"},
-	{Mapa, "resources/sound/Mapa.mp3"}
+	{Mapa, "resources/sound/Mapa.mp3"},
+	{StarSound, "resources/sound/Star.wav"},
+	{ComboSound, "resources/sound/Combo.wav"}
 };
 
 vector<Resources::SoundInfo> Resources::sounds_ {

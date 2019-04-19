@@ -91,9 +91,10 @@ public:
 		Error,
 		Snare,
 		Hiphop,
-		Mapa
+		Mapa,
+		StarSound,
+		ComboSound
 		// sound effects
-
 	};
 
 	enum FontId {

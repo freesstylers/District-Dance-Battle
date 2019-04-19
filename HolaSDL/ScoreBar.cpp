@@ -14,6 +14,7 @@ ScoreBar::ScoreBar(SDLGame* game, double width, double height, Vector2D pos, dou
 	maxHeight_ = 400;
 
 	stars = new EmptyObject(game, Vector2D(pos.getX() - 1, pos.getY() - maxHeight_), width + 2, maxHeight_ + 2, Resources::StarBar);
+	particleEffect = new ParticleEngine(60, pos, game);
 }
 
 bool ScoreBar::handleInput(Uint32 time, const SDL_Event& event) {
@@ -34,6 +35,9 @@ void ScoreBar::updateBar(double punt)
 	{
 		currentStar++;
 		stars->animation.currentFrame = currentStar;
+		particleEffect->setPosition(Vector2D(this->getPosition().getX() + width_ / 2, stars->getPosition().getY() + (5 - (currentStar))*(maxHeight_ / 5)));
+		particleEffect->generate(60);
+		game_->getServiceLocator()->getAudios()->playChannel(Resources::StarSound, 0);
 	}
 }
 
@@ -57,6 +61,7 @@ void ScoreBar::render(Uint32 time, bool beatSync)
 		animation.texture_->render(getRect(), getFrameRect(), alpha_);
 	}
 	stars->render(time, false);
+	particleEffect->render(time, false);
 }
 ScoreBar::~ScoreBar()
 {
