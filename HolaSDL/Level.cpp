@@ -5,11 +5,12 @@
 #include <cmath> // esto es C++
 //#include <math.h> // esto es C
 
-Level::Level(PlayState* l, SDLGame* gam, string n)
+Level::Level(PlayState* l, SDLGame* gam, string n, int noteSize)
 {
 	level = l;
 	gm = gam;
 	name = n;
+	noteSize_ = noteSize;
 }
 
 
@@ -44,24 +45,24 @@ void Level::init() {
 				note2 = nullptr;
 				break;
 			case 1:
-				note = new Note(SDL_CONTROLLER_BUTTON_DPAD_LEFT, gm, 50, 50, level->leftNotesVector, noteVel);
-				note2 = new Note(SDL_CONTROLLER_BUTTON_DPAD_LEFT, gm, 50, 50, level->leftNotesVector2, noteVel);
+				note = new Note(SDL_CONTROLLER_BUTTON_DPAD_LEFT, gm, noteSize_, noteSize_, level->leftNotesVector, noteVel);
+				note2 = new Note(SDL_CONTROLLER_BUTTON_DPAD_LEFT, gm, noteSize_, noteSize_, level->leftNotesVector2, noteVel);
 				break;
 			case 2:
-				note = new Note(SDL_CONTROLLER_BUTTON_DPAD_RIGHT, gm, 50, 50, level->leftNotesVector, noteVel);
-				note2 = new Note(SDL_CONTROLLER_BUTTON_DPAD_RIGHT, gm, 50, 50, level->leftNotesVector2, noteVel);
+				note = new Note(SDL_CONTROLLER_BUTTON_DPAD_RIGHT, gm, noteSize_, noteSize_, level->leftNotesVector, noteVel);
+				note2 = new Note(SDL_CONTROLLER_BUTTON_DPAD_RIGHT, gm, noteSize_, noteSize_, level->leftNotesVector2, noteVel);
 				break;
 			case 3:
-				note = new Note(SDL_CONTROLLER_BUTTON_DPAD_UP, gm, 50, 50, level->leftNotesVector, noteVel);
-				note2 = new Note(SDL_CONTROLLER_BUTTON_DPAD_UP, gm, 50, 50, level->leftNotesVector2, noteVel);
+				note = new Note(SDL_CONTROLLER_BUTTON_DPAD_UP, gm, noteSize_, noteSize_, level->leftNotesVector, noteVel);
+				note2 = new Note(SDL_CONTROLLER_BUTTON_DPAD_UP, gm, noteSize_, noteSize_, level->leftNotesVector2, noteVel);
 				break;
 			case 4:
-				note = new Note(SDL_CONTROLLER_BUTTON_DPAD_DOWN, gm, 50, 50, level->leftNotesVector, noteVel);
-				note2 = new Note(SDL_CONTROLLER_BUTTON_DPAD_DOWN, gm, 50, 50, level->leftNotesVector2, noteVel);
+				note = new Note(SDL_CONTROLLER_BUTTON_DPAD_DOWN, gm, noteSize_, noteSize_, level->leftNotesVector, noteVel);
+				note2 = new Note(SDL_CONTROLLER_BUTTON_DPAD_DOWN, gm, noteSize_, noteSize_, level->leftNotesVector2, noteVel);
 				break;
 			case 5:
-				note = new Note(SDL_CONTROLLER_BUTTON_INVALID, gm, 50, 50, level->leftNotesVector, noteVel);
-				note2 = new Note(SDL_CONTROLLER_BUTTON_INVALID, gm, 50, 50, level->leftNotesVector2, noteVel);
+				note = new Note(SDL_CONTROLLER_BUTTON_INVALID, gm, noteSize_, noteSize_, level->leftNotesVector, noteVel);
+				note2 = new Note(SDL_CONTROLLER_BUTTON_INVALID, gm, noteSize_, noteSize_, level->leftNotesVector2, noteVel);
 				break;
 			default:
 				break;
@@ -88,24 +89,24 @@ void Level::init() {
 				note2 = nullptr;
 				break;
 			case 1:
-				note = new Note(SDL_CONTROLLER_BUTTON_A, gm, 50, 50, level->rightNotesVector, noteVel);
-				note2 = new Note(SDL_CONTROLLER_BUTTON_A, gm, 50, 50, level->rightNotesVector2, noteVel);
+				note = new Note(SDL_CONTROLLER_BUTTON_A, gm, noteSize_, noteSize_, level->rightNotesVector, noteVel);
+				note2 = new Note(SDL_CONTROLLER_BUTTON_A, gm, noteSize_, noteSize_, level->rightNotesVector2, noteVel);
 				break;
 			case 2:
-				note = new Note(SDL_CONTROLLER_BUTTON_B, gm, 50, 50, level->rightNotesVector, noteVel);
-				note2 = new Note(SDL_CONTROLLER_BUTTON_B, gm, 50, 50, level->rightNotesVector2, noteVel);
+				note = new Note(SDL_CONTROLLER_BUTTON_B, gm, noteSize_, noteSize_, level->rightNotesVector, noteVel);
+				note2 = new Note(SDL_CONTROLLER_BUTTON_B, gm, noteSize_, noteSize_, level->rightNotesVector2, noteVel);
 				break;
 			case 3:
-				note = new Note(SDL_CONTROLLER_BUTTON_X, gm, 50, 50, level->rightNotesVector, noteVel);
-				note2 = new Note(SDL_CONTROLLER_BUTTON_X, gm, 50, 50, level->rightNotesVector2, noteVel);
+				note = new Note(SDL_CONTROLLER_BUTTON_X, gm, noteSize_, noteSize_, level->rightNotesVector, noteVel);
+				note2 = new Note(SDL_CONTROLLER_BUTTON_X, gm, noteSize_, noteSize_, level->rightNotesVector2, noteVel);
 				break;
 			case 4:
-				note = new Note(SDL_CONTROLLER_BUTTON_Y, gm, 50, 50, level->rightNotesVector, noteVel);
-				note2 = new Note(SDL_CONTROLLER_BUTTON_Y, gm, 50, 50, level->rightNotesVector2, noteVel);
+				note = new Note(SDL_CONTROLLER_BUTTON_Y, gm, noteSize_, noteSize_, level->rightNotesVector, noteVel);
+				note2 = new Note(SDL_CONTROLLER_BUTTON_Y, gm, noteSize_, noteSize_, level->rightNotesVector2, noteVel);
 				break;
 			case 5:
-				note = new Note(SDL_CONTROLLER_BUTTON_INVALID, gm, 50, 50, level->rightNotesVector, noteVel);
-				note2 = new Note(SDL_CONTROLLER_BUTTON_INVALID, gm, 50, 50, level->rightNotesVector2, noteVel);
+				note = new Note(SDL_CONTROLLER_BUTTON_INVALID, gm, noteSize_, noteSize_, level->rightNotesVector, noteVel);
+				note2 = new Note(SDL_CONTROLLER_BUTTON_INVALID, gm, noteSize_, noteSize_, level->rightNotesVector2, noteVel);
 				break;
 			default:
 				break;

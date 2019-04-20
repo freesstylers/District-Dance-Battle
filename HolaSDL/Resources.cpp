@@ -41,7 +41,7 @@ vector<Resources::ImageInfo> Resources::images_{
 		{Square, "resources/images/Recuadro.png", 32, 100, 4, 1, 4},
 		{SquareMiss,"resources/images/RecuadroMiss2.png", 32, 100, 2, 1, 2},
 		{testBG, "resources/images/FondoPrueba.png", 213, 120, 2, 1, 2},
-		{PixelatedTextBG, "resources/images/FondoPixel.png", 128, 100, 2, 1, 2},
+		{PixelatedTextBG, "resources/images/FondoPixel.png", 213, 128, 2, 1, 2},
 		{RobotIdle, "resources/images/RobotVaporwave.png", 60, 120, 2, 1, 2},
 		{RobotDance, "resources/images/VaporwaveDance.png", 60, 120, 3, 2, 4},
 		{Mira, "resources/images/mira.png", 512, 512, 1, 1, 1},
