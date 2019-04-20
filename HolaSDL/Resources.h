@@ -104,7 +104,8 @@ public:
 		ARIAL24,
 		PIXEL30,
 		PIXEL20,
-		PIXEL10
+		PIXEL10,
+		PIXEL50
 	};
 
 

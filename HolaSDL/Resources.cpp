@@ -7,7 +7,8 @@ vector<Resources::FontInfo> Resources::fonts_ {
 	{ ARIAL24, "resources/fonts/ARIAL.ttf", 40 },
 	{PIXEL30, "resources/fonts/NES-Chimera.ttf",25},
 	{PIXEL20, "resources/fonts/NES-Chimera.ttf",20},
-	{PIXEL10, "resources/fonts/NES-Chimera.ttf",10 }
+	{PIXEL10, "resources/fonts/NES-Chimera.ttf",10 },
+	{PIXEL50, "resources/fonts/NES-Chimera.ttf",45},
 	//{ ARIAL16, "resources/fonts/ARIAL.ttf", 16 }
 };
 
