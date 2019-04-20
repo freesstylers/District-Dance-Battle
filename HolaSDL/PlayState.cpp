@@ -4,12 +4,18 @@
 PlayState::PlayState(GameManager* g,int lvl,bool oneP, bool diff) :GameState(g) //Asigna game y llama a inicializaci�n
 {
 	nlevel = lvl;
+
+	pauseMenu = new PauseMenu(g);
+
 	if (oneP) {
 		newGame(lvl);
 	}
 	else {
 		newGame2P(lvl);
 	}
+
+	stage.push_back(pauseMenu);
+	//pauseMenu->setActive(false);
 	
 }
 
