@@ -14,7 +14,7 @@ public:
 	void reset();
 	void prevSwitch();
 	void nextSwitch();
-	void selectButton(SDL_Event e);
+	void selectButton(SDL_Event e, SDL_GameController* cont);
 	
 	int index = 0;
 	int lvl_;
