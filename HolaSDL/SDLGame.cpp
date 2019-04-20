@@ -17,7 +17,9 @@ void SDLGame::initSDL() {
 	SDL_Init(SDL_INIT_EVERYTHING);
 
 	// Create window .
-	SDL_GetCurrentDisplayMode(1, &DM);
+	SDL_GetCurrentDisplayMode(0, &DM);
+	width_ = DM.w;
+	height_ = DM.h;
 	window_ = SDL_CreateWindow(windowTitle_.c_str(),
 	SDL_WINDOWPOS_UNDEFINED,
 	SDL_WINDOWPOS_UNDEFINED, width_, height_, SDL_WINDOW_SHOWN);
