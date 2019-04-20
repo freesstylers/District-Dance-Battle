@@ -86,21 +86,21 @@ void DialogState::render(Uint32 time, bool beatSync) {
 	}
 	actualBox->render(time, beatSync);
 	if (!dialogo.empty()) {
-		if (dialogo.front().text.size() <= 35) {
+		if (dialogo.front().text.size() <= 38) {
 		
 			Texture msg0(manager->getRenderer(),
 				dialogo.front().text,
 				*(manager->getServiceLocator()->getFonts()->getFont(
-					Resources::PIXEL20)), { COLOR(0x00000000) });
+					Resources::PIXEL50)), { COLOR(0x00000000) });
 			actualText = &msg0;
 			actualText->render(manager->getRenderer(),
-				manager->getWindowWidth() / 39, manager->getWindowHeight() - 550);
+				manager->getWindowWidth() / 39, manager->getWindowHeight() - 218);
 		}
 		else {
 			string aux1="";
 			string aux2="";
 			int intaux;
-			for (int i = 0; i < 35; i++) {
+			for (int i = 0; i < 38; i++) {
 				aux1 += dialogo.front().text[i];
 				intaux = i;
 			}
@@ -112,18 +112,18 @@ void DialogState::render(Uint32 time, bool beatSync) {
 			Texture msg0(manager->getRenderer(),
 				aux1,
 				*(manager->getServiceLocator()->getFonts()->getFont(
-					Resources::PIXEL20)), { COLOR(0x00000000) });
+					Resources::PIXEL50)), { COLOR(0x00000000) });
 			actualText = &msg0;
 			actualText->render(manager->getRenderer(),
-				manager->getWindowWidth() / 39, manager->getWindowHeight() - 550);
+				manager->getWindowWidth() / 39, manager->getWindowHeight() - 218);
 			if (aux2 != "") {
 				Texture msg1(manager->getRenderer(),
 					aux2,
 					*(manager->getServiceLocator()->getFonts()->getFont(
-						Resources::PIXEL20)), { COLOR(0x00000000) });
+						Resources::PIXEL50)), { COLOR(0x00000000) });
 				actualText = &msg1;
 				actualText->render(manager->getRenderer(),
-					manager->getWindowWidth() / 19, (manager->getWindowHeight() - 65 * 1.9) + 40);
+					manager->getWindowWidth() / 22, (manager->getWindowHeight() - 150));
 				
 			}
 			
@@ -133,10 +133,10 @@ void DialogState::render(Uint32 time, bool beatSync) {
 		Texture msg0(manager->getRenderer(),
 			" COMIENZA LA BATALLA",
 			*(manager->getServiceLocator()->getFonts()->getFont(
-				Resources::PIXEL20)), { COLOR(0x00000000) });
+				Resources::PIXEL50)), { COLOR(0x00000000) });
 		actualText = &msg0;
 		actualText->render(manager->getRenderer(),
-			manager->getWindowWidth() / 39, manager->getWindowHeight() - 65 * 1.9);
+			manager->getWindowWidth() / 39, manager->getWindowHeight() - 175);
 		end = true;
 	}
 }

@@ -56,8 +56,15 @@ void PlayState::newGame(int lvl)
 	timer = Timer::Instance();
 	timer->Reset();
 
-	maxMinigameValue = (maxScore * minigameScoreTotal) / minigameAmount;
-	maxNoteValue = (maxScore * (1 - minigameScoreTotal)) / level->noteAmount;
+	if (minigameAmount > 0) {
+		maxMinigameValue = (maxScore * minigameScoreTotal) / minigameAmount;
+		maxNoteValue = (maxScore * (1 - minigameScoreTotal)) / level->noteAmount;
+	}
+
+	else {
+		maxMinigameValue = 0;
+		maxNoteValue = maxScore  / level->noteAmount;
+	}
 
 
 	songBarBG = new BarBackground(manager, 1, 14, Vector2D(50, 35), (((manager->getDefaultWindowWidth() - 50) / level->songLength) / 70.5), Resources::YellowBar); //70.5 es la constante para ajustar la velocidad de la barra al tiempo de la cancion
@@ -204,6 +211,8 @@ void PlayState::update(Uint32 time)
 			timer->Update();
 			if (timer->DeltaTime() > (bh->getBeatTime() / 1000.0) - msDiff)
 			{
+
+				cout << timer->DeltaTime() << ", " << msDiff << endl;
 				msDiff += timer->DeltaTime() - (bh->getBeatTime() / 1000.0);
 				generateArrows();
 				generateButtons();
@@ -336,13 +345,13 @@ void PlayState::generateArrows()
 {
 	if (!levelArrows_.empty()) {
 		if (levelArrows_.front() != nullptr) {
-			levelArrows_.front()->setVelocity(setVel(timer->DeltaTime() * 600));
 
 			player1->screenArrows_.push_back(levelArrows_.front());
 			player1->screenArrows_.back()->setPosition(player1->screenArrows_.back()->getPosition() + player1->screenArrows_.back()->getVelocity()*msDiff);
 			
 			if (player2 != nullptr && levelArrows2_.front()!=nullptr)
 			{
+
 				player2->screenArrows_.push_back(levelArrows2_.front());
 				player2->screenArrows_.back()->setPosition(player2->screenArrows_.back()->getPosition() + player2->screenArrows_.back()->getVelocity()*msDiff);
 			}
@@ -356,12 +365,12 @@ void PlayState::generateButtons()
 {
 	if (!levelButtons_.empty()) {
 		if (levelButtons_.front() != nullptr) {
-			levelButtons_.front()->setVelocity(setVel(timer->DeltaTime() * 600));
 
 			player1->screenButtons_.push_back(levelButtons_.front());
 			player1->screenButtons_.back()->setPosition(player1->screenButtons_.back()->getPosition() + player1->screenButtons_.back()->getVelocity()*msDiff);
 			if (player2 != nullptr && levelButtons2_.front() != nullptr)
 			{
+
 				player2->screenButtons_.push_back(levelButtons2_.front());
 				player2->screenButtons_.back()->setPosition(player2->screenButtons_.back()->getPosition() + player2->screenButtons_.back()->getVelocity()*msDiff);
 			}
@@ -420,7 +429,7 @@ void PlayState::updateResolution()
 
 Vector2D PlayState::setVel(double time)
 {
-	double distance = player1->getLeftPoint()->getPosition().getY() + player1->getLeftPoint()->getHeight()/2 - initialNoteHeight - 25.0; //El 25 es la mitad de la altura de la note/boton
+	double distance = player1->getLeftPoint()->getPosition().getY() - initialNoteHeight;
 	double velocity = distance / (time / 1000.0);
 	return Vector2D(0, velocity / 8.0);
 }
