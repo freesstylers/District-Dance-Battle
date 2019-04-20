@@ -13,7 +13,7 @@ class SDLGame;
 class Level
 {
 public:
-	Level(PlayState* l, SDLGame* gam,string n);
+	Level(PlayState* l, SDLGame* gam,string n, int noteSize);
 	~Level();
 
 	void playSong();
@@ -26,6 +26,7 @@ public:
 	int song;
 	int maxScore;
 	int noteAmount;
+	int noteSize_;
 	SRandBasedGenerator random;
 
 protected:

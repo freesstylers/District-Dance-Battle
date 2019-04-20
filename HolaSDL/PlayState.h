@@ -62,16 +62,16 @@ protected:
 	bool animationMiniGame = false;
 	int animationFramesPerBeat = 2;	//determines how many animation frames to advance each beat
 
-	int pointSize2P = 50;	//size of the point 
-	int noteBarWidth2P = pointSize + 13;
-	int noteSize2P = 30;	//size of the notes
-	int pointOffset2P = 50;	//offset between the note bars and the center of the screen
+	int pointSize2P = 80;	//size of the point 
+	int noteBarWidth2P = pointSize + 33;
+	int noteSize2P = 50;	//size of the notes
+	int pointOffset2P = 70;	//offset between the note bars and the center of the screen
 	int initialNoteHeight2P = 70;	//height at which new notes will be generated
 	
-	int pointSize = 80;	//tama�o del pulsador/punto
+	int pointSize = 100;	//tama�o del pulsador/punto
 	int noteBarWidth = pointSize + 33;
-	int noteSize = 50;	//tama�o de nota 
-	int pointOffset = 70;	//offset entre las barras de notas y el centro de la pantalla
+	int noteSize = 70;	//tama�o de nota 
+	int pointOffset = 90;	//offset entre las barras de notas y el centro de la pantalla
 	int initialNoteHeight = 70;	//altura a la cual se generan las notas en pantalla
 
 	int maxScore = 1000000;
