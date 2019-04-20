@@ -10,6 +10,8 @@ MapState::MapState(GameManager* g) :GameState(g)
 	controller = SDL_GameControllerOpen(0);
 	createMainButtons();
 	fondo__ = new EmptyObject(g, Vector2D(0, 0), g->getDefaultWindowWidth(), g->getDefaultWindowHeight(), Resources::Map);
+	moreLvls_ = new EmptyObject(g, Vector2D(0, 0), 100, 100, Resources::NivelExtra);
+	stage.push_back(moreLvls_);
 	stage.push_back(fondo__);
 	activeLevels[0] = true;
 	activeLevels[1] = true;

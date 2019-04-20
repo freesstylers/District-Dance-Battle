@@ -17,7 +17,7 @@ public:
 	~MapState();
 	virtual bool handleEvent(Uint32 time, SDL_Event e);
 	virtual void render(Uint32 time, bool beatSync);
-	pair <EmptyObject, PanelMap> buttons[5];
+	pair <EmptyObject, PanelMap> buttons[6];
 
 private:
 	
@@ -25,7 +25,7 @@ private:
 
 	int index = 0;
 	int min = 0;
-	int max = 4;
+	int max = 5;
 
 	void play(int lvl_);
 	void loadGame();
@@ -36,6 +36,7 @@ private:
 	SDL_GameController* controller = NULL;
 
 	EmptyObject* fondo__;
+	EmptyObject* moreLvls_;
 
 	void createMainButtons();
 	void nextButton();

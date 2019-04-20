@@ -83,7 +83,8 @@ vector<Resources::ImageInfo> Resources::images_{
 		{HitSilver, "resources/images/HitAnimationSilver.png", 32, 32, 3, 1, 3},
 		{HitCopper, "resources/images/HitAnimationCopper.png", 32, 32, 3, 1, 3},
 		{StarBar, "resources/images/ScoreStars.png", 22, 102, 6, 6, 1},
-		{RedAura, "resources/images/RedVignette.png", 800, 600, 1, 1, 1}
+		{RedAura, "resources/images/RedVignette.png", 800, 600, 1, 1, 1},
+		{NivelExtra, "resources/images/NivelExtra.png", 100, 100, 1, 1, 1}
 	
 };
 

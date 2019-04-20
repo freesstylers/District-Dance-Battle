@@ -79,7 +79,8 @@ public:
 		HitSilver,
 		HitCopper,
 		StarBar,
-		RedAura
+		RedAura,
+		NivelExtra
 		// text
 	};
 
