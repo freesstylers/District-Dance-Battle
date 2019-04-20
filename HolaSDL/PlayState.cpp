@@ -211,8 +211,6 @@ void PlayState::update(Uint32 time)
 			timer->Update();
 			if (timer->DeltaTime() > (bh->getBeatTime() / 1000.0) - msDiff)
 			{
-
-				cout << timer->DeltaTime() << ", " << msDiff << endl;
 				msDiff += timer->DeltaTime() - (bh->getBeatTime() / 1000.0);
 				generateArrows();
 				generateButtons();
