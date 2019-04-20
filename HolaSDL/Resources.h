@@ -87,7 +87,8 @@ public:
 		Hiphop,
 		Mapa,
 		AllStar,
-		Megalovania
+		Megalovania,
+		Asereje
 		// sound effects
 
 	};
