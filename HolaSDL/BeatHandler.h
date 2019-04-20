@@ -8,7 +8,7 @@ class BeatHandler
 {
 protected:
 	//int currentBeats ;
-	int bmp;
+	double bmp;
 	double beatTime;
 public:
 	BeatHandler();
@@ -17,6 +17,10 @@ public:
 	//This methos controls when to generate notes, and at which speed
 	void beatRateButton(int &currentBeats);
 	//This method converts the bpm into seconds per beat
-	double getBeatTime() { return 60000/bmp; };
+	double getBeatTime() { 
+		double ms;
+		ms = 60000.0 / bmp;
+		return ms; 
+	};
 
 };
