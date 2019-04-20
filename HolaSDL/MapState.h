@@ -17,7 +17,7 @@ public:
 	~MapState();
 	virtual bool handleEvent(Uint32 time, SDL_Event e);
 	virtual void render(Uint32 time, bool beatSync);
-	pair <EmptyObject, PanelMap> buttons[6];
+	pair <EmptyObject, PanelMap> buttons[5];
 
 private:
 	

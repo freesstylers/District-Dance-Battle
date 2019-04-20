@@ -45,7 +45,7 @@ void DialogState::init()
 			file >> sp;
 			//Hay que crear una nueva clase que sea textBox
 			file >> textAux;
-			box.insert(pair<string, GameObject*>(textAux, new TextBox(manager, manager->getWindowWidth()-20, 65*5.5, Vector2D(10, manager->getWindowHeight()-65*5.5),sp)));
+			box.insert(pair<string, GameObject*>(textAux, new TextBox(manager, manager->getWindowWidth()-20, 600, Vector2D(10, manager->getWindowHeight()-600),sp)));
 		}
 
 		file >> textAux;
@@ -94,7 +94,7 @@ void DialogState::render(Uint32 time, bool beatSync) {
 					Resources::PIXEL20)), { COLOR(0x00000000) });
 			actualText = &msg0;
 			actualText->render(manager->getRenderer(),
-				manager->getWindowWidth() / 39, manager->getWindowHeight() - 65 * 1.9);
+				manager->getWindowWidth() / 39, manager->getWindowHeight() - 550);
 		}
 		else {
 			string aux1="";
@@ -115,7 +115,7 @@ void DialogState::render(Uint32 time, bool beatSync) {
 					Resources::PIXEL20)), { COLOR(0x00000000) });
 			actualText = &msg0;
 			actualText->render(manager->getRenderer(),
-				manager->getWindowWidth() / 39, manager->getWindowHeight() - 65 * 1.9);
+				manager->getWindowWidth() / 39, manager->getWindowHeight() - 550);
 			if (aux2 != "") {
 				Texture msg1(manager->getRenderer(),
 					aux2,
@@ -149,7 +149,7 @@ bool DialogState::handleEvent(Uint32 time, SDL_Event e) {
 			if (!dialogo.empty()) {
 				actualBox = box[dialogo.front().box];
 			}
-			else actualBox = new TextBox(manager, manager->getWindowWidth() - 20, 65 * 5.5, Vector2D(10, manager->getWindowHeight() - 65 * 5.5),29);
+			else actualBox = new TextBox(manager, manager->getWindowWidth() - 20, 600, Vector2D(10, manager->getWindowHeight() - 600),29);
 
 		
 			keyup = false;
