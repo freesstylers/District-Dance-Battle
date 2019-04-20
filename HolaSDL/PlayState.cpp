@@ -182,7 +182,7 @@ PlayState::~PlayState()
 void PlayState::update(Uint32 time)
 {
 	GameState::update(time);
-	if (!miniActive && minigameController->DeltaTime() < level->songLength / minigameAmount)
+	if (!miniActive && minigameController->DeltaTime() < level->songLength / 10)
 	{
 		minigameController->Update();
 
@@ -336,13 +336,15 @@ void PlayState::generateArrows()
 {
 	if (!levelArrows_.empty()) {
 		if (levelArrows_.front() != nullptr) {
-			levelArrows_.front()->setVelocity(setVel(timer->DeltaTime() * 600));
+			levelArrows_.front()->setVelocity(setVel(bh->getBeatTime()));
 
 			player1->screenArrows_.push_back(levelArrows_.front());
 			player1->screenArrows_.back()->setPosition(player1->screenArrows_.back()->getPosition() + player1->screenArrows_.back()->getVelocity()*msDiff);
 			
 			if (player2 != nullptr && levelArrows2_.front()!=nullptr)
 			{
+				levelArrows2_.front()->setVelocity(setVel(bh->getBeatTime()));
+
 				player2->screenArrows_.push_back(levelArrows2_.front());
 				player2->screenArrows_.back()->setPosition(player2->screenArrows_.back()->getPosition() + player2->screenArrows_.back()->getVelocity()*msDiff);
 			}
@@ -356,12 +358,14 @@ void PlayState::generateButtons()
 {
 	if (!levelButtons_.empty()) {
 		if (levelButtons_.front() != nullptr) {
-			levelButtons_.front()->setVelocity(setVel(timer->DeltaTime() * 600));
+			levelButtons_.front()->setVelocity(setVel(bh->getBeatTime()));
 
 			player1->screenButtons_.push_back(levelButtons_.front());
 			player1->screenButtons_.back()->setPosition(player1->screenButtons_.back()->getPosition() + player1->screenButtons_.back()->getVelocity()*msDiff);
 			if (player2 != nullptr && levelButtons2_.front() != nullptr)
 			{
+				levelButtons2_.front()->setVelocity(setVel(bh->getBeatTime()));
+
 				player2->screenButtons_.push_back(levelButtons2_.front());
 				player2->screenButtons_.back()->setPosition(player2->screenButtons_.back()->getPosition() + player2->screenButtons_.back()->getVelocity()*msDiff);
 			}
