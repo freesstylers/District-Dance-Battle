@@ -57,5 +57,6 @@ protected:
 
 	double widthScale_;
 	double heightScale_;
+	SDL_DisplayMode DM;
 };
 

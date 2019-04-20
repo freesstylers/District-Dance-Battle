@@ -21,7 +21,7 @@ void PlayState::newGame(int lvl)
 		levelName = "prueba";
 		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::EffectVaporWave);
 		minigame = new MinigameVaporwave(manager, this);
-		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::testBG);
+		bg = new Background(manager, manager->getWindowWidth(), manager->getWindowHeight(), Vector2D(0, 0), Resources::testBG);
 		bgT = Resources::testBG;
 		enemy = new Character(manager, 60 * 3.5, 120 * 3.5, Vector2D(manager->getDefaultWindowWidth() - 270, initialNoteHeight + 70), Resources::RobotIdle);
 		enemyT = Resources::RobotIdle;
@@ -371,9 +371,9 @@ void PlayState::generateButtons()
 void PlayState::songOver()
 {
 	manager->getServiceLocator()->getAudios()->haltChannel(0);
-	//manager->getMachine()->pushState(new EndState(manager, currentScore, maxScore, 70,nlevel));
+	manager->getMachine()->pushState(new EndState(manager, currentScore, maxScore, 70,nlevel));
 	//manager->getMachine()->changeState(new MapState(manager));
-	manager->getMachine()->popState();
+	//manager->getMachine()->popState();
 }
 
 void PlayState::updateResolution()

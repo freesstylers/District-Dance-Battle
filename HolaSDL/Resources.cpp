@@ -39,7 +39,7 @@ vector<Resources::ImageInfo> Resources::images_{
 		{EffectVaporWave, "resources/images/VW2.png", 450, 338, 5, 9, 42 },
 		{Square, "resources/images/Recuadro.png", 32, 100, 4, 1, 4},
 		{SquareMiss,"resources/images/RecuadroMiss2.png", 32, 100, 2, 1, 2},
-		{testBG, "resources/images/FondoPrueba.png", 128, 100, 2, 1, 2},
+		{testBG, "resources/images/FondoPrueba.png", 213, 120, 2, 1, 2},
 		{PixelatedTextBG, "resources/images/FondoPixel.png", 128, 100, 2, 1, 2},
 		{RobotIdle, "resources/images/RobotVaporwave.png", 60, 120, 2, 1, 2},
 		{RobotDance, "resources/images/VaporwaveDance.png", 60, 120, 3, 2, 4},

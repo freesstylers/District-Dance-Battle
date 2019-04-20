@@ -21,11 +21,12 @@ public:
 	virtual void start(); // start the game
 	virtual void stop();  // stop the game
 	GameStateMachine* getMachine();
+	
 protected:
 	GameStateMachine* machine;
 	
 private:
-	const static int _WINDOW_WIDTH_ = 800;
-	const static int _WINDOW_HEIGHT_ = 600;
+	const static int _WINDOW_WIDTH_ = 1280;
+	const static int _WINDOW_HEIGHT_ = 720;
 };
 
