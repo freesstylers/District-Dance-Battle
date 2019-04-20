@@ -9,6 +9,7 @@
 #include "TimerNoSingleton.h"
 #include "Note.h"
 #include "Feedback.h"
+#include "TextObject.h"
 
 using namespace std;
 class PlayState;
@@ -27,6 +28,7 @@ protected:
 	GameManager* manager;
 	PlayState* playS;
 	TimerNoSingleton* timer;
+	TextObject* Aviso;
 
 	int currentMinigameScore;
 	int noteAmount;

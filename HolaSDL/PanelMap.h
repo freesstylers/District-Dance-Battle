@@ -14,7 +14,7 @@ public:
 	void reset();
 	void prevSwitch();
 	void nextSwitch();
-	void selectButton();
+	void selectButton(SDL_Event e);
 	
 	int index = 0;
 	int lvl_;

@@ -8,6 +8,10 @@ MinigameVaporwave::MinigameVaporwave(GameManager * g, PlayState * p): MiniGame(g
 	fback = new Feedback(g, 150, 150, Vector2D(g->getDefaultWindowWidth() / 2 - 150 / 2, g->getDefaultWindowHeight() / 2 - 150 / 2));
 	timer = new TimerNoSingleton();
 
+	Aviso = new TextObject(manager, manager->getServiceLocator()->getFonts()->getFont(Resources::PIXEL30), Vector2D(300, 300));  //Position stub
+	Aviso->setText("PULSA LA NOTA SELECCIONADA");
+	Aviso->setPosition(Vector2D(manager->getWindowWidth()/2 - Aviso->getWidth() / 2, manager->getWindowHeight()/2 - Aviso->getHeight() / 2));
+
 	createList();
 }
 
@@ -23,7 +27,9 @@ void MinigameVaporwave::generateButtons()
 
 void MinigameVaporwave::render(Uint32 time)
 {
-	
+	Aviso->render(time);
+	Aviso->changeAlpha(-1); //Se puede subir, pero va demasiado rapido entonces
+
 	if (!screenButtons_.empty()) {
 		switch (screenButtons_.front()->getKey())
 		{
@@ -129,7 +135,9 @@ void MinigameVaporwave::createList()
 	maxNotes = noteAmount;
 	Note* note;
 	int select=0;
+
 	for (int i = 0; i < noteAmount; i++) {
+
 		aux = rand() % 8;
 
 		switch (aux) {

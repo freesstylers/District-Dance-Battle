@@ -25,17 +25,17 @@ MapState::~MapState()
 
 bool MapState::handleEvent(Uint32 time, SDL_Event e)
 {
-	if (e.type == SDL_CONTROLLERBUTTONDOWN || e.type == SDL_KEYDOWN) {
+	if (e.type == SDL_CONTROLLERBUTTONDOWN || e.type == SDL_KEYDOWN || e.type == SDL_CONTROLLERAXISMOTION) {
 		if(!buttons[index].second.selected)
 		{
 			if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_RETURN) {
 				buttons[index].second.selected = true;
 			}
-			if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) || e.key.keysym.sym == SDLK_RIGHT) {
+			if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) || e.key.keysym.sym == SDLK_RIGHT || (e.caxis.axis == SDL_CONTROLLER_AXIS_LEFTX && e.caxis.value > 25000)) {
 				//buttons[index].second.reset();
 				nextButton();
 			}
-			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT) || e.key.keysym.sym == SDLK_LEFT) {
+			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT) || e.key.keysym.sym == SDLK_LEFT || (e.caxis.axis == SDL_CONTROLLER_AXIS_LEFTX && e.caxis.value < -25000)) {
 				//buttons[index].second.reset();
 				backButton();
 			}
@@ -48,8 +48,8 @@ bool MapState::handleEvent(Uint32 time, SDL_Event e)
 			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN) || e.key.keysym.sym == SDLK_DOWN) {
 				buttons[index].second.prevSwitch();
 			}
-			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_RETURN) {
-				buttons[index].second.selectButton();
+			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT) || SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) || e.key.keysym.sym == SDLK_RETURN) {
+				buttons[index].second.selectButton(e);
 			}
 			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B) || e.key.keysym.sym == SDLK_DELETE) {
 				buttons[index].second.selected = false;

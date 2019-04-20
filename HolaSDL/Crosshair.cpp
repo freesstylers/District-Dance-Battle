@@ -58,13 +58,13 @@ bool Crosshair::handleInput(Uint32 time, const SDL_Event & event, Note* nota)
 		{
 			if (event.caxis.value > 10000)
 				{
-				velocity_.setX(event.caxis.value / 8000);
+				velocity_.setX(event.caxis.value / 4000);
 					//position_(position_.getX() + event.caxis.value / 2000);
 					//cout << "Derecha? Stick I" << endl;
 				}
 			else if (event.caxis.value < -10000)
 				{
-				velocity_.setX(event.caxis.value / 8000);
+				velocity_.setX(event.caxis.value / 4000);
 				//cout << "Izquierda?  Stick I" << endl;
 				}
 			else
@@ -76,12 +76,12 @@ bool Crosshair::handleInput(Uint32 time, const SDL_Event & event, Note* nota)
 		{ 
 			if (event.caxis.value > 10000)
 				{
-				velocity_.setY(event.caxis.value / 8000);
+				velocity_.setY(event.caxis.value / 4000);
 				//cout << "Abajo?  Stick I" << endl;
 				}
 			else if (event.caxis.value < -10000)
 				{
-				velocity_.setY(event.caxis.value / 8000);
+				velocity_.setY(event.caxis.value / 4000);
 				//cout << "Arriba?  Stick I" << endl;
 				}
 
