@@ -204,6 +204,8 @@ void PlayState::update(Uint32 time)
 			timer->Update();
 			if (timer->DeltaTime() > (bh->getBeatTime() / 1000.0) - msDiff)
 			{
+
+				cout << timer->DeltaTime() << ", " << msDiff << endl;
 				msDiff += timer->DeltaTime() - (bh->getBeatTime() / 1000.0);
 				generateArrows();
 				generateButtons();
@@ -424,7 +426,7 @@ void PlayState::updateResolution()
 
 Vector2D PlayState::setVel(double time)
 {
-	double distance = player1->getLeftPoint()->getPosition().getY() + player1->getLeftPoint()->getHeight()/2 - initialNoteHeight - 25.0; //El 25 es la mitad de la altura de la note/boton
+	double distance = player1->getLeftPoint()->getPosition().getY() - initialNoteHeight;
 	double velocity = distance / (time / 1000.0);
 	return Vector2D(0, velocity / 8.0);
 }
