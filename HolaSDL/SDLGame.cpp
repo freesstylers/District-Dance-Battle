@@ -20,7 +20,7 @@ void SDLGame::initSDL() {
 	SDL_GetCurrentDisplayMode(0, &DM);
 	window_ = SDL_CreateWindow(windowTitle_.c_str(),
 	SDL_WINDOWPOS_UNDEFINED,
-	SDL_WINDOWPOS_UNDEFINED, DM.w, DM.h, SDL_WINDOW_SHOWN);
+	SDL_WINDOWPOS_UNDEFINED, width_, height_, SDL_WINDOW_SHOWN);
 
 	// Create the renderer
 	renderer_ = SDL_CreateRenderer(window_, -1,
@@ -101,11 +101,11 @@ const ServiceLocator* SDLGame::getServiceLocator() const {
 }
 
 int SDLGame::getWindowWidth() const {
-	return DM.w;
+	return width_;
 }
 
 int SDLGame::getWindowHeight() const {
-	return DM.h;
+	return height_;
 }
 
 int SDLGame::getDefaultWindowWidth() const
