@@ -32,6 +32,7 @@ public:
 
 	bool selected = false;
 	bool difActive = false;
+	bool hardModeCompleted = false;
 private:
 	GameManager * manager_;
 

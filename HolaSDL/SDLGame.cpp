@@ -35,8 +35,8 @@ void SDLGame::initSDL() {
 	//SDL_ShowCursor(0);
 
 	//the game is coded with an 800x600 resolution in mind, so we need to set values for rescaling
-	widthScale_ = DM.w / 1280;
-	heightScale_ = DM.h / 720;
+	widthScale_ = width_ / getDefaultWindowWidth();
+	heightScale_ = height_ / getDefaultWindowHeight();
 
 }
 
@@ -110,12 +110,12 @@ int SDLGame::getWindowHeight() const {
 
 int SDLGame::getDefaultWindowWidth() const
 {
-	return DM.w;
+	return 1280;
 }
 
 int SDLGame::getDefaultWindowHeight() const
 {
-	return DM.h;
+	return 720;
 }
 
 double SDLGame::getWidthScale() const

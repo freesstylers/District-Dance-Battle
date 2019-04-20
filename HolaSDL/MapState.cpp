@@ -13,6 +13,7 @@ MapState::MapState(GameManager* g) :GameState(g)
 	stage.push_back(fondo__);
 	activeLevels[0] = true;
 	activeLevels[1] = true;
+	loadGame();
 }
 
 MapState::~MapState()
@@ -116,6 +117,26 @@ void MapState::backButton()
 	buttons[index].first.scale(2);
 }
 
+void MapState::unlockLevels()
+{
+	for(int i = 0; i < 4; i++)
+	{
+		buttons[i].second.difActive = buttons[i].second.noteP1E_ == 'S' || buttons[i].second.noteP1E_ == 'A' || buttons[i].second.noteP2E_ == 'A' || buttons[i].second.noteP2E_ == 'S';
+	}
+	if (buttons[2].second.difActive && buttons[3].second.difActive) {
+		activeLevels[4] = true;
+	}
+	else if (buttons[1].second.difActive && buttons[0].second.difActive) {
+		activeLevels[2] = true;
+		activeLevels[3] = true;
+	}
+	int i = 0;
+	while (buttons[i].second.hardModeCompleted) {
+		i++;
+	}
+	if (i >= 4) { buttons[i].second.difActive = true; }
+}
+
 //Leemos de un arhcivo el nivel, la dificultad, el numero de jugadores los puntos obtenidos y la nota obtenida
 void MapState::loadGame() {
 	ifstream archivo("partida.txt");
@@ -129,14 +150,18 @@ void MapState::loadGame() {
 		archivo >> level >> mode >> players; //Primero se lee el nivel, la dificultad y los jugadores para guardar los numeros
 		activeLevels[level - 1] = true;
 		if (mode == 0) {
-			buttons[level - 1].second.difActive = true;					
+			/*buttons[level - 1].second.difActive = true;					*/
 			archivo >> points >> note;
-			buttons[level - 1].second.scoreP1E_ = points;
-			buttons[level - 1].second.noteP1E_ = note;
+			if (buttons[level - 1].second.scoreP1E_ <= points) {
+				buttons[level - 1].second.scoreP1E_ = points;
+				buttons[level - 1].second.noteP1E_ = note;
+			}
 			if (players == 2) {
 				archivo >> points >> note;
-				buttons[level - 1].second.scoreP2E_ = points;
-				buttons[level - 1].second.noteP2E_ = note;
+				if (buttons[level - 1].second.scoreP2E_ <= points) {
+					buttons[level - 1].second.scoreP2E_ = points;
+					buttons[level - 1].second.noteP2E_ = note;
+				}
 			}
 		}
 		else {
@@ -151,6 +176,8 @@ void MapState::loadGame() {
 			}
 		}
 	}
+	archivo.close();
+	unlockLevels();
 }
 
 void MapState::play(int lvl_) {

@@ -41,4 +41,6 @@ private:
 	void nextButton();
 	void backButton();
 
+	void unlockLevels();
+
 };
