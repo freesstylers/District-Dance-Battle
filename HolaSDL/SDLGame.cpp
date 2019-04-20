@@ -17,9 +17,10 @@ void SDLGame::initSDL() {
 	SDL_Init(SDL_INIT_EVERYTHING);
 
 	// Create window .
+	SDL_GetCurrentDisplayMode(0, &DM);
 	window_ = SDL_CreateWindow(windowTitle_.c_str(),
 	SDL_WINDOWPOS_UNDEFINED,
-	SDL_WINDOWPOS_UNDEFINED, width_, height_, SDL_WINDOW_SHOWN);
+	SDL_WINDOWPOS_UNDEFINED, DM.w, DM.h, SDL_WINDOW_SHOWN);
 
 	// Create the renderer
 	renderer_ = SDL_CreateRenderer(window_, -1,
@@ -34,8 +35,8 @@ void SDLGame::initSDL() {
 	//SDL_ShowCursor(0);
 
 	//the game is coded with an 800x600 resolution in mind, so we need to set values for rescaling
-	widthScale_ = width_ / 800.0;
-	heightScale_ = height_ / 600.0;
+	widthScale_ = width_ / getDefaultWindowWidth();
+	heightScale_ = height_ / getDefaultWindowHeight();
 
 }
 
@@ -100,21 +101,21 @@ const ServiceLocator* SDLGame::getServiceLocator() const {
 }
 
 int SDLGame::getWindowWidth() const {
-	return width_;
+	return DM.w;
 }
 
 int SDLGame::getWindowHeight() const {
-	return height_;
+	return DM.h;
 }
 
 int SDLGame::getDefaultWindowWidth() const
 {
-	return 800;
+	return 1280;
 }
 
 int SDLGame::getDefaultWindowHeight() const
 {
-	return 600;
+	return 720;
 }
 
 double SDLGame::getWidthScale() const
