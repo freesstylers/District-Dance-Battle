@@ -202,11 +202,10 @@ void PlayState::update(Uint32 time)
 
 		else {
 			timer->Update();
-			if (timer->DeltaTime() > (bh->getBeatTime() / 1000.0) - msDiff)
+			double beat = 60000.0 / getBPM();
+			if (timer->DeltaTime() > (beat / 1000.0) - msDiff)
 			{
-
-				cout << timer->DeltaTime() << ", " << msDiff << endl;
-				msDiff += timer->DeltaTime() - (bh->getBeatTime() / 1000.0);
+				msDiff += timer->DeltaTime() - (beat / 1000.0);
 				generateArrows();
 				generateButtons();
 				timer->Reset();
