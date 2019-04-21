@@ -31,11 +31,11 @@ bool MapState::handleEvent(Uint32 time, SDL_Event e)
 			if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_RETURN) {
 				buttons[index].second.selected = true;
 			}
-			if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) || e.key.keysym.sym == SDLK_RIGHT || (e.caxis.axis == SDL_CONTROLLER_AXIS_LEFTX && e.caxis.value > 25000)) {
+			if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) || e.key.keysym.sym == SDLK_RIGHT) {
 				//buttons[index].second.reset();
 				nextButton();
 			}
-			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT) || e.key.keysym.sym == SDLK_LEFT || (e.caxis.axis == SDL_CONTROLLER_AXIS_LEFTX && e.caxis.value < -25000)) {
+			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT) || e.key.keysym.sym == SDLK_LEFT) {
 				//buttons[index].second.reset();
 				backButton();
 			}
