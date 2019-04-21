@@ -102,7 +102,10 @@ vector<Resources::MusicInfo> Resources::musics_ {
 	{Hiphop, "resources/sound/hiphop.mp3"},
 	{Mapa, "resources/sound/Mapa.mp3"},
 	{StarSound, "resources/sound/Star.wav"},
-	{ComboSound, "resources/sound/Combo.wav"}
+	{ComboSound, "resources/sound/Combo.wav"},
+	{AllStar, "resources/sound/allstar.mp3"},
+	{Megalovania, "resources/sound/megalovania.mp3"},
+	{Asereje, "resources/sound/asereje.mp3"}
 };
 
 vector<Resources::SoundInfo> Resources::sounds_ {

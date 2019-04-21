@@ -94,7 +94,10 @@ public:
 		Hiphop,
 		Mapa,
 		StarSound,
-		ComboSound
+		ComboSound,
+		AllStar,
+		Megalovania,
+		Asereje
 		// sound effects
 	};
 
