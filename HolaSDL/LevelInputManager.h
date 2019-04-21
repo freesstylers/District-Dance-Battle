@@ -12,7 +12,7 @@ public:
 	LevelInputManager(PlayState* l, PlayerPack* pl, int numctrl);
 	~LevelInputManager();
 
-	void handleInput(Uint32 time, const SDL_Event& event);
+	bool handleInput(Uint32 time, const SDL_Event& event);
 
 	bool getFailed() { return failed; }
 

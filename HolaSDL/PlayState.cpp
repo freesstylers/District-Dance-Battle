@@ -1,15 +1,20 @@
 #include "PlayState.h"
 #include "GameManager.h"
 
-PlayState::PlayState(GameManager* g,int lvl,bool oneP, bool diff) :GameState(g) //Asigna game y llama a inicializaci�n
+PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff) :GameState(g) //Asigna game y llama a inicializaci�n
 {
 	nlevel = lvl;
+
 	if (oneP) {
 		newGame(lvl);
 	}
 	else {
 		newGame2P(lvl);
 	}
+
+	pauseMenu = new PauseMenu(g, this);
+	stage.push_back(pauseMenu);
+	pauseMenu->setActive(false);
 	
 }
 
@@ -188,78 +193,106 @@ PlayState::~PlayState()
 
 void PlayState::update(Uint32 time)
 {
-	GameState::update(time);
-	if (!miniActive && minigameController->DeltaTime() < level->songLength / minigameAmount)
-	{
-		minigameController->Update();
+	if (!isPaused) {
 
-		if (levelArrows_.empty() && levelButtons_.empty()) {
-			if (player1->screenArrows_.empty() && player1->screenButtons_.empty()) {
-				if ((player2 == nullptr || (player2->screenArrows_.empty() && player2->screenButtons_.empty())))
-				{
-					if (songEndWaitTime == 0)
-						songEndWaitTime = time;
+		GameState::update(time);
+		if (!miniActive && (minigameAmount == 0 || (minigameAmount > 0 && minigameController->DeltaTime() < level->songLength / minigameAmount)))
+		{
+			minigameController->Update();
 
-					else if(time - songEndWaitTime >= 2000)
-						songIsOver = true;
+			if (levelArrows_.empty() && levelButtons_.empty()) {
+				if (player1->screenArrows_.empty() && player1->screenButtons_.empty()) {
+					if ((player2 == nullptr || (player2->screenArrows_.empty() && player2->screenButtons_.empty())))
+					{
+						if (songEndWaitTime == 0)
+							songEndWaitTime = time;
+
+						else if (time - songEndWaitTime >= 2000)
+							songIsOver = true;
 						//songOver();
+					}
+				}
+			}
+
+			else {
+				timer->Update();
+				if (timer->DeltaTime() > (bh->getBeatTime() / 1000.0) - msDiff)
+				{
+					msDiff += timer->DeltaTime() - (bh->getBeatTime() / 1000.0);
+					generateArrows();
+					generateButtons();
+					timer->Reset();
+
+					beatSignal = true;
 				}
 			}
 		}
-
 		else {
-			timer->Update();
-			if (timer->DeltaTime() > (bh->getBeatTime() / 1000.0) - msDiff)
+			miniActive = true;
+			if (!animationMiniGame)
 			{
-				msDiff += timer->DeltaTime() - (bh->getBeatTime() / 1000.0);
-				generateArrows();
-				generateButtons();
+				player1->lip->setMinigameActive(true);
+				player1->setComboActive(false);
+				enemy->forceAnimationChange((enemyT + 1));
+				perico->forceAnimationChange(Resources::PericoDance1);
+				animationMiniGame = true;
+				minigame->resetMinigame();
+			}
+			minigame->update(time);
+			if (minigame->getEnd()) {
+				player1->lip->setMinigameActive(false);
+				miniActive = false;
+				msDiff = 0;
 				timer->Reset();
+				minigame->deleteList();
+				minigame->createList();
+				minigameController->Reset();
+				enemy->queueAnimationChange(enemyT);
+				perico->queueAnimationChange(Resources::PericoIdle);
+				animationMiniGame = false;
+				player1->setComboActive(true);
 
-				beatSignal = true;
+				int aux = minigame->getAccuracy();
+				if (aux != 0)
+					updateScoreMinigame(aux);
 			}
 		}
-	}
-	else {
-		miniActive=true;
-		if (!animationMiniGame)
+		if (timer->DeltaTime() > ((bh->getBeatTime() / 1000.0) / (animationFramesPerBeat / 1000)) - msDiff)
 		{
-			player1->lip->setMinigameActive(true);
-			player1->setComboActive(false);
-			enemy->forceAnimationChange((enemyT + 1));
-			perico->forceAnimationChange(Resources::PericoDance1);
-			animationMiniGame = true;
-			minigame->resetMinigame();
-		}
-		minigame->update(time);
-		if (minigame->getEnd()) {
-			player1->lip->setMinigameActive(false);
-			miniActive = false;
-			msDiff = 0;
-			timer->Reset();
-			minigame->deleteList();
-			minigame->createList();
-			minigameController->Reset();
-			enemy->queueAnimationChange(enemyT);
-			perico->queueAnimationChange(Resources::PericoIdle);
-			animationMiniGame = false;
-			player1->setComboActive(true);
+			//aqu� se divide el beatTime lo necesario para animar las frames especificadas entre cada beat
 
-			int aux = minigame->getAccuracy();
-			if (aux != 0)
-				updateScoreMinigame(aux);
+			beatSignal = true;
 		}
+		if (songIsOver)
+			songOver();
 	}
-	if (timer->DeltaTime() > ((bh->getBeatTime() / 1000.0) / (animationFramesPerBeat / 1000)) - msDiff)
-		{
-		//aqu� se divide el beatTime lo necesario para animar las frames especificadas entre cada beat
-
-		beatSignal = true;
-		}
-	if (songIsOver)
-		songOver();
-	
 }
+
+bool PlayState::pause()
+{
+	if (!isPaused)
+	{
+		manager->getServiceLocator()->getAudios()->pauseChannel(0);
+		isPaused = true;
+		pauseMenu->setActive(true);
+		pauseMenu->activate();
+	}
+
+	return isPaused;
+}
+
+void PlayState::resume(unsigned int timePaused)
+{
+	if (isPaused)
+	{
+		manager->getServiceLocator()->getAudios()->resumeChanne(0);
+		isPaused = false;
+		pauseMenu->setActive(false);
+		timer->setOffset(timePaused);
+		minigameController->setOffset(timePaused);
+	}
+}
+
 
 bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 {
@@ -278,32 +311,27 @@ bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 			SDL_SetWindowFullscreen(manager->getWindow(), SDL_WINDOW_FULLSCREEN);
 		}
 	}
-	/*else if (e.key.keysym.sym == SDLK_SPACE)
-		updateScoreNote(1);*/
 	else
 	{
-		if (miniActive) {
-			player1->lip->setMinigameActive(true);
+		if (!isPaused) {
+			if (miniActive) {
+				player1->lip->setMinigameActive(true);
 
-			minigame->handleInput(time, e);
+				minigame->handleInput(time, e);
+			}
+			else
+			{
+				GameState::handleEvent(time, e);
+			}
 		}
 		else
-		{
-			/*lip->handleInput(time, e);
-			if (lip2 != nullptr)
-				lip2->handleInput(time, e);*/
-			player1->handleInput(time, e);
-			if (player2 != nullptr)
-				player2->handleInput(time, e);
-			GameState::handleEvent(time, e);
-		}
-		return false;
+			pauseMenu->handleInput(time, e);
 	}
+	return true;
 }
 
 void PlayState::render(Uint32 time, bool beatSync)
 {
-
 	GameState::render(time, beatSignal);
 	if (miniActive) {
 		minigame->render(time);
@@ -377,7 +405,6 @@ void PlayState::generateButtons()
 		levelButtons2_.pop_front();
 	}
 }
-
 
 void PlayState::songOver()
 {

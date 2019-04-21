@@ -25,6 +25,7 @@
 #include "PlayerPack.h"
 #include "RedEffect.h"
 #include "ParticleEngine.h"
+#include "PauseMenu.h"
 
 class PlayState : public GameState //main game class, where most of the gameplay will take place
 {
@@ -45,6 +46,7 @@ protected:
 
 	bool firstNote = true;
 	bool songIsOver = false;
+	bool isPaused = false;
 
 	RedEffect* rf;
 
@@ -108,6 +110,7 @@ public:
 	std::list<Note*> levelArrows2_;
 	std::list<Note*> levelButtons2_;
 	Background* bg;
+	PauseMenu* pauseMenu;
 	PlayerPack* player1;
 	PlayerPack* player2;
 	Vector2D leftNotesVector;
@@ -128,6 +131,8 @@ public:
 
 	int getScore();
 	int getBPM() { return level->bpm; }
+	bool pause();
+	void resume(unsigned int timePaused);
 
 	
 

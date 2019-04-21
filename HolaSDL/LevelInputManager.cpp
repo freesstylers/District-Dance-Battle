@@ -21,7 +21,9 @@ LevelInputManager::~LevelInputManager()
 {
 }
 
-void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
+bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
+
+	bool ret = false;
 
 	if (event.type == SDL_CONTROLLERBUTTONDOWN && keyup) {
 		level->getGameManager()->getServiceLocator()->getAudios()->playChannel(Resources::Snare, 0);
@@ -32,6 +34,9 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 	{
 		keyup = true;
 		keyup2 = true;
+	}
+	if ((event.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_START)) || event.key.keysym.sym == SDLK_DELETE) {
+		ret = ret || level->pause();
 	}
 	if (!player->screenArrows_.empty())
 	{
@@ -154,5 +159,7 @@ void LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 			}
 		}
 	}
+
+	return ret;
 }
 

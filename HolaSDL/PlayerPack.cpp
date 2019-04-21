@@ -119,7 +119,6 @@ void PlayerPack::update(Uint32 time)
 
 bool PlayerPack::handleInput(Uint32 time, const SDL_Event& event)
 {
-	lip->handleInput(time, event);
 	for (Note* o : screenArrows_)
 	{
 		o->handleInput(time, event);
@@ -136,7 +135,7 @@ bool PlayerPack::handleInput(Uint32 time, const SDL_Event& event)
 	feedbackLeft->handleInput(time, event);
 	feedbackRight->handleInput(time, event);
 
-	return false;
+	return lip->handleInput(time, event);;
 }
 
 void PlayerPack::updateResolution(double wScale, double hScale)
