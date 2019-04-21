@@ -1,7 +1,6 @@
 #pragma once
 #include "GameObject.h"
 #include "EmptyObject.h"
-#include "Slider.h"
 #include "TimerNoSingleton.h"
 #include <list>
 
@@ -24,12 +23,14 @@ private:
 
 	EmptyObject* op_bg;
 	EmptyObject* op_exit;
-	Slider* music;
-	Slider* sounds;
+	EmptyObject* music;
+	EmptyObject* sounds;
 	EmptyObject* scale;
 
-	list<GameObject*> menuButtons;
-	list<GameObject*> optionsButtons;
+	EmptyObject* selection;
+
+	vector<EmptyObject*> menuButtons;
+	vector<EmptyObject*> optionsButtons;
 
 	int selectedButton = 0;
 	bool optionsOpen = false;

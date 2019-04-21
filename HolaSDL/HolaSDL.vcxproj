@@ -34,7 +34,6 @@
     <ClInclude Include="PanelMap.h" />
     <ClInclude Include="RedEffect.h" />
     <ClInclude Include="ScoreBar.h" />
-    <ClInclude Include="Slider.h" />
     <ClInclude Include="SongBar.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="CutSceneState.h" />
@@ -99,7 +98,6 @@
     <ClCompile Include="PanelMap.cpp" />
     <ClCompile Include="RedEffect.cpp" />
     <ClCompile Include="ScoreBar.cpp" />
-    <ClCompile Include="Slider.cpp" />
     <ClCompile Include="SongBar.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="CutSceneState.cpp" />

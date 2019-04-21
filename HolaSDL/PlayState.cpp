@@ -1,7 +1,7 @@
 #include "PlayState.h"
 #include "GameManager.h"
 
-PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff) :GameState(g) //Asigna game y llama a inicializaci�n
+PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff) : GameState(g) //Asigna game y llama a inicializaci�n
 {
 	nlevel = lvl;
 
@@ -15,7 +15,9 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff) :GameState(g
 	pauseMenu = new PauseMenu(g, this);
 	stage.push_back(pauseMenu);
 	pauseMenu->setActive(false);
-	
+
+	isSingleplayer = oneP;
+	difficultyMode = diff;
 }
 
 void PlayState::newGame(int lvl)
@@ -23,7 +25,7 @@ void PlayState::newGame(int lvl)
 	switch (lvl)
 	{
 	case 1:
-		levelName = "asereje";
+		levelName = "megalovania";
 		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::EffectVaporWave);
 		minigame = new MinigameVaporwave(manager, this);
 		bg = new Background(manager, manager->getWindowWidth(), manager->getWindowHeight(), Vector2D(0, 0), Resources::testBG);
@@ -409,9 +411,21 @@ void PlayState::generateButtons()
 void PlayState::songOver()
 {
 	manager->getServiceLocator()->getAudios()->haltChannel(0);
-	manager->getMachine()->pushState(new EndState(manager, currentScore, maxScore, 70,nlevel));
+	manager->getMachine()->changeState(new EndState(manager, currentScore, maxScore, 70, nlevel));
 	//manager->getMachine()->changeState(new MapState(manager));
 	//manager->getMachine()->popState();
+}
+
+void PlayState::restart()
+{
+	manager->getServiceLocator()->getAudios()->haltChannel(0);
+	manager->getMachine()->changeState(new PlayState(manager, nlevel, isSingleplayer, difficultyMode));
+}
+
+void PlayState::exit()
+{
+	manager->getServiceLocator()->getAudios()->haltChannel(0);
+	manager->getMachine()->changeState(new MapState(manager));
 }
 
 void PlayState::updateResolution()

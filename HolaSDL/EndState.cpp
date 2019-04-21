@@ -68,7 +68,7 @@ EndState::~EndState()
 
 void EndState::backToMenu(GameManager * gameManager)
 {
-	gameManager->getMachine()->pushState(new MapState(gameManager));
+	gameManager->getMachine()->changeState(new MapState(gameManager));
 }
 void EndState::exit_(GameManager* gameManager) {
 	gameManager->exit_ = true;

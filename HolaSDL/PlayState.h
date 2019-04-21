@@ -36,6 +36,8 @@ protected:
 
 	int tPlayers;
 	int nlevel;
+	bool isSingleplayer;
+	bool difficultyMode;
 
 	Timer* timer;
 	int probqte;
@@ -133,6 +135,9 @@ public:
 	int getBPM() { return level->bpm; }
 	bool pause();
 	void resume(unsigned int timePaused);
+
+	void restart();
+	void exit();
 
 	
 

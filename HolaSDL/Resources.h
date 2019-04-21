@@ -80,7 +80,14 @@ public:
 		HitCopper,
 		StarBar,
 		RedAura,
-		NivelExtra
+		NivelExtra,
+		ButtonPlaceholder,
+		ButtonSelection,
+		MenuBG,
+		ButtonResume,
+		ButtonRestart,
+		ButtonOptions,
+		ButtonExit
 		// text
 	};
 
