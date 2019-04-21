@@ -1,25 +1,12 @@
 #include "PauseMenu.h"
+#include "PlayState.h"
 
-
-
-void PauseMenu::resumeSong()
+PauseMenu::PauseMenu(SDLGame* game, PlayState* ps)
 {
-}
 
-void PauseMenu::toggleOptions()
-{
-}
+	level = ps;
 
-void PauseMenu::restartSong()
-{
-}
 
-void PauseMenu::exitSong()
-{
-}
-
-PauseMenu::PauseMenu(SDLGame* game)
-{
 	double menuX = game->getDefaultWindowWidth() / 3;
 	double menuY = game->getDefaultWindowHeight() / 6;
 	double menuW = game->getDefaultWindowWidth() / 3;
@@ -51,42 +38,87 @@ PauseMenu::PauseMenu(SDLGame* game)
 
 	controller = SDL_GameControllerOpen(0);
 
-}
+	timer = new TimerNoSingleton();
 
+}
 
 PauseMenu::~PauseMenu()
 {
+	delete timer;
+
+	for (GameObject* g : menuButtons) {
+		delete g;
+	}
+	for (GameObject* g : optionsButtons) {
+		delete g;
+	}
+}
+
+void PauseMenu::activate()
+{
+	selectedButton = 0;
+	timer->Reset();
+	optionsOpen = false;
+
+	op_bg->setActive(false);
+	for (GameObject* g : optionsButtons) {
+		g->setActive(false);
+	}
 }
 
 bool PauseMenu::handleInput(Uint32 time, const SDL_Event& event)
 {
-	if (event.type == SDL_CONTROLLERBUTTONDOWN || event.type == SDL_KEYDOWN) {
-		if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_UP) || event.key.keysym.sym == SDLK_UP) {
-			selectedButton = (selectedButton - 1) % 5;
-		}
-		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN) || event.key.keysym.sym == SDLK_DOWN) {
-			selectedButton = (selectedButton + 1) % 5;
-		}
-		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || event.key.keysym.sym == SDLK_RETURN) {
-			switch (selectedButton) {
-			case 0:
-				resumeSong();
-			case 1:
-				restartSong();
-			case 2:
-				toggleOptions();
-			case 3:
-				exitSong();
+	if (active_)
+	{
+		if (event.type == SDL_CONTROLLERBUTTONDOWN || event.type == SDL_KEYUP) {
+			if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_UP) || event.key.keysym.sym == SDLK_UP) {
+				selectedButton = (selectedButton - 1) % 5;
 			}
-		}
-		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_START) || event.key.keysym.sym == SDLK_DELETE) {
-			resumeSong();
+			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN) || event.key.keysym.sym == SDLK_DOWN) {
+				selectedButton = (selectedButton + 1) % 5;
+			}
+			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || event.key.keysym.sym == SDLK_RETURN) {
+				switch (selectedButton) {
+				case 0:
+					resumeSong();
+					return true;
+				case 1:
+					restartSong();
+				case 2:
+					toggleOptions();
+				case 3:
+					exitSong();
+				}
+			}
+			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_START) || event.key.keysym.sym == SDLK_DELETE) {
+				resumeSong();
+				return true;
+			}
 		}
 	}
 
-
 	return false;
 }
+
+void PauseMenu::resumeSong()
+{
+	timer->Update();
+	float time = timer->DeltaTime() * 1000;
+	level->resume(time);
+}
+
+void PauseMenu::toggleOptions()
+{
+}
+
+void PauseMenu::restartSong()
+{
+}
+
+void PauseMenu::exitSong()
+{
+}
+
 
 void PauseMenu::update(Uint32 time)
 {
@@ -94,8 +126,10 @@ void PauseMenu::update(Uint32 time)
 
 void PauseMenu::render(Uint32 time, bool beatSync)
 {
-	for (GameObject* g : menuButtons) {
-		g->render(time);
+	if (active_) {
+		for (GameObject* g : menuButtons) {
+			g->render(time);
+		}
 	}
 }
 

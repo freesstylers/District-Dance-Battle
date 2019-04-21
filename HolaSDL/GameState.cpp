@@ -36,7 +36,7 @@ bool GameState::handleEvent(Uint32 time, SDL_Event e)
 {
 	bool handled = false;
 	auto it = stage.begin();
-	while (!handled && it != stage.end()) {
+	while (!handled && it != stage.end() && (*it) != nullptr) {
 		if ((*it)->handleInput(time, e))
 			handled = true;
 		else

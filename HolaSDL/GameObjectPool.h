@@ -50,7 +50,7 @@ inline bool GameObjectPool<T, SIZE>::handleInput(Uint32 time,
 			o.handleInput(time, event);
 		}
 	}
-	return true;
+	return false;
 }
 
 template<typename T, int SIZE>

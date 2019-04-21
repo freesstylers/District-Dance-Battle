@@ -5,6 +5,7 @@ class TimerNoSingleton //19 marzo, revision, deberiamos utilizar otro nombre
 private:
 	unsigned int _StartTicks;
 	unsigned int _ElapsedTicks;
+	unsigned int offset;
 	float _DeltaTime;
 	float _TimeScale;
 	float _lastItTimer;
@@ -20,5 +21,7 @@ public:
 	void setLastItTime(double t) { _lastItTimer = t; }
 	double getLastTIme() { return _lastItTimer; }
 	void Update();
+
+	void setOffset(unsigned int time) { offset = time; }
 };
 

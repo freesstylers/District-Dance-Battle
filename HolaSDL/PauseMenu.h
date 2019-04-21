@@ -2,13 +2,19 @@
 #include "GameObject.h"
 #include "EmptyObject.h"
 #include "Slider.h"
+#include "TimerNoSingleton.h"
 #include <list>
+
+class PlayState;
 
 class PauseMenu :
 	public GameObject
 {
 private:
+	TimerNoSingleton* timer;
 	SDL_GameController* controller = NULL;
+
+	PlayState* level;
 
 	EmptyObject* bg;
 	EmptyObject* options;
@@ -36,8 +42,10 @@ private:
 
 
 public:
-	PauseMenu(SDLGame* game);
+	PauseMenu(SDLGame* game, PlayState* ps);
 	~PauseMenu();
+
+	void activate();
 
 
 	virtual bool handleInput(Uint32 time, const SDL_Event& event);

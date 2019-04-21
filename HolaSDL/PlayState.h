@@ -46,6 +46,7 @@ protected:
 
 	bool firstNote = true;
 	bool songIsOver = false;
+	bool isPaused = false;
 
 	RedEffect* rf;
 
@@ -130,6 +131,8 @@ public:
 
 	int getScore();
 	int getBPM() { return level->bpm; }
+	bool pause();
+	void resume(unsigned int timePaused);
 
 	
 
