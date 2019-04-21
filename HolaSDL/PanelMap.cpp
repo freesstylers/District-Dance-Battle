@@ -86,7 +86,7 @@ void PanelMap::nextSwitch() {
 	switches[index].scale(2);
 }
 
-void PanelMap::selectButton(SDL_Event e) {
+void PanelMap::selectButton(SDL_Event e, SDL_GameController* cont) {
 	switch (index)
 	{
 	case 0:
@@ -106,7 +106,7 @@ void PanelMap::selectButton(SDL_Event e) {
 	case 2:
 		//Cuando se pulsa va al play state con el nivel correspondiente
 
-		if (e.cbutton.button = SDL_CONTROLLER_BUTTON_A)
+		if (SDL_GameControllerGetButton(cont, SDL_CONTROLLER_BUTTON_A))
 		{
 			manager_->getServiceLocator()->getAudios()->haltChannel(0);
 			manager_->getMachine()->pushState(new DialogState(manager_, lvl_, 0, oneP_, hardMode_));
