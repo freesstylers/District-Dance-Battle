@@ -87,7 +87,9 @@ public:
 		ButtonResume,
 		ButtonRestart,
 		ButtonOptions,
-		ButtonExit
+		ButtonExit,
+		MenuCanciones,
+		MasterHand
 		// text
 	};
 
