@@ -25,7 +25,7 @@ void PlayState::newGame(int lvl)
 	switch (lvl)
 	{
 	case 1:
-		levelName = "megalovania";
+		levelName = "africa";
 		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::EffectVaporWave);
 		minigame = new MinigameVaporwave(manager, this);
 		bg = new Background(manager, manager->getWindowWidth(), manager->getWindowHeight(), Vector2D(0, 0), Resources::testBG);
@@ -436,7 +436,7 @@ void PlayState::updateResolution()
 	double hScale = manager->getHeightScale();
 
 	minigame->updateResolution(wScale, hScale);
-	Vector2D noteVel = setVel(60000 / (level->bpm/1.5));
+	Vector2D noteVel = setVel(60000 / (level->bpm/1));
 
 	for (Note* n : levelArrows_) {
 		if (n != nullptr){

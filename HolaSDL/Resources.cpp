@@ -114,7 +114,8 @@ vector<Resources::MusicInfo> Resources::musics_ {
 	{ComboSound, "resources/sound/Combo.wav"},
 	{AllStar, "resources/sound/allstar.mp3"},
 	{Megalovania, "resources/sound/megalovania.mp3"},
-	{Asereje, "resources/sound/asereje.mp3"}
+	{Asereje, "resources/sound/asereje.mp3"},
+	{Africa, "resources/sound/africa.mp3"}
 };
 
 vector<Resources::SoundInfo> Resources::sounds_ {
