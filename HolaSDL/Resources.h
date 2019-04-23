@@ -97,7 +97,8 @@ public:
 		ComboSound,
 		AllStar,
 		Megalovania,
-		Asereje
+		Asereje,
+		Africa
 		// sound effects
 	};
 
