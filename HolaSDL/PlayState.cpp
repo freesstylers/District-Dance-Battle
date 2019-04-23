@@ -28,7 +28,7 @@ void PlayState::newGame(int lvl)
 		levelName = "africa";
 		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::EffectVaporWave);
 		minigame = new MinigameVaporwave(manager, this);
-		bg = new Background(manager, manager->getWindowWidth(), manager->getWindowHeight(), Vector2D(0, 0), Resources::testBG);
+		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::testBG);
 		bgT = Resources::testBG;
 		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 300, initialNoteHeight + 50), Resources::RobotIdle);
 		enemyT = Resources::RobotIdle;
@@ -37,7 +37,7 @@ void PlayState::newGame(int lvl)
 		levelName = "hiphop";
 		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::HipHopEffect);
 		minigame = new MinigameHipHop(manager, this);
-		bg = new Background(manager, manager->getWindowWidth(), manager->getWindowHeight(), Vector2D(0, 0), Resources::BackgroundHipHop);
+		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::BackgroundHipHop);
 		bgT = Resources::BackgroundHipHop;
 		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 300, initialNoteHeight + 50), Resources::EminemciaIdle);
 		enemyT = Resources::EminemciaIdle;
@@ -118,7 +118,7 @@ void PlayState::newGame2P(int lvl)
 		levelName = "prueba";
 		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::EffectVaporWave);
 		minigame = new MinigameVaporwave(manager, this);
-		bg = new Background(manager, manager->getWindowWidth(), manager->getWindowHeight(), Vector2D(0, 0), Resources::testBG);
+		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::testBG);
 		bgT = Resources::testBG;
 		enemy = new Character(manager, 60 * 4, 120 * 4, Vector2D(manager->getWindowWidth() - 350, initialNoteHeight + 100), Resources::RobotIdle);
 		enemyT = Resources::RobotIdle;
@@ -127,7 +127,7 @@ void PlayState::newGame2P(int lvl)
 		levelName = "hiphop";
 		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::HipHopEffect);
 		minigame = new MinigameHipHop(manager, this);
-		bg = new Background(manager, manager->getWindowWidth(), manager->getWindowHeight(), Vector2D(0, 0), Resources::BackgroundHipHop);
+		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::BackgroundHipHop);
 		bgT = Resources::BackgroundHipHop;
 		enemy = new Character(manager, 60 * 4, 120 * 4, Vector2D(manager->getWindowWidth() - 350, initialNoteHeight + 100), Resources::EminemciaIdle);
 		enemyT = Resources::EminemciaIdle;
