@@ -18,7 +18,7 @@ ScoreBar::ScoreBar(SDLGame* game, double width, double height, Vector2D pos, dou
 }
 
 bool ScoreBar::handleInput(Uint32 time, const SDL_Event& event) {
-	return true;
+	return false;
 }
 
 void ScoreBar::updateBar(double punt)

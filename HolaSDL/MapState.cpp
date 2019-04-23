@@ -10,7 +10,7 @@ MapState::MapState(GameManager* g) :GameState(g)
 	controller = SDL_GameControllerOpen(0);
 	createMainButtons();
 	fondo__ = new EmptyObject(g, Vector2D(0, 0), g->getWindowWidth(), g->getWindowHeight(), Resources::Map);
-	moreLvls_ = new EmptyObject(g, Vector2D(0, 0), 100, 100, Resources::NivelExtra);
+	moreLvls_ = new EmptyObject(g, Vector2D(0, 0), 300, 300, Resources::NivelExtra);
 	stage.push_back(fondo__);
 	stage.push_back(moreLvls_);
 	activeLevels[0] = true;
@@ -31,13 +31,17 @@ bool MapState::handleEvent(Uint32 time, SDL_Event e)
 			if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_RETURN) {
 				buttons[index].second.selected = true;
 			}
-			if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) || e.key.keysym.sym == SDLK_RIGHT || (e.caxis.axis == SDL_CONTROLLER_AXIS_LEFTX && e.caxis.value > 25000)) {
+			if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) || e.key.keysym.sym == SDLK_RIGHT) {
 				//buttons[index].second.reset();
 				nextButton();
 			}
-			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT) || e.key.keysym.sym == SDLK_LEFT || (e.caxis.axis == SDL_CONTROLLER_AXIS_LEFTX && e.caxis.value < -25000)) {
+			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT) || e.key.keysym.sym == SDLK_LEFT) {
 				//buttons[index].second.reset();
 				backButton();
+			}
+			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_START) || e.key.keysym.sym == SDLK_TAB) {
+				manager->getMachine()->pushState(new ExtraMenu(manager));
+				manager->getServiceLocator()->getAudios()->haltChannel(0);
 			}
 		}
 		else
@@ -54,6 +58,7 @@ bool MapState::handleEvent(Uint32 time, SDL_Event e)
 			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B) || e.key.keysym.sym == SDLK_DELETE) {
 				buttons[index].second.selected = false;
 			}
+			
 		}
 	}
 	return GameState::handleEvent(time, e);
