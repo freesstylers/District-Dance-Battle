@@ -47,8 +47,8 @@ void PlayState::newGame(int lvl)
 	}
 	
 	particles = new ParticleEngine(40, Vector2D(70, 70), manager);
-	int leftNotesPos = manager->getWindowWidth() / 2 - pointOffset;
-	int rightNotesPos = manager->getWindowWidth() / 2 + pointOffset;
+	int leftNotesPos = manager->getDefaultWindowWidth() / 2 - pointOffset;
+	int rightNotesPos = manager->getDefaultWindowWidth() / 2 + pointOffset;
 
 	leftNotesVector = Vector2D(leftNotesPos - noteSize / 2, initialNoteHeight);
 	rightNotesVector = Vector2D(rightNotesPos - noteSize / 2, initialNoteHeight);
@@ -120,7 +120,7 @@ void PlayState::newGame2P(int lvl)
 		minigame = new MinigameVaporwave(manager, this);
 		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::testBG);
 		bgT = Resources::testBG;
-		enemy = new Character(manager, 60 * 4, 120 * 4, Vector2D(manager->getWindowWidth() - 350, initialNoteHeight + 100), Resources::RobotIdle);
+		enemy = new Character(manager, 60 * 4, 120 * 4, Vector2D(manager->getDefaultWindowWidth() - 350, initialNoteHeight + 100), Resources::RobotIdle);
 		enemyT = Resources::RobotIdle;
 		break;
 	case 2:
@@ -129,25 +129,25 @@ void PlayState::newGame2P(int lvl)
 		minigame = new MinigameHipHop(manager, this);
 		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::BackgroundHipHop);
 		bgT = Resources::BackgroundHipHop;
-		enemy = new Character(manager, 60 * 4, 120 * 4, Vector2D(manager->getWindowWidth() - 350, initialNoteHeight + 100), Resources::EminemciaIdle);
+		enemy = new Character(manager, 60 * 4, 120 * 4, Vector2D(manager->getDefaultWindowWidth() - 350, initialNoteHeight + 100), Resources::EminemciaIdle);
 		enemyT = Resources::EminemciaIdle;
 		break;
 	default:
 		break;
 	}
-	
 
-	int leftNotesPos = manager->getWindowWidth() / 3 - pointOffset2P;
-	int rightNotesPos = manager->getWindowWidth() / 3 + pointOffset2P;
+
+	int leftNotesPos = manager->getDefaultWindowWidth() / 3 - pointOffset2P;
+	int rightNotesPos = manager->getDefaultWindowWidth() / 3 + pointOffset2P;
 
 	leftNotesVector = Vector2D(leftNotesPos - 70 / 2, 70);
 	rightNotesVector = Vector2D(rightNotesPos - 70 / 2, 70);
 
-	leftNotesVector2 = Vector2D(leftNotesPos - 70 / 2 + 460, 70);
-	rightNotesVector2 = Vector2D(rightNotesPos - 70 / 2 + 460, 70);
+	leftNotesVector2 = Vector2D(leftNotesPos - 70 / 2 + 400, 70);
+	rightNotesVector2 = Vector2D(rightNotesPos - 70 / 2 + 400, 70);
 
 	player1 = new PlayerPack(manager,this, leftNotesPos, rightNotesPos, pointSize, noteBarWidth,0);
-	player2 = new PlayerPack(manager,this, leftNotesPos + 460, rightNotesPos + 460, pointSize, noteBarWidth,1);
+	player2 = new PlayerPack(manager,this, leftNotesPos + 400, rightNotesPos + 400, pointSize, noteBarWidth,1);
 	level = new Level(this, manager, levelName,noteSize);
 	level->init();
 	timer = Timer::Instance();

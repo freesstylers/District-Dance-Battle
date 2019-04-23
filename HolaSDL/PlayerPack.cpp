@@ -15,8 +15,8 @@ PlayerPack::PlayerPack(SDLGame* manager, PlayState* ps, int leftNotesPos, int ri
 	rightPoint = new Point(manager, pointSize, pointSize, Vector2D(rightNotesPos - pointSize / 2, 565), lip->getController(), false);
 	leftNoteBar = new Squares(manager, squareWidth, 565 + 0.6 * pointSize, Vector2D(leftNotesPos + 1 - squareWidth / 2, leftNotesVector.getY()));
 	rightNoteBar = new Squares(manager, squareWidth, 565 + 0.6 * pointSize, Vector2D(rightNotesPos + 1 - squareWidth / 2, rightNotesVector.getY()));
-	feedbackLeft = new FeedbackPool(manager, pointSize * 0.8, pointSize * 0.8, Vector2D(leftNotesPos - (pointSize * 0.8) - (pointSize * 0.8), 465 + pointSize / 2));
-	feedbackRight = new FeedbackPool(manager, pointSize * 0.8, pointSize * 0.8, Vector2D(rightNotesPos + (pointSize * 0.8), 465 + pointSize / 2));
+	feedbackLeft = new FeedbackPool(manager, pointSize * 0.8, pointSize * 0.8, Vector2D(leftNotesPos - (pointSize * 0.8), 565 + pointSize / 2));
+	feedbackRight = new FeedbackPool(manager, pointSize * 0.8, pointSize * 0.8, Vector2D(rightNotesPos + (pointSize * 0.8), 565 + pointSize / 2));
 	hitLeft = new HitNotePool(manager, pointSize - 10, pointSize - 10);
 	hitRight = new HitNotePool(manager, pointSize - 10, pointSize - 10);
 	noteYLimit = leftPoint->getPosition().getY() + leftPoint->getHeight();
@@ -37,7 +37,9 @@ void PlayerPack::render(Uint32 time, bool beatSync)
 	rightPoint->render(time);
 	comboTxt->render(time);
 	feedbackLeft->render(time, false);
+	feedbackLeft->updateResolution(game_->getWidthScale(), game_->getHeightScale());
 	feedbackRight->render(time, false);
+	feedbackRight->updateResolution(game_->getWidthScale(), game_->getHeightScale());
 	hitLeft->render(time, false);
 	hitRight->render(time, false);
 
