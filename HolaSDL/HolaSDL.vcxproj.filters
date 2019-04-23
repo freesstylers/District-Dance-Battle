@@ -63,7 +63,7 @@
     <ClCompile Include="PauseMenu.cpp" />
     <ClCompile Include="HitNote.cpp" />
     <ClCompile Include="HitNotePool.cpp" />
-    <ClCompile Include="Slider.cpp" />
+    <ClCompile Include="ExtraMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioManager.h" />
@@ -128,7 +128,7 @@
     <ClInclude Include="PauseMenu.h" />
     <ClInclude Include="HitNote.h" />
     <ClInclude Include="HitNotePool.h" />
-    <ClInclude Include="Slider.h" />
+    <ClInclude Include="ExtraMenu.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

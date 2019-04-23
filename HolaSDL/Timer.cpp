@@ -30,6 +30,7 @@ void Timer::Reset()
 	_StartTicks = SDL_GetTicks();
 	_ElapsedTicks = 0;
 	_DeltaTime = 0.0f;
+	offset = 0;
 }
 
 float Timer::DeltaTime()
@@ -49,7 +50,7 @@ float Timer::TimeScale()
 
 void Timer::Update()
 {
-	_ElapsedTicks = SDL_GetTicks() - _StartTicks;
+	_ElapsedTicks = SDL_GetTicks() - _StartTicks - offset;
 	_DeltaTime = _ElapsedTicks * 0.001f;
 
 }

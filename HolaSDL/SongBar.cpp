@@ -14,7 +14,7 @@ SongBar::SongBar(SDLGame* game, double width, double height, Vector2D pos, Vecto
 }
 bool SongBar::handleInput(Uint32 time, const SDL_Event& event) 
 {
-	return true;
+	return false;
 }
 SongBar::~SongBar()
 {

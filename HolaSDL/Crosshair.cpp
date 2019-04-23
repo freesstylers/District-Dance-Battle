@@ -99,7 +99,7 @@ bool Crosshair::handleInput(Uint32 time, const SDL_Event & event, Note* nota)
 			cout << "eres mazo bueno" << endl;
 			nota->setActive(false);
 
-			return true;
+			return false;
 		}
 	}
 

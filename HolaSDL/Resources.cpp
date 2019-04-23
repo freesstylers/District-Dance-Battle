@@ -85,7 +85,16 @@ vector<Resources::ImageInfo> Resources::images_{
 		{HitCopper, "resources/images/HitAnimationCopper.png", 32, 32, 3, 1, 3},
 		{StarBar, "resources/images/ScoreStars.png", 22, 102, 6, 6, 1},
 		{RedAura, "resources/images/RedVignette.png", 800, 600, 1, 1, 1},
-		{NivelExtra, "resources/images/NivelExtra.png", 100, 100, 1, 1, 1}
+		{NivelExtra, "resources/images/NivelExtra.png", 100, 100, 1, 1, 1},
+		{ButtonPlaceholder, "resources/images/buttonPlaceholder.png", 153, 65, 1, 1, 1},
+		{ButtonSelection, "resources/images/buttonSelection.png", 153, 65, 1, 1, 1},
+		{MenuBG, "resources/images/menuBG.png", 50, 75, 1, 1, 1},
+		{ButtonResume, "resources/images/buttonResume.png", 153, 65, 1, 1, 1},
+		{ButtonRestart, "resources/images/buttonRestart.png", 153, 65, 1, 1, 1},
+		{ButtonOptions, "resources/images/buttonOptions.png", 153, 65, 1, 1, 1},
+		{ButtonExit, "resources/images/buttonExit.png", 153, 65, 1, 1, 1},
+		{MenuCanciones, "resources/images/menuCanciones.png", 1600, 900, 1, 1, 1},
+		{MasterHand,"resources/images/Dedo.png", 128, 128, 1, 1, 1}
 	
 };
 
@@ -102,7 +111,10 @@ vector<Resources::MusicInfo> Resources::musics_ {
 	{Hiphop, "resources/sound/hiphop.mp3"},
 	{Mapa, "resources/sound/Mapa.mp3"},
 	{StarSound, "resources/sound/Star.wav"},
-	{ComboSound, "resources/sound/Combo.wav"}
+	{ComboSound, "resources/sound/Combo.wav"},
+	{AllStar, "resources/sound/allstar.mp3"},
+	{Megalovania, "resources/sound/megalovania.mp3"},
+	{Asereje, "resources/sound/asereje.mp3"}
 };
 
 vector<Resources::SoundInfo> Resources::sounds_ {

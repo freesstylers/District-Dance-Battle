@@ -9,7 +9,7 @@ BarBackground::BarBackground(SDLGame* game, double width, double height, Vector2
 	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(texture); //en esta clase sucede lo mismo que en Background (lo único que lo diferencia es su llamada a la textura), 
 }																				       //la barra del fondo es simplemente un sprite que sigue a SongBar, crear clase para asignar solo texturas a objetos vacios(?)
 bool BarBackground::handleInput(Uint32 time, const SDL_Event& event) {
-	return true;
+	return false;
 }
 
 BarBackground::~BarBackground()

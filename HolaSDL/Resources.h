@@ -80,7 +80,16 @@ public:
 		HitCopper,
 		StarBar,
 		RedAura,
-		NivelExtra
+		NivelExtra,
+		ButtonPlaceholder,
+		ButtonSelection,
+		MenuBG,
+		ButtonResume,
+		ButtonRestart,
+		ButtonOptions,
+		ButtonExit,
+		MenuCanciones,
+		MasterHand
 		// text
 	};
 
@@ -94,7 +103,10 @@ public:
 		Hiphop,
 		Mapa,
 		StarSound,
-		ComboSound
+		ComboSound,
+		AllStar,
+		Megalovania,
+		Asereje
 		// sound effects
 	};
 
