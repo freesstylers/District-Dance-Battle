@@ -112,12 +112,12 @@ int SDLGame::getWindowHeight() const {
 
 int SDLGame::getDefaultWindowWidth() const
 {
-	return 1280;
+	return DM.w;
 }
 
 int SDLGame::getDefaultWindowHeight() const
 {
-	return 720;
+	return DM.h;
 }
 
 double SDLGame::getWidthScale() const
