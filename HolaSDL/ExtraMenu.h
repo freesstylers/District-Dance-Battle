@@ -13,12 +13,14 @@ class ExtraMenu: public GameState
 private:
 	TimerNoSingleton* timer;
 	SDL_GameController* controller = NULL;
-
+	double distanceHand;
 	PlayState* level;
 
 	EmptyObject* bg;
 	EmptyObject* hand;
+	EmptyObject* switchPlayers;
 
+	bool onePlayer = true;
 	int posHand;
 
 	bool optionsOpen = false;
