@@ -29,8 +29,8 @@ void FeedbackPool::addFeedback(int animation)
 	f->forceAnimationChange(animation);
 	f->setAlpha(255);
 }
-
 void FeedbackPool::updateResolution(double wScale, double hScale) {
+/*
 
 	for (auto feedback : getAllObjects()) {
 
@@ -46,5 +46,5 @@ void FeedbackPool::updateResolution(double wScale, double hScale) {
 		feedback->setHeight(feedback->getHeight() * hScale);
 		feedback->setPosition(pos);
 		feedback->setVelocity(vel);
-	}
+	}*/
 }
