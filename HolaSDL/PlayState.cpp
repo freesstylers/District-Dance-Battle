@@ -430,7 +430,7 @@ void PlayState::exit()
 
 void PlayState::updateResolution()
 {
-	GameState::updateResolution();
+	/*GameState::updateResolution();
 
 	double wScale = manager->getWidthScale();
 	double hScale = manager->getHeightScale();
@@ -463,7 +463,7 @@ void PlayState::updateResolution()
 		}
 	}
 
-	initialNoteHeight = initialNoteHeight * hScale;
+	initialNoteHeight = initialNoteHeight * hScale;*/
 }
 
 Vector2D PlayState::setVel(double time)

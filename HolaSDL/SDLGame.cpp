@@ -23,7 +23,7 @@ void SDLGame::initSDL() {
 	window_ = SDL_CreateWindow(windowTitle_.c_str(),
 	SDL_WINDOWPOS_UNDEFINED,
 	SDL_WINDOWPOS_UNDEFINED, width_, height_, SDL_WINDOW_SHOWN);
-
+	SDL_RenderSetLogicalSize(renderer_, width_, height_);
 	// Create the renderer
 	renderer_ = SDL_CreateRenderer(window_, -1,
 			SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
