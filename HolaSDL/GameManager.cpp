@@ -37,12 +37,12 @@ GameStateMachine * GameManager::getMachine()
 void GameManager::run()
 {
 	while (!exit_) {
-		Uint32 startTime = SDL_GetTicks();
+		double startTime = SDL_GetTicks();
 		handleEvent(startTime);
 		update(startTime);
 		render(startTime);
 
-		Uint32 frameTime = SDL_GetTicks() - startTime;
+		double frameTime = SDL_GetTicks() - startTime;
 		double frames = (1.0 / (double)MAXFPS)*1000.0;
 		if (frameTime < frames) {
 			SDL_Delay(frames - frameTime);

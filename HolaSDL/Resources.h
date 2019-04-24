@@ -107,7 +107,8 @@ public:
 		AllStar,
 		Megalovania,
 		Asereje,
-		Africa
+		Africa,
+		Test186BPM
 		// sound effects
 	};
 

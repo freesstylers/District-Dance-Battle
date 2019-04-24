@@ -29,7 +29,7 @@ void Level::init() {
 	file >> songLength;
 	file >> song;
 
-	noteVel = level->setVel(60000/bpm);
+	noteVel = level->setVel(60000.0/(double)bpm);
 
 	int aux = 0;
 	while (aux >= 0) {

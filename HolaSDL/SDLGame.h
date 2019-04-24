@@ -33,7 +33,7 @@ public:
 	virtual void start() = 0; // start the game
 	virtual void stop() = 0;  // stop the game
 
-	double deltaTime = 1; //Va cambiando segun el tiempo de refresco (se le multiplica a lazs velocidades)
+	double deltaTime = 1; //Va cambiando segun el tiempo de refresco (se le multiplica a las velocidades)
 
 private:
 	void initSDL(); // initialize SDL (ttf, mixer, image, create window and renderer, etc)

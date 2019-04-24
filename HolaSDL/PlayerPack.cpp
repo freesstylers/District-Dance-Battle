@@ -150,7 +150,7 @@ void PlayerPack::updateResolution(double wScale, double hScale)
 	feedbackRight->updateResolution(wScale, hScale);
 	hitLeft->updateResolution(wScale, hScale);
 	hitRight->updateResolution(wScale, hScale);
-	Vector2D noteVel = playstate_->setVel(60000 / playstate_->getBPM());
+	Vector2D noteVel = playstate_->setVel(60000.0 / (double)playstate_->getBPM());
 
 	for (Note* n : screenArrows_){
 		n->updateResolution(wScale, hScale);

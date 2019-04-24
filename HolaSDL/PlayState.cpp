@@ -25,7 +25,7 @@ void PlayState::newGame(int lvl)
 	switch (lvl)
 	{
 	case 1:
-		levelName = "africa";
+		levelName = "megalovania";
 		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::EffectVaporWave);
 		minigame = new MinigameVaporwave(manager, this);
 		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::testBG);
@@ -375,13 +375,13 @@ void PlayState::generateArrows()
 		if (levelArrows_.front() != nullptr) {
 
 			player1->screenArrows_.push_back(levelArrows_.front());
-			player1->screenArrows_.back()->setPosition(player1->screenArrows_.back()->getPosition() + player1->screenArrows_.back()->getVelocity()*msDiff);
+			//player1->screenArrows_.back()->setPosition(player1->screenArrows_.back()->getPosition() + player1->screenArrows_.back()->getVelocity()*msDiff);
 			
 			if (player2 != nullptr && levelArrows2_.front()!=nullptr)
 			{
 
 				player2->screenArrows_.push_back(levelArrows2_.front());
-				player2->screenArrows_.back()->setPosition(player2->screenArrows_.back()->getPosition() + player2->screenArrows_.back()->getVelocity()*msDiff);
+				//player2->screenArrows_.back()->setPosition(player2->screenArrows_.back()->getPosition() + player2->screenArrows_.back()->getVelocity()*msDiff);
 			}
 		}
 		levelArrows2_.pop_front();
@@ -395,12 +395,12 @@ void PlayState::generateButtons()
 		if (levelButtons_.front() != nullptr) {
 
 			player1->screenButtons_.push_back(levelButtons_.front());
-			player1->screenButtons_.back()->setPosition(player1->screenButtons_.back()->getPosition() + player1->screenButtons_.back()->getVelocity()*msDiff);
+			//player1->screenButtons_.back()->setPosition(player1->screenButtons_.back()->getPosition() + player1->screenButtons_.back()->getVelocity()*msDiff);
 			if (player2 != nullptr && levelButtons2_.front() != nullptr)
 			{
 
 				player2->screenButtons_.push_back(levelButtons2_.front());
-				player2->screenButtons_.back()->setPosition(player2->screenButtons_.back()->getPosition() + player2->screenButtons_.back()->getVelocity()*msDiff);
+				//player2->screenButtons_.back()->setPosition(player2->screenButtons_.back()->getPosition() + player2->screenButtons_.back()->getVelocity()*msDiff);
 			}
 		}
 		levelButtons_.pop_front();
@@ -468,8 +468,9 @@ void PlayState::updateResolution()
 
 Vector2D PlayState::setVel(double time)
 {
-	double distance = player1->getLeftPoint()->getPosition().getY() - initialNoteHeight;
-	double velocity = distance / (time / 1000.0);
+	double distance = player1->getLeftPoint()->getPosition().getY() + (player1->getLeftPoint()->getHeight()/2) - (initialNoteHeight + (noteSize/2));
+	double timeInSecs = (time / 1000.0);
+	double velocity = distance / timeInSecs;
 	return Vector2D(0, velocity / 8.0);
 }
 
