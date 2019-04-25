@@ -94,6 +94,13 @@ public:
 		Recuadro2P,
 		EndBG,
 		EndBG2
+		PapitoBox,
+		Select,
+		CabezaPapito,
+		CiuBG,
+		CiuBGPixel,
+		PapitoIdle,
+		PapitoTwerk
 		// text
 	};
 

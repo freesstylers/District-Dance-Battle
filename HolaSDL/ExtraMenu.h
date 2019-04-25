@@ -19,6 +19,7 @@ private:
 	EmptyObject* bg;
 	EmptyObject* hand;
 	EmptyObject* switchPlayers;
+	EmptyObject* select;
 
 	bool onePlayer = true;
 	int posHand;
