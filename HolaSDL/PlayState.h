@@ -86,7 +86,7 @@ protected:
 
 	int combo;
 
-	double minigameScoreTotal = 0.25;
+	double minigameScoreTotal = 0.10;
 
 	int songEndWaitTime = 0;
 
