@@ -41,6 +41,7 @@ EndState::EndState(GameManager * g,  int actualScore, int maxScore, int percenta
 	}
 
 	else if (actualScore >= 70 * maxScore / 100) {
+		perico->forceAnimationChange(Resources::PericoDance1);
 		letter->forceAnimationChange(Resources::ScoreA);
 	}
 	
