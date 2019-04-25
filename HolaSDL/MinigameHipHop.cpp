@@ -5,13 +5,13 @@ MinigameHipHop::MinigameHipHop(GameManager * g, PlayState * p): MiniGame(g, p)
 {
 	manager = g;
 	playS = p;
-	fback = new Feedback(g, 150, 150, Vector2D(g->getWindowWidth() / 2 - 150 / 2, g->getWindowHeight() / 2 - 150 / 2));
+	fback = new Feedback(g, 150, 150, Vector2D(g->getDefaultWindowWidth() / 2 - 150 / 2, g->getDefaultWindowHeight() / 2 - 150 / 2));
 	timer = new TimerNoSingleton();
 	mira = new Crosshair(g, 64, 64, Vector2D(300, 400));
 
 	Aviso = new TextObject(manager, manager->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(300, 300)); //Position stub
 	Aviso->setText("DISPARA A CADA NOTA");
-	Aviso->setPosition(Vector2D(manager->getWindowWidth() / 2 - Aviso->getWidth() / 2, manager->getWindowHeight() / 2 - Aviso->getHeight() / 2));
+	Aviso->setPosition(Vector2D(manager->getDefaultWindowWidth() / 2 - Aviso->getWidth() / 2, manager->getDefaultWindowHeight() / 2 - Aviso->getHeight() / 2));
 
 	createList();
 
