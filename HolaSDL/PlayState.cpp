@@ -55,7 +55,7 @@ void PlayState::newGame(int lvl)
 
 	leftNotesVector2 = Vector2D(leftNotesPos - 50 / 2 + 200, 70);
 	rightNotesVector2 = Vector2D(rightNotesPos - 50 / 2 + 200, 70);
-	player1 = new PlayerPack(manager,this, leftNotesPos, rightNotesPos, pointSize, noteBarWidth,0);
+	player1 = new PlayerPack(manager,this, leftNotesPos, rightNotesPos, pointSize, noteBarWidth,0,true);
 	
 	level = new Level(this, manager, levelName,noteSize);
 	level->init();
@@ -144,8 +144,8 @@ void PlayState::newGame2P(int lvl)
 	leftNotesVector2 = Vector2D(leftNotesPos - 70 / 2 + 400, 70);
 	rightNotesVector2 = Vector2D(rightNotesPos - 70 / 2 + 400, 70);
 
-	player1 = new PlayerPack(manager,this, leftNotesPos, rightNotesPos, pointSize, noteBarWidth,0);
-	player2 = new PlayerPack(manager,this, leftNotesPos + 400, rightNotesPos + 400, pointSize, noteBarWidth,1);
+	player1 = new PlayerPack(manager,this, leftNotesPos, rightNotesPos, pointSize, noteBarWidth,0,false);
+	player2 = new PlayerPack(manager,this, leftNotesPos + 400, rightNotesPos + 400, pointSize, noteBarWidth,1,false);
 	level = new Level(this, manager, levelName,noteSize);
 	level->init();
 	timer = Timer::Instance();

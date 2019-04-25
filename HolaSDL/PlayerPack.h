@@ -33,7 +33,7 @@ protected:
 public:
 	double currentScore = 0;
 	PlayerPack();
-	PlayerPack(SDLGame* manager, PlayState* ps, int leftNotesPos, int rightNotesPos, int pointSize, int squareWidth, int player);
+	PlayerPack(SDLGame* manager, PlayState* ps, int leftNotesPos, int rightNotesPos, int pointSize, int squareWidth, int player,bool OneP);
 	~PlayerPack();
 	virtual void render(Uint32 time, bool beatSync);
 	virtual void update(Uint32 time);

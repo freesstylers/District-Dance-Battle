@@ -94,7 +94,9 @@ vector<Resources::ImageInfo> Resources::images_{
 		{ButtonOptions, "resources/images/buttonOptions.png", 153, 65, 1, 1, 1},
 		{ButtonExit, "resources/images/buttonExit.png", 153, 65, 1, 1, 1},
 		{MenuCanciones, "resources/images/menuCanciones.png", 1600, 900, 1, 1, 1},
-		{MasterHand,"resources/images/Dedo.png", 128, 128, 1, 1, 1}
+		{MasterHand,"resources/images/Dedo.png", 128, 128, 1, 1, 1},
+		{Recuadro1P, "resources/images/Recuadro1P.png", 32, 100, 4, 1, 4},
+		{Recuadro2P, "resources/images/Recuadro2P.png", 32, 100, 4, 1, 4}
 	
 };
 
