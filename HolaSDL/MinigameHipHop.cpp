@@ -49,7 +49,7 @@ void MinigameHipHop::update(Uint32 time)
 
 		for (Note* o : screenButtons_)
 		{
-			if (o->getPosition().getX() < 0 || o->getPosition().getX() > manager->getWindowWidth())
+			if (o->getPosition().getX() < 0 || o->getPosition().getX() > manager->getDefaultWindowWidth())
 				o->setVelocity(Vector2D(o->getVelocity().getX() * -1, o->getVelocity().getY()));
 			if (o->getPosition().getY() < 0 || o->getPosition().getY() > manager->getDefaultWindowHeight())
 				o->setVelocity(Vector2D(o->getVelocity().getX(), o->getVelocity().getY() * -1));
@@ -114,7 +114,7 @@ void MinigameHipHop::createList()
 		for (int i = 0; i < noteAmount; i++) {
 			aux = rand() % 8;
 
-			Vector2D pos = Vector2D(double(manager->getServiceLocator()->getRandomGenerator()->nextInt(100, manager->getWindowWidth() - 100)), double(manager->getServiceLocator()->getRandomGenerator()->nextInt(100, manager->getWindowHeight() - 100)));
+			Vector2D pos = Vector2D(double(manager->getServiceLocator()->getRandomGenerator()->nextInt(100, manager->getDefaultWindowWidth() - 100)), double(manager->getServiceLocator()->getRandomGenerator()->nextInt(100, manager->getDefaultWindowHeight() - 100)));
 			//El numero debe estar entre 10 y el ancho/alto de la pantalla, por que si al generar el random de la velocidad, la posicion fue <10 al dividir entre 10, se redondea a 0 por la conversion a int
 			Vector2D vel = Vector2D(double(manager->getServiceLocator()->getRandomGenerator()->nextInt(-pos.getX() / 10, pos.getX() / 10)), double(manager->getServiceLocator()->getRandomGenerator()->nextInt(-pos.getX() / 10, pos.getX() / 10)));
 

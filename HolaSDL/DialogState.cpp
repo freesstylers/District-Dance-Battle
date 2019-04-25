@@ -30,7 +30,7 @@ void DialogState::init()
 		file >> aux;
 		for (int i = 0; i < aux; i++) {
 			file >> sp;
-			//sprites.push_back(new Background(manager, manager->getWindowWidth(), manager->getWindowHeight(), Vector2D(0, 0), sp));
+			//sprites.push_back(new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), sp));
 			stage.push_back(new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), sp));
 		}
 		file >> aux;

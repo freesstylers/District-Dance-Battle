@@ -223,30 +223,30 @@ void EndState::renderLetters(Uint32 time, bool beatHandler)
 		*(gameManager->getServiceLocator()->getFonts()->getFont(
 			Resources::RETRO20)), { COLOR(0x00000000) });
 	SDL_Rect dest;
-	dest.x = gameManager->getWindowWidth() / 4-150;
-	dest.y = gameManager->getWindowHeight() / 4-100;
-	dest.w = (gameManager->getWindowWidth() / 4);
-	dest.h = gameManager->getWindowHeight() / 20;
+	dest.x = gameManager->getDefaultWindowWidth() / 4-150;
+	dest.y = gameManager->getDefaultWindowHeight() / 4-100;
+	dest.w = (gameManager->getDefaultWindowWidth() / 4);
+	dest.h = gameManager->getDefaultWindowHeight() / 20;
 	msg0.render(gameManager->getRenderer(), dest);
 
 	Texture msg1(gameManager->getRenderer(),
 			puntos + to_string(punt) ,*(gameManager->getServiceLocator()->getFonts()->getFont(
 				Resources::RETRO10)), { COLOR(0x00000000) });
 	SDL_Rect dest1;
-	dest1.x = gameManager->getWindowWidth() / 2-150 ;
-	dest1.y = gameManager->getWindowHeight() / 2 ;
-	dest1.w = (gameManager->getWindowWidth() / 4);
-	dest1.h = gameManager->getWindowHeight() / 20;
+	dest1.x = gameManager->getDefaultWindowWidth() / 2-150 ;
+	dest1.y = gameManager->getDefaultWindowHeight() / 2 ;
+	dest1.w = (gameManager->getDefaultWindowWidth() / 4);
+	dest1.h = gameManager->getDefaultWindowHeight() / 20;
 	msg1.render(gameManager->getRenderer(), dest1);
 
 	Texture msg2(gameManager->getRenderer(),
 		val, *(gameManager->getServiceLocator()->getFonts()->getFont(
 			Resources::RETRO10)), { COLOR(0x00000000) });
 	SDL_Rect dest2;
-	dest2.x = gameManager->getWindowWidth() / 2 - 150;
-	dest2.y = gameManager->getWindowHeight() / 2 +50;
-	dest2.w = (gameManager->getWindowWidth() / 4);
-	dest2.h = gameManager->getWindowHeight() / 20;
+	dest2.x = gameManager->getDefaultWindowWidth() / 2 - 150;
+	dest2.y = gameManager->getDefaultWindowHeight() / 2 +50;
+	dest2.w = (gameManager->getDefaultWindowWidth() / 4);
+	dest2.h = gameManager->getDefaultWindowHeight() / 20;
 	msg2.render(gameManager->getRenderer(), dest2);*/
 	
 }
