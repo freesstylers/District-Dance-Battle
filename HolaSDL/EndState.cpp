@@ -127,11 +127,14 @@ EndState::EndState(GameManager * g,  int actualScore, int maxScore, int percenta
 EndState::~EndState()
 {
 	delete points;
+	delete points2;
+	delete tooltip;
 }
 
 void EndState::backToMenu(GameManager * gameManager)
 {
 	gameManager->getMachine()->changeState(new MapState(gameManager));
+	gameManager->getServiceLocator()->getAudios()->haltChannel(0);
 }
 
 void EndState::render(Uint32 time, bool beatHandler)
