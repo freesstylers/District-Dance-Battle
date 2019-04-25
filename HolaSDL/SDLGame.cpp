@@ -29,7 +29,7 @@ void SDLGame::initSDL() {
 			SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
 	// Clear screen (background color).
-	SDL_SetRenderDrawColor(renderer_, 0, 100, 100, 255);  // Dark grey.
+	SDL_SetRenderDrawColor(renderer_, 0, 0, 0, 255);  // Dark grey.
 	SDL_RenderClear(renderer_);
 	SDL_RenderPresent(renderer_);
 
