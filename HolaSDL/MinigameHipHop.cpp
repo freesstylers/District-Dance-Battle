@@ -71,7 +71,7 @@ void MinigameHipHop::update(Uint32 time)
 		noteAmount--;
 	}
 	if (Timer::Instance()->DeltaTime() > (playS->bh->getBeatTime() / 1000.0)*(maxNotes*4 + 4)) {
-		failed = true;
+		//failed = true;
 		end = true;
 	}
 }

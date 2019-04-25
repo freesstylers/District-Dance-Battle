@@ -101,21 +101,21 @@ void MinigameVaporwave::handleInput(Uint32 time, SDL_Event e)
 					{
 						cout << "bien minigame" << endl;
 						fback->queueAnimationChange(Resources::FeedbackGood);
-						failed = false;
+						//failed = false;
 
 						currentMinigameScore++;
 					}
 					else
 					{
 						cout << "flecha incorrecta" << endl;
-						failed = true;
+						//failed = true;
 						fback->queueAnimationChange(Resources::FeedbackBad);
 					}
 				}
 				else
 				{
 					cout << "fuera" << endl;
-					failed = true;
+					//failed = true;
 					fback->queueAnimationChange(Resources::FeedbackBad);
 				}
 				delete (it);
