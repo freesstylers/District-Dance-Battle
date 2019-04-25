@@ -37,7 +37,7 @@ void ScoreBar::updateBar(double punt)
 		stars->animation.currentFrame = currentStar;
 		particleEffect->setPosition(Vector2D(this->getPosition().getX() + width_ / 2, stars->getPosition().getY() + (5 - (currentStar))*(maxHeight_ / 5)));
 		particleEffect->generate(60);
-		game_->getServiceLocator()->getAudios()->playChannel(Resources::StarSound, 0);
+		game_->getServiceLocator()->getAudios()->playChannel(Resources::StarSound, 0, 1);
 	}
 }
 

@@ -26,8 +26,7 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 	bool ret = false;
 
 	if (event.type == SDL_CONTROLLERBUTTONDOWN && keyup) {
-		level->getGameManager()->getServiceLocator()->getAudios()->playChannel(Resources::Snare, 0);
-		level->getGameManager()->getServiceLocator()->getAudios()->setChannelVolume(70);
+		level->getGameManager()->getServiceLocator()->getAudios()->playChannel(Resources::Snare, 0, 1);
 		//level->particles->generate();
 	}
 	if (event.type == SDL_CONTROLLERBUTTONUP)
