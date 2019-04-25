@@ -50,7 +50,7 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 					cout << "perfecto" << endl;
 					player->feedbackLeft->addFeedback(Resources::FeedbackPerfect);
 					player->hitLeft->addHit(Resources::HitGold, it->getPosition());
-					level->updateScoreNote(1);
+					player->updateScoreNote(1);
 					player->addCombo(1);
 				}
 				else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getLeftPoint()->getPosition().getY() + player->getLeftPoint()->getHeight() / 2)) <= 25)
@@ -58,7 +58,7 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 					cout << "bien" << endl;
 					player->feedbackLeft->addFeedback(Resources::FeedbackGood);
 					player->hitLeft->addHit(Resources::HitSilver, it->getPosition());
-					level->updateScoreNote(2);
+					player->updateScoreNote(2);
 					player->addCombo(1);
 				}
 				else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getLeftPoint()->getPosition().getY() + player->getLeftPoint()->getHeight() / 2)) <= 50)
@@ -66,7 +66,7 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 					cout << "regular" << endl;
 					player->feedbackLeft->addFeedback(Resources::FeedbackRegular);
 					player->hitLeft->addHit(Resources::HitCopper, it->getPosition());
-					level->updateScoreNote(3);
+					player->updateScoreNote(3);
 					player->addCombo(1);
 				}
 				else
@@ -110,7 +110,7 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 					cout << "perfecto" << endl;
 					player->feedbackRight->addFeedback(Resources::FeedbackPerfect);
 					player->hitRight->addHit(Resources::HitGold, it->getPosition());
-					level->updateScoreNote(1);
+					player->updateScoreNote(1);
 					player->addCombo(1);
 
 				}
@@ -119,7 +119,7 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 					cout << "bien" << endl;
 					player->feedbackRight->addFeedback(Resources::FeedbackGood);
 					player->hitRight->addHit(Resources::HitSilver, it->getPosition());
-					level->updateScoreNote(2);
+					player->updateScoreNote(2);
 					player->addCombo(1);
 				}
 				else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getRightPoint()->getPosition().getY() + player->getRightPoint()->getHeight() / 2)) <= 50)
@@ -127,7 +127,7 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 					cout << "regular" << endl;
 					player->feedbackRight->addFeedback(Resources::FeedbackRegular);
 					player->hitRight->addHit(Resources::HitCopper, it->getPosition());
-					level->updateScoreNote(3);
+					player->updateScoreNote(3);
 					player->addCombo(1);
 				}
 				else
