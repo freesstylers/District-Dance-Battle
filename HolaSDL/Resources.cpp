@@ -114,6 +114,8 @@ vector<Resources::ImageInfo> Resources::images_{
 		{CiuBGPixel, "resources/images/fondoReggaetonPixel.png", 213, 120, 2, 1, 2},
 		{PapitoIdle, "resources/images/papitoIdle.png", 60, 120, 3, 3, 7 },
 		{PapitoTwerk, "resources/images/papitotwerking.png", 60, 120, 2, 1, 2},
+		{FondoExtra, "resources/images/fondoExtra.png", 426, 120, 2, 1, 2},
+		{FondoExtraPixel, "resources/images/papitotwerking.png", 426, 120, 2, 1, 2}
 
 	
 };

@@ -100,7 +100,9 @@ public:
 		CiuBG,
 		CiuBGPixel,
 		PapitoIdle,
-		PapitoTwerk
+		PapitoTwerk,
+		ExtraBG,
+		ExtraPixel
 		// text
 	};
 
