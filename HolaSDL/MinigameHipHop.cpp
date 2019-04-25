@@ -9,7 +9,7 @@ MinigameHipHop::MinigameHipHop(GameManager * g, PlayState * p): MiniGame(g, p)
 	timer = new TimerNoSingleton();
 	mira = new Crosshair(g, 64, 64, Vector2D(300, 400));
 
-	Aviso = new TextObject(manager, manager->getServiceLocator()->getFonts()->getFont(Resources::PIXEL30), Vector2D(300, 300)); //Position stub
+	Aviso = new TextObject(manager, manager->getServiceLocator()->getFonts()->getFont(Resources::FIPPS30), Vector2D(300, 300)); //Position stub
 	Aviso->setText("DISPARA A CADA NOTA");
 	Aviso->setPosition(Vector2D(manager->getWindowWidth() / 2 - Aviso->getWidth() / 2, manager->getWindowHeight() / 2 - Aviso->getHeight() / 2));
 

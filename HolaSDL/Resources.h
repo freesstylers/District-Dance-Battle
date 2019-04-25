@@ -121,7 +121,11 @@ public:
 		PIXEL30,
 		PIXEL20,
 		PIXEL10,
-		PIXEL50
+		PIXEL50,
+		FIPPS10,
+		FIPPS20,
+		FIPPS30,
+		FIPPS50
 	};
 
 
