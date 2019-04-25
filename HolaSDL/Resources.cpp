@@ -12,7 +12,11 @@ vector<Resources::FontInfo> Resources::fonts_ {
 	{FIPPS10, "resources/fonts/Fipps-Regular.otf",10},
 	{FIPPS20, "resources/fonts/Fipps-Regular.otf",20},
 	{FIPPS30, "resources/fonts/Fipps-Regular.otf",30},
-	{FIPPS50, "resources/fonts/Fipps-Regular.otf",50}
+	{FIPPS50, "resources/fonts/Fipps-Regular.otf",50},
+	{RETRO10, "resources/fonts/Retro Gaming.ttf",10},
+	{RETRO20, "resources/fonts/Retro Gaming.ttf",20},
+	{RETRO30, "resources/fonts/Retro Gaming.ttf",30},
+	{RETRO50, "resources/fonts/Retro Gaming.ttf",50}
 	//{ ARIAL16, "resources/fonts/ARIAL.ttf", 16 }
 };
 
@@ -27,7 +31,7 @@ vector<Resources::ImageInfo> Resources::images_{
 		{AButton, "resources/images/BotonA.png", 32, 32, 1, 1, 1},
 		{BButton, "resources/images/BotonB.png", 32, 32, 1, 1, 1},
 		{XButton, "resources/images/BotonX.png", 32, 32, 1, 1, 1},
-		{YButton, "resources/images/BotonY.png", 32, 32, 1, 1, 1},
+		{YButton, "resources/images/BotonY_original.png", 32, 32, 1, 1, 1},
 		{FlechaEspBomba, "resources/images/FlechaEspBomba.png", 32, 32, 1, 1, 1},
 		{Point, "resources/images/Point.png", 32, 32, 1, 1, 1},
 		{NoteIcon, "resources/images/Nota.png", 9, 11, 1, 1, 1},
@@ -100,7 +104,17 @@ vector<Resources::ImageInfo> Resources::images_{
 		{MenuCanciones, "resources/images/menuCanciones.png", 1600, 900, 1, 1, 1},
 		{MasterHand,"resources/images/Dedo.png", 128, 128, 1, 1, 1},
 		{Recuadro1P, "resources/images/Recuadro1P.png", 32, 100, 4, 1, 4},
-		{Recuadro2P, "resources/images/Recuadro2P.png", 32, 100, 4, 1, 4}
+		{Recuadro2P, "resources/images/Recuadro2P.png", 32, 100, 4, 1, 4},
+		{EndBG, "resources/images/EndTemplate.png", 1600, 900, 1, 1, 1},
+		{EndBG2, "resources/images/EndTemplate2.png", 1600, 900, 1, 1, 1},
+		{PapitoBox, "resources/images/PapitoBox.png", 153, 65, 1, 1, 1},
+		{Select, "resources/images/Select.png",100,19,1,1,1},
+		{CabezaPapito , "resources/images/cabezaPapito.png", 40, 40, 1, 1, 1 },
+		{CiuBG, "resources/images/fondoReggaeton.png", 213, 120, 2, 1, 2},
+		{CiuBGPixel, "resources/images/fondoReggaetonPixel.png", 213, 120, 2, 1, 2},
+		{PapitoIdle, "resources/images/papitoIdle.png", 60, 120, 3, 3, 7 },
+		{PapitoTwerk, "resources/images/papitotwerking.png", 60, 120, 2, 1, 2},
+
 	
 };
 
@@ -124,6 +138,7 @@ vector<Resources::MusicInfo> Resources::musics_ {
 	{Africa, "resources/sound/africa.mp3"},
 	{Test186BPM, "resources/sound/186-bpm.mp3"},
 	{Papito, "resources/sound/Papito.mp3"}
+	{Running, "resources/sound/RunningInThe90s.mp3"}
 };
 
 vector<Resources::SoundInfo> Resources::sounds_ {

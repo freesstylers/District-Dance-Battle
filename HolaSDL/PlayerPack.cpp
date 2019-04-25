@@ -108,13 +108,15 @@ void PlayerPack::update(Uint32 time)
 			}
 			else
 			{
-				game_->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0);
+				playstate_->showError();
 				resetCombo();
+				feedbackLeft->addFeedback(Resources::FeedbackBad);
 			}
 			delete aux;
 			screenArrows_.pop_front();
 			cout << "fuera" << endl;
-			errorLeft();
+			updateScoreNote(1);
+			
 
 		}
 		if (!screenButtons_.empty() && screenButtons_.front()->getPosition().getY() > noteYLimit)
@@ -128,7 +130,8 @@ void PlayerPack::update(Uint32 time)
 			}
 			else
 			{
-				game_->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0);
+				playstate_->showError();
+				feedbackRight->addFeedback(Resources::FeedbackBad);
 				resetCombo();
 			}
 			delete aux;

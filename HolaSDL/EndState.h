@@ -10,7 +10,7 @@ class EndState :
 {
 public:
 	
-	EndState(GameManager* g, int actualScore, int maxScore, int percentage,int lvl);
+	EndState(GameManager* g, int actualScore, int maxScore, int percentage, int lvl, bool isSingleplayer, int actualScore2 = 0);
 	virtual ~EndState();
 	static void backToMenu(GameManager* gameManager);
 	static void exit_(GameManager* gameManager);
@@ -21,12 +21,15 @@ public:
 
 private:
 	TextObject* points;
+	TextObject* points2;
+	TextObject* tooltip;
 	string types[6] = { "Tutorial", "VaporWave", "HipHop", "??????" , "A" , "A" };
-	int index=0 ;
+	int index = 0;
 	int min = 0;
 	int max = 1;
 	int level;
 	int punt;
+
 	GameManager* gameManager;
 	SDL_GameController* controller = NULL;
 	void nextButton();
@@ -34,6 +37,7 @@ private:
 	string puntos = "Puntuacion: ";
 	string val = "Valoracion: ";
 	
+	string makeScoreBetter(int score);
 
 };
 

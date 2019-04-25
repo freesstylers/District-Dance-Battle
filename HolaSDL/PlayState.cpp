@@ -5,23 +5,8 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff) : GameState(
 {
 	nlevel = lvl;
 
-	if (oneP) {
-		newGame(lvl);
-	}
-	else {
-		newGame2P(lvl);
-	}
+	g->getServiceLocator()->getAudios()->setChannelVolume(60, 1);
 
-	pauseMenu = new PauseMenu(g, this);
-	stage.push_back(pauseMenu);
-	pauseMenu->setActive(false);
-
-	isSingleplayer = oneP;
-	difficultyMode = diff;
-}
-
-void PlayState::newGame(int lvl)
-{
 	switch (lvl)
 	{
 	case 1:
@@ -94,6 +79,24 @@ void PlayState::newGame(int lvl)
 	default:
 		break;
 	}
+
+	if (oneP) {
+		newGame();
+	}
+	else {
+		newGame2P();
+	}
+
+	pauseMenu = new PauseMenu(g, this);
+	stage.push_back(pauseMenu);
+	pauseMenu->setActive(false);
+
+	isSingleplayer = oneP;
+	difficultyMode = diff;
+}
+
+void PlayState::newGame()
+{
 	
 	particles = new ParticleEngine(40, Vector2D(70, 70), manager);
 	int leftNotesPos = manager->getDefaultWindowWidth() / 2 - pointOffset;
@@ -157,31 +160,8 @@ void PlayState::newGame(int lvl)
 	updateResolution();
 }
 
-void PlayState::newGame2P(int lvl)
+void PlayState::newGame2P()
 {
-	switch (lvl)
-	{
-	case 1:
-		levelName = "megalovania";
-		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::EffectVaporWave);
-		minigame = new MinigameVaporwave(manager, this);
-		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::testBG);
-		bgT = Resources::testBG;
-		enemy = new Character(manager, 60 * 4, 120 * 4, Vector2D(manager->getDefaultWindowWidth() - 350, initialNoteHeight + 100), Resources::RobotIdle);
-		enemyT = Resources::RobotIdle;
-		break;
-	case 2:
-		levelName = "hiphop";
-		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::HipHopEffect);
-		minigame = new MinigameHipHop(manager, this);
-		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::BackgroundHipHop);
-		bgT = Resources::BackgroundHipHop;
-		enemy = new Character(manager, 60 * 4, 120 * 4, Vector2D(manager->getDefaultWindowWidth() - 350, initialNoteHeight + 100), Resources::EminemciaIdle);
-		enemyT = Resources::EminemciaIdle;
-		break;
-	default:
-		break;
-	}
 
 
 	int leftNotesPos = manager->getDefaultWindowWidth() / 3 - pointOffset2P;
@@ -441,7 +421,10 @@ void PlayState::generateButtons()
 void PlayState::songOver()
 {
 	manager->getServiceLocator()->getAudios()->haltChannel(0);
-	manager->getMachine()->changeState(new EndState(manager, player1->currentScore, maxScore, 70, nlevel));
+	if(isSingleplayer)
+		manager->getMachine()->changeState(new EndState(manager, player1->currentScore, maxScore, 70, nlevel, isSingleplayer));
+	else
+		manager->getMachine()->changeState(new EndState(manager, player1->currentScore, maxScore, 70, nlevel, isSingleplayer, player2->currentScore));
 	//manager->getMachine()->changeState(new MapState(manager));
 	//manager->getMachine()->popState();
 }
@@ -506,7 +489,7 @@ Vector2D PlayState::setVel(double time)
 
 void PlayState::playSong(int song) {
 	manager->getServiceLocator()->getAudios()->playChannel(song, 0);
-	manager->getServiceLocator()->getAudios()->setChannelVolume(70);
+	manager->getServiceLocator()->getAudios()->setChannelVolume(70, 0);
 }
 
 
@@ -516,7 +499,7 @@ void PlayState::showError()
 	bg->forceAnimationChange(bgT+1);
 	bg->queueAnimationChange(bgT);
 
-	manager->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0);
+	manager->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0, 1);
 }
 
 void PlayState::changeRedeffect()

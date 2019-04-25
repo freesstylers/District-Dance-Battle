@@ -39,7 +39,7 @@ void PanelMap::renderLetters(Uint32 time, bool beatHandler) {
 	Texture msg0(manager_->getRenderer(),
 		types[lvl_],
 		*(manager_->getServiceLocator()->getFonts()->getFont(
-			Resources::FIPPS20)), { COLOR(0x00000000) });
+			Resources::RETRO20)), { COLOR(0x00000000) });
 	SDL_Rect dest;
 	dest.x = fondo_.getPosition().getX() + 5;
 	dest.y = fondo_.getPosition().getY() + 10;
@@ -52,7 +52,7 @@ void PanelMap::renderLetters(Uint32 time, bool beatHandler) {
 	Texture msg1(manager_->getRenderer(),
 		name_,
 		*(manager_->getServiceLocator()->getFonts()->getFont(
-			Resources::FIPPS10)), { COLOR(0x00000000) });
+			Resources::RETRO10)), { COLOR(0x00000000) });
 	dest.w = name_.size() * 15;
 	msg1.render(manager_->getRenderer(), dest);
 	dest.y = dest.y + (dest.h + 1);
@@ -100,7 +100,7 @@ void PanelMap::selectButton(SDL_Event e, SDL_GameController* cont) {
 		}
 		else
 		{
-			manager_->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0);
+			manager_->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0, 1);
 		}
 		break;
 	case 2:
