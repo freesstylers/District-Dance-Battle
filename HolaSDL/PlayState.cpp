@@ -113,7 +113,7 @@ void PlayState::newGame2P(int lvl)
 	switch (lvl)
 	{
 	case 1:
-		levelName = "megalovania";
+		levelName = "RunningInThe90s";
 		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::EffectVaporWave);
 		minigame = new MinigameVaporwave(manager, this);
 		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::testBG);

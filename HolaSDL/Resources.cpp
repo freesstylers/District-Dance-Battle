@@ -23,7 +23,7 @@ vector<Resources::ImageInfo> Resources::images_{
 		{AButton, "resources/images/BotonA.png", 32, 32, 1, 1, 1},
 		{BButton, "resources/images/BotonB.png", 32, 32, 1, 1, 1},
 		{XButton, "resources/images/BotonX.png", 32, 32, 1, 1, 1},
-		{YButton, "resources/images/BotonY.png", 32, 32, 1, 1, 1},
+		{YButton, "resources/images/BotonY_original.png", 32, 32, 1, 1, 1},
 		{FlechaEspBomba, "resources/images/FlechaEspBomba.png", 32, 32, 1, 1, 1},
 		{Point, "resources/images/Point.png", 32, 32, 1, 1, 1},
 		{NoteIcon, "resources/images/Nota.png", 9, 11, 1, 1, 1},
@@ -118,7 +118,8 @@ vector<Resources::MusicInfo> Resources::musics_ {
 	{Megalovania, "resources/sound/megalovania.mp3"},
 	{Asereje, "resources/sound/asereje.mp3"},
 	{Africa, "resources/sound/africa.mp3"},
-	{Test186BPM, "resources/sound/186-bpm.mp3"}
+	{Test186BPM, "resources/sound/186-bpm.mp3"},
+	{Running, "resources/sound/RunningInThe90s.mp3"}
 };
 
 vector<Resources::SoundInfo> Resources::sounds_ {
