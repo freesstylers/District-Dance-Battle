@@ -8,6 +8,7 @@
 #include "FeedbackPool.h"
 #include "LevelInputManager.h"
 #include "HitNotePool.h"
+#include "PlayerPack.h"
 
 class PlayState;
 class PlayerPack : public GameObject
@@ -30,6 +31,7 @@ protected:
 	void updateCombo();
 
 public:
+	double currentScore = 0;
 	PlayerPack();
 	PlayerPack(SDLGame* manager, PlayState* ps, int leftNotesPos, int rightNotesPos, int pointSize, int squareWidth, int player);
 	~PlayerPack();
@@ -44,9 +46,10 @@ public:
 	HitNotePool* hitLeft;
 	FeedbackPool* feedbackRight;
 	HitNotePool* hitRight;
+	ScoreBar* scoreBar;
 	void errorLeft();
 	void errorRight();
-
+	void updateScoreNote(int accuracy);
 	virtual void updateResolution(double wScale, double hScale);
 	void addCombo(int i);
 	void resetCombo();

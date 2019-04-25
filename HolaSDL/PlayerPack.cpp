@@ -20,6 +20,14 @@ PlayerPack::PlayerPack(SDLGame* manager, PlayState* ps, int leftNotesPos, int ri
 	hitLeft = new HitNotePool(manager, pointSize - 10, pointSize - 10);
 	hitRight = new HitNotePool(manager, pointSize - 10, pointSize - 10);
 	noteYLimit = leftPoint->getPosition().getY() + leftPoint->getHeight();
+	if (player == 0)
+	{
+		scoreBar = new ScoreBar(manager, 80, 0, Vector2D(6, 500 + pointSize), playstate_->getMaxScore(), manager->getDefaultWindowHeight() - (500 + pointSize));
+	}
+	else
+	{
+		scoreBar = new ScoreBar(manager, 80, 0, Vector2D(manager->getDefaultWindowWidth() - 86, 500 + pointSize), playstate_->getMaxScore(), manager->getDefaultWindowHeight() - (500 + pointSize));
+	}
 
 	comboTextX = rightNoteBar->getPosition().getX() - ((rightNoteBar->getPosition().getX() - (leftNoteBar->getPosition().getX() + squareWidth)) / 2);
 
@@ -36,6 +44,7 @@ void PlayerPack::render(Uint32 time, bool beatSync)
 	leftPoint->render(time);
 	rightPoint->render(time);
 	comboTxt->render(time);
+	scoreBar->render(time);
 	feedbackLeft->render(time, false);
 	feedbackLeft->updateResolution(game_->getWidthScale(), game_->getHeightScale());
 	feedbackRight->render(time, false);
@@ -61,6 +70,7 @@ void PlayerPack::update(Uint32 time)
 		rightNoteBar->update(time);
 		leftPoint->update(time);
 		rightNoteBar->update(time);
+		scoreBar->update(time);
 		feedbackRight->update(time);
 		feedbackLeft->update(time);
 		for (Note* o : screenArrows_)
@@ -83,7 +93,7 @@ void PlayerPack::update(Uint32 time)
 			SDL_GameControllerButton x = aux->getKey();
 			if (x == SDL_CONTROLLER_BUTTON_INVALID) {
 				feedbackLeft->addFeedback(Resources::FeedbackPerfect);
-				playstate_->updateScoreNote(1);
+				updateScoreNote(1);
 				addCombo(1);
 			}
 			else
@@ -103,7 +113,7 @@ void PlayerPack::update(Uint32 time)
 			SDL_GameControllerButton y = aux->getKey();
 			if (y == SDL_CONTROLLER_BUTTON_INVALID) {
 				feedbackRight->addFeedback(Resources::FeedbackPerfect);
-				playstate_->updateScoreNote(1);
+				updateScoreNote(1);
 				addCombo(1);
 			}
 			else
@@ -238,4 +248,9 @@ void PlayerPack::errorRight() {
 	/*rightNoteBar->cleanAnimationQueue();
 	rightNoteBar->forceAnimationChange(Resources::SquareMiss);
 	rightNoteBar->queueAnimationChange(Resources::Square);*/
+}
+void PlayerPack::updateScoreNote(int accuracy)
+{
+	currentScore += playstate_->getMaxNoteValue()*(1 / accuracy);
+	scoreBar->updateBar(currentScore);
 }
