@@ -89,7 +89,9 @@ public:
 		ButtonOptions,
 		ButtonExit,
 		MenuCanciones,
-		MasterHand
+		MasterHand,
+		Recuadro1P,
+		Recuadro2P
 		// text
 	};
 

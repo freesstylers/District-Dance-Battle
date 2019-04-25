@@ -15,7 +15,6 @@
 #include "MiniGame.h"
 #include "MinigameVaporwave.h"
 #include "MinigameHipHop.h"
-#include "ScoreBar.h"
 #include "EmptyObject.h"
 #include "EffectVaporwave.h"
 #include "Squares.h"
@@ -59,7 +58,6 @@ protected:
 	EffectVaporwave* effectVaporWave;
 	Level* level;
 
-	SongBar* songBar; //indicates time left, shaped like a note
 	BarBackground* songBarBG;
 
 	bool beatSignal = false;	//used to signal animations to advance
@@ -93,9 +91,7 @@ protected:
 	int songEndWaitTime = 0;
 
 public:
-	double currentScore = 0;
 	BeatHandler* bh;
-	ScoreBar* scoreBar;
 	PlayState(GameManager* g, int lvl, bool oneP, bool diff);
 	void newGame(int lvl);
 	void newGame2P(int lvl);
@@ -115,6 +111,7 @@ public:
 	PauseMenu* pauseMenu;
 	PlayerPack* player1;
 	PlayerPack* player2;
+	SongBar* songBar; //indicates time left, shaped like a note
 	Vector2D leftNotesVector;
 	Vector2D rightNotesVector;
 	Vector2D leftNotesVector2;
@@ -125,13 +122,14 @@ public:
 
 	double msDiff = 0.0;  //difference between the time of a beat and the time when a note is created, in ms
 
-	void updateScoreNote(int accuracy);
+
 	void updateScoreMinigame(int accuracy);
 	void activateBeatSignal() { beatSignal = true; }
 	bool getMiniActive() { return miniActive; }
 	Character* getPerico() { return perico; }
 
-	int getScore();
+	int getMaxScore() { return maxScore; }
+	int getMaxNoteValue() { return maxNoteValue; }
 	int getBPM() { return level->bpm; }
 	bool pause();
 	void resume(unsigned int timePaused);
