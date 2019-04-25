@@ -91,7 +91,14 @@ public:
 		MenuCanciones,
 		MasterHand,
 		Recuadro1P,
-		Recuadro2P
+		Recuadro2P,
+		PapitoBox,
+		Select,
+		CabezaPapito,
+		CiuBG,
+		CiuBGPixel,
+		PapitoIdle,
+		PapitoTwerk
 		// text
 	};
 

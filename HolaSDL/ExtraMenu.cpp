@@ -17,6 +17,7 @@ void ExtraMenu::init() {
 	bg = new EmptyObject(manager, Vector2D( 0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::MenuCanciones);
 	hand = new EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth()-400, manager->getDefaultWindowHeight()/14), 128, 128, Resources::MasterHand);
 	switchPlayers = new EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth()-150, 0), 100, 100, Resources::NumPlayersSwitch);
+	select = new EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() - 150-10, 110), 120, 38, Resources::Select);
 	distanceHand = manager->getDefaultWindowHeight() / 14;
 	posHand = 0;
 }
@@ -114,6 +115,7 @@ void ExtraMenu::render(Uint32 time, bool beatSync)
 		bg->render(time);
 		hand->render(time);
 		switchPlayers->render(time) ;
+		select->render(time);
 
 
 	

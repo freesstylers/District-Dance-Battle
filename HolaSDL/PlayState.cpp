@@ -43,6 +43,16 @@ void PlayState::newGame(int lvl)
 		enemyT = Resources::EminemciaIdle;
 		break;
 	case 3:
+		levelName = "megalovania";
+		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::HipHopEffect);
+		minigame = new MinigameHipHop(manager, this);
+		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::CiuBG);
+		bgT = Resources::CiuBG;
+		enemy = new Character(manager, 60 * 4, 120 * 4, Vector2D(manager->getDefaultWindowWidth() - 350, initialNoteHeight + 100), Resources::PapitoIdle);
+		enemyT = Resources::PapitoIdle;
+		minigameAmount = 0;
+		break;
+	case 4:
 		levelName = "africa";
 		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::HipHopEffect);
 		minigame = new MinigameHipHop(manager, this);
@@ -62,7 +72,7 @@ void PlayState::newGame(int lvl)
 		enemyT = Resources::RobotIdle;
 		minigameAmount = 0;
 		break;
-	case 4:
+	case 6:
 		levelName = "asereje";
 		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::HipHopEffect);
 		minigame = new MinigameHipHop(manager, this);
@@ -72,7 +82,7 @@ void PlayState::newGame(int lvl)
 		enemyT = Resources::EminemciaIdle;
 		minigameAmount = 0;
 		break;
-	case 6:
+	case 7:
 		levelName = "megalovania";
 		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::HipHopEffect);
 		minigame = new MinigameHipHop(manager, this);
@@ -170,6 +180,16 @@ void PlayState::newGame2P(int lvl)
 		enemy = new Character(manager, 60 * 4, 120 * 4, Vector2D(manager->getDefaultWindowWidth() - 350, initialNoteHeight + 100), Resources::EminemciaIdle);
 		enemyT = Resources::EminemciaIdle;
 		break;
+	case 3:
+		levelName = "megalovania";
+		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::HipHopEffect);
+		minigame = new MinigameHipHop(manager, this);
+		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::CiuBG);
+		bgT = Resources::CiuBG;
+		enemy = new Character(manager, 60 * 4, 120 * 4, Vector2D(manager->getDefaultWindowWidth() - 350, initialNoteHeight + 100), Resources::PapitoTwerk);
+		enemyT = Resources::PapitoTwerk;
+		break;
+
 	default:
 		break;
 	}

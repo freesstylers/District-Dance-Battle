@@ -100,7 +100,15 @@ vector<Resources::ImageInfo> Resources::images_{
 		{MenuCanciones, "resources/images/menuCanciones.png", 1600, 900, 1, 1, 1},
 		{MasterHand,"resources/images/Dedo.png", 128, 128, 1, 1, 1},
 		{Recuadro1P, "resources/images/Recuadro1P.png", 32, 100, 4, 1, 4},
-		{Recuadro2P, "resources/images/Recuadro2P.png", 32, 100, 4, 1, 4}
+		{Recuadro2P, "resources/images/Recuadro2P.png", 32, 100, 4, 1, 4},
+		{PapitoBox, "resources/images/PapitoBox.png", 153, 65, 1, 1, 1},
+		{Select, "resources/images/Select.png",100,19,1,1,1},
+		{CabezaPapito , "resources/images/cabezaPapito.png", 40, 40, 1, 1, 1 },
+		{CiuBG, "resources/images/fondoReggaeton.png", 213, 120, 2, 1, 2},
+		{CiuBGPixel, "resources/images/fondoReggaetonPixel.png", 213, 120, 2, 1, 2},
+		{PapitoIdle, "resources/images/papitoIdle.png", 60, 120, 3, 3, 7 },
+		{PapitoTwerk, "resources/images/papitotwerking.png", 60, 120, 2, 1, 2},
+
 	
 };
 
