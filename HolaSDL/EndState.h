@@ -21,12 +21,14 @@ public:
 
 private:
 	TextObject* points;
+	TextObject* points2;
 	string types[6] = { "Tutorial", "VaporWave", "HipHop", "??????" , "A" , "A" };
-	int index=0 ;
+	int index = 0;
 	int min = 0;
 	int max = 1;
 	int level;
 	int punt;
+
 	GameManager* gameManager;
 	SDL_GameController* controller = NULL;
 	void nextButton();
@@ -34,6 +36,7 @@ private:
 	string puntos = "Puntuacion: ";
 	string val = "Valoracion: ";
 	
+	string makeScoreBetter(int score);
 
 };
 

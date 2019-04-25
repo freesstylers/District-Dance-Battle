@@ -93,7 +93,7 @@ public:
 		Recuadro1P,
 		Recuadro2P,
 		EndBG,
-		EndBG2
+		EndBG2,
 		PapitoBox,
 		Select,
 		CabezaPapito,

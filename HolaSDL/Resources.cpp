@@ -106,7 +106,7 @@ vector<Resources::ImageInfo> Resources::images_{
 		{Recuadro1P, "resources/images/Recuadro1P.png", 32, 100, 4, 1, 4},
 		{Recuadro2P, "resources/images/Recuadro2P.png", 32, 100, 4, 1, 4},
 		{EndBG, "resources/images/EndTemplate.png", 1600, 900, 1, 1, 1},
-		{EndBG2, "resources/images/EndTemplate2.png", 1600, 900, 1, 1, 1}
+		{EndBG2, "resources/images/EndTemplate2.png", 1600, 900, 1, 1, 1},
 		{PapitoBox, "resources/images/PapitoBox.png", 153, 65, 1, 1, 1},
 		{Select, "resources/images/Select.png",100,19,1,1,1},
 		{CabezaPapito , "resources/images/cabezaPapito.png", 40, 40, 1, 1, 1 },
