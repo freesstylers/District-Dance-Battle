@@ -120,7 +120,7 @@ public:
 		Asereje,
 		Africa,
 		Test186BPM,
-		Papito
+		Papito,
 		Running
 		// sound effects
 	};
