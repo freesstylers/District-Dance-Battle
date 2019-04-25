@@ -82,7 +82,7 @@ protected:
 	double maxMinigameValue = 0;
 	
 
-	int minigameAmount = 0;
+	int minigameAmount = 3;
 
 	int combo;
 
