@@ -113,7 +113,7 @@ vector<Resources::ImageInfo> Resources::images_{
 		{CiuBG, "resources/images/fondoReggaeton.png", 213, 120, 2, 1, 2},
 		{CiuBGPixel, "resources/images/fondoReggaetonPixel.png", 213, 120, 2, 1, 2},
 		{PapitoIdle, "resources/images/papitoIdle.png", 60, 120, 3, 3, 7 },
-		{PapitoTwerk, "resources/images/papitotwerking.png", 60, 120, 2, 1, 2},
+		{PapitoTwerk, "resources/images/papitoDance.png", 60, 120, 2, 1, 2},
 		{ExtraBG, "resources/images/fondoExtra.png", 208, 120, 2, 1, 2},
 		{ExtraPixel, "resources/images/fondoExtraPixel.png", 208, 120, 2, 1, 2},
 		{ShrekIdle, "resources/images/shrekIdle.png", 60, 120, 2, 1, 2 },
