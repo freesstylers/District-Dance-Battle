@@ -102,7 +102,12 @@ public:
 		PapitoIdle,
 		PapitoTwerk,
 		ExtraBG,
-		ExtraPixel
+		ExtraPixel,
+		ShrekIdle,
+		ShrekDance,
+		SansIdle,
+		SansDance
+
 		// text
 	};
 
