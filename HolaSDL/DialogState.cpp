@@ -91,7 +91,7 @@ void DialogState::render(Uint32 time, bool beatSync) {
 			Texture msg0(manager->getRenderer(),
 				dialogo.front().text,
 				*(manager->getServiceLocator()->getFonts()->getFont(
-					Resources::PIXEL30)), { COLOR(0x00000000) });
+					Resources::FIPPS30)), { COLOR(0x00000000) });
 			actualText = &msg0;
 			actualText->render(manager->getRenderer(),
 				manager->getDefaultWindowWidth() / 39+20, manager->getDefaultWindowHeight() - 140);
@@ -112,7 +112,7 @@ void DialogState::render(Uint32 time, bool beatSync) {
 			Texture msg0(manager->getRenderer(),
 				aux1,
 				*(manager->getServiceLocator()->getFonts()->getFont(
-					Resources::PIXEL30)), { COLOR(0x00000000) });
+					Resources::FIPPS30)), { COLOR(0x00000000) });
 			actualText = &msg0;
 			actualText->render(manager->getRenderer(),
 				manager->getDefaultWindowWidth() / 39 + 10, manager->getDefaultWindowHeight() - 140);
@@ -120,7 +120,7 @@ void DialogState::render(Uint32 time, bool beatSync) {
 				Texture msg1(manager->getRenderer(),
 					aux2,
 					*(manager->getServiceLocator()->getFonts()->getFont(
-						Resources::PIXEL30)), { COLOR(0x00000000) });
+						Resources::FIPPS30)), { COLOR(0x00000000) });
 				actualText = &msg1;
 				actualText->render(manager->getRenderer(),
 					manager->getDefaultWindowWidth() / 22 + 10, (manager->getDefaultWindowHeight() - 90));
@@ -132,8 +132,7 @@ void DialogState::render(Uint32 time, bool beatSync) {
 	else {
 		Texture msg0(manager->getRenderer(),
 			" COMIENZA LA BATALLA",
-			*(manager->getServiceLocator()->getFonts()->getFont(
-				Resources::PIXEL50)), { COLOR(0x00000000) });
+			*(manager->getServiceLocator()->getFonts()->getFont(Resources::FIPPS50)), { COLOR(0x00000000) });
 		actualText = &msg0;
 		actualText->render(manager->getRenderer(),
 			manager->getDefaultWindowWidth() / 39 + 10, manager->getDefaultWindowHeight() - 120);
@@ -149,7 +148,7 @@ bool DialogState::handleEvent(Uint32 time, SDL_Event e) {
 			if (!dialogo.empty()) {
 				actualBox = box[dialogo.front().box];
 			}
-			else actualBox = new TextBox(manager, manager->getDefaultWindowWidth() - 10, 400, Vector2D(10, manager->getDefaultWindowHeight() - 400),29);
+			else actualBox = new TextBox(manager, manager->getDefaultWindowWidth() - 10, 400, Vector2D(10, manager->getDefaultWindowHeight() - 400), 29);
 
 		
 			keyup = false;

@@ -43,7 +43,7 @@ PlayerPack::PlayerPack(SDLGame* manager, PlayState* ps, int leftNotesPos, int ri
 
 	comboPosition = Vector2D(comboTextX, 465);	//the position of the Combo Text is anchored to the middle of the object's x coordinate
 
-	comboTxt = new ComboText(manager, manager->getServiceLocator()->getFonts()->getFont(Resources::PIXEL20), comboPosition);
+	comboTxt = new ComboText(manager, manager->getServiceLocator()->getFonts()->getFont(Resources::FIPPS20), comboPosition);
 
 	combo = 0;
 }
