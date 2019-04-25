@@ -12,7 +12,11 @@ vector<Resources::FontInfo> Resources::fonts_ {
 	{FIPPS10, "resources/fonts/Fipps-Regular.otf",10},
 	{FIPPS20, "resources/fonts/Fipps-Regular.otf",20},
 	{FIPPS30, "resources/fonts/Fipps-Regular.otf",30},
-	{FIPPS50, "resources/fonts/Fipps-Regular.otf",50}
+	{FIPPS50, "resources/fonts/Fipps-Regular.otf",50},
+	{RETRO10, "resources/fonts/Retro Gaming.ttf",10},
+	{RETRO20, "resources/fonts/Retro Gaming.ttf",20},
+	{RETRO30, "resources/fonts/Retro Gaming.ttf",30},
+	{RETRO50, "resources/fonts/Retro Gaming.ttf",50}
 	//{ ARIAL16, "resources/fonts/ARIAL.ttf", 16 }
 };
 
@@ -100,7 +104,9 @@ vector<Resources::ImageInfo> Resources::images_{
 		{MenuCanciones, "resources/images/menuCanciones.png", 1600, 900, 1, 1, 1},
 		{MasterHand,"resources/images/Dedo.png", 128, 128, 1, 1, 1},
 		{Recuadro1P, "resources/images/Recuadro1P.png", 32, 100, 4, 1, 4},
-		{Recuadro2P, "resources/images/Recuadro2P.png", 32, 100, 4, 1, 4}
+		{Recuadro2P, "resources/images/Recuadro2P.png", 32, 100, 4, 1, 4},
+		{EndBG, "resources/images/EndTemplate.png", 1600, 900, 1, 1, 1},
+		{EndBG2, "resources/images/EndTemplate2.png", 1600, 900, 1, 1, 1}
 	
 };
 

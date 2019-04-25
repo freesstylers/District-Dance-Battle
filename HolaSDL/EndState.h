@@ -10,7 +10,7 @@ class EndState :
 {
 public:
 	
-	EndState(GameManager* g, int actualScore, int maxScore, int percentage,int lvl);
+	EndState(GameManager* g, int actualScore, int maxScore, int percentage, int lvl, bool isSingleplayer, int actualScore2 = 0);
 	virtual ~EndState();
 	static void backToMenu(GameManager* gameManager);
 	static void exit_(GameManager* gameManager);

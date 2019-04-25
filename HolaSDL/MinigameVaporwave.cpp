@@ -8,7 +8,7 @@ MinigameVaporwave::MinigameVaporwave(GameManager * g, PlayState * p): MiniGame(g
 	fback = new Feedback(g, 150, 150, Vector2D(g->getDefaultWindowWidth() / 2 - 150 / 2, g->getDefaultWindowHeight() / 2 - 150 / 2));
 	timer = new TimerNoSingleton();
 
-	Aviso = new TextObject(manager, manager->getServiceLocator()->getFonts()->getFont(Resources::FIPPS30), Vector2D(300, 300));  //Position stub
+	Aviso = new TextObject(manager, manager->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(300, 300));  //Position stub
 	Aviso->setText("PULSA LA NOTA SELECCIONADA");
 	Aviso->setPosition(Vector2D(manager->getWindowWidth()/2 - Aviso->getWidth() / 2, manager->getWindowHeight()/2 - Aviso->getHeight() / 2));
 

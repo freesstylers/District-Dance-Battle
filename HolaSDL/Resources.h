@@ -91,7 +91,9 @@ public:
 		MenuCanciones,
 		MasterHand,
 		Recuadro1P,
-		Recuadro2P
+		Recuadro2P,
+		EndBG,
+		EndBG2
 		// text
 	};
 
@@ -126,7 +128,11 @@ public:
 		FIPPS10,
 		FIPPS20,
 		FIPPS30,
-		FIPPS50
+		FIPPS50,
+		RETRO10,
+		RETRO20,
+		RETRO30,
+		RETRO50
 	};
 
 

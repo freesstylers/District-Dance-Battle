@@ -432,7 +432,7 @@ void PlayState::generateButtons()
 void PlayState::songOver()
 {
 	manager->getServiceLocator()->getAudios()->haltChannel(0);
-	manager->getMachine()->changeState(new EndState(manager, player1->currentScore, maxScore, 70, nlevel));
+	manager->getMachine()->changeState(new EndState(manager, player1->currentScore, maxScore, 70, nlevel, isSingleplayer));
 	//manager->getMachine()->changeState(new MapState(manager));
 	//manager->getMachine()->popState();
 }
