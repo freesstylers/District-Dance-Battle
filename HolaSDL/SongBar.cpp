@@ -23,8 +23,8 @@ SongBar::~SongBar()
 
 void SongBar::update(Uint32 time)
 {
-	if (position_.getX() < game_->getWindowWidth()-20-width_ ) {
-		position_.set(position_ + velocity_); 
-		bar->setWidth(bar->getWidth() + velocity_.getX());
+	if (position_.getX() < game_->getDefaultWindowWidth()-81 ) {
+		position_.set(position_ + velocity_*game_->deltaTime); 
+		bar->setWidth(bar->getWidth() + velocity_.getX()*game_->deltaTime);
 	} 
 }

@@ -264,6 +264,11 @@ void PlayerPack::errorRight() {
 }
 void PlayerPack::updateScoreNote(int accuracy)
 {
-	currentScore += playstate_->getMaxNoteValue()*(1 / accuracy);
+	if(accuracy == 1)
+		currentScore += playstate_->getMaxNoteValue();
+	else if(accuracy == 2)
+		currentScore += playstate_->getMaxNoteValue() * 0.75;
+	else
+		currentScore += playstate_->getMaxNoteValue() * 0.5;
 	scoreBar->updateBar(currentScore);
 }

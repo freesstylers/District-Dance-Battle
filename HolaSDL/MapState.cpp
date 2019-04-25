@@ -4,10 +4,10 @@
 
 MapState::MapState(GameManager* g) :GameState(g)
 {
-	g->getServiceLocator()->getAudios()->setChannelVolume(70, 1);
+	g->getServiceLocator()->getAudios()->setChannelVolume(60, 1);
+	g->getServiceLocator()->getAudios()->setChannelVolume(40, 0);
 
-	manager->getServiceLocator()->getAudios()->playChannel(Resources::Mapa, -1);
-	manager->getServiceLocator()->getAudios()->setChannelVolume(70);
+	manager->getServiceLocator()->getAudios()->playChannel(Resources::Mapa, 0);
 	keystates = SDL_GetKeyboardState(NULL);
 	controller = SDL_GameControllerOpen(0);
 	createMainButtons();
@@ -79,14 +79,15 @@ void MapState::render(Uint32 time, bool beatSync)
 
 void MapState::createMainButtons()
 {
+	
 	buttons[0].first = EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() / 2 - 60 , manager->getDefaultWindowHeight() / 2 - 30), 64, 64, Resources::MetroOn);
 	buttons[1].first = EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() / 2 + 25 , manager->getDefaultWindowHeight() / 2 + 100), 64, 64, Resources::MetroOn);
-	buttons[2].first = EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() / 2 + 130 , manager->getDefaultWindowHeight() / 2 - 110), 64, 64, Resources::MetroOn);
-	buttons[3].first = EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() / 2 - 260, manager->getDefaultWindowHeight() / 2 - 165), 64, 64, Resources::MetroOff);
-	buttons[4].first = EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() / 2 - 200, manager->getDefaultWindowHeight() / 2 - 85), 64, 64, Resources::MetroOff);
+	buttons[2].first = EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() / 2 - 260, manager->getDefaultWindowHeight() / 2 - 165), 64, 64, Resources::MetroOn);
+	buttons[3].first = EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() / 2 - 200, manager->getDefaultWindowHeight() / 2 - 85), 64, 64, Resources::MetroOff);
+	buttons[4].first = EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() / 2 + 130, manager->getDefaultWindowHeight() / 2 - 110), 64, 64, Resources::MetroOff);
 	buttons[0].second = PanelMap(manager, buttons[0].first.getPosition() - Vector2D(200, -20), Resources::CabezaVaporWave, 1, "D35P4C1T0", 1);
 	buttons[1].second = PanelMap(manager, buttons[1].first.getPosition() - Vector2D(-30, 110), Resources::EminemciaHead, 3, "Eminemcia", 2);
-	buttons[2].second = PanelMap(manager, buttons[2].first.getPosition(), Resources::CabezaPapito, 2, "Papito", 3);
+	buttons[2].second = PanelMap(manager, buttons[2].first.getPosition(), Resources::CabezaPapito, 2, "Papito Daddy", 3);
 	buttons[3].second = PanelMap(manager, buttons[3].first.getPosition(), Resources::EminemciaHead, 3, "Eminemcia", 2);
 	buttons[4].second = PanelMap(manager, buttons[4].first.getPosition(), Resources::CabezaVaporWave, 1, "D35P4C1T0", 1);
 
