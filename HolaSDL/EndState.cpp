@@ -22,7 +22,7 @@ EndState::EndState(GameManager * g,  int actualScore, int maxScore, int percenta
 
 
 	points = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO50), Vector2D(gameManager->getDefaultWindowWidth() / 2, 50));
-	points->setText("Score: " + makeScoreBetter(actualScore), SDL_Color{ (0), (0), (0), (255) });
+	points->setText("Puntuación final: " + makeScoreBetter(actualScore), SDL_Color{ (0), (0), (0), (255) });
 	points->setPosition(Vector2D(gameManager->getDefaultWindowWidth() / 2, 50) - Vector2D(points->getWidth() / 2, 0));
 
 	tooltip = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(0, 0));
