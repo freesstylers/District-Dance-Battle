@@ -31,7 +31,7 @@ EndState::EndState(GameManager * g,  int actualScore, int maxScore, int percenta
 
 	EmptyObject* letter = new EmptyObject(g, Vector2D(gameManager->getDefaultWindowWidth() / 2 + 325, gameManager->getDefaultWindowHeight() / 2 - 40), 160, 260, Resources::ScoreS);
 
-	Character* perico = new Character(g, 300, 540, Vector2D(gameManager->getDefaultWindowWidth() / 2 - 150, 180), Resources::PericoDab);
+	Character* perico = new Character(g, 300, 540, Vector2D(gameManager->getDefaultWindowWidth() / 2 - 150, 160), Resources::PericoDab);
 	perico->isAnimationSynced(false);
 	perico->setAnimationFramerate(4);
 	
