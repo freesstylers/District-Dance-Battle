@@ -110,7 +110,8 @@ public:
 		Megalovania,
 		Asereje,
 		Africa,
-		Test186BPM
+		Test186BPM,
+		Papito
 		// sound effects
 	};
 

@@ -122,7 +122,8 @@ vector<Resources::MusicInfo> Resources::musics_ {
 	{Megalovania, "resources/sound/megalovania.mp3"},
 	{Asereje, "resources/sound/asereje.mp3"},
 	{Africa, "resources/sound/africa.mp3"},
-	{Test186BPM, "resources/sound/186-bpm.mp3"}
+	{Test186BPM, "resources/sound/186-bpm.mp3"},
+	{Papito, "resources/sound/Papito.mp3"}
 };
 
 vector<Resources::SoundInfo> Resources::sounds_ {
