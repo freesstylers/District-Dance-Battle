@@ -141,6 +141,9 @@ void DialogState::render(Uint32 time, bool beatSync) {
 }
 
 bool DialogState::handleEvent(Uint32 time, SDL_Event e) {
+
+	GameState::handleEvent(time, e);
+
 	if ((e.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) && keyup) || (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_SPACE))
 	{
 		if (!dialogo.empty()) {
