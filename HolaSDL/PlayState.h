@@ -93,8 +93,8 @@ protected:
 public:
 	BeatHandler* bh;
 	PlayState(GameManager* g, int lvl, bool oneP, bool diff);
-	void newGame(int lvl);
-	void newGame2P(int lvl);
+	void newGame();
+	void newGame2P();
 	~PlayState();
 	virtual void update(Uint32 time);
 	virtual bool handleEvent(Uint32 time, SDL_Event e);

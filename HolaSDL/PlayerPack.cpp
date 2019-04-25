@@ -108,7 +108,7 @@ void PlayerPack::update(Uint32 time)
 			}
 			else
 			{
-				game_->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0);
+				playstate_->showError();
 				resetCombo();
 				feedbackLeft->addFeedback(Resources::FeedbackBad);
 			}
@@ -130,7 +130,7 @@ void PlayerPack::update(Uint32 time)
 			}
 			else
 			{
-				game_->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0);
+				playstate_->showError();
 				feedbackRight->addFeedback(Resources::FeedbackBad);
 				resetCombo();
 			}

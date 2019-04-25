@@ -100,7 +100,7 @@ void PanelMap::selectButton(SDL_Event e, SDL_GameController* cont) {
 		}
 		else
 		{
-			manager_->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0);
+			manager_->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0, 1);
 		}
 		break;
 	case 2:
