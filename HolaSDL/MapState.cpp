@@ -76,11 +76,11 @@ void MapState::render(Uint32 time, bool beatSync)
 
 void MapState::createMainButtons()
 {
-	buttons[0].first = EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() / 2 - 50 , manager->getDefaultWindowHeight() / 2 - 30), 64, 64, Resources::MetroOn);
+	buttons[0].first = EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() / 2 - 60 , manager->getDefaultWindowHeight() / 2 - 30), 64, 64, Resources::MetroOn);
 	buttons[1].first = EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() / 2 + 25 , manager->getDefaultWindowHeight() / 2 + 100), 64, 64, Resources::MetroOn);
-	buttons[2].first = EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() / 2 + 75 , manager->getDefaultWindowHeight() / 2 - 85), 64, 64, Resources::MetroOn);
-	buttons[3].first = EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() / 2 - 180, manager->getDefaultWindowHeight() / 2 - 125), 64, 64, Resources::MetroOn);
-	buttons[4].first = EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() / 2 - 150, manager->getDefaultWindowHeight() / 2 - 75), 64, 64, Resources::MetroOn);
+	buttons[2].first = EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() / 2 + 130 , manager->getDefaultWindowHeight() / 2 - 110), 64, 64, Resources::MetroOff);
+	buttons[3].first = EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() / 2 - 260, manager->getDefaultWindowHeight() / 2 - 165), 64, 64, Resources::MetroOn);
+	buttons[4].first = EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() / 2 - 200, manager->getDefaultWindowHeight() / 2 - 85), 64, 64, Resources::MetroOff);
 	buttons[0].second = PanelMap(manager, buttons[0].first.getPosition() - Vector2D(200, -20), Resources::CabezaVaporWave, 1, "D35P4C1T0", 1);
 	buttons[1].second = PanelMap(manager, buttons[1].first.getPosition() - Vector2D(-30, 110), Resources::EminemciaHead, 3, "Eminemcia", 2);
 	buttons[2].second = PanelMap(manager, buttons[2].first.getPosition(), Resources::CabezaVaporWave, 1, "D35P4C1T0", 1);
