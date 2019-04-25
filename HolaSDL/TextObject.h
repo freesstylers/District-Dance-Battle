@@ -15,6 +15,6 @@ public:
 	virtual void update(Uint32 time);
 	virtual void render(Uint32 time, bool beatSync = false);
 
-	void setText(string txt);
+	void setText(string txt, SDL_Color color = SDL_Color{ (255), (255), (255), (255) });
 };
 

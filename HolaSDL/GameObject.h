@@ -64,6 +64,10 @@ public:
 	void changeAlpha(int alphaChange);
 	int getAlpha() { return alpha_; };
 	virtual void updateResolution(double wScale, double hScale);
+
+	void isAnimationSynced(bool is) { isAnimationSyncedToMusic = is; }
+	void setAnimationFramerate(int frames) { framesPerSecond = frames; }
+
 protected:
 	SDLGame* game_; // pointer to the game
 

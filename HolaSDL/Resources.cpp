@@ -5,10 +5,14 @@
 vector<Resources::FontInfo> Resources::fonts_ {
 		{ ARIAL16, "resources/fonts/ARIAL.ttf", 16 },
 	{ ARIAL24, "resources/fonts/ARIAL.ttf", 40 },
-	{PIXEL30, "resources/fonts/NES-Chimera.ttf",25},
+	{PIXEL30, "resources/fonts/NES-Chimera.ttf",30},
 	{PIXEL20, "resources/fonts/NES-Chimera.ttf",20},
 	{PIXEL10, "resources/fonts/NES-Chimera.ttf",10 },
 	{PIXEL50, "resources/fonts/NES-Chimera.ttf",45},
+	{FIPPS10, "resources/fonts/Fipps-Regular.otf",10},
+	{FIPPS20, "resources/fonts/Fipps-Regular.otf",20},
+	{FIPPS30, "resources/fonts/Fipps-Regular.otf",30},
+	{FIPPS50, "resources/fonts/Fipps-Regular.otf",50}
 	//{ ARIAL16, "resources/fonts/ARIAL.ttf", 16 }
 };
 
@@ -52,11 +56,11 @@ vector<Resources::ImageInfo> Resources::images_{
 		{BButton1,  "resources/images/BotonB_1.png", 32, 32, 1, 1, 1},
 		{XButton1, "resources/images/BotonX_1.png", 32, 32, 1, 1, 1},
 		{YButton1, "resources/images/BotonY_1.png", 32, 32, 1, 1, 1},
-		{ScoreA, "resources/images/Letra_A.png", 100, 100, 1, 1, 1},
-		{ScoreB, "resources/images/Letra_B.png", 100, 100, 1, 1, 1},
-		{ScoreC, "resources/images/Letra_C.png",100, 100, 1, 1, 1},
-		{ScoreD, "resources/images/Letra_D.png", 100, 100,1, 1, 1},
-		{ScoreS, "resources/images/Letra_S.png", 100, 100, 1, 1, 1},
+		{ScoreA, "resources/images/Letra_A.png", 16, 26, 1, 1, 1},
+		{ScoreB, "resources/images/Letra_B.png", 16, 26, 1, 1, 1},
+		{ScoreC, "resources/images/Letra_C.png", 16, 26, 1, 1, 1},
+		{ScoreD, "resources/images/Letra_D.png", 16, 26, 1, 1, 1},
+		{ScoreS, "resources/images/Letra_S.png", 16, 26, 1, 1, 1},
 		{NumPlayersSwitch, "resources/images/1P2P.png", 34, 30, 2, 1, 2},
 		{Star, "resources/images/Star.png", 40, 38, 1, 1, 1 },
 		{PointPushed, "resources/images/PointPushed.png", 32, 32, 1, 1, 1 },
@@ -94,7 +98,9 @@ vector<Resources::ImageInfo> Resources::images_{
 		{ButtonOptions, "resources/images/buttonOptions.png", 153, 65, 1, 1, 1},
 		{ButtonExit, "resources/images/buttonExit.png", 153, 65, 1, 1, 1},
 		{MenuCanciones, "resources/images/menuCanciones.png", 1600, 900, 1, 1, 1},
-		{MasterHand,"resources/images/Dedo.png", 128, 128, 1, 1, 1}
+		{MasterHand,"resources/images/Dedo.png", 128, 128, 1, 1, 1},
+		{Recuadro1P, "resources/images/Recuadro1P.png", 32, 100, 4, 1, 4},
+		{Recuadro2P, "resources/images/Recuadro2P.png", 32, 100, 4, 1, 4}
 	
 };
 
@@ -115,7 +121,8 @@ vector<Resources::MusicInfo> Resources::musics_ {
 	{AllStar, "resources/sound/allstar.mp3"},
 	{Megalovania, "resources/sound/megalovania.mp3"},
 	{Asereje, "resources/sound/asereje.mp3"},
-	{Africa, "resources/sound/africa.mp3"}
+	{Africa, "resources/sound/africa.mp3"},
+	{Test186BPM, "resources/sound/186-bpm.mp3"}
 };
 
 vector<Resources::SoundInfo> Resources::sounds_ {

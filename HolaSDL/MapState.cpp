@@ -4,13 +4,13 @@
 
 MapState::MapState(GameManager* g) :GameState(g)
 {
-	manager->getServiceLocator()->getAudios()->playChannel(Resources::Mapa, 1);
+	manager->getServiceLocator()->getAudios()->playChannel(Resources::Mapa, -1);
 	manager->getServiceLocator()->getAudios()->setChannelVolume(70);
 	keystates = SDL_GetKeyboardState(NULL);
 	controller = SDL_GameControllerOpen(0);
 	createMainButtons();
-	fondo__ = new EmptyObject(g, Vector2D(0, 0), g->getWindowWidth(), g->getWindowHeight(), Resources::Map);
-	moreLvls_ = new EmptyObject(g, Vector2D(0, 0), 300, 300, Resources::NivelExtra);
+	fondo__ = new EmptyObject(g, Vector2D(0, 0), g->getDefaultWindowWidth(), g->getDefaultWindowHeight(), Resources::Map);
+	moreLvls_ = new EmptyObject(g, Vector2D(0, 0), 100, 100, Resources::NivelExtra);
 	stage.push_back(fondo__);
 	stage.push_back(moreLvls_);
 	activeLevels[0] = true;
@@ -76,11 +76,11 @@ void MapState::render(Uint32 time, bool beatSync)
 
 void MapState::createMainButtons()
 {
-	buttons[0].first = EmptyObject(manager, Vector2D(manager->getWindowWidth() / 2 - 50 , manager->getWindowHeight() / 2 - 30), 64, 64, Resources::MetroOn);
-	buttons[1].first = EmptyObject(manager, Vector2D(manager->getWindowWidth() / 2 + 25 , manager->getWindowHeight() / 2 + 100), 64, 64, Resources::MetroOn);
-	buttons[2].first = EmptyObject(manager, Vector2D(manager->getWindowWidth() / 2 + 75 , manager->getWindowHeight() / 2 - 85), 64, 64, Resources::MetroOn);
-	buttons[3].first = EmptyObject(manager, Vector2D(manager->getWindowWidth() / 2 - 180, manager->getWindowHeight() / 2 - 125), 64, 64, Resources::MetroOn);
-	buttons[4].first = EmptyObject(manager, Vector2D(manager->getWindowWidth() / 2 - 150, manager->getWindowHeight() / 2 - 75), 64, 64, Resources::MetroOn);
+	buttons[0].first = EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() / 2 - 50 , manager->getDefaultWindowHeight() / 2 - 30), 64, 64, Resources::MetroOn);
+	buttons[1].first = EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() / 2 + 25 , manager->getDefaultWindowHeight() / 2 + 100), 64, 64, Resources::MetroOn);
+	buttons[2].first = EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() / 2 + 75 , manager->getDefaultWindowHeight() / 2 - 85), 64, 64, Resources::MetroOn);
+	buttons[3].first = EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() / 2 - 180, manager->getDefaultWindowHeight() / 2 - 125), 64, 64, Resources::MetroOn);
+	buttons[4].first = EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() / 2 - 150, manager->getDefaultWindowHeight() / 2 - 75), 64, 64, Resources::MetroOn);
 	buttons[0].second = PanelMap(manager, buttons[0].first.getPosition() - Vector2D(200, -20), Resources::CabezaVaporWave, 1, "D35P4C1T0", 1);
 	buttons[1].second = PanelMap(manager, buttons[1].first.getPosition() - Vector2D(-30, 110), Resources::EminemciaHead, 3, "Eminemcia", 2);
 	buttons[2].second = PanelMap(manager, buttons[2].first.getPosition(), Resources::CabezaVaporWave, 1, "D35P4C1T0", 1);

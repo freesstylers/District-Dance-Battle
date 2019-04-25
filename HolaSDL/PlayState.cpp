@@ -25,7 +25,7 @@ void PlayState::newGame(int lvl)
 	switch (lvl)
 	{
 	case 1:
-		levelName = "africa";
+		levelName = "prueba";
 		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::EffectVaporWave);
 		minigame = new MinigameVaporwave(manager, this);
 		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::testBG);
@@ -55,7 +55,7 @@ void PlayState::newGame(int lvl)
 
 	leftNotesVector2 = Vector2D(leftNotesPos - 50 / 2 + 200, 70);
 	rightNotesVector2 = Vector2D(rightNotesPos - 50 / 2 + 200, 70);
-	player1 = new PlayerPack(manager,this, leftNotesPos, rightNotesPos, pointSize, noteBarWidth,0);
+	player1 = new PlayerPack(manager,this, leftNotesPos, rightNotesPos, pointSize, noteBarWidth,0,true);
 	
 	level = new Level(this, manager, levelName,noteSize);
 	level->init();
@@ -77,7 +77,6 @@ void PlayState::newGame(int lvl)
 	songBarBG = new BarBackground(manager, 1, 14, Vector2D(50, 35), (((manager->getDefaultWindowWidth() - 50) / level->songLength) / 70.5), Resources::YellowBar); //70.5 es la constante para ajustar la velocidad de la barra al tiempo de la cancion
 	songBar = new SongBar(manager, 18, 22, Vector2D(41, 31), Vector2D((((manager->getDefaultWindowWidth() / level->songLength)) / 70.5), 0), songBarBG);
 
-	scoreBar = new ScoreBar(manager, 80, 0, Vector2D(6, 500 + pointSize), maxScore, songBarBG->getPosition().getY() + songBarBG->getHeight() * 2);
 
 	perico = new Character(manager, 60 * 5, 120 * 5, Vector2D(100, initialNoteHeight + 50), Resources::PericoIdle);
 	
@@ -93,7 +92,6 @@ void PlayState::newGame(int lvl)
 	stage.push_back(bg);
 	stage.push_back(perico);
 	stage.push_back(enemy);
-	stage.push_back(scoreBar);
 	stage.push_back(songBarBG);
 	stage.push_back(songBar);
 	stage.push_back(player1);
@@ -115,7 +113,7 @@ void PlayState::newGame2P(int lvl)
 	switch (lvl)
 	{
 	case 1:
-		levelName = "prueba";
+		levelName = "megalovania";
 		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::EffectVaporWave);
 		minigame = new MinigameVaporwave(manager, this);
 		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::testBG);
@@ -146,8 +144,8 @@ void PlayState::newGame2P(int lvl)
 	leftNotesVector2 = Vector2D(leftNotesPos - 70 / 2 + 400, 70);
 	rightNotesVector2 = Vector2D(rightNotesPos - 70 / 2 + 400, 70);
 
-	player1 = new PlayerPack(manager,this, leftNotesPos, rightNotesPos, pointSize, noteBarWidth,0);
-	player2 = new PlayerPack(manager,this, leftNotesPos + 400, rightNotesPos + 400, pointSize, noteBarWidth,1);
+	player1 = new PlayerPack(manager,this, leftNotesPos, rightNotesPos, pointSize, noteBarWidth,0,false);
+	player2 = new PlayerPack(manager,this, leftNotesPos + 400, rightNotesPos + 400, pointSize, noteBarWidth,1,false);
 	level = new Level(this, manager, levelName,noteSize);
 	level->init();
 	timer = Timer::Instance();
@@ -156,8 +154,6 @@ void PlayState::newGame2P(int lvl)
 
 	songBarBG = new BarBackground(manager, 1, 14, Vector2D(50, 35), (((manager->getWindowWidth() - 50) / level->songLength) / 70.5), Resources::YellowBar); //70.5 es la constante para ajustar la velocidad de la barra al tiempo de la cancion
 	songBar = new SongBar(manager, 18, 22, Vector2D(41, 31), Vector2D((((manager->getWindowWidth() / level->songLength)) / 70.5), 0), songBarBG);
-
-	scoreBar = new ScoreBar(manager, 80, 0, Vector2D(6, 500 + pointSize), maxScore, songBarBG->getPosition().getY() + songBarBG->getHeight() * 2);
 
 	perico = new Character(manager, 60 * 4, 120 * 4, Vector2D(110, initialNoteHeight + 100), Resources::PericoIdle);
 
@@ -170,7 +166,6 @@ void PlayState::newGame2P(int lvl)
 	stage.push_back(bg);
 	stage.push_back(perico);
 	stage.push_back(enemy);
-	stage.push_back(scoreBar);
 	stage.push_back(songBarBG);
 	stage.push_back(songBar);
 	stage.push_back(player1);
@@ -298,12 +293,7 @@ void PlayState::resume(unsigned int timePaused)
 
 bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 {
-	if (e.type == SDL_QUIT || e.key.keysym.sym == SDLK_ESCAPE) {
-		manager->stop();
-		//songIsOver = true;
-	}
-	// Pressing f to toggle fullscreen.
-	else if (e.key.keysym.sym == SDLK_f)
+	if (e.key.keysym.sym == SDLK_f)
 	{
 		int flags = SDL_GetWindowFlags(manager->getWindow());
 		if (flags & SDL_WINDOW_FULLSCREEN) {
@@ -313,6 +303,8 @@ bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 			SDL_SetWindowFullscreen(manager->getWindow(), SDL_WINDOW_FULLSCREEN);
 		}
 	}
+	else if (e.key.keysym.sym == SDLK_F1)
+		songOver();
 	else
 	{
 		if (!isPaused) {
@@ -351,21 +343,10 @@ void PlayState::deleteAll()
 	}
 }
 
-void PlayState::updateScoreNote(int accuracy)
-{
-	currentScore += maxNoteValue * (1 / accuracy);
-	scoreBar->updateBar(currentScore);
-}
-
 void PlayState::updateScoreMinigame(int accuracy)
 {
-	currentScore += maxMinigameValue * (1 / accuracy);
-	scoreBar->updateBar(currentScore);
-}
-
-int PlayState::getScore()
-{
-	return currentScore;
+	player1->currentScore += maxMinigameValue * (1 / accuracy);
+	player1->updateScoreNote(player1->currentScore);
 }
 
 //Al generar las flechas y los botones, los mueve en proporcion al tiempo perdido por cada vuelta
@@ -375,13 +356,13 @@ void PlayState::generateArrows()
 		if (levelArrows_.front() != nullptr) {
 
 			player1->screenArrows_.push_back(levelArrows_.front());
-			player1->screenArrows_.back()->setPosition(player1->screenArrows_.back()->getPosition() + player1->screenArrows_.back()->getVelocity()*msDiff);
+			//player1->screenArrows_.back()->setPosition(player1->screenArrows_.back()->getPosition() + player1->screenArrows_.back()->getVelocity()*msDiff);
 			
 			if (player2 != nullptr && levelArrows2_.front()!=nullptr)
 			{
 
 				player2->screenArrows_.push_back(levelArrows2_.front());
-				player2->screenArrows_.back()->setPosition(player2->screenArrows_.back()->getPosition() + player2->screenArrows_.back()->getVelocity()*msDiff);
+				//player2->screenArrows_.back()->setPosition(player2->screenArrows_.back()->getPosition() + player2->screenArrows_.back()->getVelocity()*msDiff);
 			}
 		}
 		levelArrows2_.pop_front();
@@ -395,12 +376,12 @@ void PlayState::generateButtons()
 		if (levelButtons_.front() != nullptr) {
 
 			player1->screenButtons_.push_back(levelButtons_.front());
-			player1->screenButtons_.back()->setPosition(player1->screenButtons_.back()->getPosition() + player1->screenButtons_.back()->getVelocity()*msDiff);
+			//player1->screenButtons_.back()->setPosition(player1->screenButtons_.back()->getPosition() + player1->screenButtons_.back()->getVelocity()*msDiff);
 			if (player2 != nullptr && levelButtons2_.front() != nullptr)
 			{
 
 				player2->screenButtons_.push_back(levelButtons2_.front());
-				player2->screenButtons_.back()->setPosition(player2->screenButtons_.back()->getPosition() + player2->screenButtons_.back()->getVelocity()*msDiff);
+				//player2->screenButtons_.back()->setPosition(player2->screenButtons_.back()->getPosition() + player2->screenButtons_.back()->getVelocity()*msDiff);
 			}
 		}
 		levelButtons_.pop_front();
@@ -411,7 +392,7 @@ void PlayState::generateButtons()
 void PlayState::songOver()
 {
 	manager->getServiceLocator()->getAudios()->haltChannel(0);
-	manager->getMachine()->changeState(new EndState(manager, currentScore, maxScore, 70, nlevel));
+	manager->getMachine()->changeState(new EndState(manager, player1->currentScore, maxScore, 70, nlevel));
 	//manager->getMachine()->changeState(new MapState(manager));
 	//manager->getMachine()->popState();
 }
@@ -430,7 +411,7 @@ void PlayState::exit()
 
 void PlayState::updateResolution()
 {
-	GameState::updateResolution();
+	/*GameState::updateResolution();
 
 	double wScale = manager->getWidthScale();
 	double hScale = manager->getHeightScale();
@@ -463,13 +444,14 @@ void PlayState::updateResolution()
 		}
 	}
 
-	initialNoteHeight = initialNoteHeight * hScale;
+	initialNoteHeight = initialNoteHeight * hScale;*/
 }
 
 Vector2D PlayState::setVel(double time)
 {
-	double distance = player1->getLeftPoint()->getPosition().getY() - initialNoteHeight;
-	double velocity = distance / (time / 1000.0);
+	double distance = player1->getLeftPoint()->getPosition().getY() + (player1->getLeftPoint()->getHeight()/2) - (initialNoteHeight + (noteSize/2));
+	double timeInSecs = (time / 1000.0);
+	double velocity = distance / timeInSecs;
 	return Vector2D(0, velocity / 8.0);
 }
 

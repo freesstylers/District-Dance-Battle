@@ -5,7 +5,7 @@ PlayerPack::PlayerPack()
 {
 }
 
-PlayerPack::PlayerPack(SDLGame* manager, PlayState* ps, int leftNotesPos, int rightNotesPos, int pointSize, int squareWidth, int player): GameObject(manager), playstate_(ps)
+PlayerPack::PlayerPack(SDLGame* manager, PlayState* ps, int leftNotesPos, int rightNotesPos, int pointSize, int squareWidth, int player,bool OneP): GameObject(manager), playstate_(ps)
 {
 	lip = new LevelInputManager(playstate_, this, player);
 	leftNotesVector = Vector2D(leftNotesPos - 50 / 2, 70);
@@ -15,17 +15,35 @@ PlayerPack::PlayerPack(SDLGame* manager, PlayState* ps, int leftNotesPos, int ri
 	rightPoint = new Point(manager, pointSize, pointSize, Vector2D(rightNotesPos - pointSize / 2, 565), lip->getController(), false);
 	leftNoteBar = new Squares(manager, squareWidth, 565 + 0.6 * pointSize, Vector2D(leftNotesPos + 1 - squareWidth / 2, leftNotesVector.getY()));
 	rightNoteBar = new Squares(manager, squareWidth, 565 + 0.6 * pointSize, Vector2D(rightNotesPos + 1 - squareWidth / 2, rightNotesVector.getY()));
-	feedbackLeft = new FeedbackPool(manager, pointSize * 0.8, pointSize * 0.8, Vector2D(leftNotesPos - (pointSize * 0.8), 565 + pointSize / 2));
+	if (!OneP && player == 0)
+	{
+		leftNoteBar->forceAnimationChange(Resources::Recuadro1P);
+		rightNoteBar->forceAnimationChange(Resources::Recuadro1P);
+	}
+	else if (!OneP && player == 1)
+	{
+		leftNoteBar->forceAnimationChange(Resources::Recuadro2P);
+		rightNoteBar->forceAnimationChange(Resources::Recuadro2P);
+	}
+	feedbackLeft = new FeedbackPool(manager, pointSize * 0.8, pointSize * 0.8, Vector2D(leftNotesPos - (pointSize * 2 *0.8), 565 + pointSize / 2));
 	feedbackRight = new FeedbackPool(manager, pointSize * 0.8, pointSize * 0.8, Vector2D(rightNotesPos + (pointSize * 0.8), 565 + pointSize / 2));
 	hitLeft = new HitNotePool(manager, pointSize - 10, pointSize - 10);
 	hitRight = new HitNotePool(manager, pointSize - 10, pointSize - 10);
 	noteYLimit = leftPoint->getPosition().getY() + leftPoint->getHeight();
+	if (player == 0)
+	{
+		scoreBar = new ScoreBar(manager, 80, 0, Vector2D(6, 500 + pointSize), playstate_->getMaxScore(), manager->getDefaultWindowHeight() - (500 + pointSize));
+	}
+	else
+	{
+		scoreBar = new ScoreBar(manager, 80, 0, Vector2D(manager->getDefaultWindowWidth() - 86, 500 + pointSize), playstate_->getMaxScore(), manager->getDefaultWindowHeight() - (500 + pointSize));
+	}
 
 	comboTextX = rightNoteBar->getPosition().getX() - ((rightNoteBar->getPosition().getX() - (leftNoteBar->getPosition().getX() + squareWidth)) / 2);
 
 	comboPosition = Vector2D(comboTextX, 465);	//the position of the Combo Text is anchored to the middle of the object's x coordinate
 
-	comboTxt = new ComboText(manager, manager->getServiceLocator()->getFonts()->getFont(Resources::PIXEL20), comboPosition);
+	comboTxt = new ComboText(manager, manager->getServiceLocator()->getFonts()->getFont(Resources::FIPPS20), comboPosition);
 
 	combo = 0;
 }
@@ -36,6 +54,7 @@ void PlayerPack::render(Uint32 time, bool beatSync)
 	leftPoint->render(time);
 	rightPoint->render(time);
 	comboTxt->render(time);
+	scoreBar->render(time);
 	feedbackLeft->render(time, false);
 	feedbackLeft->updateResolution(game_->getWidthScale(), game_->getHeightScale());
 	feedbackRight->render(time, false);
@@ -61,6 +80,7 @@ void PlayerPack::update(Uint32 time)
 		rightNoteBar->update(time);
 		leftPoint->update(time);
 		rightNoteBar->update(time);
+		scoreBar->update(time);
 		feedbackRight->update(time);
 		feedbackLeft->update(time);
 		for (Note* o : screenArrows_)
@@ -83,7 +103,7 @@ void PlayerPack::update(Uint32 time)
 			SDL_GameControllerButton x = aux->getKey();
 			if (x == SDL_CONTROLLER_BUTTON_INVALID) {
 				feedbackLeft->addFeedback(Resources::FeedbackPerfect);
-				playstate_->updateScoreNote(1);
+				updateScoreNote(1);
 				addCombo(1);
 			}
 			else
@@ -103,7 +123,7 @@ void PlayerPack::update(Uint32 time)
 			SDL_GameControllerButton y = aux->getKey();
 			if (y == SDL_CONTROLLER_BUTTON_INVALID) {
 				feedbackRight->addFeedback(Resources::FeedbackPerfect);
-				playstate_->updateScoreNote(1);
+				updateScoreNote(1);
 				addCombo(1);
 			}
 			else
@@ -150,7 +170,7 @@ void PlayerPack::updateResolution(double wScale, double hScale)
 	feedbackRight->updateResolution(wScale, hScale);
 	hitLeft->updateResolution(wScale, hScale);
 	hitRight->updateResolution(wScale, hScale);
-	Vector2D noteVel = playstate_->setVel(60000 / playstate_->getBPM());
+	Vector2D noteVel = playstate_->setVel(60000.0 / (double)playstate_->getBPM());
 
 	for (Note* n : screenArrows_){
 		n->updateResolution(wScale, hScale);
@@ -238,4 +258,9 @@ void PlayerPack::errorRight() {
 	/*rightNoteBar->cleanAnimationQueue();
 	rightNoteBar->forceAnimationChange(Resources::SquareMiss);
 	rightNoteBar->queueAnimationChange(Resources::Square);*/
+}
+void PlayerPack::updateScoreNote(int accuracy)
+{
+	currentScore += playstate_->getMaxNoteValue()*(1 / accuracy);
+	scoreBar->updateBar(currentScore);
 }

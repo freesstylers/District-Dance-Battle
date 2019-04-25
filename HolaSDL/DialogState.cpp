@@ -31,7 +31,7 @@ void DialogState::init()
 		for (int i = 0; i < aux; i++) {
 			file >> sp;
 			//sprites.push_back(new Background(manager, manager->getWindowWidth(), manager->getWindowHeight(), Vector2D(0, 0), sp));
-			stage.push_back(new Background(manager, manager->getWindowWidth(), manager->getWindowHeight(), Vector2D(0, 0), sp));
+			stage.push_back(new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), sp));
 		}
 		file >> aux;
 		//Sprites
@@ -45,7 +45,7 @@ void DialogState::init()
 			file >> sp;
 			//Hay que crear una nueva clase que sea textBox
 			file >> textAux;
-			box.insert(pair<string, GameObject*>(textAux, new TextBox(manager, manager->getWindowWidth()-20, 600, Vector2D(10, manager->getWindowHeight()-600),sp)));
+			box.insert(pair<string, GameObject*>(textAux, new TextBox(manager, manager->getDefaultWindowWidth()-20, 400, Vector2D(10, manager->getDefaultWindowHeight()-400),sp)));
 		}
 
 		file >> textAux;
@@ -91,10 +91,10 @@ void DialogState::render(Uint32 time, bool beatSync) {
 			Texture msg0(manager->getRenderer(),
 				dialogo.front().text,
 				*(manager->getServiceLocator()->getFonts()->getFont(
-					Resources::PIXEL50)), { COLOR(0x00000000) });
+					Resources::FIPPS30)), { COLOR(0x00000000) });
 			actualText = &msg0;
 			actualText->render(manager->getRenderer(),
-				manager->getWindowWidth() / 39, manager->getWindowHeight() - 218);
+				manager->getDefaultWindowWidth() / 39+20, manager->getDefaultWindowHeight() - 140);
 		}
 		else {
 			string aux1="";
@@ -112,18 +112,18 @@ void DialogState::render(Uint32 time, bool beatSync) {
 			Texture msg0(manager->getRenderer(),
 				aux1,
 				*(manager->getServiceLocator()->getFonts()->getFont(
-					Resources::PIXEL50)), { COLOR(0x00000000) });
+					Resources::FIPPS30)), { COLOR(0x00000000) });
 			actualText = &msg0;
 			actualText->render(manager->getRenderer(),
-				manager->getWindowWidth() / 39, manager->getWindowHeight() - 218);
+				manager->getDefaultWindowWidth() / 39 + 10, manager->getDefaultWindowHeight() - 140);
 			if (aux2 != "") {
 				Texture msg1(manager->getRenderer(),
 					aux2,
 					*(manager->getServiceLocator()->getFonts()->getFont(
-						Resources::PIXEL50)), { COLOR(0x00000000) });
+						Resources::FIPPS30)), { COLOR(0x00000000) });
 				actualText = &msg1;
 				actualText->render(manager->getRenderer(),
-					manager->getWindowWidth() / 22, (manager->getWindowHeight() - 150));
+					manager->getDefaultWindowWidth() / 22 + 10, (manager->getDefaultWindowHeight() - 90));
 				
 			}
 			
@@ -132,11 +132,10 @@ void DialogState::render(Uint32 time, bool beatSync) {
 	else {
 		Texture msg0(manager->getRenderer(),
 			" COMIENZA LA BATALLA",
-			*(manager->getServiceLocator()->getFonts()->getFont(
-				Resources::PIXEL50)), { COLOR(0x00000000) });
+			*(manager->getServiceLocator()->getFonts()->getFont(Resources::FIPPS50)), { COLOR(0x00000000) });
 		actualText = &msg0;
 		actualText->render(manager->getRenderer(),
-			manager->getWindowWidth() / 39, manager->getWindowHeight() - 175);
+			manager->getDefaultWindowWidth() / 39 + 10, manager->getDefaultWindowHeight() - 120);
 		end = true;
 	}
 }
@@ -149,7 +148,7 @@ bool DialogState::handleEvent(Uint32 time, SDL_Event e) {
 			if (!dialogo.empty()) {
 				actualBox = box[dialogo.front().box];
 			}
-			else actualBox = new TextBox(manager, manager->getWindowWidth() - 20, 600, Vector2D(10, manager->getWindowHeight() - 600),29);
+			else actualBox = new TextBox(manager, manager->getDefaultWindowWidth() - 10, 400, Vector2D(10, manager->getDefaultWindowHeight() - 400), 29);
 
 		
 			keyup = false;

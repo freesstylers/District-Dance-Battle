@@ -89,7 +89,9 @@ public:
 		ButtonOptions,
 		ButtonExit,
 		MenuCanciones,
-		MasterHand
+		MasterHand,
+		Recuadro1P,
+		Recuadro2P
 		// text
 	};
 
@@ -107,7 +109,8 @@ public:
 		AllStar,
 		Megalovania,
 		Asereje,
-		Africa
+		Africa,
+		Test186BPM
 		// sound effects
 	};
 
@@ -118,7 +121,11 @@ public:
 		PIXEL30,
 		PIXEL20,
 		PIXEL10,
-		PIXEL50
+		PIXEL50,
+		FIPPS10,
+		FIPPS20,
+		FIPPS30,
+		FIPPS50
 	};
 
 

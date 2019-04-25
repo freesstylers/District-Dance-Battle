@@ -31,7 +31,7 @@ void ScoreBar::updateBar(double punt)
 
 	setHeight(currentHeight);
 	position_.setY(originalY_ - currentHeight);
-	if (currentHeight > ((currentStar + 1)*maxHeight_ / 5))
+	if (currentHeight >= ((currentStar + 1)*maxHeight_ / 5)-30)
 	{
 		currentStar++;
 		stars->animation.currentFrame = currentStar;
