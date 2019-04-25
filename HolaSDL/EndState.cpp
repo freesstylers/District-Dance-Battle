@@ -25,6 +25,10 @@ EndState::EndState(GameManager * g,  int actualScore, int maxScore, int percenta
 	points->setText("Puntuación final: " + makeScoreBetter(actualScore), SDL_Color{ (0), (0), (0), (255) });
 	points->setPosition(Vector2D(gameManager->getDefaultWindowWidth() / 2, 50) - Vector2D(points->getWidth() / 2, 0));
 
+	tooltip = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(0, 0));
+	tooltip->setText("Pulsa A para salir", SDL_Color{ (0), (0), (0), (255) });
+	tooltip->setPosition(Vector2D(gameManager->getDefaultWindowWidth() / 2, gameManager->getDefaultWindowHeight()) - Vector2D(tooltip->getWidth() / 2, tooltip->getHeight() + 10));
+
 	EmptyObject* letter = new EmptyObject(g, Vector2D(gameManager->getDefaultWindowWidth() / 2 + 325, gameManager->getDefaultWindowHeight() / 2 - 40), 160, 260, Resources::ScoreS);
 
 	Character* perico = new Character(g, 300, 540, Vector2D(gameManager->getDefaultWindowWidth() / 2 - 150, 180), Resources::PericoDab);
@@ -132,6 +136,7 @@ void EndState::backToMenu(GameManager * gameManager)
 void EndState::render(Uint32 time, bool beatHandler)
 {
 	GameState::render(time);
+	tooltip->render(time);
 	points->render(time);
 
 	if (points2 != nullptr)

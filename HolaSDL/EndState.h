@@ -22,6 +22,7 @@ public:
 private:
 	TextObject* points;
 	TextObject* points2;
+	TextObject* tooltip;
 	string types[6] = { "Tutorial", "VaporWave", "HipHop", "??????" , "A" , "A" };
 	int index = 0;
 	int min = 0;
