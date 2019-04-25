@@ -16,8 +16,8 @@ void ExtraMenu::init() {
 
 	bg = new EmptyObject(manager, Vector2D( 0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::MenuCanciones);
 	hand = new EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth()-400, manager->getDefaultWindowHeight()/14), 128, 128, Resources::MasterHand);
-	switchPlayers = new EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth()-150, 0), 100, 100, Resources::NumPlayersSwitch);
-	select = new EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() - 150-10, 110), 120, 38, Resources::Select);
+	switchPlayers = new EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth()-150, 0), 102, 90, Resources::NumPlayersSwitch);
+	select = new EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() - 150-10, 100), 110, 21, Resources::Select);
 	distanceHand = manager->getDefaultWindowHeight() / 14;
 	posHand = 0;
 }
@@ -49,6 +49,8 @@ void ExtraMenu::selectionDown() {
 
 bool ExtraMenu::handleEvent(Uint32 time,  SDL_Event event)
 {
+	GameState::handleEvent(time, event);
+
 	if (event.type == SDL_CONTROLLERBUTTONDOWN || event.type == SDL_KEYUP) {
 		if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_UP) || event.key.keysym.sym == SDLK_UP) {
 			

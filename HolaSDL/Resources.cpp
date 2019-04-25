@@ -31,7 +31,7 @@ vector<Resources::ImageInfo> Resources::images_{
 		{AButton, "resources/images/BotonA.png", 32, 32, 1, 1, 1},
 		{BButton, "resources/images/BotonB.png", 32, 32, 1, 1, 1},
 		{XButton, "resources/images/BotonX.png", 32, 32, 1, 1, 1},
-		{YButton, "resources/images/BotonY_original.png", 32, 32, 1, 1, 1},
+		{YButton, "resources/images/BotonY.png", 32, 32, 1, 1, 1},
 		{FlechaEspBomba, "resources/images/FlechaEspBomba.png", 32, 32, 1, 1, 1},
 		{Point, "resources/images/Point.png", 32, 32, 1, 1, 1},
 		{NoteIcon, "resources/images/Nota.png", 9, 11, 1, 1, 1},

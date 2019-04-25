@@ -10,7 +10,7 @@ MinigameVaporwave::MinigameVaporwave(GameManager * g, PlayState * p): MiniGame(g
 
 	Aviso = new TextObject(manager, manager->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(300, 300));  //Position stub
 	Aviso->setText("PULSA LA NOTA SELECCIONADA");
-	Aviso->setPosition(Vector2D(manager->getWindowWidth()/2 - Aviso->getWidth() / 2, manager->getWindowHeight()/2 - Aviso->getHeight() / 2));
+	Aviso->setPosition(Vector2D(manager->getDefaultWindowWidth()/2 - Aviso->getWidth() / 2, manager->getDefaultWindowHeight()/2 - Aviso->getHeight() / 2));
 
 	createList();
 }
@@ -95,7 +95,7 @@ void MinigameVaporwave::handleInput(Uint32 time, SDL_Event e)
 		{
 			if (e.type == SDL_CONTROLLERBUTTONDOWN)
 			{
-				if (abs(it->getPosition().getY()) > 0 && abs(it->getPosition().getY()) < manager->getWindowHeight() && abs(it->getPosition().getX()) > 0 && abs(it->getPosition().getX()) < manager->getWindowWidth())
+				if (abs(it->getPosition().getY()) > 0 && abs(it->getPosition().getY()) < manager->getDefaultWindowHeight() && abs(it->getPosition().getX()) > 0 && abs(it->getPosition().getX()) < manager->getDefaultWindowWidth())
 				{
 					if (e.cbutton.button == it->getKey())
 					{
