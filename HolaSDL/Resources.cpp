@@ -9,6 +9,10 @@ vector<Resources::FontInfo> Resources::fonts_ {
 	{PIXEL20, "resources/fonts/NES-Chimera.ttf",20},
 	{PIXEL10, "resources/fonts/NES-Chimera.ttf",10 },
 	{PIXEL50, "resources/fonts/NES-Chimera.ttf",45},
+	{FIPPS10, "resources/fonts/Fipps-Regular.otf",10},
+	{FIPPS20, "resources/fonts/Fipps-Regular.otf",20},
+	{FIPPS30, "resources/fonts/Fipps-Regular.otf",30},
+	{FIPPS50, "resources/fonts/Fipps-Regular.otf",50}
 	//{ ARIAL16, "resources/fonts/ARIAL.ttf", 16 }
 };
 

@@ -21,9 +21,8 @@ EndState::EndState(GameManager * g,  int actualScore, int maxScore, int percenta
 		passed = false;
 
 
-	points = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::PIXEL10), Vector2D(gameManager->getDefaultWindowWidth() / 2 - 100, 200));
+	points = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::FIPPS50), Vector2D(gameManager->getDefaultWindowWidth() / 2 - 100, 200));
 	points->setText("Puntuación final: " + to_string(actualScore), SDL_Color{ (0), (0), (0), (255) });
-	points->scale(4);
 
 	EmptyObject* letter = new EmptyObject(g, Vector2D(gameManager->getDefaultWindowWidth() / 2 + 200, gameManager->getDefaultWindowHeight() / 2), 160, 260, Resources::ScoreS);
 
@@ -136,7 +135,7 @@ void EndState::renderLetters(Uint32 time, bool beatHandler)
 	/*Texture msg0(gameManager->getRenderer(),
 		types[level],
 		*(gameManager->getServiceLocator()->getFonts()->getFont(
-			Resources::PIXEL20)), { COLOR(0x00000000) });
+			Resources::FIPPS20)), { COLOR(0x00000000) });
 	SDL_Rect dest;
 	dest.x = gameManager->getWindowWidth() / 4-150;
 	dest.y = gameManager->getWindowHeight() / 4-100;
@@ -146,7 +145,7 @@ void EndState::renderLetters(Uint32 time, bool beatHandler)
 
 	Texture msg1(gameManager->getRenderer(),
 			puntos + to_string(punt) ,*(gameManager->getServiceLocator()->getFonts()->getFont(
-				Resources::PIXEL10)), { COLOR(0x00000000) });
+				Resources::FIPPS10)), { COLOR(0x00000000) });
 	SDL_Rect dest1;
 	dest1.x = gameManager->getWindowWidth() / 2-150 ;
 	dest1.y = gameManager->getWindowHeight() / 2 ;
@@ -156,7 +155,7 @@ void EndState::renderLetters(Uint32 time, bool beatHandler)
 
 	Texture msg2(gameManager->getRenderer(),
 		val, *(gameManager->getServiceLocator()->getFonts()->getFont(
-			Resources::PIXEL10)), { COLOR(0x00000000) });
+			Resources::FIPPS10)), { COLOR(0x00000000) });
 	SDL_Rect dest2;
 	dest2.x = gameManager->getWindowWidth() / 2 - 150;
 	dest2.y = gameManager->getWindowHeight() / 2 +50;
