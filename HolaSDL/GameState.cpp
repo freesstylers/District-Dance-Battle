@@ -35,15 +35,21 @@ void GameState::render(Uint32 time, bool beatSync)
 
 bool GameState::handleEvent(Uint32 time, SDL_Event e)
 {
-	bool handled = false;
-	auto it = stage.begin();
-	while (!handled && it != stage.end() && (*it) != nullptr) {
-		if ((*it)->handleInput(time, e))
-			handled = true;
-		else
-			++it;
+	if (e.type == SDL_QUIT || e.key.keysym.sym == SDLK_ESCAPE) {
+		manager->stop();
+		return true;
 	}
-	return handled;
+	else {
+		bool handled = false;
+		auto it = stage.begin();
+		while (!handled && it != stage.end() && (*it) != nullptr) {
+			if ((*it)->handleInput(time, e))
+				handled = true;
+			else
+				++it;
+		}
+		return handled;
+	}
 }
 
 void GameState::updateResolution() {

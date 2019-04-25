@@ -3,6 +3,7 @@
 #include "Button.h"
 #include "Character.h"
 #include "PlayState.h"
+#include "TextObject.h"
 
 class EndState :
 	public GameState
@@ -17,8 +18,9 @@ public:
 	virtual void render(Uint32 time, bool beatHandler);
 	void renderLetters(Uint32 time, bool beatHandler);
 	bool passed;
-	pair<EmptyObject, bool>buttons[2];
+
 private:
+	TextObject* points;
 	string types[6] = { "Tutorial", "VaporWave", "HipHop", "??????" , "A" , "A" };
 	int index=0 ;
 	int min = 0;

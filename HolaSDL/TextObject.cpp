@@ -12,9 +12,9 @@ void TextObject::render(Uint32 time, bool beatSync)
 	text->render(getRect(), getFrameRect(), alpha_);
 }
 
-void TextObject::setText(string txt)
+void TextObject::setText(string txt, SDL_Color color)
 {
-	text->loadFromText(game_->getRenderer(), txt, *textFont, SDL_Color{ (255), (255), (255), (255) });
+	text->loadFromText(game_->getRenderer(), txt, *textFont, color);
 
 	animation.frameHeight = text->getHeight();
 	animation.frameWidth = text->getWidth();

@@ -298,12 +298,7 @@ void PlayState::resume(unsigned int timePaused)
 
 bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 {
-	if (e.type == SDL_QUIT || e.key.keysym.sym == SDLK_ESCAPE) {
-		manager->stop();
-		//songIsOver = true;
-	}
-	// Pressing f to toggle fullscreen.
-	else if (e.key.keysym.sym == SDLK_f)
+	if (e.key.keysym.sym == SDLK_f)
 	{
 		int flags = SDL_GetWindowFlags(manager->getWindow());
 		if (flags & SDL_WINDOW_FULLSCREEN) {
@@ -313,6 +308,8 @@ bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 			SDL_SetWindowFullscreen(manager->getWindow(), SDL_WINDOW_FULLSCREEN);
 		}
 	}
+	else if (e.key.keysym.sym == SDLK_F1)
+		songOver();
 	else
 	{
 		if (!isPaused) {

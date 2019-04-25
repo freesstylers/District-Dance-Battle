@@ -19,73 +19,69 @@ EndState::EndState(GameManager * g,  int actualScore, int maxScore, int percenta
 		passed = true;
 	else
 		passed = false;
-	EmptyObject* letter;
-	Character* perico = new Character(g, 150, 275, Vector2D(gameManager->getWindowWidth()/2-30,gameManager->getWindowHeight()/4-130), Resources::PericoDab);
-	buttons[0].first=EmptyObject(g,Vector2D(g->getWindowWidth() / 2-75 , g->getWindowHeight() / 4*2.75 ), 150, 50,Resources::BackMap);
-	buttons[1].first=EmptyObject(g, Vector2D(g->getWindowWidth() / 2-75, g->getWindowHeight()/4 *3.25), 150, 50, Resources::Exit);
-	buttons[0].second = true;
-	buttons[1].second = false;
-	buttons[0].first.scale(2);
+
+
+	points = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::PIXEL10), Vector2D(gameManager->getDefaultWindowWidth() / 2 - 100, 200));
+	points->setText("Puntuación final: " + to_string(actualScore), SDL_Color{ (0), (0), (0), (255) });
+	points->scale(4);
+
+	EmptyObject* letter = new EmptyObject(g, Vector2D(gameManager->getDefaultWindowWidth() / 2 + 200, gameManager->getDefaultWindowHeight() / 2), 160, 260, Resources::ScoreS);
+
+	Character* perico = new Character(g, 240, 480, Vector2D(gameManager->getDefaultWindowWidth() / 2 - 200 - 120, 200), Resources::PericoDab);
+	perico->isAnimationSynced(false);
+	perico->setAnimationFramerate(6);
 	
-	if (actualScore >= 80*maxScore/100) {
-		perico->forceAnimationChange(Resources::PericoDab);
-		letter = new EmptyObject(g, Vector2D(gameManager->getWindowWidth() / 2-20, gameManager->getWindowHeight() / 2+15), 100, 100, Resources::ScoreS);
-		
-		
+	if (actualScore >= 90 * maxScore/100) {
+		perico->forceAnimationChange(Resources::PericoMaxPower);
+		letter->forceAnimationChange(Resources::ScoreS);
 	}
 
-	else if (actualScore >= 60 * maxScore / 100 && actualScore < 80 * maxScore / 100) {
-		perico->forceAnimationChange(Resources::PericoDab);
-		letter = new EmptyObject(g, Vector2D(gameManager->getWindowWidth() / 2 - 20, gameManager->getWindowHeight() / 2 + 15), 100, 100, Resources::ScoreA);
+	else if (actualScore >= 70 * maxScore / 100) {
+		letter->forceAnimationChange(Resources::ScoreA);
+	}
+	
+	else if (actualScore >= 50 * maxScore / 100) {
+		perico->forceAnimationChange(Resources::PericoDance1);
+		letter->forceAnimationChange(Resources::ScoreB);
 	}
 
-	else if (actualScore>=40*maxScore/100 && actualScore<60*maxScore/100) {
+	else if (actualScore >= 30 * maxScore / 100) {
 		perico->forceAnimationChange(Resources::PericoDab);
-		letter = new EmptyObject(g, Vector2D(gameManager->getWindowWidth() / 2 - 20, gameManager->getWindowHeight() / 2 + 15), 100, 100, Resources::ScoreB);
-	}
-
-	else if (actualScore>=20*maxScore/100 && actualScore<40*maxScore/100) {
-		perico->forceAnimationChange(Resources::PericoDab);
-		letter = new EmptyObject(g, Vector2D(gameManager->getWindowWidth() / 2 - 20, gameManager->getWindowHeight() / 2 + 15), 100, 100, Resources::ScoreC);
+		letter->forceAnimationChange(Resources::ScoreC);
 	}
 
 	else {
-		perico->forceAnimationChange(Resources::PericoDab);
-		letter = new EmptyObject(g, Vector2D(gameManager->getWindowWidth() / 2-20, gameManager->getWindowHeight() / 2+15), 100, 100, Resources::ScoreD);
-		
-		
+		perico->forceAnimationChange(Resources::PericoIdle);
+		letter->forceAnimationChange(Resources::ScoreD);
 	}
 
+	stage.push_back(new EmptyObject(g, Vector2D(0, 0), g->getDefaultWindowWidth(), g->getDefaultWindowHeight(), Resources::MenuBG));
 	stage.push_back(letter);
 	stage.push_back(perico);
-	
-	
+
 }
 
 EndState::~EndState()
 {
+	delete points;
 }
 
 void EndState::backToMenu(GameManager * gameManager)
 {
 	gameManager->getMachine()->changeState(new MapState(gameManager));
 }
-void EndState::exit_(GameManager* gameManager) {
-	gameManager->exit_ = true;
-}
-void EndState::render(Uint32 time, bool beatHandler){
-	
-	
-	for (int i = 0; i < 2; i++) {
-		buttons[i].first.render(time, beatHandler);
-	}
-	renderLetters(time, beatHandler);
+
+void EndState::render(Uint32 time, bool beatHandler)
+{
 	GameState::render(time);
+	points->render(time);
 }
 
 
 bool EndState::handleEvent(Uint32 time, SDL_Event e)
 {
+	GameState::handleEvent(time, e);
+
 	bool change = false;
 		if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN) || e.key.keysym.sym == SDLK_DOWN) {
 			nextButton();
@@ -95,22 +91,17 @@ bool EndState::handleEvent(Uint32 time, SDL_Event e)
 			backButton();
 			change = true;
 		}
-		else if (buttons[0].second == true && buttons[1].second == false && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_RETURN)) {
+		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_RETURN) {
 			backToMenu(gameManager);
 			change = true;
 		}
-		else if (buttons[0].second == false && buttons[1].second == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_RETURN)) {
-			exit_(gameManager);
-			change = true;
-		}
 		return change;
-	
 }
 
 
 void EndState::nextButton()
 {
-	
+	/*
 	buttons[index].first.scale(0.5);
 	buttons[index].second = false;
 	if (index < max)
@@ -121,13 +112,13 @@ void EndState::nextButton()
 		index = min;
 	}
 	buttons[index].first.scale(2);
-	buttons[index].second = true;
+	buttons[index].second = true;*/
 	
 }
 
 void EndState::backButton()
 {
-	buttons[index].first.scale(0.5);
+	/*buttons[index].first.scale(0.5);
 	buttons[index].second = false;
 	if (index > min)
 	{
@@ -137,12 +128,12 @@ void EndState::backButton()
 		index = max;
 	}
 	buttons[index].first.scale(2);
-	buttons[index].second = true;
+	buttons[index].second = true;*/
 }
 void EndState::renderLetters(Uint32 time, bool beatHandler)
 {
 
-	Texture msg0(gameManager->getRenderer(),
+	/*Texture msg0(gameManager->getRenderer(),
 		types[level],
 		*(gameManager->getServiceLocator()->getFonts()->getFont(
 			Resources::PIXEL20)), { COLOR(0x00000000) });
@@ -171,6 +162,6 @@ void EndState::renderLetters(Uint32 time, bool beatHandler)
 	dest2.y = gameManager->getWindowHeight() / 2 +50;
 	dest2.w = (gameManager->getWindowWidth() / 4);
 	dest2.h = gameManager->getWindowHeight() / 20;
-	msg2.render(gameManager->getRenderer(), dest2);
+	msg2.render(gameManager->getRenderer(), dest2);*/
 	
 }
