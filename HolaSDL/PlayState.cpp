@@ -28,13 +28,14 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff) : GameState(
 		enemyT = Resources::EminemciaIdle;
 		break;
 	case 3:
-		levelName = "reggaeton";
+		levelName = "papito";
 		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::HipHopEffect);
 		minigame = new MinigameHipHop(manager, this);
-		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::BackgroundHipHop);
-		bgT = Resources::BackgroundHipHop;
-		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 300, initialNoteHeight + 50), Resources::EminemciaIdle);
-		enemyT = Resources::EminemciaIdle;
+		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::CiuBG);
+		bgT = Resources::CiuBG;
+		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 300, initialNoteHeight + 50), Resources::PapitoIdle);
+		enemyT = Resources::PapitoIdle;
+		minigameAmount = 0;
 		break;
 	case 4:
 		levelName = "africa";
