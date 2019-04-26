@@ -6,6 +6,7 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff) : GameState(
 	nlevel = lvl;
 
 	g->getServiceLocator()->getAudios()->setChannelVolume(60, 1);
+	
 
 	switch (lvl)
 	{
@@ -90,6 +91,7 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff) : GameState(
 
 	pauseMenu = new PauseMenu(g, this);
 	stage.push_back(pauseMenu);
+	
 	pauseMenu->setActive(false);
 
 	isSingleplayer = oneP;
@@ -133,7 +135,9 @@ void PlayState::newGame()
 
 	perico = new Character(manager, 60 * 5, 120 * 5, Vector2D(100, initialNoteHeight + 50), Resources::PericoIdle);
 	
+	fourButtons = new EmptyObject(manager, Vector2D(10, manager->getDefaultWindowHeight() - 101), 75, 81, Resources::fourButtons);
 	
+	//manager->getDefaultWindowWidth() - 91, 81
 	
 	minigameController = new TimerNoSingleton();
 
@@ -149,6 +153,7 @@ void PlayState::newGame()
 	stage.push_back(songBar);
 	stage.push_back(player1);
 	stage.push_back(particles);
+	stage.push_back(fourButtons);
 
 
 	level->playSong();
@@ -200,6 +205,7 @@ void PlayState::newGame2P()
 	stage.push_back(songBar);
 	stage.push_back(player1);
 	stage.push_back(player2);
+	stage.push_back(fourButtons);
 
 	level->playSong();
 
@@ -360,6 +366,7 @@ void PlayState::render(Uint32 time, bool beatSync)
 	if (miniActive) {
 		minigame->render(time);
 		effectVaporWave->render(time, true);
+	
 	}
 
 	beatSignal = false;

@@ -106,7 +106,8 @@ public:
 		ShrekIdle,
 		ShrekDance,
 		SansIdle,
-		SansDance
+		SansDance,
+		fourButtons
 
 		// text
 	};

@@ -119,7 +119,8 @@ vector<Resources::ImageInfo> Resources::images_{
 		{ShrekIdle, "resources/images/shrekIdle.png", 60, 120, 2, 1, 2 },
 		{ShrekDance, "resources/images/shrekDance.png", 60, 120, 2, 1, 2},
 		{SansIdle, "resources/images/sansIdle.png", 60, 120, 2, 1, 2 },
-		{SansDance, "resources/images/sansDance.png", 60, 120, 3, 2, 4}
+		{SansDance, "resources/images/sansDance.png", 60, 120, 3, 2, 4},
+		{fourButtons, "resources/images/CuatroBotones.png", 75, 81, 1, 1, 1}
 
 	
 };
