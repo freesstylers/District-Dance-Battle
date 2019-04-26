@@ -47,8 +47,6 @@ void MinigameVaporwave::render(Uint32 time)
 			break;
 	
 		}
-		
-		
 	
 	}
 	for (Note* o : screenButtons_)
@@ -131,7 +129,7 @@ void MinigameVaporwave::createList()
 	int newpos;
 	int aux;
 	failed = false;
-	noteAmount = 15;
+	noteAmount = 12;
 	maxNotes = noteAmount;
 	Note* note;
 	int select=0;
