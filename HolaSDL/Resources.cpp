@@ -145,7 +145,10 @@ vector<Resources::MusicInfo> Resources::musics_ {
 	{Africa, "resources/sound/africa.mp3"},
 	{Test186BPM, "resources/sound/186-bpm.mp3"},
 	{Papito, "resources/sound/Papito.mp3"},
-	{Running, "resources/sound/RunningInThe90s.mp3"}
+	{Running, "resources/sound/RunningInThe90s.mp3"},
+	{Error2, "resources/sound/Error.mp3"},
+	{Ok, "resources/sound/ok.mp3"},
+	{Shoot, "resources/sound/shoot.mp3"}
 };
 
 vector<Resources::SoundInfo> Resources::sounds_ {

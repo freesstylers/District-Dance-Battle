@@ -107,7 +107,7 @@ void MinigameHipHop::createList()
 		int newpos;
 		int aux;
 		failed = false;
-		noteAmount = 5;
+		noteAmount = 6;
 		maxNotes = noteAmount;
 		int select = 0;
 		Note* note;

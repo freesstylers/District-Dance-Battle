@@ -98,6 +98,7 @@ void MinigameVaporwave::handleInput(Uint32 time, SDL_Event e)
 					if (e.cbutton.button == it->getKey())
 					{
 						cout << "bien minigame" << endl;
+						manager->getServiceLocator()->getAudios()->playChannel(Resources::Ok, 0);
 						fback->queueAnimationChange(Resources::FeedbackGood);
 						//failed = false;
 
@@ -106,6 +107,8 @@ void MinigameVaporwave::handleInput(Uint32 time, SDL_Event e)
 					else
 					{
 						cout << "flecha incorrecta" << endl;
+						manager->getServiceLocator()->getAudios()->playChannel(Resources::Error2, 0);
+
 						//failed = true;
 						fback->queueAnimationChange(Resources::FeedbackBad);
 					}
@@ -113,6 +116,8 @@ void MinigameVaporwave::handleInput(Uint32 time, SDL_Event e)
 				else
 				{
 					cout << "fuera" << endl;
+					manager->getServiceLocator()->getAudios()->playChannel(Resources::Error2, 0);
+
 					//failed = true;
 					fback->queueAnimationChange(Resources::FeedbackBad);
 				}
@@ -183,5 +188,4 @@ void MinigameVaporwave::deleteList()
 void MinigameVaporwave::updateResolution(double wScale, double hScale)
 {
 	MiniGame::updateResolution(wScale, hScale);
-
 }

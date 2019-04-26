@@ -129,7 +129,10 @@ public:
 		Africa,
 		Test186BPM,
 		Papito,
-		Running
+		Running,
+		Error2,
+		Ok,
+		Shoot
 		// sound effects
 	};
 
