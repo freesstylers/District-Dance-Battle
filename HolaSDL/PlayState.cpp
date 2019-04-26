@@ -78,6 +78,16 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff) : GameState(
 		enemyT = Resources::SansIdle;
 		minigameAmount = 0;
 		break;
+	case 8:
+		levelName = "RunningInThe90s";
+		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::HipHopEffect);
+		minigame = new MinigameHipHop(manager, this);
+		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::ExtraBG);
+		bgT = Resources::ExtraBG;
+		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 300, initialNoteHeight + 50), Resources::SansIdle);
+		enemyT = Resources::SansIdle;
+		minigameAmount = 0;
+		break;
 	default:
 		break;
 	}
