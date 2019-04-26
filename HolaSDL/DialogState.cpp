@@ -9,7 +9,7 @@
 using namespace std;
 
 
-DialogState::DialogState(GameManager* g, int txt, int numctrl, bool oneP, bool hardMode):GameState(g), oneP_(oneP), hardMode_(hardMode), nlevel(txt)
+DialogState::DialogState(GameManager* g, int txt, int numctrl, bool oneP, bool hardMode): GameState(g), oneP_(oneP), hardMode_(hardMode), nlevel(txt)
 {
 	archivo = levels[txt];
 	controller = SDL_GameControllerOpen(numctrl);
@@ -30,7 +30,7 @@ void DialogState::init()
 		file >> aux;
 		for (int i = 0; i < aux; i++) {
 			file >> sp;
-			//sprites.push_back(new Background(manager, manager->getWindowWidth(), manager->getWindowHeight(), Vector2D(0, 0), sp));
+			//sprites.push_back(new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), sp));
 			stage.push_back(new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), sp));
 		}
 		file >> aux;
@@ -45,7 +45,7 @@ void DialogState::init()
 			file >> sp;
 			//Hay que crear una nueva clase que sea textBox
 			file >> textAux;
-			box.insert(pair<string, GameObject*>(textAux, new TextBox(manager, manager->getDefaultWindowWidth()-20, 400, Vector2D(10, manager->getDefaultWindowHeight()-400),sp)));
+			box.insert(pair<string, GameObject*>(textAux, new TextBox(manager, manager->getDefaultWindowWidth() - 20, 400, Vector2D(10, manager->getDefaultWindowHeight()-400),sp)));
 		}
 
 		file >> textAux;
@@ -65,10 +65,12 @@ void DialogState::init()
 		}
 		file.close();
 		actualBox = box[dialogo.front().box];
+		text = new TextObject(manager, manager->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(manager->getDefaultWindowWidth() / 22 + 10, manager->getDefaultWindowHeight() - 140));
+		text->setText("AAAAA", { COLOR(0x00000000) });
+		text2 = new TextObject(manager, manager->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(manager->getDefaultWindowWidth() / 22 + 20, manager->getDefaultWindowHeight() - 140 + text->getHeight()));
 
+		updateText();
 	}
-		//dialogo.pop_front();
-		//stage.push_back(actualBox);
 }
 	
 	
@@ -85,59 +87,8 @@ void DialogState::render(Uint32 time, bool beatSync) {
 		it->render(time, beatSync);
 	}
 	actualBox->render(time, beatSync);
-	if (!dialogo.empty()) {
-		if (dialogo.front().text.size() <= 38) {
-		
-			Texture msg0(manager->getRenderer(),
-				dialogo.front().text,
-				*(manager->getServiceLocator()->getFonts()->getFont(
-					Resources::RETRO30)), { COLOR(0x00000000) });
-			actualText = &msg0;
-			actualText->render(manager->getRenderer(),
-				manager->getDefaultWindowWidth() / 39+20, manager->getDefaultWindowHeight() - 140);
-		}
-		else {
-			string aux1="";
-			string aux2="";
-			int intaux;
-			for (int i = 0; i < 38; i++) {
-				aux1 += dialogo.front().text[i];
-				intaux = i;
-			}
-			intaux++;
-			while (intaux < dialogo.front().text.size()) {
-				aux2 += dialogo.front().text[intaux];
-				intaux++;
-			}
-			Texture msg0(manager->getRenderer(),
-				aux1,
-				*(manager->getServiceLocator()->getFonts()->getFont(
-					Resources::RETRO30)), { COLOR(0x00000000) });
-			actualText = &msg0;
-			actualText->render(manager->getRenderer(),
-				manager->getDefaultWindowWidth() / 39 + 10, manager->getDefaultWindowHeight() - 140);
-			if (aux2 != "") {
-				Texture msg1(manager->getRenderer(),
-					aux2,
-					*(manager->getServiceLocator()->getFonts()->getFont(
-						Resources::RETRO30)), { COLOR(0x00000000) });
-				actualText = &msg1;
-				actualText->render(manager->getRenderer(),
-					manager->getDefaultWindowWidth() / 22 + 10, (manager->getDefaultWindowHeight() - 90));
-				
-			}
-			
-		}
-	}
-	else {
-		Texture msg0(manager->getRenderer(),
-			" COMIENZA LA BATALLA",
-			*(manager->getServiceLocator()->getFonts()->getFont(Resources::RETRO50)), { COLOR(0x00000000) });
-		actualText = &msg0;
-		actualText->render(manager->getRenderer(),
-			manager->getDefaultWindowWidth() / 39 + 10, manager->getDefaultWindowHeight() - 120);
-		end = true;
-	}
+	text->render(time);
+	text2->render(time);
 }
 
 bool DialogState::handleEvent(Uint32 time, SDL_Event e) {
@@ -151,21 +102,60 @@ bool DialogState::handleEvent(Uint32 time, SDL_Event e) {
 			if (!dialogo.empty()) {
 				actualBox = box[dialogo.front().box];
 			}
-			else actualBox = new TextBox(manager, manager->getDefaultWindowWidth() - 10, 400, Vector2D(10, manager->getDefaultWindowHeight() - 400), 29);
+			else actualBox = new TextBox(manager, manager->getDefaultWindowWidth() - 20, 400, Vector2D(10, manager->getDefaultWindowHeight() - 400), 29);
 
-		
+			updateText();
+
 			keyup = false;
 		}
-		if (end) {
+		else if (end) {
 			manager->getMachine()->changeState(new PlayState(manager, nlevel, oneP_, hardMode_));
 		}
-		
+
 	}
 	else if (e.type == SDL_CONTROLLERBUTTONUP) keyup = true;
 
-	else if(e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_TAB)
+	else if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_TAB)
 		manager->getMachine()->changeState(new PlayState(manager, nlevel, oneP_, hardMode_));
+
 	return true;
+}
+
+void DialogState::updateText() {
+	if (!dialogo.empty()) {
+
+		if (dialogo.front().text.size() <= 51) {
+			text->setText(dialogo.front().text, { COLOR(0x00000000) });
+			text2->setText(" ", { COLOR(0x00000000) });
+		}
+		else {
+			string aux1 = "";
+			string aux2 = "";
+			int intaux = 0;
+
+			while (intaux <= 51 || (intaux > 51 && intaux < dialogo.front().text.size() && dialogo.front().text[intaux] != ' ')) {
+				aux1 += dialogo.front().text[intaux];
+				intaux++;
+			}
+
+			intaux++;
+
+			while (intaux < dialogo.front().text.size()) {
+				aux2 += dialogo.front().text[intaux];
+				intaux++;
+			}
+			aux2 += " ";
+
+			text->setText(aux1, { COLOR(0x00000000) });
+			text2->setText(aux2, { COLOR(0x00000000) });
+		}
+	}
+	else {
+		text->setText("COMIENZA LA BATALLA", { COLOR(0x00000000) });
+		text2->setText(" ", { COLOR(0x00000000) });
+
+		end = true;
+	}
 }
 
 

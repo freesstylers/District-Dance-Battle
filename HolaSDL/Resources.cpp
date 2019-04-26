@@ -31,7 +31,7 @@ vector<Resources::ImageInfo> Resources::images_{
 		{AButton, "resources/images/BotonA.png", 32, 32, 1, 1, 1},
 		{BButton, "resources/images/BotonB.png", 32, 32, 1, 1, 1},
 		{XButton, "resources/images/BotonX.png", 32, 32, 1, 1, 1},
-		{YButton, "resources/images/BotonY_original.png", 32, 32, 1, 1, 1},
+		{YButton, "resources/images/BotonY.png", 32, 32, 1, 1, 1},
 		{FlechaEspBomba, "resources/images/FlechaEspBomba.png", 32, 32, 1, 1, 1},
 		{Point, "resources/images/Point.png", 32, 32, 1, 1, 1},
 		{NoteIcon, "resources/images/Nota.png", 9, 11, 1, 1, 1},
@@ -113,7 +113,14 @@ vector<Resources::ImageInfo> Resources::images_{
 		{CiuBG, "resources/images/fondoReggaeton.png", 213, 120, 2, 1, 2},
 		{CiuBGPixel, "resources/images/fondoReggaetonPixel.png", 213, 120, 2, 1, 2},
 		{PapitoIdle, "resources/images/papitoIdle.png", 60, 120, 3, 3, 7 },
-		{PapitoTwerk, "resources/images/papitotwerking.png", 60, 120, 2, 1, 2},
+		{PapitoTwerk, "resources/images/papitoDance.png", 60, 120, 2, 1, 2},
+		{ExtraBG, "resources/images/fondoExtra.png", 208, 120, 2, 1, 2},
+		{ExtraPixel, "resources/images/fondoExtraPixel.png", 208, 120, 2, 1, 2},
+		{ShrekIdle, "resources/images/shrekIdle.png", 60, 120, 2, 1, 2 },
+		{ShrekDance, "resources/images/shrekDance.png", 60, 120, 2, 1, 2},
+		{SansIdle, "resources/images/sansIdle.png", 60, 120, 2, 1, 2 },
+		{SansDance, "resources/images/sansDance.png", 60, 120, 3, 2, 4},
+		{fourButtons, "resources/images/CuatroBotones.png", 75, 81, 1, 1, 1}
 
 	
 };
@@ -138,7 +145,10 @@ vector<Resources::MusicInfo> Resources::musics_ {
 	{Africa, "resources/sound/africa.mp3"},
 	{Test186BPM, "resources/sound/186-bpm.mp3"},
 	{Papito, "resources/sound/Papito.mp3"},
-	{Running, "resources/sound/RunningInThe90s.mp3"}
+	{Running, "resources/sound/RunningInThe90s.mp3"},
+	{Error2, "resources/sound/Error.mp3"},
+	{Ok, "resources/sound/ok.mp3"},
+	{Shoot, "resources/sound/shoot.mp3"}
 };
 
 vector<Resources::SoundInfo> Resources::sounds_ {

@@ -22,7 +22,7 @@ EndState::EndState(GameManager * g,  int actualScore, int maxScore, int percenta
 
 
 	points = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO50), Vector2D(gameManager->getDefaultWindowWidth() / 2, 50));
-	points->setText("Puntuación final: " + makeScoreBetter(actualScore), SDL_Color{ (0), (0), (0), (255) });
+	points->setText("PuntuaciÃ³n final: " + makeScoreBetter(actualScore), SDL_Color{ (0), (0), (0), (255) });
 	points->setPosition(Vector2D(gameManager->getDefaultWindowWidth() / 2, 50) - Vector2D(points->getWidth() / 2, 0));
 
 	tooltip = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(0, 0));
@@ -31,7 +31,7 @@ EndState::EndState(GameManager * g,  int actualScore, int maxScore, int percenta
 
 	EmptyObject* letter = new EmptyObject(g, Vector2D(gameManager->getDefaultWindowWidth() / 2 + 325, gameManager->getDefaultWindowHeight() / 2 - 40), 160, 260, Resources::ScoreS);
 
-	Character* perico = new Character(g, 300, 540, Vector2D(gameManager->getDefaultWindowWidth() / 2 - 150, 180), Resources::PericoDab);
+	Character* perico = new Character(g, 300, 540, Vector2D(gameManager->getDefaultWindowWidth() / 2 - 150, 160), Resources::PericoDab);
 	perico->isAnimationSynced(false);
 	perico->setAnimationFramerate(4);
 	
@@ -41,6 +41,7 @@ EndState::EndState(GameManager * g,  int actualScore, int maxScore, int percenta
 	}
 
 	else if (actualScore >= 70 * maxScore / 100) {
+		perico->forceAnimationChange(Resources::PericoDance1);
 		letter->forceAnimationChange(Resources::ScoreA);
 	}
 	
@@ -126,11 +127,14 @@ EndState::EndState(GameManager * g,  int actualScore, int maxScore, int percenta
 EndState::~EndState()
 {
 	delete points;
+	delete points2;
+	delete tooltip;
 }
 
 void EndState::backToMenu(GameManager * gameManager)
 {
 	gameManager->getMachine()->changeState(new MapState(gameManager));
+	gameManager->getServiceLocator()->getAudios()->haltChannel(0);
 }
 
 void EndState::render(Uint32 time, bool beatHandler)
@@ -222,30 +226,30 @@ void EndState::renderLetters(Uint32 time, bool beatHandler)
 		*(gameManager->getServiceLocator()->getFonts()->getFont(
 			Resources::RETRO20)), { COLOR(0x00000000) });
 	SDL_Rect dest;
-	dest.x = gameManager->getWindowWidth() / 4-150;
-	dest.y = gameManager->getWindowHeight() / 4-100;
-	dest.w = (gameManager->getWindowWidth() / 4);
-	dest.h = gameManager->getWindowHeight() / 20;
+	dest.x = gameManager->getDefaultWindowWidth() / 4-150;
+	dest.y = gameManager->getDefaultWindowHeight() / 4-100;
+	dest.w = (gameManager->getDefaultWindowWidth() / 4);
+	dest.h = gameManager->getDefaultWindowHeight() / 20;
 	msg0.render(gameManager->getRenderer(), dest);
 
 	Texture msg1(gameManager->getRenderer(),
 			puntos + to_string(punt) ,*(gameManager->getServiceLocator()->getFonts()->getFont(
 				Resources::RETRO10)), { COLOR(0x00000000) });
 	SDL_Rect dest1;
-	dest1.x = gameManager->getWindowWidth() / 2-150 ;
-	dest1.y = gameManager->getWindowHeight() / 2 ;
-	dest1.w = (gameManager->getWindowWidth() / 4);
-	dest1.h = gameManager->getWindowHeight() / 20;
+	dest1.x = gameManager->getDefaultWindowWidth() / 2-150 ;
+	dest1.y = gameManager->getDefaultWindowHeight() / 2 ;
+	dest1.w = (gameManager->getDefaultWindowWidth() / 4);
+	dest1.h = gameManager->getDefaultWindowHeight() / 20;
 	msg1.render(gameManager->getRenderer(), dest1);
 
 	Texture msg2(gameManager->getRenderer(),
 		val, *(gameManager->getServiceLocator()->getFonts()->getFont(
 			Resources::RETRO10)), { COLOR(0x00000000) });
 	SDL_Rect dest2;
-	dest2.x = gameManager->getWindowWidth() / 2 - 150;
-	dest2.y = gameManager->getWindowHeight() / 2 +50;
-	dest2.w = (gameManager->getWindowWidth() / 4);
-	dest2.h = gameManager->getWindowHeight() / 20;
+	dest2.x = gameManager->getDefaultWindowWidth() / 2 - 150;
+	dest2.y = gameManager->getDefaultWindowHeight() / 2 +50;
+	dest2.w = (gameManager->getDefaultWindowWidth() / 4);
+	dest2.h = gameManager->getDefaultWindowHeight() / 20;
 	msg2.render(gameManager->getRenderer(), dest2);*/
 	
 }

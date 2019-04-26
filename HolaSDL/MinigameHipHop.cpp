@@ -5,13 +5,13 @@ MinigameHipHop::MinigameHipHop(GameManager * g, PlayState * p): MiniGame(g, p)
 {
 	manager = g;
 	playS = p;
-	fback = new Feedback(g, 150, 150, Vector2D(g->getWindowWidth() / 2 - 150 / 2, g->getWindowHeight() / 2 - 150 / 2));
+	fback = new Feedback(g, 150, 150, Vector2D(g->getDefaultWindowWidth() / 2 - 150 / 2, g->getDefaultWindowHeight() / 2 - 150 / 2));
 	timer = new TimerNoSingleton();
 	mira = new Crosshair(g, 64, 64, Vector2D(300, 400));
 
 	Aviso = new TextObject(manager, manager->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(300, 300)); //Position stub
 	Aviso->setText("DISPARA A CADA NOTA");
-	Aviso->setPosition(Vector2D(manager->getWindowWidth() / 2 - Aviso->getWidth() / 2, manager->getWindowHeight() / 2 - Aviso->getHeight() / 2));
+	Aviso->setPosition(Vector2D(manager->getDefaultWindowWidth() / 2 - Aviso->getWidth() / 2, manager->getDefaultWindowHeight() / 2 - Aviso->getHeight() / 2));
 
 	createList();
 
@@ -49,7 +49,7 @@ void MinigameHipHop::update(Uint32 time)
 
 		for (Note* o : screenButtons_)
 		{
-			if (o->getPosition().getX() < 0 || o->getPosition().getX() > manager->getWindowWidth())
+			if (o->getPosition().getX() < 0 || o->getPosition().getX() > manager->getDefaultWindowWidth())
 				o->setVelocity(Vector2D(o->getVelocity().getX() * -1, o->getVelocity().getY()));
 			if (o->getPosition().getY() < 0 || o->getPosition().getY() > manager->getDefaultWindowHeight())
 				o->setVelocity(Vector2D(o->getVelocity().getX(), o->getVelocity().getY() * -1));
@@ -107,14 +107,14 @@ void MinigameHipHop::createList()
 		int newpos;
 		int aux;
 		failed = false;
-		noteAmount = 5;
+		noteAmount = 6;
 		maxNotes = noteAmount;
 		int select = 0;
 		Note* note;
 		for (int i = 0; i < noteAmount; i++) {
 			aux = rand() % 8;
 
-			Vector2D pos = Vector2D(double(manager->getServiceLocator()->getRandomGenerator()->nextInt(100, manager->getWindowWidth() - 100)), double(manager->getServiceLocator()->getRandomGenerator()->nextInt(100, manager->getWindowHeight() - 100)));
+			Vector2D pos = Vector2D(double(manager->getServiceLocator()->getRandomGenerator()->nextInt(100, manager->getDefaultWindowWidth() - 100)), double(manager->getServiceLocator()->getRandomGenerator()->nextInt(100, manager->getDefaultWindowHeight() - 100)));
 			//El numero debe estar entre 10 y el ancho/alto de la pantalla, por que si al generar el random de la velocidad, la posicion fue <10 al dividir entre 10, se redondea a 0 por la conversion a int
 			Vector2D vel = Vector2D(double(manager->getServiceLocator()->getRandomGenerator()->nextInt(-pos.getX() / 10, pos.getX() / 10)), double(manager->getServiceLocator()->getRandomGenerator()->nextInt(-pos.getX() / 10, pos.getX() / 10)));
 

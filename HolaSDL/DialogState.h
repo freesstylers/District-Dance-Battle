@@ -5,6 +5,7 @@
 #include <string>
 #include <map>
 #include <math.h>
+#include "TextObject.h"
 
 class DialogState: public GameState
 {
@@ -29,10 +30,13 @@ protected:
 	list<Dialog> dialogo;
 	map<string, GameObject*> box;
 	GameObject* actualBox;
-	Texture* actualText;
+	TextObject* text;
+	TextObject* text2;
 	int nlevel;
 	bool end = false;
 	bool endlevel = false;
 	string archivo;
+
+	void updateText();
 };
 

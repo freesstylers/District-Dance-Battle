@@ -97,16 +97,19 @@ bool Crosshair::handleInput(Uint32 time, const SDL_Event & event, Note* nota)
 		if (event.cbutton.button == nota->getKey() && superpuesto)
 		{
 			cout << "eres mazo bueno" << endl;
+			game_->getServiceLocator()->getAudios()->playChannel(Resources::Shoot, 0);
 			nota->setActive(false);
 
-			return false;
+			return true;
 		}
 	}
+	else
+	{
+		return false;
 
+	}
 	//cout << "Position: " << position_ << endl;
 
-	
-	return false;
 
 	/*
 

@@ -100,7 +100,15 @@ public:
 		CiuBG,
 		CiuBGPixel,
 		PapitoIdle,
-		PapitoTwerk
+		PapitoTwerk,
+		ExtraBG,
+		ExtraPixel,
+		ShrekIdle,
+		ShrekDance,
+		SansIdle,
+		SansDance,
+		fourButtons
+
 		// text
 	};
 
@@ -121,7 +129,10 @@ public:
 		Africa,
 		Test186BPM,
 		Papito,
-		Running
+		Running,
+		Error2,
+		Ok,
+		Shoot
 		// sound effects
 	};
 

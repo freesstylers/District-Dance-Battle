@@ -6,12 +6,13 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff) : GameState(
 	nlevel = lvl;
 
 	g->getServiceLocator()->getAudios()->setChannelVolume(60, 1);
+	
 
 	switch (lvl)
 	{
 	case 1:
 		levelName = "prueba";
-		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::EffectVaporWave);
+		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::EffectVaporWave);
 		minigame = new MinigameVaporwave(manager, this);
 		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::testBG);
 		bgT = Resources::testBG;
@@ -20,7 +21,7 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff) : GameState(
 		break;
 	case 2:
 		levelName = "hiphop";
-		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::HipHopEffect);
+		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::HipHopEffect);
 		minigame = new MinigameHipHop(manager, this);
 		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::BackgroundHipHop);
 		bgT = Resources::BackgroundHipHop;
@@ -28,52 +29,53 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff) : GameState(
 		enemyT = Resources::EminemciaIdle;
 		break;
 	case 3:
-		levelName = "reggaeton";
-		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::HipHopEffect);
+		levelName = "papito";
+		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::HipHopEffect);
 		minigame = new MinigameHipHop(manager, this);
-		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::BackgroundHipHop);
-		bgT = Resources::BackgroundHipHop;
-		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 300, initialNoteHeight + 50), Resources::EminemciaIdle);
-		enemyT = Resources::EminemciaIdle;
+		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::CiuBG);
+		bgT = Resources::CiuBG;
+		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 300, initialNoteHeight + 50), Resources::PapitoIdle);
+		enemyT = Resources::PapitoIdle;
+		minigameAmount = 0;
 		break;
 	case 4:
 		levelName = "africa";
-		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::HipHopEffect);
+		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::HipHopEffect);
 		minigame = new MinigameHipHop(manager, this);
-		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::testBG);
-		bgT = Resources::BackgroundHipHop;
+		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::ExtraBG);
+		bgT = Resources::ExtraBG;
 		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 300, initialNoteHeight + 50), Resources::RobotDance);
 		enemyT = Resources::RobotDance;
 		minigameAmount = 0;
 		break;
 	case 6:
 		levelName = "allstar";
-		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::HipHopEffect);
+		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::HipHopEffect);
 		minigame = new MinigameHipHop(manager, this);
-		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::testBG);
-		bgT = Resources::BackgroundHipHop;
-		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 300, initialNoteHeight + 50), Resources::RobotIdle);
-		enemyT = Resources::RobotIdle;
+		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::ExtraBG);
+		bgT = Resources::ExtraBG;
+		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 300, initialNoteHeight + 50), Resources::ShrekIdle);
+		enemyT = Resources::ShrekIdle;
 		minigameAmount = 0;
 		break;
 	case 5:
 		levelName = "asereje";
-		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::HipHopEffect);
+		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::HipHopEffect);
 		minigame = new MinigameHipHop(manager, this);
-		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::testBG);
-		bgT = Resources::BackgroundHipHop;
+		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::ExtraBG);
+		bgT = Resources::ExtraBG;
 		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 300, initialNoteHeight + 50), Resources::EminemciaIdle);
 		enemyT = Resources::EminemciaIdle;
 		minigameAmount = 0;
 		break;
 	case 7:
 		levelName = "megalovania";
-		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getWindowWidth(), manager->getWindowHeight(), Resources::HipHopEffect);
+		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::HipHopEffect);
 		minigame = new MinigameHipHop(manager, this);
-		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::testBG);
-		bgT = Resources::BackgroundHipHop;
-		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 300, initialNoteHeight + 50), Resources::RobotIdle);
-		enemyT = Resources::RobotIdle;
+		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::ExtraBG);
+		bgT = Resources::ExtraBG;
+		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 300, initialNoteHeight + 50), Resources::SansIdle);
+		enemyT = Resources::SansIdle;
 		minigameAmount = 0;
 		break;
 	default:
@@ -89,6 +91,7 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff) : GameState(
 
 	pauseMenu = new PauseMenu(g, this);
 	stage.push_back(pauseMenu);
+	
 	pauseMenu->setActive(false);
 
 	isSingleplayer = oneP;
@@ -126,13 +129,15 @@ void PlayState::newGame()
 	}
 
 
-	songBarBG = new BarBackground(manager, 1, 14, Vector2D(50, 35), (((manager->getDefaultWindowWidth() - 50) / level->songLength) / 70.5), Resources::YellowBar); //70.5 es la constante para ajustar la velocidad de la barra al tiempo de la cancion
-	songBar = new SongBar(manager, 18, 22, Vector2D(41, 31), Vector2D((((manager->getDefaultWindowWidth() / level->songLength)) / 70.5), 0), songBarBG);
+	songBarBG = new BarBackground(manager, 1, 14, Vector2D(50, 35), (manager->getDefaultWindowWidth() - (50*2)) / level->songLength, Resources::YellowBar); //70.5 es la constante para ajustar la velocidad de la barra al tiempo de la cancion
+	songBar = new SongBar(manager, 18, 22, Vector2D(41, 31), Vector2D(((manager->getDefaultWindowWidth()-(41*2)) / level->songLength), 0), songBarBG);
 
 
 	perico = new Character(manager, 60 * 5, 120 * 5, Vector2D(100, initialNoteHeight + 50), Resources::PericoIdle);
 	
+	fourButtons = new EmptyObject(manager, Vector2D(10, manager->getDefaultWindowHeight() - 101), 75, 81, Resources::fourButtons);
 	
+	//manager->getDefaultWindowWidth() - 91, 81
 	
 	minigameController = new TimerNoSingleton();
 
@@ -148,6 +153,7 @@ void PlayState::newGame()
 	stage.push_back(songBar);
 	stage.push_back(player1);
 	stage.push_back(particles);
+	stage.push_back(fourButtons);
 
 
 	level->playSong();
@@ -181,8 +187,8 @@ void PlayState::newGame2P()
 	timer->Reset();
 	maxNoteValue = maxScore / level->noteAmount;
 
-	songBarBG = new BarBackground(manager, 1, 14, Vector2D(50, 35), (((manager->getWindowWidth() - 50) / level->songLength) / 70.5), Resources::YellowBar); //70.5 es la constante para ajustar la velocidad de la barra al tiempo de la cancion
-	songBar = new SongBar(manager, 18, 22, Vector2D(41, 31), Vector2D((((manager->getWindowWidth() / level->songLength)) / 70.5), 0), songBarBG);
+	songBarBG = new BarBackground(manager, 1, 14, Vector2D(50, 35), (((manager->getDefaultWindowWidth() - 50) / level->songLength) / 70.5), Resources::YellowBar); //70.5 es la constante para ajustar la velocidad de la barra al tiempo de la cancion
+	songBar = new SongBar(manager, 18, 22, Vector2D(41, 31), Vector2D((((manager->getDefaultWindowWidth() / level->songLength)) / 70.5), 0), songBarBG);
 
 	perico = new Character(manager, 60 * 4, 120 * 4, Vector2D(110, initialNoteHeight + 100), Resources::PericoIdle);
 
@@ -190,7 +196,8 @@ void PlayState::newGame2P()
 	minigameController = new TimerNoSingleton();
 
 	bh = new BeatHandler(level->bpm);
-
+	fourButtons = new EmptyObject(manager, Vector2D(10, manager->getDefaultWindowHeight() - 101), 75, 81, Resources::fourButtons);
+	EmptyObject* fourButtons2 = new EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() - 85, manager->getDefaultWindowHeight() - 101), 75, 81, Resources::fourButtons);
 
 	stage.push_back(bg);
 	stage.push_back(perico);
@@ -199,6 +206,8 @@ void PlayState::newGame2P()
 	stage.push_back(songBar);
 	stage.push_back(player1);
 	stage.push_back(player2);
+	stage.push_back(fourButtons);
+	stage.push_back(fourButtons2);
 
 	level->playSong();
 
@@ -359,6 +368,7 @@ void PlayState::render(Uint32 time, bool beatSync)
 	if (miniActive) {
 		minigame->render(time);
 		effectVaporWave->render(time, true);
+	
 	}
 
 	beatSignal = false;
