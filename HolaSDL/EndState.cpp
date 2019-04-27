@@ -86,21 +86,22 @@ EndState::EndState(GameManager * g,  int actualScore, int maxScore, int percenta
 		perico2->isAnimationSynced(false);
 		perico2->setAnimationFramerate(4);
 
-		if (actualScore2 >= 90 * maxScore / 100) {
+		if (actualScore >= 90 * maxScore / 100) {
 			perico2->forceAnimationChange(Resources::PericoMaxPower);
 			letter2->forceAnimationChange(Resources::ScoreS);
 		}
 
-		else if (actualScore2 >= 70 * maxScore / 100) {
+		else if (actualScore >= 70 * maxScore / 100) {
+			perico2->forceAnimationChange(Resources::PericoDance1);
 			letter2->forceAnimationChange(Resources::ScoreA);
 		}
 
-		else if (actualScore2 >= 50 * maxScore / 100) {
+		else if (actualScore >= 50 * maxScore / 100) {
 			perico2->forceAnimationChange(Resources::PericoDance1);
 			letter2->forceAnimationChange(Resources::ScoreB);
 		}
 
-		else if (actualScore2 >= 30 * maxScore / 100) {
+		else if (actualScore >= 30 * maxScore / 100) {
 			perico2->forceAnimationChange(Resources::PericoDab);
 			letter2->forceAnimationChange(Resources::ScoreC);
 		}
@@ -108,6 +109,32 @@ EndState::EndState(GameManager * g,  int actualScore, int maxScore, int percenta
 		else {
 			perico2->forceAnimationChange(Resources::PericoIdle);
 			letter2->forceAnimationChange(Resources::ScoreD);
+		}
+
+
+		if (actualScore2 >= 90 * maxScore / 100) {
+			perico->forceAnimationChange(Resources::PericoMaxPower);
+			letter->forceAnimationChange(Resources::ScoreS);
+		}
+
+		else if (actualScore2 >= 70 * maxScore / 100) {
+			perico->forceAnimationChange(Resources::PericoDance1);
+			letter->forceAnimationChange(Resources::ScoreA);
+		}
+
+		else if (actualScore2 >= 50 * maxScore / 100) {
+			perico->forceAnimationChange(Resources::PericoDance1);
+			letter->forceAnimationChange(Resources::ScoreB);
+		}
+
+		else if (actualScore2 >= 30 * maxScore / 100) {
+			perico->forceAnimationChange(Resources::PericoDab);
+			letter->forceAnimationChange(Resources::ScoreC);
+		}
+
+		else {
+			perico->forceAnimationChange(Resources::PericoIdle);
+			letter->forceAnimationChange(Resources::ScoreD);
 		}
 
 		stage.push_back(letter2);
