@@ -115,7 +115,6 @@ void PlayerPack::update(Uint32 time)
 			delete aux;
 			screenArrows_.pop_front();
 			cout << "fuera" << endl;
-			updateScoreNote(1);
 			
 
 		}

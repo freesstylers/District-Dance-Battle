@@ -106,7 +106,8 @@ public:
 		ShrekIdle,
 		ShrekDance,
 		SansIdle,
-		SansDance
+		SansDance,
+		fourButtons
 
 		// text
 	};
@@ -128,7 +129,10 @@ public:
 		Africa,
 		Test186BPM,
 		Papito,
-		Running
+		Running,
+		Error2,
+		Ok,
+		Shoot
 		// sound effects
 	};
 

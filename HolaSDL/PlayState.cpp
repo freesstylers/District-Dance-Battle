@@ -6,6 +6,7 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff) : GameState(
 	nlevel = lvl;
 
 	g->getServiceLocator()->getAudios()->setChannelVolume(60, 1);
+	
 
 	switch (lvl)
 	{
@@ -77,6 +78,16 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff) : GameState(
 		enemyT = Resources::SansIdle;
 		minigameAmount = 0;
 		break;
+	case 8:
+		levelName = "RunningInThe90s";
+		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::HipHopEffect);
+		minigame = new MinigameHipHop(manager, this);
+		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::ExtraBG);
+		bgT = Resources::ExtraBG;
+		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 300, initialNoteHeight + 50), Resources::SansIdle);
+		enemyT = Resources::SansIdle;
+		minigameAmount = 0;
+		break;
 	default:
 		break;
 	}
@@ -90,6 +101,7 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff) : GameState(
 
 	pauseMenu = new PauseMenu(g, this);
 	stage.push_back(pauseMenu);
+	
 	pauseMenu->setActive(false);
 
 	isSingleplayer = oneP;
@@ -133,7 +145,9 @@ void PlayState::newGame()
 
 	perico = new Character(manager, 60 * 5, 120 * 5, Vector2D(100, initialNoteHeight + 50), Resources::PericoIdle);
 	
+	fourButtons = new EmptyObject(manager, Vector2D(10, manager->getDefaultWindowHeight() - 101), 75, 81, Resources::fourButtons);
 	
+	//manager->getDefaultWindowWidth() - 91, 81
 	
 	minigameController = new TimerNoSingleton();
 
@@ -149,6 +163,7 @@ void PlayState::newGame()
 	stage.push_back(songBar);
 	stage.push_back(player1);
 	stage.push_back(particles);
+	stage.push_back(fourButtons);
 
 
 	level->playSong();
@@ -191,7 +206,8 @@ void PlayState::newGame2P()
 	minigameController = new TimerNoSingleton();
 
 	bh = new BeatHandler(level->bpm);
-
+	fourButtons = new EmptyObject(manager, Vector2D(10, manager->getDefaultWindowHeight() - 101), 75, 81, Resources::fourButtons);
+	EmptyObject* fourButtons2 = new EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() - 85, manager->getDefaultWindowHeight() - 101), 75, 81, Resources::fourButtons);
 
 	stage.push_back(bg);
 	stage.push_back(perico);
@@ -200,6 +216,8 @@ void PlayState::newGame2P()
 	stage.push_back(songBar);
 	stage.push_back(player1);
 	stage.push_back(player2);
+	stage.push_back(fourButtons);
+	stage.push_back(fourButtons2);
 
 	level->playSong();
 
@@ -360,6 +378,7 @@ void PlayState::render(Uint32 time, bool beatSync)
 	if (miniActive) {
 		minigame->render(time);
 		effectVaporWave->render(time, true);
+	
 	}
 
 	beatSignal = false;

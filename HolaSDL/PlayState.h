@@ -53,6 +53,7 @@ protected:
 
 	Vector2D noteVel;
 	MiniGame* minigame;
+	EmptyObject* fourButtons;
 	Character* perico;
 	Character* enemy;
 	EffectVaporwave* effectVaporWave;
