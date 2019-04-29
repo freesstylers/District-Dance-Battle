@@ -34,7 +34,7 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 		keyup = true;
 		keyup2 = true;
 	}
-	if ((event.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_START)) || event.key.keysym.sym == SDLK_DELETE) {
+	if ((event.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_START)) || (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_DELETE)) {
 		ret = ret || level->pause();
 	}
 	if (!player->screenArrows_.empty())

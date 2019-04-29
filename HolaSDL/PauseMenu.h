@@ -25,7 +25,6 @@ private:
 	EmptyObject* op_exit;
 	EmptyObject* music;
 	EmptyObject* sounds;
-	EmptyObject* scale;
 
 	EmptyObject* selection;
 
@@ -39,6 +38,8 @@ private:
 	void toggleOptions();
 	void restartSong();
 	void exitSong();
+	void updateMusic(bool raise);
+	void updateSound(bool raise);
 
 
 

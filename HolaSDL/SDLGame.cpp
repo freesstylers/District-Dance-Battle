@@ -110,6 +110,26 @@ int SDLGame::getWindowHeight() const {
 	return height_;
 }
 
+int SDLGame::getMusicVolume() const
+{
+	return musicVolume_;
+}
+
+int SDLGame::getSoundVolume() const
+{
+	return soundVolume_;
+}
+
+void SDLGame::setMusicVolume(int volume)
+{
+	musicVolume_ = volume;
+}
+
+void SDLGame::setSoundVolume(int volume)
+{
+	soundVolume_ = volume;
+}
+
 int SDLGame::getDefaultWindowWidth() const
 {
 	return 1280;

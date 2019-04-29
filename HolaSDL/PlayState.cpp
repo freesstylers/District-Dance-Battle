@@ -341,35 +341,27 @@ void PlayState::resume(unsigned int timePaused)
 
 bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 {
-	if (e.key.keysym.sym == SDLK_f)
-	{
-		int flags = SDL_GetWindowFlags(manager->getWindow());
-		if (flags & SDL_WINDOW_FULLSCREEN) {
-			SDL_SetWindowFullscreen(manager->getWindow(), 0);
-		}
-		else {
-			SDL_SetWindowFullscreen(manager->getWindow(), SDL_WINDOW_FULLSCREEN);
-		}
-	}
-	else if (e.key.keysym.sym == SDLK_F1)
-		songOver();
-	else
-	{
-		if (!isPaused) {
-			if (miniActive) {
-				player1->lip->setMinigameActive(true);
+	if (e.key.repeat == 0) {
+		if (e.key.keysym.sym == SDLK_F1)
+			songOver();
+		else
+		{
+			if (!isPaused) {
+				if (miniActive) {
+					player1->lip->setMinigameActive(true);
 
-				minigame->handleInput(time, e);
+					minigame->handleInput(time, e);
+				}
+				else
+				{
+					GameState::handleEvent(time, e);
+				}
 			}
 			else
-			{
-				GameState::handleEvent(time, e);
-			}
+				pauseMenu->handleInput(time, e);
 		}
-		else
-			pauseMenu->handleInput(time, e);
+		return true;
 	}
-	return true;
 }
 
 void PlayState::render(Uint32 time, bool beatSync)
