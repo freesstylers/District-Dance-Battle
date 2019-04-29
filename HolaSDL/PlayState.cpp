@@ -460,6 +460,11 @@ void PlayState::songOver()
 	//manager->getMachine()->popState();
 }
 
+void PlayState::updateResolution()
+{
+
+}
+
 void PlayState::restart()
 {
 	manager->getServiceLocator()->getAudios()->haltChannel(0);
