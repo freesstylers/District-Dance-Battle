@@ -23,7 +23,7 @@ void Level::playSong() {
 }
 
 
-void Level::init() {
+void Level::init(bool hardmode) {
 	ifstream file("resources/levels/" + name + ".txt");
 	file >> bpm;
 	file >> songLength;
@@ -31,8 +31,13 @@ void Level::init() {
 
 	if (name == "asereje") {
 		noteVel = level->setVel(60000 / ((double)bpm / 1.5));
-	} else 
-		noteVel = level->setVel(60000.0/(double)bpm);
+	}
+	else {
+  		if (hardmode)
+			noteVel = level->setVel(60000 / ((double)bpm * 2));
+		else 
+			noteVel = level->setVel(60000 / (double)bpm);
+	}
 
 	int aux = 0;
 	while (aux >= 0) {

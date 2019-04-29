@@ -9,10 +9,12 @@
 using namespace std;
 
 
-DialogState::DialogState(GameManager* g, int txt, int numctrl, bool oneP, bool hardMode): GameState(g), oneP_(oneP), hardMode_(hardMode), nlevel(txt)
+DialogState::DialogState(GameManager* g, int txt, int numctrl, bool oneP, bool hardMode, int prevMaxScoreE, int prevMaxScoreH): GameState(g), oneP_(oneP), hardMode_(hardMode), nlevel(txt)
 {
 	archivo = levels[txt];
 	controller = SDL_GameControllerOpen(numctrl);
+	prevMaxScoreE_ = prevMaxScoreE;
+	prevMaxScoreH_ = prevMaxScoreH;
 	init();
 }
 //EL máximo de caracteres por cuadro es 35*2 = 70, contando espacios y el primer espacio
@@ -109,14 +111,14 @@ bool DialogState::handleEvent(Uint32 time, SDL_Event e) {
 			keyup = false;
 		}
 		else if (end) {
-			manager->getMachine()->changeState(new PlayState(manager, nlevel, oneP_, hardMode_));
+			manager->getMachine()->changeState(new PlayState(manager, nlevel, oneP_, hardMode_, prevMaxScoreE_, prevMaxScoreH_));
 		}
 
 	}
 	else if (e.type == SDL_CONTROLLERBUTTONUP) keyup = true;
 
 	else if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_TAB)
-		manager->getMachine()->changeState(new PlayState(manager, nlevel, oneP_, hardMode_));
+		manager->getMachine()->changeState(new PlayState(manager, nlevel, oneP_, hardMode_, prevMaxScoreE_, prevMaxScoreH_));
 
 	return true;
 }
