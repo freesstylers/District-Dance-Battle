@@ -20,6 +20,7 @@
     <ClInclude Include="GameObjectPool.h" />
     <ClInclude Include="HitNote.h" />
     <ClInclude Include="HitNotePool.h" />
+    <ClInclude Include="MainMenuState.h" />
     <ClInclude Include="MinigameHardbass.h" />
     <ClInclude Include="MinigameHipHop.h" />
     <ClInclude Include="MinigameLatina.h" />
@@ -85,6 +86,7 @@
     <ClCompile Include="GameObjectPool.cpp" />
     <ClCompile Include="HitNote.cpp" />
     <ClCompile Include="HitNotePool.cpp" />
+    <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="MinigameHardbass.cpp" />
     <ClCompile Include="MinigameHipHop.cpp" />
     <ClCompile Include="MinigameLatina.cpp" />
@@ -147,7 +149,7 @@
     <ProjectGuid>{28A4C5CD-307A-4FE6-81E4-4CE1F1E49AB4}</ProjectGuid>
     <RootNamespace>HolaSDL</RootNamespace>
     <ProjectName>HolaSDL</ProjectName>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
