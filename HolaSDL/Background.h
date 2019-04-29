@@ -8,5 +8,6 @@ public:
 	virtual void update(Uint32 time) {}
 	virtual bool handleInput(Uint32 time, const SDL_Event& event) { return false; }
 	virtual ~Background();
+
 };
 

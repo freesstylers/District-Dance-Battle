@@ -49,8 +49,8 @@ PlayerPack::PlayerPack(SDLGame* manager, PlayState* ps, int leftNotesPos, int ri
 }
 void PlayerPack::render(Uint32 time, bool beatSync)
 {
-	leftNoteBar->render(time);
-	rightNoteBar->render(time);
+	leftNoteBar->render(time,beatSync);
+	rightNoteBar->render(time,beatSync);
 	leftPoint->render(time);
 	rightPoint->render(time);
 	comboTxt->render(time);

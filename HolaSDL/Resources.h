@@ -107,7 +107,10 @@ public:
 		ShrekDance,
 		SansIdle,
 		SansDance,
-		fourButtons
+		fourButtons,
+		Crown,
+		Recuadro1PWin,
+		Recuadro2PWin
 
 		// text
 	};

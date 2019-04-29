@@ -141,7 +141,7 @@ void PlayState::newGame()
 
 	songBarBG = new BarBackground(manager, 1, 14, Vector2D(50, 35), (manager->getDefaultWindowWidth() - (50*2)) / level->songLength, Resources::YellowBar); //70.5 es la constante para ajustar la velocidad de la barra al tiempo de la cancion
 	songBar = new SongBar(manager, 18, 22, Vector2D(41, 31), Vector2D(((manager->getDefaultWindowWidth()-(41*2)) / level->songLength), 0), songBarBG);
-
+	
 
 	perico = new Character(manager, 60 * 5, 120 * 5, Vector2D(100, initialNoteHeight + 50), Resources::PericoIdle);
 	
@@ -191,6 +191,7 @@ void PlayState::newGame2P()
 
 	player1 = new PlayerPack(manager,this, leftNotesPos, rightNotesPos, pointSize, noteBarWidth,0,false);
 	player2 = new PlayerPack(manager,this, leftNotesPos + 400, rightNotesPos + 400, pointSize, noteBarWidth,1,false);
+	crown = new Background(manager, 128, 128, Vector2D(0, 0), Resources::Crown);
 	level = new Level(this, manager, levelName,noteSize);
 	level->init();
 	timer = Timer::Instance();
@@ -241,6 +242,25 @@ void PlayState::update(Uint32 time)
 	if (!isPaused) {
 
 		GameState::update(time);
+		if (!isSingleplayer)
+		{
+			if (player1->currentScore > player2->currentScore && player1->currentScore != 0)
+			{
+				player1->getleftBar()->forceAnimationChange(Resources::Recuadro1PWin);
+				player1->getrightBar()->forceAnimationChange(Resources::Recuadro1PWin);
+				player2->getleftBar()->forceAnimationChange(Resources::Recuadro2P);
+				player2->getrightBar()->forceAnimationChange(Resources::Recuadro2P);
+				crown->setPosition(Vector2D(player1->getleftBar()->getPosition().getX() + player1->getleftBar()->getWidth()/2 + 6, player1->getleftBar()->getPosition().getY() - 60));
+			}
+			else if (player2->currentScore >= player1->currentScore && player2->currentScore != 0)
+			{
+				player2->getleftBar()->forceAnimationChange(Resources::Recuadro2PWin);
+				player2->getrightBar()->forceAnimationChange(Resources::Recuadro2PWin);
+				player1->getleftBar()->forceAnimationChange(Resources::Recuadro1P);
+				player1->getrightBar()->forceAnimationChange(Resources::Recuadro1P);
+				crown->setPosition(Vector2D(player2->getleftBar()->getPosition().getX() + player2->getleftBar()->getWidth() / 2 + 6, player2->getleftBar()->getPosition().getY() - 60));
+			}
+		}
 		if (!miniActive && (minigameAmount == 0 || (minigameAmount > 0 && minigameController->DeltaTime() < level->songLength / minigameAmount)))
 		{
 			minigameController->Update();
@@ -375,6 +395,8 @@ bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 void PlayState::render(Uint32 time, bool beatSync)
 {
 	GameState::render(time, beatSignal);
+	if (!isSingleplayer && player1->currentScore > 0 && player2->currentScore > 0)
+		crown->render(time, beatSignal);
 	if (miniActive) {
 		minigame->render(time);
 		effectVaporWave->render(time, true);

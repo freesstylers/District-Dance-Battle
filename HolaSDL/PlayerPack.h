@@ -40,6 +40,8 @@ public:
 	virtual bool handleInput(Uint32 time, const SDL_Event& event);
 	Point* getLeftPoint() { return leftPoint; }
 	Point* getRightPoint() { return rightPoint; }
+	Squares* getleftBar() { return leftNoteBar; }
+	Squares* getrightBar() { return rightNoteBar; }
 	std::list<Note*> screenArrows_;
 	std::list<Note*> screenButtons_;
 	FeedbackPool* feedbackLeft;

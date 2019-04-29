@@ -58,6 +58,7 @@ protected:
 	Character* enemy;
 	EffectVaporwave* effectVaporWave;
 	Level* level;
+	Background* crown;
 
 	BarBackground* songBarBG;
 
