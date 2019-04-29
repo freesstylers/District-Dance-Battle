@@ -92,6 +92,8 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff) : GameState(
 		break;
 	}
 
+	difficultyMode = diff;
+
 	if (oneP) {
 		newGame();
 	}
@@ -105,7 +107,7 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff) : GameState(
 	pauseMenu->setActive(false);
 
 	isSingleplayer = oneP;
-	difficultyMode = diff;
+	
 }
 
 void PlayState::newGame()
@@ -123,7 +125,7 @@ void PlayState::newGame()
 	player1 = new PlayerPack(manager,this, leftNotesPos, rightNotesPos, pointSize, noteBarWidth,0,true);
 	
 	level = new Level(this, manager, levelName,noteSize);
-	level->init();
+	level->init(difficultyMode);
 	player2 = nullptr;
 	timer = Timer::Instance();
 	timer->Reset();
@@ -189,7 +191,7 @@ void PlayState::newGame2P()
 	player1 = new PlayerPack(manager,this, leftNotesPos, rightNotesPos, pointSize, noteBarWidth,0,false);
 	player2 = new PlayerPack(manager,this, leftNotesPos + 400, rightNotesPos + 400, pointSize, noteBarWidth,1,false);
 	level = new Level(this, manager, levelName,noteSize);
-	level->init();
+	level->init(difficultyMode);
 	timer = Timer::Instance();
 	timer->Reset();
 	maxNoteValue = maxScore / level->noteAmount;
