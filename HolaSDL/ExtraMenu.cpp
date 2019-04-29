@@ -66,7 +66,7 @@ bool ExtraMenu::handleEvent(Uint32 time,  SDL_Event event)
 		}
 		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || event.key.keysym.sym == SDLK_RETURN) {
 			
-			switch (posHand)
+			/*switch (posHand)
 			{
 			case 0:
 				manager->getMachine()->changeState(new PlayState(manager, 4, onePlayer, false));
@@ -85,7 +85,7 @@ bool ExtraMenu::handleEvent(Uint32 time,  SDL_Event event)
 				break;
 			default:
 				break;
-			}
+			}*/
 
 		}
 		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B) || event.key.keysym.sym == SDLK_DELETE) {

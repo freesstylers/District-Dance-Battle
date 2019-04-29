@@ -18,17 +18,9 @@ public:
 	
 	int index = 0;
 	int lvl_;
-	int scoreP1E_ = 0;
-	char noteP1E_;
-
-	int scoreP1H_ = 0;
-	char noteP1H_;
 	
-	int scoreP2E_ = 0;
-	char noteP2E_;
-	
-	int scoreP2H_ = 0;
-	char noteP2H_;
+	int scoreE_ = 0;
+	int scoreH_ = 0;
 
 	bool selected = false;
 	bool difActive = false;

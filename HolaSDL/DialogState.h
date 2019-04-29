@@ -10,7 +10,7 @@
 class DialogState: public GameState
 {
 public:
-	DialogState(GameManager* g, int txt, int numctrl, bool oneP, bool difficulty); //Entra el entero del nivel para cargar el dialog que toque
+	DialogState(GameManager* g, int txt, int numctrl, bool oneP, bool difficulty, int prevMaxScoreE, int prevMaxScoreH); //Entra el entero del nivel para cargar el dialog que toque
 	~DialogState();
 	void init();
 	virtual void update(Uint32 time) {};
@@ -18,6 +18,8 @@ public:
 	virtual void render(Uint32 time, bool beatsync = false);
 protected:
 	SDL_GameController* controller = NULL;
+	int prevMaxScoreE_;
+	int prevMaxScoreH_;
 	struct Dialog
 	{
 		string text;

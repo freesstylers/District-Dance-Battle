@@ -1,7 +1,7 @@
 #include "PlayState.h"
 #include "GameManager.h"
 
-PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff) : GameState(g) //Asigna game y llama a inicializaci�n
+PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxScoreE, int prevMaxScoreH) : GameState(g) //Asigna game y llama a inicializaci�n
 {
 	nlevel = lvl;
 
@@ -106,6 +106,9 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff) : GameState(
 
 	isSingleplayer = oneP;
 	difficultyMode = diff;
+	prevMaxScoreE_ = prevMaxScoreE;
+	prevMaxScoreH_ = prevMaxScoreH;
+
 }
 
 void PlayState::newGame()
@@ -442,9 +445,9 @@ void PlayState::songOver()
 {
 	manager->getServiceLocator()->getAudios()->haltChannel(0);
 	if(isSingleplayer)
-		manager->getMachine()->changeState(new EndState(manager, player1->currentScore, maxScore, 70, nlevel, isSingleplayer));
+		manager->getMachine()->changeState(new EndState(manager, prevMaxScoreE_, prevMaxScoreH_, player1->currentScore, maxScore, 70, nlevel, isSingleplayer, difficultyMode));
 	else
-		manager->getMachine()->changeState(new EndState(manager, player1->currentScore, maxScore, 70, nlevel, isSingleplayer, player2->currentScore));
+		manager->getMachine()->changeState(new EndState(manager, prevMaxScoreE_, prevMaxScoreH_, player1->currentScore, maxScore, 70, nlevel, isSingleplayer, difficultyMode, player2->currentScore));
 	//manager->getMachine()->changeState(new MapState(manager));
 	//manager->getMachine()->popState();
 }
@@ -452,7 +455,7 @@ void PlayState::songOver()
 void PlayState::restart()
 {
 	manager->getServiceLocator()->getAudios()->haltChannel(0);
-	manager->getMachine()->changeState(new PlayState(manager, nlevel, isSingleplayer, difficultyMode));
+	manager->getMachine()->changeState(new PlayState(manager, nlevel, isSingleplayer, difficultyMode, prevMaxScoreE_, prevMaxScoreH_));
 }
 
 void PlayState::exit()

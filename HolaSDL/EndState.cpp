@@ -8,7 +8,7 @@
 	selectedButtons[1] = false;
 }*/
 
-EndState::EndState(GameManager * g,  int actualScore, int maxScore, int percentage,int lvl, bool isSingleplayer, int actualScore2): GameState(g)
+EndState::EndState(GameManager * g, int prevMaxScoreE, int prevMaxScoreH,  int actualScore, int maxScore, int percentage,int lvl, bool isSingleplayer, bool hardMode, int actualScore2): GameState(g)
 {
 	level = lvl;
 	punt = maxScore;
@@ -149,6 +149,22 @@ EndState::EndState(GameManager * g,  int actualScore, int maxScore, int percenta
 		points2->setPosition(Vector2D(gameManager->getDefaultWindowWidth() * 4 / 5, 50) - Vector2D(points2->getWidth() / 2, 0));
 	}
 
+	if (!isSingleplayer)
+	{
+		if (actualScore2 > actualScore)
+			actualScore = actualScore2;
+	}
+
+	if (hardMode)
+	{
+		if (actualScore > prevMaxScoreH)
+			saveScore(prevMaxScoreE, actualScore);
+	}
+	else
+	{
+		if (actualScore > prevMaxScoreE)
+			saveScore(actualScore, prevMaxScoreH);
+	}
 }
 
 EndState::~EndState()
@@ -279,4 +295,18 @@ void EndState::renderLetters(Uint32 time, bool beatHandler)
 	dest2.h = gameManager->getDefaultWindowHeight() / 20;
 	msg2.render(gameManager->getRenderer(), dest2);*/
 	
+}
+
+void EndState::saveScore(int scoreE, int scoreH)
+{
+	string filename = "resources/data/" + to_string(level) + ".txt";
+
+	ofstream archivo(filename);
+
+	
+
+	archivo << 0 << " " << scoreE << endl;
+	archivo << 1 << " " << scoreH << endl;
+
+	archivo.close();
 }

@@ -19,7 +19,6 @@ MapState::MapState(GameManager* g) :GameState(g)
 	
 	activeLevels[0] = true;
 	activeLevels[1] = true;
-	activeLevels[2] = true;
 	loadGame();
 }
 
@@ -134,62 +133,43 @@ void MapState::unlockLevels()
 {
 	for(int i = 0; i < 4; i++)
 	{
-		buttons[i].second.difActive = buttons[i].second.noteP1E_ == 'S' || buttons[i].second.noteP1E_ == 'A' || buttons[i].second.noteP2E_ == 'A' || buttons[i].second.noteP2E_ == 'S';
+		buttons[i].second.difActive = buttons[i].second.scoreE_ > 800000;
 	}
-	if (buttons[2].second.difActive && buttons[3].second.difActive) {
+	if (buttons[2].second.scoreE_ > 600000 && buttons[3].second.scoreE_ > 600000) {
 		activeLevels[4] = true;
 	}
-	else if (buttons[1].second.difActive && buttons[0].second.difActive) {
+	else if (buttons[1].second.scoreE_ > 600000 && buttons[0].second.scoreE_ > 600000) {
 		activeLevels[2] = true;
 		activeLevels[3] = true;
 	}
 	int i = 0;
-	while (buttons[i].second.hardModeCompleted) {
+	while (buttons[i].second.scoreH_ > 800000) {
 		i++;
 	}
 	if (i >= 4) { buttons[i].second.difActive = true; }
 }
 
-//Leemos de un arhcivo el nivel, la dificultad, el numero de jugadores los puntos obtenidos y la nota obtenida
+//Leemos de un arhcivo  la dificultad, los puntos obtenidos
 void MapState::loadGame() {
-	ifstream archivo("partida.txt");
-	string line;
-	int level;
-	int mode;
-	int players;
-	int points;
-	char note;
-	while (getline(archivo, line)) {
-		archivo >> level >> mode >> players; //Primero se lee el nivel, la dificultad y los jugadores para guardar los numeros
-		activeLevels[level - 1] = true;
-		if (mode == 0) {
-			/*buttons[level - 1].second.difActive = true;					*/
-			archivo >> points >> note;
-			if (buttons[level - 1].second.scoreP1E_ <= points) {
-				buttons[level - 1].second.scoreP1E_ = points;
-				buttons[level - 1].second.noteP1E_ = note;
-			}
-			if (players == 2) {
-				archivo >> points >> note;
-				if (buttons[level - 1].second.scoreP2E_ <= points) {
-					buttons[level - 1].second.scoreP2E_ = points;
-					buttons[level - 1].second.noteP2E_ = note;
-				}
-			}
-		}
-		else {
-			buttons[level - 1].second.difActive = true;
-			archivo >> points >> note;
-			buttons[level - 1].second.scoreP1H_ = points;
-			buttons[level - 1].second.noteP1H_ = note;
-			if (players == 2) {
-				archivo >> points >> note;
-				buttons[level - 1].second.scoreP2H_ = points;
-				buttons[level - 1].second.noteP2H_ = note;
-			}
-		}
+
+	for (int i = 1; i <= 5; i++) {
+		string filename = "resources/data/" + to_string(i) + ".txt";
+
+		ifstream archivo(filename);
+
+		//
+		int mode;
+		int scoreE;
+		int scoreH;
+
+		archivo >> mode >> scoreE;
+		archivo >> mode >> scoreH;
+		buttons[i-1].second.scoreE_ = scoreE;
+		buttons[i-1].second.scoreH_ = scoreH;
+
+		archivo.close();
+
 	}
-	archivo.close();
 	unlockLevels();
 }
 
