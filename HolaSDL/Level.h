@@ -18,7 +18,7 @@ public:
 
 	void playSong();
 
-	void init();
+	void init(bool hardmode);
 
 	int bpm;
 	int probqte;

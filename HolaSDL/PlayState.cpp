@@ -92,6 +92,8 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff) : GameState(
 		break;
 	}
 
+	difficultyMode = diff;
+
 	if (oneP) {
 		newGame();
 	}
@@ -105,7 +107,7 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff) : GameState(
 	pauseMenu->setActive(false);
 
 	isSingleplayer = oneP;
-	difficultyMode = diff;
+	
 }
 
 void PlayState::newGame()
@@ -123,7 +125,7 @@ void PlayState::newGame()
 	player1 = new PlayerPack(manager,this, leftNotesPos, rightNotesPos, pointSize, noteBarWidth,0,true);
 	
 	level = new Level(this, manager, levelName,noteSize);
-	level->init();
+	level->init(difficultyMode);
 	player2 = nullptr;
 	timer = Timer::Instance();
 	timer->Reset();
@@ -168,9 +170,6 @@ void PlayState::newGame()
 
 	level->playSong();
 
-	/////////////////////////
-	//exit_ = false;
-
 	combo = 0;
 
 	updateResolution();
@@ -192,7 +191,7 @@ void PlayState::newGame2P()
 	player1 = new PlayerPack(manager,this, leftNotesPos, rightNotesPos, pointSize, noteBarWidth,0,false);
 	player2 = new PlayerPack(manager,this, leftNotesPos + 400, rightNotesPos + 400, pointSize, noteBarWidth,1,false);
 	level = new Level(this, manager, levelName,noteSize);
-	level->init();
+	level->init(difficultyMode);
 	timer = Timer::Instance();
 	timer->Reset();
 	maxNoteValue = maxScore / level->noteAmount;
@@ -254,7 +253,6 @@ void PlayState::update(Uint32 time)
 
 						else if (time - songEndWaitTime >= 2000)
 							songIsOver = true;
-						//songOver();
 					}
 				}
 			}
@@ -304,7 +302,7 @@ void PlayState::update(Uint32 time)
 		}
 		if (timer->DeltaTime() > ((bh->getBeatTime() / 1000.0) / (animationFramesPerBeat / 1000)) - msDiff)
 		{
-			//aqu� se divide el beatTime lo necesario para animar las frames especificadas entre cada beat
+			//aqui se divide el beatTime lo necesario para animar las frames especificadas entre cada beat
 
 			beatSignal = true;
 		}
@@ -397,13 +395,10 @@ void PlayState::generateArrows()
 		if (levelArrows_.front() != nullptr) {
 
 			player1->screenArrows_.push_back(levelArrows_.front());
-			//player1->screenArrows_.back()->setPosition(player1->screenArrows_.back()->getPosition() + player1->screenArrows_.back()->getVelocity()*msDiff);
 			
 			if (player2 != nullptr && levelArrows2_.front()!=nullptr)
 			{
-
 				player2->screenArrows_.push_back(levelArrows2_.front());
-				//player2->screenArrows_.back()->setPosition(player2->screenArrows_.back()->getPosition() + player2->screenArrows_.back()->getVelocity()*msDiff);
 			}
 		}
 		levelArrows2_.pop_front();
@@ -453,43 +448,6 @@ void PlayState::exit()
 	manager->getMachine()->changeState(new MapState(manager));
 }
 
-void PlayState::updateResolution()
-{
-	/*GameState::updateResolution();
-
-	double wScale = manager->getWidthScale();
-	double hScale = manager->getHeightScale();
-
-	minigame->updateResolution(wScale, hScale);
-	Vector2D noteVel = setVel(60000 / (level->bpm/1));
-
-	for (Note* n : levelArrows_) {
-		if (n != nullptr){
-			n->updateResolution(wScale, hScale);
-			n->setVelocity(noteVel);
-		}
-	}
-	for (Note* n : levelButtons_) {
-		if (n != nullptr) {
-			n->updateResolution(wScale, hScale);
-			n->setVelocity(noteVel);
-		}
-	}
-	for (Note* n : levelArrows2_) {
-		if (n != nullptr) {
-			n->updateResolution(wScale, hScale);
-			n->setVelocity(noteVel);
-		}
-	}
-	for (Note* n : levelButtons2_) {
-		if (n != nullptr) {
-			n->updateResolution(wScale, hScale);
-			n->setVelocity(noteVel);
-		}
-	}
-
-	initialNoteHeight = initialNoteHeight * hScale;*/
-}
 
 Vector2D PlayState::setVel(double time)
 {
@@ -510,7 +468,7 @@ void PlayState::showError()
 	bg->cleanAnimationQueue();
 	bg->forceAnimationChange(bgT+1);
 	bg->queueAnimationChange(bgT);
-
+	manager->getServiceLocator()->getAudios()->setChannelVolume(10,1); //AJUSTE DEL VOLUMEN
 	manager->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0, 1);
 }
 
