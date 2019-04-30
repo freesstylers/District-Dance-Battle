@@ -110,7 +110,9 @@ public:
 		fourButtons,
 		Crown,
 		Recuadro1PWin,
-		Recuadro2PWin
+		Recuadro2PWin,
+			ButtonVol,
+			VolSelection
 
 		// text
 	};
