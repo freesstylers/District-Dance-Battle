@@ -124,7 +124,7 @@ vector<Resources::ImageInfo> Resources::images_{
 		{Crown, "resources/images/Crown.png",32,32,4,1,4},
 		{Recuadro1PWin, "resources/images/Recuadro1PWinning.png", 32, 100, 4, 1, 4 },
 		{Recuadro2PWin, "resources/images/Recuadro2PWinning.png", 32, 100, 4, 1, 4 },
-		{MenuIcon, "resources/images/icon.png", 32, 100, 4, 1, 4 }
+		{MenuIcon, "resources/images/icon.png", 32, 100, 4, 1, 4 },
         {LeftArrowPlay, "resources/images/FlechaLeftPlay.png", 32, 32, 1, 1, 1 },
 		{RightArrowPlay, "resources/images/FlechaRightPlay.png", 32, 32, 1, 1, 1 },
 		{UpArrowPlay, "resources/images/FlechaUpPlay.png", 32, 32, 1, 1, 1 },

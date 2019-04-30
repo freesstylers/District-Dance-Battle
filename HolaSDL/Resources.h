@@ -111,7 +111,7 @@ public:
 		Crown,
 		Recuadro1PWin,
 		Recuadro2PWin,
-		MenuIcon
+		MenuIcon,
      	LeftArrowPlay,
 		RightArrowPlay,
 		UpArrowPlay,
