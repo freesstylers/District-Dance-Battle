@@ -123,7 +123,8 @@ vector<Resources::ImageInfo> Resources::images_{
 		{fourButtons, "resources/images/CuatroBotones.png", 75, 81, 1, 1, 1},
 		{Crown, "resources/images/Crown.png",32,32,4,1,4},
 		{Recuadro1PWin, "resources/images/Recuadro1PWinning.png", 32, 100, 4, 1, 4 },
-		{Recuadro2PWin, "resources/images/Recuadro2PWinning.png", 32, 100, 4, 1, 4 }
+		{Recuadro2PWin, "resources/images/Recuadro2PWinning.png", 32, 100, 4, 1, 4 },
+		{MenuIcon, "resources/images/icon.png", 32, 100, 4, 1, 4 }
 
 	
 };

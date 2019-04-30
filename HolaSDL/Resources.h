@@ -110,7 +110,8 @@ public:
 		fourButtons,
 		Crown,
 		Recuadro1PWin,
-		Recuadro2PWin
+		Recuadro2PWin,
+		MenuIcon
 
 		// text
 	};
