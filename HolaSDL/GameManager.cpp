@@ -17,11 +17,12 @@ GameManager::~GameManager()
 
 void GameManager::start() {
 	//supposed to push the first MapState, temporarily pushes a PlayState
-	machine->pushState(new MapState(this));
+	//machine->pushState(new MapState(this));
 	//machine->pushState(new DialogState(this, "Dialog0", 0));
 	//machine->pushState(new DialogState(this,1		,0));
 	//machine->pushState(new DialogState(this,"Dialog0",0));
 	//machine->pushState(new EndState(this,60,100,10,1));
+	machine->pushState(new MainMenuState(this));
 	run();
 }
 
