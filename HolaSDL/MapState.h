@@ -39,7 +39,7 @@ private:
 	EmptyObject* fondo__;
 	EmptyObject* moreLvls_;
 
-
+	void unlockLevel(int lvl);
 	void createMainButtons();
 	void nextButton();
 	void backButton();

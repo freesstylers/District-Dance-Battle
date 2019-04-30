@@ -5,41 +5,74 @@ Note::Note()
 {
 
 }
-Note::Note(SDL_GameControllerButton key, SDLGame* game, double width, double height, Vector2D pos, Vector2D vel) :
+Note::Note(SDL_GameControllerButton key, SDLGame* game, double width, double height, Vector2D pos, Vector2D vel, bool mandoXbox) :
 	GameObject(game), key(key)
 {
 	setWidth(width);
 	setHeight(height);
 	setPosition(pos);
 	setVelocity(vel);
-	switch (key) {
-	case SDL_CONTROLLER_BUTTON_DPAD_LEFT:
-		animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::LeftArrow);
-		break;
-	case SDL_CONTROLLER_BUTTON_DPAD_RIGHT:
-		animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::RightArrow);
-		break;
-	case SDL_CONTROLLER_BUTTON_DPAD_UP:
-		animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::UpArrow);
-		break;
-	case SDL_CONTROLLER_BUTTON_DPAD_DOWN:
-		animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::DownArrow);
-		break;
-	case SDL_CONTROLLER_BUTTON_A:
-		animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::AButton);
-		break;
-	case SDL_CONTROLLER_BUTTON_B:
-		animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::BButton);
-		break;
-	case SDL_CONTROLLER_BUTTON_X:
-		animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::XButton);
-		break;
-	case SDL_CONTROLLER_BUTTON_Y:
-		animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::YButton);
-		break;
-	case SDL_CONTROLLER_BUTTON_INVALID:
-		animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::FlechaEspBomba);
-		break;
+	if (mandoXbox) {
+		switch (key) {
+		case SDL_CONTROLLER_BUTTON_DPAD_LEFT:
+			animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::LeftArrow);
+			break;
+		case SDL_CONTROLLER_BUTTON_DPAD_RIGHT:
+			animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::RightArrow);
+			break;
+		case SDL_CONTROLLER_BUTTON_DPAD_UP:
+			animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::UpArrow);
+			break;
+		case SDL_CONTROLLER_BUTTON_DPAD_DOWN:
+			animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::DownArrow);
+			break;
+		case SDL_CONTROLLER_BUTTON_A:
+			animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::AButton);
+			break;
+		case SDL_CONTROLLER_BUTTON_B:
+			animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::BButton);
+			break;
+		case SDL_CONTROLLER_BUTTON_X:
+			animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::XButton);
+			break;
+		case SDL_CONTROLLER_BUTTON_Y:
+			animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::YButton);
+			break;
+		case SDL_CONTROLLER_BUTTON_INVALID:
+			animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::FlechaEspBomba);
+			break;
+		}
+	}
+	else {
+		switch (key) {
+		case SDL_CONTROLLER_BUTTON_DPAD_LEFT:
+			animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::LeftArrowPlay);
+			break;
+		case SDL_CONTROLLER_BUTTON_DPAD_RIGHT:
+			animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::RightArrowPlay);
+			break;
+		case SDL_CONTROLLER_BUTTON_DPAD_UP:
+			animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::UpArrowPlay);
+			break;
+		case SDL_CONTROLLER_BUTTON_DPAD_DOWN:
+			animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::DownArrowPlay);
+			break;
+		case SDL_CONTROLLER_BUTTON_A:
+			animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::XButtonPlay);
+			break;
+		case SDL_CONTROLLER_BUTTON_B:
+			animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::BButtonPlay);
+			break;
+		case SDL_CONTROLLER_BUTTON_X:
+			animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::SquareButtonPlay);
+			break;
+		case SDL_CONTROLLER_BUTTON_Y:
+			animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::TriangleButtonPlay);
+			break;
+		case SDL_CONTROLLER_BUTTON_INVALID:
+			animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::FlechaEspBomba);
+			break;
+		}
 	}
 
 

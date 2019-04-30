@@ -125,8 +125,15 @@ vector<Resources::ImageInfo> Resources::images_{
 		{Recuadro1PWin, "resources/images/Recuadro1PWinning.png", 32, 100, 4, 1, 4 },
 		{Recuadro2PWin, "resources/images/Recuadro2PWinning.png", 32, 100, 4, 1, 4 },
 		{ButtonVol, "resources/images/volumeSprite.png", 153, 65, 1, 1, 1 },
-		{VolSelection, "resources/images/volumeSelection.png", 153, 65, 1, 1, 1 }
-			
+		{VolSelection, "resources/images/volumeSelection.png", 153, 65, 1, 1, 1 },
+		{LeftArrowPlay, "resources/images/FlechaLeftPlay.png", 32, 32, 1, 1, 1 },
+		{RightArrowPlay, "resources/images/FlechaRightPlay.png", 32, 32, 1, 1, 1 },
+		{UpArrowPlay, "resources/images/FlechaUpPlay.png", 32, 32, 1, 1, 1 },
+		{DownArrowPlay, "resources/images/FlechaDownPlay.png", 32, 32, 1, 1, 1 },
+		{XButtonPlay, "resources/images/BotonXPlay.png", 32, 32, 1, 1, 1 },
+		{BButtonPlay, "resources/images/BotonCirculoPlay.png", 32, 32, 1, 1, 1 },
+		{SquareButtonPlay, "resources/images/BotonCuadradoPlay.png", 32, 32, 1, 1, 1 },
+		{TriangleButtonPlay, "resources/images/BotonTrianguloPlay.png", 32, 32, 1, 1, 1 }
 
 	
 };

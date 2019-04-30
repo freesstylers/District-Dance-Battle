@@ -111,8 +111,16 @@ public:
 		Crown,
 		Recuadro1PWin,
 		Recuadro2PWin,
-			ButtonVol,
-			VolSelection
+		ButtonVol,
+		VolSelection,
+		LeftArrowPlay,
+		RightArrowPlay,
+		UpArrowPlay,
+		DownArrowPlay,
+		XButtonPlay,
+		BButtonPlay,
+		SquareButtonPlay,
+		TriangleButtonPlay,
 
 		// text
 	};
