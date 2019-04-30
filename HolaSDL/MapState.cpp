@@ -78,19 +78,25 @@ void MapState::render(Uint32 time, bool beatSync)
 		buttons[index].second.render(time, false);
 }
 
+void MapState::unlockLevel(int lvl)
+{
+	activeLevels[lvl] = true;
+	buttons[lvl].first.animation = *manager->getServiceLocator()->getTextures()->getAnimation(Resources::MetroOn);
+}
+
 void MapState::createMainButtons()
 {
 	
 	buttons[0].first = EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() / 2 - 60 , manager->getDefaultWindowHeight() / 2 - 30), 64, 64, Resources::MetroOn);
 	buttons[1].first = EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() / 2 + 25 , manager->getDefaultWindowHeight() / 2 + 100), 64, 64, Resources::MetroOn);
 	buttons[2].first = EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() / 2 - 260, manager->getDefaultWindowHeight() / 2 - 165), 64, 64, Resources::MetroOn);
-	buttons[3].first = EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() / 2 - 200, manager->getDefaultWindowHeight() / 2 - 85), 64, 64, Resources::MetroOff);
-	buttons[4].first = EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() / 2 + 130, manager->getDefaultWindowHeight() / 2 - 110), 64, 64, Resources::MetroOff);
+	buttons[3].first = EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() / 2 + 130, manager->getDefaultWindowHeight() / 2 - 110), 64, 64, Resources::MetroOff);
+	buttons[4].first = EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() / 2 - 200, manager->getDefaultWindowHeight() / 2 - 85), 64, 64, Resources::MetroOff);
 	buttons[0].second = PanelMap(manager, buttons[0].first.getPosition() - Vector2D(200, -20), Resources::CabezaVaporWave, 1, "D35P4C1T0", 1);
 	buttons[1].second = PanelMap(manager, buttons[1].first.getPosition() - Vector2D(-30, 110), Resources::EminemciaHead, 3, "Eminemcia", 2);
 	buttons[2].second = PanelMap(manager, buttons[2].first.getPosition(), Resources::CabezaPapito, 2, "Papito Daddy", 3);
-	buttons[3].second = PanelMap(manager, buttons[3].first.getPosition(), Resources::EminemciaHead, 3, "Eminemcia", 2);
-	buttons[4].second = PanelMap(manager, buttons[4].first.getPosition(), Resources::CabezaVaporWave, 1, "D35P4C1T0", 1);
+	buttons[3].second = PanelMap(manager, buttons[3].first.getPosition(), Resources::CabezaVaporWave, 1, "D35P4C1T0", 4);
+	buttons[4].second = PanelMap(manager, buttons[4].first.getPosition(), Resources::EminemciaHead, 3, "Eminemcia", 5);
 
 	buttons[0].first.scale(2);
 }
@@ -136,11 +142,11 @@ void MapState::unlockLevels()
 		buttons[i].second.difActive = buttons[i].second.scoreE_ > 800000;
 	}
 	if (buttons[2].second.scoreE_ > 600000 && buttons[3].second.scoreE_ > 600000) {
-		activeLevels[4] = true;
+		unlockLevel(4);
 	}
-	else if (buttons[1].second.scoreE_ > 600000 && buttons[0].second.scoreE_ > 600000) {
-		activeLevels[2] = true;
-		activeLevels[3] = true;
+	if (buttons[1].second.scoreE_ > 600000 && buttons[0].second.scoreE_ > 600000) {
+		unlockLevel(2);
+		unlockLevel(3);
 	}
 	int i = 0;
 	while (buttons[i].second.scoreH_ > 800000) {
@@ -152,20 +158,20 @@ void MapState::unlockLevels()
 //Leemos de un arhcivo  la dificultad, los puntos obtenidos
 void MapState::loadGame() {
 
-	for (int i = 1; i <= 5; i++) {
-		string filename = "resources/data/" + to_string(i) + ".txt";
+	for (int i = 0; i <= 4; i++) {
+		string filename = "resources/data/" + to_string(i+1) + ".txt";
 
 		ifstream archivo(filename);
 
 		//
 		int mode;
-		int scoreE;
-		int scoreH;
+		int scoreE = 0;
+		int scoreH = 0;
 
 		archivo >> mode >> scoreE;
 		archivo >> mode >> scoreH;
-		buttons[i-1].second.scoreE_ = scoreE;
-		buttons[i-1].second.scoreH_ = scoreH;
+		buttons[i].second.scoreE_ = scoreE;
+		buttons[i].second.scoreH_ = scoreH;
 
 		archivo.close();
 

@@ -12,16 +12,23 @@ PauseMenu::PauseMenu(SDLGame* game, PlayState* ps) : GameObject(game)
 	double menuW = game->getDefaultWindowWidth() / 3;
 	double menuH = game->getDefaultWindowHeight() * 2 / 3;
 
+	double buttonConst = menuH / 8 - 50;
+
+	double opX = menuX + (menuW * 0.3) / 2;
+	double opY = menuY + (menuH * 0.3) / 2;
+	double opW = menuW * 0.7;
+	double opH = menuH * 0.7;
+
 
 	bg = new EmptyObject(game, Vector2D(menuX, menuY), menuW, menuH, Resources::MenuBG);
 
-	resume = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH / 6), menuW / 2, 100, Resources::ButtonResume);
+	resume = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.05 + buttonConst), menuW / 2, 100, Resources::ButtonResume);
 
-	restart = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH / 3), menuW / 2, 100, Resources::ButtonRestart);
+	restart = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.23 + buttonConst), menuW / 2, 100, Resources::ButtonRestart);
 
-	options = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH / 2), menuW / 2, 100, Resources::ButtonOptions);
+	options = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.41 + buttonConst), menuW / 2, 100, Resources::ButtonOptions);
 
-	exit = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 2 / 3), menuW / 2, 100, Resources::ButtonExit);
+	exit = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.59 + buttonConst), menuW / 2, 100, Resources::ButtonExit);
 
 	menuButtons.push_back(resume);
 	menuButtons.push_back(restart);
@@ -29,25 +36,38 @@ PauseMenu::PauseMenu(SDLGame* game, PlayState* ps) : GameObject(game)
 	menuButtons.push_back(exit);
 
 
-	op_bg = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuY / 4), menuW / 2 * 0.9, 100 * 0.9, Resources::Blank);
+	op_bg = new EmptyObject(game, Vector2D(menuX, menuY), menuW, menuH, Resources::MenuBG);
 
-	music = new EmptyObject(game, Vector2D(menuX / 0.9 + menuX / 4, menuY + menuH / 6), menuW / 3, 100, Resources::Blank);
+	music = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.05 + buttonConst), menuW / 2, 100, Resources::ButtonPlaceholder);
+	musicSelect = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.05 + buttonConst + 100), menuW / 2, 100, Resources::ButtonVol);
 
-	sounds = new EmptyObject(game, Vector2D(menuX / 0.9 + menuX / 4, menuY + menuH / 6), menuW / 3, 100, Resources::Blank);
+	sounds = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.23 + buttonConst), menuW / 2, 100, Resources::ButtonPlaceholder);
+	soundsSelect = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.23 + buttonConst + 100), menuW / 2, 100, Resources::ButtonVol);
 
-	op_exit = new EmptyObject(game, Vector2D(menuX / 0.9 + menuX / 4, menuY + menuH / 6), menuW / 3, 100, Resources::Blank);
+	controls = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.41 + buttonConst), menuW / 2, 100, Resources::ButtonPlaceholder);
+	controlsSelect = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.41 + buttonConst + 100), menuW / 2, 100, Resources::ButtonVol);
 
+	op_exit = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.59 + buttonConst), menuW / 2, 100, Resources::ButtonPlaceholder);
+
+	musicTxt = new TextObject(game, game->getServiceLocator()->getFonts()->getFont(Resources::RETRO50), Vector2D(0, 0));
+	soundTxt = new TextObject(game, game->getServiceLocator()->getFonts()->getFont(Resources::RETRO50), Vector2D(0, 0));
+	controlTxt = new TextObject(game, game->getServiceLocator()->getFonts()->getFont(Resources::RETRO50), Vector2D(0, 0));
+
+	updateTxt();
+
+	optionsButtons.push_back(musicSelect);
+	optionsButtons.push_back(soundsSelect);
+	optionsButtons.push_back(controlsSelect);
+	optionsButtons.push_back(op_exit);
 	optionsButtons.push_back(music);
 	optionsButtons.push_back(sounds);
-	optionsButtons.push_back(op_exit);
+	optionsButtons.push_back(controls);
 
 	controller = SDL_GameControllerOpen(0);
 
 	timer = new TimerNoSingleton();
 
 	selection = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 2 / 3), menuW / 2, 100, Resources::ButtonSelection);
-
-	toggleOptions();
 }
 
 PauseMenu::~PauseMenu()
@@ -76,45 +96,50 @@ void PauseMenu::activate()
 	for (EmptyObject* g : optionsButtons) {
 		g->setActive(false);
 	}
+	musicTxt->setActive(false);
+	soundTxt->setActive(false);
+	controlTxt->setActive(false);
 }
 
 bool PauseMenu::handleInput(Uint32 time, const SDL_Event& event)
 {
 	if (active_)
 	{
-		if (event.type == SDL_CONTROLLERBUTTONDOWN || event.type == SDL_KEYUP) {
+		if (event.type == SDL_CONTROLLERBUTTONDOWN || event.type == SDL_KEYDOWN) {
 			if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_UP) || event.key.keysym.sym == SDLK_UP) {
-				if(optionsOpen)
-					selectedButton = (selectedButton == 0) ? 2 : selectedButton - 1;
-				else
-					selectedButton = (selectedButton == 0) ? 3 : selectedButton - 1;
+				
+				selectedButton = (selectedButton == 0) ? 3 : selectedButton - 1;
 
-				if(optionsOpen)
+				if (optionsOpen) {
 					selection->setPosition(optionsButtons[selectedButton]->getPosition());
+
+					if (selectedButton == 3)
+						selection->forceAnimationChange(Resources::ButtonSelection);
+					else
+						selection->forceAnimationChange(Resources::VolSelection);
+				}
 				else
 					selection->setPosition(menuButtons[selectedButton]->getPosition());
 			}
 			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN) || event.key.keysym.sym == SDLK_DOWN) {
-				if (optionsOpen)
-					selectedButton = (selectedButton == 2) ? 0 : selectedButton + 1;
-				else
-					selectedButton = (selectedButton == 3) ? 0 : selectedButton + 1;
+				
+				selectedButton = (selectedButton == 3) ? 0 : selectedButton + 1;
 
-				if (optionsOpen)
+				if (optionsOpen) {
 					selection->setPosition(optionsButtons[selectedButton]->getPosition());
+
+					if (selectedButton == 3)
+						selection->forceAnimationChange(Resources::ButtonSelection);
+					else
+						selection->forceAnimationChange(Resources::VolSelection);
+				}
 				else
 					selection->setPosition(menuButtons[selectedButton]->getPosition());
 			}
 			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || event.key.keysym.sym == SDLK_RETURN) {
 				if (optionsOpen) {
 					switch (selectedButton) {
-					case 0:
-						resumeSong();
-						break;
-					case 1:
-						restartSong();
-						break;
-					case 2:
+					case 3:
 						toggleOptions();
 						break;
 					default:
@@ -150,6 +175,9 @@ bool PauseMenu::handleInput(Uint32 time, const SDL_Event& event)
 					case 1:
 						updateSound(true);
 						break;
+					case 2:
+						updateControls();
+						break;
 					default:
 						break;
 					}
@@ -163,6 +191,9 @@ bool PauseMenu::handleInput(Uint32 time, const SDL_Event& event)
 						break;
 					case 1:
 						updateSound(false);
+						break;
+					case 2:
+						updateControls();
 						break;
 					default:
 						break;
@@ -195,16 +226,21 @@ void PauseMenu::toggleOptions()
 	for(EmptyObject* g : optionsButtons)
 		g->setActive(optionsOpen);
 
-	if (optionsOpen)
+	musicTxt->setActive(optionsOpen);
+	soundTxt->setActive(optionsOpen);
+	controlTxt->setActive(optionsOpen);
+
+
+	if (optionsOpen) {
 		selectedButton = 0;
-	else
-		selectedButton = 2;
-
-
-	if (optionsOpen)
 		selection->setPosition(optionsButtons[selectedButton]->getPosition());
-	else
+		selection->forceAnimationChange(Resources::VolSelection);
+	}
+	else {
+		selectedButton = 2;
 		selection->setPosition(menuButtons[selectedButton]->getPosition());
+		selection->forceAnimationChange(Resources::ButtonSelection);
+	}
 }
 
 void PauseMenu::restartSong()
@@ -220,30 +256,45 @@ void PauseMenu::exitSong()
 void PauseMenu::updateMusic(bool raise)
 {
 	if (raise && game_->getMusicVolume() < 100) {
-		game_->setMusicVolume(game_->getMusicVolume() + 10);
+		game_->setMusicVolume(game_->getMusicVolume() + 5);
 	}
 	else if(!raise && game_->getMusicVolume() > 0) {
-		game_->setMusicVolume(game_->getMusicVolume() - 10);
+		game_->setMusicVolume(game_->getMusicVolume() - 5);
 	}
 
 
 	game_->getServiceLocator()->getAudios()->setChannelVolume(game_->getMusicVolume(), 0);
 	game_->getServiceLocator()->getAudios()->setChannelVolume(game_->getMusicVolume(), 2);
 	game_->getServiceLocator()->getAudios()->playChannel(Resources::Snare, 0, 2);
+
+	updateTxt();
 }
 
 void PauseMenu::updateSound(bool raise)
 {
 	if (raise && game_->getSoundVolume() < 100) {
-		game_->setSoundVolume(game_->getSoundVolume() + 10);
+		game_->setSoundVolume(game_->getSoundVolume() + 5);
 	}
 	else if (!raise && game_->getSoundVolume() > 0) {
-		game_->setSoundVolume(game_->getSoundVolume() - 10);
+		game_->setSoundVolume(game_->getSoundVolume() - 5);
 	}
 
-	game_->getServiceLocator()->getAudios()->setChannelVolume(game_->getMusicVolume(), 0);
-	game_->getServiceLocator()->getAudios()->setChannelVolume(game_->getMusicVolume(), 2);
+	game_->getServiceLocator()->getAudios()->setChannelVolume(game_->getSoundVolume(), 1);
 	game_->getServiceLocator()->getAudios()->playChannel(Resources::Snare, 0, 1);
+
+	updateTxt();
+}
+
+void PauseMenu::updateControls()
+{
+
+}
+
+void PauseMenu::updateTxt()
+{
+	musicTxt->setText(to_string(game_->getMusicVolume()), SDL_Color{ 0, 0, 0, 255 });
+	soundTxt->setText(to_string(game_->getSoundVolume()), SDL_Color{ 0, 0, 0, 255 });
+	controlTxt->setText("aaa", SDL_Color{ 0, 0, 0, 255 });
 }
 
 
@@ -265,6 +316,9 @@ void PauseMenu::render(Uint32 time, bool beatSync)
 		}
 
 		selection->render(time);
+		musicTxt->render(time);
+		soundTxt->render(time);
+		controlTxt->render(time);
 	}
 }
 

@@ -94,7 +94,7 @@ protected:
 
 public:
 	BeatHandler* bh;
-	PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxScoreE_ = 0, int prevMaxScoreH_ = 0);
+	PlayState(GameManager* g, int lvl, bool oneP, bool diff,int prevMaxScoreE_ = 0, int prevMaxScoreH_ = 0);
 	void newGame();
 	void newGame2P();
 	~PlayState();

@@ -119,7 +119,6 @@ void PanelMap::selectButton(SDL_Event e, SDL_GameController* cont) {
 	}
 }
 
-
 PanelMap::~PanelMap()
 {
 

@@ -16,6 +16,8 @@ public:
 	void update(Uint32 time);
 	void handleEvent(Uint32 time);
 	void render(Uint32 time);
+	bool getMando() { return mandoXbox; };
+	void setMando(bool xbox) { mandoXbox = xbox; };
 	bool checkExit();
 	bool exit_;
 	virtual void start(); // start the game
@@ -24,6 +26,7 @@ public:
 	
 protected:
 	GameStateMachine* machine;
+	bool mandoXbox = false;
 	
 private:
 	const static int _WINDOW_WIDTH_ = 1280;
