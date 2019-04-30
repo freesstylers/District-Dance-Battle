@@ -29,15 +29,10 @@ void Level::init(bool hardmode) {
 	file >> songLength;
 	file >> song;
 
-	if (name == "asereje") {
+	if (name == "asereje")
 		noteVel = level->setVel(60000 / ((double)bpm / 1.5));
-	}
-	else {
-  		if (hardmode)
-			noteVel = level->setVel(60000 / ((double)bpm * 2));
-		else 
-			noteVel = level->setVel(60000 / (double)bpm);
-	}
+	else
+		noteVel = level->setVel(60000 / (double)bpm);
 
 	int aux = 0;
 	while (aux >= 0) {
