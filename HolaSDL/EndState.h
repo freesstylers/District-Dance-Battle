@@ -10,7 +10,7 @@ class EndState :
 {
 public:
 	
-	EndState(GameManager* g, int prevMaxScoreE, int prevMaxScoreH, int actualScore, int maxScore, int percentage, int lvl, bool isSingleplayer, bool hardMode, int actualScore2 = 0);
+	EndState(GameManager* g, int prevMaxScoreE, int prevMaxScoreH, int* califs1, int actualScore, int maxScore, int percentage, int lvl, bool isSingleplayer, bool hardMode, int actualScore2 = 0, int* califs2 = nullptr);
 	virtual ~EndState();
 	static void backToMenu(GameManager* gameManager);
 	virtual bool handleEvent(Uint32 time, SDL_Event e);

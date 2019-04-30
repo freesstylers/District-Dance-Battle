@@ -144,7 +144,7 @@ void PlayState::newGame()
 
 
 	songBarBG = new BarBackground(manager, 1, 14, Vector2D(50, 35), (manager->getDefaultWindowWidth() - (50*2)) / level->songLength, Resources::YellowBar); //70.5 es la constante para ajustar la velocidad de la barra al tiempo de la cancion
-	songBar = new SongBar(manager, 18, 22, Vector2D(41, 31), Vector2D(((manager->getDefaultWindowWidth()-(41*2)) / level->songLength), 0), songBarBG);
+	songBar = new SongBar(manager, 18, 22, Vector2D(41, 31), Vector2D(((double(manager->getDefaultWindowWidth()-(41*2))) / level->songLength), 0), songBarBG);
 	
 
 	perico = new Character(manager, 60 * 5, 120 * 5, Vector2D(100, initialNoteHeight + 50), Resources::PericoIdle);
@@ -450,10 +450,10 @@ void PlayState::generateButtons()
 void PlayState::songOver()
 {
 	manager->getServiceLocator()->getAudios()->haltChannel(0);
-	if(isSingleplayer)
-		manager->getMachine()->changeState(new EndState(manager, prevMaxScoreE_, prevMaxScoreH_, player1->currentScore, maxScore, 70, nlevel, isSingleplayer, difficultyMode));
+	if (isSingleplayer)
+		manager->getMachine()->changeState(new EndState(manager, prevMaxScoreE_, prevMaxScoreH_, player1->getCalifications(), player1->currentScore, maxScore, 70, nlevel, isSingleplayer, difficultyMode));
 	else
-		manager->getMachine()->changeState(new EndState(manager, prevMaxScoreE_, prevMaxScoreH_, player1->currentScore, maxScore, 70, nlevel, isSingleplayer, difficultyMode, player2->currentScore));
+		manager->getMachine()->changeState(new EndState(manager, prevMaxScoreE_, prevMaxScoreH_, player1->getCalifications(), player1->currentScore, maxScore, 70, nlevel, isSingleplayer, difficultyMode, player2->currentScore, player2->getCalifications()));
 	//manager->getMachine()->changeState(new MapState(manager));
 	//manager->getMachine()->popState();
 }

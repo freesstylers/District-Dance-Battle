@@ -23,7 +23,8 @@ protected:
 	PlayState* playstate_;
 	ComboText* comboTxt;
 	Vector2D comboPosition;
-	
+	int* califications = new int[4];
+
 	int noteYLimit;
 	int comboTextX;
 
@@ -55,7 +56,8 @@ public:
 	virtual void updateResolution(double wScale, double hScale);
 	void addCombo(int i);
 	void resetCombo();
-
+	int* getCalifications();
+	void addCalifications(int letter);
 	void setComboActive(bool active) { comboTxt->setActive(active); if (active) updateCombo(); }
 
 	LevelInputManager* lip;

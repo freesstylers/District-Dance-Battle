@@ -7,6 +7,10 @@ PlayerPack::PlayerPack()
 
 PlayerPack::PlayerPack(SDLGame* manager, PlayState* ps, int leftNotesPos, int rightNotesPos, int pointSize, int squareWidth, int player,bool OneP): GameObject(manager), playstate_(ps)
 {
+	for (int i = 0; i < 4; i++)
+	{
+		califications[i] = 0;
+	}
 	lip = new LevelInputManager(playstate_, this, player);
 	leftNotesVector = Vector2D(leftNotesPos - 50 / 2, 70);
 	rightNotesVector = Vector2D(rightNotesPos - 50 / 2, 70);
@@ -203,6 +207,16 @@ void PlayerPack::resetCombo()
 		combo = 0;
 		updateCombo();
 	}
+}
+
+int* PlayerPack::getCalifications()
+{
+	return califications;
+}
+
+void PlayerPack::addCalifications(int letter)
+{
+	califications[letter]++;
 }
 
 void PlayerPack::updateCombo()

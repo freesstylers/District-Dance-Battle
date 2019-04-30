@@ -8,7 +8,7 @@
 	selectedButtons[1] = false;
 }*/
 
-EndState::EndState(GameManager * g, int prevMaxScoreE, int prevMaxScoreH,  int actualScore, int maxScore, int percentage,int lvl, bool isSingleplayer, bool hardMode, int actualScore2): GameState(g)
+EndState::EndState(GameManager* g, int prevMaxScoreE, int prevMaxScoreH, int* califs1, int actualScore, int maxScore, int percentage, int lvl, bool isSingleplayer, bool hardMode, int actualScore2, int* califs2) : GameState(g)
 {
 	level = lvl;
 	punt = maxScore;
@@ -29,9 +29,10 @@ EndState::EndState(GameManager * g, int prevMaxScoreE, int prevMaxScoreH,  int a
 	tooltip->setText("Pulsa A para salir", SDL_Color{ (0), (0), (0), (255) });
 	tooltip->setPosition(Vector2D(gameManager->getDefaultWindowWidth() / 2, gameManager->getDefaultWindowHeight()) - Vector2D(tooltip->getWidth() / 2, tooltip->getHeight() + 10));
 
+
 	EmptyObject* letter = new EmptyObject(g, Vector2D(gameManager->getDefaultWindowWidth() / 2 + 325, gameManager->getDefaultWindowHeight() / 2 - 40), 160, 260, Resources::ScoreS);
 
-	Character* perico = new Character(g, 300, 540, Vector2D(gameManager->getDefaultWindowWidth() / 2 - 150, 160), Resources::PericoDab);
+	Character* perico = new Character(g, 300, 540, Vector2D(gameManager->getDefaultWindowWidth() / 2, 160), Resources::PericoDab);
 	perico->isAnimationSynced(false);
 	perico->setAnimationFramerate(4);
 	
@@ -74,17 +75,27 @@ EndState::EndState(GameManager * g, int prevMaxScoreE, int prevMaxScoreH,  int a
 		letter->setPosition(letter->getPosition() + Vector2D(60, 0));
 		letter->scale(0.7);
 		stage.push_back(letter);
-		perico->setPosition(Vector2D(gameManager->getDefaultWindowWidth() / 2, 180));
+		perico->setPosition(Vector2D(gameManager->getDefaultWindowWidth() / 2 - 380, 180));
 		perico->scale(0.8);
 		stage.push_back(perico);
 
 		EmptyObject* letter2 = new EmptyObject(g, Vector2D(gameManager->getDefaultWindowWidth() / 2 - 325 - 55 - 160, gameManager->getDefaultWindowHeight() / 2 - 40), 160, 260, Resources::ScoreS);
 		letter2->scale(0.7);
 
-		Character* perico2 = new Character(g, 300, 540, Vector2D(gameManager->getDefaultWindowWidth() / 2 - 300, 180), Resources::PericoDab);
+		Character* perico2 = new Character(g, 300, 540, Vector2D(gameManager->getDefaultWindowWidth() / 2 + 45, 180), Resources::PericoDab);
 		perico2->scale(0.8);
 		perico2->isAnimationSynced(false);
 		perico2->setAnimationFramerate(4);
+
+		EmptyObject* Wow = new EmptyObject(g, Vector2D(gameManager->getDefaultWindowWidth() / 2 - 32, gameManager->getDefaultWindowHeight() / 2 - 40), 64, 64, Resources::FeedbackPerfect);
+		stage.push_back(Wow);
+		EmptyObject* Good = new EmptyObject(g, Vector2D(gameManager->getDefaultWindowWidth() / 2 - 32, gameManager->getDefaultWindowHeight() / 2 + 30), 64, 64, Resources::FeedbackGood);
+		stage.push_back(Good);
+		EmptyObject* Ok = new EmptyObject(g, Vector2D(gameManager->getDefaultWindowWidth() / 2 - 31, gameManager->getDefaultWindowHeight() / 2  + 100), 64, 64, Resources::FeedbackRegular);
+		stage.push_back(Ok);
+		EmptyObject* Bad = new EmptyObject(g, Vector2D(gameManager->getDefaultWindowWidth() / 2 - 33, gameManager->getDefaultWindowHeight() / 2 + 170), 64, 64, Resources::FeedbackBad);
+		stage.push_back(Bad);
+
 
 		if (actualScore >= 90 * maxScore / 100) {
 			perico2->forceAnimationChange(Resources::PericoMaxPower);
