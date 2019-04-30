@@ -113,6 +113,8 @@ public:
 		Recuadro2PWin,
 		MenuIcon,
      	LeftArrowPlay,
+		ButtonVol,
+		VolSelection,
 		RightArrowPlay,
 		UpArrowPlay,
 		DownArrowPlay,
