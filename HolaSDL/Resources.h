@@ -112,6 +112,15 @@ public:
 		Recuadro1PWin,
 		Recuadro2PWin,
 		MenuIcon
+     	LeftArrowPlay,
+		RightArrowPlay,
+		UpArrowPlay,
+		DownArrowPlay,
+		XButtonPlay,
+		BButtonPlay,
+		SquareButtonPlay,
+		TriangleButtonPlay,
+
 
 		// text
 	};
