@@ -81,7 +81,7 @@ bool MainMenuState::handleEvent(Uint32 time, SDL_Event e)
 		backButton();
 		input = true;
 	}
-	else if (buttons[0].second == true && SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A)) 
+	else if (buttons[0].second == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_SPACE))
 	{
 		newGame(gameManager);
 		input = true;
