@@ -23,14 +23,12 @@ private:
 	TextObject* points;
 	TextObject* points2;
 	TextObject* tooltip;
+	TextObject* highScoreText;
+	TextObject* highScore;
 	TextObject* Wow1;
-	TextObject* Wow2;
 	TextObject* Good1;
-	TextObject* Good2;
 	TextObject* Ok1;
-	TextObject* Ok2;
 	TextObject* Bad1;
-	TextObject* Bad2;
 
 
 	string types[6] = { "Tutorial", "VaporWave", "HipHop", "??????" , "A" , "A" };
