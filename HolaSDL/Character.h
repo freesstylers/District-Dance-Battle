@@ -1,9 +1,13 @@
 #pragma once
 #include "GameObject.h"
+#include "TimerNoSingleton.h"
 class Character: public GameObject
 {
 private:
-
+	TimerNoSingleton* timer;
+	int firstAnim = -1;
+	int secondAnim = -1;
+	bool dancing = false;
 public:
 	Character(SDLGame* game, double width, double height, Vector2D pos, int i);
 	virtual ~Character();
