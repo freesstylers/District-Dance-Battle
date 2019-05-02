@@ -110,7 +110,19 @@ public:
 		fourButtons,
 		Crown,
 		Recuadro1PWin,
-		Recuadro2PWin
+		Recuadro2PWin,
+		MenuIcon,
+     	LeftArrowPlay,
+		ButtonVol,
+		VolSelection,
+		RightArrowPlay,
+		UpArrowPlay,
+		DownArrowPlay,
+		XButtonPlay,
+		BButtonPlay,
+		SquareButtonPlay,
+		TriangleButtonPlay,
+
 
 		// text
 	};
