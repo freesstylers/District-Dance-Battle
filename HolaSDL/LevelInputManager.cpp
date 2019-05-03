@@ -120,6 +120,7 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 					player->hitRight->addHit(Resources::HitGold, it->getPosition());
 					player->updateScoreNote(1);
 					player->addCombo(1);
+					player->addCalifications(3);
 
 				}
 				else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getRightPoint()->getPosition().getY() + player->getRightPoint()->getHeight() / 2)) <= 25)
@@ -129,6 +130,7 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 					player->hitRight->addHit(Resources::HitSilver, it->getPosition());
 					player->updateScoreNote(2);
 					player->addCombo(1);
+					player->addCalifications(2);
 				}
 				else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getRightPoint()->getPosition().getY() + player->getRightPoint()->getHeight() / 2)) <= 50)
 				{
@@ -137,6 +139,7 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 					player->hitRight->addHit(Resources::HitCopper, it->getPosition());
 					player->updateScoreNote(3);
 					player->addCombo(1);
+					player->addCalifications(1);
 				}
 				else
 				{
@@ -145,6 +148,7 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 					level->showError();
 					player->errorRight();
 					player->resetCombo();
+					player->addCalifications(0);
 				}
 				delete it;
 				player->screenButtons_.remove(it);
@@ -163,6 +167,7 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 					level->showError();
 					player->errorRight();
 					player->resetCombo();
+					player->addCalifications(0);
 				}
 			}
 		}

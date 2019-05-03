@@ -24,12 +24,15 @@ public:
 	virtual void start(); // start the game
 	virtual void stop();  // stop the game
 	GameStateMachine* getMachine();
+	void tick();
 	
 protected:
 	GameStateMachine* machine;
 	bool mandoXbox = false;
 	
 private:
+	uint32_t last_tick_time = 0;
+
 	const static int _WINDOW_WIDTH_ = 1280;
 	const static int _WINDOW_HEIGHT_ = 720;
 };

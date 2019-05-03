@@ -11,7 +11,7 @@ Note::Note(SDL_GameControllerButton key, SDLGame* game, double width, double hei
 	setWidth(width);
 	setHeight(height);
 	setPosition(pos);
-	setVelocity(vel);
+	setVelocity(vel/1000.0);
 	if (mandoXbox) {
 		switch (key) {
 		case SDL_CONTROLLER_BUTTON_DPAD_LEFT:

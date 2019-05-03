@@ -119,8 +119,7 @@ void PlayerPack::update(Uint32 time)
 			delete aux;
 			screenArrows_.pop_front();
 			cout << "fuera" << endl;
-			
-
+			addCalifications(0);
 		}
 		if (!screenButtons_.empty() && screenButtons_.front()->getPosition().getY() > noteYLimit)
 		{
@@ -140,6 +139,7 @@ void PlayerPack::update(Uint32 time)
 			delete aux;
 			screenButtons_.pop_front();
 			cout << "fuera" << endl;
+			addCalifications(0);
 			errorRight();
 		}
 	}
