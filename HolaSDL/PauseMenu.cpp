@@ -22,13 +22,13 @@ PauseMenu::PauseMenu(SDLGame* game, PlayState* ps) : GameObject(game)
 
 	bg = new EmptyObject(game, Vector2D(menuX, menuY), menuW, menuH, Resources::MenuBG);
 
-	resume = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.05 + buttonConst), menuW / 2, 100, Resources::ButtonResume);
+	resume = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.18 + buttonConst), menuW / 2, 45, Resources::ButtonResume);
 
-	restart = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.23 + buttonConst), menuW / 2, 100, Resources::ButtonRestart);
+	restart = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.34 + buttonConst), menuW / 2, 45, Resources::ButtonRestart);
 
-	options = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.41 + buttonConst), menuW / 2, 100, Resources::ButtonOptions);
+	options = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.5 + buttonConst), menuW / 2, 45, Resources::ButtonOptions);
 
-	exit = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.59 + buttonConst), menuW / 2, 100, Resources::ButtonExit);
+	exit = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.66 + buttonConst), menuW / 2, 45, Resources::ButtonExit);
 
 	menuButtons.push_back(resume);
 	menuButtons.push_back(restart);
@@ -38,20 +38,23 @@ PauseMenu::PauseMenu(SDLGame* game, PlayState* ps) : GameObject(game)
 
 	op_bg = new EmptyObject(game, Vector2D(menuX, menuY), menuW, menuH, Resources::MenuBG);
 
-	music = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.05 + buttonConst), menuW / 2, 100, Resources::ButtonPlaceholder);
-	musicSelect = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.05 + buttonConst + 100), menuW / 2, 100, Resources::ButtonVol);
+	music = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.1 + buttonConst), menuW / 2, 45, Resources::ButtonPlaceholder);
+	music->scale(0.8);
+	musicSelect = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.1 + buttonConst + 45), menuW / 2, 45, Resources::ButtonVol);
 
-	sounds = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.23 + buttonConst), menuW / 2, 100, Resources::ButtonPlaceholder);
-	soundsSelect = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.23 + buttonConst + 100), menuW / 2, 100, Resources::ButtonVol);
+	sounds = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.295 + buttonConst), menuW / 2, 45, Resources::ButtonPlaceholder);
+	sounds->scale(0.8);
+	soundsSelect = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.295 + buttonConst + 45), menuW / 2, 45, Resources::ButtonVol);
 
-	controls = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.41 + buttonConst), menuW / 2, 100, Resources::ButtonPlaceholder);
-	controlsSelect = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.41 + buttonConst + 100), menuW / 2, 100, Resources::ButtonVol);
+	controls = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.49 + buttonConst), menuW / 2, 45, Resources::ButtonPlaceholder);
+	controls->scale(0.8);
+	controlsSelect = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.49 + buttonConst + 45), menuW / 2, 45, Resources::ButtonVol);
 
-	op_exit = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.59 + buttonConst), menuW / 2, 100, Resources::ButtonPlaceholder);
+	op_exit = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.685 + buttonConst + 25), menuW / 2, 45, Resources::ButtonExit);
 
-	musicTxt = new TextObject(game, game->getServiceLocator()->getFonts()->getFont(Resources::RETRO50), Vector2D(0, 0));
-	soundTxt = new TextObject(game, game->getServiceLocator()->getFonts()->getFont(Resources::RETRO50), Vector2D(0, 0));
-	controlTxt = new TextObject(game, game->getServiceLocator()->getFonts()->getFont(Resources::RETRO50), Vector2D(0, 0));
+	musicTxt = new TextObject(game, game->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(0, 0));
+	soundTxt = new TextObject(game, game->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(0, 0));
+	controlTxt = new TextObject(game, game->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(0, 0));
 
 	updateTxt();
 
@@ -67,7 +70,7 @@ PauseMenu::PauseMenu(SDLGame* game, PlayState* ps) : GameObject(game)
 
 	timer = new TimerNoSingleton();
 
-	selection = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 2 / 3), menuW / 2, 100, Resources::ButtonSelection);
+	selection = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 2 / 3), menuW / 2, 45, Resources::ButtonSelection);
 }
 
 PauseMenu::~PauseMenu()
@@ -293,8 +296,14 @@ void PauseMenu::updateControls()
 void PauseMenu::updateTxt()
 {
 	musicTxt->setText(to_string(game_->getMusicVolume()), SDL_Color{ 0, 0, 0, 255 });
+	musicTxt->setPosition(musicSelect->getPosition() + Vector2D(musicSelect->getWidth() / 2, musicSelect->getHeight() / 2) - Vector2D(musicTxt->getWidth() / 2, musicTxt->getHeight() / 2));
+
 	soundTxt->setText(to_string(game_->getSoundVolume()), SDL_Color{ 0, 0, 0, 255 });
+	soundTxt->setPosition(soundsSelect->getPosition() + Vector2D(soundsSelect->getWidth() / 2, soundsSelect->getHeight() / 2) - Vector2D(soundTxt->getWidth() / 2, soundTxt->getHeight() / 2));
+
 	controlTxt->setText("aaa", SDL_Color{ 0, 0, 0, 255 });
+	controlTxt->setPosition(controlsSelect->getPosition() + Vector2D(controlsSelect->getWidth() / 2, controlsSelect->getHeight() / 2) - Vector2D(controlTxt->getWidth() / 2, controlTxt->getHeight() / 2));
+
 }
 
 

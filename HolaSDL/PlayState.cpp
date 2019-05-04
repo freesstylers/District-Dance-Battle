@@ -363,6 +363,10 @@ bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 {
 	if (e.key.keysym.sym == SDLK_F1)
 		songOver();
+	else if (e.type == SDL_QUIT || e.key.keysym.sym == SDLK_ESCAPE) {
+		manager->stop();
+		return true;
+	}
 	else
 	{
 		if (!isPaused) {

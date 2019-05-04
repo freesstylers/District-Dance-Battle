@@ -117,7 +117,7 @@ bool DialogState::handleEvent(Uint32 time, SDL_Event e) {
 	}
 	else if (e.type == SDL_CONTROLLERBUTTONUP) keyup = true;
 
-	else if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_TAB)
+	else if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_TAB || (e.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_BACK)))
 		manager->getMachine()->changeState(new PlayState(manager, nlevel, oneP_, hardMode_, prevMaxScoreE_, prevMaxScoreH_));
 
 	return true;
