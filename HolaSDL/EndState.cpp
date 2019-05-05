@@ -153,36 +153,36 @@ EndState::EndState(GameManager* g, int prevMaxScoreE, int prevMaxScoreH, int* ca
 		stage.push_back(Bad);
 
 		
-		Wow1 = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(Wow->getPosition().getX() - 25 - to_string(califs1[0]).length() * 10, Wow->getPosition().getY() + 15));
-		Wow1->setText(to_string(califs1[0]), SDL_Color{ (0), (0), (0), (255) });
+		Wow1 = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(Wow->getPosition().getX() - 25 - to_string(califs1[3]).length() * 10, Wow->getPosition().getY() + 15));
+		Wow1->setText(to_string(califs1[3]), SDL_Color{ (0), (0), (0), (255) });
 		stage.push_back(Wow1);
 
-		Good1 = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(Good->getPosition().getX() - 25 - to_string(califs1[1]).length() * 10, Good->getPosition().getY() + 15));
-		Good1->setText(to_string(califs1[1]), SDL_Color{ (0), (0), (0), (255) });
+		Good1 = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(Good->getPosition().getX() - 25 - to_string(califs1[2]).length() * 10, Good->getPosition().getY() + 15));
+		Good1->setText(to_string(califs1[2]), SDL_Color{ (0), (0), (0), (255) });
 		stage.push_back(Good1);
 
-		Ok1 = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(Ok->getPosition().getX() - 25 - to_string(califs1[2]).length() * 10, Ok->getPosition().getY() + 15));
-		Ok1->setText(to_string(califs1[2]), SDL_Color{ (0), (0), (0), (255) });
+		Ok1 = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(Ok->getPosition().getX() - 25 - to_string(califs1[1]).length() * 10, Ok->getPosition().getY() + 15));
+		Ok1->setText(to_string(califs1[1]), SDL_Color{ (0), (0), (0), (255) });
 		stage.push_back(Ok1);
 
-		Bad1 = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(Bad->getPosition().getX() - 25 - to_string(califs1[3]).length() * 10, Bad->getPosition().getY() + 15));
-		Bad1->setText(to_string(califs1[3]), SDL_Color{ (0), (0), (0), (255) });
+		Bad1 = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(Bad->getPosition().getX() - 25 - to_string(califs1[0]).length() * 10, Bad->getPosition().getY() + 15));
+		Bad1->setText(to_string(califs1[0]), SDL_Color{ (0), (0), (0), (255) });
 		stage.push_back(Bad1);
 
-		TextObject* Wow2 = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(Wow->getPosition().getX() + 70 + to_string(califs2[0]).length() * 10, Wow->getPosition().getY() + 15));
-		Wow2->setText(to_string(califs2[0]), SDL_Color{ (0), (0), (0), (255) });
+		TextObject* Wow2 = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(Wow->getPosition().getX() + 70 + to_string(califs2[3]).length() * 10, Wow->getPosition().getY() + 15));
+		Wow2->setText(to_string(califs2[3]), SDL_Color{ (0), (0), (0), (255) });
 		stage.push_back(Wow2);
 
-		TextObject* Good2 = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(Good->getPosition().getX() + 70 + to_string(califs2[1]).length() * 10, Good->getPosition().getY() + 15));
-		Good2->setText(to_string(califs2[1]), SDL_Color{ (0), (0), (0), (255) });
+		TextObject* Good2 = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(Good->getPosition().getX() + 70 + to_string(califs2[2]).length() * 10, Good->getPosition().getY() + 15));
+		Good2->setText(to_string(califs2[2]), SDL_Color{ (0), (0), (0), (255) });
 		stage.push_back(Good2);
 
-		TextObject* Ok2 = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(Ok->getPosition().getX() + 70 + to_string(califs2[2]).length() * 10, Ok->getPosition().getY() + 15));
-		Ok2->setText(to_string(califs2[2]), SDL_Color{ (0), (0), (0), (255) });
+		TextObject* Ok2 = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(Ok->getPosition().getX() + 70 + to_string(califs2[1]).length() * 10, Ok->getPosition().getY() + 15));
+		Ok2->setText(to_string(califs2[1]), SDL_Color{ (0), (0), (0), (255) });
 		stage.push_back(Ok2);
 
-		TextObject* Bad2 = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(Bad->getPosition().getX() + 70 + to_string(califs2[3]).length() * 10, Bad->getPosition().getY() + 15));
-		Bad2->setText(to_string(califs2[3]), SDL_Color{ (0), (0), (0), (255) });
+		TextObject* Bad2 = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(Bad->getPosition().getX() + 70 + to_string(califs2[0]).length() * 10, Bad->getPosition().getY() + 15));
+		Bad2->setText(to_string(califs2[0]), SDL_Color{ (0), (0), (0), (255) });
 		stage.push_back(Bad2);
 
 
