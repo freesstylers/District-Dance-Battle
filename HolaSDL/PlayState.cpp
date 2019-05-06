@@ -1,4 +1,5 @@
 #include "PlayState.h"
+#include "TutorialMinigame.h"
 #include "GameManager.h"
 
 PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxScoreE, int prevMaxScoreH) : GameState(g) //Asigna game y llama a inicializaci�n
@@ -87,6 +88,16 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxS
 		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 300, initialNoteHeight + 50), Resources::SansIdle);
 		enemyT = Resources::SansIdle;
 		minigameAmount = 0;
+		break;
+	case 9:
+		levelName = "RunningInThe90s";
+		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::HipHopEffect);
+		minigame = new TutorialMinigame(manager, this);
+		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::ExtraBG);
+		bgT = Resources::ExtraBG;
+		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 300, initialNoteHeight + 50), Resources::SansIdle);
+		enemyT = Resources::SansIdle;
+		minigameAmount = 20;
 		break;
 	default:
 		break;
@@ -251,7 +262,7 @@ void PlayState::update(Uint32 time)
 				player1->getrightBar()->forceAnimationChange(Resources::Recuadro1PWin);
 				player2->getleftBar()->forceAnimationChange(Resources::Recuadro2P);
 				player2->getrightBar()->forceAnimationChange(Resources::Recuadro2P);
-				crown->setPosition(Vector2D(player1->getleftBar()->getPosition().getX() + player1->getleftBar()->getWidth()/2 + 6, player1->getleftBar()->getPosition().getY() - 60));
+				crown->setPosition(Vector2D(player1->getleftBar()->getPosition().getX() + player1->getleftBar()->getWidth() / 2 + 6, player1->getleftBar()->getPosition().getY() - 60));
 			}
 			else if (player2->currentScore >= player1->currentScore && player2->currentScore != 0)
 			{
@@ -264,6 +275,7 @@ void PlayState::update(Uint32 time)
 		}
 		if (!miniActive && (minigameAmount == 0 || (minigameAmount > 0 && minigameController->DeltaTime() < level->songLength / minigameAmount)))
 		{
+			
 			minigameController->Update();
 
 			if (levelArrows_.empty() && levelButtons_.empty()) {
@@ -293,10 +305,11 @@ void PlayState::update(Uint32 time)
 			}
 		}
 		else {
+			
 			miniActive = true;
+			player1->lip->setMinigameActive(true);
 			if (!animationMiniGame)
 			{
-				player1->lip->setMinigameActive(true);
 				player1->setComboActive(false);
 				enemy->forceAnimationChange((enemyT + 1));
 				perico->forceAnimationChange(Resources::PericoDance1);
@@ -304,32 +317,30 @@ void PlayState::update(Uint32 time)
 				minigame->resetMinigame();
 			}
 			minigame->update(time);
-			if (minigame->getEnd()) {
+			if (!minigame->getActive()) {
+
 				player1->lip->setMinigameActive(false);
 				miniActive = false;
+				minigame->setActive(false);
 				msDiff = 0;
 				timer->Reset();
 				minigame->deleteList();
 				minigame->createList();
-				minigameController->Reset();
 				enemy->queueAnimationChange(enemyT);
 				perico->queueAnimationChange(Resources::PericoIdle);
 				animationMiniGame = false;
 				player1->setComboActive(true);
 
-				int aux = minigame->getAccuracy();
-				if (aux != 0)
-					updateScoreMinigame(aux);
 			}
-		}
-		if (timer->DeltaTime() > ((bh->getBeatTime() / 1000.0) / (animationFramesPerBeat / 1000)) - msDiff)
-		{
-			//aqui se divide el beatTime lo necesario para animar las frames especificadas entre cada beat
+			if (timer->DeltaTime() > ((bh->getBeatTime() / 1000.0) / (animationFramesPerBeat / 1000)) - msDiff)
+			{
+				//aqui se divide el beatTime lo necesario para animar las frames especificadas entre cada beat
 
-			beatSignal = true;
+				beatSignal = true;
+			}
+			if (songIsOver)
+				songOver();
 		}
-		if (songIsOver)
-			songOver();
 	}
 }
 
@@ -373,7 +384,7 @@ bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 			if (miniActive) {
 				player1->lip->setMinigameActive(true);
 
-				minigame->handleInput(time, e);
+ 				minigame->handleInput(time, e);
 			}
 			else
 			{

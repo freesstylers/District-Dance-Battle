@@ -65,6 +65,7 @@
     <ClCompile Include="HitNotePool.cpp" />
     <ClCompile Include="ExtraMenu.cpp" />
     <ClCompile Include="MainMenuState.cpp" />
+    <ClCompile Include="TutorialMinigame.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioManager.h" />
@@ -131,6 +132,7 @@
     <ClInclude Include="HitNotePool.h" />
     <ClInclude Include="ExtraMenu.h" />
     <ClInclude Include="MainMenuState.h" />
+    <ClInclude Include="TutorialMinigame.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

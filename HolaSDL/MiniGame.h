@@ -30,6 +30,7 @@ protected:
 	TimerNoSingleton* timer;
 	TextObject* Aviso;
 
+	bool active = false;
 	int currentMinigameScore;
 	int noteAmount;
 	int maxNotes;
@@ -46,6 +47,8 @@ public:
 	virtual void deleteList();
 	virtual void resetMinigame() { end = false; };
 	virtual bool getEnd() { return end; };
+	void setActive(bool modo) { active = modo; };
+	bool getActive() { return active; };
 	int getAccuracy() { if (currentMinigameScore == noteAmount) return 1; else if (currentMinigameScore >= noteAmount / 2) return 2; else return 0; }
 
 	std::list<Note*> screenButtons_;
