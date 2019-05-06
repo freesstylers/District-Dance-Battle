@@ -130,7 +130,9 @@ public:
 		TriangleButtonPlay,
 		ButtonMusic,
 		ButtonSound,
-		ButtonControls
+		ButtonControls,
+		NewGameButton,
+		ChargeGameButton
 
 
 		// text

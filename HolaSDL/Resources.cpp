@@ -137,7 +137,9 @@ vector<Resources::ImageInfo> Resources::images_{
 		{TriangleButtonPlay, "resources/images/BotonTrianguloPlay.png", 32, 32, 1, 1, 1 },
 		{ ButtonMusic, "resources/images/buttonMusic.png", 153, 29, 1, 1, 1},
 		{ ButtonSound, "resources/images/buttonSound.png", 153, 29, 1, 1, 1 },
-		{ ButtonControls, "resources/images/buttonControls.png", 153, 29, 1, 1, 1 }
+		{ ButtonControls, "resources/images/buttonControls.png", 153, 29, 1, 1, 1 },
+		{ NewGameButton, "resources/images/NewGame.png", 153, 65, 1, 1, 1 },
+		{ ChargeGameButton, "resources/images/Cargar.png", 153, 65, 1, 1, 1 },
 			
 };
 

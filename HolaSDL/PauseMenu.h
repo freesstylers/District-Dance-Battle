@@ -53,7 +53,7 @@ private:
 	void exitSong();
 	void updateMusic(bool raise);
 	void updateSound(bool raise);
-	void updateControls();
+	
 	void updateTxt();
 
 
@@ -64,6 +64,7 @@ public:
 	~PauseMenu();
 
 	void activate();
+	void updateControls();
 
 
 	virtual bool handleInput(Uint32 time, const SDL_Event& event);
