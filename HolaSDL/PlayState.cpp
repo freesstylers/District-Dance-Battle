@@ -31,7 +31,7 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxS
 	case 3:
 		levelName = "papito";
 		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::HipHopEffect);
-		minigame = new MinigameHipHop(manager, this);
+		minigame = nullptr;//new MinigameHipHop(manager, this);
 		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::CiuBG);
 		bgT = Resources::CiuBG;
 		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 300, initialNoteHeight + 50), Resources::PapitoIdle);
@@ -236,6 +236,7 @@ PlayState::~PlayState()
 	delete level;
 	delete minigame;
 	delete minigameController;
+	delete crown;
 }
 
 void PlayState::update(Uint32 time)

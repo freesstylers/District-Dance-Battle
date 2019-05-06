@@ -1,7 +1,7 @@
 #include "MinigameHipHop.h"
 #include "GameManager.h"
 
-MinigameHipHop::MinigameHipHop(GameManager * g, PlayState * p): MiniGame(g, p)
+ MinigameHipHop::MinigameHipHop(GameManager * g, PlayState * p): MiniGame(g, p)
 {
 	manager = g;
 	playS = p;

@@ -47,7 +47,7 @@ void DialogState::init()
 			file >> sp;
 			//Hay que crear una nueva clase que sea textBox
 			file >> textAux;
-			box.insert(pair<string, GameObject*>(textAux, new TextBox(manager, manager->getDefaultWindowWidth() - 20, 400, Vector2D(10, manager->getDefaultWindowHeight()-400),sp)));
+			box.insert(pair<string, GameObject*>(textAux, new TextBox(manager, manager->getDefaultWindowWidth() - 20, 400, Vector2D(10, manager->getDefaultWindowHeight()-400),sp))); //basura a revisar
 		}
 
 		file >> textAux;
@@ -82,6 +82,10 @@ void DialogState::init()
 DialogState::~DialogState()
 {
 	delete actualBox;
+	delete text;
+	delete text2;
+
+	box.clear();
 }
 
 void DialogState::render(Uint32 time, bool beatSync) {

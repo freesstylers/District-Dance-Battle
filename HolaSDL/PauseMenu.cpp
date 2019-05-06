@@ -79,6 +79,9 @@ PauseMenu::~PauseMenu()
 	delete bg;
 	delete op_bg;
 	delete selection;
+	delete musicTxt;
+	delete soundTxt;
+	delete controlTxt;
 
 	for (GameObject* g : menuButtons) {
 		delete g;

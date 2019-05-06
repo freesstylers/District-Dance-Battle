@@ -15,6 +15,13 @@ MinigameVaporwave::MinigameVaporwave(GameManager * g, PlayState * p): MiniGame(g
 	createList();
 }
 
+MinigameVaporwave::~MinigameVaporwave()
+{
+	delete timer;
+	delete fback;
+	delete Aviso;
+}
+
 void MinigameVaporwave::generateButtons()
 {
 	if (!levelButtons_.empty()) {

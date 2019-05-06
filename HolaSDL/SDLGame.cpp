@@ -11,6 +11,13 @@ SDLGame::SDLGame(string windowTitle, int width, int height) :
 }
 
 SDLGame::~SDLGame() {
+
+	delete bg;
+	bg = nullptr;
+
+	delete anim;
+	anim = nullptr;
+
 	closeResources();
 	closeSDL();
 }
@@ -48,6 +55,7 @@ void SDLGame::closeSDL() {
 
 	SDL_DestroyRenderer(renderer_);
 	renderer_ = nullptr;
+
 
 	SDL_DestroyWindow(window_);
 	window_ = nullptr;

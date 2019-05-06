@@ -266,6 +266,10 @@ PlayerPack::~PlayerPack()
 	delete hitRight;
 	delete hitLeft;
 	delete lip;
+	delete comboTxt;
+	delete scoreBar;
+	delete califications;
+
 	for (Note* o : screenArrows_)
 	{
 		delete o;

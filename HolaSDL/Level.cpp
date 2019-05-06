@@ -18,6 +18,10 @@ Level::Level(PlayState* l, SDLGame* gam, string n, int noteSize)
 
 Level::~Level()
 {
+	level->levelArrows_.clear();
+	level->levelArrows2_.clear();
+	level->levelButtons_.clear();
+	level->levelButtons2_.clear();
 }
 
 void Level::playSong() {

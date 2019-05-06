@@ -13,7 +13,6 @@ protected:
 	GameManager* manager;
 public:
 	list<GameObject*> stage;
-	list<GameObject*>stage2;
 	GameState(GameManager* g);
 	virtual ~GameState();
 	virtual void update(Uint32 time);
