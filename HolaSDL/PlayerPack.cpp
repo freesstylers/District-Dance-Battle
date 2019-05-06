@@ -219,6 +219,19 @@ void PlayerPack::addCalifications(int letter)
 	califications[letter]++;
 }
 
+void PlayerPack::changeController(bool isXbox)
+{
+	for (Note* o : screenArrows_) {
+		if (o != nullptr)
+			o->changeController(isXbox);
+	}
+	for (Note* o : screenButtons_) {
+		if (o != nullptr)
+			o->changeController(isXbox);
+	}
+
+}
+
 void PlayerPack::updateCombo()
 {
 

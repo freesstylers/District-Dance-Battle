@@ -84,7 +84,7 @@ protected:
 	double maxMinigameValue = 0;
 	
 
-	int minigameAmount = 3;
+	int minigameAmount = 0;
 
 	int combo;
 
@@ -135,6 +135,7 @@ public:
 	int getBPM() { return level->bpm; }
 	bool pause();
 	void resume(unsigned int timePaused);
+	bool changeControls();
 
 	void restart();
 	void exit();

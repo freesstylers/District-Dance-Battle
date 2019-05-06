@@ -145,28 +145,28 @@ void MinigameVaporwave::createList()
 
 		switch (aux) {
 		case 0:
-			note = new Note(SDL_CONTROLLER_BUTTON_A, manager, 75, 75, Vector2D(0, 0), Vector2D(200, 200) , manager->getMando());
+			note = new Note(SDL_CONTROLLER_BUTTON_A, manager, 75, 75, Vector2D(0, 0), Vector2D(200, 200) , manager->getController());
 			break;
 		case 1:
-			note = new Note(SDL_CONTROLLER_BUTTON_B, manager, 75, 75, Vector2D(0, 0), Vector2D(200, 200), manager->getMando());
+			note = new Note(SDL_CONTROLLER_BUTTON_B, manager, 75, 75, Vector2D(0, 0), Vector2D(200, 200), manager->getController());
 			break;
 		case 2:
-			note = new Note(SDL_CONTROLLER_BUTTON_X, manager, 75, 75, Vector2D(manager->getDefaultWindowWidth(), 0), Vector2D(-200, 200), manager->getMando());
+			note = new Note(SDL_CONTROLLER_BUTTON_X, manager, 75, 75, Vector2D(manager->getDefaultWindowWidth(), 0), Vector2D(-200, 200), manager->getController());
 			break;
 		case 3:
-			note = new Note(SDL_CONTROLLER_BUTTON_Y, manager, 75, 75, Vector2D(manager->getDefaultWindowWidth(), 0), Vector2D(-200, 200), manager->getMando());
+			note = new Note(SDL_CONTROLLER_BUTTON_Y, manager, 75, 75, Vector2D(manager->getDefaultWindowWidth(), 0), Vector2D(-200, 200), manager->getController());
 			break;
 		case 4:
-			note = new Note(SDL_CONTROLLER_BUTTON_A, manager, 75, 75, Vector2D(0, manager->getDefaultWindowHeight()), Vector2D(200, -200), manager->getMando());
+			note = new Note(SDL_CONTROLLER_BUTTON_A, manager, 75, 75, Vector2D(0, manager->getDefaultWindowHeight()), Vector2D(200, -200), manager->getController());
 			break;
 		case 5:
-			note = new Note(SDL_CONTROLLER_BUTTON_B, manager, 75, 75, Vector2D(0, manager->getDefaultWindowHeight()), Vector2D(200, -200), manager->getMando());
+			note = new Note(SDL_CONTROLLER_BUTTON_B, manager, 75, 75, Vector2D(0, manager->getDefaultWindowHeight()), Vector2D(200, -200), manager->getController());
 			break;
 		case 6:
-			note = new Note(SDL_CONTROLLER_BUTTON_X, manager, 75, 75, Vector2D(manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight()), Vector2D(-200, -200), manager->getMando());
+			note = new Note(SDL_CONTROLLER_BUTTON_X, manager, 75, 75, Vector2D(manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight()), Vector2D(-200, -200), manager->getController());
 			break;
 		case 7:
-			note = new Note(SDL_CONTROLLER_BUTTON_Y, manager, 75, 75, Vector2D(manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight()), Vector2D(-200, -200), manager->getMando());
+			note = new Note(SDL_CONTROLLER_BUTTON_Y, manager, 75, 75, Vector2D(manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight()), Vector2D(-200, -200), manager->getController());
 			break;
 		}
 		levelButtons_.push_front(note);

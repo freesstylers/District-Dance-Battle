@@ -17,8 +17,8 @@ public:
 	void update(Uint32 time);
 	void handleEvent(Uint32 time);
 	void render(Uint32 time);
-	bool getMando() { return mandoXbox; };
-	void setMando(bool xbox) { mandoXbox = xbox; };
+	bool getController() { return isXbox; };
+	void setController(bool xbox) { isXbox = xbox; };
 	bool checkExit();
 	bool exit_;
 	virtual void start(); // start the game
@@ -28,7 +28,7 @@ public:
 	
 protected:
 	GameStateMachine* machine;
-	bool mandoXbox = false;
+	bool isXbox = false;
 	
 private:
 	uint32_t last_tick_time = 0;

@@ -5,14 +5,36 @@ Note::Note()
 {
 
 }
-Note::Note(SDL_GameControllerButton key, SDLGame* game, double width, double height, Vector2D pos, Vector2D vel, bool mandoXbox) :
+Note::Note(SDL_GameControllerButton key, SDLGame* game, double width, double height, Vector2D pos, Vector2D vel, bool isXbox) :
 	GameObject(game), key(key)
 {
 	setWidth(width);
 	setHeight(height);
 	setPosition(pos);
 	setVelocity(vel/1000.0);
-	if (mandoXbox) {
+	
+	changeController(isXbox);
+
+}
+
+Note::~Note()
+{
+
+}
+
+bool Note::handleInput(Uint32 time, const SDL_Event& event) {
+
+	return false;
+}
+
+void Note::update(Uint32 time) {
+	double deltaTime = getGame()->deltaTime;
+	position_.set(position_ + velocity_ * deltaTime);
+}
+
+void Note::changeController(bool isXbox)
+{
+	if (isXbox) {
 		switch (key) {
 		case SDL_CONTROLLER_BUTTON_DPAD_LEFT:
 			animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::LeftArrow);
@@ -74,23 +96,6 @@ Note::Note(SDL_GameControllerButton key, SDLGame* game, double width, double hei
 			break;
 		}
 	}
-
-
-}
-
-Note::~Note()
-{
-
-}
-
-bool Note::handleInput(Uint32 time, const SDL_Event& event) {
-
-	return false;
-}
-
-void Note::update(Uint32 time) {
-	double deltaTime = getGame()->deltaTime;
-	position_.set(position_ + velocity_ * deltaTime);
 }
 
 

@@ -59,6 +59,7 @@ public:
 	int* getCalifications();
 	void addCalifications(int letter);
 	void setComboActive(bool active) { comboTxt->setActive(active); if (active) updateCombo(); }
+	void changeController(bool isXbox);
 
 	LevelInputManager* lip;
 };

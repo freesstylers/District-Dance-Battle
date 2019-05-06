@@ -9,6 +9,11 @@ using namespace std;
 class Resources {
 public:
 
+	enum SpecialId {
+		LoadingBG = 999,
+		LoadingAnim = 1000
+	};
+
 	enum TextureId {
 		// images
 		LeftArrow,
@@ -122,6 +127,9 @@ public:
 		BButtonPlay,
 		SquareButtonPlay,
 		TriangleButtonPlay,
+		ButtonMusic,
+		ButtonSound,
+		ButtonControls
 
 
 		// text
@@ -176,6 +184,16 @@ public:
 		int size;
 	};
 
+	struct SpecialInfo {
+		SpecialId id;
+		string fileName;
+		int width;
+		int height;
+		int columns;
+		int rows;
+		int frameTotal;
+	};
+
 
 	struct ImageInfo {
 		TextureId id;
@@ -207,6 +225,7 @@ public:
 
 	static vector<FontInfo> fonts_; // initialized in .cpp
 	static vector<ImageInfo> images_; // initialized in .cpp
+	static vector<SpecialInfo> specialImages_; // initialized in .cpp
 	static vector<TextMsgInfo> messages_; // initialized in .cpp
 	static vector<MusicInfo> musics_; // initialized in .cpp
 	static vector<SoundInfo> sounds_; // initialized in .cpp

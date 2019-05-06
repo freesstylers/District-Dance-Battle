@@ -12,6 +12,8 @@ class PauseMenu :
 	public GameObject
 {
 private:
+	bool isXbox;
+
 	TimerNoSingleton* timer;
 	SDL_GameController* controller = NULL;
 
@@ -57,7 +59,7 @@ private:
 
 
 public:
-	PauseMenu(SDLGame* game, PlayState* ps);
+	PauseMenu(SDLGame* game, PlayState* ps, bool isXbox);
 	~PauseMenu();
 
 	void activate();
