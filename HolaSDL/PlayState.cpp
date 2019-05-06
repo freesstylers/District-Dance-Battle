@@ -101,7 +101,7 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxS
 		newGame2P();
 	}
 
-	pauseMenu = new PauseMenu(g, this);
+	pauseMenu = new PauseMenu(g, this, manager->getController());
 	stage.push_back(pauseMenu);
 	
 	pauseMenu->setActive(false);
@@ -358,6 +358,41 @@ void PlayState::resume(unsigned int timePaused)
 	}
 }
 
+bool PlayState::changeControls()
+{
+	bool isXbox = !manager->getController();
+	manager->setController(isXbox);
+
+
+	for (Note* o : levelArrows_) {
+		if (o != nullptr)
+			o->changeController(isXbox);
+	}
+
+	for (Note* o : levelButtons_) {
+		if (o != nullptr)
+			o->changeController(isXbox);
+	}
+
+	for (Note* o : levelArrows2_) {
+		if (o != nullptr)
+			o->changeController(isXbox);
+	}
+
+	for (Note* o : levelButtons2_) {
+		if (o != nullptr)
+			o->changeController(isXbox);
+	}
+
+
+	player1->changeController(isXbox);
+
+	if (player2 != nullptr)
+		player2->changeController(isXbox);
+
+	return isXbox;
+}
+
 
 bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 {
@@ -403,6 +438,18 @@ void PlayState::render(Uint32 time, bool beatSync)
 void PlayState::deleteAll()
 {
 	for (Note* o : levelArrows_) //Por si se cierra el levelName antes de que acabe
+	{
+		delete o;
+	}
+	for (Note* o : levelButtons_) //Por si se cierra el levelName antes de que acabe
+	{
+		delete o;
+	}
+	for (Note* o : levelArrows2_) //Por si se cierra el levelName antes de que acabe
+	{
+		delete o;
+	}
+	for (Note* o : levelButtons2_) //Por si se cierra el levelName antes de que acabe
 	{
 		delete o;
 	}

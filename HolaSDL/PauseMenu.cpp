@@ -1,7 +1,7 @@
 #include "PauseMenu.h"
 #include "PlayState.h"
 
-PauseMenu::PauseMenu(SDLGame* game, PlayState* ps) : GameObject(game)
+PauseMenu::PauseMenu(SDLGame* game, PlayState* ps, bool isXbox) : GameObject(game), isXbox(isXbox)
 {
 
 	level = ps;
@@ -38,15 +38,15 @@ PauseMenu::PauseMenu(SDLGame* game, PlayState* ps) : GameObject(game)
 
 	op_bg = new EmptyObject(game, Vector2D(menuX, menuY), menuW, menuH, Resources::MenuBG);
 
-	music = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.1 + buttonConst), menuW / 2, 45, Resources::ButtonPlaceholder);
+	music = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.1 + buttonConst), menuW / 2, 45, Resources::ButtonMusic);
 	music->scale(0.8);
 	musicSelect = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.1 + buttonConst + 45), menuW / 2, 45, Resources::ButtonVol);
 
-	sounds = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.295 + buttonConst), menuW / 2, 45, Resources::ButtonPlaceholder);
+	sounds = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.295 + buttonConst), menuW / 2, 45, Resources::ButtonSound);
 	sounds->scale(0.8);
 	soundsSelect = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.295 + buttonConst + 45), menuW / 2, 45, Resources::ButtonVol);
 
-	controls = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.49 + buttonConst), menuW / 2, 45, Resources::ButtonPlaceholder);
+	controls = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.49 + buttonConst), menuW / 2, 45, Resources::ButtonControls);
 	controls->scale(0.8);
 	controlsSelect = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.49 + buttonConst + 45), menuW / 2, 45, Resources::ButtonVol);
 
@@ -290,7 +290,9 @@ void PauseMenu::updateSound(bool raise)
 
 void PauseMenu::updateControls()
 {
+	isXbox = level->changeControls();
 
+	updateTxt();
 }
 
 void PauseMenu::updateTxt()
@@ -301,7 +303,11 @@ void PauseMenu::updateTxt()
 	soundTxt->setText(to_string(game_->getSoundVolume()), SDL_Color{ 0, 0, 0, 255 });
 	soundTxt->setPosition(soundsSelect->getPosition() + Vector2D(soundsSelect->getWidth() / 2, soundsSelect->getHeight() / 2) - Vector2D(soundTxt->getWidth() / 2, soundTxt->getHeight() / 2));
 
-	controlTxt->setText("aaa", SDL_Color{ 0, 0, 0, 255 });
+	if (isXbox)
+		controlTxt->setText("Xbox", SDL_Color{ 0, 0, 0, 255 });
+	else
+		controlTxt->setText("PS4", SDL_Color{ 0, 0, 0, 255 });
+
 	controlTxt->setPosition(controlsSelect->getPosition() + Vector2D(controlsSelect->getWidth() / 2, controlsSelect->getHeight() / 2) - Vector2D(controlTxt->getWidth() / 2, controlTxt->getHeight() / 2));
 
 }

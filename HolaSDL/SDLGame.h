@@ -14,6 +14,8 @@ using namespace std;
 
 const int MAXFPS = 144;
 
+class Character;
+
 class SDLGame {
 public:
 	SDLGame(string windowTitle_, int width, int height);
@@ -47,6 +49,8 @@ private:
 	void initResources(); // initialize the SDLResources object with the data at the top of this file
 	void closeResources(); // close the  SDLResources object (frees all memory)
 
+	void render();
+
 protected:
 	ServiceLocator services_; // (textures, font, music, etc)
 	SDLFontsManager fonts_;
@@ -66,5 +70,8 @@ protected:
 	double widthScale_;
 	double heightScale_;
 	SDL_DisplayMode DM;
+
+	Character* bg;
+	Character* anim;
 };
 

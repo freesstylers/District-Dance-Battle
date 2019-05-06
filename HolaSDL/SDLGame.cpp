@@ -1,10 +1,12 @@
 #include "SDLGame.h"
 #include <time.h>
 #include <iostream>
+#include "Character.h"
 
 SDLGame::SDLGame(string windowTitle, int width, int height) :
 		windowTitle_(windowTitle), width_(width), height_(height) {
 	initSDL();
+
 	initResources();
 }
 
@@ -64,30 +66,53 @@ void SDLGame::initResources() {
 	services_.setFonts(&fonts_);
 	services_.setRandomGenerator(&random_);
 
+	for (auto &image : Resources::specialImages_) {
+		textures_.loadFromImg(image.id, renderer_, image.fileName, image.width, image.height, image.columns, image.rows, image.frameTotal);
+	}
+
+	bg = new Character(this, getDefaultWindowWidth(), getDefaultWindowHeight(), Vector2D(0, 0), Resources::LoadingBG);
+	anim = new Character(this, 50, 50, Vector2D(0, 0), Resources::LoadingAnim);
+	anim->setAnimationFramerate(4);
+	anim->isAnimationSynced(false);
+	render();
+
 	for (auto &image : Resources::images_) {
 		textures_.loadFromImg(image.id, renderer_, image.fileName, image.width, image.height, image.columns, image.rows, image.frameTotal);
+		render();
 	}
 
 	for (auto &font : Resources::fonts_) {
 		fonts_.loadFont(font.id, font.fileName, font.size);
+		render();
 	}
 
 	for (auto &txtmsg : Resources::messages_) {
 		textures_.loadFromText(txtmsg.id, renderer_, txtmsg.msg,
 				fonts_[txtmsg.fontId], txtmsg.color);
+		render();
 	}
 
 	for (auto &sound : Resources::sounds_) {
 		audio_.loadSound(sound.id, sound.fileName);
+		render();
 	}
 
 	for (auto &music : Resources::musics_) {
 		audio_.loadSound(music.id, music.fileName);
+		render();
 	}
 
 }
 
 void SDLGame::closeResources() {
+}
+
+void SDLGame::render()
+{
+	double time = SDL_GetTicks();
+
+	bg->render(time);
+	anim->render(time);
 }
 
 SDL_Window* SDLGame::getWindow() const {

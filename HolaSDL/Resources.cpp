@@ -134,10 +134,11 @@ vector<Resources::ImageInfo> Resources::images_{
 		{XButtonPlay, "resources/images/BotonXPlay.png", 32, 32, 1, 1, 1 },
 		{BButtonPlay, "resources/images/BotonCirculoPlay.png", 32, 32, 1, 1, 1 },
 		{SquareButtonPlay, "resources/images/BotonCuadradoPlay.png", 32, 32, 1, 1, 1 },
-		{TriangleButtonPlay, "resources/images/BotonTrianguloPlay.png", 32, 32, 1, 1, 1 }
-
-
-	
+		{TriangleButtonPlay, "resources/images/BotonTrianguloPlay.png", 32, 32, 1, 1, 1 },
+		{ ButtonMusic, "resources/images/buttonMusic.png", 153, 29, 1, 1, 1},
+		{ ButtonSound, "resources/images/buttonSound.png", 153, 29, 1, 1, 1 },
+		{ ButtonControls, "resources/images/buttonControls.png", 153, 29, 1, 1, 1 }
+			
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {
@@ -169,3 +170,9 @@ vector<Resources::MusicInfo> Resources::musics_ {
 vector<Resources::SoundInfo> Resources::sounds_ {
 };
 
+
+vector<Resources::SpecialInfo> Resources::specialImages_{
+
+	{LoadingBG, "resources/images/EndTemplate.png", 1600, 900, 1, 1, 1},
+	{LoadingAnim, "resources/images/HitAnimationGold.png", 32, 32, 3, 1, 3}
+};
