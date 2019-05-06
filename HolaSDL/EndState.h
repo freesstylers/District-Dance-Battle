@@ -4,6 +4,7 @@
 #include "Character.h"
 #include "PlayState.h"
 #include "TextObject.h"
+#include "checkML.h"
 
 class EndState :
 	public GameState

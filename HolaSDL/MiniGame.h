@@ -10,6 +10,7 @@
 #include "Note.h"
 #include "Feedback.h"
 #include "TextObject.h"
+#include "checkML.h"
 
 using namespace std;
 class PlayState;

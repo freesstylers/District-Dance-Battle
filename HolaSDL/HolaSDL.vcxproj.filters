@@ -131,6 +131,7 @@
     <ClInclude Include="HitNotePool.h" />
     <ClInclude Include="ExtraMenu.h" />
     <ClInclude Include="MainMenuState.h" />
+    <ClInclude Include="checkML.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

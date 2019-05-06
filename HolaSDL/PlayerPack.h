@@ -9,6 +9,7 @@
 #include "LevelInputManager.h"
 #include "HitNotePool.h"
 #include "PlayerPack.h"
+#include "checkML.h"
 
 class PlayState;
 class PlayerPack : public GameObject

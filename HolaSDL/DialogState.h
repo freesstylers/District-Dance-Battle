@@ -6,6 +6,8 @@
 #include <map>
 #include <math.h>
 #include "TextObject.h"
+#include "checkML.h"
+
 
 class DialogState: public GameState
 {

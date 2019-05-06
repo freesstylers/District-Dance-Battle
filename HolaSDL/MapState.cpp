@@ -16,7 +16,6 @@ MapState::MapState(GameManager* g) :GameState(g)
 	moreLvls_ = new EmptyObject(g, Vector2D(0, 0), 150, 150, Resources::NivelExtra);
 	stage.push_back(fondo__);
 	stage.push_back(moreLvls_);
-	
 	activeLevels[0] = true;
 	activeLevels[1] = true;
 	loadGame();
@@ -88,13 +87,13 @@ void MapState::createMainButtons()
 {
 	
 	buttons[0].first = EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() / 2 - 60 , manager->getDefaultWindowHeight() / 2 - 30), 64, 64, Resources::MetroOn);
-	buttons[1].first = EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() / 2 + 25 , manager->getDefaultWindowHeight() / 2 + 100), 64, 64, Resources::MetroOn);
-	buttons[2].first = EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() / 2 - 260, manager->getDefaultWindowHeight() / 2 - 165), 64, 64, Resources::MetroOn);
+	buttons[1].first = EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() / 2 - 260, manager->getDefaultWindowHeight() / 2 - 165), 64, 64, Resources::MetroOn);
+	buttons[2].first = EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() / 2 + 25 , manager->getDefaultWindowHeight() / 2 + 100), 64, 64, Resources::MetroOff);
 	buttons[3].first = EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() / 2 + 130, manager->getDefaultWindowHeight() / 2 - 110), 64, 64, Resources::MetroOff);
 	buttons[4].first = EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() / 2 - 200, manager->getDefaultWindowHeight() / 2 - 85), 64, 64, Resources::MetroOff);
 	buttons[0].second = PanelMap(manager, buttons[0].first.getPosition() - Vector2D(200, -20), Resources::CabezaVaporWave, 1, "D35P4C1T0", 1);
-	buttons[1].second = PanelMap(manager, buttons[1].first.getPosition() - Vector2D(-30, 110), Resources::EminemciaHead, 3, "Eminemcia", 2);
-	buttons[2].second = PanelMap(manager, buttons[2].first.getPosition(), Resources::CabezaPapito, 2, "Papito Daddy", 3);
+	buttons[1].second = PanelMap(manager, buttons[1].first.getPosition(), Resources::CabezaPapito, 2, "Papito Daddy", 3);
+	buttons[2].second = PanelMap(manager, buttons[2].first.getPosition() - Vector2D(-30, 110), Resources::EminemciaHead, 3, "Eminemcia", 2);
 	buttons[3].second = PanelMap(manager, buttons[3].first.getPosition(), Resources::CabezaVaporWave, 1, "D35P4C1T0", 4);
 	buttons[4].second = PanelMap(manager, buttons[4].first.getPosition(), Resources::EminemciaHead, 3, "Eminemcia", 5);
 

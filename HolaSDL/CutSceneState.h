@@ -1,5 +1,6 @@
 #pragma once
 #include "MapState.h"
+#include "checkML.h"
 
 class CutSceneState: public MapState //Inherits from MapState due to similar functionality, render is inherited from GameState
 {

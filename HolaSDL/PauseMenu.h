@@ -5,6 +5,7 @@
 #include "TextObject.h"
 #include <list>
 #include <string>
+#include "checkML.h"
 
 class PlayState;
 

@@ -7,6 +7,7 @@
 #include "EndState.h"
 #include "MainMenuState.h"
 #include "DialogState.h"
+#include "checkML.h"
 
 class GameManager: public SDLGame
 {

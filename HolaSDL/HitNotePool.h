@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObjectPool.h"
 #include "HitNote.h"
+#include "checkML.h"
 
 class HitNotePool :
 	public GameObjectPool<HitNote, 30>
