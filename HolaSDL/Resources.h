@@ -132,9 +132,9 @@ public:
 		ButtonSound,
 		ButtonControls,
 		NewGameButton,
-		ChargeGameButton
-
-
+		ChargeGameButton,
+		ZombieIdle,
+		ZombieDance
 		// text
 	};
 
@@ -158,7 +158,8 @@ public:
 		Running,
 		Error2,
 		Ok,
-		Shoot
+		Shoot,
+		Rock
 		// sound effects
 	};
 

@@ -139,7 +139,8 @@ vector<Resources::ImageInfo> Resources::images_{
 		{ ButtonControls, "resources/images/buttonControls.png", 153, 29, 1, 1, 1 },
 		{ NewGameButton, "resources/images/NewGame.png", 153, 65, 1, 1, 1 },
 		{ ChargeGameButton, "resources/images/Cargar.png", 153, 65, 1, 1, 1 },
-			
+		{ ZombieIdle, "resources/images/zombieIdle.png", 58, 94, 3, 2, 4 },
+		{ ZombieDance, "resources/images/zombieDance.png", 58, 94, 3, 3, 7 }
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {
@@ -165,7 +166,8 @@ vector<Resources::MusicInfo> Resources::musics_ {
 	{Running, "resources/sound/RunningInThe90s.mp3"},
 	{Error2, "resources/sound/Error.mp3"},
 	{Ok, "resources/sound/ok.mp3"},
-	{Shoot, "resources/sound/shoot.mp3"}
+	{Shoot, "resources/sound/shoot.mp3"},
+	{Rock, "resources/sound/rock.mp3"}
 };
 
 vector<Resources::SoundInfo> Resources::sounds_ {
