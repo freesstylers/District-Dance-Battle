@@ -16,11 +16,7 @@ MapState::MapState(GameManager* g) :GameState(g)
 	moreLvls_ = new EmptyObject(g, Vector2D(0, 0), 150, 150, Resources::NivelExtra);
 	stage.push_back(fondo__);
 	stage.push_back(moreLvls_);
-	activeLevels[0] = true;
-	activeLevels[1] = true;
-	activeLevels[2] = true;
-	activeLevels[3] = true;
-	activeLevels[4] = true;
+	//activeLevels = { true, true, true, true, true };
 	loadGame();
 }
 
