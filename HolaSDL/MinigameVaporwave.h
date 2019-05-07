@@ -1,6 +1,6 @@
 #pragma once
 #include "MiniGame.h"
-
+#include "checkML.h"
 
 class MinigameVaporwave: public MiniGame
 {
@@ -9,7 +9,7 @@ protected:
 
 public:
 	MinigameVaporwave(GameManager* g, PlayState* p);
-	~MinigameVaporwave() { delete timer; };
+	~MinigameVaporwave();
 	void render(Uint32 time);
 	virtual void update(Uint32 time);
 	virtual void handleInput(Uint32 time, SDL_Event e);

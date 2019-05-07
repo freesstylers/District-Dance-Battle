@@ -2,6 +2,7 @@
 #include "MiniGame.h"
 #include "ScoreBar.h"
 #include "GameObject.h"
+#include "checkML.h"
 
 class PlayerPack;
 class PlayState;

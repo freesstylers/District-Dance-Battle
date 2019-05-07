@@ -1,14 +1,23 @@
 #include "SDLGame.h"
 #include <time.h>
 #include <iostream>
+#include "Character.h"
 
 SDLGame::SDLGame(string windowTitle, int width, int height) :
 		windowTitle_(windowTitle), width_(width), height_(height) {
 	initSDL();
+
 	initResources();
 }
 
 SDLGame::~SDLGame() {
+
+	delete bg;
+	bg = nullptr;
+
+	delete anim;
+	anim = nullptr;
+
 	closeResources();
 	closeSDL();
 }
@@ -47,6 +56,7 @@ void SDLGame::closeSDL() {
 	SDL_DestroyRenderer(renderer_);
 	renderer_ = nullptr;
 
+
 	SDL_DestroyWindow(window_);
 	window_ = nullptr;
 
@@ -64,30 +74,54 @@ void SDLGame::initResources() {
 	services_.setFonts(&fonts_);
 	services_.setRandomGenerator(&random_);
 
+	for (auto &image : Resources::specialImages_) {
+		textures_.loadFromImg(image.id, renderer_, image.fileName, image.width, image.height, image.columns, image.rows, image.frameTotal);
+	}
+
+	bg = new Character(this, getDefaultWindowWidth(), getDefaultWindowHeight(), Vector2D(0, 0), Resources::LoadingBG);
+	anim = new Character(this, 50, 50, Vector2D(0, 0), Resources::LoadingAnim);
+	anim->setAnimationFramerate(4);
+	anim->isAnimationSynced(false);
+	render();
+
 	for (auto &image : Resources::images_) {
 		textures_.loadFromImg(image.id, renderer_, image.fileName, image.width, image.height, image.columns, image.rows, image.frameTotal);
+		render();
 	}
 
 	for (auto &font : Resources::fonts_) {
 		fonts_.loadFont(font.id, font.fileName, font.size);
+		render();
 	}
 
 	for (auto &txtmsg : Resources::messages_) {
 		textures_.loadFromText(txtmsg.id, renderer_, txtmsg.msg,
 				fonts_[txtmsg.fontId], txtmsg.color);
+		render();
 	}
 
 	for (auto &sound : Resources::sounds_) {
 		audio_.loadSound(sound.id, sound.fileName);
+		render();
 	}
 
 	for (auto &music : Resources::musics_) {
 		audio_.loadSound(music.id, music.fileName);
+		render();
 	}
 
 }
 
 void SDLGame::closeResources() {
+	
+}
+
+void SDLGame::render()
+{
+	double time = SDL_GetTicks();
+
+	bg->render(time);
+	anim->render(time);
 }
 
 SDL_Window* SDLGame::getWindow() const {
@@ -108,6 +142,26 @@ int SDLGame::getWindowWidth() const {
 
 int SDLGame::getWindowHeight() const {
 	return height_;
+}
+
+int SDLGame::getMusicVolume() const
+{
+	return musicVolume_;
+}
+
+int SDLGame::getSoundVolume() const
+{
+	return soundVolume_;
+}
+
+void SDLGame::setMusicVolume(int volume)
+{
+	musicVolume_ = volume;
+}
+
+void SDLGame::setSoundVolume(int volume)
+{
+	soundVolume_ = volume;
 }
 
 int SDLGame::getDefaultWindowWidth() const

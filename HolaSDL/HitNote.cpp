@@ -20,7 +20,7 @@ HitNote::~HitNote()
 void HitNote::render(Uint32 time, bool beatSync)
 {
 	if (active_) {
-		animation.texture_->render(getRect(), getFrameRect(), alpha_);
+		animation.texture_->render(getRect(), &getFrameRect(), alpha_);
 
 		if ((!isAnimationSyncedToMusic && time - lastRender >= 1000 / framesPerSecond) || (isAnimationSyncedToMusic && beatSync)) {	//animations update only when a certain time has passed OR when the "beatSync" signal is true
 			animation.currentFrame = animation.currentFrame + 1;

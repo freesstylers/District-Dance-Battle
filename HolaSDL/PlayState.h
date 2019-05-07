@@ -25,6 +25,7 @@
 #include "RedEffect.h"
 #include "ParticleEngine.h"
 #include "PauseMenu.h"
+#include "checkML.h"
 
 class PlayState : public GameState //main game class, where most of the gameplay will take place
 {
@@ -49,7 +50,7 @@ protected:
 	bool songIsOver = false;
 	bool isPaused = false;
 
-	RedEffect* rf;
+	RedEffect* rf;	//Not used
 
 	Vector2D noteVel;
 	MiniGame* minigame;
@@ -58,6 +59,7 @@ protected:
 	Character* enemy;
 	EffectVaporwave* effectVaporWave;
 	Level* level;
+	Background* crown = nullptr;
 
 	BarBackground* songBarBG;
 
@@ -83,7 +85,7 @@ protected:
 	double maxMinigameValue = 0;
 	
 
-	int minigameAmount = 3;
+	int minigameAmount = 0;
 
 	int combo;
 
@@ -93,7 +95,7 @@ protected:
 
 public:
 	BeatHandler* bh;
-	PlayState(GameManager* g, int lvl, bool oneP, bool diff);
+	PlayState(GameManager* g, int lvl, bool oneP, bool diff,int prevMaxScoreE_ = 0, int prevMaxScoreH_ = 0);
 	void newGame();
 	void newGame2P();
 	~PlayState();
@@ -111,7 +113,7 @@ public:
 	Background* bg;
 	PauseMenu* pauseMenu;
 	PlayerPack* player1;
-	PlayerPack* player2;
+	PlayerPack* player2 = nullptr;
 	SongBar* songBar; //indicates time left, shaped like a note
 	Vector2D leftNotesVector;
 	Vector2D rightNotesVector;
@@ -134,6 +136,7 @@ public:
 	int getBPM() { return level->bpm; }
 	bool pause();
 	void resume(unsigned int timePaused);
+	bool changeControls();
 
 	void restart();
 	void exit();
@@ -153,4 +156,7 @@ protected:
 private:
 	int bgT;
 	int enemyT;
+	int prevMaxScoreE_;
+	int prevMaxScoreH_;
+
 };

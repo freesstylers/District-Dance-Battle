@@ -9,7 +9,8 @@ void TextObject::update(Uint32 time)
 
 void TextObject::render(Uint32 time, bool beatSync)
 {
-	text->render(getRect(), getFrameRect(), alpha_);
+	if(active_)
+		text->render(getRect(), &getFrameRect(), alpha_);
 }
 
 void TextObject::setText(string txt, SDL_Color color)

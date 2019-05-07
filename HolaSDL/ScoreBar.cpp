@@ -58,13 +58,15 @@ void ScoreBar::render(Uint32 time, bool beatSync)
 			lastRender = time;
 		}
 
-		animation.texture_->render(getRect(), getFrameRect(), alpha_);
+		animation.texture_->render(getRect(), &getFrameRect(), alpha_);
 	}
 	stars->render(time, false);
 	particleEffect->render(time, false);
 }
 ScoreBar::~ScoreBar()
 {
+	delete particleEffect;
+	delete stars;
 }
 
 void ScoreBar::updateResolution(double wScale, double hScale)

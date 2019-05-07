@@ -7,6 +7,10 @@ PlayerPack::PlayerPack()
 
 PlayerPack::PlayerPack(SDLGame* manager, PlayState* ps, int leftNotesPos, int rightNotesPos, int pointSize, int squareWidth, int player,bool OneP): GameObject(manager), playstate_(ps)
 {
+	for (int i = 0; i < 4; i++)
+	{
+		califications[i] = 0;
+	}
 	lip = new LevelInputManager(playstate_, this, player);
 	leftNotesVector = Vector2D(leftNotesPos - 50 / 2, 70);
 	rightNotesVector = Vector2D(rightNotesPos - 50 / 2, 70);
@@ -49,8 +53,8 @@ PlayerPack::PlayerPack(SDLGame* manager, PlayState* ps, int leftNotesPos, int ri
 }
 void PlayerPack::render(Uint32 time, bool beatSync)
 {
-	leftNoteBar->render(time);
-	rightNoteBar->render(time);
+	leftNoteBar->render(time,beatSync);
+	rightNoteBar->render(time,beatSync);
 	leftPoint->render(time);
 	rightPoint->render(time);
 	comboTxt->render(time);
@@ -115,9 +119,7 @@ void PlayerPack::update(Uint32 time)
 			delete aux;
 			screenArrows_.pop_front();
 			cout << "fuera" << endl;
-			updateScoreNote(1);
-			
-
+			addCalifications(0);
 		}
 		if (!screenButtons_.empty() && screenButtons_.front()->getPosition().getY() > noteYLimit)
 		{
@@ -137,6 +139,7 @@ void PlayerPack::update(Uint32 time)
 			delete aux;
 			screenButtons_.pop_front();
 			cout << "fuera" << endl;
+			addCalifications(0);
 			errorRight();
 		}
 	}
@@ -206,6 +209,29 @@ void PlayerPack::resetCombo()
 	}
 }
 
+int* PlayerPack::getCalifications()
+{
+	return califications;
+}
+
+void PlayerPack::addCalifications(int letter)
+{
+	califications[letter]++;
+}
+
+void PlayerPack::changeController(bool isXbox)
+{
+	for (Note* o : screenArrows_) {
+		if (o != nullptr)
+			o->changeController(isXbox);
+	}
+	for (Note* o : screenButtons_) {
+		if (o != nullptr)
+			o->changeController(isXbox);
+	}
+
+}
+
 void PlayerPack::updateCombo()
 {
 
@@ -240,6 +266,10 @@ PlayerPack::~PlayerPack()
 	delete hitRight;
 	delete hitLeft;
 	delete lip;
+	delete comboTxt;
+	delete scoreBar;
+	delete califications;
+
 	for (Note* o : screenArrows_)
 	{
 		delete o;

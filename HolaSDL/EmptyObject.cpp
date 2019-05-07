@@ -14,7 +14,8 @@ EmptyObject::~EmptyObject()
 
 void EmptyObject::render(Uint32 time, bool beatSync) {
 
-	animation.texture_->render(getRect(), getFrameRect());
+	if(active_)
+		animation.texture_->render(getRect(), &getFrameRect());
 
 }
 

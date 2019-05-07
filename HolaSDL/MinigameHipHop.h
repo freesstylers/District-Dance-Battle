@@ -1,6 +1,7 @@
 #pragma once
 #include "MiniGame.h"
 #include "Crosshair.h"
+#include "checkML.h"
 
 class MinigameHipHop : public MiniGame
 {

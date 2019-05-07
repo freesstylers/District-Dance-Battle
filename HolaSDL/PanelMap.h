@@ -1,5 +1,6 @@
 #pragma once
 #include "EmptyObject.h"
+#include "checkML.h"
 
 class GameManager;
 
@@ -18,17 +19,9 @@ public:
 	
 	int index = 0;
 	int lvl_;
-	int scoreP1E_ = 0;
-	char noteP1E_;
-
-	int scoreP1H_ = 0;
-	char noteP1H_;
 	
-	int scoreP2E_ = 0;
-	char noteP2E_;
-	
-	int scoreP2H_ = 0;
-	char noteP2H_;
+	int scoreE_ = 0;
+	int scoreH_ = 0;
 
 	bool selected = false;
 	bool difActive = false;
@@ -36,7 +29,7 @@ public:
 private:
 	GameManager * manager_;
 
-	string types[6] = { "Tutorial", "VaporWave", "HipHop", "Reggetón" , "A" , "A" };
+	string types[6] = { "Tutorial", "VaporWave", "HipHop", "Reggetón" , "Heavy Metal" , "A" };
 
 	EmptyObject switches[3];
 	EmptyObject fondo_;

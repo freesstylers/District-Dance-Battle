@@ -9,6 +9,7 @@
 #include "LevelInputManager.h"
 #include "HitNotePool.h"
 #include "PlayerPack.h"
+#include "checkML.h"
 
 class PlayState;
 class PlayerPack : public GameObject
@@ -23,7 +24,8 @@ protected:
 	PlayState* playstate_;
 	ComboText* comboTxt;
 	Vector2D comboPosition;
-	
+	int* califications = new int[4];
+
 	int noteYLimit;
 	int comboTextX;
 
@@ -40,6 +42,8 @@ public:
 	virtual bool handleInput(Uint32 time, const SDL_Event& event);
 	Point* getLeftPoint() { return leftPoint; }
 	Point* getRightPoint() { return rightPoint; }
+	Squares* getleftBar() { return leftNoteBar; }
+	Squares* getrightBar() { return rightNoteBar; }
 	std::list<Note*> screenArrows_;
 	std::list<Note*> screenButtons_;
 	FeedbackPool* feedbackLeft;
@@ -53,8 +57,10 @@ public:
 	virtual void updateResolution(double wScale, double hScale);
 	void addCombo(int i);
 	void resetCombo();
-
+	int* getCalifications();
+	void addCalifications(int letter);
 	void setComboActive(bool active) { comboTxt->setActive(active); if (active) updateCombo(); }
+	void changeController(bool isXbox);
 
 	LevelInputManager* lip;
 };

@@ -93,13 +93,13 @@ void GameObject::setTexture(Texture* texture)
 	animation.texture_ = texture;
 }
 
-SDL_Rect* GameObject::getFrameRect()
+SDL_Rect GameObject::getFrameRect()
 {
-	SDL_Rect* rect = new SDL_Rect;
-	rect->h = animation.frameHeight;
-	rect->w = animation.frameWidth;
-	rect->x = (animation.frameWidth * (animation.currentFrame % animation.columns));
-	rect->y = (animation.frameHeight * (int)(animation.currentFrame / animation.columns));
+	SDL_Rect rect;
+	rect.h = animation.frameHeight;
+	rect.w = animation.frameWidth;
+	rect.x = (animation.frameWidth * (animation.currentFrame % animation.columns));
+	rect.y = (animation.frameHeight * (int)(animation.currentFrame / animation.columns));
 	return rect;
 }
 
@@ -142,7 +142,7 @@ void GameObject::render(Uint32 time, bool beatSync)
 			lastRender = time;
 		}
 
-		animation.texture_->render(getRect(), getFrameRect(), alpha_);
+		animation.texture_->render(getRect(), &getFrameRect(), alpha_);
 	}
 }
 

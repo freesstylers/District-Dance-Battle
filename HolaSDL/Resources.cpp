@@ -3,21 +3,20 @@
 #include "sdl_includes.h"
 
 vector<Resources::FontInfo> Resources::fonts_ {
-		{ ARIAL16, "resources/fonts/ARIAL.ttf", 16 },
-	{ ARIAL24, "resources/fonts/ARIAL.ttf", 40 },
-	{PIXEL30, "resources/fonts/NES-Chimera.ttf",30},
-	{PIXEL20, "resources/fonts/NES-Chimera.ttf",20},
-	{PIXEL10, "resources/fonts/NES-Chimera.ttf",10 },
-	{PIXEL50, "resources/fonts/NES-Chimera.ttf",45},
-	{FIPPS10, "resources/fonts/Fipps-Regular.otf",10},
+	{ ARIAL16, "resources/fonts/ARIAL.ttf", 16 },	//Not used, delete to save memory?
+	{ ARIAL24, "resources/fonts/ARIAL.ttf", 40 },	//Not used, delete to save memory?
+	{PIXEL30, "resources/fonts/NES-Chimera.ttf",30},	//Not used, delete to save memory? 
+	{PIXEL20, "resources/fonts/NES-Chimera.ttf",20},	//Not used, delete to save memory?
+	{PIXEL10, "resources/fonts/NES-Chimera.ttf",10 },	//Not used, delete to save memory?
+	{PIXEL50, "resources/fonts/NES-Chimera.ttf",45},	//Not used, delete to save memory?
+	{FIPPS10, "resources/fonts/Fipps-Regular.otf",10},	//Not used, delete to save memory?
 	{FIPPS20, "resources/fonts/Fipps-Regular.otf",20},
-	{FIPPS30, "resources/fonts/Fipps-Regular.otf",30},
-	{FIPPS50, "resources/fonts/Fipps-Regular.otf",50},
+	{FIPPS30, "resources/fonts/Fipps-Regular.otf",30},	//Not used, delete to save memory?
+	{FIPPS50, "resources/fonts/Fipps-Regular.otf",50},	//Not used, delete to save memory?
 	{RETRO10, "resources/fonts/Retro Gaming.ttf",10},
 	{RETRO20, "resources/fonts/Retro Gaming.ttf",20},
 	{RETRO30, "resources/fonts/Retro Gaming.ttf",30},
 	{RETRO50, "resources/fonts/Retro Gaming.ttf",50}
-	//{ ARIAL16, "resources/fonts/ARIAL.ttf", 16 }
 };
 
 vector<Resources::ImageInfo> Resources::images_{
@@ -94,13 +93,13 @@ vector<Resources::ImageInfo> Resources::images_{
 		{StarBar, "resources/images/ScoreStars.png", 22, 102, 6, 6, 1},
 		{RedAura, "resources/images/RedVignette.png", 800, 600, 1, 1, 1},
 		{NivelExtra, "resources/images/NivelExtra.png", 100, 100, 1, 1, 1},
-		{ButtonPlaceholder, "resources/images/buttonPlaceholder.png", 153, 65, 1, 1, 1},
-		{ButtonSelection, "resources/images/buttonSelection.png", 153, 65, 1, 1, 1},
+		{ButtonPlaceholder, "resources/images/buttonPlaceholder.png", 153, 29, 1, 1, 1},
+		{ButtonSelection, "resources/images/buttonSelection.png", 153, 29, 1, 1, 1},
 		{MenuBG, "resources/images/menuBG.png", 50, 75, 1, 1, 1},
-		{ButtonResume, "resources/images/buttonResume.png", 153, 65, 1, 1, 1},
-		{ButtonRestart, "resources/images/buttonRestart.png", 153, 65, 1, 1, 1},
-		{ButtonOptions, "resources/images/buttonOptions.png", 153, 65, 1, 1, 1},
-		{ButtonExit, "resources/images/buttonExit.png", 153, 65, 1, 1, 1},
+		{ButtonResume, "resources/images/buttonResume.png", 153, 29, 1, 1, 1},
+		{ButtonRestart, "resources/images/buttonRestart.png", 153, 29, 1, 1, 1},
+		{ButtonOptions, "resources/images/buttonOptions.png", 153, 29, 1, 1, 1},
+		{ButtonExit, "resources/images/buttonExit.png", 153, 29, 1, 1, 1},
 		{MenuCanciones, "resources/images/menuCanciones.png", 1600, 900, 1, 1, 1},
 		{MasterHand,"resources/images/Dedo.png", 128, 128, 1, 1, 1},
 		{Recuadro1P, "resources/images/Recuadro1P.png", 32, 100, 4, 1, 4},
@@ -120,9 +119,27 @@ vector<Resources::ImageInfo> Resources::images_{
 		{ShrekDance, "resources/images/shrekDance.png", 60, 120, 2, 1, 2},
 		{SansIdle, "resources/images/sansIdle.png", 60, 120, 2, 1, 2 },
 		{SansDance, "resources/images/sansDance.png", 60, 120, 3, 2, 4},
-		{fourButtons, "resources/images/CuatroBotones.png", 75, 81, 1, 1, 1}
-
-	
+		{fourButtons, "resources/images/CuatroBotones.png", 75, 81, 1, 1, 1},
+		{Crown, "resources/images/Crown.png",32,32,4,1,4},
+		{Recuadro1PWin, "resources/images/Recuadro1PWinning.png", 32, 100, 4, 1, 4 },
+		{Recuadro2PWin, "resources/images/Recuadro2PWinning.png", 32, 100, 4, 1, 4 },
+		{MenuIcon, "resources/images/icon.png", 32, 100, 4, 1, 4 },
+        {LeftArrowPlay, "resources/images/FlechaLeftPlay.png", 32, 32, 1, 1, 1 },
+		{ButtonVol, "resources/images/volumeSprite.png", 153, 29, 1, 1, 1 },
+		{VolSelection, "resources/images/volumeSelection.png", 153, 29, 1, 1, 1 },
+		{RightArrowPlay, "resources/images/FlechaRightPlay.png", 32, 32, 1, 1, 1 },
+		{UpArrowPlay, "resources/images/FlechaUpPlay.png", 32, 32, 1, 1, 1 },
+		{DownArrowPlay, "resources/images/FlechaDownPlay.png", 32, 32, 1, 1, 1 },
+		{XButtonPlay, "resources/images/BotonXPlay.png", 32, 32, 1, 1, 1 },
+		{BButtonPlay, "resources/images/BotonCirculoPlay.png", 32, 32, 1, 1, 1 },
+		{SquareButtonPlay, "resources/images/BotonCuadradoPlay.png", 32, 32, 1, 1, 1 },
+		{TriangleButtonPlay, "resources/images/BotonTrianguloPlay.png", 32, 32, 1, 1, 1 },
+		{ ButtonMusic, "resources/images/buttonMusic.png", 153, 29, 1, 1, 1},
+		{ ButtonSound, "resources/images/buttonSound.png", 153, 29, 1, 1, 1 },
+		{ ButtonControls, "resources/images/buttonControls.png", 153, 29, 1, 1, 1 },
+		{ NewGameButton, "resources/images/NewGame.png", 153, 65, 1, 1, 1 },
+		{ ChargeGameButton, "resources/images/Cargar.png", 153, 65, 1, 1, 1 },
+			
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {
@@ -130,24 +147,33 @@ vector<Resources::TextMsgInfo> Resources::messages_ {
 };
 
 vector<Resources::MusicInfo> Resources::musics_ {
-	{Test , "resources/sound/TutorialJuego.wav"},
-	{Sunflower, "resources/sound/sunflower.mp3"},
+	{Test , "resources/sound/TutorialJuego.wav"},	//Not used, delete to save memory?
+	{Sunflower, "resources/sound/sunflower.mp3"},	//Not used, delete to save memory?
 	{Bill, "resources/sound/billijean_noGlitch.mp3"},
-	{Error, "resources/sound/Error.wav"},
-	{Snare, "resources/sound/snare.wav"},
+	{Error, "resources/sound/Error.wav"},	//Make it .mp3 to save memory?
+	{Snare, "resources/sound/snare.wav"},	//Make it .mp3 to save memory?
 	{Hiphop, "resources/sound/hiphop.mp3"},
 	{Mapa, "resources/sound/Mapa.mp3"},
-	{StarSound, "resources/sound/Star.wav"},
-	{ComboSound, "resources/sound/Combo.wav"},
+	{StarSound, "resources/sound/Star.wav"},	//Make it .mp3 to save memory?
+	{ComboSound, "resources/sound/Combo.wav"},	//Make it .mp3 to save memory?
 	{AllStar, "resources/sound/allstar.mp3"},
 	{Megalovania, "resources/sound/megalovania.mp3"},
 	{Asereje, "resources/sound/asereje.mp3"},
 	{Africa, "resources/sound/africa.mp3"},
 	{Test186BPM, "resources/sound/186-bpm.mp3"},
 	{Papito, "resources/sound/Papito.mp3"},
-	{Running, "resources/sound/RunningInThe90s.mp3"}
+	{Running, "resources/sound/RunningInThe90s.mp3"},
+	{Error2, "resources/sound/Error.mp3"},
+	{Ok, "resources/sound/ok.mp3"},
+	{Shoot, "resources/sound/shoot.mp3"}
 };
 
 vector<Resources::SoundInfo> Resources::sounds_ {
 };
 
+
+vector<Resources::SpecialInfo> Resources::specialImages_{
+
+	{LoadingBG, "resources/images/EndTemplate.png", 1600, 900, 1, 1, 1},
+	{LoadingAnim, "resources/images/HitAnimationGold.png", 32, 32, 3, 1, 3}
+};
