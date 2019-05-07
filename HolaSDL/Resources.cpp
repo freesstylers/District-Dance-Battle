@@ -139,6 +139,7 @@ vector<Resources::ImageInfo> Resources::images_{
 		{ ButtonControls, "resources/images/buttonControls.png", 153, 29, 1, 1, 1 },
 		{ NewGameButton, "resources/images/NewGame.png", 153, 65, 1, 1, 1 },
 		{ ChargeGameButton, "resources/images/Cargar.png", 153, 65, 1, 1, 1 },
+		{ CreditsButton, "resources/images/Creditos_Menu.png", 153, 65, 1, 1, 1 }
 			
 };
 

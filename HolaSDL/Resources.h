@@ -132,7 +132,8 @@ public:
 		ButtonSound,
 		ButtonControls,
 		NewGameButton,
-		ChargeGameButton
+		ChargeGameButton,
+		CreditsButton
 
 
 		// text
