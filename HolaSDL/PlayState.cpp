@@ -275,6 +275,8 @@ void PlayState::update(Uint32 time)
 		}
 		if (!miniActive && (minigameAmount == 0 || (minigameAmount > 0 && minigameController->DeltaTime() < level->songLength / minigameAmount)))
 		{
+			if (nlevel == 9)
+				pause();
 			
 			minigameController->Update();
 
@@ -350,8 +352,14 @@ bool PlayState::pause()
 	{
 		manager->getServiceLocator()->getAudios()->pauseChannel(0);
 		isPaused = true;
-		pauseMenu->setActive(true);
-		pauseMenu->activate();
+		if (nlevel != 9) {
+			pauseMenu->setActive(true);
+			pauseMenu->activate();
+		}
+		else {
+			TutorialMinigame* a = static_cast<TutorialMinigame*>(minigame);
+			a->pause();
+		}
 	}
 
 	return isPaused;
@@ -363,7 +371,12 @@ void PlayState::resume(unsigned int timePaused)
 	{
 		manager->getServiceLocator()->getAudios()->resumeChanne(0);
 		isPaused = false;
-		pauseMenu->setActive(false);
+		if(nlevel != 9)
+			pauseMenu->setActive(false);
+		else {
+			TutorialMinigame* a = static_cast<TutorialMinigame*>(minigame);
+			a->resume();
+		}
 		timer->setOffset(timePaused);
 		minigameController->setOffset(timePaused);
 	}

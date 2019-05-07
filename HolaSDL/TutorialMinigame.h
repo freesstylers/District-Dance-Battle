@@ -9,6 +9,7 @@ protected:
 	EmptyObject * cuadroTutorial;
 
 	int numDialog = 0;
+
 public:
 	TutorialMinigame(GameManager* g, PlayState* p);
 	~TutorialMinigame();
@@ -16,6 +17,10 @@ public:
 	virtual void update(Uint32 time);
 	virtual void handleInput(Uint32 time, SDL_Event e);
 	void changeCuadroTutorial();
+
+
+	void resume();
+	void pause();
 };
 
 

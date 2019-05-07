@@ -1,6 +1,19 @@
 #include "TutorialMinigame.h"
 #include "GameManager.h"
 
+void TutorialMinigame::pause()
+{
+	timer->Reset();
+
+}
+
+void TutorialMinigame::resume()
+{
+	timer->Update();
+	float time = timer->DeltaTime() * 1000;
+	playS->resume(time);
+
+}
 
 TutorialMinigame::TutorialMinigame(GameManager* g, PlayState* p) : MiniGame(g, p)
 {
@@ -36,6 +49,7 @@ void TutorialMinigame::handleInput(Uint32 time, SDL_Event e) {
 		else if (e.type == SDL_CONTROLLERBUTTONUP) keyup = true;
 	}
 }
+
 void TutorialMinigame::changeCuadroTutorial() {
 	
 	switch (numDialog)
