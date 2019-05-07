@@ -15,6 +15,7 @@
     <ClInclude Include="Background.h" />
     <ClInclude Include="checkML.h" />
     <ClInclude Include="ComboText.h" />
+    <ClInclude Include="Creditos.h" />
     <ClInclude Include="DialogState.h" />
     <ClInclude Include="ExtraMenu.h" />
     <ClInclude Include="FeedbackPool.h" />
@@ -81,6 +82,7 @@
     <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="ComboText.cpp" />
+    <ClCompile Include="Creditos.cpp" />
     <ClCompile Include="DialogState.cpp" />
     <ClCompile Include="ExtraMenu.cpp" />
     <ClCompile Include="FeedbackPool.cpp" />

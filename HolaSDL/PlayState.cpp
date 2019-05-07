@@ -230,7 +230,7 @@ void PlayState::newGame2P()
 
 PlayState::~PlayState()
 {
-	timer->Release();
+	//timer->Release();
 	delete minigameController;
 	delete minigame;
 	delete effectVaporWave;

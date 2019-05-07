@@ -25,7 +25,7 @@ public:
 	double songLength;
 	int song;
 	int maxScore;
-	int noteAmount;
+	int noteAmount = 0;
 	int noteSize_;
 	SRandBasedGenerator random;
 

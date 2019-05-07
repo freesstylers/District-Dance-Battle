@@ -1,5 +1,5 @@
 #include "MainMenuState.h"
-
+#include "Creditos.h"
 
 
 MainMenuState::MainMenuState(GameManager*g):GameState(g)

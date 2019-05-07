@@ -109,7 +109,7 @@ bool DialogState::handleEvent(Uint32 time, SDL_Event e) {
 			if (!dialogo.empty()) {
 				actualBox = box[dialogo.front().box];
 			}
-			else actualBox = new TextBox(manager, manager->getDefaultWindowWidth() - 20, 400, Vector2D(10, manager->getDefaultWindowHeight() - 400), 29);
+			else actualBox = new TextBox(manager, manager->getDefaultWindowWidth() - 20, 400, Vector2D(10, manager->getDefaultWindowHeight() - 400), 120);
 
 			updateText();
 

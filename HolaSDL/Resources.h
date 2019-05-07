@@ -146,8 +146,11 @@ public:
 		CreditsSelected,
 		CreditsNoSelected,
 		ExitSelected,
-		ExitNoSelected
-
+		ExitNoSelected,
+		ZombieBox,
+		MarcelinoBox,
+		CabezaZombie,
+		Creditos
  
 		// text
 	};

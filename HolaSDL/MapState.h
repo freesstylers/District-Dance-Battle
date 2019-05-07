@@ -23,7 +23,7 @@ public:
 
 private:
 	
-	bool activeLevels[5] = {false, false, false, false, false };
+	bool activeLevels[5] = {true, true, false, false, false }; // Array de niveles activos cuando empieza la partida por primera vez
 
 	int index = 0;
 	int min = 0;

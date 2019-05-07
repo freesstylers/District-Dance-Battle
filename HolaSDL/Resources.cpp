@@ -153,6 +153,10 @@ vector<Resources::ImageInfo> Resources::images_{
 		{ CreditsNoSelected, "resources/images/Creditos1.png", 800, 200, 1, 1, 1 },
 		{ ExitSelected, "resources/images/Salir2.png", 800, 200, 1, 1, 1 },
 		{ ExitNoSelected, "resources/images/Salir1.png", 800, 200, 1, 1, 1 },
+		{ ZombieBox, "resources/images/corpselillo_dialog.png", 153, 65, 1, 1, 1 },
+		{ MarcelinoBox, "resources/images/marcelino_dialog.png", 153, 65, 1, 1, 1 },
+		{ CabezaZombie , "resources/images/ZombieHead.png", 40, 40, 1, 1, 1 },
+		{ Creditos, "resources/images/Creditos.png", 208, 120, 2, 1, 2 }
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {
