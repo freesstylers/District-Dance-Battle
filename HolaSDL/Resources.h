@@ -135,7 +135,19 @@ public:
 		ChargeGameButton,
 		CreditsButton,
 		ZombieIdle,
-		ZombieDance
+		ZombieDance,
+		MainMenu,
+		NewGameSelected,
+		NewGameNoSelected,
+		ChargeGameSelected,
+		ChargeGameNoSelected,
+		OptionsSelected,
+		OptionsNoSelected,
+		CreditsSelected,
+		CreditsNoSelected,
+		ExitSelected,
+		ExitNoSelected
+
  
 		// text
 	};

@@ -16,7 +16,8 @@ public:
 	virtual bool handleEvent(Uint32 time, SDL_Event e);
 	virtual void render(Uint32 time, bool beatHandler);
 
-	pair<EmptyObject*, bool> buttons[5];
+	vector<EmptyObject*> buttons;
+	vector<bool> selectButton;
 
 private:
 	GameManager* gameManager;

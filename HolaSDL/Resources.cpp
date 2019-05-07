@@ -141,7 +141,18 @@ vector<Resources::ImageInfo> Resources::images_{
 		{ ChargeGameButton, "resources/images/Cargar.png", 153, 65, 1, 1, 1 },
 		{ CreditsButton, "resources/images/Creditos_Menu.png", 153, 65, 1, 1, 1 },
 		{ ZombieIdle, "resources/images/zombieIdle.png", 58, 94, 3, 2, 4 },
-		{ ZombieDance, "resources/images/zombieDance.png", 58, 94, 3, 3, 7 }
+		{ ZombieDance, "resources/images/zombieDance.png", 58, 94, 3, 3, 7 },
+		{ MainMenu, "resources/images/MenuPrincipal.png", 1600, 900, 1, 1, 1 },
+		{ NewGameSelected, "resources/images/NuevaPartida2.png", 800, 200, 1, 1, 1 },
+		{ NewGameNoSelected, "resources/images/NuevaPartida1.png", 800, 200, 1, 1, 1 },
+		{ ChargeGameSelected, "resources/images/Continuar2.png", 800, 200, 1, 1, 1 },
+		{ ChargeGameNoSelected, "resources/images/Continuar1.png", 800, 200, 1, 1, 1 },
+		{ OptionsSelected, "resources/images/Opciones2.png", 800, 200, 1, 1, 1 },
+		{ OptionsNoSelected, "resources/images/Opciones.png", 800, 200, 1, 1, 1 },
+		{ CreditsSelected, "resources/images/Creditos2.png", 800, 200, 1, 1, 1 },
+		{ CreditsNoSelected, "resources/images/Creditos1.png", 800, 200, 1, 1, 1 },
+		{ ExitSelected, "resources/images/Salir2.png", 800, 200, 1, 1, 1 },
+		{ ExitNoSelected, "resources/images/Salir1.png", 800, 200, 1, 1, 1 },
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {
