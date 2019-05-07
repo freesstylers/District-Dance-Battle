@@ -19,7 +19,7 @@ Note::Note(SDL_GameControllerButton key, SDLGame* game, double width, double hei
 
 Note::~Note()
 {
-
+	game_ = nullptr;
 }
 
 bool Note::handleInput(Uint32 time, const SDL_Event& event) {

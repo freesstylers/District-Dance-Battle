@@ -35,7 +35,7 @@ private:
 	TextObject* Ok2 = nullptr;
 	TextObject* Bad2 = nullptr;
 
-
+	EmptyObject* EndBG = nullptr;
 	EmptyObject* Wow;
 	EmptyObject* Good;
 	EmptyObject* Ok;

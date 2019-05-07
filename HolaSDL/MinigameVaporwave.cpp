@@ -20,6 +20,16 @@ MinigameVaporwave::~MinigameVaporwave()
 	delete timer;
 	delete fback;
 	delete Aviso;
+
+	for (Note* o : levelButtons_) //Por si se cierra el levelName antes de que acabe
+	{
+		delete o;
+	}
+
+	for (Note* o : screenButtons_) //Por si se cierra el levelName antes de que acabe
+	{
+		delete o;
+	}
 }
 
 void MinigameVaporwave::generateButtons()
