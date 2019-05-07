@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClInclude Include="AudioManager.h" />
     <ClInclude Include="Background.h" />
+    <ClInclude Include="checkML.h" />
     <ClInclude Include="ComboText.h" />
     <ClInclude Include="DialogState.h" />
     <ClInclude Include="ExtraMenu.h" />

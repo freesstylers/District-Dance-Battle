@@ -5,6 +5,7 @@
 #include "TextObject.h"
 #include <list>
 #include <string>
+#include "checkML.h"
 
 class PlayState;
 
@@ -12,6 +13,8 @@ class PauseMenu :
 	public GameObject
 {
 private:
+	bool isXbox;
+
 	TimerNoSingleton* timer;
 	SDL_GameController* controller = NULL;
 
@@ -50,17 +53,18 @@ private:
 	void exitSong();
 	void updateMusic(bool raise);
 	void updateSound(bool raise);
-	void updateControls();
+	
 	void updateTxt();
 
 
 
 
 public:
-	PauseMenu(SDLGame* game, PlayState* ps);
+	PauseMenu(SDLGame* game, PlayState* ps, bool isXbox);
 	~PauseMenu();
 
 	void activate();
+	void updateControls();
 
 
 	virtual bool handleInput(Uint32 time, const SDL_Event& event);

@@ -2,6 +2,7 @@
 #include "GameObject.h"
 #include "EmptyObject.h"
 #include "ParticleEngine.h"
+#include "checkML.h"
 class ScoreBar : public GameObject
 {
 private:

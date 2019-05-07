@@ -7,6 +7,7 @@
 #include "EndState.h"
 #include "MainMenuState.h"
 #include "DialogState.h"
+#include "checkML.h"
 
 class GameManager: public SDLGame
 {
@@ -17,19 +18,22 @@ public:
 	void update(Uint32 time);
 	void handleEvent(Uint32 time);
 	void render(Uint32 time);
-	bool getMando() { return mandoXbox; };
-	void setMando(bool xbox) { mandoXbox = xbox; };
+	bool getController() { return isXbox; };
+	void setController(bool xbox) { isXbox = xbox; };
 	bool checkExit();
 	bool exit_;
 	virtual void start(); // start the game
 	virtual void stop();  // stop the game
 	GameStateMachine* getMachine();
+	void tick();
 	
 protected:
 	GameStateMachine* machine;
-	bool mandoXbox = false;
+	bool isXbox = false;
 	
 private:
+	uint32_t last_tick_time = 0;
+
 	const static int _WINDOW_WIDTH_ = 1280;
 	const static int _WINDOW_HEIGHT_ = 720;
 };

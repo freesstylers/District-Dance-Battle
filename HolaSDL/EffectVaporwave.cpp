@@ -12,7 +12,7 @@ EffectVaporwave::EffectVaporwave(SDLGame* game, Vector2D pos, int width, int hei
 void EffectVaporwave::render(Uint32 time, bool beatSync)
 {
 	if (active_) {
-		animation.texture_->render(getRect(), getFrameRect());
+		animation.texture_->render(getRect(), &getFrameRect());
 		animation.currentFrame = animation.currentFrame + 1;
 		if (animation.currentFrame == animation.totalFrames) {
 			animation.currentFrame = 0;

@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include "checkML.h"
 
 using namespace std;
 class BeatHandler

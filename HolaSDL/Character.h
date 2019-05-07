@@ -1,6 +1,8 @@
 #pragma once
 #include "GameObject.h"
 #include "TimerNoSingleton.h"
+#include "checkML.h"
+
 class Character: public GameObject
 {
 private:

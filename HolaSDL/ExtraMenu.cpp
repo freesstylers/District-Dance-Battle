@@ -23,6 +23,15 @@ void ExtraMenu::init() {
 }
 ExtraMenu::~ExtraMenu()
 {
+	delete bg;
+	delete hand;
+	delete switchPlayers;
+	delete select;
+
+	bg = nullptr;
+	hand = nullptr;
+	switchPlayers = nullptr;
+	select = nullptr;
 }
 
 void ExtraMenu::selectionUp() {

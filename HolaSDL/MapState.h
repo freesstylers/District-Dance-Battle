@@ -7,6 +7,7 @@
 #include <iostream>
 #include <fstream>
 #include <utility>
+#include "checkML.h"
 
 using namespace std;
 
@@ -22,11 +23,11 @@ public:
 
 private:
 	
-	bool activeLevels[5];
+	bool activeLevels[5] = {false, false, false, false, false };
 
 	int index = 0;
 	int min = 0;
-	int max = 5;
+	int max = 4;
 
 	void play(int lvl_);
 	void loadGame();

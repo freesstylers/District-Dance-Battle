@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-
+#include "checkML.h"
 #include"Vector2D.h"
 #include"SRandBasedGenerator.h"
 

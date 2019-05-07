@@ -42,17 +42,24 @@ void GameManager::run()
 		handleEvent(startTime);
 		update(startTime);
 		render(startTime);
-
-		double frameTime = SDL_GetTicks() - startTime;
+		tick();
+		/*double frameTime = SDL_GetTicks() - startTime;
 		double frames = (1.0 / (double)MAXFPS)*1000.0;
 		if (frameTime < frames) {
 			SDL_Delay(frames - frameTime);
-			deltaTime = frames / 1000.0;
+			deltaTime = frames/1000.0;
 		}
 		else {
-			deltaTime = frameTime / 1000.0;
-		}
+			deltaTime = frameTime/ 1000.0;
+		}*/
 	}
+}
+
+void GameManager::tick()
+{
+	uint32_t tick_time = SDL_GetTicks();
+	deltaTime = (tick_time - last_tick_time);
+	last_tick_time = tick_time;
 }
 
 void GameManager::update(Uint32 time)

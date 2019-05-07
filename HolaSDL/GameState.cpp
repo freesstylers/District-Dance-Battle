@@ -28,8 +28,6 @@ void GameState::render(Uint32 time, bool beatSync)
 {
 	for (GameObject* o : stage)
 		o->render(time, beatSync);
-	for (GameObject* o : stage2)
-		o->render(time, beatSync);
 	SDL_RenderSetLogicalSize(manager->getRenderer(), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight());
 }
 

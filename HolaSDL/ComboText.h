@@ -1,6 +1,8 @@
 #pragma once
 #include "TextObject.h"
 #include "ParticleEngine.h"
+#include "checkML.h"
+
 class ComboText :
 	public TextObject
 {

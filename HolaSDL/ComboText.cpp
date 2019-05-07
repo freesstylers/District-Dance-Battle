@@ -13,6 +13,9 @@ ComboText::ComboText(SDLGame* manager, Font* font, Vector2D pos) : TextObject(ma
 
 ComboText::~ComboText()
 {
+	delete particles;
+
+	particles = nullptr;
 }
 
 void ComboText::render(Uint32 time, bool beatSync)

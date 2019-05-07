@@ -47,7 +47,7 @@ void DialogState::init()
 			file >> sp;
 			//Hay que crear una nueva clase que sea textBox
 			file >> textAux;
-			box.insert(pair<string, GameObject*>(textAux, new TextBox(manager, manager->getDefaultWindowWidth() - 20, 400, Vector2D(10, manager->getDefaultWindowHeight()-400),sp)));
+			box.insert(pair<string, GameObject*>(textAux, new TextBox(manager, manager->getDefaultWindowWidth() - 20, 400, Vector2D(10, manager->getDefaultWindowHeight()-400),sp))); //basura a revisar
 		}
 
 		file >> textAux;
@@ -82,6 +82,10 @@ void DialogState::init()
 DialogState::~DialogState()
 {
 	delete actualBox;
+	delete text;
+	delete text2;
+
+	box.clear();
 }
 
 void DialogState::render(Uint32 time, bool beatSync) {
@@ -117,7 +121,7 @@ bool DialogState::handleEvent(Uint32 time, SDL_Event e) {
 	}
 	else if (e.type == SDL_CONTROLLERBUTTONUP) keyup = true;
 
-	else if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_TAB)
+	else if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_TAB || (e.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_BACK)))
 		manager->getMachine()->changeState(new PlayState(manager, nlevel, oneP_, hardMode_, prevMaxScoreE_, prevMaxScoreH_));
 
 	return true;

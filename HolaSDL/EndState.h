@@ -4,6 +4,7 @@
 #include "Character.h"
 #include "PlayState.h"
 #include "TextObject.h"
+#include "checkML.h"
 
 class EndState :
 	public GameState
@@ -29,6 +30,21 @@ private:
 	TextObject* Good1;
 	TextObject* Ok1;
 	TextObject* Bad1;
+	TextObject* Wow2 = nullptr;
+	TextObject* Good2 = nullptr;
+	TextObject* Ok2 = nullptr;
+	TextObject* Bad2 = nullptr;
+
+
+	EmptyObject* Wow;
+	EmptyObject* Good;
+	EmptyObject* Ok;
+	EmptyObject* Bad;
+	EmptyObject* letter;
+	EmptyObject* letter2 = nullptr;
+
+	Character* perico;
+	Character* perico2 = nullptr;
 
 
 	string types[6] = { "Tutorial", "VaporWave", "HipHop", "??????" , "A" , "A" };

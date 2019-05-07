@@ -119,8 +119,7 @@ void PlayerPack::update(Uint32 time)
 			delete aux;
 			screenArrows_.pop_front();
 			cout << "fuera" << endl;
-			
-
+			addCalifications(0);
 		}
 		if (!screenButtons_.empty() && screenButtons_.front()->getPosition().getY() > noteYLimit)
 		{
@@ -140,6 +139,7 @@ void PlayerPack::update(Uint32 time)
 			delete aux;
 			screenButtons_.pop_front();
 			cout << "fuera" << endl;
+			addCalifications(0);
 			errorRight();
 		}
 	}
@@ -219,6 +219,19 @@ void PlayerPack::addCalifications(int letter)
 	califications[letter]++;
 }
 
+void PlayerPack::changeController(bool isXbox)
+{
+	for (Note* o : screenArrows_) {
+		if (o != nullptr)
+			o->changeController(isXbox);
+	}
+	for (Note* o : screenButtons_) {
+		if (o != nullptr)
+			o->changeController(isXbox);
+	}
+
+}
+
 void PlayerPack::updateCombo()
 {
 
@@ -253,6 +266,10 @@ PlayerPack::~PlayerPack()
 	delete hitRight;
 	delete hitLeft;
 	delete lip;
+	delete comboTxt;
+	delete scoreBar;
+	delete califications;
+
 	for (Note* o : screenArrows_)
 	{
 		delete o;
