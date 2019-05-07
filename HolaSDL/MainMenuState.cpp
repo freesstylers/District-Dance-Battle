@@ -261,17 +261,17 @@ bool MainMenuState::handleEvent(Uint32 time, SDL_Event e)
 	bool input = false;
 	
 	
-		if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_UP)  || e.key.keysym.sym == SDLK_DOWN)
+		if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_UP) && SDL_CONTROLLERBUTTONUP || e.key.keysym.sym == SDLK_DOWN && e.type==SDL_KEYUP)
 		{
 			nextButton();
 			input = true;
 		}
-		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN) || e.key.keysym.sym == SDLK_UP)
+		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN) && SDL_CONTROLLERBUTTONUP || e.key.keysym.sym == SDLK_UP && e.type == SDL_KEYUP)
 		{
 			backButton();
 			input = true;
 		}
-		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) || e.key.keysym.sym == SDLK_RIGHT)
+		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) && SDL_CONTROLLERBUTTONUP || e.key.keysym.sym == SDLK_RIGHT && e.type == SDL_KEYUP)
 		{
 			if (optionsOpen) {
 				switch (selectedButton) {
@@ -289,7 +289,7 @@ bool MainMenuState::handleEvent(Uint32 time, SDL_Event e)
 				}
 			}
 		}
-		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT) || e.key.keysym.sym == SDLK_RIGHT)
+		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT) && SDL_CONTROLLERBUTTONUP || e.key.keysym.sym == SDLK_LEFT && e.type == SDL_KEYUP)
 		{
 			if (optionsOpen) {
 				switch (selectedButton) {
@@ -307,22 +307,23 @@ bool MainMenuState::handleEvent(Uint32 time, SDL_Event e)
 				}
 			}
 		}
-		else if (buttons[0].second == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_SPACE))
+		else if (buttons[0].second == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) && SDL_CONTROLLERBUTTONUP || e.key.keysym.sym == SDLK_SPACE && e.type == SDL_KEYUP))
 		{
 			newGame(gameManager);
 			input = true;
 		}
-		
-		else if (buttons[2].second == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_SPACE))
+
+		else if (buttons[2].second == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) && SDL_CONTROLLERBUTTONUP || e.key.keysym.sym == SDLK_SPACE && e.type == SDL_KEYUP))
 		{
 			options();
 			input = true;
 		}
-		else if (buttons[3].second == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_SPACE))
+		else if (buttons[3].second == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) && SDL_CONTROLLERBUTTONUP || e.key.keysym.sym == SDLK_SPACE && e.type == SDL_KEYUP))
 		{
 			exit(gameManager);
 			input = true;
 		}
+	
 	
 	return input;
 }
