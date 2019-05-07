@@ -230,29 +230,18 @@ void PlayState::newGame2P()
 
 PlayState::~PlayState()
 {
-	deleteAll();
-
 	timer->Release();
 	delete minigameController;
-	/*delete animationTimer;
-
-	delete rf;*/
 	delete minigame;
-	
-	delete fourButtons;
-	delete perico;
-	//delete enemy;
 	delete effectVaporWave;
-	/*delete level;
-	/*delete crown;
-	delete songBarBG;*/
+	delete level;
 	delete bh;
-	delete bg;
-	delete pauseMenu;
-	delete player1;
-	/*delete player2;*/
-	delete songBar;
-	delete particles;
+	delete crown;
+
+	for (GameObject* o : stage)
+	{
+		delete o;
+	}
 
 	stage.clear();
 	 

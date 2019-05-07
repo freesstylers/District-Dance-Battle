@@ -7,6 +7,7 @@
 #include <math.h>
 #include "TextObject.h"
 #include "checkML.h"
+#include "TextBox.h"
 
 
 class DialogState: public GameState
@@ -32,10 +33,12 @@ protected:
 	bool oneP_;
 	bool hardMode_;
 	list<Dialog> dialogo;
+	list<TextBox*> textBoxes;
 	map<string, GameObject*> box;
 	GameObject* actualBox;
 	TextObject* text;
 	TextObject* text2;
+	TextBox* textBox;
 	int nlevel;
 	bool end = false;
 	bool endlevel = false;
