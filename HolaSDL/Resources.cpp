@@ -141,7 +141,11 @@ vector<Resources::ImageInfo> Resources::images_{
 		{ ChargeGameButton, "resources/images/Cargar.png", 153, 65, 1, 1, 1 },
 		{ CreditsButton, "resources/images/Creditos_Menu.png", 153, 65, 1, 1, 1 },
 		{ ZombieIdle, "resources/images/zombieIdle.png", 58, 94, 3, 2, 4 },
-		{ ZombieDance, "resources/images/zombieDance.png", 58, 94, 3, 3, 7 }
+		{ ZombieDance, "resources/images/zombieDance.png", 58, 94, 3, 3, 7 },
+		{ ZombieBox, "resources/images/corpselillo_dialog.png", 153, 65, 1, 1, 1 },
+		{ MarcelinoBox, "resources/images/marcelino_dialog.png", 153, 65, 1, 1, 1 },
+		{ CabezaZombie , "resources/images/ZombieHead.png", 40, 40, 1, 1, 1 },
+		{ Creditos, "resources/images/Creditos.png", 208, 120, 2, 1, 2 }
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {

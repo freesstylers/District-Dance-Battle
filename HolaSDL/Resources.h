@@ -135,7 +135,11 @@ public:
 		ChargeGameButton,
 		CreditsButton,
 		ZombieIdle,
-		ZombieDance
+		ZombieDance,
+		ZombieBox,
+		MarcelinoBox,
+		CabezaZombie,
+		Creditos
  
 		// text
 	};

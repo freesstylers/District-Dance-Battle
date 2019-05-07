@@ -18,6 +18,9 @@ MapState::MapState(GameManager* g) :GameState(g)
 	stage.push_back(moreLvls_);
 	activeLevels[0] = true;
 	activeLevels[1] = true;
+	activeLevels[2] = true;
+	activeLevels[3] = true;
+	activeLevels[4] = true;
 	loadGame();
 }
 
@@ -94,7 +97,7 @@ void MapState::createMainButtons()
 	buttons[0].second = PanelMap(manager, buttons[0].first.getPosition() - Vector2D(200, -20), Resources::CabezaVaporWave, 1, "D35P4C1T0", 1);
 	buttons[1].second = PanelMap(manager, buttons[1].first.getPosition(), Resources::CabezaPapito, 2, "Papito Daddy", 3);
 	buttons[2].second = PanelMap(manager, buttons[2].first.getPosition() - Vector2D(-30, 110), Resources::EminemciaHead, 3, "Eminemcia", 2);
-	buttons[3].second = PanelMap(manager, buttons[3].first.getPosition(), Resources::CabezaVaporWave, 1, "D35P4C1T0", 4);
+	buttons[3].second = PanelMap(manager, buttons[3].first.getPosition(), Resources::CabezaZombie, 4, "Corpselillo", 4);
 	buttons[4].second = PanelMap(manager, buttons[4].first.getPosition(), Resources::EminemciaHead, 3, "Eminemcia", 5);
 
 	buttons[0].first.scale(2);
