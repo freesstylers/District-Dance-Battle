@@ -63,7 +63,9 @@ EndState::EndState(GameManager* g, int prevMaxScoreE, int prevMaxScoreH, int* ca
 
 	if (isSingleplayer)
 	{
-		stage.push_back(new EmptyObject(g, Vector2D(0, 0), g->getDefaultWindowWidth(), g->getDefaultWindowHeight(), Resources::EndBG)); //basura, meterlo como puntero
+		EndBG = new EmptyObject(g, Vector2D(0, 0), g->getDefaultWindowWidth(), g->getDefaultWindowHeight(), Resources::EndBG);
+
+		stage.push_back(EndBG);
 		stage.push_back(letter);
 		stage.push_back(perico);
 
@@ -127,7 +129,8 @@ EndState::EndState(GameManager* g, int prevMaxScoreE, int prevMaxScoreH, int* ca
 			highScore->setText(to_string(prevMaxScoreE), SDL_Color{ (0), (0), (0), (255) });
 		}
 
-		stage.push_back(new EmptyObject(g, Vector2D(0, 0), g->getDefaultWindowWidth(), g->getDefaultWindowHeight(), Resources::EndBG2)); //otro a meter como puntero
+		EndBG = new EmptyObject(g, Vector2D(0, 0), g->getDefaultWindowWidth(), g->getDefaultWindowHeight(), Resources::EndBG2);
+		stage.push_back(EndBG); //otro a meter como puntero
 		letter->setPosition(letter->getPosition() + Vector2D(60, 0));
 		letter->scale(0.7);
 		stage.push_back(letter);
@@ -294,6 +297,7 @@ EndState::~EndState()
 
 	delete perico;
 	delete perico2;
+	delete EndBG;
 
 	stage.clear();
 	
