@@ -113,6 +113,7 @@ void SDLGame::initResources() {
 }
 
 void SDLGame::closeResources() {
+	
 }
 
 void SDLGame::render()

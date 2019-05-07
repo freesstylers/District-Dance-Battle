@@ -3,21 +3,20 @@
 #include "sdl_includes.h"
 
 vector<Resources::FontInfo> Resources::fonts_ {
-		{ ARIAL16, "resources/fonts/ARIAL.ttf", 16 },
-	{ ARIAL24, "resources/fonts/ARIAL.ttf", 40 },
-	{PIXEL30, "resources/fonts/NES-Chimera.ttf",30},
-	{PIXEL20, "resources/fonts/NES-Chimera.ttf",20},
-	{PIXEL10, "resources/fonts/NES-Chimera.ttf",10 },
-	{PIXEL50, "resources/fonts/NES-Chimera.ttf",45},
-	{FIPPS10, "resources/fonts/Fipps-Regular.otf",10},
+	{ ARIAL16, "resources/fonts/ARIAL.ttf", 16 },	//Not used, delete to save memory?
+	{ ARIAL24, "resources/fonts/ARIAL.ttf", 40 },	//Not used, delete to save memory?
+	{PIXEL30, "resources/fonts/NES-Chimera.ttf",30},	//Not used, delete to save memory? 
+	{PIXEL20, "resources/fonts/NES-Chimera.ttf",20},	//Not used, delete to save memory?
+	{PIXEL10, "resources/fonts/NES-Chimera.ttf",10 },	//Not used, delete to save memory?
+	{PIXEL50, "resources/fonts/NES-Chimera.ttf",45},	//Not used, delete to save memory?
+	{FIPPS10, "resources/fonts/Fipps-Regular.otf",10},	//Not used, delete to save memory?
 	{FIPPS20, "resources/fonts/Fipps-Regular.otf",20},
-	{FIPPS30, "resources/fonts/Fipps-Regular.otf",30},
-	{FIPPS50, "resources/fonts/Fipps-Regular.otf",50},
+	{FIPPS30, "resources/fonts/Fipps-Regular.otf",30},	//Not used, delete to save memory?
+	{FIPPS50, "resources/fonts/Fipps-Regular.otf",50},	//Not used, delete to save memory?
 	{RETRO10, "resources/fonts/Retro Gaming.ttf",10},
 	{RETRO20, "resources/fonts/Retro Gaming.ttf",20},
 	{RETRO30, "resources/fonts/Retro Gaming.ttf",30},
 	{RETRO50, "resources/fonts/Retro Gaming.ttf",50}
-	//{ ARIAL16, "resources/fonts/ARIAL.ttf", 16 }
 };
 
 vector<Resources::ImageInfo> Resources::images_{
@@ -148,15 +147,15 @@ vector<Resources::TextMsgInfo> Resources::messages_ {
 };
 
 vector<Resources::MusicInfo> Resources::musics_ {
-	{Test , "resources/sound/TutorialJuego.wav"},
-	{Sunflower, "resources/sound/sunflower.mp3"},
+	{Test , "resources/sound/TutorialJuego.wav"},	//Not used, delete to save memory?
+	{Sunflower, "resources/sound/sunflower.mp3"},	//Not used, delete to save memory?
 	{Bill, "resources/sound/billijean_noGlitch.mp3"},
-	{Error, "resources/sound/Error.wav"},
-	{Snare, "resources/sound/snare.wav"},
+	{Error, "resources/sound/Error.wav"},	//Make it .mp3 to save memory?
+	{Snare, "resources/sound/snare.wav"},	//Make it .mp3 to save memory?
 	{Hiphop, "resources/sound/hiphop.mp3"},
 	{Mapa, "resources/sound/Mapa.mp3"},
-	{StarSound, "resources/sound/Star.wav"},
-	{ComboSound, "resources/sound/Combo.wav"},
+	{StarSound, "resources/sound/Star.wav"},	//Make it .mp3 to save memory?
+	{ComboSound, "resources/sound/Combo.wav"},	//Make it .mp3 to save memory?
 	{AllStar, "resources/sound/allstar.mp3"},
 	{Megalovania, "resources/sound/megalovania.mp3"},
 	{Asereje, "resources/sound/asereje.mp3"},

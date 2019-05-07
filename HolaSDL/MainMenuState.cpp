@@ -64,12 +64,28 @@ MainMenuState::MainMenuState(GameManager*g):GameState(g)
 
 MainMenuState::~MainMenuState()
 {
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < 4; i++)
 	{
 		delete buttons[i].first;
 		buttons[i].first = nullptr;
 	}
 
+	delete op_bg;
+	delete music;
+	delete musicSelect;
+	delete sounds;
+	delete soundsSelect;
+	delete controls;
+	delete controlsSelect;
+	delete op_exit;
+
+	delete selection;
+
+	delete musicTxt;
+	delete soundTxt;
+	delete controlTxt;
+
+	optionsButtons.clear();
 }
 
 void MainMenuState::render(Uint32 time, bool beatHandler)

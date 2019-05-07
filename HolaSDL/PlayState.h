@@ -50,7 +50,7 @@ protected:
 	bool songIsOver = false;
 	bool isPaused = false;
 
-	RedEffect* rf;
+	RedEffect* rf;	//Not used
 
 	Vector2D noteVel;
 	MiniGame* minigame;
@@ -113,7 +113,7 @@ public:
 	Background* bg;
 	PauseMenu* pauseMenu;
 	PlayerPack* player1;
-	PlayerPack* player2;
+	PlayerPack* player2 = nullptr;
 	SongBar* songBar; //indicates time left, shaped like a note
 	Vector2D leftNotesVector;
 	Vector2D rightNotesVector;

@@ -231,12 +231,31 @@ void PlayState::newGame2P()
 PlayState::~PlayState()
 {
 	deleteAll();
-	delete bh;
-	delete effectVaporWave;
-	delete level;
-	delete minigame;
+
+	timer->Release();
 	delete minigameController;
-	delete crown;
+	/*delete animationTimer;
+
+	delete rf;*/
+	delete minigame;
+	
+	delete fourButtons;
+	delete perico;
+	//delete enemy;
+	delete effectVaporWave;
+	/*delete level;
+	/*delete crown;
+	delete songBarBG;*/
+	delete bh;
+	delete bg;
+	delete pauseMenu;
+	delete player1;
+	/*delete player2;*/
+	delete songBar;
+	delete particles;
+
+	stage.clear();
+	 
 }
 
 void PlayState::update(Uint32 time)
