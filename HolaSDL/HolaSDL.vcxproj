@@ -75,6 +75,7 @@
     <ClInclude Include="TexturesManager.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="TimerNoSingleton.h" />
+    <ClInclude Include="TutorialState.h" />
     <ClInclude Include="Vector2D.h" />
   </ItemGroup>
   <ItemGroup>
@@ -141,6 +142,7 @@
     <ClCompile Include="TexturesManager.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="TimerNoSingleton.cpp" />
+    <ClCompile Include="TutorialState.cpp" />
     <ClCompile Include="Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
