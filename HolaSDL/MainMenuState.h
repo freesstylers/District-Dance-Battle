@@ -16,19 +16,21 @@ public:
 	virtual bool handleEvent(Uint32 time, SDL_Event e);
 	virtual void render(Uint32 time, bool beatHandler);
 
-	pair<EmptyObject*, bool> buttons[4];
+	vector<EmptyObject*> buttons;
+	vector<bool> selectButton;
 
 private:
 	GameManager* gameManager;
 	void nextButton();
 	void backButton();
 	int index = 0;
-	int max=3;
+	int max=4;
 	int min = 0;
+	bool keyup = false;
 
 	void exit(GameManager* gameManager);
 
-	
+
 	SDL_GameController* controller = NULL;
 
 	EmptyObject* op_bg;

@@ -66,6 +66,7 @@
     <ClCompile Include="ExtraMenu.cpp" />
     <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="TutorialState.cpp" />
+    <ClCompile Include="Creditos.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioManager.h" />
@@ -134,6 +135,7 @@
     <ClInclude Include="MainMenuState.h" />
     <ClInclude Include="checkML.h" />
     <ClInclude Include="TutorialState.h" />
+    <ClInclude Include="Creditos.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

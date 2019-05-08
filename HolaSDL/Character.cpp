@@ -28,6 +28,9 @@ Character::Character(SDLGame* game, double width, double height, Vector2D pos, i
 		case Resources::PapitoIdle:
 			secondAnim = Resources::PapitoTwerk;
 			break;
+		case Resources::ZombieIdle:
+			secondAnim = Resources::ZombieDance;
+			break;
 		}
 	}
 }

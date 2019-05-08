@@ -132,9 +132,26 @@ public:
 		ButtonSound,
 		ButtonControls,
 		NewGameButton,
-		ChargeGameButton
-
-
+		ChargeGameButton,
+		CreditsButton,
+		ZombieIdle,
+		ZombieDance,
+		MainMenu,
+		NewGameSelected,
+		NewGameNoSelected,
+		ChargeGameSelected,
+		ChargeGameNoSelected,
+		OptionsSelected,
+		OptionsNoSelected,
+		CreditsSelected,
+		CreditsNoSelected,
+		ExitSelected,
+		ExitNoSelected,
+		ZombieBox,
+		MarcelinoBox,
+		CabezaZombie,
+		Creditos
+ 
 		// text
 	};
 
@@ -158,7 +175,8 @@ public:
 		Running,
 		Error2,
 		Ok,
-		Shoot
+		Shoot,
+		Rock
 		// sound effects
 	};
 

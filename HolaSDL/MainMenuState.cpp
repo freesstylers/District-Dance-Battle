@@ -1,24 +1,54 @@
 #include "MainMenuState.h"
-
+#include "Creditos.h"
 
 
 MainMenuState::MainMenuState(GameManager*g):GameState(g)
 {
 	gameManager = g;
+	isXbox = false;
+	buttons.reserve (10);
+	selectButton.reserve (5);
 	controller = SDL_GameControllerOpen(0);
-	EmptyObject* icon = new EmptyObject(g, Vector2D(gameManager->getDefaultWindowWidth() / 2-100, gameManager->getDefaultWindowHeight() / 2 -100), 200, 200, Resources::MenuIcon);
-	buttons[0].first = new EmptyObject(g, Vector2D(gameManager->getDefaultWindowWidth() / 2 , gameManager->getDefaultWindowHeight() /2), 160, 50, Resources::NewGameButton);
-	buttons[1].first = new EmptyObject(g, Vector2D(gameManager->getDefaultWindowWidth() / 2 , gameManager->getDefaultWindowHeight() / 2+100), 160, 50, Resources::ChargeGameButton);
-	buttons[2].first = new EmptyObject(g, Vector2D(gameManager->getDefaultWindowWidth() / 2 , gameManager->getDefaultWindowHeight() /2+200), 160, 50, Resources::ButtonOptions);
-	buttons[3].first = new EmptyObject(g, Vector2D(gameManager->getDefaultWindowWidth() / 2, gameManager->getDefaultWindowHeight() / 2 + 300), 160, 50, Resources::ButtonExit);
+	
 
-	buttons[0].second = true;
-	buttons[1].second = false;
-	buttons[2].second = false;
-	buttons[3].second = false;
+	EmptyObject* fondo = new EmptyObject(g, Vector2D(0, 0), gameManager->getDefaultWindowWidth(), gameManager->getDefaultWindowHeight(), Resources::MainMenu);
+	EmptyObject* chargeGame1 = new EmptyObject(g, Vector2D(gameManager->getDefaultWindowWidth() / 2+85, gameManager->getDefaultWindowHeight() / 2 -395), 600, 190, Resources::ChargeGameNoSelected);
+	EmptyObject* chargeGame2 = new EmptyObject(g, Vector2D(gameManager->getDefaultWindowWidth() / 2+85, gameManager->getDefaultWindowHeight() / 2 -395), 600, 190, Resources::ChargeGameSelected);
+	EmptyObject* newGame1 = new EmptyObject(g, Vector2D(gameManager->getDefaultWindowWidth() / 2+70 , gameManager->getDefaultWindowHeight() /2-270), 600, 190, Resources::NewGameNoSelected);
+	EmptyObject* newGame2 = new EmptyObject(g, Vector2D(gameManager->getDefaultWindowWidth() / 2 +70, gameManager->getDefaultWindowHeight() / 2-270), 600, 190, Resources::NewGameSelected);
+	EmptyObject* options1 = new EmptyObject(g, Vector2D(gameManager->getDefaultWindowWidth() / 2+100, gameManager->getDefaultWindowHeight() / 2 -120), 600, 190, Resources::OptionsNoSelected);
+	EmptyObject* options2 = new EmptyObject(g, Vector2D(gameManager->getDefaultWindowWidth() / 2+100, gameManager->getDefaultWindowHeight() / 2-120 ), 600, 190, Resources::OptionsSelected);
+	EmptyObject* credits1 = new EmptyObject(g, Vector2D(gameManager->getDefaultWindowWidth() / 2+60, gameManager->getDefaultWindowHeight() / 2+15 ), 600, 190, Resources::CreditsNoSelected);
+	EmptyObject* credits2 = new EmptyObject(g, Vector2D(gameManager->getDefaultWindowWidth() / 2+60, gameManager->getDefaultWindowHeight() / 2+15 ), 600, 190, Resources::CreditsSelected);
+	EmptyObject* exit1 = new EmptyObject(g, Vector2D(gameManager->getDefaultWindowWidth() / 2+200, gameManager->getDefaultWindowHeight() / 2 + 165), 600, 190, Resources::ExitNoSelected);
+	EmptyObject* exit2 = new EmptyObject(g, Vector2D(gameManager->getDefaultWindowWidth() / 2+200, gameManager->getDefaultWindowHeight() / 2 + 165), 600, 190, Resources::ExitSelected);
+	
+	buttons.push_back(chargeGame1);
+	buttons.push_back(chargeGame2);
+	buttons.push_back(newGame1);
+	buttons.push_back(newGame2);
+	buttons.push_back(options1);
+	buttons.push_back(options2);
+	buttons.push_back(credits1);
+	buttons.push_back(credits2);
+	buttons.push_back(exit1);
+	buttons.push_back(exit2);
+	
+	bool b1= true;
+	bool b2 = false;
+	bool b3 = false;
+	bool b4 = false;
+	bool b5 = false;
 
-	buttons[0].first->scale(2);
-	stage.push_back(icon);
+	selectButton.push_back(b1);
+	selectButton.push_back(b2);
+	selectButton.push_back(b3);
+	selectButton.push_back(b4);
+	selectButton.push_back(b5);
+
+	//buttons[0]->scale(2);
+	stage.push_back(fondo);
+
 
 	double menuX = gameManager->getDefaultWindowWidth() / 3;
 	double menuY = gameManager->getDefaultWindowHeight() / 6;
@@ -64,10 +94,10 @@ MainMenuState::MainMenuState(GameManager*g):GameState(g)
 
 MainMenuState::~MainMenuState()
 {
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 10; i++)
 	{
-		delete buttons[i].first;
-		buttons[i].first = nullptr;
+		delete buttons[i];
+		buttons[i] = nullptr;
 	}
 
 	delete op_bg;
@@ -91,8 +121,16 @@ MainMenuState::~MainMenuState()
 void MainMenuState::render(Uint32 time, bool beatHandler)
 {
 	GameState::render(time);
-	for (int i=0;i<4;i++)
-		buttons[i].first->render(time);
+	for (int i = 0;i < 5;i++)
+	{
+		if (selectButton[i] == true)
+		{
+			buttons[2 * i + 1]->render(time);
+		}
+		else {
+			buttons[2*i]->render(time);
+		}
+	}
 	if (optionsOpen) 
 	{
 		op_bg->render(time);
@@ -186,64 +224,63 @@ void MainMenuState::updateTxt()
 
 void MainMenuState::nextButton() 
 {
-	if (optionsOpen == true)
-	{
-		if (selectedButton == 3)
-			selectedButton = 0;
-		else {
-			selectedButton++;
-		}
-		selection->setPosition(optionsButtons[selectedButton]->getPosition());
-
-		if (selectedButton == 3)
-			selection->forceAnimationChange(Resources::ButtonSelection);
-		else
-			selection->forceAnimationChange(Resources::VolSelection);
-	}
-	else {
-		buttons[index].first->scale(0.5);
-		buttons[index].second = false;
-		if (index < max)
+		if (optionsOpen == true)
 		{
-			index++;
+			if (selectedButton == 3)
+				selectedButton = 0;
+			else {
+				selectedButton++;
+			}
+			selection->setPosition(optionsButtons[selectedButton]->getPosition());
+
+			if (selectedButton == 3)
+				selection->forceAnimationChange(Resources::ButtonSelection);
+			else
+				selection->forceAnimationChange(Resources::VolSelection);
 		}
 		else {
-			index = min;
+			//buttons[index]->scale(0.5);
+			selectButton[index] = false;
+			if (index < max)
+			{
+				index++;
+			}
+			else {
+				index = min;
+			}
+			//buttons[index]->scale(2);
+			selectButton[index] = true;
 		}
-		buttons[index].first->scale(2);
-		buttons[index].second = true;
-	}
 }
 void MainMenuState::backButton()
 {
-
-	if (optionsOpen)
-	{
-		if (selectedButton == 0)
-			selectedButton = 3;
-		else {
-			selectedButton--;
-		}
-		selection->setPosition(optionsButtons[selectedButton]->getPosition());
-
-		if (selectedButton == 3)
-			selection->forceAnimationChange(Resources::ButtonSelection);
-		else
-			selection->forceAnimationChange(Resources::VolSelection);
-	}
-	else {
-		buttons[index].first->scale(0.5);
-		buttons[index].second = false;
-		if (index > min)
+		if (optionsOpen)
 		{
-			index--;
+			if (selectedButton == 0)
+				selectedButton = 3;
+			else {
+				selectedButton--;
+			}
+			selection->setPosition(optionsButtons[selectedButton]->getPosition());
+
+			if (selectedButton == 3)
+				selection->forceAnimationChange(Resources::ButtonSelection);
+			else
+				selection->forceAnimationChange(Resources::VolSelection);
 		}
 		else {
-			index = max;
+			//buttons[index]->scale(0.5);
+			selectButton[index] = false;
+			if (index > min)
+			{
+				index--;
+			}
+			else {
+				index = max;
+			}
+			//buttons[index]->scale(2);
+			selectButton[index] = true;
 		}
-		buttons[index].first->scale(2);
-		buttons[index].second = true;
-	}
 }
 
 
@@ -260,15 +297,16 @@ bool MainMenuState::handleEvent(Uint32 time, SDL_Event e)
 {
 	bool input = false;
 	
-	
-		if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_UP) && SDL_CONTROLLERBUTTONUP || e.key.keysym.sym == SDLK_DOWN && e.type==SDL_KEYUP)
+	if (SDL_CONTROLLERBUTTONDOWN || e.type == SDL_KEYDOWN && keyup) {
+		if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_UP) && SDL_CONTROLLERBUTTONUP || e.key.keysym.sym == SDLK_DOWN && e.type == SDL_KEYUP)
 		{
-			nextButton();
+			backButton();
 			input = true;
 		}
 		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN) && SDL_CONTROLLERBUTTONUP || e.key.keysym.sym == SDLK_UP && e.type == SDL_KEYUP)
 		{
-			backButton();
+
+			nextButton();
 			input = true;
 		}
 		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) && SDL_CONTROLLERBUTTONUP || e.key.keysym.sym == SDLK_RIGHT && e.type == SDL_KEYUP)
@@ -307,24 +345,32 @@ bool MainMenuState::handleEvent(Uint32 time, SDL_Event e)
 				}
 			}
 		}
-		else if (buttons[0].second == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) && SDL_CONTROLLERBUTTONUP || e.key.keysym.sym == SDLK_SPACE && e.type == SDL_KEYUP))
+		else if (selectButton[1] == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) && SDL_CONTROLLERBUTTONUP || e.key.keysym.sym == SDLK_SPACE && e.type == SDL_KEYUP))
 		{
 			newGame(gameManager);
 			input = true;
 		}
 
-		else if (buttons[2].second == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) && SDL_CONTROLLERBUTTONUP || e.key.keysym.sym == SDLK_SPACE && e.type == SDL_KEYUP))
+		else if (selectButton[2] == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) && SDL_CONTROLLERBUTTONUP || e.key.keysym.sym == SDLK_SPACE && e.type == SDL_KEYUP))
 		{
 			options();
 			input = true;
 		}
-		else if (buttons[3].second == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) && SDL_CONTROLLERBUTTONUP || e.key.keysym.sym == SDLK_SPACE && e.type == SDL_KEYUP))
+		else if (selectButton[3] == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) && SDL_CONTROLLERBUTTONUP || e.key.keysym.sym == SDLK_SPACE && e.type == SDL_KEYUP))
+		{
+			manager->getMachine()->changeState(new Creditos(gameManager));
+			input = true;
+		}
+		else if (selectButton[4] == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) && SDL_CONTROLLERBUTTONUP || e.key.keysym.sym == SDLK_SPACE && e.type == SDL_KEYUP))
 		{
 			exit(gameManager);
 			input = true;
 		}
 	
+		keyup = false;
+	}
 	
+	else if (e.type == SDL_CONTROLLERBUTTONUP) keyup = true; input = false;
 	return input;
 }
 
