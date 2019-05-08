@@ -3,7 +3,7 @@
 
 
 
-TutorialState::TutorialState(GameManager* g) : PlayState(g, 1, true, false)
+TutorialState::TutorialState(GameManager* g) : PlayState(g, 9, true, false)
 {
 	tutorialBox = new EmptyObject(g, Vector2D(g->getDefaultWindowWidth() / 2 - 60, g->getDefaultWindowHeight() / 2 - 30), 64, 64, Resources::MetroOn);
 	tutorialBox->setActive(false);
