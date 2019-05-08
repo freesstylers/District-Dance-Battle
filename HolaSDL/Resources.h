@@ -150,7 +150,9 @@ public:
 		ZombieBox,
 		MarcelinoBox,
 		CabezaZombie,
-		Creditos
+		Creditos,
+		PericoRoom,
+		PericoEspejo
  
 		// text
 	};
