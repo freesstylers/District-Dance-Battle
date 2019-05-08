@@ -69,6 +69,13 @@ bool MapState::handleEvent(Uint32 time, SDL_Event e)
 		keyup = false;
 	}
 	else if (e.type == SDL_CONTROLLERBUTTONUP) keyup = true;
+
+	else if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_F10) {
+		manager->getServiceLocator()->getAudios()->haltChannel(0);
+		manager->getMachine()->changeState(new TutorialState(manager));
+		return true;
+	}
+
 	return GameState::handleEvent(time, e);
 }
 
