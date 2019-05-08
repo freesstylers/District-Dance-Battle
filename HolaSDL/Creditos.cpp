@@ -14,7 +14,7 @@ Creditos::Creditos(GameManager* game) :GameState(game)
 
 void Creditos::init() {
 
-	bg = new EmptyObject(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::MenuCanciones);
+	bg = new EmptyObject(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::Creditos);
 }
 Creditos::~Creditos()
 {

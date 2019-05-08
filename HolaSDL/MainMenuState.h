@@ -26,10 +26,11 @@ private:
 	int index = 0;
 	int max=4;
 	int min = 0;
+	bool keyup = false;
 
 	void exit(GameManager* gameManager);
 
-	
+
 	SDL_GameController* controller = NULL;
 
 	EmptyObject* op_bg;

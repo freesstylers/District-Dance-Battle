@@ -27,7 +27,7 @@ MapState::~MapState()
 
 bool MapState::handleEvent(Uint32 time, SDL_Event e)
 {
-	if (e.type == SDL_CONTROLLERBUTTONDOWN || e.type == SDL_KEYDOWN || e.type == SDL_CONTROLLERAXISMOTION) {
+	if (e.type == SDL_CONTROLLERBUTTONDOWN && keyup || e.type == SDL_KEYDOWN && keyup || e.type == SDL_CONTROLLERAXISMOTION && keyup) {
 		if(!buttons[index].second.selected)
 		{
 			if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_RETURN) {
@@ -43,6 +43,10 @@ bool MapState::handleEvent(Uint32 time, SDL_Event e)
 			}
 			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_START) || e.key.keysym.sym == SDLK_TAB) {
 				manager->getMachine()->pushState(new ExtraMenu(manager));
+				manager->getServiceLocator()->getAudios()->haltChannel(0);
+			}
+			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B) || e.key.keysym.sym == SDLK_TAB) {
+				manager->getMachine()->pushState(new MainMenuState(manager));
 				manager->getServiceLocator()->getAudios()->haltChannel(0);
 			}
 		}
@@ -62,7 +66,9 @@ bool MapState::handleEvent(Uint32 time, SDL_Event e)
 			}
 			
 		}
+		keyup = false;
 	}
+	else if (e.type == SDL_CONTROLLERBUTTONUP) keyup = true;
 	return GameState::handleEvent(time, e);
 }
 

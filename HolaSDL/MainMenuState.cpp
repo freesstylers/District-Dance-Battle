@@ -224,64 +224,63 @@ void MainMenuState::updateTxt()
 
 void MainMenuState::nextButton() 
 {
-	if (optionsOpen == true)
-	{
-		if (selectedButton == 3)
-			selectedButton = 0;
-		else {
-			selectedButton++;
-		}
-		selection->setPosition(optionsButtons[selectedButton]->getPosition());
-
-		if (selectedButton == 3)
-			selection->forceAnimationChange(Resources::ButtonSelection);
-		else
-			selection->forceAnimationChange(Resources::VolSelection);
-	}
-	else {
-		//buttons[index]->scale(0.5);
-		selectButton[index] = false;
-		if (index < max)
+		if (optionsOpen == true)
 		{
-			index++;
+			if (selectedButton == 3)
+				selectedButton = 0;
+			else {
+				selectedButton++;
+			}
+			selection->setPosition(optionsButtons[selectedButton]->getPosition());
+
+			if (selectedButton == 3)
+				selection->forceAnimationChange(Resources::ButtonSelection);
+			else
+				selection->forceAnimationChange(Resources::VolSelection);
 		}
 		else {
-			index = min;
+			//buttons[index]->scale(0.5);
+			selectButton[index] = false;
+			if (index < max)
+			{
+				index++;
+			}
+			else {
+				index = min;
+			}
+			//buttons[index]->scale(2);
+			selectButton[index] = true;
 		}
-		//buttons[index]->scale(2);
-		selectButton[index] = true;
-	}
 }
 void MainMenuState::backButton()
 {
-
-	if (optionsOpen)
-	{
-		if (selectedButton == 0)
-			selectedButton = 3;
-		else {
-			selectedButton--;
-		}
-		selection->setPosition(optionsButtons[selectedButton]->getPosition());
-
-		if (selectedButton == 3)
-			selection->forceAnimationChange(Resources::ButtonSelection);
-		else
-			selection->forceAnimationChange(Resources::VolSelection);
-	}
-	else {
-		//buttons[index]->scale(0.5);
-		selectButton[index]= false;
-		if (index > min)
+		if (optionsOpen)
 		{
-			index--;
+			if (selectedButton == 0)
+				selectedButton = 3;
+			else {
+				selectedButton--;
+			}
+			selection->setPosition(optionsButtons[selectedButton]->getPosition());
+
+			if (selectedButton == 3)
+				selection->forceAnimationChange(Resources::ButtonSelection);
+			else
+				selection->forceAnimationChange(Resources::VolSelection);
 		}
 		else {
-			index = max;
+			//buttons[index]->scale(0.5);
+			selectButton[index] = false;
+			if (index > min)
+			{
+				index--;
+			}
+			else {
+				index = max;
+			}
+			//buttons[index]->scale(2);
+			selectButton[index] = true;
 		}
-		//buttons[index]->scale(2);
-		selectButton[index] = true;
-	}
 }
 
 
@@ -298,15 +297,16 @@ bool MainMenuState::handleEvent(Uint32 time, SDL_Event e)
 {
 	bool input = false;
 	
-	if (SDL_CONTROLLERBUTTONDOWN || e.type == SDL_KEYDOWN) {
+	if (SDL_CONTROLLERBUTTONDOWN || e.type == SDL_KEYDOWN && keyup) {
 		if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_UP) && SDL_CONTROLLERBUTTONUP || e.key.keysym.sym == SDLK_DOWN && e.type == SDL_KEYUP)
 		{
-			nextButton();
+			backButton();
 			input = true;
 		}
 		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN) && SDL_CONTROLLERBUTTONUP || e.key.keysym.sym == SDLK_UP && e.type == SDL_KEYUP)
 		{
-			backButton();
+
+			nextButton();
 			input = true;
 		}
 		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) && SDL_CONTROLLERBUTTONUP || e.key.keysym.sym == SDLK_RIGHT && e.type == SDL_KEYUP)
@@ -356,14 +356,21 @@ bool MainMenuState::handleEvent(Uint32 time, SDL_Event e)
 			options();
 			input = true;
 		}
+		else if (selectButton[3] == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) && SDL_CONTROLLERBUTTONUP || e.key.keysym.sym == SDLK_SPACE && e.type == SDL_KEYUP))
+		{
+			manager->getMachine()->changeState(new Creditos(gameManager));
+			input = true;
+		}
 		else if (selectButton[4] == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) && SDL_CONTROLLERBUTTONUP || e.key.keysym.sym == SDLK_SPACE && e.type == SDL_KEYUP))
 		{
 			exit(gameManager);
 			input = true;
 		}
+	
+		keyup = false;
 	}
 	
-	
+	else if (e.type == SDL_CONTROLLERBUTTONUP) keyup = true; input = false;
 	return input;
 }
 
