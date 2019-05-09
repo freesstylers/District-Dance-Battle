@@ -11,6 +11,7 @@ private:
 	EmptyObject* tutorialBox;
 
 	int auxTime = 0;
+	int numStops = 1;
 	int tutorialBoxAnim = Resources::AButton1;
 	bool isTutorialPaused = false;
 	SDL_GameController* controller = NULL;

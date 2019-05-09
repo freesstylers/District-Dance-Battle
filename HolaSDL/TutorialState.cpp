@@ -5,7 +5,7 @@
 
 TutorialState::TutorialState(GameManager* g) : PlayState(g, 9, true, false)
 {
-	tutorialBox = new EmptyObject(g, Vector2D(g->getDefaultWindowWidth() / 2 - 60, g->getDefaultWindowHeight() / 2 - 30), 64, 64, Resources::MetroOn);
+	tutorialBox = new EmptyObject(g, Vector2D(g->getDefaultWindowWidth() / 2 - 60, g->getDefaultWindowHeight() / 2 - 30), 612, 252, Resources::TutoBox1);
 	tutorialBox->setActive(false);
 
 	stage.push_back(tutorialBox);
@@ -123,7 +123,23 @@ void TutorialState::resumeTutorial(unsigned int timePaused)
 		isPaused = false;
 		isTutorialPaused = false;
 
-		tutorialBoxAnim++;
+		numStops++;
+
+		switch (numStops) {
+		case 1:
+			tutorialBoxAnim = Resources::TutoBox1;
+			break;
+		case 2:
+			tutorialBoxAnim = Resources::TutoBox2;
+			break;
+		case 3:
+			tutorialBoxAnim = Resources::TutoBox3;
+			break;
+		case 4:
+			tutorialBoxAnim = Resources::TutoBox4;
+				break;
+		}
+
 		tutorialBox->forceAnimationChange(tutorialBoxAnim);
 
 

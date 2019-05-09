@@ -160,6 +160,10 @@ vector<Resources::ImageInfo> Resources::images_{
 		{ PericoRoom, "resources/images/fondoTutorial.png", 213, 120, 2, 1, 2 },
 		{ PericoRoomPixel, "resources/images/fondoTutorialPixel.png", 213, 120, 2, 1, 2 },
 		{ PericoEspejo, "resources/images/Perico-Espejo.png", 60, 120, 3, 2, 4 },
+		{ TutoBox1, "resources/images/tutoBox1.png", 1224, 504, 1, 1, 1 },
+		{ TutoBox2, "resources/images/tutoBox2.png", 1224, 504, 1, 1, 1 },
+		{ TutoBox3, "resources/images/tutoBox3.png", 1224, 504, 1, 1, 1 },
+		{ TutoBox4, "resources/images/tutoBox4.png", 1224, 504, 1, 1, 1 },
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {

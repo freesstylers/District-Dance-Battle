@@ -153,8 +153,12 @@ public:
 		Creditos,
 		PericoRoom,
 		PericoRoomPixel,
-		PericoEspejo
- 
+		PericoEspejo,
+		TutoBox1,
+		TutoBox2,
+		TutoBox3,
+		TutoBox4
+
 		// text
 	};
 
