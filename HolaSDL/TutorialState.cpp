@@ -9,7 +9,7 @@ TutorialState::TutorialState(GameManager* g) : PlayState(g, 9, true, false)
 	tutorialBox->setActive(false);
 
 	tutoFiltro= new EmptyObject(g, Vector2D(0, 0), g->getDefaultWindowWidth(), g->getDefaultWindowHeight(), Resources::TutoFiltro);
-	tutoFiltro->setAlpha(10);
+	//tutoFiltro->setAlpha(10);
 	tutoFiltro->setActive(false);
 
 	stage.push_back(tutoFiltro);
@@ -116,7 +116,7 @@ bool TutorialState::pauseTutorial()
 		isTutorialPaused = true;
 
 		tutoFiltro->setActive(true);
-		tutoFiltro->setAlpha(10);
+		//tutoFiltro->setAlpha(10);
 		tutorialBox->setActive(true);
 
 		auxTime = SDL_GetTicks();
@@ -154,7 +154,7 @@ void TutorialState::resumeTutorial(unsigned int timePaused)
 		//tutoFiltro->forceAnimationChange(Resources::TutoFiltro);
 
 		tutoFiltro->setActive(false);
-		tutoFiltro->setAlpha(10);
+		//tutoFiltro->setAlpha(10);
 		tutorialBox->setActive(false);
 
 		timer->setOffset(timePaused);
