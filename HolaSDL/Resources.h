@@ -152,6 +152,7 @@ public:
 		CabezaZombie,
 		Creditos,
 		PericoRoom,
+		PericoRoomPixel,
 		PericoEspejo
  
 		// text
