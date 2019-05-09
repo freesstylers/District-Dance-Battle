@@ -25,7 +25,7 @@ public:
 	virtual void update(Uint32 time);
 	virtual bool handleEvent(Uint32 time, SDL_Event e);
 	virtual bool pauseTutorial();
-	virtual void resumeTutorial(unsigned int timePaused);
+	virtual void resumeTutorial(GameManager* g, unsigned int timePaused);
 
 };
 

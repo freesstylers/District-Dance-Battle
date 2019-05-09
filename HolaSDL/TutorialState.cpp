@@ -5,7 +5,7 @@
 
 TutorialState::TutorialState(GameManager* g) : PlayState(g, 9, true, false)
 {
-	tutorialBox = new EmptyObject(g, Vector2D(g->getDefaultWindowWidth() / 2 - 60, g->getDefaultWindowHeight() / 2 - 30), 612, 252, Resources::TutoBox1);
+	tutorialBox = new EmptyObject(g, Vector2D(g->getDefaultWindowWidth() / 2 +145 , g->getDefaultWindowHeight() / 2 - 80), 612*0.75, 252*0.75, Resources::TutoBox1);
 	tutorialBox->setActive(false);
 
 	tutoFiltro= new EmptyObject(g, Vector2D(0, 0), g->getDefaultWindowWidth(), g->getDefaultWindowHeight(), Resources::TutoFiltro);
@@ -98,7 +98,7 @@ bool TutorialState::handleEvent(Uint32 time, SDL_Event e)
 
 	if (e.type == SDL_CONTROLLERBUTTONDOWN || e.type == SDL_KEYDOWN) {
 		if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_SPACE) {
-			resumeTutorial(SDL_GetTicks() - auxTime);
+			resumeTutorial(manager,SDL_GetTicks() - auxTime);
 		}
 	}
 
@@ -125,7 +125,7 @@ bool TutorialState::pauseTutorial()
 	return isPaused;
 }
 
-void TutorialState::resumeTutorial(unsigned int timePaused)
+void TutorialState::resumeTutorial(GameManager* g, unsigned int timePaused)
 {
 	if (isPaused && isTutorialPaused)
 	{
@@ -141,13 +141,16 @@ void TutorialState::resumeTutorial(unsigned int timePaused)
 			break;
 		case 2:
 			tutorialBoxAnim = Resources::TutoBox2;
+			tutorialBox->setPosition(Vector2D(120, g->getDefaultWindowHeight() / 2 - 30));
 			break;
 		case 3:
 			tutorialBoxAnim = Resources::TutoBox3;
+			tutorialBox->setPosition(Vector2D(g->getDefaultWindowWidth() / 2 - (612 * 0.75)/2, 100));
 			break;
 		case 4:
 			tutorialBoxAnim = Resources::TutoBox4;
-				break;
+			tutorialBox->setPosition(Vector2D(g->getDefaultWindowWidth() / 2 + 145, g->getDefaultWindowHeight() / 2 - 80));
+			break;
 		}
 
 		tutorialBox->forceAnimationChange(tutorialBoxAnim);
