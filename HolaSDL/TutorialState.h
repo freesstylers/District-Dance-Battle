@@ -9,6 +9,7 @@ class TutorialState :
 private:
 	double pauseAmount = 100;
 	EmptyObject* tutorialBox;
+	EmptyObject* tutoFiltro;
 
 	int auxTime = 0;
 	int numStops = 1;

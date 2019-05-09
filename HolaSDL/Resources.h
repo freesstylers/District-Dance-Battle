@@ -157,7 +157,8 @@ public:
 		TutoBox1,
 		TutoBox2,
 		TutoBox3,
-		TutoBox4
+		TutoBox4,
+		TutoFiltro
 
 		// text
 	};
