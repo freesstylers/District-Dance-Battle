@@ -171,6 +171,7 @@ void MainMenuState::options()
 		selection->setPosition(optionsButtons[selectedButton]->getPosition());
 		selection->forceAnimationChange(Resources::VolSelection);
 	}
+	gameManager->mainmenu = true;
 
 }
 
@@ -364,8 +365,9 @@ bool MainMenuState::handleEvent(Uint32 time, SDL_Event e)
 
 		else if (selectButton[2] == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) && SDL_CONTROLLERBUTTONUP || e.key.keysym.sym == SDLK_SPACE && e.type == SDL_KEYUP))
 		{
-		
+			gameManager->mainmenu = false;
 			options();
+			gameManager->mainmenu = true;
 			
 			input = true;
 		}
@@ -373,6 +375,7 @@ bool MainMenuState::handleEvent(Uint32 time, SDL_Event e)
 		{
 			gameManager->mainmenu = false;
 			manager->getMachine()->changeState(new Creditos(gameManager));
+			//gameManager->mainmenu = true;
 			input = true;
 		}
 		else if (selectButton[4] == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) && SDL_CONTROLLERBUTTONUP || e.key.keysym.sym == SDLK_SPACE && e.type == SDL_KEYUP))
