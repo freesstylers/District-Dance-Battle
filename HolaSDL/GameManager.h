@@ -26,10 +26,12 @@ public:
 	virtual void stop();  // stop the game
 	GameStateMachine* getMachine();
 	void tick();
+	bool mainmenu = true;
 	
 protected:
 	GameStateMachine* machine;
 	bool isXbox = true;
+	
 	
 private:
 	uint32_t last_tick_time = 0;

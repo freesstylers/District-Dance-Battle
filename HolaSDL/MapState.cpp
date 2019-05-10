@@ -51,6 +51,7 @@ bool MapState::handleEvent(Uint32 time, SDL_Event e)
 				manager->getServiceLocator()->getAudios()->haltChannel(0);
 			}
 			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B) || e.key.keysym.sym == SDLK_TAB) {
+				manager->mainmenu = true;
 				manager->getMachine()->pushState(new MainMenuState(manager));
 				manager->getServiceLocator()->getAudios()->haltChannel(0);
 			}
