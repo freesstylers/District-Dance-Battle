@@ -73,6 +73,9 @@ void DialogState::init()
 		text->setText("AAAAA", { COLOR(0x00000000) });
 		text2 = new TextObject(manager, manager->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(manager->getDefaultWindowWidth() / 22 + 20, manager->getDefaultWindowHeight() - 140 + text->getHeight()));
 		timer = Timer::Instance();
+		manager->getServiceLocator()->getAudios()->playChannel(Resources::Snare, 0, 1);
+		manager->getServiceLocator()->getAudios()->setChannelVolume(10, 4);
+		manager->getServiceLocator()->getAudios()->playChannel(Resources::Ambient, 1, 4);
 		timer->Reset();
 		updateText();
 	}
@@ -120,6 +123,7 @@ bool DialogState::handleEvent(Uint32 time, SDL_Event e) {
 
 	if ((e.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) && keyup) || (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_SPACE))
 	{
+		manager->getServiceLocator()->getAudios()->playChannel(Resources::Snare, 0, 1);
 		if (!dialogo.empty()) {
 			dialogo.pop_front();
 			if (!dialogo.empty()) {
@@ -132,6 +136,7 @@ bool DialogState::handleEvent(Uint32 time, SDL_Event e) {
 			keyup = false;
 		}
 		else if (end) {
+			manager->getServiceLocator()->getAudios()->haltChannel(4);
 			manager->getMachine()->changeState(new PlayState(manager, nlevel, oneP_, hardMode_, prevMaxScoreE_, prevMaxScoreH_));
 		}
 

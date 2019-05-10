@@ -191,7 +191,9 @@ vector<Resources::MusicInfo> Resources::musics_ {
 	{Error2, "resources/sound/Error.mp3"},
 	{Ok, "resources/sound/ok.mp3"},
 	{Shoot, "resources/sound/shoot.mp3"},
-	{Rock, "resources/sound/rock.mp3"}
+	{Rock, "resources/sound/rock.mp3"},
+	{MainTheme, "resources/sound/MainTheme.mp3"},
+	{Ambient, "resources/sound/ambient.mp3"}
 };
 
 vector<Resources::SoundInfo> Resources::sounds_ {

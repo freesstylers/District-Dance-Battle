@@ -29,7 +29,7 @@ public:
 	
 protected:
 	GameStateMachine* machine;
-	bool isXbox = false;
+	bool isXbox = true;
 	
 private:
 	uint32_t last_tick_time = 0;

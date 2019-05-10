@@ -184,7 +184,9 @@ public:
 		Error2,
 		Ok,
 		Shoot,
-		Rock
+		Rock,
+		MainTheme,
+		Ambient
 		// sound effects
 	};
 
