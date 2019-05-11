@@ -1,5 +1,6 @@
 #include "MainMenuState.h"
 #include "Creditos.h"
+#include <stdio.h>
 
 
 MainMenuState::MainMenuState(GameManager*g):GameState(g)
@@ -294,7 +295,11 @@ void MainMenuState::backButton()
 
 void MainMenuState::newGame(GameManager* gameManager) 
 {
-
+	remove("resources/data/1.txt");
+	remove("resources/data/2.txt");
+	remove("resources/data/3.txt");
+	remove("resources/data/4.txt");
+	remove("resources/data/5.txt");
 	gameManager->getMachine()->changeState(new MapState(gameManager));
 }
 void MainMenuState::exit(GameManager* gameManager)
@@ -354,6 +359,13 @@ bool MainMenuState::handleEvent(Uint32 time, SDL_Event e)
 					break;
 				}
 			}
+		}
+		else if (selectButton[0] == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) && SDL_CONTROLLERBUTTONUP || e.key.keysym.sym == SDLK_SPACE && e.type == SDL_KEYUP))
+		{
+			manager->getServiceLocator()->getAudios()->haltChannel(0);
+			gameManager->mainmenu = false;
+			gameManager->getMachine()->changeState(new MapState(gameManager));
+			input = true;
 		}
 		else if (selectButton[1] == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) && SDL_CONTROLLERBUTTONUP || e.key.keysym.sym == SDLK_SPACE && e.type == SDL_KEYUP))
 		{
