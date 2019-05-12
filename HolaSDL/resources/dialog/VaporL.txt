@@ -6,15 +6,8 @@
  30 robot
   131 marcelino
 - robot *bzzzz* *bzzzz* *bzzzz* *bzzzz*
-- robot *bzzzz* *ERROR* *ERROR*
-- robot *SALIENDO DEL MODO D35P4C1T0*
-- robot *ENTRANDO EN MODO RETIRADA*
-- robot ...
-- robot *CHAO*
-- perico Y se fue...
-- perico Ja!
-- perico Ningún robot podrá jamás superar a un humano en nada.
-- marcelino Bueno, eso no es del todo verd-
-- perico Shhhhhh. A mi no me repliques, que soy el mejor.
-- perico Vamos a buscar al siguiente bailarín.
+- robot O t r o  h u m a n o  d e r r o t a d o 
+- robot L a s  m á q u i n a s  d o m i n a r á n  e l  m u n d o  a l g ú n  d í a .
+- perico Uffff, es más habilidoso de lo que pensaba.
+- marcelino ¡No te rindas Perico!
 0
