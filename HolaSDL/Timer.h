@@ -1,5 +1,6 @@
 #pragma once
 #include <SDL.h>
+#include "checkML.h"
 class Timer
 {
 private:

@@ -39,7 +39,7 @@ protected:
 	bool isSingleplayer;
 	bool difficultyMode;
 
-	Timer* timer;
+	TimerNoSingleton* timer;
 	int probqte;
 	bool miniActive = false;
 	TimerNoSingleton* minigameController;

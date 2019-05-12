@@ -28,6 +28,10 @@
 MinigameHipHop::~MinigameHipHop()
 {
 	delete mira;
+	delete timer;
+	delete fback;
+	delete Aviso;
+	deleteList();
 }
 
 void MinigameHipHop::render(Uint32 time)

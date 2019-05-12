@@ -325,7 +325,19 @@ EndState::~EndState()
 
 void EndState::backToMenu(GameManager * gameManager)
 {
-	gameManager->getMachine()->changeState(new DialogState(gameManager, (level + 6), 0, true, false, 0, 0));
+	gameManager->getMachine()->changeState(new MapState(gameManager));
+	gameManager->getServiceLocator()->getAudios()->haltChannel(0);
+}
+
+void EndState::backToMenuWin(GameManager * gameManager)
+{
+	gameManager->getMachine()->changeState(new DialogState(gameManager, (level*2 + 6), 0, true, false, 0, 0));
+	gameManager->getServiceLocator()->getAudios()->haltChannel(0);
+}
+
+void EndState::backToMenuLose(GameManager * gameManager)
+{
+	gameManager->getMachine()->changeState(new DialogState(gameManager, (level*2 + 7), 0, true, false, 0, 0));
 	gameManager->getServiceLocator()->getAudios()->haltChannel(0);
 }
 
@@ -356,7 +368,15 @@ bool EndState::handleEvent(Uint32 time, SDL_Event e)
 			change = true;
 		}
 		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_RETURN) {
-			backToMenu(gameManager);
+			if (level <= 5) {
+				if (passed)
+					backToMenuWin(gameManager);
+				else
+					backToMenuLose(gameManager);
+			}
+			else {
+				backToMenu(gameManager);
+			}
 			change = true;
 		}
 		return change;

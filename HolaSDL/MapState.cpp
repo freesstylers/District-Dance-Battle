@@ -90,6 +90,7 @@ void MapState::render(Uint32 time, bool beatSync)
 	}
 	if (buttons[index].second.selected)
 		buttons[index].second.render(time, false);
+
 }
 
 void MapState::unlockLevel(int lvl)

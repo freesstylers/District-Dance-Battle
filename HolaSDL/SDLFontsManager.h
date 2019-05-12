@@ -2,6 +2,7 @@
 
 #include "FontsManager.h"
 #include <map>
+#include "checkML.h"
 
 /*
  *
