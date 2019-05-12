@@ -151,7 +151,6 @@ void PlayState::newGame()
 	
 	level = new Level(this, manager, levelName,noteSize);
 	level->init(difficultyMode);
-	player2 = nullptr;
 	timer = Timer::Instance();
 	timer->Reset();
 
@@ -514,12 +513,12 @@ void PlayState::generateArrows()
 
 			player1->screenArrows_.push_back(levelArrows_.front());
 			
-			if (player2 != nullptr && levelArrows2_.front()!=nullptr)
+			if (player2 != nullptr && levelArrows2_.front() != nullptr)
 			{
 				player2->screenArrows_.push_back(levelArrows2_.front());
+				levelArrows2_.pop_front();
 			}
 		}
-		levelArrows2_.pop_front();
 		levelArrows_.pop_front();
 	}
 }
