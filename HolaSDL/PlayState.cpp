@@ -5,7 +5,7 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxS
 {
 	nlevel = lvl;
 	g->getServiceLocator()->getAudios()->setChannelVolume(volume, 1);
-	Lost = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::Lost);
+	Lost = new EmptyObject(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::Lost);
 	Lost->setActive(false);
 	//Lost->setAlpha(0);
 	youLost = new EmptyObject(manager, Vector2D(0, -manager->getDefaultWindowHeight()), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::YouLost);
