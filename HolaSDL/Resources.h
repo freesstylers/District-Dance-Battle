@@ -166,7 +166,8 @@ public:
 		MarcelinoDance,
 		AlienBox,
 		Lost,
-		YouLost
+		YouLost,
+		EstacionBg
 
 		// text
 	};
