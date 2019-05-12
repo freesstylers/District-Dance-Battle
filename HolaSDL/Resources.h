@@ -193,7 +193,8 @@ public:
 		Shoot,
 		Rock,
 		MainTheme,
-		Ambient
+		Ambient,
+		Hardbass
 		// sound effects
 	};
 

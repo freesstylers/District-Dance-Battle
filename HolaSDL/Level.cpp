@@ -38,10 +38,6 @@ Level::~Level()
 		delete o;
 		o = nullptr;
 	}
-	level->levelArrows_.clear();
-	level->levelArrows2_.clear();
-	level->levelButtons_.clear();
-	level->levelButtons2_.clear();
 }
 
 void Level::playSong() {
@@ -58,6 +54,8 @@ void Level::init(bool hardmode) {
 	if (name == "asereje")
 		noteVel = level->setVel(60000 / ((double)bpm / 1.5));
 	else if (name == "rock")
+		noteVel = level->setVel(60000 / ((double)bpm / 2));
+	else if (name == "hardbass")
 		noteVel = level->setVel(60000 / ((double)bpm / 2));
 	else
 		noteVel = level->setVel(60000 / (double)bpm);
