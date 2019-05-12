@@ -150,7 +150,7 @@ void PlayState::newGame()
 	
 	level = new Level(this, manager, levelName,noteSize);
 	level->init(difficultyMode);
-	timer = Timer::Instance();
+	timer = new TimerNoSingleton();
 	timer->Reset();
 
 	if (minigameAmount > 0) {
@@ -216,7 +216,7 @@ void PlayState::newGame2P()
 	crown = new Background(manager, 128, 128, Vector2D(0, 0), Resources::Crown);
 	level = new Level(this, manager, levelName,noteSize);
 	level->init(difficultyMode);
-	timer = Timer::Instance();
+	timer = new TimerNoSingleton();
 	timer->Reset();
 	maxNoteValue = maxScore / level->noteAmount;
 
@@ -254,7 +254,7 @@ void PlayState::newGame2P()
 
 PlayState::~PlayState()
 {
-	//timer->Release();
+	delete timer;
 	delete minigameController;
 	delete minigame;
 	delete effectVaporWave;
@@ -518,16 +518,14 @@ void PlayState::generateButtons()
 		if (levelButtons_.front() != nullptr) {
 
 			player1->screenButtons_.push_back(levelButtons_.front());
-			//player1->screenButtons_.back()->setPosition(player1->screenButtons_.back()->getPosition() + player1->screenButtons_.back()->getVelocity()*msDiff);
 			if (player2 != nullptr && levelButtons2_.front() != nullptr)
 			{
 
 				player2->screenButtons_.push_back(levelButtons2_.front());
-				//player2->screenButtons_.back()->setPosition(player2->screenButtons_.back()->getPosition() + player2->screenButtons_.back()->getVelocity()*msDiff);
+				levelButtons2_.pop_front();
 			}
 		}
 		levelButtons_.pop_front();
-		levelButtons2_.pop_front();
 	}
 }
 

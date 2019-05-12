@@ -38,10 +38,6 @@ Level::~Level()
 		delete o;
 		o = nullptr;
 	}
-	level->levelArrows_.clear();
-	level->levelArrows2_.clear();
-	level->levelButtons_.clear();
-	level->levelButtons2_.clear();
 }
 
 void Level::playSong() {

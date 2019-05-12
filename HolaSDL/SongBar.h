@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include "BarBackground.h"
+#include "checkML.h"
 class SongBar : public GameObject
 {
 protected:
