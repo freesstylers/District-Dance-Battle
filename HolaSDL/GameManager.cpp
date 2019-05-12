@@ -72,7 +72,7 @@ void GameManager::handleEvent(Uint32 time)
 	SDL_Event event;
 	bool handled = false;
 	bool ent_mainmenu = true;
-	while (SDL_PollEvent(&event) && !exit_ && ent_mainmenu==true) {
+	while (SDL_PollEvent(&event) && !exit_ && ent_mainmenu) {
 		if (event.type == SDL_QUIT)
 			exit_ = true;
 		machine->currentState()->handleEvent(time, event);

@@ -42,7 +42,6 @@ private:
 
 	void unlockLevel(int lvl);
 	void createMainButtons();
-	bool keyup = false;
 	void nextButton();
 	void backButton();
 
