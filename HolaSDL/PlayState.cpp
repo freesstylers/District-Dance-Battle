@@ -532,8 +532,8 @@ void PlayState::generateArrows()
 				player2->screenArrows_.push_back(levelArrows2_.front());
 			}
 		}
-		levelArrows_.pop_front();
 		levelArrows2_.pop_front();
+		levelArrows_.pop_front();
 	}
 }
 
@@ -546,9 +546,9 @@ void PlayState::generateButtons()
 			if (player2 != nullptr && levelButtons2_.front() != nullptr)
 			{
 				player2->screenButtons_.push_back(levelButtons2_.front());
-				levelButtons2_.pop_front();
 			}
 		}
+		levelButtons2_.pop_front();
 		levelButtons_.pop_front();
 	}
 }

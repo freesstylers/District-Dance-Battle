@@ -126,7 +126,7 @@ public:
 	MiniGame* getMinigame() { return minigame; }
 	GameManager* getGameManager() { return manager; }
 	ParticleEngine* particles;
-	Background* Lost;
+	EmptyObject* Lost;
 	EmptyObject* youLost;
 
 	double msDiff = 0.0;  //difference between the time of a beat and the time when a note is created, in ms
