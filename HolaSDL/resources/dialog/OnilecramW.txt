@@ -4,7 +4,7 @@
 4
  29 perico
  47 grey
- 142 alien
+ 147 alien
  131 marcelino
 
 - perico Onilecram... ¡Cómo no me pude dar cuenta de que era Marcelino al revés!

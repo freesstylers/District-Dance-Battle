@@ -33,7 +33,7 @@ PlayerPack::PlayerPack(SDLGame* manager, PlayState* ps, int leftNotesPos, int ri
 	feedbackRight = new FeedbackPool(manager, pointSize * 0.8, pointSize * 0.8, Vector2D(rightNotesPos + (pointSize * 0.8), 565 + pointSize / 2));
 	hitLeft = new HitNotePool(manager, pointSize - 10, pointSize - 10);
 	hitRight = new HitNotePool(manager, pointSize - 10, pointSize - 10);
-	noteYLimit = leftPoint->getPosition().getY() + leftPoint->getHeight();
+	noteYLimit = leftPoint->getPosition().getY() + leftPoint->getHeight()/1.5;
 	if (player == 0)
 	{
 		scoreBar = new ScoreBar(manager, 80, 0, Vector2D(6, 500 + pointSize), playstate_->getMaxScore(), manager->getDefaultWindowHeight() - (500 + pointSize));

@@ -4,10 +4,12 @@
 PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxScoreE, int prevMaxScoreH) : GameState(g) //Asigna game y llama a inicializaci�n
 {
 	nlevel = lvl;
-
-	g->getServiceLocator()->getAudios()->setChannelVolume(60, 1);
+	g->getServiceLocator()->getAudios()->setChannelVolume(volume, 1);
 	Lost = new EmptyObject(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::Lost);
 	Lost->setActive(false);
+	//Lost->setAlpha(0);
+	youLost = new EmptyObject(manager, Vector2D(0, -manager->getDefaultWindowHeight()), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::YouLost);
+	youLost->setActive(false);
 
 	switch (lvl)
 	{
@@ -190,7 +192,8 @@ void PlayState::newGame()
 	stage.push_back(player1);
 	stage.push_back(particles);
 	stage.push_back(fourButtons);
-	//stage.push_back(Lost);
+	stage.push_back(Lost);
+	stage.push_back(youLost);
 
 
 	level->playSong();
@@ -246,7 +249,8 @@ void PlayState::newGame2P()
 	stage.push_back(player2);
 	stage.push_back(fourButtons);
 	stage.push_back(fourButtons2);
-	//stage.push_back(Lost);
+	stage.push_back(Lost);
+	stage.push_back(youLost);
 
 	level->playSong();
 
@@ -329,6 +333,17 @@ void PlayState::update(Uint32 time)
 				else if (isLost())
 				{
 					Lost->setActive(true);
+					youLost->setActive(true);
+					if (volume > 0)
+					{
+						volume -= 1;
+						manager->getServiceLocator()->getAudios()->setChannelVolume(volume, 0);
+					}
+					else
+						manager->getServiceLocator()->getAudios()->haltChannel(0);
+
+					if (youLost->getPosition().getY() < 0)
+						youLost->setPosition(youLost->getPosition() + Vector2D(0, 4));
 				}
 			}
 		}
@@ -442,7 +457,7 @@ bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 		manager->stop();
 		return true;
 	}
-	else if (isLost() && e.key.keysym.sym == SDLK_RETURN)
+	else if (isLost() && (e.key.keysym.sym == SDLK_SPACE || SDL_GameControllerGetButton(player1->lip->getController(), SDL_CONTROLLER_BUTTON_A)) && youLost->getPosition().getY() >= 0)
 	{
 		songOver();
 	}
@@ -454,7 +469,7 @@ bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 
 				minigame->handleInput(time, e);
 			}
-			else
+			else if (!isLost())
 			{
 				GameState::handleEvent(time, e);
 			}
@@ -473,7 +488,6 @@ void PlayState::render(Uint32 time, bool beatSync)
 	if (miniActive) {
 		minigame->render(time);
 		effectVaporWave->render(time, true);
-	
 	}
 
 	beatSignal = false;
@@ -516,9 +530,9 @@ void PlayState::generateArrows()
 			if (player2 != nullptr && levelArrows2_.front() != nullptr)
 			{
 				player2->screenArrows_.push_back(levelArrows2_.front());
-				levelArrows2_.pop_front();
 			}
 		}
+		levelArrows2_.pop_front();
 		levelArrows_.pop_front();
 	}
 }
@@ -531,11 +545,10 @@ void PlayState::generateButtons()
 			player1->screenButtons_.push_back(levelButtons_.front());
 			if (player2 != nullptr && levelButtons2_.front() != nullptr)
 			{
-
 				player2->screenButtons_.push_back(levelButtons2_.front());
-				levelButtons2_.pop_front();
 			}
 		}
+		levelButtons2_.pop_front();
 		levelButtons_.pop_front();
 	}
 }

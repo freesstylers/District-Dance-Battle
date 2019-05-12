@@ -115,7 +115,7 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 	if (!player->screenButtons_.empty())
 	{
 		auto it = player->screenButtons_.front();
-		if (it != nullptr && abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getLeftPoint()->getPosition().getY() + player->getLeftPoint()->getHeight() / 2)) <= 100)
+		if (it != nullptr && abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getLeftPoint()->getPosition().getY() + player->getLeftPoint()->getHeight() / 2)) <= 75)
 		{
 			if (event.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, it->getKey()) && keyup2)
 			{
