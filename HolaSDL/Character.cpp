@@ -10,6 +10,7 @@ Character::Character(SDLGame* game, double width, double height, Vector2D pos, i
 	setPosition(pos);
 	setVelocity(Vector2D(0, 0));
 	timer = new TimerNoSingleton();
+	timerAlien = new TimerNoSingleton();
 	firstAnim = i;
 	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(i);
 	
@@ -31,6 +32,10 @@ Character::Character(SDLGame* game, double width, double height, Vector2D pos, i
 		case Resources::ZombieIdle:
 			secondAnim = Resources::ZombieDance;
 			break;
+		case Resources::AlienIdle:
+			secondAnim = Resources::AlienDance;
+			isAlien = true;
+			break;
 		}
 	}
 }
@@ -39,6 +44,7 @@ Character::Character(SDLGame* game, double width, double height, Vector2D pos, i
 Character::~Character()
 {
 	delete timer;
+	delete timerAlien;
 }
 
 bool Character::handleInput(Uint32 time, const SDL_Event& event) {
@@ -48,17 +54,29 @@ bool Character::handleInput(Uint32 time, const SDL_Event& event) {
 
 void Character::update(Uint32 time) {
 	timer->Update();
-	if (timer->DeltaTime() > (rand()%(11)+10) && secondAnim != -1 && !dancing)
+	if (isAlien)
+	{
+		timerAlien->Update();
+	}
+	if (timer->DeltaTime() > (rand() % (11) + 10) && secondAnim != -1 && !dancing && timerAlien->DeltaTime() < 20)
 	{
 		this->queueAnimationChange(secondAnim);
 		timer->Reset();
 		dancing = true;
 	}
-	else if (timer->DeltaTime() > (rand() % (11) + 10) && secondAnim != -1 && dancing)
+	else if (timer->DeltaTime() > (rand() % (11) + 10) && secondAnim != -1 && dancing && timerAlien->DeltaTime() < 20)
 	{
 		this->queueAnimationChange(firstAnim);
 		timer->Reset();
 		dancing = false;
+	}
+	else if (timerAlien->DeltaTime() > 20)
+	{
+		this->queueAnimationChange(Resources::AlienTransformacion);
+		firstAnim = Resources::MarcelinoIdle;
+		secondAnim = Resources::MarcelinoDance;
+		isAlien = false;
+		timerAlien->Reset();
 	}
 }
 

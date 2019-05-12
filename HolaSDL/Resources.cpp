@@ -165,6 +165,13 @@ vector<Resources::ImageInfo> Resources::images_{
 		{ TutoBox3, "resources/images/tutoBox3.png", 1224, 504, 1, 1, 1 },
 		{ TutoBox4, "resources/images/tutoBox4.png", 1224, 504, 1, 1, 1 },
 		{ TutoFiltro, "resources/images/TutoFiltro.png", 450, 338, 1, 1, 1 },
+		{ AlienIdle, "resources/images/AlienFumeta.png", 60, 120, 3, 2, 5 },
+		{ AlienDance, "resources/images/AlienSquat.png", 60, 120, 3, 2, 6 },
+		{ AlienTransformacion, "resources/images/AlienTransformacion.png", 60, 120, 8, 4, 29 },
+		{ MarcelinoIdle, "resources/images/MarcelinoIdle.png", 60, 120, 3, 2, 4 },
+		{ MarcelinoDance, "resources/images/MarcelinoDab.png", 60, 120, 3, 2, 4 },
+		{ AlienBox, "resources/images/AlienBox.png",153, 65, 1, 1, 1 },
+		{ Lost, "resources/images/Lost.png", 213, 120, 1, 1, 1 },
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {

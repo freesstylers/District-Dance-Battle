@@ -6,7 +6,8 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxS
 	nlevel = lvl;
 
 	g->getServiceLocator()->getAudios()->setChannelVolume(60, 1);
-	
+	Lost = new EmptyObject(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::Lost);
+	Lost->setActive(false);
 
 	switch (lvl)
 	{
@@ -16,7 +17,7 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxS
 		minigame = new MinigameVaporwave(manager, this);
 		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::PericoRoom);
 		bgT = Resources::PericoRoom;
-		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 300, initialNoteHeight + 50), Resources::PericoEspejo);
+		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 400, initialNoteHeight + 50), Resources::PericoEspejo);
 		enemyT = Resources::PericoRoom;
 		minigameAmount = 0;
 		break;
@@ -26,7 +27,7 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxS
 		minigame = new MinigameVaporwave(manager, this);
 		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::testBG);
 		bgT = Resources::testBG;
-		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 300, initialNoteHeight + 50), Resources::RobotIdle);
+		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 400, initialNoteHeight + 50), Resources::RobotIdle);
 		enemyT = Resources::RobotIdle;
 		minigameAmount = 0;
 		break;
@@ -36,7 +37,7 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxS
 		minigame = new MinigameHipHop(manager, this);
 		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::BackgroundHipHop);
 		bgT = Resources::BackgroundHipHop;
-		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 300, initialNoteHeight + 50), Resources::EminemciaIdle);
+		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 400, initialNoteHeight + 50), Resources::EminemciaIdle);
 		enemyT = Resources::EminemciaIdle;
 		minigameAmount = 0;
 		break;
@@ -46,7 +47,7 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxS
 		minigame = nullptr;//new MinigameHipHop(manager, this);
 		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::CiuBG);
 		bgT = Resources::CiuBG;
-		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 300, initialNoteHeight + 50), Resources::PapitoIdle);
+		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 400, initialNoteHeight + 50), Resources::PapitoIdle);
 		enemyT = Resources::PapitoIdle;
 		minigameAmount = 0;
 		break;
@@ -56,7 +57,7 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxS
 		minigame = new MinigameVaporwave(manager, this);
 		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::PericoRoom);
 		bgT = Resources::PericoRoom;
-		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 300, initialNoteHeight + 50), Resources::ZombieIdle);
+		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 400, initialNoteHeight + 50), Resources::ZombieIdle);
 		enemyT = Resources::ZombieIdle;
 		minigameAmount = 0;
 		break;
@@ -66,7 +67,7 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxS
 		minigame = new MinigameHipHop(manager, this);
 		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::ExtraBG);
 		bgT = Resources::ExtraBG;
-		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 300, initialNoteHeight + 50), Resources::ShrekIdle);
+		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 400, initialNoteHeight + 50), Resources::ShrekIdle);
 		enemyT = Resources::ShrekIdle;
 		minigameAmount = 0;
 		break;
@@ -76,7 +77,7 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxS
 		minigame = new MinigameHipHop(manager, this);
 		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::ExtraBG);
 		bgT = Resources::ExtraBG;
-		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 300, initialNoteHeight + 50), Resources::EminemciaIdle);
+		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 400, initialNoteHeight + 50), Resources::EminemciaIdle);
 		enemyT = Resources::EminemciaIdle;
 		minigameAmount = 0;
 		break;
@@ -86,7 +87,7 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxS
 		minigame = new MinigameHipHop(manager, this);
 		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::ExtraBG);
 		bgT = Resources::ExtraBG;
-		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 300, initialNoteHeight + 50), Resources::SansIdle);
+		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 400, initialNoteHeight + 50), Resources::SansIdle);
 		enemyT = Resources::SansIdle;
 		minigameAmount = 0;
 		break;
@@ -96,7 +97,7 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxS
 		minigame = new MinigameHipHop(manager, this);
 		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::ExtraBG);
 		bgT = Resources::ExtraBG;
-		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 300, initialNoteHeight + 50), Resources::SansIdle);
+		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 400, initialNoteHeight + 50), Resources::SansIdle);
 		enemyT = Resources::SansIdle;
 		minigameAmount = 0;
 		break;
@@ -106,7 +107,7 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxS
 		minigame = new MinigameHipHop(manager, this);
 		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::ExtraBG);
 		bgT = Resources::ExtraBG;
-		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 300, initialNoteHeight + 50), Resources::RobotDance);
+		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 400, initialNoteHeight + 50), Resources::RobotDance);
 		enemyT = Resources::RobotDance;
 		minigameAmount = 0;
 		break;
@@ -115,7 +116,7 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxS
 	}
 
 	difficultyMode = diff;
-
+	OneP = oneP;
 	if (oneP) {
 		newGame();
 	}
@@ -150,7 +151,6 @@ void PlayState::newGame()
 	
 	level = new Level(this, manager, levelName,noteSize);
 	level->init(difficultyMode);
-	player2 = nullptr;
 	timer = Timer::Instance();
 	timer->Reset();
 
@@ -190,6 +190,7 @@ void PlayState::newGame()
 	stage.push_back(player1);
 	stage.push_back(particles);
 	stage.push_back(fourButtons);
+	//stage.push_back(Lost);
 
 
 	level->playSong();
@@ -225,6 +226,9 @@ void PlayState::newGame2P()
 	songBar = new SongBar(manager, 18, 22, Vector2D(41, 31), manager->getDefaultWindowWidth() - (41 * 3), songBarBG, level->songLength); //41 la posicion inicial
 
 	perico = new Character(manager, 60 * 4, 120 * 4, Vector2D(110, initialNoteHeight + 100), Resources::PericoIdle);
+	enemy->setPosition(Vector2D(manager->getDefaultWindowWidth() - 350, initialNoteHeight + 100));
+	enemy->setWidth(60 * 4);
+	enemy->setHeight(120 * 4);
 
 
 	minigameController = new TimerNoSingleton();
@@ -242,6 +246,7 @@ void PlayState::newGame2P()
 	stage.push_back(player2);
 	stage.push_back(fourButtons);
 	stage.push_back(fourButtons2);
+	//stage.push_back(Lost);
 
 	level->playSong();
 
@@ -312,7 +317,7 @@ void PlayState::update(Uint32 time)
 
 			else {
 				timer->Update();
-				if (timer->DeltaTime() > (bh->getBeatTime() / 1000.0) - msDiff)
+				if (timer->DeltaTime() > (bh->getBeatTime() / 1000.0) - msDiff && !isLost())
 				{
 					msDiff += timer->DeltaTime() - (bh->getBeatTime() / 1000.0);
 					generateArrows();
@@ -320,6 +325,10 @@ void PlayState::update(Uint32 time)
 					timer->Reset();
 
 					beatSignal = true;
+				}
+				else if (isLost())
+				{
+					Lost->setActive(true);
 				}
 			}
 		}
@@ -433,6 +442,10 @@ bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 		manager->stop();
 		return true;
 	}
+	else if (isLost() && e.key.keysym.sym == SDLK_RETURN)
+	{
+		songOver();
+	}
 	else
 	{
 		if (!isPaused) {
@@ -500,12 +513,12 @@ void PlayState::generateArrows()
 
 			player1->screenArrows_.push_back(levelArrows_.front());
 			
-			if (player2 != nullptr && levelArrows2_.front()!=nullptr)
+			if (player2 != nullptr && levelArrows2_.front() != nullptr)
 			{
 				player2->screenArrows_.push_back(levelArrows2_.front());
+				levelArrows2_.pop_front();
 			}
 		}
-		levelArrows2_.pop_front();
 		levelArrows_.pop_front();
 	}
 }
@@ -589,4 +602,14 @@ void PlayState::changeRedeffect()
 	else {
 
 	}
+}
+
+bool PlayState::isLost()
+{
+	if (player1->lip->numFailed > 10 && OneP)
+	{
+		return true;
+	}
+	else
+		return false;
 }

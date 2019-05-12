@@ -1,0 +1,19 @@
+1
+ 134
+2
+12
+136
+3
+ 29 perico
+ 47 grey
+ 131 marcelino
+- perico Bueno, ya estamos aquí. ¡La gran ciudad!
+- marcelino Que gusto volver venir.
+- perico ¿Tú has estado ya en Madrid?
+- marcelino Pues si. Hace unos años, 2 concretamente... ¿O eran 3? Bueno el caso es que...
+- perico Que si que si, tampoco te he pedido que me cuentes tu vida bro.
+- marcelino Vale...
+- perico Bien... ¿Y ahora pa dónde tiramos?
+- marcelino Tú sígueme. Creo que más o menos sé dónde tenemos que ir.
+- perico De acuerdo, me fío de tí.
+0

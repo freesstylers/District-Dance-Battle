@@ -158,7 +158,14 @@ public:
 		TutoBox2,
 		TutoBox3,
 		TutoBox4,
-		TutoFiltro
+		TutoFiltro,
+		AlienIdle,
+		AlienDance,
+		AlienTransformacion,
+		MarcelinoIdle,
+		MarcelinoDance,
+		AlienBox,
+		Lost
 
 		// text
 	};

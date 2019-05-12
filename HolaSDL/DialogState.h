@@ -29,7 +29,8 @@ protected:
 		string text;
 		string box;
 	};
-	string levels[6] = { "Intro", "Vapor1", "HipHop1", "Papito", "Corpselillo", "Dialog5" }; //El dialogo 0 es el del tutoria, de ahi hasta el dialogo del nivel 5
+	string levels[12] = { "Intro1", "Vapor1", "HipHop1", "Papito1", "Corpselillo1", "Onilecram1", "Intro2", "Vapor2", "HipHop2", "Papito2", "Corpselillo2", "Onilecram2" }; //El dialogo 0 es el del tutoria, de ahi hasta el dialogo del nivel 5 y del 6 al 11 los de
+																																											//el final del nivel
 	bool keyup = true;
 	bool oneP_;
 	bool hardMode_;
