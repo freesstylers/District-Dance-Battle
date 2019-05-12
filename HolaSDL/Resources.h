@@ -164,7 +164,8 @@ public:
 		AlienTransformacion,
 		MarcelinoIdle,
 		MarcelinoDance,
-		AlienBox
+		AlienBox,
+		Lost
 
 		// text
 	};
@@ -192,7 +193,8 @@ public:
 		Shoot,
 		Rock,
 		MainTheme,
-		Ambient
+		Ambient,
+		Hardbass
 		// sound effects
 	};
 

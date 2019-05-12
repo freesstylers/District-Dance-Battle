@@ -55,6 +55,8 @@ void Level::init(bool hardmode) {
 		noteVel = level->setVel(60000 / ((double)bpm / 1.5));
 	else if (name == "rock")
 		noteVel = level->setVel(60000 / ((double)bpm / 2));
+	else if (name == "hardbass")
+		noteVel = level->setVel(60000 / ((double)bpm / 2));
 	else
 		noteVel = level->setVel(60000 / (double)bpm);
 

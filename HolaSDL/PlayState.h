@@ -48,7 +48,9 @@ protected:
 
 	bool firstNote = true;
 	bool songIsOver = false;
+	bool OneP;
 	bool isPaused = false;
+	bool isLost();
 
 	RedEffect* rf;	//Not used
 
@@ -122,6 +124,7 @@ public:
 	MiniGame* getMinigame() { return minigame; }
 	GameManager* getGameManager() { return manager; }
 	ParticleEngine* particles;
+	EmptyObject* Lost;
 
 	double msDiff = 0.0;  //difference between the time of a beat and the time when a note is created, in ms
 
