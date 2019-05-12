@@ -95,6 +95,8 @@ protected:
 
 	int songEndWaitTime = 0;
 
+	int volume = 60;
+
 public:
 	BeatHandler* bh;
 	PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxScoreE_ = 0, int prevMaxScoreH_ = 0);
@@ -124,7 +126,8 @@ public:
 	MiniGame* getMinigame() { return minigame; }
 	GameManager* getGameManager() { return manager; }
 	ParticleEngine* particles;
-	EmptyObject* Lost;
+	Background* Lost;
+	EmptyObject* youLost;
 
 	double msDiff = 0.0;  //difference between the time of a beat and the time when a note is created, in ms
 
