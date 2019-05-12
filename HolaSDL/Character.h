@@ -7,6 +7,8 @@ class Character: public GameObject
 {
 private:
 	TimerNoSingleton* timer;
+	TimerNoSingleton* timerAlien;
+	bool isAlien = false;
 	int firstAnim = -1;
 	int secondAnim = -1;
 	bool dancing = false;
