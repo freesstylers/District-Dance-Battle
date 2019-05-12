@@ -193,7 +193,8 @@ vector<Resources::MusicInfo> Resources::musics_ {
 	{Shoot, "resources/sound/shoot.mp3"},
 	{Rock, "resources/sound/rock.mp3"},
 	{MainTheme, "resources/sound/MainTheme.mp3"},
-	{Ambient, "resources/sound/ambient.mp3"}
+	{Ambient, "resources/sound/ambient.mp3"},
+	{Hardbass, "resources/sound/hardbass.mp3"}
 };
 
 vector<Resources::SoundInfo> Resources::sounds_ {
