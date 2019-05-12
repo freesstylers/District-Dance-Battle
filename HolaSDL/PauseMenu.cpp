@@ -271,6 +271,7 @@ void PauseMenu::updateMusic(bool raise)
 
 	game_->getServiceLocator()->getAudios()->setChannelVolume(game_->getMusicVolume(), 0);
 	game_->getServiceLocator()->getAudios()->setChannelVolume(game_->getMusicVolume(), 2);
+
 	game_->getServiceLocator()->getAudios()->playChannel(Resources::Snare, 0, 2);
 
 	updateTxt();
@@ -286,6 +287,7 @@ void PauseMenu::updateSound(bool raise)
 	}
 
 	game_->getServiceLocator()->getAudios()->setChannelVolume(game_->getSoundVolume(), 1);
+	game_->getServiceLocator()->getAudios()->setChannelVolume(game_->getSoundVolume(), 2);
 	game_->getServiceLocator()->getAudios()->playChannel(Resources::Snare, 0, 1);
 
 	updateTxt();

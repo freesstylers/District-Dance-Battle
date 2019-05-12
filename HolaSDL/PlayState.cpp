@@ -10,6 +10,16 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxS
 
 	switch (lvl)
 	{
+	case 0:
+		levelName = "tutorial";
+		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::EffectVaporWave);
+		minigame = new MinigameVaporwave(manager, this);
+		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::PericoRoom);
+		bgT = Resources::PericoRoom;
+		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 300, initialNoteHeight + 50), Resources::PericoEspejo);
+		enemyT = Resources::PericoRoom;
+		minigameAmount = 0;
+		break;
 	case 1:
 		levelName = "prueba";
 		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::EffectVaporWave);
@@ -18,6 +28,7 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxS
 		bgT = Resources::testBG;
 		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 300, initialNoteHeight + 50), Resources::RobotIdle);
 		enemyT = Resources::RobotIdle;
+		minigameAmount = 0;
 		break;
 	case 2:
 		levelName = "hiphop";
@@ -27,6 +38,7 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxS
 		bgT = Resources::BackgroundHipHop;
 		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 300, initialNoteHeight + 50), Resources::EminemciaIdle);
 		enemyT = Resources::EminemciaIdle;
+		minigameAmount = 0;
 		break;
 	case 3:
 		levelName = "papito";
@@ -39,13 +51,13 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxS
 		minigameAmount = 0;
 		break;
 	case 4:
-		levelName = "africa";
-		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::HipHopEffect);
-		minigame = new MinigameHipHop(manager, this);
-		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::ExtraBG);
-		bgT = Resources::ExtraBG;
-		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 300, initialNoteHeight + 50), Resources::RobotDance);
-		enemyT = Resources::RobotDance;
+		levelName = "rock";
+		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::EffectVaporWave);
+		minigame = new MinigameVaporwave(manager, this);
+		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::PericoRoom);
+		bgT = Resources::PericoRoom;
+		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 300, initialNoteHeight + 50), Resources::ZombieIdle);
+		enemyT = Resources::ZombieIdle;
 		minigameAmount = 0;
 		break;
 	case 6:
@@ -86,6 +98,16 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxS
 		bgT = Resources::ExtraBG;
 		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 300, initialNoteHeight + 50), Resources::SansIdle);
 		enemyT = Resources::SansIdle;
+		minigameAmount = 0;
+		break;
+	case 10:
+		levelName = "africa";
+		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::HipHopEffect);
+		minigame = new MinigameHipHop(manager, this);
+		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::ExtraBG);
+		bgT = Resources::ExtraBG;
+		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 300, initialNoteHeight + 50), Resources::RobotDance);
+		enemyT = Resources::RobotDance;
 		minigameAmount = 0;
 		break;
 	default:
@@ -230,29 +252,18 @@ void PlayState::newGame2P()
 
 PlayState::~PlayState()
 {
-	deleteAll();
-
-	timer->Release();
+	//timer->Release();
 	delete minigameController;
-	/*delete animationTimer;
-
-	delete rf;*/
 	delete minigame;
-	
-	delete fourButtons;
-	delete perico;
-	//delete enemy;
 	delete effectVaporWave;
-	/*delete level;
-	/*delete crown;
-	delete songBarBG;*/
+	delete level;
 	delete bh;
-	delete bg;
-	delete pauseMenu;
-	delete player1;
-	/*delete player2;*/
-	delete songBar;
-	delete particles;
+	delete crown;
+
+	for (GameObject* o : stage)
+	{
+		delete o;
+	}
 
 	stage.clear();
 	 

@@ -18,6 +18,26 @@ Level::Level(PlayState* l, SDLGame* gam, string n, int noteSize)
 
 Level::~Level()
 {
+	for (Note* o : level->levelArrows_) 
+	{
+		delete o;
+		o = nullptr;
+	}
+	for (Note* o : level->levelArrows2_) 
+	{
+		delete o;	
+		o = nullptr;
+	}
+	for (Note* o : level->levelButtons_) 
+	{
+		delete o;
+		o = nullptr;
+	}
+	for (Note* o : level->levelButtons2_) 
+	{
+		delete o;
+		o = nullptr;
+	}
 	level->levelArrows_.clear();
 	level->levelArrows2_.clear();
 	level->levelButtons_.clear();
@@ -37,6 +57,8 @@ void Level::init(bool hardmode) {
 
 	if (name == "asereje")
 		noteVel = level->setVel(60000 / ((double)bpm / 1.5));
+	else if (name == "rock")
+		noteVel = level->setVel(60000 / ((double)bpm / 2));
 	else
 		noteVel = level->setVel(60000 / (double)bpm);
 

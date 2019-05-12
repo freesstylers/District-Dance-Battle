@@ -1,7 +1,7 @@
 #pragma once
 #include "GameStateMachine.h"
 #include "SDLGame.h"
-#include "PlayState.h"
+#include "TutorialState.h"
 #include "MenuState.h"
 #include "MapState.h"
 #include "EndState.h"
@@ -26,10 +26,12 @@ public:
 	virtual void stop();  // stop the game
 	GameStateMachine* getMachine();
 	void tick();
+	bool mainmenu = true;
 	
 protected:
 	GameStateMachine* machine;
-	bool isXbox = false;
+	bool isXbox = true;
+	
 	
 private:
 	uint32_t last_tick_time = 0;

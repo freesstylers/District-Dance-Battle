@@ -132,8 +132,33 @@ public:
 		ButtonSound,
 		ButtonControls,
 		NewGameButton,
-		ChargeGameButton
-
+		ChargeGameButton,
+		CreditsButton,
+		ZombieIdle,
+		ZombieDance,
+		MainMenu,
+		NewGameSelected,
+		NewGameNoSelected,
+		ChargeGameSelected,
+		ChargeGameNoSelected,
+		OptionsSelected,
+		OptionsNoSelected,
+		CreditsSelected,
+		CreditsNoSelected,
+		ExitSelected,
+		ExitNoSelected,
+		ZombieBox,
+		MarcelinoBox,
+		CabezaZombie,
+		Creditos,
+		PericoRoom,
+		PericoRoomPixel,
+		PericoEspejo,
+		TutoBox1,
+		TutoBox2,
+		TutoBox3,
+		TutoBox4,
+		TutoFiltro
 
 		// text
 	};
@@ -158,7 +183,10 @@ public:
 		Running,
 		Error2,
 		Ok,
-		Shoot
+		Shoot,
+		Rock,
+		MainTheme,
+		Ambient
 		// sound effects
 	};
 

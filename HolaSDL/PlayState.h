@@ -95,10 +95,10 @@ protected:
 
 public:
 	BeatHandler* bh;
-	PlayState(GameManager* g, int lvl, bool oneP, bool diff,int prevMaxScoreE_ = 0, int prevMaxScoreH_ = 0);
+	PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxScoreE_ = 0, int prevMaxScoreH_ = 0);
 	void newGame();
 	void newGame2P();
-	~PlayState();
+	virtual ~PlayState();
 	virtual void update(Uint32 time);
 	virtual bool handleEvent(Uint32 time, SDL_Event e);
 	virtual void render(Uint32 time, bool beatSync = false);
@@ -134,8 +134,8 @@ public:
 	int getMaxScore() { return maxScore; }
 	int getMaxNoteValue() { return maxNoteValue; }
 	int getBPM() { return level->bpm; }
-	bool pause();
-	void resume(unsigned int timePaused);
+	virtual bool pause();
+	virtual void resume(unsigned int timePaused);
 	bool changeControls();
 
 	void restart();

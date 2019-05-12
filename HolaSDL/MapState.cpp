@@ -16,8 +16,12 @@ MapState::MapState(GameManager* g) :GameState(g)
 	moreLvls_ = new EmptyObject(g, Vector2D(0, 0), 150, 150, Resources::NivelExtra);
 	stage.push_back(fondo__);
 	stage.push_back(moreLvls_);
-	activeLevels[0] = true;
-	activeLevels[1] = true;
+	//activeLevels = { true, true, true, true, true };
+	unlockLevel(0);
+	unlockLevel(1);
+	unlockLevel(2);
+	unlockLevel(3);
+	unlockLevel(4);
 	loadGame();
 }
 
@@ -28,7 +32,7 @@ MapState::~MapState()
 
 bool MapState::handleEvent(Uint32 time, SDL_Event e)
 {
-	if (e.type == SDL_CONTROLLERBUTTONDOWN || e.type == SDL_KEYDOWN || e.type == SDL_CONTROLLERAXISMOTION) {
+	if (e.type == SDL_CONTROLLERBUTTONDOWN && keyup || e.type == SDL_KEYDOWN && keyup || e.type == SDL_CONTROLLERAXISMOTION && keyup) {
 		if(!buttons[index].second.selected)
 		{
 			if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_RETURN) {
@@ -46,6 +50,11 @@ bool MapState::handleEvent(Uint32 time, SDL_Event e)
 				manager->getMachine()->pushState(new ExtraMenu(manager));
 				manager->getServiceLocator()->getAudios()->haltChannel(0);
 			}
+			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B) || e.key.keysym.sym == SDLK_TAB) {
+				manager->mainmenu = true;
+				manager->getMachine()->pushState(new MainMenuState(manager));
+				manager->getServiceLocator()->getAudios()->haltChannel(0);
+			}
 		}
 		else
 		{
@@ -57,13 +66,23 @@ bool MapState::handleEvent(Uint32 time, SDL_Event e)
 			}
 			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT) || SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) || e.key.keysym.sym == SDLK_RETURN) {
 				buttons[index].second.selectButton(e, controller);
+				return true;
 			}
 			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B) || e.key.keysym.sym == SDLK_DELETE) {
 				buttons[index].second.selected = false;
 			}
 			
 		}
+		keyup = false;
 	}
+	else if (e.type == SDL_CONTROLLERBUTTONUP) keyup = true;
+
+	else if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_F10) {
+		manager->getServiceLocator()->getAudios()->haltChannel(0);
+		manager->getMachine()->changeState(new TutorialState(manager));
+		return true;
+	}
+
 	return GameState::handleEvent(time, e);
 }
 
@@ -94,8 +113,8 @@ void MapState::createMainButtons()
 	buttons[0].second = PanelMap(manager, buttons[0].first.getPosition() - Vector2D(200, -20), Resources::CabezaVaporWave, 1, "D35P4C1T0", 1);
 	buttons[1].second = PanelMap(manager, buttons[1].first.getPosition(), Resources::CabezaPapito, 2, "Papito Daddy", 3);
 	buttons[2].second = PanelMap(manager, buttons[2].first.getPosition() - Vector2D(-30, 110), Resources::EminemciaHead, 3, "Eminemcia", 2);
-	buttons[3].second = PanelMap(manager, buttons[3].first.getPosition(), Resources::CabezaVaporWave, 1, "D35P4C1T0", 4);
-	buttons[4].second = PanelMap(manager, buttons[4].first.getPosition(), Resources::EminemciaHead, 3, "Eminemcia", 5);
+	buttons[3].second = PanelMap(manager, buttons[3].first.getPosition(), Resources::CabezaZombie, 4, "Corpselillo", 4);
+	buttons[4].second = PanelMap(manager, buttons[4].first.getPosition(), Resources::EminemciaHead, 3, "Eminemcia", 0);
 
 	buttons[0].first.scale(2);
 }

@@ -40,14 +40,16 @@ void DialogState::init()
 		for (int i = 0; i < aux; i++) {
 			file >> sp;
 		//	sprites.push_back(new Character(manager,240 , 480, Vector2D(100 * (i*5), 100), sp));
-			//stage.push_back(new Character(manager, 240, 480, Vector2D(100 * (i * 5), 100), sp));
+			stage.push_back(new Character(manager, 240, 480, Vector2D(100 * (i * 3) + 600, 100), sp));
 		}
 		file >> aux;
 		for (int i = 0; i < aux; i++) {
 			file >> sp;
 			//Hay que crear una nueva clase que sea textBox
 			file >> textAux;
-			box.insert(pair<string, GameObject*>(textAux, new TextBox(manager, manager->getDefaultWindowWidth() - 20, 400, Vector2D(10, manager->getDefaultWindowHeight()-400),sp))); //basura a revisar
+			textBox = new TextBox(manager, manager->getDefaultWindowWidth() - 20, 400, Vector2D(10, manager->getDefaultWindowHeight() - 400), sp);
+			box.insert(pair<string, GameObject*>(textAux, textBox)); //basura a revisar
+			//textBoxes.push_back(textBox);
 		}
 
 		file >> textAux;
@@ -70,14 +72,25 @@ void DialogState::init()
 		text = new TextObject(manager, manager->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(manager->getDefaultWindowWidth() / 22 + 10, manager->getDefaultWindowHeight() - 140));
 		text->setText("AAAAA", { COLOR(0x00000000) });
 		text2 = new TextObject(manager, manager->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(manager->getDefaultWindowWidth() / 22 + 20, manager->getDefaultWindowHeight() - 140 + text->getHeight()));
-
+		timer = Timer::Instance();
+		manager->getServiceLocator()->getAudios()->playChannel(Resources::Snare, 0, 1);
+		manager->getServiceLocator()->getAudios()->setChannelVolume(10, 4);
+		manager->getServiceLocator()->getAudios()->playChannel(Resources::Ambient, 1, 4);
+		timer->Reset();
 		updateText();
 	}
 }
 	
+void DialogState::update(Uint32 time) 
+{
+	timer->Update();
 	
-	
-
+	if (timer->DeltaTime() > .25)
+	{
+		beatSignal = true;
+		timer->Reset();
+	}
+}
 
 DialogState::~DialogState()
 {
@@ -85,16 +98,23 @@ DialogState::~DialogState()
 	delete text;
 	delete text2;
 
+	//delete textBox;
+
+
 	box.clear();
 }
 
+
 void DialogState::render(Uint32 time, bool beatSync) {
+	GameState::render(time, beatSignal);
+	/*
 	for (auto it : stage) {
 		it->render(time, beatSync);
-	}
-	actualBox->render(time, beatSync);
+	}*/
+ 	actualBox->render(time, beatSync);
 	text->render(time);
 	text2->render(time);
+	beatSignal = false;
 }
 
 bool DialogState::handleEvent(Uint32 time, SDL_Event e) {
@@ -103,18 +123,20 @@ bool DialogState::handleEvent(Uint32 time, SDL_Event e) {
 
 	if ((e.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) && keyup) || (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_SPACE))
 	{
+		manager->getServiceLocator()->getAudios()->playChannel(Resources::Snare, 0, 1);
 		if (!dialogo.empty()) {
 			dialogo.pop_front();
 			if (!dialogo.empty()) {
 				actualBox = box[dialogo.front().box];
 			}
-			else actualBox = new TextBox(manager, manager->getDefaultWindowWidth() - 20, 400, Vector2D(10, manager->getDefaultWindowHeight() - 400), 29);
+			else actualBox = new TextBox(manager, manager->getDefaultWindowWidth() - 20, 400, Vector2D(10, manager->getDefaultWindowHeight() - 400), 131);
 
 			updateText();
 
 			keyup = false;
 		}
 		else if (end) {
+			manager->getServiceLocator()->getAudios()->haltChannel(4);
 			manager->getMachine()->changeState(new PlayState(manager, nlevel, oneP_, hardMode_, prevMaxScoreE_, prevMaxScoreH_));
 		}
 
