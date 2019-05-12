@@ -1,21 +1,17 @@
 1
  54
 0
-3
+4
  29 perico
  47 grey
  51 emi
-- perico Acho, me acaban de robar la cartera y este sitio huele a pis.
-- emi Yeah, Eminemcia "in da house".
-- emi Si crees que me puedes derrotar, en la pista de baile lo debes demostrar.
-- perico ¿Y tú por qué hablas así?
-- emi Si tienes un problema con mi lírica, te reventaré de forma empírica.
-- perico Lol, vaya pava...
-- grey Este murciano no tiene lo que hay que tener.
-- grey Vaya cobarde...
-- grey No me extraña que pidan soterrar Murcia.
-- perico Eh, con mi tierra menos. Te vas a enterar, peazo choni.
-- emi Pues tu no sabes contra quién te vas a enfrentar,
-- emi porque en Vallekas no tengo rival.
-- perico Si, si, lo que tú digas.
+ 131 marcelino
+- emi No pude estar a la altura, y al final acabó ganando este caradura.
+- perico Has sido una buena rival, pero contra el menda poco podías hacer.
+- emi Ahora deberás derrotar a todos los que por encima de mí están.
+- emi Y aún quedan más bailarines contra los que no tienes ninguna posibilidad. 
+- emi yeah.
+- grey Eh tú, el de gafas, ¿vaya móvil más guapo me llevas no? A ver, déjame verlo.
+- marcelino Vámonos de aquí ya, por favor.
+- perico Tienes razón, no hay tiempo que perder.
 0

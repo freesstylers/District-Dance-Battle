@@ -1,12 +1,16 @@
 1
  54
 0
-3
+4
  29 perico
  47 grey
  51 emi
-- perico Acho, me acaban de robar la cartera y este sitio huele a pis.
+ 131 marcelino
+- marcelino P-Perico, este barrio me da miedo.
+- perico Acho, no seas cagao.
+- perico Es cierto que nos acaban de robar la cartera y huele un poco a pis pero tiene su encanto.
 - emi Yeah, Eminemcia "in da house".
+- perico ¡Así que tú eres Eminemcia! He venido a retarte.
 - emi Si crees que me puedes derrotar, en la pista de baile lo debes demostrar.
 - perico ¿Y tú por qué hablas así?
 - emi Si tienes un problema con mi lírica, te reventaré de forma empírica.
