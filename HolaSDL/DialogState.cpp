@@ -75,7 +75,7 @@ void DialogState::init()
 		timer = Timer::Instance();
 		manager->getServiceLocator()->getAudios()->playChannel(Resources::Snare, 0, 1);
 		manager->getServiceLocator()->getAudios()->setChannelVolume(10, 4);
-		manager->getServiceLocator()->getAudios()->playChannel(Resources::Ambient, 1, 4);
+		manager->getServiceLocator()->getAudios()->playChannel(Resources::Ambient, -1, 4);
 		timer->Reset();
 		updateText();
 	}
@@ -98,8 +98,9 @@ DialogState::~DialogState()
 	delete text;
 	delete text2;
 
-	//delete textBox;
+	delete textBox;
 
+	box.erase(box.begin(), box.end());
 
 	box.clear();
 }
@@ -148,6 +149,8 @@ bool DialogState::handleEvent(Uint32 time, SDL_Event e) {
 	else if (e.type == SDL_CONTROLLERBUTTONUP) keyup = true;
 
 	else if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_TAB || (e.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_BACK))) {
+
+		manager->getServiceLocator()->getAudios()->haltChannel(4);
 		if (nlevel <= 5)
 			manager->getMachine()->changeState(new PlayState(manager, nlevel, oneP_, hardMode_, prevMaxScoreE_, prevMaxScoreH_));
 		else
