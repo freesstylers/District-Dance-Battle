@@ -4,6 +4,8 @@
 #include "GameManager.h"
 #include "checkML.h"
 
+//Estado del menú principal
+
 using namespace std;
 class MainMenuState :
 	public GameState

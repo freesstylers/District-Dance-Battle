@@ -3,6 +3,9 @@
 #include "EmptyObject.h"
 #include "ParticleEngine.h"
 #include "checkML.h"
+
+//Barra de puntuación
+
 class ScoreBar : public GameObject
 {
 private:

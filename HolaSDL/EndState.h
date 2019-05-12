@@ -6,6 +6,8 @@
 #include "TextObject.h"
 #include "checkML.h"
 
+//Estado al finalizar una partida que te indica tu puntuación
+
 class EndState :
 	public GameState
 {

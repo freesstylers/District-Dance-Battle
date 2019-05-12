@@ -27,6 +27,8 @@
 #include "PauseMenu.h"
 #include "checkML.h"
 
+//Clase de estado principal
+
 class PlayState : public GameState //main game class, where most of the gameplay will take place
 {
 protected:

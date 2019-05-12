@@ -1,6 +1,9 @@
 #pragma once
 #include "GameObject.h"
 #include "checkML.h"
+
+//Clase para los fondos
+
 class Background : public GameObject
 {
 public:

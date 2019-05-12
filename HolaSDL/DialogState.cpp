@@ -20,7 +20,7 @@ DialogState::DialogState(GameManager* g, int txt, int numctrl, bool oneP, bool h
 //EL máximo de caracteres por cuadro es 35*2 = 70, contando espacios y el primer espacio
 void DialogState::init() 
 {
-	
+	//Primero, cargamos todos los diálogos, y las imágenes que necesitaremos, leyendolo del txt correspondiente
 	Dialog d;
 	int aux;
 	int sp;
@@ -30,26 +30,24 @@ void DialogState::init()
 	
 	if (file.is_open()) {
 		file >> aux;
+		//Fondo
 		for (int i = 0; i < aux; i++) {
 			file >> sp;
-			//sprites.push_back(new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), sp));
 			stage.push_back(new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), sp));
 		}
 		file >> aux;
 		//Sprites
 		for (int i = 0; i < aux; i++) {
 			file >> sp;
-		//	sprites.push_back(new Character(manager,240 , 480, Vector2D(100 * (i*5), 100), sp));
 			stage.push_back(new Character(manager, 240, 480, Vector2D(100 * (i * 3) + 600, 100), sp));
 		}
 		file >> aux;
 		for (int i = 0; i < aux; i++) {
 			file >> sp;
-			//Hay que crear una nueva clase que sea textBox
+			//Diálogo
 			file >> textAux;
 			textBox = new TextBox(manager, manager->getDefaultWindowWidth() - 20, 400, Vector2D(10, manager->getDefaultWindowHeight() - 400), sp);
-			box.insert(pair<string, GameObject*>(textAux, textBox)); //basura a revisar
-			//textBoxes.push_back(textBox);
+			box.insert(pair<string, GameObject*>(textAux, textBox));
 		}
 
 		file >> textAux;
@@ -81,7 +79,7 @@ void DialogState::init()
 
 	file.close();
 }
-	
+//Solo usado para el timer	
 void DialogState::update(Uint32 time) 
 {
 	timer->Update();
@@ -112,7 +110,7 @@ DialogState::~DialogState()
 		delete actualBox;
 }
 
-
+//Renderizar
 void DialogState::render(Uint32 time, bool beatSync) {
 	GameState::render(time, beatSignal);
 	/*
@@ -128,7 +126,7 @@ void DialogState::render(Uint32 time, bool beatSync) {
 bool DialogState::handleEvent(Uint32 time, SDL_Event e) {
 
 	GameState::handleEvent(time, e);
-
+	//Pasar de diálogo
 	if ((e.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) && keyup) || (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_SPACE))
 	{
 		manager->getServiceLocator()->getAudios()->playChannel(Resources::Snare, 0, 1);
@@ -137,6 +135,7 @@ bool DialogState::handleEvent(Uint32 time, SDL_Event e) {
 			if (!dialogo.empty()) {
 				actualBox = box[dialogo.front().box];
 			}
+			//En caso de que sea el último diálogo
 			else if (archivo == "Corpselillo1" || archivo == "Onilecram1") { 
 				actualBox = new TextBox(manager, manager->getDefaultWindowWidth() - 20, 400, Vector2D(10, manager->getDefaultWindowHeight() - 400), Resources::GreyDialog);
 			}
@@ -169,7 +168,7 @@ bool DialogState::handleEvent(Uint32 time, SDL_Event e) {
 
 	return true;
 }
-
+//Cambiar de texto
 void DialogState::updateText() {
 	if (!dialogo.empty()) {
 

@@ -3,6 +3,8 @@
 #include "ParticleEngine.h"
 #include "checkML.h"
 
+//El indicador que sale al realizar un combo
+
 class ComboText :
 	public TextObject
 {

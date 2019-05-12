@@ -5,6 +5,8 @@
 #include <queue>
 #include "checkML.h"
 
+//GameObject ma sencillo
+
 class GameObject {
 
 private:

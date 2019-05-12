@@ -1,6 +1,8 @@
 #pragma once
 #include "GameObject.h"
 #include "checkML.h"
+
+//Nota
 class Note: public GameObject
 {
 protected:

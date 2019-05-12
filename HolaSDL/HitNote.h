@@ -2,6 +2,8 @@
 #include "GameObject.h"
 #include "checkML.h"
 
+//Efecto para nota pulsada
+
 class HitNote :
 	public GameObject
 {

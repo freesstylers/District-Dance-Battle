@@ -1,6 +1,9 @@
 #pragma once
 #include "GameObject.h"
 #include "checkML.h"
+
+//Efecto pseudopsicodélico para la pantalla
+
 class EffectVaporwave :
 	public GameObject
 {

@@ -3,6 +3,8 @@
 #include "Feedback.h"
 #include "checkML.h"
 
+//Controlador de todo el feedback visual
+
 class FeedbackPool :
 	public GameObjectPool<Feedback, 30>
 {

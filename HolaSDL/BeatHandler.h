@@ -4,6 +4,8 @@
 #include <fstream>
 #include "checkML.h"
 
+//Transforma los bpm de una canción a milisegundos
+
 using namespace std;
 class BeatHandler
 {

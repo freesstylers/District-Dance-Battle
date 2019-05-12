@@ -3,6 +3,8 @@
 #include "GameState.h"
 #include "checkML.h"
 
+//Máquina de estados de juego
+
 using namespace std;
 
 class GameStateMachine

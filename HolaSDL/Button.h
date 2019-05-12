@@ -3,6 +3,8 @@
 #include "GameManager.h"
 #include "checkML.h"
 
+//El pulsador del nivel.
+
 class Button : public GameObject {
 private:
 	typedef void Callback(GameManager* game);
