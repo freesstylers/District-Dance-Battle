@@ -6,7 +6,8 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxS
 	nlevel = lvl;
 
 	g->getServiceLocator()->getAudios()->setChannelVolume(60, 1);
-	
+	Lost = new EmptyObject(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::Lost);
+	Lost->setActive(false);
 
 	switch (lvl)
 	{
@@ -115,7 +116,7 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxS
 	}
 
 	difficultyMode = diff;
-
+	OneP = oneP;
 	if (oneP) {
 		newGame();
 	}
@@ -190,6 +191,7 @@ void PlayState::newGame()
 	stage.push_back(player1);
 	stage.push_back(particles);
 	stage.push_back(fourButtons);
+	//stage.push_back(Lost);
 
 
 	level->playSong();
@@ -245,6 +247,7 @@ void PlayState::newGame2P()
 	stage.push_back(player2);
 	stage.push_back(fourButtons);
 	stage.push_back(fourButtons2);
+	//stage.push_back(Lost);
 
 	level->playSong();
 
@@ -315,7 +318,7 @@ void PlayState::update(Uint32 time)
 
 			else {
 				timer->Update();
-				if (timer->DeltaTime() > (bh->getBeatTime() / 1000.0) - msDiff)
+				if (timer->DeltaTime() > (bh->getBeatTime() / 1000.0) - msDiff && !isLost())
 				{
 					msDiff += timer->DeltaTime() - (bh->getBeatTime() / 1000.0);
 					generateArrows();
@@ -323,6 +326,10 @@ void PlayState::update(Uint32 time)
 					timer->Reset();
 
 					beatSignal = true;
+				}
+				else if (isLost())
+				{
+					Lost->setActive(true);
 				}
 			}
 		}
@@ -435,6 +442,10 @@ bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 	else if (e.type == SDL_QUIT || e.key.keysym.sym == SDLK_ESCAPE) {
 		manager->stop();
 		return true;
+	}
+	else if (isLost() && e.key.keysym.sym == SDLK_RETURN)
+	{
+		songOver();
 	}
 	else
 	{
@@ -592,4 +603,14 @@ void PlayState::changeRedeffect()
 	else {
 
 	}
+}
+
+bool PlayState::isLost()
+{
+	if (player1->lip->numFailed > 10 && OneP)
+	{
+		return true;
+	}
+	else
+		return false;
 }

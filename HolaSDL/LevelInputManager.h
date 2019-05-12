@@ -21,6 +21,7 @@ public:
 		minigameActive = active;
 	}
 	SDL_GameController* getController(){ return controller; }
+	int numFailed = 0;
 private:
 	int numctrl_;
 	bool failed = false;

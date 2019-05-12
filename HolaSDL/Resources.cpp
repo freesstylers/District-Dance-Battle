@@ -171,6 +171,7 @@ vector<Resources::ImageInfo> Resources::images_{
 		{ MarcelinoIdle, "resources/images/MarcelinoIdle.png", 60, 120, 3, 2, 4 },
 		{ MarcelinoDance, "resources/images/MarcelinoDab.png", 60, 120, 3, 2, 4 },
 		{ AlienBox, "resources/images/AlienBox.png",153, 65, 1, 1, 1 },
+		{ Lost, "resources/images/Lost.png", 213, 120, 1, 1, 1 },
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {

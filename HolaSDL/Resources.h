@@ -164,7 +164,8 @@ public:
 		AlienTransformacion,
 		MarcelinoIdle,
 		MarcelinoDance,
-		AlienBox
+		AlienBox,
+		Lost
 
 		// text
 	};
