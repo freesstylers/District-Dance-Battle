@@ -325,7 +325,7 @@ EndState::~EndState()
 
 void EndState::backToMenu(GameManager * gameManager)
 {
-	gameManager->getMachine()->changeState(new MapState(gameManager));
+	gameManager->getMachine()->changeState(new DialogState(gameManager, (level + 6), 0, true, false, 0, 0));
 	gameManager->getServiceLocator()->getAudios()->haltChannel(0);
 }
 
