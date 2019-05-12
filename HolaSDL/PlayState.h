@@ -50,7 +50,6 @@ protected:
 
 	bool firstNote = true;
 	bool songIsOver = false;
-	bool OneP;
 	bool isPaused = false;
 	bool isLost();
 
