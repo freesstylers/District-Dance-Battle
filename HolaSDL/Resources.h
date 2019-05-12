@@ -163,7 +163,7 @@ public:
 		AlienDance,
 		AlienTransformacion,
 		MarcelinoIdle,
-		MarcelinoDance
+		MarcelinoDance,
 		AlienBox
 
 		// text
