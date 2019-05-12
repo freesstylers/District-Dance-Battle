@@ -7,10 +7,14 @@
  131 marcelino
 - perico Acho, llevamos casi 2 horas dando vueltas. ¿Estás seguro de que era por aquí?
 - marcelino Si... Eso creo.
-- robot S a l u d o s  h u m a n o .¿ H a s  v e n i d o  a  r e t a r m e ?
+- robot S a l u d o s  h u m a n o s .I d e n t i f i c a o s.
+- marcelino Yo soy Marcelino, soy el manager de Perico, toma mi tarjeta.
+- robot . . .
+- marcelino . . .
+- robot ¿H a b é i s  v e n i d o  a  r e t a r m e ?
 - perico Acho, ¿en serio me vas a hacer bailar contra un robot?
 - robot N o  m e  s u b e s t i m e s ,  h u m a n o.
-- robot E l  p o d e r  d e  l a n o s t a l g i a  e s t á d e m i l a d o.
+- robot E l  p o d e r  d e  l a  n o s t a l g i a  e s t á  d e  m i  l a d o.
 - perico ¿¡Pero qué ladras!?. Anda, tira...
 - robot *bzzzz* *SISTEMAS DE ATAQUE BAILONGOS ACTIVADOS*
 - robot *ENTRANDO EN MODO D35P4C1T0*
