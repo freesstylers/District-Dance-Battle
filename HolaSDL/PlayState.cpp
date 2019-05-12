@@ -118,7 +118,6 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxS
 	}
 
 	difficultyMode = diff;
-	OneP = oneP;
 	if (oneP) {
 		newGame();
 	}
@@ -219,6 +218,7 @@ void PlayState::newGame2P()
 	player1 = new PlayerPack(manager,this, leftNotesPos, rightNotesPos, pointSize, noteBarWidth,0,false);
 	player2 = new PlayerPack(manager,this, leftNotesPos + 400, rightNotesPos + 400, pointSize, noteBarWidth,1,false);
 	crown = new Background(manager, 128, 128, Vector2D(0, 0), Resources::Crown);
+	crown->setActive(false);
 	level = new Level(this, manager, levelName,noteSize);
 	level->init(difficultyMode);
 	timer = new TimerNoSingleton();
@@ -249,6 +249,7 @@ void PlayState::newGame2P()
 	stage.push_back(player2);
 	stage.push_back(fourButtons);
 	stage.push_back(fourButtons2);
+	stage.push_back(crown);
 	stage.push_back(Lost);
 	stage.push_back(youLost);
 
@@ -267,7 +268,6 @@ PlayState::~PlayState()
 	delete effectVaporWave;
 	delete level;
 	delete bh;
-	delete crown;
 
 	for (GameObject* o : stage)
 	{
@@ -292,6 +292,7 @@ void PlayState::update(Uint32 time)
 				player2->getleftBar()->forceAnimationChange(Resources::Recuadro2P);
 				player2->getrightBar()->forceAnimationChange(Resources::Recuadro2P);
 				crown->setPosition(Vector2D(player1->getleftBar()->getPosition().getX() + player1->getleftBar()->getWidth()/2 + 6, player1->getleftBar()->getPosition().getY() - 60));
+				crown->setActive(true);
 			}
 			else if (player2->currentScore >= player1->currentScore && player2->currentScore != 0)
 			{
@@ -483,8 +484,6 @@ bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 void PlayState::render(Uint32 time, bool beatSync)
 {
 	GameState::render(time, beatSignal);
-	if (!isSingleplayer && player1->currentScore > 0 && player2->currentScore > 0)
-		crown->render(time, beatSignal);
 	if (miniActive) {
 		minigame->render(time);
 		effectVaporWave->render(time, true);
@@ -617,7 +616,7 @@ void PlayState::changeRedeffect()
 
 bool PlayState::isLost()
 {
-	if (player1->lip->numFailed > 10 && OneP)
+	if (player1->lip->numFailed > 10 && isSingleplayer)
 	{
 		return true;
 	}
