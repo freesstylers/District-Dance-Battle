@@ -1,28 +1,20 @@
 1
  86
 0
-3
+4
  29 perico
  47 grey
  130 zombie
-- perico Tuuuu, qué mal rollo... ¿Dónde se supone que estoy?
-- zombie Bleeeerrrrrrjjjjjj
-- zombie . . .
-- zombie mmmmmm
-- perico ¡¡HOSTIA!!
-- perico Qué bicho más feo.
-- zombie . . .
-- perico ¿Y tú quién eres?
-- zombie Cor-corpse...
-- zombie Yo Corpselillo...
-- perico Ah... vale.
-- zombie Tú . . .
-- zombie Bailar . . .
-- zombie Ahora.
-- perico Mira, pues va a ser que no.
-- perico Aquí dentro apesta, y también me das un poco de asquete.
-- zombie GROOOOOOOORRRRRRWWWWLLLLLLLL
-- perico ¡¡AAAHHHH!!
-- zombie Bailar . . . Ahora . . .
-- perico Vale vale, tampoco hace falta ponerse así.
+ 131 marcelino
+- zombie Bllluurg
+- zombie Growrl
+- zombie Agggggg
+- perico Eso, ahora llora y vuelve a tu tumba, anda.
+- zombie ...
+- zombie Corpselillo... Vuelve a su tumba...
+- perico (Este fue díficil, por poco no lo cuento)
+- perico ¡¡Marcelino!! Deja de dormir, que nos vamos ya.
+- marcelino Ugh...¿Ganaste?
+- perico ¡¿Qué clase de pregunta es esa?! Por supuesto que gané.
+- marcelino En fin... vámonos.
 0
