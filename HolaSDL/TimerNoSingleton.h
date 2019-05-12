@@ -1,5 +1,6 @@
 #pragma once
 #include <SDL.h>
+#include "checkML.h"
 class TimerNoSingleton //19 marzo, revision, deberiamos utilizar otro nombre 
 {
 private:

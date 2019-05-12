@@ -67,18 +67,19 @@ void DialogState::init()
 			}
 			//file >> textAux;
 		}
-		file.close();
 		actualBox = box[dialogo.front().box];
 		text = new TextObject(manager, manager->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(manager->getDefaultWindowWidth() / 22 + 10, manager->getDefaultWindowHeight() - 140));
 		text->setText("AAAAA", { COLOR(0x00000000) });
 		text2 = new TextObject(manager, manager->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(manager->getDefaultWindowWidth() / 22 + 20, manager->getDefaultWindowHeight() - 140 + text->getHeight()));
-		timer = Timer::Instance();
+		timer = new TimerNoSingleton();
 		manager->getServiceLocator()->getAudios()->playChannel(Resources::Snare, 0, 1);
 		manager->getServiceLocator()->getAudios()->setChannelVolume(10, 4);
 		manager->getServiceLocator()->getAudios()->playChannel(Resources::Ambient, -1, 4);
 		timer->Reset();
 		updateText();
 	}
+
+	file.close();
 }
 	
 void DialogState::update(Uint32 time) 
@@ -94,15 +95,21 @@ void DialogState::update(Uint32 time)
 
 DialogState::~DialogState()
 {
-	delete actualBox;
-	delete text;
-	delete text2;
+	bool check = false;
+	delete timer;
 
-	delete textBox;
-
-	box.erase(box.begin(), box.end());
+	for (pair<string, GameObject*> i : box) {
+		check = check || i.second == actualBox;
+		delete i.second;
+		i.second = nullptr;
+	}
 
 	box.clear();
+
+	delete text;
+	delete text2;
+	if(!check)
+		delete actualBox;
 }
 
 
@@ -130,8 +137,11 @@ bool DialogState::handleEvent(Uint32 time, SDL_Event e) {
 			if (!dialogo.empty()) {
 				actualBox = box[dialogo.front().box];
 			}
-			else if (archivo == "Corpselillo1" || archivo == "Onilecram1") { new TextBox(manager, manager->getDefaultWindowWidth() - 20, 400, Vector2D(10, manager->getDefaultWindowHeight() - 400), Resources::GreyDialog);}
-			else actualBox = new TextBox(manager, manager->getDefaultWindowWidth() - 20, 400, Vector2D(10, manager->getDefaultWindowHeight() - 400), 131);
+			else if (archivo == "Corpselillo1" || archivo == "Onilecram1") { 
+				actualBox = new TextBox(manager, manager->getDefaultWindowWidth() - 20, 400, Vector2D(10, manager->getDefaultWindowHeight() - 400), Resources::GreyDialog);
+			}
+			else 
+ 				actualBox = new TextBox(manager, manager->getDefaultWindowWidth() - 20, 400, Vector2D(10, manager->getDefaultWindowHeight() - 400), 131);
 
 			updateText();
 

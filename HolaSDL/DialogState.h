@@ -7,7 +7,7 @@
 #include <math.h>
 #include "TextObject.h"
 #include "checkML.h"
-#include "Timer.h"
+#include "TimerNoSingleton.h"
 #include "TextBox.h"
 
 
@@ -41,7 +41,7 @@ protected:
 	TextObject* text;
 	TextObject* text2;
 	TextBox* textBox;
-	Timer* timer;
+	TimerNoSingleton* timer;
 	double animationFramesPerBeat = 2;
 	bool beatSignal = false;
 	int nlevel;
