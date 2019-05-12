@@ -190,8 +190,18 @@ void DialogState::updateText() {
 		}
 	}
 	else {
-		text->setText("COMIENZA LA BATALLA", { COLOR(0x00000000) });
-		text2->setText(" ", { COLOR(0x00000000) });
+		if (nlevel <= 5) {
+			text->setText("COMIENZA LA BATALLA", { COLOR(0x00000000) });
+			text2->setText(" ", { COLOR(0x00000000) });
+		}
+		else if(nlevel % 2 == 0){
+			text->setText("HAS COMPLETADO EL NIVEL", { COLOR(0x00000000) });
+			text2->setText(" ", { COLOR(0x00000000) });
+		}
+		else {
+			text->setText("NO HAS COMPLETADO EL NIVEL", { COLOR(0x00000000) });
+			text2->setText(" ", { COLOR(0x00000000) });
+		}
 
 		end = true;
 	}
