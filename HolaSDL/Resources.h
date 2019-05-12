@@ -158,7 +158,8 @@ public:
 		TutoBox2,
 		TutoBox3,
 		TutoBox4,
-		TutoFiltro
+		TutoFiltro,
+		AlienBox
 
 		// text
 	};
