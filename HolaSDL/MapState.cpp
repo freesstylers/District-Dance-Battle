@@ -31,47 +31,58 @@ MapState::~MapState()
 
 bool MapState::handleEvent(Uint32 time, SDL_Event e)
 {
-	if (e.type == SDL_CONTROLLERBUTTONDOWN || e.type == SDL_KEYUP || e.type == SDL_CONTROLLERAXISMOTION) {
-		if(!buttons[index].second.selected)
-		{
-			if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_RETURN) {
-				buttons[index].second.selected = true;
+	if (keyup)
+	{
+		if (e.type == SDL_CONTROLLERBUTTONDOWN || e.type == SDL_KEYUP || e.type == SDL_CONTROLLERAXISMOTION) {
+			if (!buttons[index].second.selected)
+			{
+				if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_RETURN) {
+					buttons[index].second.selected = true;
+				}
+				if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) || e.key.keysym.sym == SDLK_RIGHT) {
+					//buttons[index].second.reset();
+					nextButton();
+				}
+				else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT) || e.key.keysym.sym == SDLK_LEFT) {
+					//buttons[index].second.reset();
+					backButton();
+				}
+				else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_START) || e.key.keysym.sym == SDLK_TAB) {
+					manager->getMachine()->pushState(new ExtraMenu(manager));
+					manager->getServiceLocator()->getAudios()->haltChannel(0);
+				}
+				else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B) || e.key.keysym.sym == SDLK_TAB) {
+					manager->mainmenu = true;
+					manager->getMachine()->pushState(new MainMenuState(manager));
+					manager->getServiceLocator()->getAudios()->haltChannel(0);
+				}
+				keyup = false;
 			}
-			if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) || e.key.keysym.sym == SDLK_RIGHT) {
-				//buttons[index].second.reset();
-				nextButton();
-			}
-			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT) || e.key.keysym.sym == SDLK_LEFT) {
-				//buttons[index].second.reset();
-				backButton();
-			}
-			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_START) || e.key.keysym.sym == SDLK_TAB) {
-				manager->getMachine()->pushState(new ExtraMenu(manager));
-				manager->getServiceLocator()->getAudios()->haltChannel(0);
-			}
-			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B) || e.key.keysym.sym == SDLK_TAB) {
-				manager->mainmenu = true;
-				manager->getMachine()->pushState(new MainMenuState(manager));
-				manager->getServiceLocator()->getAudios()->haltChannel(0);
+			else
+			{
+				if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_UP) || e.key.keysym.sym == SDLK_UP) {
+					buttons[index].second.nextSwitch();
+					keyup = false;
+				}
+				else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN) || e.key.keysym.sym == SDLK_DOWN) {
+					buttons[index].second.prevSwitch();
+					keyup = false;
+				}
+				else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT) || SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) || e.key.keysym.sym == SDLK_RETURN) {
+					buttons[index].second.selectButton(e, controller);
+					keyup = false;
+					return true;
+				}
+				else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B) || e.key.keysym.sym == SDLK_DELETE) {
+					buttons[index].second.selected = false;
+					keyup = false;
+				}
 			}
 		}
-		else
-		{
-			if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_UP) || e.key.keysym.sym == SDLK_UP) {
-				buttons[index].second.nextSwitch();
-			}
-			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN) || e.key.keysym.sym == SDLK_DOWN) {
-				buttons[index].second.prevSwitch();
-			}
-			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT) || SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) || e.key.keysym.sym == SDLK_RETURN) {
-				buttons[index].second.selectButton(e, controller);
-				return true;
-			}
-			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B) || e.key.keysym.sym == SDLK_DELETE) {
-				buttons[index].second.selected = false;
-			}
-			
-		}
+	}
+	else if (e.type == SDL_CONTROLLERBUTTONUP)
+	{
+		keyup = true;
 	}
 	else if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_F10) {
 		manager->getServiceLocator()->getAudios()->haltChannel(0);
