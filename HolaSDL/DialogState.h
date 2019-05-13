@@ -34,7 +34,7 @@ protected:
 
 	
 	//Los nombres de todos los archivos de diálogo para poder llamarlos.
-	string levels[18] = { "Intro1", "Vapor1", "HipHop1", "Papito1", "Corpselillo1", "Onilecram1", "Intro2", "Intro2", "VaporW", "VaporL", "HipHopW", "HipHopL", "PapitoW", "PapitoL", "CorpselilloW", "CorpselilloL", "OnilecramW", "OnilecramL" }; 																									
+	string levels[18] = { "Intro1", "Vapor1", "Papito1", "HipHop1", "Corpselillo1", "Onilecram1", "Intro2", "Intro2", "VaporW", "VaporL", "PapitoW", "PapitoL", "HipHopW", "HipHopL","CorpselilloW", "CorpselilloL", "OnilecramW", "OnilecramL" };
 	
 	bool keyup = true;
 	bool oneP_;

@@ -470,7 +470,7 @@ void EndState::renderLetters(Uint32 time, bool beatHandler)
 
 void EndState::saveScore(int scoreE, int scoreH)
 {
-	string filename = "resources/data/" + to_string(level) + ".txt";
+	string filename = "resources/data/" + to_string(level) + ".ddb";
 
 	ofstream archivo(filename);
 

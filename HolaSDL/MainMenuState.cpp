@@ -295,11 +295,11 @@ void MainMenuState::backButton()
 
 void MainMenuState::newGame(GameManager* gameManager) 
 {
-	remove("resources/data/1.txt");
-	remove("resources/data/2.txt");
-	remove("resources/data/3.txt");
-	remove("resources/data/4.txt");
-	remove("resources/data/5.txt");
+	remove("resources/data/1.ddb");
+	remove("resources/data/2.ddb");
+	remove("resources/data/3.ddb");
+	remove("resources/data/4.ddb");
+	remove("resources/data/5.ddb");
 	gameManager->getMachine()->changeState(new MapState(gameManager));
 }
 void MainMenuState::exit(GameManager* gameManager)
@@ -310,21 +310,21 @@ void MainMenuState::exit(GameManager* gameManager)
 bool MainMenuState::handleEvent(Uint32 time, SDL_Event e) 
 {
 	bool input = false;
-		if (SDL_CONTROLLERBUTTONDOWN &&SDL_CONTROLLERBUTTONUP || e.type == SDL_KEYDOWN && keyup)
+		if ((SDL_CONTROLLERBUTTONDOWN  || e.type == SDL_KEYDOWN) && keyup)
 		{
-			if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN) && SDL_CONTROLLERBUTTONUP || e.key.keysym.sym == SDLK_DOWN && e.type == SDL_KEYUP)
+			if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN)|| e.key.keysym.sym == SDLK_DOWN)
 			{
 
 				nextButton();
 
 				input = true;
 			}
-			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_UP) && SDL_CONTROLLERBUTTONUP || e.key.keysym.sym == SDLK_UP && e.type == SDL_KEYUP)
+			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_UP)|| e.key.keysym.sym == SDLK_UP)
 			{
 				backButton();
 				input = true;
 			}
-			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) && SDL_CONTROLLERBUTTONUP || e.key.keysym.sym == SDLK_RIGHT && e.type == SDL_KEYUP)
+			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) || e.key.keysym.sym == SDLK_RIGHT)
 			{
 				if (optionsOpen) {
 					switch (selectedButton) {
@@ -342,7 +342,7 @@ bool MainMenuState::handleEvent(Uint32 time, SDL_Event e)
 					}
 				}
 			}
-			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT) && SDL_CONTROLLERBUTTONUP || e.key.keysym.sym == SDLK_LEFT && e.type == SDL_KEYUP)
+			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT) || e.key.keysym.sym == SDLK_LEFT)
 			{
 				if (optionsOpen) {
 					switch (selectedButton) {
@@ -360,14 +360,14 @@ bool MainMenuState::handleEvent(Uint32 time, SDL_Event e)
 					}
 				}
 			}
-			else if (selectButton[0] == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) && SDL_CONTROLLERBUTTONUP || e.key.keysym.sym == SDLK_SPACE && e.type == SDL_KEYUP))
+			else if (selectButton[0] == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A)|| e.key.keysym.sym == SDLK_SPACE))
 			{
 				manager->getServiceLocator()->getAudios()->haltChannel(0);
 				gameManager->mainmenu = false;
 				gameManager->getMachine()->changeState(new MapState(gameManager));
 				input = true;
 			}
-			else if (selectButton[1] == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) && SDL_CONTROLLERBUTTONUP || e.key.keysym.sym == SDLK_SPACE && e.type == SDL_KEYUP))
+			else if (selectButton[1] == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_SPACE))
 			{
 				manager->getServiceLocator()->getAudios()->haltChannel(0);
 				gameManager->mainmenu = false;
@@ -375,7 +375,7 @@ bool MainMenuState::handleEvent(Uint32 time, SDL_Event e)
 				input = true;
 			}
 
-			else if (selectButton[2] == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) && SDL_CONTROLLERBUTTONUP || e.key.keysym.sym == SDLK_SPACE && e.type == SDL_KEYUP))
+			else if (selectButton[2] == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A)|| e.key.keysym.sym == SDLK_SPACE))
 			{
 				gameManager->mainmenu = false;
 				options();
@@ -383,14 +383,14 @@ bool MainMenuState::handleEvent(Uint32 time, SDL_Event e)
 
 				input = true;
 			}
-			else if (selectButton[3] == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) && SDL_CONTROLLERBUTTONUP || e.key.keysym.sym == SDLK_SPACE && e.type == SDL_KEYUP))
+			else if (selectButton[3] == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_SPACE))
 			{
 				gameManager->mainmenu = false;
 				manager->getMachine()->changeState(new Creditos(gameManager));
 				//gameManager->mainmenu = true;
 				input = true;
 			}
-			else if (selectButton[4] == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) && SDL_CONTROLLERBUTTONUP || e.key.keysym.sym == SDLK_SPACE && e.type == SDL_KEYUP))
+			else if (selectButton[4] == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_SPACE ))
 			{
 				gameManager->mainmenu = false;
 				exit(gameManager);
@@ -400,7 +400,7 @@ bool MainMenuState::handleEvent(Uint32 time, SDL_Event e)
 			keyup = false;
 		}
 	
-	else if (e.type == SDL_CONTROLLERBUTTONUP || e.type == SDL_KEYUP) keyup = true; input = false;
+		else if (e.type == SDL_CONTROLLERBUTTONUP || e.type == SDL_KEYUP) { keyup = true; input = false; }
 	return input;
 }
 

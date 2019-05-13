@@ -28,7 +28,7 @@ private:
 	int index = 0;
 	int max=4;
 	int min = 0;
-	bool keyup = false;
+	bool keyup = true;
 
 	void exit(GameManager* gameManager);
 
