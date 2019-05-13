@@ -315,6 +315,12 @@ void PauseMenu::updateTxt()
 
 	controlTxt->setPosition(controlsSelect->getPosition() + Vector2D(controlsSelect->getWidth() / 2, controlsSelect->getHeight() / 2) - Vector2D(controlTxt->getWidth() / 2, controlTxt->getHeight() / 2));
 
+
+	ofstream file("resources/data/options.ddb");
+
+	file << "MUSIC" << endl << game_->getMusicVolume() << endl << "SOUND" << endl << game_->getSoundVolume() << endl << "CONTROLLER" << endl << game_->getController();
+
+	file.close();
 }
 
 

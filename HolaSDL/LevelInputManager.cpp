@@ -13,7 +13,6 @@ LevelInputManager::LevelInputManager(PlayState* l, PlayerPack* pl, int numctrl)
 	player = pl;
 	keystates = SDL_GetKeyboardState(NULL);
 	controller = SDL_GameControllerOpen(numctrl_);
-	level->getGameManager()->getServiceLocator()->getAudios()->setChannelVolume(60, 2);
 	
 }
 
@@ -27,7 +26,7 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 	bool ret = false;
 
 	if (event.type == SDL_CONTROLLERBUTTONDOWN && keyup) {
-		level->getGameManager()->getServiceLocator()->getAudios()->playChannel(Resources::Snare, 0, 2);
+		level->getGameManager()->getServiceLocator()->getAudios()->playChannel(Resources::Snare, 0, 1);
 		//level->particles->generate();
 	}
 	if (event.type == SDL_CONTROLLERBUTTONUP)
