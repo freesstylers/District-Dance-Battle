@@ -8,7 +8,7 @@ class TutorialState :
 	public PlayState
 {
 private:
-	double pauseAmount = 100;
+	double pauseAmount = 6;
 	EmptyObject* tutorialBox;
 	EmptyObject* tutoFiltro;
 
