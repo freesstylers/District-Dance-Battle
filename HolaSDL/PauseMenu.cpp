@@ -287,7 +287,6 @@ void PauseMenu::updateSound(bool raise)
 	}
 
 	game_->getServiceLocator()->getAudios()->setChannelVolume(game_->getSoundVolume(), 1);
-	game_->getServiceLocator()->getAudios()->setChannelVolume(game_->getSoundVolume(), 2);
 	game_->getServiceLocator()->getAudios()->playChannel(Resources::Snare, 0, 1);
 
 	updateTxt();
