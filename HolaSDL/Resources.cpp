@@ -175,7 +175,8 @@ vector<Resources::ImageInfo> Resources::images_{
 		{ YouLost, "resources/images/YouLost.png", 213, 120, 1, 1, 1 },
 		{ EstacionBg, "resources/images/fondoMadrid.png", 213, 120, 2, 1, 2 },
 		{ FondoRock, "resources/images/FondoRock.png", 213, 120, 2, 1, 2 },
-		{ FondoRockPixel, "resources/images/FondoRockPixel.png", 213, 120, 2, 1, 2 }
+		{ FondoRockPixel, "resources/images/FondoRockPixel.png", 213, 120, 2, 1, 2 },
+		{ AlienHead, "resources/images/AlienVaporwaveHead.png", 40, 40, 1, 1, 1 },
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {
