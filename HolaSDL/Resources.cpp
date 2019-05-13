@@ -179,6 +179,7 @@ vector<Resources::ImageInfo> Resources::images_{
 		{ AlienHead, "resources/images/AlienVaporwaveHead.png", 40, 40, 1, 1, 1 },
 		{ FondoHardbass, "resources/images/FondoHardbass.png", 213, 120, 2, 1, 2 },
 		{ FondoHardbassPixel, "resources/images/FondoHardbassPixel.png", 213, 120, 2, 1, 2 },
+		{ MarcelinoEraYo, "resources/images/MarcelinoEraYo.png", 60, 120, 7, 1, 6 },
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {
