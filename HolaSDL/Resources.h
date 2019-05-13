@@ -167,7 +167,9 @@ public:
 		AlienBox,
 		Lost,
 		YouLost,
-		EstacionBg
+		EstacionBg,
+		FondoRock,
+		FondoRockPixel
 
 		// text
 	};

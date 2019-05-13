@@ -174,6 +174,8 @@ vector<Resources::ImageInfo> Resources::images_{
 		{ Lost, "resources/images/Lost.png", 213, 120, 2, 1, 2 },
 		{ YouLost, "resources/images/YouLost.png", 213, 120, 1, 1, 1 },
 		{ EstacionBg, "resources/images/fondoMadrid.png", 213, 120, 2, 1, 2 },
+		{ FondoRock, "resources/images/FondoRock.png", 213, 120, 2, 1, 2 },
+		{ FondoRockPixel, "resources/images/FondoRockPixel.png", 213, 120, 2, 1, 2 }
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {
