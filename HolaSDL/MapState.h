@@ -31,6 +31,8 @@ private:
 	int min = 0;
 	int max = 4;
 
+	bool keyup = true;
+
 	void play(int lvl_);
 	void loadGame();
 	static void load(GameManager* gameManager);
