@@ -172,7 +172,8 @@ public:
 		FondoRockPixel,
 		AlienHead,
 		FondoHardbass,
-		FondoHardbassPixel
+		FondoHardbassPixel,
+		MarcelinoEraYo
 
 		// text
 	};
