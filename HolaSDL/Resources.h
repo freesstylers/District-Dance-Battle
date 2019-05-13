@@ -169,7 +169,8 @@ public:
 		YouLost,
 		EstacionBg,
 		FondoRock,
-		FondoRockPixel
+		FondoRockPixel,
+		AlienHead
 
 		// text
 	};
