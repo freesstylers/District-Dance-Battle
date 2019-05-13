@@ -29,6 +29,7 @@ public:
 	int getWindowHeight() const; // returns the window height
 	int getMusicVolume() const;
 	int getSoundVolume() const;
+	bool getController() { return isXbox; };
 	int getDefaultWindowWidth() const; // returns the default window width (800)
 	int getDefaultWindowHeight() const; // returns the default window height (600)
 	double getWidthScale() const;
@@ -40,6 +41,7 @@ public:
 
 	int deltaTime = 0; //Va cambiando segun el tiempo de refresco (se le multiplica a las velocidades)
 
+	void setController(bool xbox) { isXbox = xbox; };
 
 	void setMusicVolume(int volume);
 	void setSoundVolume(int volume);
@@ -74,5 +76,7 @@ protected:
 
 	Character* bg;
 	Character* anim;
+
+	bool isXbox = true;
 };
 

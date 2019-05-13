@@ -8,9 +8,23 @@ class TutorialState :
 	public PlayState
 {
 private:
-	double pauseAmount = 100;
+	double pauseAmount = 6;
+
+	//general
 	EmptyObject* tutorialBox;
 	EmptyObject* tutoFiltro;
+
+	//first stop
+	EmptyObject* note1;
+	EmptyObject* note2;
+	EmptyObject* note3;
+	EmptyObject* circle1;
+	EmptyObject* circle2;
+
+	//second stop
+	//third stop
+
+	//fourth stop
 
 	int auxTime = 0;
 	int numStops = 1;

@@ -3,17 +3,33 @@
 
 
 
-TutorialState::TutorialState(GameManager* g) : PlayState(g, 9, true, false)
+TutorialState::TutorialState(GameManager* g) : PlayState(g, 0, true, false)
 {
 	tutorialBox = new EmptyObject(g, Vector2D(g->getDefaultWindowWidth() / 2 +145 , g->getDefaultWindowHeight() / 2 - 80), 612*0.75, 252*0.75, Resources::TutoBox1);
 	tutorialBox->setActive(false);
 
 	tutoFiltro= new EmptyObject(g, Vector2D(0, 0), g->getDefaultWindowWidth(), g->getDefaultWindowHeight(), Resources::TutoFiltro);
-	//tutoFiltro->setAlpha(10);
 	tutoFiltro->setActive(false);
+
+	//first stop
+	note1 = new EmptyObject(g, Vector2D(g->getDefaultWindowWidth() / 2 + 145, g->getDefaultWindowHeight() / 2 - 80), 70, 70, Resources::YButton);
+	note2 = new EmptyObject(g, Vector2D(g->getDefaultWindowWidth() / 2 + 145, 400), 70, 70, Resources::YButton);
+	note3 = new EmptyObject(g, Vector2D(500, 200), 70, 70, Resources::YButton);
+
+	note1->setActive(false);
+	note2->setActive(false);
+	note3->setActive(false);
+	//second stop
+
+	//third stop
+
+	//fourth stop
 
 	stage.push_back(tutoFiltro);
 	stage.push_back(tutorialBox);
+	stage.push_back(note1);
+	stage.push_back(note2);
+	stage.push_back(note3);
 
 	controller = SDL_GameControllerOpen(0);
 }
@@ -138,6 +154,9 @@ void TutorialState::resumeTutorial(GameManager* g, unsigned int timePaused)
 		switch (numStops) {
 		case 1:
 			tutorialBoxAnim = Resources::TutoBox1;
+			note1->setActive(true);
+			note2->setActive(true);
+			note3->setActive(true);
 			break;
 		case 2:
 			tutorialBoxAnim = Resources::TutoBox2;

@@ -13,7 +13,6 @@ LevelInputManager::LevelInputManager(PlayState* l, PlayerPack* pl, int numctrl)
 	player = pl;
 	keystates = SDL_GetKeyboardState(NULL);
 	controller = SDL_GameControllerOpen(numctrl_);
-	level->getGameManager()->getServiceLocator()->getAudios()->setChannelVolume(60, 2);
 	
 }
 
@@ -27,7 +26,7 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 	bool ret = false;
 
 	if (event.type == SDL_CONTROLLERBUTTONDOWN && keyup) {
-		level->getGameManager()->getServiceLocator()->getAudios()->playChannel(Resources::Snare, 0, 2);
+		level->getGameManager()->getServiceLocator()->getAudios()->playChannel(Resources::Snare, 0, 1);
 		//level->particles->generate();
 	}
 	if (event.type == SDL_CONTROLLERBUTTONUP)
@@ -35,8 +34,9 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 		keyup = true;
 		keyup2 = true;
 	}
-	if ((event.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_START)) || (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_DELETE)) {
+	if ((blockpause < time - 500) && (event.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_START)) || (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_DELETE)) {
 		ret = ret || level->pause();
+		blockpause = 0;
 	}
 	if (!player->screenArrows_.empty())
 	{

@@ -177,6 +177,9 @@ vector<Resources::ImageInfo> Resources::images_{
 		{ FondoRock, "resources/images/FondoRock.png", 213, 120, 2, 1, 2 },
 		{ FondoRockPixel, "resources/images/FondoRockPixel.png", 213, 120, 2, 1, 2 },
 		{ AlienHead, "resources/images/AlienVaporwaveHead.png", 40, 40, 1, 1, 1 },
+		{ FondoHardbass, "resources/images/FondoHardbass.png", 213, 120, 2, 1, 2 },
+		{ FondoHardbassPixel, "resources/images/FondoHardbassPixel.png", 213, 120, 2, 1, 2 },
+		{ MarcelinoEraYo, "resources/images/MarcelinoEraYo.png", 60, 120, 7, 1, 6 },
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {
@@ -184,7 +187,7 @@ vector<Resources::TextMsgInfo> Resources::messages_ {
 };
 
 vector<Resources::MusicInfo> Resources::musics_ {
-	{Test , "resources/sound/TutorialJuego.wav"},	//Not used, delete to save memory?
+	{Tutorial , "resources/sound/TutorialJuego.mp3"},	//Not used, delete to save memory?
 	{Sunflower, "resources/sound/sunflower.mp3"},	//Not used, delete to save memory?
 	{Bill, "resources/sound/billijean_noGlitch.mp3"},
 	{Error, "resources/sound/Error.wav"},	//Make it .mp3 to save memory?

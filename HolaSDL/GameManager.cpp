@@ -6,6 +6,20 @@ GameManager::GameManager(): SDLGame("District Dance Battle", _WINDOW_WIDTH_, _WI
 {
 	machine = new GameStateMachine();
 	exit_ = false;
+
+	ifstream file("resources/data/options.ddb");
+
+	if (file.is_open()) {
+		string s;
+
+		file >> s >> musicVolume_;
+
+		file >> s >> soundVolume_;
+
+		file >> s >> isXbox;
+	}
+
+	file.close();
 }
 
 

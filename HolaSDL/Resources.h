@@ -170,14 +170,17 @@ public:
 		EstacionBg,
 		FondoRock,
 		FondoRockPixel,
-		AlienHead
+		AlienHead,
+		FondoHardbass,
+		FondoHardbassPixel,
+		MarcelinoEraYo
 
 		// text
 	};
 
 	enum AudioId {
 		// music
-		Test,
+		Tutorial,
 		Sunflower,
 		Bill,
 		Error,

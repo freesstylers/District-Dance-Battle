@@ -36,7 +36,7 @@ MainMenuState::MainMenuState(GameManager*g):GameState(g)
 	buttons.push_back(exit1);
 	buttons.push_back(exit2);
 	
-	bool b1= true;
+	bool b1 = true;
 	bool b2 = false;
 	bool b3 = false;
 	bool b4 = false;
@@ -91,11 +91,10 @@ MainMenuState::MainMenuState(GameManager*g):GameState(g)
 	optionsButtons.push_back(controls);
 	selection = new EmptyObject(gameManager, Vector2D(menuX + menuX / 4, menuY + menuH * 2 / 3), menuW / 2, 45, Resources::ButtonSelection);
 
-	g->getServiceLocator()->getAudios()->setChannelVolume(60, 1);
-	g->getServiceLocator()->getAudios()->setChannelVolume(40, 0);
+	g->getServiceLocator()->getAudios()->setChannelVolume(gameManager->getSoundVolume(), 1);
+	g->getServiceLocator()->getAudios()->setChannelVolume(gameManager->getMusicVolume(), 0);
 
-	manager->getServiceLocator()->getAudios()->resumeChanne(0);
-	manager->getServiceLocator()->getAudios()->playChannel(Resources::MainTheme, 1, 0);
+	manager->getServiceLocator()->getAudios()->playChannel(Resources::MainTheme, -1, 0);
 	
 }
 
@@ -229,6 +228,12 @@ void MainMenuState::updateTxt()
 		controlTxt->setText("PS4", SDL_Color{ 0, 0, 0, 255 });
 
 	controlTxt->setPosition(controlsSelect->getPosition() + Vector2D(controlsSelect->getWidth() / 2, controlsSelect->getHeight() / 2) - Vector2D(controlTxt->getWidth() / 2, controlTxt->getHeight() / 2));
+
+	ofstream file("resources/data/options.ddb");
+
+	file << "MUSIC" << endl << gameManager->getMusicVolume() << endl << "SOUND" << endl << gameManager->getSoundVolume() << endl << "CONTROLLER" << endl << gameManager->getController();
+
+	file.close();
 }
 
 void MainMenuState::nextButton() 
@@ -309,6 +314,11 @@ void MainMenuState::exit(GameManager* gameManager)
 
 bool MainMenuState::handleEvent(Uint32 time, SDL_Event e) 
 {
+	if (e.type == SDL_QUIT || e.key.keysym.sym == SDLK_ESCAPE) {
+		manager->stop();
+		return true;
+	}
+
 	bool input = false;
 		if ((SDL_CONTROLLERBUTTONDOWN  || e.type == SDL_KEYDOWN) && keyup)
 		{
