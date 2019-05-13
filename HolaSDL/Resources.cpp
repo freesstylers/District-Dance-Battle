@@ -184,7 +184,7 @@ vector<Resources::TextMsgInfo> Resources::messages_ {
 };
 
 vector<Resources::MusicInfo> Resources::musics_ {
-	{Test , "resources/sound/TutorialJuego.wav"},	//Not used, delete to save memory?
+	{Tutorial , "resources/sound/TutorialJuego.mp3"},	//Not used, delete to save memory?
 	{Sunflower, "resources/sound/sunflower.mp3"},	//Not used, delete to save memory?
 	{Bill, "resources/sound/billijean_noGlitch.mp3"},
 	{Error, "resources/sound/Error.wav"},	//Make it .mp3 to save memory?

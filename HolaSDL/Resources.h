@@ -177,7 +177,7 @@ public:
 
 	enum AudioId {
 		// music
-		Test,
+		Tutorial,
 		Sunflower,
 		Bill,
 		Error,
