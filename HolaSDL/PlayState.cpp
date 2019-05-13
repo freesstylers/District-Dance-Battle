@@ -4,7 +4,7 @@
 PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxScoreE, int prevMaxScoreH) : GameState(g) //Asigna game y llama a inicializaci�n
 {
 	nlevel = lvl;
-	g->getServiceLocator()->getAudios()->setChannelVolume(volume, 1);
+	volume = g->getMusicVolume();
 	Lost = new EmptyObject(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::Lost);
 	Lost->setActive(false);
 	//Lost->setAlpha(0);
@@ -77,8 +77,8 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxS
 		levelName = "hardbass";
 		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::HipHopEffect);
 		minigame = new MinigameHipHop(manager, this);
-		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::ExtraBG);
-		bgT = Resources::ExtraBG;
+		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::FondoHardbass);
+		bgT = Resources::FondoHardbass;
 		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 400, initialNoteHeight + 50), Resources::AlienIdle);
 		enemyT = Resources::AlienIdle;
 		minigameAmount = 0;
@@ -340,8 +340,10 @@ void PlayState::update(Uint32 time)
 						volume -= 1;
 						manager->getServiceLocator()->getAudios()->setChannelVolume(volume, 0);
 					}
-					else
+					else {
 						manager->getServiceLocator()->getAudios()->haltChannel(0);
+						manager->getServiceLocator()->getAudios()->setChannelVolume(manager->getMusicVolume(), 0);
+					}
 
 					if (youLost->getPosition().getY() < 0)
 						youLost->setPosition(youLost->getPosition() + Vector2D(0, 4));
@@ -411,6 +413,11 @@ void PlayState::resume(unsigned int timePaused)
 		pauseMenu->setActive(false);
 		timer->setOffset(timePaused);
 		minigameController->setOffset(timePaused);
+
+		player1->lip->blockPause(SDL_GetTicks());
+
+		if(player2 != nullptr)
+			player2->lip->blockPause(SDL_GetTicks());
 	}
 }
 
@@ -525,14 +532,16 @@ void PlayState::generateArrows()
 		if (levelArrows_.front() != nullptr) {
 
 			player1->screenArrows_.push_back(levelArrows_.front());
-			
-			if (player2 != nullptr && levelArrows2_.front() != nullptr)
-			{
-				player2->screenArrows_.push_back(levelArrows2_.front());
-			}
+		}
+		levelArrows_.pop_front();
+	}
+
+	if (player2 != nullptr && !levelArrows2_.empty()) {
+		if (levelArrows2_.front() != nullptr)
+		{
+			player2->screenArrows_.push_back(levelArrows2_.front());
 		}
 		levelArrows2_.pop_front();
-		levelArrows_.pop_front();
 	}
 }
 
@@ -542,13 +551,16 @@ void PlayState::generateButtons()
 		if (levelButtons_.front() != nullptr) {
 
 			player1->screenButtons_.push_back(levelButtons_.front());
-			if (player2 != nullptr && levelButtons2_.front() != nullptr)
-			{
-				player2->screenButtons_.push_back(levelButtons2_.front());
-			}
+		}
+		levelButtons_.pop_front();
+	}
+
+	if (player2 != nullptr && !levelButtons2_.empty()) {
+		if (levelButtons2_.front() != nullptr)
+		{
+			player2->screenButtons_.push_back(levelButtons2_.front());
 		}
 		levelButtons2_.pop_front();
-		levelButtons_.pop_front();
 	}
 }
 
@@ -591,7 +603,6 @@ Vector2D PlayState::setVel(double time)
 
 void PlayState::playSong(int song) {
 	manager->getServiceLocator()->getAudios()->playChannel(song, 0);
-	manager->getServiceLocator()->getAudios()->setChannelVolume(70, 0);
 }
 
 
@@ -600,7 +611,6 @@ void PlayState::showError()
 	bg->cleanAnimationQueue();
 	bg->forceAnimationChange(bgT+1);
 	bg->queueAnimationChange(bgT);
-	manager->getServiceLocator()->getAudios()->setChannelVolume(10,1); //AJUSTE DEL VOLUMEN
 	manager->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0, 1);
 }
 

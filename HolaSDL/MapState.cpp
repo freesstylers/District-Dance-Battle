@@ -4,8 +4,6 @@
 
 MapState::MapState(GameManager* g) :GameState(g)
 {
-	g->getServiceLocator()->getAudios()->setChannelVolume(60, 1);
-	g->getServiceLocator()->getAudios()->setChannelVolume(40, 0);
 
 	manager->getServiceLocator()->getAudios()->playChannel(Resources::Mapa, -1, 0);
 	keystates = SDL_GetKeyboardState(NULL);
@@ -16,11 +14,11 @@ MapState::MapState(GameManager* g) :GameState(g)
 	moreLvls_ = new EmptyObject(g, Vector2D(0, 0), 150, 150, Resources::NivelExtra);
 	stage.push_back(fondo__);
 	stage.push_back(moreLvls_);
-	/*unlockLevel(0);
+	unlockLevel(0);
 	unlockLevel(1);
 	unlockLevel(2);
 	unlockLevel(3);
-	unlockLevel(4);*/
+	unlockLevel(4);
 	loadGame();
 }
 
@@ -47,7 +45,7 @@ bool MapState::handleEvent(Uint32 time, SDL_Event e)
 					//buttons[index].second.reset();
 					backButton();
 				}
-				else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_START) || e.key.keysym.sym == SDLK_TAB) {
+				else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_BACK) || e.key.keysym.sym == SDLK_TAB) {
 					manager->getMachine()->pushState(new ExtraMenu(manager));
 					manager->getServiceLocator()->getAudios()->haltChannel(0);
 				}

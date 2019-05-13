@@ -19,8 +19,6 @@ public:
 	void update(Uint32 time);
 	void handleEvent(Uint32 time);
 	void render(Uint32 time);
-	bool getController() { return isXbox; };
-	void setController(bool xbox) { isXbox = xbox; };
 	bool checkExit();
 	bool exit_;
 	virtual void start(); // start the game
@@ -31,7 +29,6 @@ public:
 	
 protected:
 	GameStateMachine* machine;
-	bool isXbox = true;
 	
 	
 private:

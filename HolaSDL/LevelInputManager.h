@@ -17,13 +17,17 @@ public:
 
 	bool getFailed() { return failed; }
 
+	void blockPause(int time) { blockpause = time; };
+
 	void setMinigameActive(bool active) { 
 		minigameActive = active;
 	}
 	SDL_GameController* getController(){ return controller; }
 	int numFailed = 0;
+
 private:
 	int numctrl_;
+	int blockpause = 0;
 	bool failed = false;
 	bool minigameActive = false;
 	const Uint8 *keystates;

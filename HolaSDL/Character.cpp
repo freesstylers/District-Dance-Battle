@@ -73,6 +73,7 @@ void Character::update(Uint32 time) {
 	else if (timerAlien->DeltaTime() > 128)
 	{
 		this->queueAnimationChange(Resources::AlienTransformacion);
+		this->queueAnimationChange(Resources::MarcelinoEraYo);
 		firstAnim = Resources::MarcelinoIdle;
 		secondAnim = Resources::MarcelinoDance;
 		isAlien = false;
