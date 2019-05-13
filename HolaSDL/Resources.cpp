@@ -177,6 +177,8 @@ vector<Resources::ImageInfo> Resources::images_{
 		{ FondoRock, "resources/images/FondoRock.png", 213, 120, 2, 1, 2 },
 		{ FondoRockPixel, "resources/images/FondoRockPixel.png", 213, 120, 2, 1, 2 },
 		{ AlienHead, "resources/images/AlienVaporwaveHead.png", 40, 40, 1, 1, 1 },
+		{ FondoHardbass, "resources/images/FondoHardbass.png", 213, 120, 2, 1, 2 },
+		{ FondoHardbassPixel, "resources/images/FondoHardbassPixel.png", 213, 120, 2, 1, 2 },
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {
