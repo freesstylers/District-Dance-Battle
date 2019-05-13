@@ -97,6 +97,7 @@ void PauseMenu::activate()
 	timer->Reset();
 	optionsOpen = false;
 	selection->setPosition(menuButtons[selectedButton]->getPosition());
+	selection->forceAnimationChange(Resources::ButtonSelection);
 
 	op_bg->setActive(false);
 	for (EmptyObject* g : optionsButtons) {
