@@ -16,11 +16,11 @@ MapState::MapState(GameManager* g) :GameState(g)
 	moreLvls_ = new EmptyObject(g, Vector2D(0, 0), 150, 150, Resources::NivelExtra);
 	stage.push_back(fondo__);
 	stage.push_back(moreLvls_);
-	unlockLevel(0);
+	/*unlockLevel(0);
 	unlockLevel(1);
 	unlockLevel(2);
 	unlockLevel(3);
-	unlockLevel(4);
+	unlockLevel(4);*/
 	loadGame();
 }
 
@@ -33,7 +33,7 @@ bool MapState::handleEvent(Uint32 time, SDL_Event e)
 {
 	if (keyup)
 	{
-		if (e.type == SDL_CONTROLLERBUTTONDOWN || e.type == SDL_KEYUP || e.type == SDL_CONTROLLERAXISMOTION) {
+		if (e.type == SDL_CONTROLLERBUTTONDOWN || e.type == SDL_KEYDOWN || e.type == SDL_CONTROLLERAXISMOTION) {
 			if (!buttons[index].second.selected)
 			{
 				if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_RETURN) {
@@ -80,7 +80,7 @@ bool MapState::handleEvent(Uint32 time, SDL_Event e)
 			}
 		}
 	}
-	else if (e.type == SDL_CONTROLLERBUTTONUP)
+	else if (e.type == SDL_CONTROLLERBUTTONUP || e.type == SDL_KEYUP)
 	{
 		keyup = true;
 	}
