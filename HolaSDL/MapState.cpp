@@ -14,11 +14,11 @@ MapState::MapState(GameManager* g) :GameState(g)
 	moreLvls_ = new EmptyObject(g, Vector2D(0, 0), 150, 150, Resources::NivelExtra);
 	stage.push_back(fondo__);
 	stage.push_back(moreLvls_);
-	/*unlockLevel(0);
+	unlockLevel(0);
 	unlockLevel(1);
 	unlockLevel(2);
 	unlockLevel(3);
-	unlockLevel(4);*/
+	unlockLevel(4);
 	loadGame();
 }
 
