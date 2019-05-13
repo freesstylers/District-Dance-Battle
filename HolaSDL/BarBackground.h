@@ -1,6 +1,9 @@
 #pragma once
 #include "GameObject.h"
 #include "checkML.h"
+
+//La barra que sigue el progreso de la canción
+
 class BarBackground : public GameObject
 {
 private:

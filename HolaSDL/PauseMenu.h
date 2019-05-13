@@ -7,6 +7,8 @@
 #include <string>
 #include "checkML.h"
 
+//Menú de pausa
+
 class PlayState;
 
 class PauseMenu :

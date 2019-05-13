@@ -10,6 +10,7 @@
 #include "TimerNoSingleton.h"
 #include "TextBox.h"
 
+//Esta es la clase usada como estado de juego para los diálogos
 
 class DialogState: public GameState
 {
@@ -24,18 +25,24 @@ protected:
 	SDL_GameController* controller = NULL;
 	int prevMaxScoreE_;
 	int prevMaxScoreH_;
+
 	struct Dialog
 	{
 		string text;
 		string box;
 	};
-	//El dialogo 0 es el del tutoria, de ahi hasta el dialogo del nivel 5 y del 6 al 11 los de el final del nivel
+
+	
+	//Los nombres de todos los archivos de diálogo para poder llamarlos.
 	string levels[18] = { "Intro1", "Vapor1", "HipHop1", "Papito1", "Corpselillo1", "Onilecram1", "Intro2", "Intro2", "VaporW", "VaporL", "HipHopW", "HipHopL", "PapitoW", "PapitoL", "CorpselilloW", "CorpselilloL", "OnilecramW", "OnilecramL" }; 																									
+	
 	bool keyup = true;
 	bool oneP_;
 	bool hardMode_;
 	list<Dialog> dialogo;
 	list<TextBox*> textBoxes;
+
+	//Diccionario que contiente cada textbox con su diálogo correspondiente.
 	map<string, GameObject*> box;
 	GameObject* actualBox;
 	TextObject* text;

@@ -11,6 +11,8 @@
 #include "PlayerPack.h"
 #include "checkML.h"
 
+//LLeva el control de las notas , la puntuación y el feedback de cada jugador durante la partida.
+
 class PlayState;
 class PlayerPack : public GameObject
 {

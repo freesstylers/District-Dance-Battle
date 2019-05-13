@@ -3,6 +3,8 @@
 #include "GameObject.h"
 #include "checkML.h"
 
+//Partículas pa que aiga lujo
+
 class Particle : public GameObject
 {
 private:

@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include "checkML.h"
+
 class Squares : public GameObject
 {
 public:

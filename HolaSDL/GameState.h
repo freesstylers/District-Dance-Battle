@@ -3,6 +3,8 @@
 #include <list>
 #include "checkML.h"
 
+//Estado básico de juego
+
 using namespace std;
 
 class GameManager;

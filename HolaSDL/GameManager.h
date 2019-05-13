@@ -8,6 +8,8 @@
 #include "DialogState.h"
 #include "checkML.h"
 
+//Game manager, controla variables globales y los diferentes estados
+
 class GameManager: public SDLGame
 {
 public:

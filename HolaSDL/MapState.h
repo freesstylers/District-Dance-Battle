@@ -11,6 +11,8 @@
 
 using namespace std;
 
+//Estado del juego del mapa principañ
+
 class MapState : public GameState //main class for menus
 {
 public:

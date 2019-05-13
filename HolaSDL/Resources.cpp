@@ -173,6 +173,7 @@ vector<Resources::ImageInfo> Resources::images_{
 		{ AlienBox, "resources/images/AlienBox.png",153, 65, 1, 1, 1 },
 		{ Lost, "resources/images/Lost.png", 213, 120, 2, 1, 2 },
 		{ YouLost, "resources/images/YouLost.png", 213, 120, 1, 1, 1 },
+		{ EstacionBg, "resources/images/fondoMadrid.png", 213, 120, 2, 1, 2 },
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {

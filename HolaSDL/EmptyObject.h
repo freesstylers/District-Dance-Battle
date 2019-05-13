@@ -1,6 +1,9 @@
 #pragma once
 #include "GameObject.h"
 #include "checkML.h"
+
+//Objeto que sólo posee un sprite
+
 class EmptyObject :
 	public GameObject
 {

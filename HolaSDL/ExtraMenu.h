@@ -7,6 +7,8 @@
 #include <list>
 #include "checkML.h"
 
+//Menú para las canciones extra del juego
+
 class PlayState;
 
 class ExtraMenu: public GameState

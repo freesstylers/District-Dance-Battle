@@ -1,6 +1,8 @@
 #ifndef FONT_H_
 #define FONT_H_
 
+//fuentes de texto
+
 #include "sdl_includes.h"
 #include <string>
 #include "checkML.h"

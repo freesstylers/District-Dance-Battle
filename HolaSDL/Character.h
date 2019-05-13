@@ -3,6 +3,8 @@
 #include "TimerNoSingleton.h"
 #include "checkML.h"
 
+//CLase para todos los personajes animados y sus bailes
+
 class Character: public GameObject
 {
 private:

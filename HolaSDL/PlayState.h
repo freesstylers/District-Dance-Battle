@@ -27,6 +27,8 @@
 #include "PauseMenu.h"
 #include "checkML.h"
 
+//Clase de estado principal
+
 class PlayState : public GameState //main game class, where most of the gameplay will take place
 {
 protected:
@@ -48,7 +50,6 @@ protected:
 
 	bool firstNote = true;
 	bool songIsOver = false;
-	bool OneP;
 	bool isPaused = false;
 	bool isLost();
 
@@ -126,7 +127,7 @@ public:
 	MiniGame* getMinigame() { return minigame; }
 	GameManager* getGameManager() { return manager; }
 	ParticleEngine* particles;
-	Background* Lost;
+	EmptyObject* Lost;
 	EmptyObject* youLost;
 
 	double msDiff = 0.0;  //difference between the time of a beat and the time when a note is created, in ms

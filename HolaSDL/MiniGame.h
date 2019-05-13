@@ -12,6 +12,8 @@
 #include "TextObject.h"
 #include "checkML.h"
 
+//Minijuegos
+
 using namespace std;
 class PlayState;
 class GameManager;

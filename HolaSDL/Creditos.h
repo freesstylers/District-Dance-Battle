@@ -6,6 +6,9 @@
 #include "Background.h"
 #include <list>
 #include "checkML.h"
+
+//El estado donde aparecen los créditos
+
 class Creditos: public GameState
 {
 private:

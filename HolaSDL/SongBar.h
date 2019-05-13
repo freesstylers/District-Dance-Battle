@@ -2,6 +2,8 @@
 #include "GameObject.h"
 #include "BarBackground.h"
 #include "checkML.h"
+
+//barra que sigue la canción
 class SongBar : public GameObject
 {
 protected:

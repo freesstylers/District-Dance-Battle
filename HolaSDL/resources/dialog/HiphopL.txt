@@ -6,12 +6,8 @@
  47 grey
  51 emi
  131 marcelino
-- emi No pude estar a la altura, y al final acabó ganando este caradura.
-- perico Has sido una buena rival, pero contra el menda poco podías hacer.
-- emi Ahora deberás derrotar a todos los que por encima de mí están.
-- emi Y aún quedan más bailarines contra los que no tienes ninguna posibilidad. 
-- emi yeah.
-- grey Eh tú, el de gafas, ¿vaya móvil más guapo me llevas no? A ver, déjame verlo.
-- marcelino Vámonos de aquí ya, por favor.
-- perico Tienes razón, no hay tiempo que perder.
+- emi Triste provinciano, que vino a la capital demasiado ilusionado,
+- emi Y tras enfrentarse a Eminemcia, acabó derrotado.
+- perico Esta pava es muy buena, no debí haberla subestimado.
+- marcelino ¡No te rindas Perico!
 0

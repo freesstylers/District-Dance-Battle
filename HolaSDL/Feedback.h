@@ -3,6 +3,8 @@
 #include "Timer.h"
 #include "checkML.h"
 
+//Todo el feedback visual
+
 class Feedback : public GameObject
 {
 private:

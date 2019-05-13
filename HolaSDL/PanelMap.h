@@ -4,6 +4,8 @@
 
 class GameManager;
 
+//Panel que aparece al pulsar en una parada de metro desde el mapa
+
 class PanelMap
 {
 public:
