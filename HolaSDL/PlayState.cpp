@@ -413,6 +413,11 @@ void PlayState::resume(unsigned int timePaused)
 		pauseMenu->setActive(false);
 		timer->setOffset(timePaused);
 		minigameController->setOffset(timePaused);
+
+		player1->lip->blockPause(SDL_GetTicks());
+
+		if(player2 != nullptr)
+			player2->lip->blockPause(SDL_GetTicks());
 	}
 }
 

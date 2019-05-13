@@ -45,7 +45,7 @@ bool MapState::handleEvent(Uint32 time, SDL_Event e)
 					//buttons[index].second.reset();
 					backButton();
 				}
-				else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_START) || e.key.keysym.sym == SDLK_TAB) {
+				else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_BACK) || e.key.keysym.sym == SDLK_TAB) {
 					manager->getMachine()->pushState(new ExtraMenu(manager));
 					manager->getServiceLocator()->getAudios()->haltChannel(0);
 				}
