@@ -527,14 +527,16 @@ void PlayState::generateArrows()
 		if (levelArrows_.front() != nullptr) {
 
 			player1->screenArrows_.push_back(levelArrows_.front());
-			
-			if (player2 != nullptr && levelArrows2_.front() != nullptr)
-			{
-				player2->screenArrows_.push_back(levelArrows2_.front());
-			}
+		}
+		levelArrows_.pop_front();
+	}
+
+	if (player2 != nullptr && !levelArrows2_.empty()) {
+		if (levelArrows2_.front() != nullptr)
+		{
+			player2->screenArrows_.push_back(levelArrows2_.front());
 		}
 		levelArrows2_.pop_front();
-		levelArrows_.pop_front();
 	}
 }
 
@@ -544,13 +546,16 @@ void PlayState::generateButtons()
 		if (levelButtons_.front() != nullptr) {
 
 			player1->screenButtons_.push_back(levelButtons_.front());
-			if (player2 != nullptr && levelButtons2_.front() != nullptr)
-			{
-				player2->screenButtons_.push_back(levelButtons2_.front());
-			}
+		}
+		levelButtons_.pop_front();
+	}
+
+	if (player2 != nullptr && !levelButtons2_.empty()) {
+		if (levelButtons2_.front() != nullptr)
+		{
+			player2->screenButtons_.push_back(levelButtons2_.front());
 		}
 		levelButtons2_.pop_front();
-		levelButtons_.pop_front();
 	}
 }
 
