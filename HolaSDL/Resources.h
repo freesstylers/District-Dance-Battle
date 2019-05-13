@@ -169,14 +169,15 @@ public:
 		YouLost,
 		EstacionBg,
 		FondoRock,
-		FondoRockPixel
+		FondoRockPixel,
+		AlienHead
 
 		// text
 	};
 
 	enum AudioId {
 		// music
-		Test,
+		Tutorial,
 		Sunflower,
 		Bill,
 		Error,

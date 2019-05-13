@@ -320,9 +320,7 @@ bool MainMenuState::handleEvent(Uint32 time, SDL_Event e)
 	}
 
 	bool input = false;
-	if (keyup)
-	{
-		if (SDL_CONTROLLERBUTTONDOWN &&SDL_CONTROLLERBUTTONUP || e.type == SDL_KEYDOWN)
+		if (SDL_CONTROLLERBUTTONDOWN &&SDL_CONTROLLERBUTTONUP || e.type == SDL_KEYDOWN && keyup)
 		{
 			if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN) && SDL_CONTROLLERBUTTONUP || e.key.keysym.sym == SDLK_DOWN && e.type == SDL_KEYUP)
 			{
@@ -411,10 +409,8 @@ bool MainMenuState::handleEvent(Uint32 time, SDL_Event e)
 
 			keyup = false;
 		}
-	}
 	
-	else if (e.type == SDL_CONTROLLERBUTTONUP) keyup = true; input = false;
-	
+	else if (e.type == SDL_CONTROLLERBUTTONUP || e.type == SDL_KEYUP) keyup = true; input = false;
 	return input;
 }
 
