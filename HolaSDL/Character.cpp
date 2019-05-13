@@ -58,19 +58,19 @@ void Character::update(Uint32 time) {
 	{
 		timerAlien->Update();
 	}
-	if (timer->DeltaTime() > (rand() % (11) + 10) && secondAnim != -1 && !dancing && timerAlien->DeltaTime() < 20)
+	if (timer->DeltaTime() > (rand() % (11) + 10) && secondAnim != -1 && !dancing && timerAlien->DeltaTime() < 128)
 	{
 		this->queueAnimationChange(secondAnim);
 		timer->Reset();
 		dancing = true;
 	}
-	else if (timer->DeltaTime() > (rand() % (11) + 10) && secondAnim != -1 && dancing && timerAlien->DeltaTime() < 20)
+	else if (timer->DeltaTime() > (rand() % (11) + 10) && secondAnim != -1 && dancing && timerAlien->DeltaTime() < 128)
 	{
 		this->queueAnimationChange(firstAnim);
 		timer->Reset();
 		dancing = false;
 	}
-	else if (timerAlien->DeltaTime() > 20)
+	else if (timerAlien->DeltaTime() > 128)
 	{
 		this->queueAnimationChange(Resources::AlienTransformacion);
 		firstAnim = Resources::MarcelinoIdle;
