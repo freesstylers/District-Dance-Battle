@@ -199,7 +199,11 @@ void DialogState::updateText() {
 		}
 	}
 	else {
-		if (nlevel <= 5) {
+		if (archivo == "Intro2") {
+			text->setText("COMIENZA TU AVENTURA", { COLOR(0x00000000) });
+			text2->setText(" ", { COLOR(0x00000000) });
+		}
+		else if (nlevel <= 5) {
 			text->setText("COMIENZA LA BATALLA", { COLOR(0x00000000) });
 			text2->setText(" ", { COLOR(0x00000000) });
 		}
