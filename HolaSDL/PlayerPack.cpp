@@ -107,6 +107,7 @@ void PlayerPack::update(Uint32 time)
 			SDL_GameControllerButton x = aux->getKey();
 			if (x == SDL_CONTROLLER_BUTTON_INVALID) {
 				feedbackLeft->addFeedback(Resources::FeedbackPerfect);
+				addCalifications(3);
 				updateScoreNote(1);
 				addCombo(1);
 			}
@@ -115,11 +116,11 @@ void PlayerPack::update(Uint32 time)
 				playstate_->showError();
 				resetCombo();
 				feedbackLeft->addFeedback(Resources::FeedbackBad);
+				addCalifications(0);
 			}
 			delete aux;
 			screenArrows_.pop_front();
 			cout << "fuera" << endl;
-			addCalifications(0);
 			lip->numFailed++;
 		}
 		if (!screenButtons_.empty() && screenButtons_.front()->getPosition().getY() > noteYLimit)
@@ -130,17 +131,18 @@ void PlayerPack::update(Uint32 time)
 				feedbackRight->addFeedback(Resources::FeedbackPerfect);
 				updateScoreNote(1);
 				addCombo(1);
+				addCalifications(3);
 			}
 			else
 			{
 				playstate_->showError();
 				feedbackRight->addFeedback(Resources::FeedbackBad);
 				resetCombo();
+				addCalifications(0);
 			}
 			delete aux;
 			screenButtons_.pop_front();
 			cout << "fuera" << endl;
-			addCalifications(0);
 			lip->numFailed++;
 			errorRight();
 		}
