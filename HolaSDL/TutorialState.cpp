@@ -122,6 +122,11 @@ bool TutorialState::handleEvent(Uint32 time, SDL_Event e)
 }
 
 
+void TutorialState::exit()
+{
+	songOver();
+}
+
 
 bool TutorialState::pauseTutorial()
 {
@@ -132,7 +137,6 @@ bool TutorialState::pauseTutorial()
 		isTutorialPaused = true;
 
 		tutoFiltro->setActive(true);
-		//tutoFiltro->setAlpha(10);
 		tutorialBox->setActive(true);
 
 		auxTime = SDL_GetTicks();

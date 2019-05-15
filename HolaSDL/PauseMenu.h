@@ -9,6 +9,7 @@
 
 //Menú de pausa
 
+class TutorialState;
 class PlayState;
 
 class PauseMenu :
