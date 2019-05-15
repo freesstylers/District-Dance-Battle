@@ -568,9 +568,9 @@ void PlayState::songOver()
 {
 	manager->getServiceLocator()->getAudios()->haltChannel(0);
 	if (isSingleplayer)
-		manager->getMachine()->changeState(new EndState(manager, prevMaxScoreE_, prevMaxScoreH_, player1->getCalifications(), player1->currentScore, maxScore, 70, nlevel, isSingleplayer, difficultyMode));
+		manager->getMachine()->pushState(new EndState(manager, prevMaxScoreE_, prevMaxScoreH_, player1->getCalifications(), player1->currentScore, maxScore, 70, nlevel, isSingleplayer, difficultyMode));
 	else
-		manager->getMachine()->changeState(new EndState(manager, prevMaxScoreE_, prevMaxScoreH_, player1->getCalifications(), player1->currentScore, maxScore, 70, nlevel, isSingleplayer, difficultyMode, player2->currentScore, player2->getCalifications()));
+		manager->getMachine()->pushState(new EndState(manager, prevMaxScoreE_, prevMaxScoreH_, player1->getCalifications(), player1->currentScore, maxScore, 70, nlevel, isSingleplayer, difficultyMode, player2->currentScore, player2->getCalifications()));
 	//manager->getMachine()->changeState(new MapState(manager));
 	//manager->getMachine()->popState();
 }
@@ -583,7 +583,7 @@ void PlayState::updateResolution()
 void PlayState::restart()
 {
 	manager->getServiceLocator()->getAudios()->haltChannel(0);
-	manager->getMachine()->changeState(new PlayState(manager, nlevel, isSingleplayer, difficultyMode, prevMaxScoreE_, prevMaxScoreH_));
+	manager->getMachine()->pushState(new PlayState(manager, nlevel, isSingleplayer, difficultyMode, prevMaxScoreE_, prevMaxScoreH_));
 }
 
 void PlayState::exit()

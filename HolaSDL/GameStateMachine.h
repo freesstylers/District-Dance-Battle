@@ -19,5 +19,6 @@ public:
 	void changeState(GameState* state);
 	void pushState(GameState* state);
 	void popState();
+	void cleanStack();
 };
 
