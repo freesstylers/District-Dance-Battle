@@ -227,6 +227,9 @@ void TutorialState::resumeTutorial(GameManager* g, unsigned int timePaused)
 			nota->setActive(false);
 			break;
 		case 4:
+			tutorialBoxAnim = Resources::TutoBox5;
+			tutorialBox->setPosition(Vector2D(g->getDefaultWindowWidth() / 2 - (612 * 0.75) / 2, g->getDefaultWindowHeight() / 2 - 100));
+
 			bomba->setActive(false);
 			break;
 		}
