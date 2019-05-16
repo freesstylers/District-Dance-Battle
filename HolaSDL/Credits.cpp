@@ -14,7 +14,7 @@ Credits::Credits(GameManager* game) :GameState(game)
 
 void Credits::init() {
 
-	bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::Credits);
+	bg = new EmptyObject(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::Credits);
 }
 
 Credits::~Credits()

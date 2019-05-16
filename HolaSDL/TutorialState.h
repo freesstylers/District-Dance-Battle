@@ -22,12 +22,17 @@ private:
 	EmptyObject* circle2;
 
 	//second stop
+	EmptyObject* barraPuntos;
+
 	//third stop
+	EmptyObject* barraAmarilla;
+	EmptyObject* nota;
 
 	//fourth stop
+	EmptyObject* bomba;
 
 	int auxTime = 0;
-	int numStops = 1;
+	int numStops = 0;
 	int tutorialBoxAnim = Resources::AButton1;
 	bool isTutorialPaused = false;
 	SDL_GameController* controller = NULL;
