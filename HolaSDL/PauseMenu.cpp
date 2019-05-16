@@ -69,7 +69,7 @@ PauseMenu::PauseMenu(SDLGame* game, PlayState* ps, bool isXbox) : GameObject(gam
 
 	controller = SDL_GameControllerOpen(0);
 
-	timer = new TimerNoSingleton();
+	timer = new Timer();
 
 	selection = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 2 / 3), menuW / 2, 45, Resources::ButtonSelection);
 }
@@ -351,19 +351,4 @@ void PauseMenu::render(Uint32 time, bool beatSync)
 		soundTxt->render(time);
 		controlTxt->render(time);
 	}
-}
-
-void PauseMenu::updateResolution(double wScale, double hScale)
-{
-	bg->updateResolution(wScale, hScale);
-	for (EmptyObject* g : menuButtons) {
-		g->updateResolution(wScale, hScale);
-	}
-
-	op_bg->updateResolution(wScale, hScale);
-	for (EmptyObject* g : optionsButtons) {
-		g->updateResolution(wScale, hScale);
-	}
-
-	selection->updateResolution(wScale, hScale);
 }

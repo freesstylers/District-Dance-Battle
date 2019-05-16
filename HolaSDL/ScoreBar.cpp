@@ -68,10 +68,3 @@ ScoreBar::~ScoreBar()
 	delete particleEffect;
 	delete stars;
 }
-
-void ScoreBar::updateResolution(double wScale, double hScale)
-{
-	GameObject::updateResolution(wScale, hScale);
-
-	maxHeight_ = maxHeight_ * hScale;
-}

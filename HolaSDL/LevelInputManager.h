@@ -1,11 +1,13 @@
 #pragma once
-#include "MiniGame.h"
+
 #include "ScoreBar.h"
 #include "GameObject.h"
 #include "checkML.h"
 
 class PlayerPack;
 class PlayState;
+
+//this class handles every input related to the level's notes, how accurately they're hit, and also opens the pause menu
 
 class LevelInputManager
 {

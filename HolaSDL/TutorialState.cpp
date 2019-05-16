@@ -84,9 +84,9 @@ void TutorialState::update(Uint32 time)
 				crown->setPosition(Vector2D(player2->getleftBar()->getPosition().getX() + player2->getleftBar()->getWidth() / 2 + 6, player2->getleftBar()->getPosition().getY() - 60));
 			}
 		}
-		if (minigameController->DeltaTime() < level->songLength / pauseAmount)
+		if (extraTimer->DeltaTime() < level->songLength / pauseAmount)
 		{
-			minigameController->Update();
+			extraTimer->Update();
 
 			if (levelArrows_.empty() && levelButtons_.empty()) {
 				if (player1->screenArrows_.empty() && player1->screenButtons_.empty()) {
@@ -239,6 +239,6 @@ void TutorialState::resumeTutorial(GameManager* g, unsigned int timePaused)
 		tutorialBox->setActive(false);
 
 		timer->setOffset(timePaused);
-		minigameController->Reset();
+		extraTimer->Reset();
 	}
 }

@@ -49,11 +49,3 @@ bool GameState::handleEvent(Uint32 time, SDL_Event e)
 		return handled;
 	}
 }
-
-void GameState::updateResolution() {
-	double wScale = manager->getWidthScale();
-	double hScale = manager->getHeightScale();
-
-	for (GameObject* o : stage)
-		o->updateResolution(wScale, hScale);
-}

@@ -2,7 +2,7 @@
 #include "GameObject.h"
 #include "checkML.h"
 
-//Clase para los fondos
+//barebones gameObject child class used for the game's backgrounds
 
 class Background : public GameObject
 {

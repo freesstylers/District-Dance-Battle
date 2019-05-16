@@ -12,15 +12,11 @@
 #include "Character.h"
 #include "SongBar.h"
 #include "BarBackground.h"
-#include "MiniGame.h"
-#include "MinigameVaporwave.h"
-#include "MinigameHipHop.h"
 #include "EmptyObject.h"
-#include "EffectVaporwave.h"
 #include "Squares.h"
 #include "Level.h"
 #include "Background.h"
-#include "TimerNoSingleton.h"
+#include "Timer.h"
 #include "PlayerPack.h"
 #include "RedEffect.h"
 #include "ParticleEngine.h"
@@ -41,11 +37,10 @@ protected:
 	bool isSingleplayer;
 	bool difficultyMode;
 
-	TimerNoSingleton* timer;
+	Timer* timer;
 	int probqte;
-	bool miniActive = false;
-	TimerNoSingleton* minigameController;
-	TimerNoSingleton* animationTimer;
+	Timer* extraTimer;
+	Timer* animationTimer;
 
 
 	bool firstNote = true;
@@ -53,21 +48,16 @@ protected:
 	bool isPaused = false;
 	bool isLost();
 
-	RedEffect* rf;	//Not used
-
 	Vector2D noteVel;
-	MiniGame* minigame;
 	EmptyObject* fourButtons;
 	Character* perico;
 	Character* enemy;
-	EffectVaporwave* effectVaporWave;
 	Level* level;
 	Background* crown = nullptr;
 
 	BarBackground* songBarBG;
 
 	bool beatSignal = false;	//used to signal animations to advance
-	bool animationMiniGame = false;
 	int animationFramesPerBeat = 2;	//determines how many animation frames to advance each beat
 
 	int pointSize2P = 80;	//size of the point 
@@ -85,14 +75,8 @@ protected:
 	int maxScore = 1000000;
 	
 	double maxNoteValue = 0;
-	double maxMinigameValue = 0;
-	
-
-	int minigameAmount = 0;
 
 	int combo;
-
-	double minigameScoreTotal = 0.10;
 
 	int songEndWaitTime = 0;
 
@@ -109,7 +93,6 @@ public:
 	virtual void render(Uint32 time, bool beatSync = false);
 	void playSong(int song);
 	void showError();
-	void changeRedeffect();
 	Vector2D setVel(double time);
 	std::list<Note*> levelArrows_;
 	std::list<Note*> levelButtons_;
@@ -124,7 +107,6 @@ public:
 	Vector2D rightNotesVector;
 	Vector2D leftNotesVector2;
 	Vector2D rightNotesVector2;
-	MiniGame* getMinigame() { return minigame; }
 	GameManager* getGameManager() { return manager; }
 	ParticleEngine* particles;
 	EmptyObject* Lost;
@@ -133,9 +115,7 @@ public:
 	double msDiff = 0.0;  //difference between the time of a beat and the time when a note is created, in ms
 
 
-	void updateScoreMinigame(int accuracy);
 	void activateBeatSignal() { beatSignal = true; }
-	bool getMiniActive() { return miniActive; }
 	Character* getPerico() { return perico; }
 
 	int getMaxScore() { return maxScore; }
@@ -159,7 +139,6 @@ protected:
 
 	void songOver();
 
-	virtual void updateResolution();
 private:
 	int bgT;
 	int enemyT;

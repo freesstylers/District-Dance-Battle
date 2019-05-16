@@ -2,19 +2,19 @@
 #include "GameObject.h"
 #include "EmptyObject.h"
 #include "GameState.h"
-#include "TimerNoSingleton.h"
+#include "Timer.h"
 #include "Background.h"
 #include <list>
 #include "checkML.h"
 
-//Menú para las canciones extra del juego
+//State used to display a menu for selecting the extra levels made for Guerrilla
 
 class PlayState;
 
 class ExtraMenu: public GameState
 {
 private:
-	TimerNoSingleton* timer;
+	Timer* timer;
 	SDL_GameController* controller = NULL;
 	double distanceHand;
 	PlayState* level;
@@ -43,7 +43,6 @@ public:
 
 	virtual bool handleEvent(Uint32 time,  SDL_Event event);
 	virtual void update(Uint32 time) {};
-	virtual void render(Uint32 time, bool beatSync = false) ;
-	virtual void updateResolution(double wScale, double hScale) {};
+	virtual void render(Uint32 time, bool beatSync = false);
 };
 

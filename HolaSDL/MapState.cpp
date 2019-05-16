@@ -4,9 +4,6 @@
 
 MapState::MapState(GameManager* g) :GameState(g)
 {
-	index = 0;
-	min = 0;
-	max = 4;
 
 	manager->getServiceLocator()->getAudios()->playChannel(Resources::Mapa, -1, 0);
 	keystates = SDL_GetKeyboardState(NULL);
@@ -129,60 +126,88 @@ void MapState::createMainButtons()	//creates all the buttons needed for the leve
 }
 
 void MapState::nextButton()	//selects the next level button on the list
-{
+{							//Since we want the player to move through the map in a circular fashion, there's index (used to select the levels) and virtualIndex (used to select an index from levelOrder[])
 	buttons[index].first.scale(0.5);
 
-	if (index < max && activeLevels[index + 1])
-		index++;
-	else
-		index = min;
+	if (virtualIndex == max)
+		virtualIndex = min;
+
+	else {
+		do {
+			virtualIndex++;
+		} while (virtualIndex <= max && !activeLevels[levelOrder[virtualIndex]]);
+
+		if (virtualIndex > max)
+			virtualIndex = min;
+	}
+
+	index = levelOrder[virtualIndex];
 
 	buttons[index].first.scale(2);
 }
 
 void MapState::backButton()	//selects the previous level button on the list
-{
+{							//Since we want the player to move through the map in a circular fashion, there's index (used to select the levels) and virtualIndex (used to select an index from levelOrder[])
 	buttons[index].first.scale(0.5);
 
-	if (index == min){
-		for (int i = max; i >= 0; i--) {
-			if (activeLevels[i]) {
-				index = i;
-				break;
-			}
-		}
+	if (virtualIndex == min && activeLevels[levelOrder[max]])
+		virtualIndex = max;
+
+	else {
+		if (virtualIndex == min)
+			virtualIndex = max;
+
+		do {
+			virtualIndex--;
+		} while (virtualIndex >= min && !activeLevels[levelOrder[virtualIndex]]);
+
+		if (virtualIndex < min)
+			virtualIndex = max;
 	}
-	else if (index > min)
-		index--;
+
+
+	index = levelOrder[virtualIndex];
 
 	buttons[index].first.scale(2);
 }
 
 void MapState::loadGame() {	//reads each level's save file and unlocks them / loads highscores
 
-	//this is to make sure the first level's file is ALWAYS there, even if it's been deleted
+	//this is to make sure the first and second level's files are ALWAYS there, even if they've been deleted
 
-	ifstream archivo("resources/data/0.ddb");
+	ifstream a("resources/data/0.ddb");
 
-	if (!archivo.is_open()) {
+	if (!a.is_open()) {
 
-		archivo.close();
+		a.close();
 
-		ofstream archivo("resources/data/0.ddb");
-		archivo << "0 0" << endl << "1 0";
-		archivo.close();
+		ofstream o("resources/data/0.ddb");
+		o << "0 0" << endl << "1 0";
+		o.close();
 
 	}
 	else
-		archivo.close();
+		a.close();
+	
+	ifstream b("resources/data/1.ddb");
+
+	if (!b.is_open()) {
+
+		b.close();
+
+		ofstream o("resources/data/1.ddb");
+		o << "0 0" << endl << "1 0";
+		o.close();
+
+	}
+	else
+		b.close();
 
 	unlockLevel(0);
-
-	//simple variable to avoid unlocking levels out of order
-	bool stopUnlock = false;
+	unlockLevel(1);
 
 	for (int i = 0; i <= max; i++) {
-		string filename = "resources/data/" + to_string(i) + ".ddb";
+		string filename = "resources/data/" + to_string(i+1) + ".ddb";
 
 		ifstream archivo(filename);
 
@@ -201,13 +226,12 @@ void MapState::loadGame() {	//reads each level's save file and unlocks them / lo
 			if (scoreE >= 600000) {
 				buttons[i].second.difActive = true;
 
-				//to make sure the levels are unlocked in order, the precious level's highscore is also checked to be 100% sure it's unlocked
-				//If it isn't, then we stop unlocking levels
-				if (!stopUnlock && i < max && (i == 0 || (i > 0 && buttons[i - 1].second.scoreE_ >= 600000))) {
+				//the levels are also unlocked in pairs, so we need to check every odd level and the one before it
+				if (i < max && i % 2 == 1 && buttons[i - 1].second.scoreE_ >= 600000) {
 					unlockLevel(i + 1);
+					if(i + 2 < max)
+						unlockLevel(i + 2);
 				}
-				else
-					stopUnlock = true;
 			}
 		}
 

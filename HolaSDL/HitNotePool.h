@@ -3,6 +3,8 @@
 #include "HitNote.h"
 #include "checkML.h"
 
+//A simple pool of HitNote objects
+
 class HitNotePool :
 	public GameObjectPool<HitNote, 30>
 {
@@ -11,6 +13,5 @@ public:
 	~HitNotePool();
 
 	virtual void addHit(int animation, Vector2D pos);
-	virtual void updateResolution(double wScale, double hScale);
 };
 

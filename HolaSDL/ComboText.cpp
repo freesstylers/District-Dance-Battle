@@ -26,6 +26,8 @@ void ComboText::render(Uint32 time, bool beatSync)
 		if (lastUpdate == 0)
 			lastUpdate = time;
 
+
+		//ComboText has a unique animation which makes it grow for a bit and then go back to its original size. This handles that
 		if (currentScale >= 1.53) {
 			deltaScale = -deltaScale;
 		}
@@ -38,12 +40,7 @@ void ComboText::render(Uint32 time, bool beatSync)
 			scale(currentScale);
 		}
 
-		if (hideAnimation && time - lastUpdate >= screentime) {
-			if (getAlpha() == 0)
-				setActive(false);
-			else
-				changeAlpha(alphaUpdate);
-		}
+		//this renders and later updates the particles created when the combo changes
 		particles->render(time, false);
 	}
 	particles->update(time);

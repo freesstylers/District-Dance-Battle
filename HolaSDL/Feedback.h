@@ -3,7 +3,7 @@
 #include "Timer.h"
 #include "checkML.h"
 
-//Todo el feedback visual
+//Game object that displays the player's accuracy
 
 class Feedback : public GameObject
 {

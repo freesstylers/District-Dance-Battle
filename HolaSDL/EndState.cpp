@@ -1,14 +1,9 @@
 #include "EndState.h"
 
-/*EndState::EndState() {
-	for (int i = 0;i < 2;i++) {
-		buttons[i] = EmptyObject();
-	}
-	selectedButtons[0] = true;
-	selectedButtons[1] = false;
-}*/
 
-EndState::EndState(GameManager* g, int prevMaxScoreE, int prevMaxScoreH, int* califs1, int actualScore, int maxScore, int percentage, int lvl, bool isSingleplayer, bool hardMode, int actualScore2, int* califs2) : GameState(g)
+
+EndState::EndState(GameManager* g, int prevMaxScoreE, int prevMaxScoreH, int* califs1, int actualScore, int maxScore, int percentage, int lvl, bool isSingleplayer, bool hardMode, int actualScore2, int* califs2) : 
+	GameState(g), prevScoreE_(prevMaxScoreE), hardMode_(hardMode)
 {
 	level = lvl;
 	punt = maxScore;
@@ -70,12 +65,12 @@ EndState::EndState(GameManager* g, int prevMaxScoreE, int prevMaxScoreH, int* ca
 		if (hardMode)
 		{
 			highScore = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(gameManager->getDefaultWindowHeight() / 2 + 230, 250));
-			highScore->setText(to_string(prevMaxScoreH), SDL_Color{ (0), (0), (0), (255) });
+			highScore->setText(makeScoreBetter(prevMaxScoreH), SDL_Color{ (0), (0), (0), (255) });
 		}
 		else
 		{
 			highScore = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(gameManager->getDefaultWindowHeight() / 2 + 230, 250));
-			highScore->setText(to_string(prevMaxScoreE), SDL_Color{ (0), (0), (0), (255) });
+			highScore->setText(makeScoreBetter(prevMaxScoreE), SDL_Color{ (0), (0), (0), (255) });
 		}
 
 		highScore->setPosition(Vector2D(gameManager->getDefaultWindowWidth() / 2, 280) - Vector2D(highScore->getWidth() / 2, highScore->getHeight()));
@@ -124,12 +119,12 @@ EndState::EndState(GameManager* g, int prevMaxScoreE, int prevMaxScoreH, int* ca
 		if (hardMode)
 		{
 			highScore = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(gameManager->getDefaultWindowHeight() / 2 + 230, 280));
-			highScore->setText(to_string(prevMaxScoreH), SDL_Color{ (0), (0), (0), (255) });
+			highScore->setText(makeScoreBetter(prevMaxScoreH), SDL_Color{ (0), (0), (0), (255) });
 		}
 		else
 		{
 			highScore = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(gameManager->getDefaultWindowHeight() / 2 + 230, 280));
-			highScore->setText(to_string(prevMaxScoreE), SDL_Color{ (0), (0), (0), (255) });
+			highScore->setText(makeScoreBetter(prevMaxScoreE), SDL_Color{ (0), (0), (0), (255) });
 		}
 
 		highScore->setPosition(Vector2D(gameManager->getDefaultWindowWidth() / 2, 300) - Vector2D(highScore->getWidth() / 2, highScore->getHeight()));
@@ -201,8 +196,6 @@ EndState::EndState(GameManager* g, int prevMaxScoreE, int prevMaxScoreH, int* ca
 		Bad2->setText(to_string(califs2[0]), SDL_Color{ (0), (0), (0), (255) });
 		Bad2->setPosition(Bad2->getPosition() - Vector2D(Bad2->getWidth() / 2, - Bad2->getHeight() / 2));
 		stage.push_back(Bad2);
-
-
 
 
 		if (actualScore >= 90 * maxScore / 100) {
@@ -337,22 +330,22 @@ EndState::~EndState()
 	letter = nullptr;
 }
 
-void EndState::backToMenu(GameManager * gameManager)
+void EndState::backToMenu(GameManager * gameManager)	//method used to send the player right back into the map
 {
 	gameManager->getServiceLocator()->getAudios()->haltChannel(0);
 	gameManager->getMachine()->pushState(new MapState(gameManager));
 }
 
-void EndState::backToMenuWin(GameManager * gameManager)
+void EndState::backToMenuWin(GameManager * gameManager)	//method used to send the player into a new DialogState, if they've won
 {
 	gameManager->getServiceLocator()->getAudios()->haltChannel(0);
-	gameManager->getMachine()->pushState(new DialogState(gameManager, (level * 2 + 6), 0, true, false, 0, 0));
+	gameManager->getMachine()->pushState(new DialogState(gameManager, (level * 2 + 6), 0, true, hardMode_, prevScoreE_, 0));
 }
 
-void EndState::backToMenuLose(GameManager * gameManager)
+void EndState::backToMenuLose(GameManager * gameManager)	//method used to send the player into a new DialogState, if they've lost
 {
 	gameManager->getServiceLocator()->getAudios()->haltChannel(0);
-	gameManager->getMachine()->pushState(new DialogState(gameManager, (level*2 + 7), 0, true, false, 0, 0));
+	gameManager->getMachine()->pushState(new DialogState(gameManager, (level * 2 + 6), 0, true, hardMode_, prevScoreE_, 0));
 }
 
 void EndState::render(Uint32 time, bool beatHandler)
@@ -373,62 +366,22 @@ bool EndState::handleEvent(Uint32 time, SDL_Event e)
 	GameState::handleEvent(time, e);
 
 	bool change = false;
-		if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN) || e.key.keysym.sym == SDLK_DOWN) {
-			nextButton();
-			change = true;
+	if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A)) {
+		if (level <= 5) {
+			if (passed)
+				backToMenuWin(gameManager);
+			else
+				backToMenuLose(gameManager);
 		}
-		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_UP) || e.key.keysym.sym == SDLK_UP) {
-			backButton();
-			change = true;
+		else {
+			backToMenu(gameManager);
 		}
-		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_RETURN) {
-			if (level <= 5) {
-				if (passed)
-					backToMenuWin(gameManager);
-				else
-					backToMenuLose(gameManager);
-			}
-			else {
-				backToMenu(gameManager);
-			}
-			change = true;
-		}
-		return change;
+		change = true;
+	}
+	return change;
 }
 
-
-void EndState::nextButton()
-{
-	/*
-	buttons[index].first.scale(0.5);
-	buttons[index].second = false;
-	if (index < max)
-	{
-		index++;
-	}
-	else {
-		index = min;
-	}
-	buttons[index].first.scale(2);
-	buttons[index].second = true;*/
-	
-}
-
-void EndState::backButton()
-{
-	/*buttons[index].first.scale(0.5);
-	buttons[index].second = false;
-	if (index > min)
-	{
-		index--;
-	}
-	else {
-		index = max;
-	}
-	buttons[index].first.scale(2);
-	buttons[index].second = true;*/
-}
-string EndState::makeScoreBetter(int score)
+string EndState::makeScoreBetter(int score)	//method that cleans up how the score is displayed on screen, adding 0 to the left of the score
 {
 	string ret = "";
 
@@ -446,43 +399,8 @@ string EndState::makeScoreBetter(int score)
 
 	return ret;
 }
-void EndState::renderLetters(Uint32 time, bool beatHandler)
-{
 
-	/*Texture msg0(gameManager->getRenderer(),
-		types[level],
-		*(gameManager->getServiceLocator()->getFonts()->getFont(
-			Resources::RETRO20)), { COLOR(0x00000000) });
-	SDL_Rect dest;
-	dest.x = gameManager->getDefaultWindowWidth() / 4-150;
-	dest.y = gameManager->getDefaultWindowHeight() / 4-100;
-	dest.w = (gameManager->getDefaultWindowWidth() / 4);
-	dest.h = gameManager->getDefaultWindowHeight() / 20;
-	msg0.render(gameManager->getRenderer(), dest);
-
-	Texture msg1(gameManager->getRenderer(),
-			puntos + to_string(punt) ,*(gameManager->getServiceLocator()->getFonts()->getFont(
-				Resources::RETRO10)), { COLOR(0x00000000) });
-	SDL_Rect dest1;
-	dest1.x = gameManager->getDefaultWindowWidth() / 2-150 ;
-	dest1.y = gameManager->getDefaultWindowHeight() / 2 ;
-	dest1.w = (gameManager->getDefaultWindowWidth() / 4);
-	dest1.h = gameManager->getDefaultWindowHeight() / 20;
-	msg1.render(gameManager->getRenderer(), dest1);
-
-	Texture msg2(gameManager->getRenderer(),
-		val, *(gameManager->getServiceLocator()->getFonts()->getFont(
-			Resources::RETRO10)), { COLOR(0x00000000) });
-	SDL_Rect dest2;
-	dest2.x = gameManager->getDefaultWindowWidth() / 2 - 150;
-	dest2.y = gameManager->getDefaultWindowHeight() / 2 +50;
-	dest2.w = (gameManager->getDefaultWindowWidth() / 4);
-	dest2.h = gameManager->getDefaultWindowHeight() / 20;
-	msg2.render(gameManager->getRenderer(), dest2);*/
-	
-}
-
-void EndState::saveScore(int scoreE, int scoreH)
+void EndState::saveScore(int scoreE, int scoreH)	//method that saves the score in a file if it's higher than the highScore
 {
 	string filename = "resources/data/" + to_string(level) + ".ddb";
 

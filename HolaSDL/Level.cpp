@@ -3,8 +3,7 @@
 #include "GameManager.h"
 #include "PlayState.h"
 #include "SRandBasedGenerator.h"
-#include <cmath> // esto es C++
-//#include <math.h> // esto es C
+#include <cmath>
 
 Level::Level(PlayState* l, SDLGame* gam, string n, int noteSize)
 {

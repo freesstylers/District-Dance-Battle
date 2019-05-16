@@ -17,10 +17,11 @@ DialogState::DialogState(GameManager* g, int txt, int numctrl, bool oneP, bool h
 	prevMaxScoreH_ = prevMaxScoreH;
 	init();
 }
-//EL máximo de caracteres por cuadro es 35*2 = 70, contando espacios y el primer espacio
-void DialogState::init() 
+
+
+void DialogState::init()	//this method loads all the assets needed from the dialogue file
 {
-	//Primero, cargamos todos los diálogos, y las imágenes que necesitaremos, leyendolo del txt correspondiente
+
 	Dialog d;
 	int aux;
 	int sp;
@@ -30,7 +31,7 @@ void DialogState::init()
 	
 	if (file.is_open()) {
 		file >> aux;
-		//Fondo
+		//Background
 		for (int i = 0; i < aux; i++) {
 			file >> sp;
 			stage.push_back(new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), sp));
@@ -44,7 +45,7 @@ void DialogState::init()
 		file >> aux;
 		for (int i = 0; i < aux; i++) {
 			file >> sp;
-			//Diálogo
+			//Dialogue
 			file >> textAux;
 			textBox = new TextBox(manager, manager->getDefaultWindowWidth() - 20, 400, Vector2D(10, manager->getDefaultWindowHeight() - 400), sp);
 			box.insert(pair<string, GameObject*>(textAux, textBox));
@@ -63,13 +64,13 @@ void DialogState::init()
 				dialogo.push_back(d);
 				d.text = "";
 			}
-			//file >> textAux;
+
 		}
 		actualBox = box[dialogo.front().box];
 		text = new TextObject(manager, manager->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(manager->getDefaultWindowWidth() / 22 + 10, manager->getDefaultWindowHeight() - 140));
-		text->setText("AAAAA", { COLOR(0x00000000) });
+		text->setText("AAA", { COLOR(0x00000000) });
 		text2 = new TextObject(manager, manager->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(manager->getDefaultWindowWidth() / 22 + 20, manager->getDefaultWindowHeight() - 140 + text->getHeight()));
-		timer = new TimerNoSingleton();
+		timer = new Timer();
 		manager->getServiceLocator()->getAudios()->playChannel(Resources::Snare, 0, 1);
 		manager->getServiceLocator()->getAudios()->setChannelVolume(10, 4);
 		manager->getServiceLocator()->getAudios()->playChannel(Resources::Ambient, -1, 4);
@@ -79,7 +80,8 @@ void DialogState::init()
 
 	file.close();
 }
-//Solo usado para el timer	
+
+//only used to update the timer
 void DialogState::update(Uint32 time) 
 {
 	timer->Update();
@@ -110,13 +112,10 @@ DialogState::~DialogState()
 		delete actualBox;
 }
 
-//Renderizar
+
 void DialogState::render(Uint32 time, bool beatSync) {
 	GameState::render(time, beatSignal);
-	/*
-	for (auto it : stage) {
-		it->render(time, beatSync);
-	}*/
+
  	actualBox->render(time, beatSync);
 	text->render(time);
 	text2->render(time);
@@ -126,8 +125,9 @@ void DialogState::render(Uint32 time, bool beatSync) {
 bool DialogState::handleEvent(Uint32 time, SDL_Event e) {
 
 	GameState::handleEvent(time, e);
-	//Pasar de diálogo
-	if ((e.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) && keyup) || (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_SPACE))
+	
+	//this handles how to advance the dialogue
+	if ((e.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) && keyup))
 	{
 		manager->getServiceLocator()->getAudios()->playChannel(Resources::Snare, 0, 1);
 		if (!dialogo.empty()) {
@@ -135,7 +135,7 @@ bool DialogState::handleEvent(Uint32 time, SDL_Event e) {
 			if (!dialogo.empty()) {
 				actualBox = box[dialogo.front().box];
 			}
-			//En caso de que sea el último diálogo
+
 			else if (archivo == "Corpselillo1" || archivo == "Onilecram1") { 
 				actualBox = new TextBox(manager, manager->getDefaultWindowWidth() - 20, 400, Vector2D(10, manager->getDefaultWindowHeight() - 400), Resources::GreyDialog);
 			}
@@ -157,7 +157,7 @@ bool DialogState::handleEvent(Uint32 time, SDL_Event e) {
 	}
 	else if (e.type == SDL_CONTROLLERBUTTONUP) keyup = true;
 
-	else if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_TAB || (e.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_BACK))) {
+	else if ((e.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_BACK))) {
 
 		manager->getServiceLocator()->getAudios()->haltChannel(4);
 		if (nlevel <= 5)
@@ -168,14 +168,17 @@ bool DialogState::handleEvent(Uint32 time, SDL_Event e) {
 
 	return true;
 }
-//Cambiar de texto
-void DialogState::updateText() {
+
+
+void DialogState::updateText() {	//this method updates the text displayed on screen
 	if (!dialogo.empty()) {
 
 		if (dialogo.front().text.size() <= 51) {
 			text->setText(dialogo.front().text, { COLOR(0x00000000) });
 			text2->setText(" ", { COLOR(0x00000000) });
 		}
+		
+		//if the text is longer than 51 characters, then it's cut into two lines
 		else {
 			string aux1 = "";
 			string aux2 = "";
@@ -208,8 +211,14 @@ void DialogState::updateText() {
 			text2->setText(" ", { COLOR(0x00000000) });
 		}
 		else if(nlevel % 2 == 0){
-			text->setText("HAS COMPLETADO EL NIVEL", { COLOR(0x00000000) });
-			text2->setText(" ", { COLOR(0x00000000) });
+			if (!hardMode_ && prevMaxScoreE_ < 600000) {
+				text->setText("NIVEL COMPLETADO, HAS DESBLOQUEADO EL MODO DIFICIL", { COLOR(0x00000000) });
+				text2->setText(" ", { COLOR(0x00000000) });
+			}
+			else {
+				text->setText("HAS COMPLETADO EL NIVEL", { COLOR(0x00000000) });
+				text2->setText(" ", { COLOR(0x00000000) });
+			}
 		}
 		else {
 			text->setText("NO HAS COMPLETADO EL NIVEL", { COLOR(0x00000000) });

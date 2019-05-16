@@ -60,9 +60,7 @@ void PlayerPack::render(Uint32 time, bool beatSync)
 	comboTxt->render(time);
 	scoreBar->render(time);
 	feedbackLeft->render(time, false);
-	feedbackLeft->updateResolution(game_->getWidthScale(), game_->getHeightScale());
 	feedbackRight->render(time, false);
-	feedbackRight->updateResolution(game_->getWidthScale(), game_->getHeightScale());
 	hitLeft->render(time, false);
 	hitRight->render(time, false);
 
@@ -78,74 +76,68 @@ void PlayerPack::render(Uint32 time, bool beatSync)
 
 void PlayerPack::update(Uint32 time)
 {
-	if (!playstate_->getMiniActive())
+	leftNoteBar->update(time);
+	rightNoteBar->update(time);
+	leftPoint->update(time);
+	rightNoteBar->update(time);
+	scoreBar->update(time);
+	feedbackRight->update(time);
+	feedbackLeft->update(time);
+	for (Note* o : screenArrows_)
 	{
-		leftNoteBar->update(time);
-		rightNoteBar->update(time);
-		leftPoint->update(time);
-		rightNoteBar->update(time);
-		scoreBar->update(time);
-		feedbackRight->update(time);
-		feedbackLeft->update(time);
-		for (Note* o : screenArrows_)
-		{
-			if (o != nullptr) {
-				o->update(time);
-			}
+		if (o != nullptr) {
+			o->update(time);
+		}
 			
-		}
-		for (Note* o : screenButtons_)
+	}
+	for (Note* o : screenButtons_)
+	{
+		if (o != nullptr)
 		{
-			if (o != nullptr)
-			{
-				o->update(time);
-			}
+			o->update(time);
 		}
-		if (!screenArrows_.empty() && screenArrows_.front()->getPosition().getY() > noteYLimit)
+	}
+	if (!screenArrows_.empty() && screenArrows_.front()->getPosition().getY() > noteYLimit)
+	{
+		Note* aux = screenArrows_.front();
+		SDL_GameControllerButton x = aux->getKey();
+		if (x == SDL_CONTROLLER_BUTTON_INVALID) {
+			feedbackLeft->addFeedback(Resources::FeedbackPerfect);
+			addCalifications(3);
+			updateScoreNote(1);
+			addCombo(1);
+		}
+		else
 		{
-			Note* aux = screenArrows_.front();
-			SDL_GameControllerButton x = aux->getKey();
-			if (x == SDL_CONTROLLER_BUTTON_INVALID) {
-				feedbackLeft->addFeedback(Resources::FeedbackPerfect);
-				addCalifications(3);
-				updateScoreNote(1);
-				addCombo(1);
-			}
-			else
-			{
-				playstate_->showError();
-				resetCombo();
-				feedbackLeft->addFeedback(Resources::FeedbackBad);
-				addCalifications(0);
-			}
-			delete aux;
-			screenArrows_.pop_front();
-			cout << "fuera" << endl;
-			lip->numFailed++;
+			playstate_->showError();
+			resetCombo();
+			feedbackLeft->addFeedback(Resources::FeedbackBad);
+			addCalifications(0);
 		}
-		if (!screenButtons_.empty() && screenButtons_.front()->getPosition().getY() > noteYLimit)
+		delete aux;
+		screenArrows_.pop_front();
+		lip->numFailed++;
+	}
+	if (!screenButtons_.empty() && screenButtons_.front()->getPosition().getY() > noteYLimit)
+	{
+		Note* aux = screenButtons_.front();
+		SDL_GameControllerButton y = aux->getKey();
+		if (y == SDL_CONTROLLER_BUTTON_INVALID) {
+			feedbackRight->addFeedback(Resources::FeedbackPerfect);
+			updateScoreNote(1);
+			addCombo(1);
+			addCalifications(3);
+		}
+		else
 		{
-			Note* aux = screenButtons_.front();
-			SDL_GameControllerButton y = aux->getKey();
-			if (y == SDL_CONTROLLER_BUTTON_INVALID) {
-				feedbackRight->addFeedback(Resources::FeedbackPerfect);
-				updateScoreNote(1);
-				addCombo(1);
-				addCalifications(3);
-			}
-			else
-			{
-				playstate_->showError();
-				feedbackRight->addFeedback(Resources::FeedbackBad);
-				resetCombo();
-				addCalifications(0);
-			}
-			delete aux;
-			screenButtons_.pop_front();
-			cout << "fuera" << endl;
-			lip->numFailed++;
-			errorRight();
+			playstate_->showError();
+			feedbackRight->addFeedback(Resources::FeedbackBad);
+			resetCombo();
+			addCalifications(0);
 		}
+		delete aux;
+		screenButtons_.pop_front();
+		lip->numFailed++;
 	}
 }
 
@@ -168,31 +160,6 @@ bool PlayerPack::handleInput(Uint32 time, const SDL_Event& event)
 	feedbackRight->handleInput(time, event);
 
 	return lip->handleInput(time, event);;
-}
-
-void PlayerPack::updateResolution(double wScale, double hScale)
-{
-	leftNoteBar->updateResolution(wScale, hScale);
-	rightNoteBar->updateResolution(wScale, hScale);
-	leftPoint->updateResolution(wScale, hScale);
-	rightPoint->updateResolution(wScale, hScale);
-	feedbackLeft->updateResolution(wScale, hScale);
-	feedbackRight->updateResolution(wScale, hScale);
-	hitLeft->updateResolution(wScale, hScale);
-	hitRight->updateResolution(wScale, hScale);
-	Vector2D noteVel = playstate_->setVel(60000.0 / (double)playstate_->getBPM());
-
-	for (Note* n : screenArrows_){
-		n->updateResolution(wScale, hScale);
-		n->setVelocity(noteVel);
-	}
-
-	for (Note* n : screenButtons_) {
-		n->updateResolution(wScale, hScale);
-		n->setVelocity(noteVel);
-	}
-
-	noteYLimit = leftPoint->getPosition().getY() + leftPoint->getHeight();
 }
 
 void PlayerPack::addCombo(int i)
@@ -284,18 +251,6 @@ PlayerPack::~PlayerPack()
 	}
 }
 
-void PlayerPack::errorLeft()
-{
-	/*leftNoteBar->cleanAnimationQueue();
-	leftNoteBar->forceAnimationChange(Resources::SquareMiss);
-	leftNoteBar->queueAnimationChange(Resources::Square);*/
-}
-
-void PlayerPack::errorRight() {
-	/*rightNoteBar->cleanAnimationQueue();
-	rightNoteBar->forceAnimationChange(Resources::SquareMiss);
-	rightNoteBar->queueAnimationChange(Resources::Square);*/
-}
 void PlayerPack::updateScoreNote(int accuracy)
 {
 	if(accuracy == 1)

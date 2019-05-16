@@ -3,13 +3,13 @@
 #include <list>
 #include "checkML.h"
 
-//Estado básico de juego
+//base class for the game's different states
 
 using namespace std;
 
 class GameManager;
 
-class GameState //Base class for all states, similar to the ones used last quarter in TPV
+class GameState
 {
 protected:
 	GameManager* manager;
@@ -21,6 +21,5 @@ public:
 	virtual bool handleEvent(Uint32 time, SDL_Event e);
 	virtual void render(Uint32 time, bool beatSync = false);
 
-	virtual void updateResolution();
 };
 

@@ -1,19 +1,21 @@
 #pragma once
 #include "GameObject.h"
-#include "TimerNoSingleton.h"
+#include "Timer.h"
 #include "checkML.h"
 
-//CLase para todos los personajes animados y sus bailes
+//Class used for all the in-game character sprites, handles how they should be animated and when they should change their animations
 
 class Character: public GameObject
 {
 private:
-	TimerNoSingleton* timer;
-	TimerNoSingleton* timerAlien;
+
+	Timer* timer;
+	Timer* timerAlien;	//since the alien character needs to change sprites half-way through the song, there's an extra timer just to handle that
 	bool isAlien = false;
 	int firstAnim = -1;
 	int secondAnim = -1;
 	bool dancing = false;
+
 public:
 	Character(SDLGame* game, double width, double height, Vector2D pos, int i);
 	virtual ~Character();

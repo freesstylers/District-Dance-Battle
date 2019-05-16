@@ -2,7 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="AudioManager.cpp" />
-    <ClCompile Include="Button.cpp" />
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="FontsManager.cpp" />
     <ClCompile Include="GameManager.cpp" />
@@ -24,38 +23,27 @@
     <ClCompile Include="SRandBasedGenerator.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TexturesManager.cpp" />
-    <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Vector2D.cpp" />
     <ClCompile Include="Feedback.cpp" />
     <ClCompile Include="Squares.cpp" />
     <ClCompile Include="EndState.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Background.cpp" />
-    <ClCompile Include="MiniGame.cpp" />
-    <ClCompile Include="TimerNoSingleton.cpp" />
     <ClCompile Include="ScoreBar.cpp" />
     <ClCompile Include="SongBar.cpp" />
     <ClCompile Include="Note.cpp" />
     <ClCompile Include="BarBackground.cpp" />
     <ClCompile Include="Character.cpp" />
-    <ClCompile Include="MinigameVaporwave.cpp" />
-    <ClCompile Include="MinigameHipHop.cpp" />
-    <ClCompile Include="MinigameLatina.cpp" />
-    <ClCompile Include="MinigameRock.cpp" />
-    <ClCompile Include="MinigameHardbass.cpp" />
     <ClCompile Include="GameObjectPool.cpp" />
     <ClCompile Include="FeedbackPool.cpp" />
     <ClCompile Include="PlayerPack.cpp" />
     <ClCompile Include="BeatHandler.cpp" />
-    <ClCompile Include="Crosshair.cpp" />
     <ClCompile Include="DialogState.cpp" />
     <ClCompile Include="TextBox.cpp" />
     <ClCompile Include="PanelMap.cpp" />
-    <ClCompile Include="EffectVaporwave.cpp" />
     <ClCompile Include="EmptyObject.cpp" />
     <ClCompile Include="TextObject.cpp" />
     <ClCompile Include="ComboText.cpp" />
-    <ClCompile Include="CutSceneState.cpp" />
     <ClCompile Include="RedEffect.cpp" />
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="ParticleEngine.cpp" />
@@ -66,10 +54,10 @@
     <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="TutorialState.cpp" />
     <ClCompile Include="Credits.cpp" />
+    <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioManager.h" />
-    <ClInclude Include="Button.h" />
     <ClInclude Include="Font.h" />
     <ClInclude Include="FontsManager.h" />
     <ClInclude Include="GameManager.h" />
@@ -91,38 +79,27 @@
     <ClInclude Include="SRandBasedGenerator.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TexturesManager.h" />
-    <ClInclude Include="Timer.h" />
     <ClInclude Include="Vector2D.h" />
     <ClInclude Include="Feedback.h" />
     <ClInclude Include="Squares.h" />
     <ClInclude Include="EndState.h" />
     <ClInclude Include="Level.h" />
-    <ClInclude Include="TimerNoSingleton.h" />
     <ClInclude Include="Background.h" />
-    <ClInclude Include="MiniGame.h" />
     <ClInclude Include="ScoreBar.h" />
     <ClInclude Include="SongBar.h" />
     <ClInclude Include="Note.h" />
     <ClInclude Include="BarBackground.h" />
     <ClInclude Include="Character.h" />
-    <ClInclude Include="MinigameVaporwave.h" />
-    <ClInclude Include="MinigameHipHop.h" />
-    <ClInclude Include="MinigameLatina.h" />
-    <ClInclude Include="MinigameRock.h" />
-    <ClInclude Include="MinigameHardbass.h" />
     <ClInclude Include="GameObjectPool.h" />
     <ClInclude Include="FeedbackPool.h" />
     <ClInclude Include="PlayerPack.h" />
     <ClInclude Include="BeatHandler.h" />
-    <ClInclude Include="Crosshair.h" />
     <ClInclude Include="DialogState.h" />
     <ClInclude Include="TextBox.h" />
     <ClInclude Include="PanelMap.h" />
-    <ClInclude Include="EffectVaporwave.h" />
     <ClInclude Include="EmptyObject.h" />
     <ClInclude Include="TextObject.h" />
     <ClInclude Include="ComboText.h" />
-    <ClInclude Include="CutSceneState.h" />
     <ClInclude Include="RedEffect.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="ParticleEngine.h" />
@@ -134,8 +111,6 @@
     <ClInclude Include="checkML.h" />
     <ClInclude Include="TutorialState.h" />
     <ClInclude Include="Credits.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram.cd" />
+    <ClInclude Include="Timer.h" />
   </ItemGroup>
 </Project>

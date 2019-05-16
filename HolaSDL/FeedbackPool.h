@@ -3,7 +3,7 @@
 #include "Feedback.h"
 #include "checkML.h"
 
-//Controlador de todo el feedback visual
+//A pool of Feedback objects used to display a large amount on-screen
 
 class FeedbackPool :
 	public GameObjectPool<Feedback, 30>
@@ -20,7 +20,5 @@ public:
 	virtual ~FeedbackPool();
 
 	virtual void addFeedback(int animation);
-
-	virtual void updateResolution(double wScale, double hScale);
 };
 

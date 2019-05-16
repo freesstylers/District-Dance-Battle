@@ -2,7 +2,7 @@
 #include "GameObject.h"
 #include "checkML.h"
 
-//Efecto para nota pulsada
+//A simple gamobject used to play an animation whenever a note is hit
 
 class HitNote :
 	public GameObject

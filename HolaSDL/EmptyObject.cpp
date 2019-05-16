@@ -19,14 +19,10 @@ void EmptyObject::render(Uint32 time, bool beatSync) {
 
 }
 
-void EmptyObject::changeFrame() {
+void EmptyObject::changeFrame() {	//method used to change a sprite's animation's frame
 	animation.currentFrame = animation.currentFrame + 1;
 
 	if (animation.currentFrame == animation.totalFrames) {
 		animation.currentFrame = 0;
-		/*
-		if (queuedAnimations.size() > 0) {
-			changeAnimation(queuedAnimations.front());
-		}*/
 	}
 }
