@@ -60,6 +60,12 @@ TutorialState::~TutorialState()
 {
 }
 
+void TutorialState::restart()
+{
+	manager->getServiceLocator()->getAudios()->haltChannel(0);
+	manager->getMachine()->pushState(new TutorialState(manager));
+}
+
 void TutorialState::update(Uint32 time)
 {
 	if (!isPaused) {
@@ -235,10 +241,8 @@ void TutorialState::resumeTutorial(GameManager* g, unsigned int timePaused)
 		}
 
 		tutorialBox->forceAnimationChange(tutorialBoxAnim);
-		//tutoFiltro->forceAnimationChange(Resources::TutoFiltro);
 
 		tutoFiltro->setActive(false);
-		//tutoFiltro->setAlpha(10);
 		tutorialBox->setActive(false);
 
 		timer->setOffset(timePaused);

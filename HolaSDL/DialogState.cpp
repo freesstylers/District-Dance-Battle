@@ -160,7 +160,9 @@ bool DialogState::handleEvent(Uint32 time, SDL_Event e) {
 	else if ((e.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_BACK))) {
 
 		manager->getServiceLocator()->getAudios()->haltChannel(4);
-		if (nlevel <= 5)
+		if (nlevel == 0)
+			manager->getMachine()->changeState(new TutorialState(manager));
+		else if (nlevel <= 5)
 			manager->getMachine()->changeState(new PlayState(manager, nlevel, oneP_, hardMode_, prevMaxScoreE_, prevMaxScoreH_));
 		else
 			manager->getMachine()->changeState(new MapState(manager));

@@ -125,7 +125,7 @@ public:
 	virtual void resume(unsigned int timePaused);
 	bool changeControls();
 
-	void restart();
+	virtual void restart();
 	virtual void exit();
 
 	
