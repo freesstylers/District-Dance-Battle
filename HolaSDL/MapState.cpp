@@ -4,9 +4,6 @@
 
 MapState::MapState(GameManager* g) :GameState(g)
 {
-	index = 0;
-	min = 0;
-	max = 4;
 
 	manager->getServiceLocator()->getAudios()->playChannel(Resources::Mapa, -1, 0);
 	keystates = SDL_GetKeyboardState(NULL);
@@ -132,10 +129,14 @@ void MapState::nextButton()	//selects the next level button on the list
 {
 	buttons[index].first.scale(0.5);
 
-	if (index < max && activeLevels[index + 1])
-		index++;
-	else
-		index = min;
+	do {
+		virtualIndex++;
+	} while (virtualIndex <= max && !activeLevels[levelOrder[virtualIndex]]);
+
+	if (virtualIndex > max)
+		virtualIndex = min;
+
+	index = levelOrder[virtualIndex];
 
 	buttons[index].first.scale(2);
 }
@@ -144,16 +145,18 @@ void MapState::backButton()	//selects the previous level button on the list
 {
 	buttons[index].first.scale(0.5);
 
-	if (index == min){
-		for (int i = max; i >= 0; i--) {
-			if (activeLevels[i]) {
-				index = i;
-				break;
-			}
-		}
-	}
-	else if (index > min)
-		index--;
+	if (virtualIndex == min)
+		virtualIndex = max;
+
+	do {
+		virtualIndex--;
+	} while (virtualIndex >= min && !activeLevels[levelOrder[virtualIndex]]);
+
+	if (virtualIndex < min)
+		virtualIndex = max;
+
+
+	index = levelOrder[virtualIndex];
 
 	buttons[index].first.scale(2);
 }

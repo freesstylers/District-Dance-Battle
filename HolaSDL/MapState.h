@@ -26,10 +26,12 @@ public:
 private:
 
 	int index = 0;
+	int virtualIndex = 0;
 	int min = 0;
 	int max = 4;
 	
 	bool activeLevels[5] = {true, false, false, false, false };
+	int levelOrder[5] = { 0, 2, 3, 1, 4 };
 
 	bool keyup = true;
 

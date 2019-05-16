@@ -243,61 +243,61 @@ void MainMenuState::updateTxt()
 
 void MainMenuState::nextButton() 
 {
-		if (optionsOpen == true)
-		{
-			if (selectedButton == 3)
-				selectedButton = 0;
-			else {
-				selectedButton++;
-			}
-			selection->setPosition(optionsButtons[selectedButton]->getPosition());
+	if (optionsOpen == true)
+	{
+		if (selectedButton == 3)
+			selectedButton = 0;
+		else {
+			selectedButton++;
+		}
+		selection->setPosition(optionsButtons[selectedButton]->getPosition());
 
-			if (selectedButton == 3)
-				selection->forceAnimationChange(Resources::ButtonSelection);
-			else
-				selection->forceAnimationChange(Resources::VolSelection);
+		if (selectedButton == 3)
+			selection->forceAnimationChange(Resources::ButtonSelection);
+		else
+			selection->forceAnimationChange(Resources::VolSelection);
+	}
+	else {
+		selectButton[index] = false;
+		if (index < max)
+		{
+			index++;
 		}
 		else {
-			selectButton[index] = false;
-			if (index < max)
-			{
-				index++;
-			}
-			else {
-				index = min;
-			}
-			selectButton[index] = true;
+			index = min;
 		}
+		selectButton[index] = true;
+	}
 }
 void MainMenuState::backButton()
 {
-		if (optionsOpen)
-		{
-			if (selectedButton == 0)
-				selectedButton = 3;
-			else {
-				selectedButton--;
-			}
-			selection->setPosition(optionsButtons[selectedButton]->getPosition());
+	if (optionsOpen)
+	{
+		if (selectedButton == 0)
+			selectedButton = 3;
+		else {
+			selectedButton--;
+		}
+		selection->setPosition(optionsButtons[selectedButton]->getPosition());
 
-			if (selectedButton == 3)
-				selection->forceAnimationChange(Resources::ButtonSelection);
-			else
-				selection->forceAnimationChange(Resources::VolSelection);
+		if (selectedButton == 3)
+			selection->forceAnimationChange(Resources::ButtonSelection);
+		else
+			selection->forceAnimationChange(Resources::VolSelection);
+	}
+	else {
+		//buttons[index]->scale(0.5);
+		selectButton[index] = false;
+		if (index > min)
+		{
+			index--;
 		}
 		else {
-			//buttons[index]->scale(0.5);
-			selectButton[index] = false;
-			if (index > min)
-			{
-				index--;
-			}
-			else {
-				index = max;
-			}
-			//buttons[index]->scale(2);
-			selectButton[index] = true;
+			index = max;
 		}
+		//buttons[index]->scale(2);
+		selectButton[index] = true;
+	}
 }
 
 
