@@ -4,6 +4,10 @@
 
 MapState::MapState(GameManager* g) :GameState(g)
 {
+	index = 0;
+	min = 0;
+	max = 4;
+
 	manager->getServiceLocator()->getAudios()->playChannel(Resources::Mapa, -1, 0);
 	keystates = SDL_GetKeyboardState(NULL);
 	controller = SDL_GameControllerOpen(0);
@@ -17,7 +21,6 @@ MapState::MapState(GameManager* g) :GameState(g)
 	lockLevels();
 	loadGame();
 
-	index = 0;
 }
 
 MapState::~MapState()
@@ -178,7 +181,7 @@ void MapState::loadGame() {	//reads each level's save file and unlocks them / lo
 	//simple variable to avoid unlocking levels out of order
 	bool stopUnlock = false;
 
-	for (int i = 0; i <= 5; i++) {
+	for (int i = 0; i <= max; i++) {
 		string filename = "resources/data/" + to_string(i) + ".ddb";
 
 		ifstream archivo(filename);
@@ -200,7 +203,7 @@ void MapState::loadGame() {	//reads each level's save file and unlocks them / lo
 
 				//to make sure the levels are unlocked in order, the precious level's highscore is also checked to be 100% sure it's unlocked
 				//If it isn't, then we stop unlocking levels
-				if (!stopUnlock && (i == 0 || (i > 0 && buttons[i - 1].second.scoreE_ >= 600000))) {
+				if (!stopUnlock && i < max && (i == 0 || (i > 0 && buttons[i - 1].second.scoreE_ >= 600000))) {
 					unlockLevel(i + 1);
 				}
 				else
