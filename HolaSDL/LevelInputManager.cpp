@@ -13,9 +13,7 @@ LevelInputManager::LevelInputManager(PlayState* l, PlayerPack* pl, int numctrl)
 	player = pl;
 	keystates = SDL_GetKeyboardState(NULL);
 	controller = SDL_GameControllerOpen(numctrl_);
-	
 }
-
 
 LevelInputManager::~LevelInputManager()
 {
@@ -34,10 +32,14 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 		keyup = true;
 		keyup2 = true;
 	}
-	if ((blockpause < time - 500) && (event.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_START)) || (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_DELETE)) {
+
+	//opening the pause menu, there's a 0.5 second cooldown due to a bug with how the timers are set up
+	if ((blockpause < time - 500) && (event.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_START))) {
 		ret = ret || level->pause();
 		blockpause = 0;
 	}
+
+	//inputs for the d-pad
 	if (!player->screenArrows_.empty())
 	{
 		auto it = player->screenArrows_.front();
@@ -112,6 +114,8 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 			}
 		}
 	}
+
+	//inputs for the buttons
 	if (!player->screenButtons_.empty())
 	{
 		auto it = player->screenButtons_.front();
