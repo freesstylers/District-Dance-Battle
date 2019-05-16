@@ -7,7 +7,6 @@
 class SongBar : public GameObject
 {
 protected:
-	bool findeNivel;
 	Texture* texture;
 	BarBackground* bar;
 public:
