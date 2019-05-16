@@ -46,19 +46,30 @@ void Level::playSong() {
 
 
 void Level::init(bool hardmode) {
+
+	if (hardmode) name = name + "Hard";
+
 	ifstream file("resources/levels/" + name + ".txt");
 	file >> bpm;
 	file >> songLength;
 	file >> song;
 
-	if (name == "asereje")
-		noteVel = level->setVel(60000 / ((double)bpm / 1.5));
-	else if (name == "rock")
-		noteVel = level->setVel(60000 / ((double)bpm / 2));
-	else if (name == "hardbass")
-		noteVel = level->setVel(60000 / ((double)bpm / 2));
-	else
-		noteVel = level->setVel(60000 / (double)bpm);
+	if (!hardmode) {
+		if (name == "asereje")
+			noteVel = level->setVel(60000 / ((double)bpm / 1.5));
+		else if (name == "rock")
+			noteVel = level->setVel(60000 / ((double)bpm / 2));
+		else if (name == "hardbass")
+			noteVel = level->setVel(60000 / ((double)bpm / 2));
+		else
+			noteVel = level->setVel(60000 / (double)bpm);
+	}
+	else {
+		if (name == "pruebaHard" || name == "papitoHard" || name == "hiphopHard")
+			noteVel = level->setVel(60000 / ((double)bpm * 2));
+		else
+			noteVel = level->setVel(60000 / (double)bpm);
+	}
 
 	int aux = 0;
 		while (aux >= 0) {
