@@ -2,7 +2,8 @@
 
 
 
-EndState::EndState(GameManager* g, int prevMaxScoreE, int prevMaxScoreH, int* califs1, int actualScore, int maxScore, int percentage, int lvl, bool isSingleplayer, bool hardMode, int actualScore2, int* califs2) : GameState(g)
+EndState::EndState(GameManager* g, int prevMaxScoreE, int prevMaxScoreH, int* califs1, int actualScore, int maxScore, int percentage, int lvl, bool isSingleplayer, bool hardMode, int actualScore2, int* califs2) : 
+	GameState(g), prevScoreE_(prevMaxScoreE), hardMode_(hardMode)
 {
 	level = lvl;
 	punt = maxScore;
@@ -338,13 +339,13 @@ void EndState::backToMenu(GameManager * gameManager)	//method used to send the p
 void EndState::backToMenuWin(GameManager * gameManager)	//method used to send the player into a new DialogState, if they've won
 {
 	gameManager->getServiceLocator()->getAudios()->haltChannel(0);
-	gameManager->getMachine()->pushState(new DialogState(gameManager, (level * 2 + 6), 0, true, false, 0, 0));
+	gameManager->getMachine()->pushState(new DialogState(gameManager, (level * 2 + 6), 0, true, hardMode_, prevScoreE_, 0));
 }
 
 void EndState::backToMenuLose(GameManager * gameManager)	//method used to send the player into a new DialogState, if they've lost
 {
 	gameManager->getServiceLocator()->getAudios()->haltChannel(0);
-	gameManager->getMachine()->pushState(new DialogState(gameManager, (level*2 + 7), 0, true, false, 0, 0));
+	gameManager->getMachine()->pushState(new DialogState(gameManager, (level * 2 + 6), 0, true, hardMode_, prevScoreE_, 0));
 }
 
 void EndState::render(Uint32 time, bool beatHandler)

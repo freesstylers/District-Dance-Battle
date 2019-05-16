@@ -211,8 +211,14 @@ void DialogState::updateText() {	//this method updates the text displayed on scr
 			text2->setText(" ", { COLOR(0x00000000) });
 		}
 		else if(nlevel % 2 == 0){
-			text->setText("HAS COMPLETADO EL NIVEL", { COLOR(0x00000000) });
-			text2->setText(" ", { COLOR(0x00000000) });
+			if (!hardMode_ && prevMaxScoreE_ < 600000) {
+				text->setText("NIVEL COMPLETADO, HAS DESBLOQUEADO EL MODO DIFICIL", { COLOR(0x00000000) });
+				text2->setText(" ", { COLOR(0x00000000) });
+			}
+			else {
+				text->setText("HAS COMPLETADO EL NIVEL", { COLOR(0x00000000) });
+				text2->setText(" ", { COLOR(0x00000000) });
+			}
 		}
 		else {
 			text->setText("NO HAS COMPLETADO EL NIVEL", { COLOR(0x00000000) });
