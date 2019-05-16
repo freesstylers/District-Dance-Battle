@@ -53,10 +53,7 @@ public:
 	FeedbackPool* feedbackRight;
 	HitNotePool* hitRight;
 	ScoreBar* scoreBar;
-	void errorLeft();
-	void errorRight();
 	void updateScoreNote(int accuracy);
-	virtual void updateResolution(double wScale, double hScale);
 	void addCombo(int i);
 	void resetCombo();
 	int* getCalifications();

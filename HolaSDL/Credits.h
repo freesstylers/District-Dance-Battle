@@ -2,19 +2,19 @@
 #include "GameObject.h"
 #include "EmptyObject.h"
 #include "GameState.h"
-#include "TimerNoSingleton.h"
+#include "Timer.h"
 #include "Background.h"
 #include <list>
 #include "checkML.h"
 
-//El estado donde aparecen los créditos
+//Simple state used to display the game's credits
 
 class Credits: public GameState
 {
 private:
 	SDL_GameController* controller = NULL;
 
-	EmptyObject* bg;
+	Background* bg;
 
 	bool optionsOpen = false;
 

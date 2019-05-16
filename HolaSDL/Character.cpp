@@ -9,8 +9,8 @@ Character::Character(SDLGame* game, double width, double height, Vector2D pos, i
 	setHeight(height);
 	setPosition(pos);
 	setVelocity(Vector2D(0, 0));
-	timer = new TimerNoSingleton();
-	timerAlien = new TimerNoSingleton();
+	timer = new Timer();
+	timerAlien = new Timer();
 	firstAnim = i;
 	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(i);
 	

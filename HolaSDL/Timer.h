@@ -4,22 +4,16 @@
 class Timer
 {
 private:
-	static Timer* _Instance;
 	unsigned int _StartTicks;
 	unsigned int _ElapsedTicks;
 	unsigned int offset;
 	float _DeltaTime;
 	float _TimeScale;
 	float _lastItTimer;
-	Timer();
-	~Timer();
 
 public:
-
-
-	static Timer* Instance();
-	static void Release();
-
+	Timer();
+	~Timer();
 	void Reset();
 	float DeltaTime();
 
@@ -31,3 +25,4 @@ public:
 
 	void setOffset(unsigned int time) { offset = time; }
 };
+

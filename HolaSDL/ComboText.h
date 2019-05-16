@@ -3,7 +3,7 @@
 #include "ParticleEngine.h"
 #include "checkML.h"
 
-//El indicador que sale al realizar un combo
+//Class used to display the player's combo during a song
 
 class ComboText :
 	public TextObject

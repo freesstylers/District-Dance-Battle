@@ -61,19 +61,17 @@ bool ExtraMenu::handleEvent(Uint32 time,  SDL_Event event)
 	GameState::handleEvent(time, event);
 
 	if (event.type == SDL_CONTROLLERBUTTONDOWN || event.type == SDL_KEYUP) {
-		if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_UP) || event.key.keysym.sym == SDLK_UP) {
+		if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_UP)) {
 			
 			selectionDown();
-			cout << "Up" << endl;
 
 		}
-		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN) || event.key.keysym.sym == SDLK_DOWN) {
+		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN)) {
 
 			selectionUp();
-			cout << "Down" << endl;
 
 		}
-		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || event.key.keysym.sym == SDLK_RETURN) {
+		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A)) {
 			
 			switch (posHand)
 			{
@@ -97,12 +95,12 @@ bool ExtraMenu::handleEvent(Uint32 time,  SDL_Event event)
 			}
 
 		}
-		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B) || event.key.keysym.sym == SDLK_DELETE) {
+		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B)) {
 				
 			manager->getMachine()->pushState(new MapState(manager));
 				
 		}
-		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_BACK) || event.key.keysym.sym == SDLK_DELETE) {
+		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_BACK)) {
 			
 			if (switchPlayers->animation.currentFrame == 1) {
 				switchPlayers->animation.currentFrame = 0;
@@ -112,11 +110,8 @@ bool ExtraMenu::handleEvent(Uint32 time,  SDL_Event event)
 				switchPlayers->animation.currentFrame = 1;
 				onePlayer = false;
 			}
-
-
 		}
 	}
-	cout << "lul" << endl;
 
 	return false;
 }
@@ -125,9 +120,6 @@ void ExtraMenu::render(Uint32 time, bool beatSync)
 {
 		bg->render(time);
 		hand->render(time);
-		switchPlayers->render(time) ;
+		switchPlayers->render(time);
 		select->render(time);
-
-
-	
 }

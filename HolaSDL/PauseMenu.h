@@ -1,7 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include "EmptyObject.h"
-#include "TimerNoSingleton.h"
+#include "Timer.h"
 #include "TextObject.h"
 #include <list>
 #include <string>
@@ -18,7 +18,7 @@ class PauseMenu :
 private:
 	bool isXbox;
 
-	TimerNoSingleton* timer;
+	Timer* timer;
 	SDL_GameController* controller = NULL;
 
 	PlayState* level;
@@ -73,5 +73,4 @@ public:
 	virtual bool handleInput(Uint32 time, const SDL_Event& event);
 	virtual void update(Uint32 time);
 	virtual void render(Uint32 time, bool beatSync = false);
-	virtual void updateResolution(double wScale, double hScale);
 };

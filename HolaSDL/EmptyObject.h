@@ -2,7 +2,7 @@
 #include "GameObject.h"
 #include "checkML.h"
 
-//Objeto que sólo posee un sprite
+//Simple gameObject child class that only has a sprite
 
 class EmptyObject :
 	public GameObject

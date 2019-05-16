@@ -7,10 +7,10 @@
 #include <math.h>
 #include "TextObject.h"
 #include "checkML.h"
-#include "TimerNoSingleton.h"
+#include "Timer.h"
 #include "TextBox.h"
 
-//Esta es la clase usada como estado de juego para los diálogos
+//State used to manage the game's dialogue
 
 class DialogState: public GameState
 {
@@ -26,6 +26,7 @@ protected:
 	int prevMaxScoreE_;
 	int prevMaxScoreH_;
 
+	//struct used to manage how the dialogue files are coded: first, the character's name, then what they say
 	struct Dialog
 	{
 		string text;
@@ -33,7 +34,7 @@ protected:
 	};
 
 	
-	//Los nombres de todos los archivos de diálogo para poder llamarlos.
+	//These are the names of all the dialogue files
 	string levels[18] = { "Intro1", "Vapor1", "Papito1", "HipHop1", "Corpselillo1", "Onilecram1", "Intro2", "Intro2", "VaporW", "VaporL", "PapitoW", "PapitoL", "HipHopW", "HipHopL","CorpselilloW", "CorpselilloL", "OnilecramW", "OnilecramL" };
 	
 	bool keyup = true;
@@ -42,13 +43,14 @@ protected:
 	list<Dialog> dialogo;
 	list<TextBox*> textBoxes;
 
-	//Diccionario que contiente cada textbox con su diálogo correspondiente.
+	//Map used to get each character's dialogue box
 	map<string, GameObject*> box;
+
 	GameObject* actualBox;
 	TextObject* text;
 	TextObject* text2;
 	TextBox* textBox;
-	TimerNoSingleton* timer;
+	Timer* timer;
 	double animationFramesPerBeat = 2;
 	bool beatSignal = false;
 	int nlevel;

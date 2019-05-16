@@ -13,7 +13,7 @@ MainMenuState::MainMenuState(GameManager*g):GameState(g)
 	controller = SDL_GameControllerOpen(0);
 	
 
-	EmptyObject* fondo = new EmptyObject(g, Vector2D(0, 0), gameManager->getDefaultWindowWidth(), gameManager->getDefaultWindowHeight(), Resources::MainMenu);
+	EmptyObject* bg = new EmptyObject(g, Vector2D(0, 0), gameManager->getDefaultWindowWidth(), gameManager->getDefaultWindowHeight(), Resources::MainMenu);
 	EmptyObject* loadGame1 = new EmptyObject(g, Vector2D(gameManager->getDefaultWindowWidth() / 2+70, gameManager->getDefaultWindowHeight() / 2 - 400), 600, 190, Resources::ChargeGameNoSelected);
 	EmptyObject* loadGame2 = new EmptyObject(g, Vector2D(gameManager->getDefaultWindowWidth() / 2+70, gameManager->getDefaultWindowHeight() / 2 - 400), 600, 190, Resources::ChargeGameSelected);
 	EmptyObject* newGame1 = new EmptyObject(g, Vector2D(gameManager->getDefaultWindowWidth() / 2+60, gameManager->getDefaultWindowHeight() /2-260), 600, 190, Resources::NewGameNoSelected);
@@ -54,7 +54,7 @@ MainMenuState::MainMenuState(GameManager*g):GameState(g)
 	selectButton.push_back(b5);
 
 
-	stage.push_back(fondo);
+	stage.push_back(bg);
 
 
 	double menuX = gameManager->getDefaultWindowWidth() / 3;

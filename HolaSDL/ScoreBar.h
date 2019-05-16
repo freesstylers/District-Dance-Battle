@@ -24,6 +24,5 @@ public:
 	virtual void render(Uint32 time, bool beatSync = false);
 	void updateBar(double punt);
 	virtual ~ScoreBar();
-	virtual void updateResolution(double wScale, double hScale);
 };
 

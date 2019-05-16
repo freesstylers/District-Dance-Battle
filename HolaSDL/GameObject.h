@@ -5,7 +5,7 @@
 #include <queue>
 #include "checkML.h"
 
-//GameObject ma sencillo
+//Base class for the game's entities
 
 class GameObject {
 
@@ -52,6 +52,7 @@ public:
 	void setRotation(double angle);
 
 	SDL_Rect getRect();
+
 	// abstract methods to be implemented in sub-classes
 	virtual bool handleInput(Uint32 time, const SDL_Event& event) = 0;
 	virtual void update(Uint32 time) = 0;
@@ -66,7 +67,6 @@ public:
 	void setAlpha(int alpha) { alpha_ = alpha; }
 	void changeAlpha(int alphaChange);
 	int getAlpha() { return alpha_; };
-	virtual void updateResolution(double wScale, double hScale);
 
 	void isAnimationSynced(bool is) { isAnimationSyncedToMusic = is; }
 	void setAnimationFramerate(int frames) { framesPerSecond = frames; }

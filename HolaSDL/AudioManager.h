@@ -3,7 +3,7 @@
 #include <string>
 #include "checkML.h"
 
-//Manager de Audio
+//Audio manager, virtual class
 
 using namespace std;
 

@@ -4,9 +4,8 @@
 #include <array>
 #include "checkML.h"
 
-/*
- *
- */
+//Class that creates and handles a pool of GameObjects
+
 template<typename T, int SIZE>
 class GameObjectPool: public GameObject {
 public:

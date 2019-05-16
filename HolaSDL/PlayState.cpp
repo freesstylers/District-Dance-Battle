@@ -7,7 +7,7 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxS
 	volume = g->getMusicVolume();
 	Lost = new EmptyObject(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::Lost);
 	Lost->setActive(false);
-	//Lost->setAlpha(0);
+
 	youLost = new EmptyObject(manager, Vector2D(0, -manager->getDefaultWindowHeight()), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::YouLost);
 	youLost->setActive(false);
 
@@ -15,103 +15,73 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxS
 	{
 	case 0:
 		levelName = "tutorial";
-		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::EffectVaporWave);
-		minigame = new MinigameVaporwave(manager, this);
 		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::PericoRoom);
 		bgT = Resources::PericoRoom;
 		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 400, initialNoteHeight + 50), Resources::PericoEspejo);
 		enemyT = Resources::PericoRoom;
-		minigameAmount = 0;
 		break;
 	case 1:
 		levelName = "prueba";
-		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::EffectVaporWave);
-		minigame = new MinigameVaporwave(manager, this);
 		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::testBG);
 		bgT = Resources::testBG;
 		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 400, initialNoteHeight + 50), Resources::RobotIdle);
 		enemyT = Resources::RobotIdle;
-		minigameAmount = 0;
 		break;
 	case 2:
 		levelName = "papito";
-		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::HipHopEffect);
-		minigame = nullptr;//new MinigameHipHop(manager, this);
 		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::CiuBG);
 		bgT = Resources::CiuBG;
 		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 400, initialNoteHeight + 50), Resources::PapitoIdle);
 		enemyT = Resources::PapitoIdle;
-		minigameAmount = 0;
 		break;
 	case 3:
 		levelName = "hiphop";
-		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::HipHopEffect);
-		minigame = new MinigameHipHop(manager, this);
 		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::BackgroundHipHop);
 		bgT = Resources::BackgroundHipHop;
 		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 400, initialNoteHeight + 50), Resources::EminemciaIdle);
 		enemyT = Resources::EminemciaIdle;
-		minigameAmount = 0;
 		break;
 	case 4:
 		levelName = "rock";
-		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::EffectVaporWave);
-		minigame = new MinigameVaporwave(manager, this);
 		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::FondoRock);
 		bgT = Resources::FondoRock;
 		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 400, initialNoteHeight + 50), Resources::ZombieIdle);
 		enemyT = Resources::ZombieIdle;
-		minigameAmount = 0;
 		break;
 	case 6:
 		levelName = "allstar";
-		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::HipHopEffect);
-		minigame = new MinigameHipHop(manager, this);
 		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::ExtraBG);
 		bgT = Resources::ExtraBG;
 		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 400, initialNoteHeight + 50), Resources::ShrekIdle);
 		enemyT = Resources::ShrekIdle;
-		minigameAmount = 0;
 		break;
 	case 5:
 		levelName = "hardbass";
-		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::HipHopEffect);
-		minigame = new MinigameHipHop(manager, this);
 		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::FondoHardbass);
 		bgT = Resources::FondoHardbass;
 		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 400, initialNoteHeight + 50), Resources::AlienIdle);
 		enemyT = Resources::AlienIdle;
-		minigameAmount = 0;
 		break;
 	case 7:
 		levelName = "megalovania";
-		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::HipHopEffect);
-		minigame = new MinigameHipHop(manager, this);
 		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::ExtraBG);
 		bgT = Resources::ExtraBG;
 		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 400, initialNoteHeight + 50), Resources::SansIdle);
 		enemyT = Resources::SansIdle;
-		minigameAmount = 0;
 		break;
 	case 8:
 		levelName = "RunningInThe90s";
-		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::HipHopEffect);
-		minigame = new MinigameHipHop(manager, this);
 		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::ExtraBG);
 		bgT = Resources::ExtraBG;
 		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 400, initialNoteHeight + 50), Resources::SansIdle);
 		enemyT = Resources::SansIdle;
-		minigameAmount = 0;
 		break;
 	case 10:
 		levelName = "africa";
-		effectVaporWave = new EffectVaporwave(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::HipHopEffect);
-		minigame = new MinigameHipHop(manager, this);
 		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::ExtraBG);
 		bgT = Resources::ExtraBG;
 		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 400, initialNoteHeight + 50), Resources::RobotDance);
 		enemyT = Resources::RobotDance;
-		minigameAmount = 0;
 		break;
 	default:
 		break;
@@ -152,18 +122,11 @@ void PlayState::newGame()
 	
 	level = new Level(this, manager, levelName,noteSize);
 	level->init(difficultyMode);
-	timer = new TimerNoSingleton();
+	timer = new Timer();
 	timer->Reset();
 
-	if (minigameAmount > 0) {
-		maxMinigameValue = (maxScore * minigameScoreTotal) / minigameAmount;
-		maxNoteValue = (maxScore * (1 - minigameScoreTotal)) / level->noteAmount;
-	}
 
-	else {
-		maxMinigameValue = 0;
-		maxNoteValue = maxScore  / level->noteAmount;
-	}
+	maxNoteValue = maxScore  / level->noteAmount;
 
 
 	songBarBG = new BarBackground(manager, 1, 14, Vector2D(50, 35), Resources::YellowBar);
@@ -174,12 +137,8 @@ void PlayState::newGame()
 	
 	fourButtons = new EmptyObject(manager, Vector2D(10, manager->getDefaultWindowHeight() - 101), 75, 81, Resources::fourButtons);
 	
-	//manager->getDefaultWindowWidth() - 91, 81
 	
-	minigameController = new TimerNoSingleton();
-
-	//rf = new RedEffect();
-	//rf->init();
+	extraTimer = new Timer();
 
 	bh = new BeatHandler(level->bpm);
 
@@ -198,8 +157,6 @@ void PlayState::newGame()
 	level->playSong();
 
 	combo = 0;
-
-	updateResolution();
 }
 
 void PlayState::newGame2P()
@@ -221,8 +178,9 @@ void PlayState::newGame2P()
 	crown->setActive(false);
 	level = new Level(this, manager, levelName,noteSize);
 	level->init(difficultyMode);
-	timer = new TimerNoSingleton();
+	timer = new Timer();
 	timer->Reset();
+
 	maxNoteValue = maxScore / level->noteAmount;
 
 	songBarBG = new BarBackground(manager, 1, 14, Vector2D(50, 35), Resources::YellowBar);
@@ -234,7 +192,7 @@ void PlayState::newGame2P()
 	enemy->setHeight(120 * 4);
 
 
-	minigameController = new TimerNoSingleton();
+	extraTimer = new Timer();
 
 	bh = new BeatHandler(level->bpm);
 	fourButtons = new EmptyObject(manager, Vector2D(10, manager->getDefaultWindowHeight() - 101), 75, 81, Resources::fourButtons);
@@ -256,16 +214,12 @@ void PlayState::newGame2P()
 	level->playSong();
 
 	combo = 0;
-
-	updateResolution();
 }
 
 PlayState::~PlayState()
 {
 	delete timer;
-	delete minigameController;
-	delete minigame;
-	delete effectVaporWave;
+	delete extraTimer;
 	delete level;
 	delete bh;
 
@@ -303,81 +257,47 @@ void PlayState::update(Uint32 time)
 				crown->setPosition(Vector2D(player2->getleftBar()->getPosition().getX() + player2->getleftBar()->getWidth() / 2 + 6, player2->getleftBar()->getPosition().getY() - 60));
 			}
 		}
-		if (!miniActive && (minigameAmount == 0 || (minigameAmount > 0 && minigameController->DeltaTime() < level->songLength / minigameAmount)))
-		{
-			minigameController->Update();
 
-			if (levelArrows_.empty() && levelButtons_.empty()) {
-				if (player1->screenArrows_.empty() && player1->screenButtons_.empty()) {
-					if ((player2 == nullptr || (player2->screenArrows_.empty() && player2->screenButtons_.empty())))
-					{
-						if (songEndWaitTime == 0)
-							songEndWaitTime = time;
-
-						else if (time - songEndWaitTime >= 2000)
-							songIsOver = true;
-					}
-				}
-			}
-
-			else {
-				timer->Update();
-				if (timer->DeltaTime() > (bh->getBeatTime() / 1000.0) - msDiff && !isLost())
+		if (levelArrows_.empty() && levelButtons_.empty()) {
+			if (player1->screenArrows_.empty() && player1->screenButtons_.empty()) {
+				if ((player2 == nullptr || (player2->screenArrows_.empty() && player2->screenButtons_.empty())))
 				{
-					msDiff += timer->DeltaTime() - (bh->getBeatTime() / 1000.0);
-					generateArrows();
-					generateButtons();
-					timer->Reset();
+					if (songEndWaitTime == 0)
+						songEndWaitTime = time;
 
-					beatSignal = true;
-				}
-				else if (isLost())
-				{
-					Lost->setActive(true);
-					youLost->setActive(true);
-					if (volume > 0)
-					{
-						volume -= 1;
-						manager->getServiceLocator()->getAudios()->setChannelVolume(volume, 0);
-					}
-					else {
-						manager->getServiceLocator()->getAudios()->haltChannel(0);
-						manager->getServiceLocator()->getAudios()->setChannelVolume(manager->getMusicVolume(), 0);
-					}
-
-					if (youLost->getPosition().getY() < 0)
-						youLost->setPosition(youLost->getPosition() + Vector2D(0, 4));
+					else if (time - songEndWaitTime >= 2000)
+						songIsOver = true;
 				}
 			}
 		}
-		else {
-			miniActive = true;
-			if (!animationMiniGame)
-			{
-				player1->lip->setMinigameActive(true);
-				player1->setComboActive(false);
-				enemy->forceAnimationChange((enemyT + 1));
-				perico->forceAnimationChange(Resources::PericoDance1);
-				animationMiniGame = true;
-				minigame->resetMinigame();
-			}
-			minigame->update(time);
-			if (minigame->getEnd()) {
-				player1->lip->setMinigameActive(false);
-				miniActive = false;
-				msDiff = 0;
-				timer->Reset();
-				minigame->deleteList();
-				minigame->createList();
-				minigameController->Reset();
-				enemy->queueAnimationChange(enemyT);
-				perico->queueAnimationChange(Resources::PericoIdle);
-				animationMiniGame = false;
-				player1->setComboActive(true);
 
-				int aux = minigame->getAccuracy();
-				if (aux != 0)
-					updateScoreMinigame(aux);
+		else {
+			timer->Update();
+			if (timer->DeltaTime() > (bh->getBeatTime() / 1000.0) - msDiff && !isLost())
+			{
+				msDiff += timer->DeltaTime() - (bh->getBeatTime() / 1000.0);
+				generateArrows();
+				generateButtons();
+				timer->Reset();
+
+				beatSignal = true;
+			}
+			else if (isLost())
+			{
+				Lost->setActive(true);
+				youLost->setActive(true);
+				if (volume > 0)
+				{
+					volume -= 1;
+					manager->getServiceLocator()->getAudios()->setChannelVolume(volume, 0);
+				}
+				else {
+					manager->getServiceLocator()->getAudios()->haltChannel(0);
+					manager->getServiceLocator()->getAudios()->setChannelVolume(manager->getMusicVolume(), 0);
+				}
+
+				if (youLost->getPosition().getY() < 0)
+					youLost->setPosition(youLost->getPosition() + Vector2D(0, 4));
 			}
 		}
 		if (timer->DeltaTime() > ((bh->getBeatTime() / 1000.0) / (animationFramesPerBeat / 1000)) - msDiff)
@@ -412,7 +332,7 @@ void PlayState::resume(unsigned int timePaused)
 		isPaused = false;
 		pauseMenu->setActive(false);
 		timer->setOffset(timePaused);
-		minigameController->setOffset(timePaused);
+		extraTimer->setOffset(timePaused);
 
 		player1->lip->blockPause(SDL_GetTicks());
 
@@ -472,12 +392,7 @@ bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 	else
 	{
 		if (!isPaused) {
-			if (miniActive) {
-				player1->lip->setMinigameActive(true);
-
-				minigame->handleInput(time, e);
-			}
-			else if (!isLost())
+			if (!isLost())
 			{
 				GameState::handleEvent(time, e);
 			}
@@ -491,10 +406,6 @@ bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 void PlayState::render(Uint32 time, bool beatSync)
 {
 	GameState::render(time, beatSignal);
-	if (miniActive) {
-		minigame->render(time);
-		effectVaporWave->render(time, true);
-	}
 
 	beatSignal = false;
 }
@@ -517,12 +428,6 @@ void PlayState::deleteAll()
 	{
 		delete o;
 	}
-}
-
-void PlayState::updateScoreMinigame(int accuracy)
-{
-	player1->currentScore += maxMinigameValue * (1 / accuracy);
-	player1->updateScoreNote(player1->currentScore);
 }
 
 //Al generar las flechas y los botones, los mueve en proporcion al tiempo perdido por cada vuelta
@@ -571,13 +476,6 @@ void PlayState::songOver()
 		manager->getMachine()->pushState(new EndState(manager, prevMaxScoreE_, prevMaxScoreH_, player1->getCalifications(), player1->currentScore, maxScore, 70, nlevel, isSingleplayer, difficultyMode));
 	else
 		manager->getMachine()->pushState(new EndState(manager, prevMaxScoreE_, prevMaxScoreH_, player1->getCalifications(), player1->currentScore, maxScore, 70, nlevel, isSingleplayer, difficultyMode, player2->currentScore, player2->getCalifications()));
-	//manager->getMachine()->changeState(new MapState(manager));
-	//manager->getMachine()->popState();
-}
-
-void PlayState::updateResolution()
-{
-
 }
 
 void PlayState::restart()
@@ -612,16 +510,6 @@ void PlayState::showError()
 	bg->forceAnimationChange(bgT+1);
 	bg->queueAnimationChange(bgT);
 	manager->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0, 1);
-}
-
-void PlayState::changeRedeffect()
-{
-	if (rf->isActive() == false) {
-		rf->setActive(true);
-	}
-	else {
-
-	}
 }
 
 bool PlayState::isLost()

@@ -7,7 +7,7 @@
 
 using namespace std;
 
-//Esta clase lee las notas del txt y crea el nivel a partir de ellas.
+//this class manages the loading of levels from their respective files
 
 class PlayState;
 class SDLGame;

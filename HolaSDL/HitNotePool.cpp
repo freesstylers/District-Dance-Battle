@@ -26,19 +26,3 @@ void HitNotePool::addHit(int animation, Vector2D pos)
 	h->setPosition(pos);
 	h->setActive(true);
 }
-
-void HitNotePool::updateResolution(double wScale, double hScale) {
-
-	for (auto feedback : getAllObjects()) {
-
-		Vector2D pos = feedback->getPosition();
-
-		pos.setX(pos.getX() * wScale);
-
-		pos.setY(pos.getY() * hScale);
-
-		feedback->setWidth(feedback->getWidth() * wScale);
-		feedback->setHeight(feedback->getHeight() * hScale);
-		feedback->setPosition(pos);
-	}
-}

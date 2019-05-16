@@ -23,25 +23,16 @@
     <ClInclude Include="HitNote.h" />
     <ClInclude Include="HitNotePool.h" />
     <ClInclude Include="MainMenuState.h" />
-    <ClInclude Include="MinigameHardbass.h" />
-    <ClInclude Include="MinigameHipHop.h" />
-    <ClInclude Include="MinigameLatina.h" />
-    <ClInclude Include="MinigameRock.h" />
-    <ClInclude Include="MinigameVaporwave.h" />
     <ClInclude Include="BeatHandler.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="ParticleEngine.h" />
     <ClInclude Include="PauseMenu.h" />
     <ClInclude Include="PlayerPack.h" />
-    <ClInclude Include="Crosshair.h" />
     <ClInclude Include="EmptyObject.h" />
     <ClInclude Include="PanelMap.h" />
     <ClInclude Include="RedEffect.h" />
     <ClInclude Include="ScoreBar.h" />
     <ClInclude Include="SongBar.h" />
-    <ClInclude Include="Button.h" />
-    <ClInclude Include="CutSceneState.h" />
-    <ClInclude Include="EffectVaporwave.h" />
     <ClInclude Include="EndState.h" />
     <ClInclude Include="Feedback.h" />
     <ClInclude Include="BarBackground.h" />
@@ -55,7 +46,6 @@
     <ClInclude Include="Level.h" />
     <ClInclude Include="LevelInputManager.h" />
     <ClInclude Include="MapState.h" />
-    <ClInclude Include="MiniGame.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="PlayState.h" />
     <ClInclude Include="Point.h" />
@@ -74,7 +64,6 @@
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TexturesManager.h" />
     <ClInclude Include="Timer.h" />
-    <ClInclude Include="TimerNoSingleton.h" />
     <ClInclude Include="TutorialState.h" />
     <ClInclude Include="Vector2D.h" />
   </ItemGroup>
@@ -90,25 +79,16 @@
     <ClCompile Include="HitNote.cpp" />
     <ClCompile Include="HitNotePool.cpp" />
     <ClCompile Include="MainMenuState.cpp" />
-    <ClCompile Include="MinigameHardbass.cpp" />
-    <ClCompile Include="MinigameHipHop.cpp" />
-    <ClCompile Include="MinigameLatina.cpp" />
-    <ClCompile Include="MinigameRock.cpp" />
-    <ClCompile Include="MinigameVaporwave.cpp" />
     <ClCompile Include="BeatHandler.cpp" />
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="ParticleEngine.cpp" />
     <ClCompile Include="PauseMenu.cpp" />
     <ClCompile Include="PlayerPack.cpp" />
-    <ClCompile Include="Crosshair.cpp" />
     <ClCompile Include="EmptyObject.cpp" />
     <ClCompile Include="PanelMap.cpp" />
     <ClCompile Include="RedEffect.cpp" />
     <ClCompile Include="ScoreBar.cpp" />
     <ClCompile Include="SongBar.cpp" />
-    <ClCompile Include="Button.cpp" />
-    <ClCompile Include="CutSceneState.cpp" />
-    <ClCompile Include="EffectVaporwave.cpp" />
     <ClCompile Include="EndState.cpp" />
     <ClCompile Include="Feedback.cpp" />
     <ClCompile Include="BarBackground.cpp" />
@@ -123,7 +103,6 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Note.cpp" />
     <ClCompile Include="MapState.cpp" />
-    <ClCompile Include="MiniGame.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="PlayState.cpp" />
     <ClCompile Include="Point.cpp" />
@@ -141,12 +120,8 @@
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TexturesManager.cpp" />
     <ClCompile Include="Timer.cpp" />
-    <ClCompile Include="TimerNoSingleton.cpp" />
     <ClCompile Include="TutorialState.cpp" />
     <ClCompile Include="Vector2D.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{28A4C5CD-307A-4FE6-81E4-4CE1F1E49AB4}</ProjectGuid>

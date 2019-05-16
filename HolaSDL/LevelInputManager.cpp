@@ -47,7 +47,6 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 			{
 				if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getLeftPoint()->getPosition().getY() + player->getLeftPoint()->getHeight() / 2)) <= 10)
 				{
-					cout << "perfecto" << endl;
 					player->feedbackLeft->addFeedback(Resources::FeedbackPerfect);
 					player->hitLeft->addHit(Resources::HitGold, it->getPosition());
 					player->updateScoreNote(1);
@@ -58,7 +57,6 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 				}
 				else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getLeftPoint()->getPosition().getY() + player->getLeftPoint()->getHeight() / 2)) <= 25)
 				{
-					cout << "bien" << endl;
 					player->feedbackLeft->addFeedback(Resources::FeedbackGood);
 					player->hitLeft->addHit(Resources::HitSilver, it->getPosition());
 					player->updateScoreNote(2);
@@ -72,7 +70,6 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 				}
 				else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getLeftPoint()->getPosition().getY() + player->getLeftPoint()->getHeight() / 2)) <= 50)
 				{
-					cout << "regular" << endl;
 					player->feedbackLeft->addFeedback(Resources::FeedbackRegular);
 					player->hitLeft->addHit(Resources::HitCopper, it->getPosition());
 					player->updateScoreNote(3);
@@ -86,10 +83,8 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 				}
 				else
 				{
-					cout << "mala punteria" << endl;
 					player->feedbackLeft->addFeedback(Resources::FeedbackBad);
 					level->showError();
-					player->errorLeft();
 					player->resetCombo();
 					player->addCalifications(0);
 					numFailed++;
@@ -108,9 +103,7 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 					delete(it);
 					player->screenArrows_.remove(it);
 					player->feedbackLeft->addFeedback(Resources::FeedbackBad);
-					cout << "flecha incorrecta" << endl;
 					level->showError();
-					player->errorLeft();
 					player->resetCombo();
 					player->addCalifications(0);
 					numFailed++;
@@ -128,7 +121,6 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 			{
 				if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getRightPoint()->getPosition().getY() + player->getRightPoint()->getHeight() / 2)) <= 10)
 				{
-					cout << "perfecto" << endl;
 					player->feedbackRight->addFeedback(Resources::FeedbackPerfect);
 					player->hitRight->addHit(Resources::HitGold, it->getPosition());
 					player->updateScoreNote(1);
@@ -140,7 +132,6 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 				}
 				else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getRightPoint()->getPosition().getY() + player->getRightPoint()->getHeight() / 2)) <= 25)
 				{
-					cout << "bien" << endl;
 					player->feedbackRight->addFeedback(Resources::FeedbackGood);
 					player->hitRight->addHit(Resources::HitSilver, it->getPosition());
 					player->updateScoreNote(2);
@@ -153,7 +144,6 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 				}
 				else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getRightPoint()->getPosition().getY() + player->getRightPoint()->getHeight() / 2)) <= 50)
 				{
-					cout << "regular" << endl;
 					player->feedbackRight->addFeedback(Resources::FeedbackRegular);
 					player->hitRight->addHit(Resources::HitCopper, it->getPosition());
 					player->updateScoreNote(3);
@@ -166,10 +156,8 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 				}
 				else
 				{
-					cout << "mala punteria" << endl;
 					player->feedbackRight->addFeedback(Resources::FeedbackBad);
 					level->showError();
-					player->errorRight();
 					player->resetCombo();
 					player->addCalifications(0);
 					numFailed++;
@@ -187,9 +175,7 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 
 					player->feedbackRight->addFeedback(Resources::FeedbackBad);
 					player->screenButtons_.remove(it);
-					cout << "boton incorrecta" << endl;
 					level->showError();
-					player->errorRight();
 					player->resetCombo();
 					player->addCalifications(0);
 					numFailed++;

@@ -1,19 +1,7 @@
 #include "Timer.h"
 
-Timer* Timer::_Instance = NULL;
 
-Timer* Timer::Instance()
-{
-	if (_Instance == NULL)
-		_Instance = new Timer();
-	return _Instance;
-}
 
-void Timer::Release()
-{
-	delete _Instance;
-	_Instance = NULL;
-}
 Timer::Timer()
 {
 	Reset();

@@ -2,7 +2,7 @@
 #include "GameObject.h"
 #include "checkML.h"
 
-//La barra que sigue el progreso de la canción
+//mainly used as the filled part of SongBar, a small bar that marks the current song's length
 
 class BarBackground : public GameObject
 {

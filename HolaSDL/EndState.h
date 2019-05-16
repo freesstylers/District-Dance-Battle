@@ -1,12 +1,9 @@
 #pragma once
-#include "GameState.h"
-#include "Button.h"
-#include "Character.h"
 #include "PlayState.h"
-#include "TextObject.h"
+#include "GameManager.h"
 #include "checkML.h"
 
-//Estado al finalizar una partida que te indica tu puntuación
+//State used to display the end screen after a song, with the player's performance
 
 class EndState :
 	public GameState
@@ -20,7 +17,6 @@ public:
 	void backToMenuLose(GameManager* gameManager);
 	virtual bool handleEvent(Uint32 time, SDL_Event e);
 	virtual void render(Uint32 time, bool beatHandler);
-	void renderLetters(Uint32 time, bool beatHandler);
 	void saveScore(int actualScore, int prevMaxScore);
 	bool passed;
 

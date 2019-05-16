@@ -3,7 +3,7 @@
 #include "GameState.h"
 #include "checkML.h"
 
-//Máquina de estados de juego
+//A simple class that manages all the game's states
 
 using namespace std;
 
@@ -19,6 +19,5 @@ public:
 	void changeState(GameState* state);
 	void pushState(GameState* state);
 	void popState();
-	void cleanStack();
 };
 
