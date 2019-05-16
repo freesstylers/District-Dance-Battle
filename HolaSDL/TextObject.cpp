@@ -1,29 +1,6 @@
 #include "TextObject.h"
 
 
-
-void TextObject::update(Uint32 time)
-{
-
-}
-
-void TextObject::render(Uint32 time, bool beatSync)
-{
-	if(active_)
-		text->render(getRect(), &getFrameRect(), alpha_);
-}
-
-void TextObject::setText(string txt, SDL_Color color)
-{
-	text->loadFromText(game_->getRenderer(), txt, *textFont, color);
-
-	animation.frameHeight = text->getHeight();
-	animation.frameWidth = text->getWidth();
-	setHeight(text->getHeight());
-	setWidth(text->getWidth());
-}
-
-
 TextObject::TextObject(SDLGame * manager, Font* font, Vector2D pos) : GameObject(manager)
 {
 	textFont = font;
@@ -44,4 +21,21 @@ TextObject::TextObject(SDLGame * manager, Font* font, Vector2D pos) : GameObject
 TextObject::~TextObject()
 {
 	delete text;
+}
+
+void TextObject::render(Uint32 time, bool beatSync)
+{
+	if(active_)
+		text->render(getRect(), &getFrameRect(), alpha_);
+}
+
+//Puts a text like a texture
+void TextObject::setText(string txt, SDL_Color color)
+{
+	text->loadFromText(game_->getRenderer(), txt, *textFont, color);
+
+	animation.frameHeight = text->getHeight();
+	animation.frameWidth = text->getWidth();
+	setHeight(text->getHeight());
+	setWidth(text->getWidth());
 }

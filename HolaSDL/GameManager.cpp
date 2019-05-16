@@ -54,6 +54,7 @@ void GameManager::run()
 	}
 }
 
+//Calculate delta time (time lapse every loop)
 void GameManager::tick()
 {
 	uint32_t tick_time = SDL_GetTicks();
