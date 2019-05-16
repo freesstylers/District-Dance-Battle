@@ -1,5 +1,5 @@
 #include "MainMenuState.h"
-#include "Creditos.h"
+#include "Credits.h"
 #include <stdio.h>
 
 
@@ -301,15 +301,17 @@ void MainMenuState::backButton()
 }
 
 
-void MainMenuState::newGame(GameManager* gameManager) 
+void MainMenuState::newGame(GameManager* gameManager)	//erases all the savefiles (besides the options) and pushes a Tutorial State
 {
+	remove("resources/data/0.ddb");
 	remove("resources/data/1.ddb");
 	remove("resources/data/2.ddb");
 	remove("resources/data/3.ddb");
 	remove("resources/data/4.ddb");
 	remove("resources/data/5.ddb");
-	gameManager->getMachine()->changeState(new MapState(gameManager));
+	gameManager->getMachine()->changeState(new TutorialState(gameManager));
 }
+
 void MainMenuState::exit(GameManager* gameManager)
 {
 	gameManager->exit_ = true;
@@ -398,8 +400,7 @@ bool MainMenuState::handleEvent(Uint32 time, SDL_Event e)
 		else if (selectButton[3] == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_SPACE))
 		{
 			gameManager->mainmenu = false;
-			manager->getMachine()->changeState(new Creditos(gameManager));
-			//gameManager->mainmenu = true;
+			manager->getMachine()->changeState(new Credits(gameManager));
 			input = true;
 		}
 		else if (selectButton[4] == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_SPACE ))

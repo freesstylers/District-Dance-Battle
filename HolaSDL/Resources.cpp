@@ -156,7 +156,7 @@ vector<Resources::ImageInfo> Resources::images_{
 		{ ZombieBox, "resources/images/corpselillo_dialog.png", 153, 65, 1, 1, 1 },
 		{ MarcelinoBox, "resources/images/marcelino_dialog.png", 153, 65, 1, 1, 1 },
 		{ CabezaZombie , "resources/images/ZombieHead.png", 40, 40, 1, 1, 1 },
-		{ Creditos, "resources/images/Creditos.png", 1600, 900, 1, 1, 1 },
+		{ Credits, "resources/images/Creditos.png", 1600, 900, 1, 1, 1 },
 		{ PericoRoom, "resources/images/fondoTutorial.png", 213, 120, 2, 1, 2 },
 		{ PericoRoomPixel, "resources/images/fondoTutorialPixel.png", 213, 120, 2, 1, 2 },
 		{ PericoEspejo, "resources/images/Perico-Espejo.png", 60, 120, 3, 2, 4 },

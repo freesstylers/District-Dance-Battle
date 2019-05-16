@@ -4,7 +4,7 @@
 #include "GameManager.h"
 #include "checkML.h"
 
-//Estado del menú principal
+//The main menu's state
 
 using namespace std;
 class MainMenuState :

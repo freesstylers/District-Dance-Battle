@@ -11,7 +11,7 @@
 
 using namespace std;
 
-//Estado del juego del mapa principañ
+//The main map's state
 
 class MapState : public GameState //main class for menus
 {
@@ -24,19 +24,16 @@ public:
 	pair <EmptyObject, PanelMap> buttons[5];
 
 private:
-	
-	bool activeLevels[5] = {true, true, false, false, false }; // Array de niveles activos cuando empieza la partida por primera vez
 
 	int index = 0;
 	int min = 0;
 	int max = 4;
+	
+	bool activeLevels[5] = {true, false, false, false, false };
 
 	bool keyup = true;
 
-	void play(int lvl_);
 	void loadGame();
-	static void load(GameManager* gameManager);
-	static void exit(GameManager* gameManager);
 
 	const Uint8 *keystates;
 	SDL_GameController* controller = NULL;
@@ -45,10 +42,9 @@ private:
 	EmptyObject* moreLvls_;
 
 	void unlockLevel(int lvl);
+	void lockLevels();
 	void createMainButtons();
 	void nextButton();
 	void backButton();
-
-	void unlockLevels();
 
 };

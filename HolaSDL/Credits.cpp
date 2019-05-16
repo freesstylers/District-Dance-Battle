@@ -1,10 +1,10 @@
-#include "Creditos.h"
+#include "Credits.h"
 #include "PlayState.h"
 #include "GameManager.h"
 
 
 
-Creditos::Creditos(GameManager* game) :GameState(game)
+Credits::Credits(GameManager* game) :GameState(game)
 {
 	controller = SDL_GameControllerOpen(0);
 	init();
@@ -12,17 +12,18 @@ Creditos::Creditos(GameManager* game) :GameState(game)
 
 }
 
-void Creditos::init() {
+void Credits::init() {
 
-	bg = new EmptyObject(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::Creditos);
+	bg = new EmptyObject(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::Credits);
 }
-Creditos::~Creditos()
+
+Credits::~Credits()
 {
 	delete bg;
 	bg = nullptr;
 }
 
-bool Creditos::handleEvent(Uint32 time, SDL_Event event)
+bool Credits::handleEvent(Uint32 time, SDL_Event event)
 {
 	GameState::handleEvent(time, event);
 
@@ -37,7 +38,7 @@ bool Creditos::handleEvent(Uint32 time, SDL_Event event)
 	return false;
 }
 
-void Creditos::render(Uint32 time, bool beatSync)
+void Credits::render(Uint32 time, bool beatSync)
 {
 	bg->render(time);
 

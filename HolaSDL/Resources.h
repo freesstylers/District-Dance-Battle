@@ -150,7 +150,7 @@ public:
 		ZombieBox,
 		MarcelinoBox,
 		CabezaZombie,
-		Creditos,
+		Credits,
 		PericoRoom,
 		PericoRoomPixel,
 		PericoEspejo,

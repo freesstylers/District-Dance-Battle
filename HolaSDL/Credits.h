@@ -9,7 +9,7 @@
 
 //El estado donde aparecen los créditos
 
-class Creditos: public GameState
+class Credits: public GameState
 {
 private:
 	SDL_GameController* controller = NULL;
@@ -19,11 +19,11 @@ private:
 	bool optionsOpen = false;
 
 public:
-	Creditos(GameManager* game);
+	Credits(GameManager* game);
 	virtual bool handleEvent(Uint32 time, SDL_Event event);
 	virtual void update(Uint32 time) {};
 	virtual void render(Uint32 time, bool beatSync = false);
 	void init();
-	~Creditos();
+	~Credits();
 };
 

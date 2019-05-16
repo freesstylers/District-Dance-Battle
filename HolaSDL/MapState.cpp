@@ -4,22 +4,20 @@
 
 MapState::MapState(GameManager* g) :GameState(g)
 {
-
 	manager->getServiceLocator()->getAudios()->playChannel(Resources::Mapa, -1, 0);
 	keystates = SDL_GetKeyboardState(NULL);
 	controller = SDL_GameControllerOpen(0);
 	createMainButtons();
 	fondo__ = new EmptyObject(g, Vector2D(0, 0), g->getDefaultWindowWidth(), g->getDefaultWindowHeight(), Resources::Map);
-
 	moreLvls_ = new EmptyObject(g, Vector2D(0, 0), 150, 150, Resources::NivelExtra);
+
 	stage.push_back(fondo__);
 	stage.push_back(moreLvls_);
-	unlockLevel(0);
-	unlockLevel(1);
-	unlockLevel(2);
-	unlockLevel(3);
-	unlockLevel(4);
+
+	lockLevels();
 	loadGame();
+
+	index = 0;
 }
 
 MapState::~MapState()
@@ -31,38 +29,38 @@ bool MapState::handleEvent(Uint32 time, SDL_Event e)
 {
 	if (keyup)
 	{
-		if (e.type == SDL_CONTROLLERBUTTONDOWN || e.type == SDL_KEYDOWN || e.type == SDL_CONTROLLERAXISMOTION) {
+		if (e.type == SDL_CONTROLLERBUTTONDOWN || e.type == SDL_CONTROLLERAXISMOTION) {
 			if (!buttons[index].second.selected)
 			{
-				if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_RETURN) {
+				if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A)) {
 					buttons[index].second.selected = true;
 				}
-				if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) || e.key.keysym.sym == SDLK_RIGHT) {
-					//buttons[index].second.reset();
+				if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT)) {
 					nextButton();
 				}
-				else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT) || e.key.keysym.sym == SDLK_LEFT) {
-					//buttons[index].second.reset();
+				else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT)) {
 					backButton();
 				}
-				else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_BACK) || e.key.keysym.sym == SDLK_TAB) {
-					manager->getMachine()->pushState(new ExtraMenu(manager));
+				else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_BACK)) {
 					manager->getServiceLocator()->getAudios()->haltChannel(0);
+					manager->getMachine()->changeState(new ExtraMenu(manager));
+					return true;
 				}
-				else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B) || e.key.keysym.sym == SDLK_TAB) {
+				else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B)) {
 					manager->mainmenu = true;
-					manager->getMachine()->pushState(new MainMenuState(manager));
 					manager->getServiceLocator()->getAudios()->haltChannel(0);
+					manager->getMachine()->changeState(new MainMenuState(manager));
+					return true;
 				}
 				keyup = false;
 			}
 			else
 			{
-				if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_UP) || e.key.keysym.sym == SDLK_UP) {
+				if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_UP)) {
 					buttons[index].second.nextSwitch();
 					keyup = false;
 				}
-				else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN) || e.key.keysym.sym == SDLK_DOWN) {
+				else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN)) {
 					buttons[index].second.prevSwitch();
 					keyup = false;
 				}
@@ -71,21 +69,16 @@ bool MapState::handleEvent(Uint32 time, SDL_Event e)
 					keyup = false;
 					return true;
 				}
-				else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B) || e.key.keysym.sym == SDLK_DELETE) {
+				else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B)) {
 					buttons[index].second.selected = false;
 					keyup = false;
 				}
 			}
 		}
 	}
-	else if (e.type == SDL_CONTROLLERBUTTONUP || e.type == SDL_KEYUP)
+	else if (e.type == SDL_CONTROLLERBUTTONUP)
 	{
 		keyup = true;
-	}
-	else if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_F10) {
-		manager->getServiceLocator()->getAudios()->haltChannel(0);
-		manager->getMachine()->pushState(new TutorialState(manager));
-		return true;
 	}
 
 	return GameState::handleEvent(time, e);
@@ -102,17 +95,24 @@ void MapState::render(Uint32 time, bool beatSync)
 
 }
 
-void MapState::unlockLevel(int lvl)
+void MapState::lockLevels() {	//resets all the level buttons to be locked and off
+	for(int i = 0; i <= max; i++){
+		activeLevels[i] = false;
+		buttons[i].first.animation = *manager->getServiceLocator()->getTextures()->getAnimation(Resources::MetroOff);
+	}
+}
+
+void MapState::unlockLevel(int lvl)	//unlocks the level specified in lvl
 {
 	activeLevels[lvl] = true;
 	buttons[lvl].first.animation = *manager->getServiceLocator()->getTextures()->getAnimation(Resources::MetroOn);
 }
 
-void MapState::createMainButtons()
+void MapState::createMainButtons()	//creates all the buttons needed for the levels
 {
 	
 	buttons[0].first = EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() / 2 - 60 , manager->getDefaultWindowHeight() / 2 - 30), 64, 64, Resources::MetroOn);
-	buttons[1].first = EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() / 2 - 260, manager->getDefaultWindowHeight() / 2 - 165), 64, 64, Resources::MetroOn);
+	buttons[1].first = EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() / 2 - 260, manager->getDefaultWindowHeight() / 2 - 165), 64, 64, Resources::MetroOff);
 	buttons[2].first = EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() / 2 + 25 , manager->getDefaultWindowHeight() / 2 + 100), 64, 64, Resources::MetroOff);
 	buttons[3].first = EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() / 2 + 130, manager->getDefaultWindowHeight() / 2 - 110), 64, 64, Resources::MetroOff);
 	buttons[4].first = EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() / 2 - 200, manager->getDefaultWindowHeight() / 2 - 85), 64, 64, Resources::MetroOff);
@@ -125,98 +125,89 @@ void MapState::createMainButtons()
 	buttons[0].first.scale(2);
 }
 
-void MapState::nextButton()
+void MapState::nextButton()	//selects the next level button on the list
 {
 	buttons[index].first.scale(0.5);
 
-	do
-	{
-		if (index < max) {
-			index++;
-		}
-		else {
-			index = min;
-		}
-	} while (!activeLevels[index]);
+	if (index < max && activeLevels[index + 1])
+		index++;
+	else
+		index = min;
 
 	buttons[index].first.scale(2);
 }
 
-void MapState::backButton()
+void MapState::backButton()	//selects the previous level button on the list
 {
 	buttons[index].first.scale(0.5);
 
-	do
-	{
-		if (index > min) {
-			index--;
+	if (index == min){
+		for (int i = max; i >= 0; i--) {
+			if (activeLevels[i]) {
+				index = i;
+				break;
+			}
 		}
-		else {
-			index = max;
-		}
-	} while (!activeLevels[index]);
+	}
+	else if (index > min)
+		index--;
 
 	buttons[index].first.scale(2);
 }
 
-void MapState::unlockLevels()
-{
-	for(int i = 0; i < 4; i++)
-	{
-		buttons[i].second.difActive = buttons[i].second.scoreE_ > 800000;
-	}
-	if (buttons[2].second.scoreE_ > 600000 && buttons[3].second.scoreE_ > 600000) {
-		unlockLevel(4);
-	}
-	if (buttons[1].second.scoreE_ > 600000 && buttons[0].second.scoreE_ > 600000) {
-		unlockLevel(2);
-		unlockLevel(3);
-	}
-	int i = 0;
-	while (buttons[i].second.scoreH_ > 800000) {
-		i++;
-	}
-	if (i >= 4) { buttons[i].second.difActive = true; }
-}
+void MapState::loadGame() {	//reads each level's save file and unlocks them / loads highscores
 
-//Leemos de un arhcivo  la dificultad, los puntos obtenidos
-void MapState::loadGame() {
+	//this is to make sure the first level's file is ALWAYS there, even if it's been deleted
 
-	for (int i = 0; i <= 4; i++) {
-		string filename = "resources/data/" + to_string(i+1) + ".ddb";
+	ifstream archivo("resources/data/0.ddb");
 
-		ifstream archivo(filename);
-
-		//
-		int mode;
-		int scoreE = 0;
-		int scoreH = 0;
-
-		archivo >> mode >> scoreE;
-		archivo >> mode >> scoreH;
-		buttons[i].second.scoreE_ = scoreE;
-		buttons[i].second.scoreH_ = scoreH;
+	if (!archivo.is_open()) {
 
 		archivo.close();
 
+		ofstream archivo("resources/data/0.ddb");
+		archivo << "0 0" << endl << "1 0";
+		archivo.close();
+
 	}
-	unlockLevels();
+	else
+		archivo.close();
+
+	unlockLevel(0);
+
+	//simple variable to avoid unlocking levels out of order
+	bool stopUnlock = false;
+
+	for (int i = 0; i <= 5; i++) {
+		string filename = "resources/data/" + to_string(i) + ".ddb";
+
+		ifstream archivo(filename);
+
+		//if the save file exists, then its data is loaded
+		if (archivo.is_open()) {
+			int mode;
+			int scoreE = 0;
+			int scoreH = 0;
+
+			archivo >> mode >> scoreE;
+			archivo >> mode >> scoreH;
+			buttons[i].second.scoreE_ = scoreE;
+			buttons[i].second.scoreH_ = scoreH;
+
+			//if the level's highscore is equal to or higher than 600000 (60%), then the difficult mode is unlocked
+			if (scoreE >= 600000) {
+				buttons[i].second.difActive = true;
+
+				//to make sure the levels are unlocked in order, the precious level's highscore is also checked to be 100% sure it's unlocked
+				//If it isn't, then we stop unlocking levels
+				if (!stopUnlock && (i == 0 || (i > 0 && buttons[i - 1].second.scoreE_ >= 600000))) {
+					unlockLevel(i + 1);
+				}
+				else
+					stopUnlock = true;
+			}
+		}
+
+		archivo.close();
+	}
 }
-
-void MapState::play(int lvl_) {
-	cout << "jugando" << endl;
-	//gameManager->getMachine()->pushState(new PlayState(game, ));
-	//gameManager->getMachine()->pushState(new DialogState(gameManager, lvl_, 0));
-}
-
-void MapState::load(GameManager* game)
-{
-
-}
-
-void MapState::exit(GameManager* game)
-{
-
-}
-
-

@@ -30,12 +30,6 @@ GameManager::~GameManager()
 }
 
 void GameManager::start() {
-	//supposed to push the first MapState, temporarily pushes a PlayState
-	//machine->pushState(new MapState(this));
-	//machine->pushState(new DialogState(this, "Dialog0", 0));
-	//machine->pushState(new DialogState(this,1		,0));
-	//machine->pushState(new DialogState(this,"Dialog0",0));
-	//machine->pushState(new EndState(this,60,100,10,1));
 	machine->pushState(new MainMenuState(this));
 	run();
 }
@@ -57,15 +51,6 @@ void GameManager::run()
 		update(startTime);
 		render(startTime);
 		tick();
-		/*double frameTime = SDL_GetTicks() - startTime;
-		double frames = (1.0 / (double)MAXFPS)*1000.0;
-		if (frameTime < frames) {
-			SDL_Delay(frames - frameTime);
-			deltaTime = frames/1000.0;
-		}
-		else {
-			deltaTime = frameTime/ 1000.0;
-		}*/
 	}
 }
 
