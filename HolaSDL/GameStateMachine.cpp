@@ -34,3 +34,8 @@ void GameStateMachine::changeState(GameState* state)
 	popState();
 	pushState(state);
 }
+
+void GameStateMachine::cleanStack() {
+	for (int i = 0; i < stack.size(); i++)
+		popState();
+}

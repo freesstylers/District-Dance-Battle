@@ -1,4 +1,5 @@
 #include "PauseMenu.h"
+#include "TutorialState.h"
 #include "PlayState.h"
 
 PauseMenu::PauseMenu(SDLGame* game, PlayState* ps, bool isXbox) : GameObject(game), isXbox(isXbox)
@@ -257,7 +258,11 @@ void PauseMenu::restartSong()
 
 void PauseMenu::exitSong()
 {
-	level->exit();
+	if (TutorialState * a = dynamic_cast<TutorialState*>(level))
+		a->exit();
+
+	else
+		level->exit();
 }
 
 void PauseMenu::updateMusic(bool raise)

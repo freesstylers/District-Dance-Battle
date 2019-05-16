@@ -146,7 +146,7 @@ public:
 	bool changeControls();
 
 	void restart();
-	void exit();
+	virtual void exit();
 
 	
 
