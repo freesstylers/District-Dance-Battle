@@ -67,5 +67,7 @@ private:
 	
 	string makeScoreBetter(int score);
 
+	int prevScoreE_;
+	bool hardMode_;
 };
 

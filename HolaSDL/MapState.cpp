@@ -185,7 +185,7 @@ void MapState::loadGame() {	//reads each level's save file and unlocks them / lo
 	bool stopUnlock = false;
 
 	for (int i = 0; i <= max; i++) {
-		string filename = "resources/data/" + to_string(i) + ".ddb";
+		string filename = "resources/data/" + to_string(i+1) + ".ddb";
 
 		ifstream archivo(filename);
 
