@@ -68,7 +68,7 @@ void DialogState::init()	//this method loads all the assets needed from the dial
 		}
 		actualBox = box[dialogo.front().box];
 		text = new TextObject(manager, manager->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(manager->getDefaultWindowWidth() / 22 + 10, manager->getDefaultWindowHeight() - 140));
-		text->setText("", { COLOR(0x00000000) });
+		text->setText("AAA", { COLOR(0x00000000) });
 		text2 = new TextObject(manager, manager->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(manager->getDefaultWindowWidth() / 22 + 20, manager->getDefaultWindowHeight() - 140 + text->getHeight()));
 		timer = new Timer();
 		manager->getServiceLocator()->getAudios()->playChannel(Resources::Snare, 0, 1);

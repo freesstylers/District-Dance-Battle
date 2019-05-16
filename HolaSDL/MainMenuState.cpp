@@ -309,7 +309,7 @@ void MainMenuState::newGame(GameManager* gameManager)	//erases all the savefiles
 	remove("resources/data/3.ddb");
 	remove("resources/data/4.ddb");
 	remove("resources/data/5.ddb");
-	gameManager->getMachine()->changeState(new TutorialState(gameManager));
+	gameManager->getMachine()->changeState(new DialogState(gameManager, 0, 0, true, false, 0, 0));
 }
 
 void MainMenuState::exit(GameManager* gameManager)

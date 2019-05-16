@@ -173,7 +173,7 @@ void MapState::backButton()	//selects the previous level button on the list
 
 void MapState::loadGame() {	//reads each level's save file and unlocks them / loads highscores
 
-	//this is to make sure the first level's file is ALWAYS there, even if it's been deleted
+	//this is to make sure the first and second level's files are ALWAYS there, even if they've been deleted
 
 	ifstream a("resources/data/0.ddb");
 
@@ -226,8 +226,7 @@ void MapState::loadGame() {	//reads each level's save file and unlocks them / lo
 			if (scoreE >= 600000) {
 				buttons[i].second.difActive = true;
 
-				//the levels are also unlocked in pairs
-
+				//the levels are also unlocked in pairs, so we need to check every odd level and the one before it
 				if (i < max && i % 2 == 1 && buttons[i - 1].second.scoreE_ >= 600000) {
 					unlockLevel(i + 1);
 					if(i + 2 < max)

@@ -15,7 +15,7 @@
 class DialogState: public GameState
 {
 public:
-	DialogState(GameManager* g, int txt, int numctrl, bool oneP, bool difficulty, int prevMaxScoreE, int prevMaxScoreH); //Entra el entero del nivel para cargar el dialog que toque
+	DialogState(GameManager* g, int txt, int numctrl, bool oneP, bool difficulty, int prevMaxScoreE, int prevMaxScoreH); //input the level's int index to load it
 	~DialogState();
 	void init();
 	virtual void update(Uint32 time) ;
