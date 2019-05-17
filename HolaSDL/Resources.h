@@ -158,7 +158,6 @@ public:
 		TutoBox2,
 		TutoBox3,
 		TutoBox4,
-		TutoBox5,
 		TutoFiltro,
 		AlienIdle,
 		AlienDance,
@@ -175,7 +174,8 @@ public:
 		FondoHardbass,
 		FondoHardbassPixel,
 		MarcelinoEraYo,
-		newGameConfirm
+		newGameConfirm,
+		TutoBox5
 
 		// text
 	};
