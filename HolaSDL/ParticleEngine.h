@@ -6,6 +6,8 @@
 #include "GameObject.h"
 #include "checkML.h"
 
+//Controls the particles
+
 class ParticleEngine : public GameObject
 {
 private:

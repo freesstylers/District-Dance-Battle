@@ -4,14 +4,14 @@
 
 class GameManager;
 
-//Panel que aparece al pulsar en una parada de metro desde el mapa
+//Panel that appears when a Underground Stop is checked on MapState
 
 class PanelMap
 {
 public:
 	PanelMap();
 	PanelMap(GameManager* manager, Vector2D panelPos, int photo, int difficulty, string name, int level);
-	virtual ~PanelMap();
+	virtual ~PanelMap() {};
 	void render(Uint32 time, bool beatHandler);
 	void renderLetters(Uint32 time, bool beatHandler);
 	void reset();
@@ -22,7 +22,7 @@ public:
 	int index = 0;
 	int lvl_;
 	
-	int scoreE_ = 0;
+	int scoreE_ = 0; //Previous High Scores
 	int scoreH_ = 0;
 
 	bool selected = false;

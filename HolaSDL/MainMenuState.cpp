@@ -12,7 +12,6 @@ MainMenuState::MainMenuState(GameManager*g):GameState(g)
 	selectButton.reserve (5);
 	controller = SDL_GameControllerOpen(0);
 	
-
 	EmptyObject* bg = new EmptyObject(g, Vector2D(0, 0), gameManager->getDefaultWindowWidth(), gameManager->getDefaultWindowHeight(), Resources::MainMenu);
 	EmptyObject* loadGame1 = new EmptyObject(g, Vector2D(gameManager->getDefaultWindowWidth() / 2+70, gameManager->getDefaultWindowHeight() / 2 - 400), 600, 190, Resources::ChargeGameNoSelected);
 	EmptyObject* loadGame2 = new EmptyObject(g, Vector2D(gameManager->getDefaultWindowWidth() / 2+70, gameManager->getDefaultWindowHeight() / 2 - 400), 600, 190, Resources::ChargeGameSelected);
@@ -53,15 +52,12 @@ MainMenuState::MainMenuState(GameManager*g):GameState(g)
 	selectButton.push_back(b4);
 	selectButton.push_back(b5);
 
-
 	stage.push_back(bg);
-
 
 	double menuX = gameManager->getDefaultWindowWidth() / 3;
 	double menuY = gameManager->getDefaultWindowHeight() / 6;
 	double menuW = gameManager->getDefaultWindowWidth() / 3;
 	double menuH = gameManager->getDefaultWindowHeight() * 2 / 3;
-
 
 	double buttonConst = menuH / 8 - 50;
 
@@ -101,7 +97,6 @@ MainMenuState::MainMenuState(GameManager*g):GameState(g)
 	g->getServiceLocator()->getAudios()->setChannelVolume(gameManager->getMusicVolume(), 0);
 
 	manager->getServiceLocator()->getAudios()->playChannel(Resources::MainTheme, -1, 0);
-	
 }
 
 
@@ -175,14 +170,12 @@ void MainMenuState::options()
 	soundTxt->setActive(optionsOpen);
 	controlTxt->setActive(optionsOpen);
 
-
 	if (optionsOpen) {
 		selectedButton = 0;
 		selection->setPosition(optionsButtons[selectedButton]->getPosition());
 		selection->forceAnimationChange(Resources::VolSelection);
 	}
 	gameManager->mainmenu = true;
-
 }
 
 void MainMenuState:: updateMusic(bool raise)
@@ -193,7 +186,6 @@ void MainMenuState:: updateMusic(bool raise)
 	else if (!raise && gameManager->getMusicVolume() > 0) {
 		gameManager->setMusicVolume(gameManager->getMusicVolume() - 5);
 	}
-
 
 	gameManager->getServiceLocator()->getAudios()->setChannelVolume(gameManager->getMusicVolume(), 0);
 	gameManager->getServiceLocator()->getAudios()->setChannelVolume(gameManager->getMusicVolume(), 2);
@@ -303,7 +295,6 @@ void MainMenuState::backButton()
 	}
 }
 
-
 void MainMenuState::newGame(GameManager* gameManager)	//erases all the savefiles (besides the options) and pushes a Tutorial State
 {
 	remove("resources/data/0.ddb");
@@ -326,7 +317,6 @@ bool MainMenuState::handleEvent(Uint32 time, SDL_Event e)
 		manager->stop();
 		return true;
 	}
-
 	bool input = false;
 	if ((SDL_CONTROLLERBUTTONDOWN) && keyup)
 	{
@@ -408,7 +398,6 @@ bool MainMenuState::handleEvent(Uint32 time, SDL_Event e)
 				confirmationActive = true;
 			}
 		}
-
 		else if (selectButton[2] == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A)))
 		{
 			gameManager->mainmenu = false;
@@ -429,10 +418,8 @@ bool MainMenuState::handleEvent(Uint32 time, SDL_Event e)
 			exit(gameManager);
 			input = true;
 		}
-
 		keyup = false;
 	}
-	
 		else if (e.type == SDL_CONTROLLERBUTTONUP || e.type == SDL_KEYUP) { keyup = true; input = false; }
 	return false;
 }

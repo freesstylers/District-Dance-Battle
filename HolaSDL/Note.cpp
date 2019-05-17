@@ -1,10 +1,5 @@
 #include "Note.h"
 
-
-Note::Note()
-{
-
-}
 Note::Note(SDL_GameControllerButton key, SDLGame* game, double width, double height, Vector2D pos, Vector2D vel, bool isXbox) :
 	GameObject(game), key(key)
 {
@@ -12,9 +7,7 @@ Note::Note(SDL_GameControllerButton key, SDLGame* game, double width, double hei
 	setHeight(height);
 	setPosition(pos);
 	setVelocity(vel/1000.0);
-	
-	changeController(isXbox);
-
+	changeController(isXbox); //Xbox controller by default, as it's the official controller for PC
 }
 
 Note::~Note()
@@ -22,17 +15,12 @@ Note::~Note()
 	game_ = nullptr;
 }
 
-bool Note::handleInput(Uint32 time, const SDL_Event& event) {
-
-	return false;
-}
-
 void Note::update(Uint32 time) {
 	double deltaTime = getGame()->deltaTime;
 	position_.set(position_ + velocity_ * deltaTime);
 }
 
-void Note::changeController(bool isXbox)
+void Note::changeController(bool isXbox) //Animation changed between Xbox controller and PlayStation controller layouts
 {
 	if (isXbox) {
 		switch (key) {

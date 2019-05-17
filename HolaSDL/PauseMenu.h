@@ -7,7 +7,7 @@
 #include <string>
 #include "checkML.h"
 
-//Menú de pausa
+//Pause menu during levels
 
 class TutorialState;
 class PlayState;
@@ -59,9 +59,6 @@ private:
 	
 	void updateTxt();
 
-
-
-
 public:
 	PauseMenu(SDLGame* game, PlayState* ps, bool isXbox);
 	~PauseMenu();
@@ -69,8 +66,7 @@ public:
 	void activate();
 	void updateControls();
 
-
 	virtual bool handleInput(Uint32 time, const SDL_Event& event);
-	virtual void update(Uint32 time);
+	virtual void update(Uint32 time) {};
 	virtual void render(Uint32 time, bool beatSync = false);
 };

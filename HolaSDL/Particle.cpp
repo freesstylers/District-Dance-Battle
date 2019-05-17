@@ -17,14 +17,9 @@ Particle::Particle(Vector2D pos, Vector2D vel, int life,int h, int w, SDLGame* G
 void Particle::update(Uint32 time)
 {
 	setPosition(Vector2D(position_.getX() + velocity_.getX(), position_.getY() + velocity_.getY()));
-	//alpha_ -= 3;
 }
 
 bool Particle::isDead()
 {
 	return (SDL_GetTicks() >= endTime);
-}
-
-Particle::~Particle()
-{
 }

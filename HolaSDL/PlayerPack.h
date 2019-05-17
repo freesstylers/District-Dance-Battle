@@ -11,7 +11,7 @@
 #include "PlayerPack.h"
 #include "checkML.h"
 
-//LLeva el control de las notas , la puntuación y el feedback de cada jugador durante la partida.
+//Controls everything related to the player during the levels, Note control, Score, Feedback (individual, in Multiplayer, each Player has its own)
 
 class PlayState;
 class PlayerPack : public GameObject

@@ -34,7 +34,6 @@ void ParticleEngine::update(Uint32 time)
 		else
 		{
 			delete particles[i];
-			//particles[i] = new Particle(Vector2D(position_.getX() + rand() % 6 - 3, position_.getY() + rand() % 6 - 3), Vector2D(rand() % 10 + (float)rand() / (float)RAND_MAX - 5, rand() % 10 + (float)rand() / (float)RAND_MAX - 5), 700, 16, 16, game_);
 			particles[i] = nullptr;
 			particles.erase(particles.begin() + i);
 		}

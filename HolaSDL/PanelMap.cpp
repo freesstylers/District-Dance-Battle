@@ -104,7 +104,7 @@ void PanelMap::selectButton(SDL_Event e, SDL_GameController* cont) {
 		}
 		break;
 	case 2:
-		//Cuando se pulsa va al play state con el nivel correspondiente
+		//When clicked, load the PlayState of the corresponding level
 
 		if (SDL_GameControllerGetButton(cont, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_RETURN)
 		{
@@ -114,12 +114,6 @@ void PanelMap::selectButton(SDL_Event e, SDL_GameController* cont) {
 			else
 				manager_->getMachine()->changeState(new DialogState(manager_, lvl_, 0, oneP_, hardMode_, scoreE_, scoreH_));
 		}
-		//MenuState::play(lvl_);
 		break;
 	}
-}
-
-PanelMap::~PanelMap()
-{
-
 }

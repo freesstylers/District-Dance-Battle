@@ -2,11 +2,10 @@
 #include "TutorialState.h"
 #include "PlayState.h"
 
-PauseMenu::PauseMenu(SDLGame* game, PlayState* ps, bool isXbox) : GameObject(game), isXbox(isXbox)
+PauseMenu::PauseMenu(SDLGame* game, PlayState* ps, bool isXbox) : GameObject(game), isXbox(isXbox) //Creates all the UI related
 {
 
 	level = ps;
-
 
 	double menuX = game->getDefaultWindowWidth() / 3;
 	double menuY = game->getDefaultWindowHeight() / 6;
@@ -22,13 +21,9 @@ PauseMenu::PauseMenu(SDLGame* game, PlayState* ps, bool isXbox) : GameObject(gam
 
 
 	bg = new EmptyObject(game, Vector2D(menuX, menuY), menuW, menuH, Resources::MenuBG);
-
 	resume = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.18 + buttonConst), menuW / 2, 45, Resources::ButtonResume);
-
 	restart = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.34 + buttonConst), menuW / 2, 45, Resources::ButtonRestart);
-
 	options = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.5 + buttonConst), menuW / 2, 45, Resources::ButtonOptions);
-
 	exit = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.66 + buttonConst), menuW / 2, 45, Resources::ButtonExit);
 
 	menuButtons.push_back(resume);
@@ -218,7 +213,7 @@ bool PauseMenu::handleInput(Uint32 time, const SDL_Event& event)
 	return false;
 }
 
-void PauseMenu::resumeSong()
+void PauseMenu::resumeSong() //Gets back to the level
 {
 	timer->Update();
 	float time = timer->DeltaTime() * 1000;
@@ -266,10 +261,10 @@ void PauseMenu::exitSong()
 		a->exit();
 
 	else
-		level->exit();
+		level->exit(); //returns to the Map State
 }
 
-void PauseMenu::updateMusic(bool raise)
+void PauseMenu::updateMusic(bool raise) //Music control, the one at MainMenuState has the same code, but not possible to get by inheritance (one is a GameState, and other a GameObject) 
 {
 	if (raise && game_->getMusicVolume() < 100) {
 		game_->setMusicVolume(game_->getMusicVolume() + 5);
@@ -277,7 +272,6 @@ void PauseMenu::updateMusic(bool raise)
 	else if(!raise && game_->getMusicVolume() > 0) {
 		game_->setMusicVolume(game_->getMusicVolume() - 5);
 	}
-
 
 	game_->getServiceLocator()->getAudios()->setChannelVolume(game_->getMusicVolume(), 0);
 	game_->getServiceLocator()->getAudios()->setChannelVolume(game_->getMusicVolume(), 2);
@@ -287,7 +281,7 @@ void PauseMenu::updateMusic(bool raise)
 	updateTxt();
 }
 
-void PauseMenu::updateSound(bool raise)
+void PauseMenu::updateSound(bool raise) //SFX (like error sound) control, the one at MainMenuState has the same code, but not possible to get by inheritance (one is a GameState, and other a GameObject) 
 {
 	if (raise && game_->getSoundVolume() < 100) {
 		game_->setSoundVolume(game_->getSoundVolume() + 5);
@@ -325,16 +319,11 @@ void PauseMenu::updateTxt()
 	controlTxt->setPosition(controlsSelect->getPosition() + Vector2D(controlsSelect->getWidth() / 2, controlsSelect->getHeight() / 2) - Vector2D(controlTxt->getWidth() / 2, controlTxt->getHeight() / 2));
 
 
-	ofstream file("resources/data/options.ddb");
+	ofstream file("resources/data/options.ddb"); //Saves the options so the user doesn't have to reconfigure it every time
 
 	file << "MUSIC" << endl << game_->getMusicVolume() << endl << "SOUND" << endl << game_->getSoundVolume() << endl << "CONTROLLER" << endl << game_->getController();
 
 	file.close();
-}
-
-
-void PauseMenu::update(Uint32 time)
-{
 }
 
 void PauseMenu::render(Uint32 time, bool beatSync)

@@ -143,19 +143,8 @@ void PlayerPack::update(Uint32 time)
 
 bool PlayerPack::handleInput(Uint32 time, const SDL_Event& event)
 {
-	for (Note* o : screenArrows_)
-	{
-		o->handleInput(time, event);
-	}
-	for (Note* o : screenButtons_)
-	{
-		o->handleInput(time, event);
-	}
-	leftNoteBar->handleInput(time, event);
-	rightNoteBar->handleInput(time, event);
 	leftPoint->handleInput(time, event);
 	rightPoint->handleInput(time, event);
-	rightNoteBar->handleInput(time, event);
 	feedbackLeft->handleInput(time, event);
 	feedbackRight->handleInput(time, event);
 
@@ -181,7 +170,7 @@ void PlayerPack::resetCombo()
 	}
 }
 
-int* PlayerPack::getCalifications()
+int* PlayerPack::getCalifications() //Makes possible showing data at EndState
 {
 	return califications;
 }
@@ -201,7 +190,6 @@ void PlayerPack::changeController(bool isXbox)
 		if (o != nullptr)
 			o->changeController(isXbox);
 	}
-
 }
 
 void PlayerPack::updateCombo()
