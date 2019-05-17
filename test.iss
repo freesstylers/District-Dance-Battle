@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "District Dance Battle"
-#define MyAppVersion "1.0"
+#define MyAppVersion "1.1"
 #define MyAppPublisher "FreeStylers Studio"
 #define MyAppURL "https://freesstylers.github.io/District-Dance-Battle/"
 #define MyAppExeName "DistrictDanceBattle.exe"
@@ -10,7 +10,7 @@
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{ABDDF81E-1E26-4EAB-9CAE-BB8B4D42EF0F}
+AppId={{E163C7B2-C920-41A6-8F9B-766D29E83B7D}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
@@ -20,48 +20,46 @@ AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
 DefaultDirName={autopf}\{#MyAppName}
 DisableProgramGroupPage=yes
-; The [Icons] "quicklaunchicon" entry uses {userappdata} but its [Tasks] entry has a proper IsAdminInstallMode Check.
-UsedUserAreasWarning=no
-; Uncomment the following line to run in non administrative install mode (install for current user only.)
-;PrivilegesRequired=lowest
-OutputBaseFilename=mysetup
+; Remove the following line to run in administrative install mode (install for all users.)
+PrivilegesRequired=lowest
+PrivilegesRequiredOverridesAllowed=commandline
+OutputBaseFilename=DistrictDanceBattle_Installer
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
 
 [Languages]
+Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "spanish"; MessagesFile: "compiler:Languages\Spanish.isl"
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
-Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked; OnlyBelowVersion: 6.1; Check: not IsAdminInstallMode
 
 [Files]
-Source: "C:\Users\ignac\Documents\GitHub\Despacito-2\bin\DistrictDanceBattle.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ignac\Documents\GitHub\Despacito-2\bin\libFLAC-8.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ignac\Documents\GitHub\Despacito-2\bin\libfreetype-6.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ignac\Documents\GitHub\Despacito-2\bin\libjpeg-9.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ignac\Documents\GitHub\Despacito-2\bin\libmodplug-1.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ignac\Documents\GitHub\Despacito-2\bin\libmpg123-0.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ignac\Documents\GitHub\Despacito-2\bin\libogg-0.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ignac\Documents\GitHub\Despacito-2\bin\libpng16-16.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ignac\Documents\GitHub\Despacito-2\bin\libtiff-5.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ignac\Documents\GitHub\Despacito-2\bin\libvorbis-0.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ignac\Documents\GitHub\Despacito-2\bin\libvorbisfile-3.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ignac\Documents\GitHub\Despacito-2\bin\libwebp-4.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ignac\Documents\GitHub\Despacito-2\bin\SDL2.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ignac\Documents\GitHub\Despacito-2\bin\SDL2_image.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ignac\Documents\GitHub\Despacito-2\bin\SDL2_mixer.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ignac\Documents\GitHub\Despacito-2\bin\SDL2_net.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ignac\Documents\GitHub\Despacito-2\bin\SDL2_ttf.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ignac\Documents\GitHub\Despacito-2\bin\zlib1.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ignac\Documents\GitHub\Despacito-2\bin\resources\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\Users\shoosh\Documents\GitHub\District-Dance-Battle\bin\DistrictDanceBattle.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\shoosh\Documents\GitHub\District-Dance-Battle\bin\libFLAC-8.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\shoosh\Documents\GitHub\District-Dance-Battle\bin\libfreetype-6.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\shoosh\Documents\GitHub\District-Dance-Battle\bin\libjpeg-9.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\shoosh\Documents\GitHub\District-Dance-Battle\bin\libmodplug-1.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\shoosh\Documents\GitHub\District-Dance-Battle\bin\libmpg123-0.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\shoosh\Documents\GitHub\District-Dance-Battle\bin\libogg-0.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\shoosh\Documents\GitHub\District-Dance-Battle\bin\libpng16-16.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\shoosh\Documents\GitHub\District-Dance-Battle\bin\libtiff-5.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\shoosh\Documents\GitHub\District-Dance-Battle\bin\libvorbis-0.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\shoosh\Documents\GitHub\District-Dance-Battle\bin\libvorbisfile-3.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\shoosh\Documents\GitHub\District-Dance-Battle\bin\libwebp-4.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\shoosh\Documents\GitHub\District-Dance-Battle\bin\SDL2.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\shoosh\Documents\GitHub\District-Dance-Battle\bin\SDL2_image.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\shoosh\Documents\GitHub\District-Dance-Battle\bin\SDL2_mixer.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\shoosh\Documents\GitHub\District-Dance-Battle\bin\SDL2_net.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\shoosh\Documents\GitHub\District-Dance-Battle\bin\SDL2_ttf.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\shoosh\Documents\GitHub\District-Dance-Battle\bin\zlib1.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\shoosh\Documents\GitHub\District-Dance-Battle\bin\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
 Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
 Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
-Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: quicklaunchicon
 
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
