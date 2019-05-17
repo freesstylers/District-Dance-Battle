@@ -1,30 +1,27 @@
 ﻿#pragma once
-#include "GameState.h"
 #include <cstdlib>
 #include <fstream>
-#include <vector>
 #include <list>
+#include <vector>
 #include <string>
-#include "GameObject.h"
-#include "Timer.h"
-#include "Note.h"
+#include "Background.h"
+#include "BarBackground.h"
 #include "BeatHandler.h"
 #include "Character.h"
-#include "SongBar.h"
-#include "BarBackground.h"
+#include "checkML.h"
 #include "EmptyObject.h"
-#include "Squares.h"
+#include "GameObject.h"
+#include "GameState.h"
 #include "Level.h"
-#include "Background.h"
-#include "Timer.h"
-#include "PlayerPack.h"
-#include "RedEffect.h"
+#include "Note.h"
 #include "ParticleEngine.h"
 #include "PauseMenu.h"
-#include "checkML.h"
+#include "PlayerPack.h"
+#include "Squares.h"
+#include "SongBar.h"
+#include "Timer.h"
 
 //Clase de estado principal
-
 class PlayState : public GameState //main game class, where most of the gameplay will take place
 {
 protected:
@@ -34,25 +31,21 @@ protected:
 
 	int tPlayers;
 	int nlevel;
-	bool isSingleplayer;
-	bool difficultyMode;
 
-	Timer* timer;
-	int probqte;
-	Timer* extraTimer;
-	Timer* animationTimer;
+	bool isSingleplayer;	//Level settings one or two players
+	bool difficultyMode;	//and hard or easy mdoe
 
+	Timer* timer;	//We use this timer for the notes handler
+	Timer* extraTimer;	//This timer is used for pauses
 
 	bool firstNote = true;
-	bool songIsOver = false;
+	bool songIsOver = false; 
 	bool isPaused = false;
-	bool isLost();
 
-	Vector2D noteVel;
-	EmptyObject* fourButtons;
-	Character* perico;
-	Character* enemy;
-	Level* level;
+	EmptyObject* fourButtons = nullptr;
+	Character* perico = nullptr;	//Main character
+	Character* enemy = nullptr;	//Enemy character
+	Level* level = nullptr;
 	Background* crown = nullptr;
 
 	BarBackground* songBarBG;
@@ -76,11 +69,15 @@ protected:
 	
 	double maxNoteValue = 0;
 
-	int combo;
-
 	int songEndWaitTime = 0;
 
 	int volume = 60;
+
+	bool isLost();
+	void deleteAll();
+	void generateArrows();
+	void generateButtons();
+	void songOver();
 
 public:
 	BeatHandler* bh;
@@ -127,17 +124,6 @@ public:
 
 	virtual void restart();
 	virtual void exit();
-
-	
-
-
-protected:
-	void deleteAll();
-	
-	void generateArrows();
-	void generateButtons();
-
-	void songOver();
 
 private:
 	int bgT;

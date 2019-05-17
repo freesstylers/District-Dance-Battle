@@ -127,8 +127,6 @@ void PlayState::newGame()
 
 
 	level->playSong();
-
-	combo = 0;
 }
 
 void PlayState::newGame2P()
@@ -184,8 +182,6 @@ void PlayState::newGame2P()
 	stage.push_back(youLost);
 
 	level->playSong();
-
-	combo = 0;
 }
 
 PlayState::~PlayState()

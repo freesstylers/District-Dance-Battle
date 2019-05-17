@@ -3,7 +3,6 @@
 #include "GameManager.h"
 #include <string>
 #include "PlayerPack.h"
-#include "RedEffect.h"
 
 
 LevelInputManager::LevelInputManager(PlayState* l, PlayerPack* pl, int numctrl)

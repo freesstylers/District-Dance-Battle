@@ -3,14 +3,13 @@
 #include "BarBackground.h"
 #include "checkML.h"
 
-//barra que sigue la canción
+//Bar which follow the song time
 class SongBar : public GameObject
 {
 protected:
 	Texture* texture;
 	BarBackground* bar;
 public:
-
 	SongBar(SDLGame* game, double width, double height,  Vector2D pos, int finalPos, BarBackground* backgroundBar, int songLength);
 	virtual ~SongBar();
 	virtual bool handleInput(Uint32 time, const SDL_Event& event);

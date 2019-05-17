@@ -44,7 +44,6 @@
     <ClCompile Include="EmptyObject.cpp" />
     <ClCompile Include="TextObject.cpp" />
     <ClCompile Include="ComboText.cpp" />
-    <ClCompile Include="RedEffect.cpp" />
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="ParticleEngine.cpp" />
     <ClCompile Include="PauseMenu.cpp" />
@@ -99,7 +98,6 @@
     <ClInclude Include="EmptyObject.h" />
     <ClInclude Include="TextObject.h" />
     <ClInclude Include="ComboText.h" />
-    <ClInclude Include="RedEffect.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="ParticleEngine.h" />
     <ClInclude Include="PauseMenu.h" />

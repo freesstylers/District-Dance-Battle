@@ -29,7 +29,6 @@
     <ClInclude Include="PlayerPack.h" />
     <ClInclude Include="EmptyObject.h" />
     <ClInclude Include="PanelMap.h" />
-    <ClInclude Include="RedEffect.h" />
     <ClInclude Include="ScoreBar.h" />
     <ClInclude Include="SongBar.h" />
     <ClInclude Include="EndState.h" />
@@ -84,7 +83,6 @@
     <ClCompile Include="PlayerPack.cpp" />
     <ClCompile Include="EmptyObject.cpp" />
     <ClCompile Include="PanelMap.cpp" />
-    <ClCompile Include="RedEffect.cpp" />
     <ClCompile Include="ScoreBar.cpp" />
     <ClCompile Include="SongBar.cpp" />
     <ClCompile Include="EndState.cpp" />

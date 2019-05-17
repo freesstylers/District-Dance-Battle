@@ -2,6 +2,7 @@
 #include "GameObject.h"
 #include "checkML.h"
 
+//Is the point where the notes has to be pressed
 class Point : public GameObject
 {
 private:

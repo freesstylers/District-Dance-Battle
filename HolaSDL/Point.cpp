@@ -1,9 +1,6 @@
 #include "Point.h"
 
 
-
-
-
 Point::Point(SDLGame* game, double width, double height, Vector2D pos, SDL_GameController* contr, bool side) : GameObject(game), controller(contr), side_(side)
 {
 	setWidth(width);
@@ -13,6 +10,7 @@ Point::Point(SDLGame* game, double width, double height, Vector2D pos, SDL_GameC
 	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::Point);
 }
 
+//Change the point animation when some button is pushed
 bool Point::handleInput(Uint32 time, const SDL_Event& event)
 {
 	if (event.type == SDL_CONTROLLERBUTTONDOWN)

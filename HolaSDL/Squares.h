@@ -2,11 +2,11 @@
 #include "GameObject.h"
 #include "checkML.h"
 
-
+//Class we use for square sprite. Notes are falling down over this class/sprite
 class Squares : public GameObject
 {
 public:
-	Squares();
+	Squares() {};
 	Squares(SDLGame* game, double width, double height, Vector2D pos);
 	virtual ~Squares();
 	virtual void update(Uint32 time){}

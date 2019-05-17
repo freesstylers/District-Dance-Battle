@@ -8,16 +8,18 @@ SongBar::SongBar(SDLGame* game, double width, double height, Vector2D pos, int f
 	setPosition(pos);
 	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::NoteIcon);
 }
+
 bool SongBar::handleInput(Uint32 time, const SDL_Event& event) 
 {
 	return false;
 }
+
 SongBar::~SongBar()
 {
 
 }
 
-//Update the songbar and note position depending of the song time
+//Updates the songbar and note position depending of the song time
 void SongBar::update(Uint32 time)
 {
 	if (position_.getX() < game_->getDefaultWindowWidth()-82 ) {

@@ -1,17 +1,15 @@
 #include "ScoreBar.h"
 
-ScoreBar::ScoreBar(SDLGame* game, double width, double height, Vector2D pos, double maxScore, double maxY) : GameObject(game)
+ScoreBar::ScoreBar(SDLGame* game, double width, double height, Vector2D pos, double maxScore, double maxY) : 
+	GameObject(game), maxScore_(maxScore), maxHeight_(400), currentHeight(height)
 {
 	setWidth(width);
 	setHeight(height);
 	setPosition(pos);
-	maxScore_ = maxScore;
 	animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::YellowBar);
 
-	currentHeight = height;
 	originalY_ = pos.getY();
 	//maxHeight_ = originalY_ - maxY;	//the maxY only represents the maximum y position, not the actual height (distance from the original y pos to the maximum y pos)
-	maxHeight_ = 400;
 
 	stars = new EmptyObject(game, Vector2D(pos.getX() - 1, pos.getY() - maxHeight_), width + 2, maxHeight_ + 2, Resources::StarBar);
 	particleEffect = new ParticleEngine(60, pos, game);
@@ -21,13 +19,10 @@ bool ScoreBar::handleInput(Uint32 time, const SDL_Event& event) {
 	return false;
 }
 
+//Updates the score bar respect to a maximun height
 void ScoreBar::updateBar(double punt)
 {
-	double fraction = 0;
-
-	fraction = (punt * maxHeight_) / maxScore_;
-
-	currentHeight = fraction;
+	currentHeight = (punt * maxHeight_) / maxScore_;
 
 	setHeight(currentHeight);
 	position_.setY(originalY_ - currentHeight);
@@ -63,6 +58,7 @@ void ScoreBar::render(Uint32 time, bool beatSync)
 	stars->render(time, false);
 	particleEffect->render(time, false);
 }
+
 ScoreBar::~ScoreBar()
 {
 	delete particleEffect;
