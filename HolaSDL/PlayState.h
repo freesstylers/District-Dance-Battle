@@ -105,7 +105,8 @@ public:
 	Vector2D leftNotesVector2;
 	Vector2D rightNotesVector2;
 	GameManager* getGameManager() { return manager; }
-	ParticleEngine* particles;
+	ParticleEngine* particles;	//We use particles when you hit a combo or earn a star
+
 	EmptyObject* Lost;
 	EmptyObject* youLost;
 

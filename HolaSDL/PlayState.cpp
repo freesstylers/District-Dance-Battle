@@ -225,7 +225,7 @@ void PlayState::update(Uint32 time)
 				crown->setPosition(Vector2D(player2->getleftBar()->getPosition().getX() + player2->getleftBar()->getWidth() / 2 + 6, player2->getleftBar()->getPosition().getY() - 60));
 			}
 		}
-
+		//When the arrows and the buttons stop, the game finish
 		if (levelArrows_.empty() && levelButtons_.empty()) {
 			if (player1->screenArrows_.empty() && player1->screenButtons_.empty()) {
 				if ((player2 == nullptr || (player2->screenArrows_.empty() && player2->screenButtons_.empty())))
@@ -309,6 +309,7 @@ void PlayState::resume(unsigned int timePaused)
 	}
 }
 
+//Change the controls to PS4 controls or XBOX controls
 bool PlayState::changeControls()
 {
 	bool isXbox = !manager->getController();
@@ -398,7 +399,7 @@ void PlayState::deleteAll()
 	}
 }
 
-//Al generar las flechas y los botones, los mueve en proporcion al tiempo perdido por cada vuelta
+//Take out a note from the vector
 void PlayState::generateArrows()
 {
 	if (!levelArrows_.empty()) {
