@@ -79,7 +79,7 @@ bool ExtraMenu::handleEvent(Uint32 time,  SDL_Event event)
 				manager->getMachine()->changeState(new PlayState(manager, 10, onePlayer, false));
 				break;
 			case 1:
-				manager->getMachine()->changeState(new PlayState(manager, 5, onePlayer, false));
+				manager->getMachine()->changeState(new PlayState(manager, 11, onePlayer, false));
 				break;
 			case 2:
 				manager->getMachine()->changeState(new PlayState(manager, 6, onePlayer, false));
