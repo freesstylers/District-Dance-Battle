@@ -253,7 +253,11 @@ void PauseMenu::toggleOptions()
 
 void PauseMenu::restartSong()
 {
-	level->restart();
+	if (TutorialState * a = dynamic_cast<TutorialState*>(level))
+		a->restart();
+
+	else
+		level->restart();
 }
 
 void PauseMenu::exitSong()

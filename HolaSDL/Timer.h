@@ -1,6 +1,8 @@
 #pragma once
 #include <SDL.h>
 #include "checkML.h"
+
+//Timer used for note's tempo 
 class Timer
 {
 private:
@@ -14,11 +16,14 @@ private:
 public:
 	Timer();
 	~Timer();
+
+	//Resets the timers ticks
 	void Reset();
 	float DeltaTime();
 
 	void TimeScale(float t);
 	float TimeScale();
+
 	void setLastItTime(double t) { _lastItTimer = t; }
 	double getLastTIme() { return _lastItTimer; }
 	void Update();

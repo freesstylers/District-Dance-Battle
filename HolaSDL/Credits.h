@@ -14,7 +14,7 @@ class Credits: public GameState
 private:
 	SDL_GameController* controller = NULL;
 
-	Background* bg;
+	EmptyObject* bg;
 
 	bool optionsOpen = false;
 
