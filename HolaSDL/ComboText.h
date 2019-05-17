@@ -27,7 +27,5 @@ public:
 	virtual void render(Uint32 time, bool beatSync = false);
 
 	void updateCombo(int combo);
-
-	void toggleHideAnimation(bool hide) { hideAnimation = hide; }
 };
 

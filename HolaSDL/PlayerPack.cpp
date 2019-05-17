@@ -176,6 +176,7 @@ void PlayerPack::resetCombo()
 {
 	if (combo != 0) {
 		combo = 0;
+		comboTxt->setActive(false);
 		updateCombo();
 	}
 }
@@ -208,13 +209,10 @@ void PlayerPack::updateCombo()
 
 	if (combo < 10) {
 		playstate_->getPerico()->setAnimation(Resources::PericoIdle);
-		comboTxt->toggleHideAnimation(true);
 	}
 
 	else
 	{
-		comboTxt->toggleHideAnimation(false);
-
 		if (combo < 50)
 			playstate_->getPerico()->setAnimation(Resources::PericoDab);
 
