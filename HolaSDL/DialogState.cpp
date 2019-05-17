@@ -148,6 +148,8 @@ bool DialogState::handleEvent(Uint32 time, SDL_Event e) {
 		}
 		else if (end) {
 			manager->getServiceLocator()->getAudios()->haltChannel(4);
+			if (nlevel == 0)
+				manager->getMachine()->changeState(new TutorialState(manager));
 			if(nlevel <= 5)
 				manager->getMachine()->changeState(new PlayState(manager, nlevel, oneP_, hardMode_, prevMaxScoreE_, prevMaxScoreH_));
 			else
