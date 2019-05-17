@@ -181,6 +181,7 @@ vector<Resources::ImageInfo> Resources::images_{
 		{ FondoHardbassPixel, "resources/images/FondoHardbassPixel.png", 213, 120, 2, 1, 2 },
 		{ MarcelinoEraYo, "resources/images/MarcelinoEraYo.png", 60, 120, 7, 1, 6 },
 		{ TutoBox5, "resources/images/tutoBox5.png", 1224, 504, 1, 1, 1 },
+		{ newGameConfirm, "resources/images/newGameConfirm.png",1224,504,1,1,1 }
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {
