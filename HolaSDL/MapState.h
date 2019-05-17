@@ -1,7 +1,6 @@
 #pragma once
 #include "GameState.h"
 
-#include "ExtraMenu.h"
 #include "EmptyObject.h"
 #include "PanelMap.h"
 #include <iostream>
@@ -41,7 +40,6 @@ private:
 	SDL_GameController* controller = NULL;
 
 	EmptyObject* fondo__;
-	EmptyObject* moreLvls_;
 
 	void unlockLevel(int lvl);
 	void lockLevels();

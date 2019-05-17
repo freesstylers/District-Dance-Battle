@@ -17,7 +17,6 @@
     <ClInclude Include="ComboText.h" />
     <ClInclude Include="Credits.h" />
     <ClInclude Include="DialogState.h" />
-    <ClInclude Include="ExtraMenu.h" />
     <ClInclude Include="FeedbackPool.h" />
     <ClInclude Include="GameObjectPool.h" />
     <ClInclude Include="HitNote.h" />
@@ -73,7 +72,6 @@
     <ClCompile Include="ComboText.cpp" />
     <ClCompile Include="Credits.cpp" />
     <ClCompile Include="DialogState.cpp" />
-    <ClCompile Include="ExtraMenu.cpp" />
     <ClCompile Include="FeedbackPool.cpp" />
     <ClCompile Include="GameObjectPool.cpp" />
     <ClCompile Include="HitNote.cpp" />

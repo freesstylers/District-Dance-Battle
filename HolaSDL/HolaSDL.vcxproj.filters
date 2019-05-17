@@ -50,7 +50,6 @@
     <ClCompile Include="PauseMenu.cpp" />
     <ClCompile Include="HitNote.cpp" />
     <ClCompile Include="HitNotePool.cpp" />
-    <ClCompile Include="ExtraMenu.cpp" />
     <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="TutorialState.cpp" />
     <ClCompile Include="Credits.cpp" />
@@ -106,7 +105,6 @@
     <ClInclude Include="PauseMenu.h" />
     <ClInclude Include="HitNote.h" />
     <ClInclude Include="HitNotePool.h" />
-    <ClInclude Include="ExtraMenu.h" />
     <ClInclude Include="MainMenuState.h" />
     <ClInclude Include="checkML.h" />
     <ClInclude Include="TutorialState.h" />
