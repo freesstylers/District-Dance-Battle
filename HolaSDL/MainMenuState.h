@@ -28,6 +28,8 @@ private:
 	int index = 0;
 	int max=4;
 	int min = 0;
+
+	bool confirmationActive = false;
 	bool keyup = true;
 
 	void exit(GameManager* gameManager);
@@ -44,6 +46,7 @@ private:
 	EmptyObject* controlsSelect;
 	EmptyObject* op_exit;
 
+	EmptyObject* confirmation;
 	EmptyObject* selection;
 
 	TextObject* musicTxt;

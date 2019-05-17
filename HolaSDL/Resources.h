@@ -173,7 +173,8 @@ public:
 		AlienHead,
 		FondoHardbass,
 		FondoHardbassPixel,
-		MarcelinoEraYo
+		MarcelinoEraYo,
+		newGameConfirm
 
 		// text
 	};

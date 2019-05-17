@@ -95,6 +95,7 @@ MainMenuState::MainMenuState(GameManager*g):GameState(g)
 	optionsButtons.push_back(sounds);
 	optionsButtons.push_back(controls);
 	selection = new EmptyObject(gameManager, Vector2D(menuX + menuX / 4, menuY + menuH * 2 / 3), menuW / 2, 45, Resources::ButtonSelection);
+	confirmation = new EmptyObject(gameManager, Vector2D(gameManager->getDefaultWindowWidth()/2-1020/2, gameManager->getDefaultWindowHeight()/2-420/2), 1020, 420, Resources::newGameConfirm);
 
 	g->getServiceLocator()->getAudios()->setChannelVolume(gameManager->getSoundVolume(), 1);
 	g->getServiceLocator()->getAudios()->setChannelVolume(gameManager->getMusicVolume(), 0);
@@ -119,6 +120,7 @@ MainMenuState::~MainMenuState()
 	delete soundsSelect;
 	delete controls;
 	delete controlsSelect;
+	delete confirmation;
 	delete op_exit;
 
 	delete selection;
@@ -154,6 +156,9 @@ void MainMenuState::render(Uint32 time, bool beatHandler)
 		musicTxt->render(time);
 		soundTxt->render(time);
 		controlTxt->render(time);
+	}
+	if (confirmationActive) {
+		confirmation->render(time);
 	}
 }
 
@@ -327,66 +332,85 @@ bool MainMenuState::handleEvent(Uint32 time, SDL_Event e)
 	bool input = false;
 	if ((SDL_CONTROLLERBUTTONDOWN  || e.type == SDL_KEYDOWN) && keyup)
 	{
-		if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN) || e.key.keysym.sym == SDLK_DOWN)
-		{
-			nextButton();
 
-			input = true;
-		}
-		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_UP)|| e.key.keysym.sym == SDLK_UP)
-		{
-			backButton();
-			input = true;
-		}
-		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) || e.key.keysym.sym == SDLK_RIGHT)
-		{
-			if (optionsOpen) {
-				switch (selectedButton) {
-				case 0:
-					updateMusic(true);
-					break;
-				case 1:
-					updateSound(true);
-					break;
-				case 2:
-					updateControls();
-					break;
-				default:
-					break;
+			if (!confirmationActive && SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN) || e.key.keysym.sym == SDLK_DOWN)
+			{
+				nextButton();
+
+				input = true;
+			}
+			else if (!confirmationActive && SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_UP) || e.key.keysym.sym == SDLK_UP)
+			{
+				backButton();
+				input = true;
+			}
+			else if (!confirmationActive && SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) || e.key.keysym.sym == SDLK_RIGHT)
+			{
+				if (optionsOpen) {
+					switch (selectedButton) {
+					case 0:
+						updateMusic(true);
+						break;
+					case 1:
+						updateSound(true);
+						break;
+					case 2:
+						updateControls();
+						break;
+					default:
+						break;
+					}
 				}
 			}
-		}
-		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT) || e.key.keysym.sym == SDLK_LEFT)
-		{
-			if (optionsOpen) {
-				switch (selectedButton) {
-				case 0:
-					updateMusic(false);
-					break;
-				case 1:
-					updateSound(false);
-					break;
-				case 2:
-					updateControls();
-					break;
-				default:
-					break;
+			else if (!confirmationActive && SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT) || e.key.keysym.sym == SDLK_LEFT)
+			{
+				if (optionsOpen) {
+					switch (selectedButton) {
+					case 0:
+						updateMusic(false);
+						break;
+					case 1:
+						updateSound(false);
+						break;
+					case 2:
+						updateControls();
+						break;
+					default:
+						break;
+					}
 				}
 			}
-		}
+		
 		else if (selectButton[0] == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A)|| e.key.keysym.sym == SDLK_SPACE))
 		{
-			manager->getServiceLocator()->getAudios()->haltChannel(0);
-			gameManager->mainmenu = false;
-			gameManager->getMachine()->changeState(new MapState(gameManager));
-			input = true;
+
+				manager->getServiceLocator()->getAudios()->haltChannel(0);
+				gameManager->mainmenu = false;
+				input = true;
+				gameManager->getMachine()->changeState(new MapState(gameManager));
+			
+
+		}
+		else if (selectButton[1] == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B) || e.key.keysym.sym == SDLK_TAB))
+		{
+			if (confirmationActive) {
+				confirmationActive = false;
+			}
+		
 		}
 		else if (selectButton[1] == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_SPACE))
 		{
-			manager->getServiceLocator()->getAudios()->haltChannel(0);
-			gameManager->mainmenu = false;
-			newGame(gameManager);
-			input = true;
+			if (confirmationActive) {
+				manager->getServiceLocator()->getAudios()->haltChannel(0);
+				gameManager->mainmenu = false;
+				confirmationActive = false;
+
+				newGame(gameManager);
+				input = true;
+			}
+			else {
+				confirmationActive = true;
+			}
 		}
 
 		else if (selectButton[2] == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A)|| e.key.keysym.sym == SDLK_SPACE))
