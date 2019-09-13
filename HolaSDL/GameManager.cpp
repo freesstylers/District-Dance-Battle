@@ -30,8 +30,10 @@ GameManager::~GameManager()
 }
 
 void GameManager::start() {
-	//machine->pushState(new CreadorNiveles(this)); //Creador de niveles, descomentar esta parte y comentar la linea de abajo para crear niveles mas facil
-	machine->pushState(new MainMenuState(this));
+	if(LEVEL_CREATOR_MODE)
+		machine->pushState(new CreadorNiveles(this)); //Creador de niveles, descomentar esta parte y comentar la linea de abajo para crear niveles mas facil
+	else
+		machine->pushState(new MainMenuState(this));
 	run();
 }
 

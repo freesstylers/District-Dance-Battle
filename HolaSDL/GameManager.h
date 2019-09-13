@@ -37,5 +37,6 @@ private:
 
 	const static int _WINDOW_WIDTH_ = 1280;
 	const static int _WINDOW_HEIGHT_ = 720;
+	const static bool LEVEL_CREATOR_MODE = false;
 };
 
