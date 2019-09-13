@@ -7,6 +7,7 @@
 #include "MainMenuState.h"
 #include "DialogState.h"
 #include "checkML.h"
+#include "CreadorNiveles.h"
 
 //Manager for the game's states, global variables, window, etc.
 

@@ -15,6 +15,7 @@
     <ClInclude Include="Background.h" />
     <ClInclude Include="checkML.h" />
     <ClInclude Include="ComboText.h" />
+    <ClInclude Include="CreadorNiveles.h" />
     <ClInclude Include="Credits.h" />
     <ClInclude Include="DialogState.h" />
     <ClInclude Include="FeedbackPool.h" />
@@ -69,6 +70,7 @@
     <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="ComboText.cpp" />
+    <ClCompile Include="CreadorNiveles.cpp" />
     <ClCompile Include="Credits.cpp" />
     <ClCompile Include="DialogState.cpp" />
     <ClCompile Include="FeedbackPool.cpp" />
@@ -123,13 +125,13 @@
     <ProjectGuid>{28A4C5CD-307A-4FE6-81E4-4CE1F1E49AB4}</ProjectGuid>
     <RootNamespace>HolaSDL</RootNamespace>
     <ProjectName>District Dance Battle</ProjectName>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -162,6 +164,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

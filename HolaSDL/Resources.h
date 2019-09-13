@@ -204,7 +204,8 @@ public:
 		Rock,
 		MainTheme,
 		Ambient,
-		Hardbass
+		Hardbass,
+		Megalovania1
 		// sound effects
 	};
 
