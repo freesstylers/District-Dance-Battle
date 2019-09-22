@@ -26,8 +26,11 @@ public:
 	virtual void stop();  // stop the game
 	GameStateMachine* getMachine();
 	void tick();
+	bool getP1Keyboard();
+	void setP1Keyboard(bool value);
 	bool mainmenu = true;
-	
+	bool P1Keyboard = false;
+
 protected:
 	GameStateMachine* machine;
 	

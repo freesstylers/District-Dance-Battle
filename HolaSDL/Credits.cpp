@@ -27,7 +27,7 @@ bool Credits::handleEvent(Uint32 time, SDL_Event event)
 {
 	GameState::handleEvent(time, event);
 
-	if (event.key.keysym.sym == SDLK_RETURN || SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B)) {
+	if (event.key.keysym.sym == SDLK_s || SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B)) {
 		manager->mainmenu = true;
 		manager->getMachine()->changeState(new MainMenuState(manager));
 	}

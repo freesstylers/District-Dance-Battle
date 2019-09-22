@@ -106,7 +106,7 @@ void PanelMap::selectButton(SDL_Event e, SDL_GameController* cont) {
 	case 2:
 		//When clicked, load the PlayState of the corresponding level
 
-		if (SDL_GameControllerGetButton(cont, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_RETURN)
+		if (SDL_GameControllerGetButton(cont, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_w)
 		{
 			manager_->getServiceLocator()->getAudios()->haltChannel(0);
 			if(!hardMode_)

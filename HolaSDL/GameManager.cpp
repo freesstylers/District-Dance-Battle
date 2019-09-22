@@ -65,6 +65,16 @@ void GameManager::tick()
 	last_tick_time = tick_time;
 }
 
+bool GameManager::getP1Keyboard()
+{
+	return P1Keyboard;
+}
+
+void GameManager::setP1Keyboard(bool value)
+{
+	P1Keyboard = value;
+}
+
 void GameManager::update(Uint32 time)
 {
 	machine->currentState()->update(time);

@@ -127,7 +127,7 @@ bool DialogState::handleEvent(Uint32 time, SDL_Event e) {
 	GameState::handleEvent(time, e);
 	
 	//this handles how to advance the dialogue
-	if ((e.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) && keyup))
+	if ((e.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || (e.type == SDL_KEYDOWN && SDLK_w)) && keyup)
 	{
 		manager->getServiceLocator()->getAudios()->playChannel(Resources::Snare, 0, 1);
 		if (!dialogo.empty()) {
@@ -157,9 +157,9 @@ bool DialogState::handleEvent(Uint32 time, SDL_Event e) {
 		}
 
 	}
-	else if (e.type == SDL_CONTROLLERBUTTONUP) keyup = true;
+	else if (e.type == SDL_CONTROLLERBUTTONUP || e.type == SDL_KEYUP) keyup = true;
 
-	else if ((e.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_BACK))) {
+	else if (e.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_BACK) || (e.type == SDL_KEYDOWN && SDLK_TAB)) {
 
 		manager->getServiceLocator()->getAudios()->haltChannel(4);
 		if (nlevel == 0)
