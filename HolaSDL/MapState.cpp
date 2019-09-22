@@ -10,8 +10,10 @@ MapState::MapState(GameManager* g) :GameState(g)
 	controller = SDL_GameControllerOpen(0);
 	createMainButtons();
 	fondo__ = new EmptyObject(g, Vector2D(0, 0), g->getDefaultWindowWidth(), g->getDefaultWindowHeight(), Resources::Map);
+	moreLvls_ = new EmptyObject(g, Vector2D(0, 0), 150, 150, Resources::NivelExtra);
 
 	stage.push_back(fondo__);
+	stage.push_back(moreLvls_);
 
 	lockLevels();
 	loadGame();
@@ -38,6 +40,11 @@ bool MapState::handleEvent(Uint32 time, SDL_Event e)
 				}
 				else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT)) {
 					backButton();
+				}
+				else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_BACK)) {
+					manager->getServiceLocator()->getAudios()->haltChannel(0);
+					manager->getMachine()->changeState(new ExtraMenu(manager));
+					return true;
 				}
 				else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B)) {
 					manager->mainmenu = true;
