@@ -184,3 +184,22 @@ double SDLGame::getHeightScale() const
 	return heightScale_;
 }
 
+bool SDLGame::getP1Keyboard()
+{
+	return P1Keyboard;
+}
+
+void SDLGame::setP1Keyboard(bool value)
+{
+	P1Keyboard = value;
+}
+
+bool SDLGame::getP2Keyboard()
+{
+	return P2Keyboard;
+}
+
+void SDLGame::setP2Keyboard(bool value)
+{
+	P2Keyboard = value;
+}

@@ -42,6 +42,10 @@ public:
 	int deltaTime = 0; //Va cambiando segun el tiempo de refresco (se le multiplica a las velocidades)
 
 	void setController(bool xbox) { isXbox = xbox; };
+	bool getP1Keyboard();
+	void setP1Keyboard(bool value);
+	bool getP2Keyboard();
+	void setP2Keyboard(bool value);
 
 	void setMusicVolume(int volume);
 	void setSoundVolume(int volume);
@@ -78,5 +82,7 @@ protected:
 	Character* anim;
 
 	bool isXbox = true;
+	bool P1Keyboard = false;
+	bool P2Keyboard = false;
 };
 

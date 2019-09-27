@@ -12,7 +12,7 @@ class PlayState;
 class LevelInputManager
 {
 public:
-	LevelInputManager(PlayState* l, PlayerPack* pl, int numctrl);
+	LevelInputManager(PlayState* l, PlayerPack* pl, int numctrl, bool keyboard);
 	~LevelInputManager();
 
 	bool handleInput(Uint32 time, const SDL_Event& event);
@@ -32,13 +32,13 @@ private:
 	int blockpause = 0;
 	bool failed = false;
 	bool minigameActive = false;
-	const Uint8 *keystates;
+	const Uint8 *keystates; //esto no se que hace, se puede quitar?
 	bool keyup = true;
 	bool keyup2 = true;
 	bool pressed = false;
 	PlayState* level;
 	PlayerPack* player;
 	SDL_GameController* controller = NULL;
-	
+	bool keyboard_;
 };
 

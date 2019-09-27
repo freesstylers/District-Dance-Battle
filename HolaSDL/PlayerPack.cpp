@@ -11,7 +11,17 @@ PlayerPack::PlayerPack(SDLGame* manager, PlayState* ps, int leftNotesPos, int ri
 	{
 		califications[i] = 0;
 	}
-	lip = new LevelInputManager(playstate_, this, player);
+
+	if (player == 0)
+	{
+		controllerMode = manager->getP1Keyboard();
+	}
+	else if (player == 1)
+	{
+		controllerMode = manager->getP2Keyboard();
+	}
+
+	lip = new LevelInputManager(playstate_, this, player, controllerMode);
 	leftNotesVector = Vector2D(leftNotesPos - 50 / 2, 70);
 	rightNotesVector = Vector2D(rightNotesPos - 50 / 2, 70);
 

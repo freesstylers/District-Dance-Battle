@@ -33,7 +33,7 @@ protected:
 
 	int combo;
 	void updateCombo();
-
+	bool controllerMode;
 public:
 	double currentScore = 0;
 	PlayerPack();
