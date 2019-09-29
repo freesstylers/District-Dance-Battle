@@ -28,6 +28,7 @@ public:
 	int numFailed = 0;
 
 private:
+	bool keyPressed(SDL_GameControllerButton buttons, bool areButtons);
 	int numctrl_;
 	int blockpause = 0;
 	bool failed = false;

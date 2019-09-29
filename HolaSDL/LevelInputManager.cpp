@@ -24,373 +24,204 @@ LevelInputManager::~LevelInputManager()
 bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 
 	bool ret = false;
+	SDL_GameControllerButton buttons = SDL_CONTROLLER_BUTTON_INVALID;
+	SDL_GameControllerButton arrows = SDL_CONTROLLER_BUTTON_INVALID;
+	if (keyboard_) {
+		switch (event.key.keysym.sym)
+		{
+		case SDLK_DOWN:
+			buttons = SDL_CONTROLLER_BUTTON_A;
+			break;
+		case SDLK_UP:
+			buttons = SDL_CONTROLLER_BUTTON_Y;
+			break;
+		case SDLK_LEFT:
+			buttons = SDL_CONTROLLER_BUTTON_X;
+			break;
+		case SDLK_RIGHT:
+			buttons = SDL_CONTROLLER_BUTTON_B;
+			break;
+		default:
+			buttons = SDL_CONTROLLER_BUTTON_INVALID;
+			break;
+		}
 
-	if (!keyboard_)
+		switch (event.key.keysym.sym)
+		{
+		case SDLK_s:
+			arrows = SDL_CONTROLLER_BUTTON_DPAD_DOWN;
+			break;
+		case SDLK_w:
+			arrows = SDL_CONTROLLER_BUTTON_DPAD_UP;
+			break;
+		case SDLK_a:
+			arrows = SDL_CONTROLLER_BUTTON_DPAD_LEFT;
+			break;
+		case SDLK_d:
+			arrows = SDL_CONTROLLER_BUTTON_DPAD_RIGHT;
+			break;
+		default:
+			arrows = SDL_CONTROLLER_BUTTON_INVALID;
+			break;
+		}
+	}
+	
+	if ((event.type == SDL_CONTROLLERBUTTONDOWN || event.type == SDL_KEYDOWN) && keyup) {
+		level->getGameManager()->getServiceLocator()->getAudios()->playChannel(Resources::Snare, 0, 1);
+	}
+	if (event.type == SDL_CONTROLLERBUTTONUP || event.type == SDL_KEYUP)
 	{
-		if (event.type == SDL_CONTROLLERBUTTONDOWN && keyup) {
-			level->getGameManager()->getServiceLocator()->getAudios()->playChannel(Resources::Snare, 0, 1);
-		}
-		if (event.type == SDL_CONTROLLERBUTTONUP)
-		{
-			keyup = true;
-			keyup2 = true;
-		}
+		keyup = true;
+		keyup2 = true;
+	}
 
-		//opening the pause menu, there's a 0.5 second cooldown due to a bug with how the timers are set up
-		if ((blockpause < time - 500) && (event.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_START))) {
-			ret = ret || level->pause();
-			blockpause = 0;
-		}
+	//opening the pause menu, there's a 0.5 second cooldown due to a bug with how the timers are set up
+	if ((blockpause < time - 500) && ((event.type == SDL_CONTROLLERBUTTONDOWN || event.type == SDL_KEYDOWN) && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_START) || event.key.keysym.sym == SDLK_TAB))) {
+		ret = ret || level->pause();
+		blockpause = 0;
+	}
 
-		//inputs for the d-pad
-		if (!player->screenArrows_.empty())
+	//inputs for the d-pad
+	if (!player->screenArrows_.empty())
+	{
+		auto it = player->screenArrows_.front();
+		if (it != nullptr && abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getLeftPoint()->getPosition().getY() + player->getLeftPoint()->getHeight() / 2)) <= 100)
 		{
-			auto it = player->screenArrows_.front();
-			if (it != nullptr && abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getLeftPoint()->getPosition().getY() + player->getLeftPoint()->getHeight() / 2)) <= 100)
+			if ((event.type == SDL_CONTROLLERBUTTONDOWN || event.type == SDL_KEYDOWN) && keyup && (SDL_GameControllerGetButton(controller, it->getKey()) ||  it->getKey() == arrows))
 			{
-				if (event.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, it->getKey()) && keyup)
+				if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getLeftPoint()->getPosition().getY() + player->getLeftPoint()->getHeight() / 2)) <= 10)
 				{
-					if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getLeftPoint()->getPosition().getY() + player->getLeftPoint()->getHeight() / 2)) <= 10)
-					{
-						player->feedbackLeft->addFeedback(Resources::FeedbackPerfect);
-						player->hitLeft->addHit(Resources::HitGold, it->getPosition());
-						player->updateScoreNote(1);
-						player->addCombo(1);
-						player->addCalifications(3);
-						if (numFailed >= 1)
-							numFailed -= 1;
-					}
-					else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getLeftPoint()->getPosition().getY() + player->getLeftPoint()->getHeight() / 2)) <= 25)
-					{
-						player->feedbackLeft->addFeedback(Resources::FeedbackGood);
-						player->hitLeft->addHit(Resources::HitSilver, it->getPosition());
-						player->updateScoreNote(2);
-						player->addCombo(1);
-						player->addCalifications(2);
-						if (numFailed >= 2)
-							numFailed -= 2;
-						else
-							numFailed = 0;
-
-					}
-					else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getLeftPoint()->getPosition().getY() + player->getLeftPoint()->getHeight() / 2)) <= 50)
-					{
-						player->feedbackLeft->addFeedback(Resources::FeedbackRegular);
-						player->hitLeft->addHit(Resources::HitCopper, it->getPosition());
-						player->updateScoreNote(3);
-						player->addCombo(1);
-						player->addCalifications(1);
-						if (numFailed >= 3)
-							numFailed -= 3;
-						else
-							numFailed = 0;
-
-					}
+					player->feedbackLeft->addFeedback(Resources::FeedbackPerfect);
+					player->hitLeft->addHit(Resources::HitGold, it->getPosition());
+					player->updateScoreNote(1);
+					player->addCombo(1);
+					player->addCalifications(3);
+					if (numFailed >= 1)
+						numFailed -= 1;
+				}
+				else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getLeftPoint()->getPosition().getY() + player->getLeftPoint()->getHeight() / 2)) <= 25)
+				{
+					player->feedbackLeft->addFeedback(Resources::FeedbackGood);
+					player->hitLeft->addHit(Resources::HitSilver, it->getPosition());
+					player->updateScoreNote(2);
+					player->addCombo(1);
+					player->addCalifications(2);
+					if (numFailed >= 2)
+						numFailed -= 2;
 					else
-					{
-						player->feedbackLeft->addFeedback(Resources::FeedbackBad);
-						level->showError();
-						player->resetCombo();
-						player->addCalifications(0);
-						numFailed++;
-
-					}
+						numFailed = 0;
+				}
+				else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getLeftPoint()->getPosition().getY() + player->getLeftPoint()->getHeight() / 2)) <= 50)
+				{
+					player->feedbackLeft->addFeedback(Resources::FeedbackRegular);
+					player->hitLeft->addHit(Resources::HitCopper, it->getPosition());
+					player->updateScoreNote(3);
+					player->addCombo(1);
+					player->addCalifications(1);
+					if (numFailed >= 3)
+						numFailed -= 3;
+					else
+						numFailed = 0;
+				}
+				else
+				{
+					player->feedbackLeft->addFeedback(Resources::FeedbackBad);
+					level->showError();
+					player->resetCombo();
+					player->addCalifications(0);
+					numFailed++;
+				}
+				keyup = false;
+				delete(it);
+				player->screenArrows_.remove(it);
+			}
+			else if (event.type == SDL_CONTROLLERBUTTONDOWN && keyup || event.type == SDL_KEYDOWN && keyup)
+			{
+				if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT) || SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) ||
+					SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN) || SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_UP) || keyPressed(arrows, false))
+				{
 					keyup = false;
 					delete(it);
 					player->screenArrows_.remove(it);
-				}
-				else if (event.type == SDL_CONTROLLERBUTTONDOWN && keyup)
-				{
-					if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT) || SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) ||
-						SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN) || SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_UP))
-					{
-						keyup = false;
-						delete(it);
-						player->screenArrows_.remove(it);
-						player->feedbackLeft->addFeedback(Resources::FeedbackBad);
-						level->showError();
-						player->resetCombo();
-						player->addCalifications(0);
-						numFailed++;
+					player->feedbackLeft->addFeedback(Resources::FeedbackBad);
+					level->showError();
+					player->resetCombo();
+					player->addCalifications(0);
+					numFailed++;
 
-					}
-				}
-			}
-		}
-
-		//inputs for the buttons
-		if (!player->screenButtons_.empty())
-		{
-			auto it = player->screenButtons_.front();
-			if (it != nullptr && abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getLeftPoint()->getPosition().getY() + player->getLeftPoint()->getHeight() / 2)) <= 75)
-			{
-				if (event.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, it->getKey()) && keyup2)
-				{
-					if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getRightPoint()->getPosition().getY() + player->getRightPoint()->getHeight() / 2)) <= 10)
-					{
-						player->feedbackRight->addFeedback(Resources::FeedbackPerfect);
-						player->hitRight->addHit(Resources::HitGold, it->getPosition());
-						player->updateScoreNote(1);
-						player->addCombo(1);
-						player->addCalifications(3);
-						if (numFailed >= 1)
-							numFailed -= 1;
-
-					}
-					else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getRightPoint()->getPosition().getY() + player->getRightPoint()->getHeight() / 2)) <= 25)
-					{
-						player->feedbackRight->addFeedback(Resources::FeedbackGood);
-						player->hitRight->addHit(Resources::HitSilver, it->getPosition());
-						player->updateScoreNote(2);
-						player->addCombo(1);
-						player->addCalifications(2);
-						if (numFailed >= 2)
-							numFailed -= 2;
-						else
-							numFailed = 0;
-					}
-					else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getRightPoint()->getPosition().getY() + player->getRightPoint()->getHeight() / 2)) <= 50)
-					{
-						player->feedbackRight->addFeedback(Resources::FeedbackRegular);
-						player->hitRight->addHit(Resources::HitCopper, it->getPosition());
-						player->updateScoreNote(3);
-						player->addCombo(1);
-						player->addCalifications(1);
-						if (numFailed >= 3)
-							numFailed -= 3;
-						else
-							numFailed = 0;
-					}
-					else
-					{
-						player->feedbackRight->addFeedback(Resources::FeedbackBad);
-						level->showError();
-						player->resetCombo();
-						player->addCalifications(0);
-						numFailed++;
-					}
-					delete it;
-					player->screenButtons_.remove(it);
-					keyup2 = false;
-				}
-				else if (event.type == SDL_CONTROLLERBUTTONDOWN && keyup2)
-				{
-					if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B) ||
-						SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_X) || SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_Y))
-					{
-						delete(it);
-
-						player->feedbackRight->addFeedback(Resources::FeedbackBad);
-						player->screenButtons_.remove(it);
-						level->showError();
-						player->resetCombo();
-						player->addCalifications(0);
-						numFailed++;
-					}
 				}
 			}
 		}
 	}
-	else //using keyboard
-		{
-		if (event.type == SDL_KEYDOWN && keyup) {
-			level->getGameManager()->getServiceLocator()->getAudios()->playChannel(Resources::Snare, 0, 1);
-		}
-		if (event.type == SDL_KEYUP)
-		{
-			keyup = true;
-			keyup2 = true;
-		}
 
-		//opening the pause menu, there's a 0.5 second cooldown due to a bug with how the timers are set up
-		if ((blockpause < time - 500) && (event.type == SDL_KEYDOWN && (event.key.keysym.sym == SDLK_TAB))) {
-			ret = ret || level->pause();
-			blockpause = 0;
-		}
-
-		//inputs for the d-pad
-		if (!player->screenArrows_.empty())
+	//inputs for the buttons
+	if (!player->screenButtons_.empty())
+	{
+		auto it = player->screenButtons_.front();
+		if (it != nullptr && abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getLeftPoint()->getPosition().getY() + player->getLeftPoint()->getHeight() / 2)) <= 75)
 		{
-			auto it = player->screenArrows_.front();
-			if (it != nullptr && abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getLeftPoint()->getPosition().getY() + player->getLeftPoint()->getHeight() / 2)) <= 100)
+			if ((event.type == SDL_CONTROLLERBUTTONDOWN || event.type == SDL_KEYDOWN) && keyup2 &&( SDL_GameControllerGetButton(controller, it->getKey()) || it->getKey() == buttons))
 			{
-				SDL_Keycode key;
-
-				switch (it->getKey()) {
-				case SDL_CONTROLLER_BUTTON_DPAD_LEFT:
-					key = SDLK_LEFT;
-					break;
-				case SDL_CONTROLLER_BUTTON_DPAD_RIGHT:
-					key = SDLK_RIGHT;
-					break;
-				case SDL_CONTROLLER_BUTTON_DPAD_UP:
-					key = SDLK_UP;
-					break;
-				case SDL_CONTROLLER_BUTTON_DPAD_DOWN:
-					key = SDLK_DOWN;
-					break;
-				case SDL_CONTROLLER_BUTTON_INVALID:
-					key = SDLK_EJECT;
-					break;
-				}
-				if (event.type == SDL_KEYDOWN && event.key.keysym.sym == key && keyup)
+				if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getRightPoint()->getPosition().getY() + player->getRightPoint()->getHeight() / 2)) <= 10)
 				{
-					if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getLeftPoint()->getPosition().getY() + player->getLeftPoint()->getHeight() / 2)) <= 10)
-					{
-						player->feedbackLeft->addFeedback(Resources::FeedbackPerfect);
-						player->hitLeft->addHit(Resources::HitGold, it->getPosition());
-						player->updateScoreNote(1);
-						player->addCombo(1);
-						player->addCalifications(3);
-						if (numFailed >= 1)
-							numFailed -= 1;
-					}
-					else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getLeftPoint()->getPosition().getY() + player->getLeftPoint()->getHeight() / 2)) <= 25)
-					{
-						player->feedbackLeft->addFeedback(Resources::FeedbackGood);
-						player->hitLeft->addHit(Resources::HitSilver, it->getPosition());
-						player->updateScoreNote(2);
-						player->addCombo(1);
-						player->addCalifications(2);
-						if (numFailed >= 2)
-							numFailed -= 2;
-						else
-							numFailed = 0;
+					player->feedbackRight->addFeedback(Resources::FeedbackPerfect);
+					player->hitRight->addHit(Resources::HitGold, it->getPosition());
+					player->updateScoreNote(1);
+					player->addCombo(1);
+					player->addCalifications(3);
+					if (numFailed >= 1)
+						numFailed -= 1;
 
-					}
-					else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getLeftPoint()->getPosition().getY() + player->getLeftPoint()->getHeight() / 2)) <= 50)
-					{
-						player->feedbackLeft->addFeedback(Resources::FeedbackRegular);
-						player->hitLeft->addHit(Resources::HitCopper, it->getPosition());
-						player->updateScoreNote(3);
-						player->addCombo(1);
-						player->addCalifications(1);
-						if (numFailed >= 3)
-							numFailed -= 3;
-						else
-							numFailed = 0;
-
-					}
+				}
+				else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getRightPoint()->getPosition().getY() + player->getRightPoint()->getHeight() / 2)) <= 25)
+				{
+					player->feedbackRight->addFeedback(Resources::FeedbackGood);
+					player->hitRight->addHit(Resources::HitSilver, it->getPosition());
+					player->updateScoreNote(2);
+					player->addCombo(1);
+					player->addCalifications(2);
+					if (numFailed >= 2)
+						numFailed -= 2;
 					else
-					{
-						player->feedbackLeft->addFeedback(Resources::FeedbackBad);
-						level->showError();
-						player->resetCombo();
-						player->addCalifications(0);
-						numFailed++;
-
-					}
-					keyup = false;
-					delete(it);
-					player->screenArrows_.remove(it);
+						numFailed = 0;
 				}
-				else if (event.type == SDL_KEYDOWN && keyup)
+				else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getRightPoint()->getPosition().getY() + player->getRightPoint()->getHeight() / 2)) <= 50)
 				{
-					if (event.key.keysym.sym == SDLK_LEFT || event.key.keysym.sym == SDLK_RIGHT || event.key.keysym.sym == SDLK_UP || event.key.keysym.sym == SDLK_DOWN)
-					{
-						keyup = false;
-						delete(it);
-						player->screenArrows_.remove(it);
-						player->feedbackLeft->addFeedback(Resources::FeedbackBad);
-						level->showError();
-						player->resetCombo();
-						player->addCalifications(0);
-						numFailed++;
-
-					}
+					player->feedbackRight->addFeedback(Resources::FeedbackRegular);
+					player->hitRight->addHit(Resources::HitCopper, it->getPosition());
+					player->updateScoreNote(3);
+					player->addCombo(1);
+					player->addCalifications(1);
+					if (numFailed >= 3)
+						numFailed -= 3;
+					else
+						numFailed = 0;
 				}
+				else
+				{
+					player->feedbackRight->addFeedback(Resources::FeedbackBad);
+					level->showError();
+					player->resetCombo();
+					player->addCalifications(0);
+					numFailed++;
+				}
+				delete it;
+				player->screenButtons_.remove(it);
+				keyup2 = false;
 			}
-		}
-
-		//inputs for the buttons
-		if (!player->screenButtons_.empty())
-		{
-			auto it = player->screenButtons_.front();
-			if (it != nullptr && abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getLeftPoint()->getPosition().getY() + player->getLeftPoint()->getHeight() / 2)) <= 75)
+			else if ((event.type == SDL_CONTROLLERBUTTONDOWN || event.type == SDL_KEYDOWN) && keyup2)
 			{
-				SDL_Keycode key;
-
-				switch (it->getKey()) {
-				case SDL_CONTROLLER_BUTTON_X:
-					key = SDLK_a;
-					break;
-				case SDL_CONTROLLER_BUTTON_B:
-					key = SDLK_d;
-					break;
-				case SDL_CONTROLLER_BUTTON_Y:
-					key = SDLK_w;
-					break;
-				case SDL_CONTROLLER_BUTTON_A:
-					key = SDLK_s;
-					break;
-				case SDL_CONTROLLER_BUTTON_INVALID:
-					key = SDLK_EJECT;
-					break;
-				}
-
-				if (event.type == SDL_KEYDOWN && SDL_GameControllerGetButton(controller, it->getKey()) && keyup2)
+				if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B) ||
+					SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_X) || SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_Y) || keyPressed(buttons, true))
 				{
-					if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getRightPoint()->getPosition().getY() + player->getRightPoint()->getHeight() / 2)) <= 10)
-					{
-						player->feedbackRight->addFeedback(Resources::FeedbackPerfect);
-						player->hitRight->addHit(Resources::HitGold, it->getPosition());
-						player->updateScoreNote(1);
-						player->addCombo(1);
-						player->addCalifications(3);
-						if (numFailed >= 1)
-							numFailed -= 1;
+					delete(it);
 
-					}
-					else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getRightPoint()->getPosition().getY() + player->getRightPoint()->getHeight() / 2)) <= 25)
-					{
-						player->feedbackRight->addFeedback(Resources::FeedbackGood);
-						player->hitRight->addHit(Resources::HitSilver, it->getPosition());
-						player->updateScoreNote(2);
-						player->addCombo(1);
-						player->addCalifications(2);
-						if (numFailed >= 2)
-							numFailed -= 2;
-						else
-							numFailed = 0;
-					}
-					else if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getRightPoint()->getPosition().getY() + player->getRightPoint()->getHeight() / 2)) <= 50)
-					{
-						player->feedbackRight->addFeedback(Resources::FeedbackRegular);
-						player->hitRight->addHit(Resources::HitCopper, it->getPosition());
-						player->updateScoreNote(3);
-						player->addCombo(1);
-						player->addCalifications(1);
-						if (numFailed >= 3)
-							numFailed -= 3;
-						else
-							numFailed = 0;
-					}
-					else
-					{
-						player->feedbackRight->addFeedback(Resources::FeedbackBad);
-						level->showError();
-						player->resetCombo();
-						player->addCalifications(0);
-						numFailed++;
-					}
-					delete it;
+					player->feedbackRight->addFeedback(Resources::FeedbackBad);
 					player->screenButtons_.remove(it);
-					keyup2 = false;
-				}
-				else if (event.type == SDL_KEYDOWN && keyup2)
-				{
-					if (event.key.keysym.sym == SDLK_a || event.key.keysym.sym == SDLK_d || event.key.keysym.sym == SDLK_w || event.key.keysym.sym == SDLK_s)
-
-					{
-						delete(it);
-
-						player->feedbackRight->addFeedback(Resources::FeedbackBad);
-						player->screenButtons_.remove(it);
-						level->showError();
-						player->resetCombo();
-						player->addCalifications(0);
-						numFailed++;
-					}
+					level->showError();
+					player->resetCombo();
+					player->addCalifications(0);
+					numFailed++;
 				}
 			}
 		}
@@ -398,3 +229,15 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 	return ret;
 }
 
+bool LevelInputManager::keyPressed(SDL_GameControllerButton buttons, bool areButtons)
+{
+	if (areButtons) {
+		return (buttons == SDL_CONTROLLER_BUTTON_A || buttons == SDL_CONTROLLER_BUTTON_Y || buttons == SDL_CONTROLLER_BUTTON_X ||
+			buttons == SDL_CONTROLLER_BUTTON_B);
+	}
+	else {
+		return (buttons == SDL_CONTROLLER_BUTTON_DPAD_LEFT || buttons == SDL_CONTROLLER_BUTTON_DPAD_UP || buttons == SDL_CONTROLLER_BUTTON_DPAD_DOWN ||
+			buttons == SDL_CONTROLLER_BUTTON_DPAD_RIGHT);
+	}
+
+}

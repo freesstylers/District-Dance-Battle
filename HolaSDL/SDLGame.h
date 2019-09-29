@@ -85,4 +85,3 @@ protected:
 	bool P1Keyboard = false;
 	bool P2Keyboard = false;
 };
-
