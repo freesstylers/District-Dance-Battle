@@ -175,8 +175,17 @@ public:
 		FondoHardbassPixel,
 		MarcelinoEraYo,
 		newGameConfirm,
-		TutoBox5
-
+		TutoBox5,
+		KeyA,
+		KeyD,
+		KeyDown,
+		KeyLeft,
+		KeyPoint,
+		KeyPointPushed,
+		KeyRight,
+		KeyS,
+		KeyUp,
+		KeyW
 		// text
 	};
 

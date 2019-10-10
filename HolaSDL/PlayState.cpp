@@ -107,7 +107,7 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxS
 		newGame2P();
 	}
 
-	pauseMenu = new PauseMenu(g, this, manager->getController());
+	pauseMenu = new PauseMenu(g, this, manager->getP1Controller());
 	stage.push_back(pauseMenu);
 	
 	pauseMenu->setActive(false);
@@ -352,37 +352,47 @@ void PlayState::resume(unsigned int timePaused)
 //Change the controls to PS4 controls or XBOX controls
 bool PlayState::changeControls()
 {
-	bool isXbox = !manager->getController();
-	manager->setController(isXbox);
+	int P1Controller = manager->getP1Controller();
+
+	if (P1Controller < 2)
+	{
+		manager->setP1Controller((P1Controller + 1));
+		P1Controller = manager->getP1Controller();
+	}
+	else
+	{
+		manager->setP1Controller(0);
+		P1Controller = manager->getP1Controller();
+	}
 
 
 	for (Note* o : levelArrows_) {
 		if (o != nullptr)
-			o->changeController(isXbox);
+			o->changeController(P1Controller);
 	}
 
 	for (Note* o : levelButtons_) {
 		if (o != nullptr)
-			o->changeController(isXbox);
+			o->changeController(P1Controller);
 	}
 
 	for (Note* o : levelArrows2_) {
 		if (o != nullptr)
-			o->changeController(isXbox);
+			o->changeController(P1Controller);
 	}
 
 	for (Note* o : levelButtons2_) {
 		if (o != nullptr)
-			o->changeController(isXbox);
+			o->changeController(P1Controller);
 	}
 
 
-	player1->changeController(isXbox);
+	player1->changeController(P1Controller);
 
-	if (player2 != nullptr)
-		player2->changeController(isXbox);
+	//if (player2 != nullptr)
+		//player2->changeController(isXbox);
 
-	return isXbox;
+	return true; //isXbox;
 }
 
 

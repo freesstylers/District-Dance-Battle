@@ -5,15 +5,15 @@
 #include "PlayerPack.h"
 
 
-LevelInputManager::LevelInputManager(PlayState* l, PlayerPack* pl, int numctrl, bool keyboard)
+LevelInputManager::LevelInputManager(PlayState* l, PlayerPack* pl, int numctrl, int ControllerMode_)
 {
 	numctrl_ = numctrl;
 	level = l;
 	player = pl;
 	keystates = SDL_GetKeyboardState(NULL); //esto no se que hace, se puede quitar?
-	keyboard_ = keyboard;
+	ControllerMode = ControllerMode_;
 
-	if (!keyboard_)
+	if (ControllerMode_ != 2)
 		controller = SDL_GameControllerOpen(numctrl_);
 }
 
@@ -26,7 +26,7 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 	bool ret = false;
 	SDL_GameControllerButton buttons = SDL_CONTROLLER_BUTTON_INVALID;
 	SDL_GameControllerButton arrows = SDL_CONTROLLER_BUTTON_INVALID;
-	if (keyboard_) {
+	if (ControllerMode == 2) {
 		switch (event.key.keysym.sym)
 		{
 		case SDLK_DOWN:

@@ -8,9 +8,10 @@ class Point : public GameObject
 private:
 	SDL_GameController* controller;
 	bool side_;
+	int controllerMode;
 public:
 	
-	Point(SDLGame* game, double width, double height, Vector2D pos, SDL_GameController* contr, bool side);
+	Point(SDLGame* game, double width, double height, Vector2D pos, SDL_GameController* contr, bool side, int player);
 	virtual bool handleInput(Uint32 time, const SDL_Event& event);
 	virtual void update(Uint32 time) {};
 	~Point();

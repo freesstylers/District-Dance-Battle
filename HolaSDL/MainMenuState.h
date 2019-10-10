@@ -44,6 +44,8 @@ private:
 	EmptyObject* soundsSelect;
 	EmptyObject* controls;
 	EmptyObject* controlsSelect;
+	EmptyObject* controls2;
+	EmptyObject* controlsSelect2;
 	EmptyObject* op_exit;
 
 	EmptyObject* confirmation;
@@ -52,17 +54,21 @@ private:
 	TextObject* musicTxt;
 	TextObject* soundTxt;
 	TextObject* controlTxt;
+	TextObject* control2Txt;
 
 	vector<EmptyObject*> optionsButtons;
 
 	int selectedButton = 0;
 	bool optionsOpen = false;
-	bool isXbox;
+	
+	int P1Controller;
+	int P2Controller;
 
 	void options();
 	void updateMusic(bool raise);
 	void updateSound(bool raise);
-	void updateControls();
+	void updateControlsP1(bool raise);
+	void updateControlsP2(bool raise);
 	void updateTxt();
 };
 

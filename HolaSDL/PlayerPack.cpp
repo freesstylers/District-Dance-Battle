@@ -14,19 +14,19 @@ PlayerPack::PlayerPack(SDLGame* manager, PlayState* ps, int leftNotesPos, int ri
 
 	if (player == 0)
 	{
-		controllerMode = manager->getP1Keyboard();
+		controllerMode = manager->getP1Controller();
 	}
 	else if (player == 1)
 	{
-		controllerMode = manager->getP2Keyboard();
+		//controllerMode = manager->getP2Controller();
 	}
 
 	lip = new LevelInputManager(playstate_, this, player, controllerMode);
 	leftNotesVector = Vector2D(leftNotesPos - 50 / 2, 70);
 	rightNotesVector = Vector2D(rightNotesPos - 50 / 2, 70);
 
-	leftPoint = new Point(manager, pointSize, pointSize, Vector2D(leftNotesPos - pointSize / 2, 565), lip->getController(), true);
-	rightPoint = new Point(manager, pointSize, pointSize, Vector2D(rightNotesPos - pointSize / 2, 565), lip->getController(), false);
+	leftPoint = new Point(manager, pointSize, pointSize, Vector2D(leftNotesPos - pointSize / 2, 565), lip->getController(), true, player);
+	rightPoint = new Point(manager, pointSize, pointSize, Vector2D(rightNotesPos - pointSize / 2, 565), lip->getController(), false, player);
 	leftNoteBar = new Squares(manager, squareWidth, 565 + 0.6 * pointSize, Vector2D(leftNotesPos + 1 - squareWidth / 2, leftNotesVector.getY()));
 	rightNoteBar = new Squares(manager, squareWidth, 565 + 0.6 * pointSize, Vector2D(rightNotesPos + 1 - squareWidth / 2, rightNotesVector.getY()));
 	if (!OneP && player == 0)

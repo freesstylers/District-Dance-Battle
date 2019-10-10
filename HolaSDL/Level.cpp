@@ -85,24 +85,24 @@ void Level::init(bool hardmode) {
 				note2 = nullptr;
 				break;
 			case 1:
-				note = new Note(SDL_CONTROLLER_BUTTON_DPAD_LEFT, gm, noteSize_, noteSize_, level->leftNotesVector, noteVel, level->getGameManager()->getController());
-				note2 = new Note(SDL_CONTROLLER_BUTTON_DPAD_LEFT, gm, noteSize_, noteSize_, level->leftNotesVector2, noteVel, level->getGameManager()->getController());
+				note = new Note(SDL_CONTROLLER_BUTTON_DPAD_LEFT, gm, noteSize_, noteSize_, level->leftNotesVector, noteVel, level->getGameManager()->getP1Controller());
+				note2 = new Note(SDL_CONTROLLER_BUTTON_DPAD_LEFT, gm, noteSize_, noteSize_, level->leftNotesVector2, noteVel, level->getGameManager()->getP1Controller());
 				break;
 			case 2:
-				note = new Note(SDL_CONTROLLER_BUTTON_DPAD_RIGHT, gm, noteSize_, noteSize_, level->leftNotesVector, noteVel, level->getGameManager()->getController());
-				note2 = new Note(SDL_CONTROLLER_BUTTON_DPAD_RIGHT, gm, noteSize_, noteSize_, level->leftNotesVector2, noteVel, level->getGameManager()->getController());
+				note = new Note(SDL_CONTROLLER_BUTTON_DPAD_RIGHT, gm, noteSize_, noteSize_, level->leftNotesVector, noteVel, level->getGameManager()->getP1Controller());
+				note2 = new Note(SDL_CONTROLLER_BUTTON_DPAD_RIGHT, gm, noteSize_, noteSize_, level->leftNotesVector2, noteVel, level->getGameManager()->getP1Controller());
 				break;
 			case 3:
-				note = new Note(SDL_CONTROLLER_BUTTON_DPAD_UP, gm, noteSize_, noteSize_, level->leftNotesVector, noteVel, level->getGameManager()->getController());
-				note2 = new Note(SDL_CONTROLLER_BUTTON_DPAD_UP, gm, noteSize_, noteSize_, level->leftNotesVector2, noteVel, level->getGameManager()->getController());
+				note = new Note(SDL_CONTROLLER_BUTTON_DPAD_UP, gm, noteSize_, noteSize_, level->leftNotesVector, noteVel, level->getGameManager()->getP1Controller());
+				note2 = new Note(SDL_CONTROLLER_BUTTON_DPAD_UP, gm, noteSize_, noteSize_, level->leftNotesVector2, noteVel, level->getGameManager()->getP1Controller());
 				break;
 			case 4:
-				note = new Note(SDL_CONTROLLER_BUTTON_DPAD_DOWN, gm, noteSize_, noteSize_, level->leftNotesVector, noteVel, level->getGameManager()->getController());
-				note2 = new Note(SDL_CONTROLLER_BUTTON_DPAD_DOWN, gm, noteSize_, noteSize_, level->leftNotesVector2, noteVel, level->getGameManager()->getController());
+				note = new Note(SDL_CONTROLLER_BUTTON_DPAD_DOWN, gm, noteSize_, noteSize_, level->leftNotesVector, noteVel, level->getGameManager()->getP1Controller());
+				note2 = new Note(SDL_CONTROLLER_BUTTON_DPAD_DOWN, gm, noteSize_, noteSize_, level->leftNotesVector2, noteVel, level->getGameManager()->getP1Controller());
 				break;
 			case 5:
-				note = new Note(SDL_CONTROLLER_BUTTON_INVALID, gm, noteSize_, noteSize_, level->leftNotesVector, noteVel, level->getGameManager()->getController());
-				note2 = new Note(SDL_CONTROLLER_BUTTON_INVALID, gm, noteSize_, noteSize_, level->leftNotesVector2, noteVel, level->getGameManager()->getController());
+				note = new Note(SDL_CONTROLLER_BUTTON_INVALID, gm, noteSize_, noteSize_, level->leftNotesVector, noteVel, level->getGameManager()->getP1Controller());
+				note2 = new Note(SDL_CONTROLLER_BUTTON_INVALID, gm, noteSize_, noteSize_, level->leftNotesVector2, noteVel, level->getGameManager()->getP1Controller());
 				break;
 			default:
 				break;
@@ -129,24 +129,24 @@ void Level::init(bool hardmode) {
 				note2 = nullptr;
 				break;
 			case 1:
-				note = new Note(SDL_CONTROLLER_BUTTON_A, gm, noteSize_, noteSize_, level->rightNotesVector, noteVel, level->getGameManager()->getController());
-				note2 = new Note(SDL_CONTROLLER_BUTTON_A, gm, noteSize_, noteSize_, level->rightNotesVector2, noteVel, level->getGameManager()->getController());
+				note = new Note(SDL_CONTROLLER_BUTTON_A, gm, noteSize_, noteSize_, level->rightNotesVector, noteVel, level->getGameManager()->getP1Controller());
+				note2 = new Note(SDL_CONTROLLER_BUTTON_A, gm, noteSize_, noteSize_, level->rightNotesVector2, noteVel, level->getGameManager()->getP1Controller());
 				break;
 			case 2:
-				note = new Note(SDL_CONTROLLER_BUTTON_B, gm, noteSize_, noteSize_, level->rightNotesVector, noteVel, level->getGameManager()->getController());
-				note2 = new Note(SDL_CONTROLLER_BUTTON_B, gm, noteSize_, noteSize_, level->rightNotesVector2, noteVel, level->getGameManager()->getController());
+				note = new Note(SDL_CONTROLLER_BUTTON_B, gm, noteSize_, noteSize_, level->rightNotesVector, noteVel, level->getGameManager()->getP1Controller());
+				note2 = new Note(SDL_CONTROLLER_BUTTON_B, gm, noteSize_, noteSize_, level->rightNotesVector2, noteVel, level->getGameManager()->getP1Controller());
 				break;
 			case 3:
-				note = new Note(SDL_CONTROLLER_BUTTON_X, gm, noteSize_, noteSize_, level->rightNotesVector, noteVel, level->getGameManager()->getController());
-				note2 = new Note(SDL_CONTROLLER_BUTTON_X, gm, noteSize_, noteSize_, level->rightNotesVector2, noteVel, level->getGameManager()->getController());
+				note = new Note(SDL_CONTROLLER_BUTTON_X, gm, noteSize_, noteSize_, level->rightNotesVector, noteVel, level->getGameManager()->getP1Controller());
+				note2 = new Note(SDL_CONTROLLER_BUTTON_X, gm, noteSize_, noteSize_, level->rightNotesVector2, noteVel, level->getGameManager()->getP1Controller());
 				break;
 			case 4:
-				note = new Note(SDL_CONTROLLER_BUTTON_Y, gm, noteSize_, noteSize_, level->rightNotesVector, noteVel, level->getGameManager()->getController());
-				note2 = new Note(SDL_CONTROLLER_BUTTON_Y, gm, noteSize_, noteSize_, level->rightNotesVector2, noteVel, level->getGameManager()->getController());
+				note = new Note(SDL_CONTROLLER_BUTTON_Y, gm, noteSize_, noteSize_, level->rightNotesVector, noteVel, level->getGameManager()->getP1Controller());
+				note2 = new Note(SDL_CONTROLLER_BUTTON_Y, gm, noteSize_, noteSize_, level->rightNotesVector2, noteVel, level->getGameManager()->getP1Controller());
 				break;
 			case 5:
-				note = new Note(SDL_CONTROLLER_BUTTON_INVALID, gm, noteSize_, noteSize_, level->rightNotesVector, noteVel, level->getGameManager()->getController());
-				note2 = new Note(SDL_CONTROLLER_BUTTON_INVALID, gm, noteSize_, noteSize_, level->rightNotesVector2, noteVel, level->getGameManager()->getController());
+				note = new Note(SDL_CONTROLLER_BUTTON_INVALID, gm, noteSize_, noteSize_, level->rightNotesVector, noteVel, level->getGameManager()->getP1Controller());
+				note2 = new Note(SDL_CONTROLLER_BUTTON_INVALID, gm, noteSize_, noteSize_, level->rightNotesVector2, noteVel, level->getGameManager()->getP1Controller());
 				break;
 			default:
 				break;

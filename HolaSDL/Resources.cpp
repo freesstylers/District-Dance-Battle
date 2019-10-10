@@ -181,7 +181,17 @@ vector<Resources::ImageInfo> Resources::images_{
 		{ FondoHardbassPixel, "resources/images/FondoHardbassPixel.png", 213, 120, 2, 1, 2 },
 		{ MarcelinoEraYo, "resources/images/MarcelinoEraYo.png", 60, 120, 7, 1, 6 },
 		{ TutoBox5, "resources/images/tutoBox5.png", 1224, 504, 1, 1, 1 },
-		{ newGameConfirm, "resources/images/newGameConfirm.png",1224,504,1,1,1 }
+		{ newGameConfirm, "resources/images/newGameConfirm.png",1224,504,1,1,1 },
+		{ KeyA, "resources/images/KeyA.png", 32, 32, 1, 1, 1 },
+		{ KeyD, "resources/images/KeyD.png", 32, 32, 1, 1, 1 },
+		{ KeyDown, "resources/images/KeyDown.png", 32, 32, 1, 1, 1 },
+		{ KeyLeft, "resources/images/KeyLeft.png", 32, 32, 1, 1, 1 },
+		{ KeyPoint, "resources/images/KeyPoint.png", 32, 32, 1, 1, 1 },
+		{ KeyPointPushed, "resources/images/KeyPointPushed.png", 32, 32, 1, 1, 1 },
+		{ KeyRight, "resources/images/KeyRight.png", 32, 32, 1, 1, 1 },
+		{ KeyS, "resources/images/KeyS.png", 32, 32, 1, 1, 1 },
+		{ KeyUp, "resources/images/KeyUp.png", 32, 32, 1, 1, 1 },
+		{ KeyW, "resources/images/KeyW.png", 32, 32, 1, 1, 1 },
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {

@@ -2,7 +2,7 @@
 #include "TutorialState.h"
 #include "PlayState.h"
 
-PauseMenu::PauseMenu(SDLGame* game, PlayState* ps, bool isXbox) : GameObject(game), isXbox(isXbox) //Creates all the UI related
+PauseMenu::PauseMenu(SDLGame* game, PlayState* ps, int controllerMode_) : GameObject(game), controllerMode(controllerMode_) //Creates all the UI related
 {
 
 	level = ps;
@@ -34,33 +34,44 @@ PauseMenu::PauseMenu(SDLGame* game, PlayState* ps, bool isXbox) : GameObject(gam
 
 	op_bg = new EmptyObject(game, Vector2D(menuX, menuY), menuW, menuH, Resources::MenuBG);
 
-	music = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.1 + buttonConst), menuW / 2, 45, Resources::ButtonMusic);
+	music = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.08 + buttonConst), menuW / 2, 45, Resources::ButtonMusic);
 	music->scale(0.8);
-	musicSelect = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.1 + buttonConst + 45), menuW / 2, 45, Resources::ButtonVol);
+	musicSelect = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.08 + buttonConst + 45), menuW / 2, 45, Resources::ButtonVol);
 
-	sounds = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.295 + buttonConst), menuW / 2, 45, Resources::ButtonSound);
+	sounds = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.275 + buttonConst), menuW / 2, 45, Resources::ButtonSound);
 	sounds->scale(0.8);
-	soundsSelect = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.295 + buttonConst + 45), menuW / 2, 45, Resources::ButtonVol);
+	soundsSelect = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.275 + buttonConst + 45), menuW / 2, 45, Resources::ButtonVol);
 
-	controls = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.49 + buttonConst), menuW / 2, 45, Resources::ButtonControls);
+	controls = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.47 + buttonConst), menuW / 2, 45, Resources::ButtonControls);
 	controls->scale(0.8);
-	controlsSelect = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.49 + buttonConst + 45), menuW / 2, 45, Resources::ButtonVol);
+	controlsSelect = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.47 + buttonConst + 45), menuW / 2, 45, Resources::ButtonVol);
 
-	op_exit = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.685 + buttonConst + 25), menuW / 2, 45, Resources::ButtonExit);
+	controls2 = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.665 + buttonConst), menuW / 2, 45, Resources::ButtonControls);
+	controls2->scale(0.8);
+	controlsSelect2 = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.665 + buttonConst + 45), menuW / 2, 45, Resources::ButtonVol);
+
+
+	op_exit = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.8 + buttonConst + 25), menuW / 2, 45, Resources::ButtonExit);
 
 	musicTxt = new TextObject(game, game->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(0, 0));
 	soundTxt = new TextObject(game, game->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(0, 0));
 	controlTxt = new TextObject(game, game->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(0, 0));
+	control2Txt = new TextObject(game, game->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(0, 0));
+
+	P1Controller = game->getP1Controller();
+	P2Controller = game_->getP2Controller();
 
 	updateTxt();
 
 	optionsButtons.push_back(musicSelect);
 	optionsButtons.push_back(soundsSelect);
 	optionsButtons.push_back(controlsSelect);
+	optionsButtons.push_back(controlsSelect2);
 	optionsButtons.push_back(op_exit);
 	optionsButtons.push_back(music);
 	optionsButtons.push_back(sounds);
 	optionsButtons.push_back(controls);
+	optionsButtons.push_back(controls2);
 
 	controller = SDL_GameControllerOpen(0);
 
@@ -78,6 +89,7 @@ PauseMenu::~PauseMenu()
 	delete musicTxt;
 	delete soundTxt;
 	delete controlTxt;
+	delete control2Txt;
 
 	for (GameObject* g : menuButtons) {
 		delete g;
@@ -102,6 +114,7 @@ void PauseMenu::activate()
 	musicTxt->setActive(false);
 	soundTxt->setActive(false);
 	controlTxt->setActive(false);
+	control2Txt->setActive(false);
 }
 
 bool PauseMenu::handleInput(Uint32 time, const SDL_Event& event)
@@ -179,7 +192,10 @@ bool PauseMenu::handleInput(Uint32 time, const SDL_Event& event)
 						updateSound(true);
 						break;
 					case 2:
-						updateControls();
+						updateControlsP1(true);
+						break;
+					case 3:
+						updateControlsP2(true);
 						break;
 					default:
 						break;
@@ -196,7 +212,10 @@ bool PauseMenu::handleInput(Uint32 time, const SDL_Event& event)
 						updateSound(false);
 						break;
 					case 2:
-						updateControls();
+						updateControlsP1(false);
+						break;
+					case 3:
+						updateControlsP2(true);
 						break;
 					default:
 						break;
@@ -232,7 +251,7 @@ void PauseMenu::toggleOptions()
 	musicTxt->setActive(optionsOpen);
 	soundTxt->setActive(optionsOpen);
 	controlTxt->setActive(optionsOpen);
-
+	control2Txt->setActive(optionsOpen);
 
 	if (optionsOpen) {
 		selectedButton = 0;
@@ -296,10 +315,69 @@ void PauseMenu::updateSound(bool raise) //SFX (like error sound) control, the on
 	updateTxt();
 }
 
-void PauseMenu::updateControls()
+void PauseMenu::updateControlsP1(bool raise)
 {
-	isXbox = level->changeControls();
+	if (raise)
+	{
+		if (P1Controller == 0 || (P1Controller == 1 && game_->getP2Controller() != 2))
+		{
+			game_->setP1Controller((P1Controller + 1));
+		}
+		else
+		{
+			game_->setP1Controller(0);
+		}
+		P1Controller = game_->getP1Controller();
 
+	}
+	else
+	{
+		if (P1Controller == 1 || P1Controller == 2)
+		{
+			game_->setP1Controller((P1Controller - 1));
+		}
+		else if (P1Controller == 0)
+		{
+			if (game_->getP2Controller() != 2)
+				game_->setP1Controller(2);
+			else
+				game_->setP1Controller(1);
+		}
+		P1Controller = game_->getP1Controller();
+	}
+	updateTxt();
+}
+
+void PauseMenu::updateControlsP2(bool raise)
+{
+	if (raise)
+	{
+		if (P2Controller == 0 || (P2Controller == 1 && game_->getP1Controller() != 2))
+		{
+			game_->setP2Controller((P2Controller + 1));
+		}
+		else
+		{
+			game_->setP2Controller(0);
+		}
+		P2Controller = game_->getP2Controller();
+
+	}
+	else
+	{
+		if (P2Controller == 1 || P2Controller == 2)
+		{
+			game_->setP2Controller((P2Controller - 1));
+		}
+		else if (P2Controller == 0)
+		{
+			if (game_->getP1Controller() != 2)
+				game_->setP2Controller(2);
+			else
+				game_->setP2Controller(1);
+		}
+		P2Controller = game_->getP2Controller();
+	}
 	updateTxt();
 }
 
@@ -311,17 +389,49 @@ void PauseMenu::updateTxt()
 	soundTxt->setText(to_string(game_->getSoundVolume()), SDL_Color{ 0, 0, 0, 255 });
 	soundTxt->setPosition(soundsSelect->getPosition() + Vector2D(soundsSelect->getWidth() / 2, soundsSelect->getHeight() / 2) - Vector2D(soundTxt->getWidth() / 2, soundTxt->getHeight() / 2));
 
-	if (isXbox)
+	switch (P1Controller)
+	{
+	case 0:
 		controlTxt->setText("Xbox", SDL_Color{ 0, 0, 0, 255 });
-	else
+		break;
+	case 1:
 		controlTxt->setText("PS4", SDL_Color{ 0, 0, 0, 255 });
+		break;
+	case 2:
+		controlTxt->setText("Teclado", SDL_Color{ 0, 0, 0, 255 });
+		break;
+	default:
+		game_->setP1Controller(0);
+		P1Controller = game_->getP1Controller();
+		controlTxt->setText("Xbox", SDL_Color{ 0, 0, 0, 255 });
+		break;
+	}
 
 	controlTxt->setPosition(controlsSelect->getPosition() + Vector2D(controlsSelect->getWidth() / 2, controlsSelect->getHeight() / 2) - Vector2D(controlTxt->getWidth() / 2, controlTxt->getHeight() / 2));
 
+	switch (P2Controller)
+	{
+	case 0:
+		control2Txt->setText("Xbox", SDL_Color{ 0, 0, 0, 255 });
+		break;
+	case 1:
+		control2Txt->setText("PS4", SDL_Color{ 0, 0, 0, 255 });
+		break;
+	case 2:
+		control2Txt->setText("Teclado", SDL_Color{ 0, 0, 0, 255 });
+		break;
+	default:
+		game_->setP2Controller(0);
+		P2Controller = game_->getP2Controller();
+		control2Txt->setText("Xbox", SDL_Color{ 0, 0, 0, 255 });
+		break;
+	}
+
+	control2Txt->setPosition(controlsSelect2->getPosition() + Vector2D(controlsSelect2->getWidth() / 2, controlsSelect2->getHeight() / 2) - Vector2D(control2Txt->getWidth() / 2, control2Txt->getHeight() / 2));
 
 	ofstream file("resources/data/options.ddb"); //Saves the options so the user doesn't have to reconfigure it every time
 
-	file << "MUSIC" << endl << game_->getMusicVolume() << endl << "SOUND" << endl << game_->getSoundVolume() << endl << "CONTROLLER" << endl << game_->getController();
+	file << "MUSIC" << endl << game_->getMusicVolume() << endl << "SOUND" << endl << game_->getSoundVolume() << endl << "CONTROLLER" << endl << game_->getP1Controller() << endl << game_->getP2Controller();
 
 	file.close();
 }

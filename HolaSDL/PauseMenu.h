@@ -16,7 +16,7 @@ class PauseMenu :
 	public GameObject
 {
 private:
-	bool isXbox;
+	int controllerMode;
 
 	Timer* timer;
 	SDL_GameController* controller = NULL;
@@ -36,6 +36,8 @@ private:
 	EmptyObject* soundsSelect;
 	EmptyObject* controls;
 	EmptyObject* controlsSelect;
+	EmptyObject* controls2;
+	EmptyObject* controlsSelect2;
 	EmptyObject* op_exit;
 
 	EmptyObject* selection;
@@ -43,6 +45,7 @@ private:
 	TextObject* musicTxt;
 	TextObject* soundTxt;
 	TextObject* controlTxt;
+	TextObject* control2Txt;
 
 	vector<EmptyObject*> menuButtons;
 	vector<EmptyObject*> optionsButtons;
@@ -58,13 +61,16 @@ private:
 	void updateSound(bool raise);
 	
 	void updateTxt();
+	int P1Controller;
+	int P2Controller;
 
 public:
-	PauseMenu(SDLGame* game, PlayState* ps, bool isXbox);
+	PauseMenu(SDLGame* game, PlayState* ps, int controllerMode);
 	~PauseMenu();
 
 	void activate();
-	void updateControls();
+	void updateControlsP1(bool raise);
+	void updateControlsP2(bool raise);
 
 	virtual bool handleInput(Uint32 time, const SDL_Event& event);
 	virtual void update(Uint32 time) {};

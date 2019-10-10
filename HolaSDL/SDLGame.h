@@ -29,7 +29,6 @@ public:
 	int getWindowHeight() const; // returns the window height
 	int getMusicVolume() const;
 	int getSoundVolume() const;
-	bool getController() { return isXbox; };
 	int getDefaultWindowWidth() const; // returns the default window width (800)
 	int getDefaultWindowHeight() const; // returns the default window height (600)
 	double getWidthScale() const;
@@ -41,11 +40,11 @@ public:
 
 	int deltaTime = 0; //Va cambiando segun el tiempo de refresco (se le multiplica a las velocidades)
 
-	void setController(bool xbox) { isXbox = xbox; };
-	bool getP1Keyboard();
-	void setP1Keyboard(bool value);
-	bool getP2Keyboard();
-	void setP2Keyboard(bool value);
+	//void setController(bool xbox) { isXbox = xbox; };
+	int getP1Controller();
+	void setP1Controller(int value);
+	int getP2Controller();
+	void setP2Controller(int value);
 
 	void setMusicVolume(int volume);
 	void setSoundVolume(int volume);
@@ -81,7 +80,7 @@ protected:
 	Character* bg;
 	Character* anim;
 
-	bool isXbox = true;
-	bool P1Keyboard = false;
-	bool P2Keyboard = false;
+	//bool isXbox = true;
+	int P1Controller;
+	int P2Controller;
 };

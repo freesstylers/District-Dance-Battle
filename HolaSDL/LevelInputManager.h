@@ -12,7 +12,7 @@ class PlayState;
 class LevelInputManager
 {
 public:
-	LevelInputManager(PlayState* l, PlayerPack* pl, int numctrl, bool keyboard);
+	LevelInputManager(PlayState* l, PlayerPack* pl, int numctrl, int ControllerMode_);
 	~LevelInputManager();
 
 	bool handleInput(Uint32 time, const SDL_Event& event);
@@ -40,6 +40,6 @@ private:
 	PlayState* level;
 	PlayerPack* player;
 	SDL_GameController* controller = NULL;
-	bool keyboard_;
+	int ControllerMode;
 };
 

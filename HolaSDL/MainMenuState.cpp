@@ -6,8 +6,10 @@
 MainMenuState::MainMenuState(GameManager*g):GameState(g)
 {
 	gameManager = g;
-	isXbox = gameManager->getController();
-	gameManager->setController(isXbox);
+	
+	P1Controller = manager->getP1Controller();
+	P2Controller = manager->getP2Controller();
+
 	buttons.reserve (10);
 	selectButton.reserve (5);
 	controller = SDL_GameControllerOpen(0);
@@ -75,21 +77,28 @@ MainMenuState::MainMenuState(GameManager*g):GameState(g)
 	controls->scale(0.8);
 	controlsSelect = new EmptyObject(gameManager, Vector2D(menuX + menuX / 4, menuY + menuH * 0.49 + buttonConst + 45), menuW / 2, 45, Resources::ButtonVol);
 
-	op_exit = new EmptyObject(gameManager, Vector2D(menuX + menuX / 4, menuY + menuH * 0.685 + buttonConst + 25), menuW / 2, 45, Resources::ButtonExit);
+	controls2 = new EmptyObject(gameManager, Vector2D(menuX + menuX / 4, menuY + menuH * 0.665 + buttonConst), menuW / 2, 45, Resources::ButtonControls);
+	controls2->scale(0.8);
+	controlsSelect2 = new EmptyObject(gameManager, Vector2D(menuX + menuX / 4, menuY + menuH * 0.665 + buttonConst + 45), menuW / 2, 45, Resources::ButtonVol);
+
+	op_exit = new EmptyObject(gameManager, Vector2D(menuX + menuX / 4, menuY + menuH * 0.8 + buttonConst + 25), menuW / 2, 45, Resources::ButtonExit);
 
 	musicTxt = new TextObject(gameManager, gameManager->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(0, 0));
 	soundTxt = new TextObject(gameManager, gameManager->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(0, 0));
 	controlTxt = new TextObject(gameManager, gameManager->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(0, 0));
+	control2Txt = new TextObject(gameManager, gameManager->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(0, 0));
 
 	updateTxt();
 
 	optionsButtons.push_back(musicSelect);
 	optionsButtons.push_back(soundsSelect);
 	optionsButtons.push_back(controlsSelect);
+	optionsButtons.push_back(controlsSelect2);
 	optionsButtons.push_back(op_exit);
 	optionsButtons.push_back(music);
 	optionsButtons.push_back(sounds);
 	optionsButtons.push_back(controls);
+	optionsButtons.push_back(controls2);
 	selection = new EmptyObject(gameManager, Vector2D(menuX + menuX / 4, menuY + menuH * 2 / 3), menuW / 2, 45, Resources::ButtonSelection);
 	confirmation = new EmptyObject(gameManager, Vector2D(gameManager->getDefaultWindowWidth()/2-1020/2, gameManager->getDefaultWindowHeight()/2-420/2), 1020, 420, Resources::newGameConfirm);
 
@@ -114,7 +123,9 @@ MainMenuState::~MainMenuState()
 	delete sounds;
 	delete soundsSelect;
 	delete controls;
+	delete controls2;
 	delete controlsSelect;
+	delete controlsSelect2;
 	delete confirmation;
 	delete op_exit;
 
@@ -151,6 +162,7 @@ void MainMenuState::render(Uint32 time, bool beatHandler)
 		musicTxt->render(time);
 		soundTxt->render(time);
 		controlTxt->render(time);
+		control2Txt->render(time);
 	}
 	if (confirmationActive) {
 		confirmation->render(time);
@@ -169,6 +181,7 @@ void MainMenuState::options()
 	musicTxt->setActive(optionsOpen);
 	soundTxt->setActive(optionsOpen);
 	controlTxt->setActive(optionsOpen);
+	control2Txt->setActive(optionsOpen);
 
 	if (optionsOpen) {
 		selectedButton = 0;
@@ -209,10 +222,69 @@ void MainMenuState::updateSound(bool raise)
 	updateTxt();
 }
 
-void MainMenuState::updateControls()
+void MainMenuState::updateControlsP1(bool raise)
 {
-	isXbox = !manager->getController();
-	manager->setController(isXbox);
+	if (raise)
+	{
+		if (P1Controller == 0 || (P1Controller == 1 && manager->getP2Controller() != 2))
+		{
+			manager->setP1Controller((P1Controller + 1));
+		}
+		else
+		{
+			manager->setP1Controller(0);
+		}
+		P1Controller = manager->getP1Controller();
+
+	}
+	else
+	{
+		if (P1Controller == 1 || P1Controller == 2)
+		{
+			manager->setP1Controller((P1Controller - 1));
+		}
+		else if (P1Controller == 0)
+		{
+			if (manager->getP2Controller() != 2)
+				manager->setP1Controller(2);
+			else
+				manager->setP1Controller(1);
+		}
+		P1Controller = manager->getP1Controller();
+	}
+	updateTxt();
+}
+
+void MainMenuState::updateControlsP2(bool raise)
+{
+	if (raise)
+	{
+		if (P2Controller == 0 || (P2Controller == 1 && manager->getP1Controller() != 2))
+		{
+			manager->setP2Controller((P2Controller + 1));
+		}
+		else
+		{
+			manager->setP2Controller(0);
+		}
+		P2Controller = manager->getP2Controller();
+
+	}
+	else
+	{
+		if (P2Controller == 1 || P2Controller == 2)
+		{
+			manager->setP2Controller((P2Controller - 1));
+		}
+		else if (P2Controller == 0)
+		{
+			if (manager->getP1Controller() != 2)
+				manager->setP2Controller(2);
+			else
+				manager->setP2Controller(1);
+		}
+		P2Controller = manager->getP2Controller();
+	}
 	updateTxt();
 }
 
@@ -224,16 +296,50 @@ void MainMenuState::updateTxt()	//this updates the text found in the options men
 	soundTxt->setText(to_string(gameManager->getSoundVolume()), SDL_Color{ 0, 0, 0, 255 });
 	soundTxt->setPosition(soundsSelect->getPosition() + Vector2D(soundsSelect->getWidth() / 2, soundsSelect->getHeight() / 2) - Vector2D(soundTxt->getWidth() / 2, soundTxt->getHeight() / 2));
 
-	if (isXbox)
+	switch (P1Controller)
+	{
+	case 0:
 		controlTxt->setText("Xbox", SDL_Color{ 0, 0, 0, 255 });
-	else
+		break;
+	case 1:
 		controlTxt->setText("PS4", SDL_Color{ 0, 0, 0, 255 });
+		break;
+	case 2:
+		controlTxt->setText("Teclado", SDL_Color{ 0, 0, 0, 255 });
+		break;
+	default:
+		manager->setP1Controller(0);
+		P1Controller = manager->getP1Controller();
+		controlTxt->setText("Xbox", SDL_Color{ 0, 0, 0, 255 });
+		break;
+	}
 
 	controlTxt->setPosition(controlsSelect->getPosition() + Vector2D(controlsSelect->getWidth() / 2, controlsSelect->getHeight() / 2) - Vector2D(controlTxt->getWidth() / 2, controlTxt->getHeight() / 2));
 
+	switch (P2Controller)
+	{
+	case 0:
+		control2Txt->setText("Xbox", SDL_Color{ 0, 0, 0, 255 });
+		break;
+	case 1:
+		control2Txt->setText("PS4", SDL_Color{ 0, 0, 0, 255 });
+		break;
+	case 2:
+		control2Txt->setText("Teclado", SDL_Color{ 0, 0, 0, 255 });
+		break;
+	default:
+		manager->setP2Controller(0);
+		P2Controller = manager->getP2Controller();
+		control2Txt->setText("Xbox", SDL_Color{ 0, 0, 0, 255 });
+		break;
+	}
+
+	control2Txt->setPosition(controlsSelect2->getPosition() + Vector2D(controlsSelect2->getWidth() / 2, controlsSelect2->getHeight() / 2) - Vector2D(control2Txt->getWidth() / 2, control2Txt->getHeight() / 2));
+	
+
 	ofstream file("resources/data/options.ddb");
 
-	file << "MUSIC" << endl << gameManager->getMusicVolume() << endl << "SOUND" << endl << gameManager->getSoundVolume() << endl << "CONTROLLER" << endl << gameManager->getController();
+	file << "MUSIC" << endl << gameManager->getMusicVolume() << endl << "SOUND" << endl << gameManager->getSoundVolume() << endl << "CONTROLLER" << endl << gameManager->getP1Controller() << gameManager->getP2Controller();
 
 	file.close();
 }
@@ -242,14 +348,14 @@ void MainMenuState::nextButton()
 {
 	if (optionsOpen == true)
 	{
-		if (selectedButton == 3)
+		if (selectedButton == 4) //deberia ser 4
 			selectedButton = 0;
 		else {
 			selectedButton++;
 		}
 		selection->setPosition(optionsButtons[selectedButton]->getPosition());
 
-		if (selectedButton == 3)
+		if (selectedButton == 4)
 			selection->forceAnimationChange(Resources::ButtonSelection);
 		else
 			selection->forceAnimationChange(Resources::VolSelection);
@@ -271,13 +377,13 @@ void MainMenuState::backButton()
 	if (optionsOpen)
 	{
 		if (selectedButton == 0)
-			selectedButton = 3;
+			selectedButton = 4; //4
 		else {
 			selectedButton--;
 		}
 		selection->setPosition(optionsButtons[selectedButton]->getPosition());
 
-		if (selectedButton == 3)
+		if (selectedButton == 4) //4
 			selection->forceAnimationChange(Resources::ButtonSelection);
 		else
 			selection->forceAnimationChange(Resources::VolSelection);
@@ -342,7 +448,10 @@ bool MainMenuState::handleEvent(Uint32 time, SDL_Event e)
 					updateSound(true);
 					break;
 				case 2:
-					updateControls();
+					updateControlsP1(true);
+					break;
+				case 3:
+					updateControlsP2(true);
 					break;
 				default:
 					break;
@@ -360,7 +469,10 @@ bool MainMenuState::handleEvent(Uint32 time, SDL_Event e)
 					updateSound(false);
 					break;
 				case 2:
-					updateControls();
+					updateControlsP1(false);
+					break;
+				case 3:
+					updateControlsP2(true);
 					break;
 				default:
 					break;
@@ -369,20 +481,16 @@ bool MainMenuState::handleEvent(Uint32 time, SDL_Event e)
 		}
 		else if (selectButton[0] == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_w))
 		{
-
 				manager->getServiceLocator()->getAudios()->haltChannel(0);
 				gameManager->mainmenu = false;
 				input = true;
 				gameManager->getMachine()->changeState(new MapState(gameManager));
-			
-
 		}
 		else if (selectButton[1] == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B) || e.key.keysym.sym == SDLK_s))
 		{
 			if (confirmationActive) {
 				confirmationActive = false;
 			}
-		
 		}
 		else if (selectButton[1] == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_w))
 		{
@@ -423,5 +531,3 @@ bool MainMenuState::handleEvent(Uint32 time, SDL_Event e)
 		else if (e.type == SDL_CONTROLLERBUTTONUP || e.type == SDL_KEYUP) { keyup = true; input = false; }
 	return false;
 }
-
-

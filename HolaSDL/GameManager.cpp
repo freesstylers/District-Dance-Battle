@@ -16,7 +16,9 @@ GameManager::GameManager(): SDLGame("District Dance Battle", _WINDOW_WIDTH_, _WI
 
 		file >> s >> soundVolume_;
 
-		file >> s >> isXbox;
+		file >> s >> P1Controller;
+
+		file >> s >> P2Controller;
 	}
 
 	file.close();
