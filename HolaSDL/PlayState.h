@@ -42,7 +42,6 @@ protected:
 	bool songIsOver = false; 
 	bool isPaused = false;
 
-	EmptyObject* fourButtons = nullptr;
 	Character* perico = nullptr;	//Main character
 	Character* enemy = nullptr;	//Enemy character
 	Level* level = nullptr;

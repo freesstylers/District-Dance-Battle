@@ -38,7 +38,7 @@ bool Point::handleInput(Uint32 time, const SDL_Event& event)
 			else
 			{ 
 				if (event.key.keysym.sym == SDLK_a || event.key.keysym.sym == SDLK_d || event.key.keysym.sym == SDLK_s || event.key.keysym.sym == SDLK_w)
-				this->setAnimation(Resources::KeyPointPushed);
+					this->setAnimation(Resources::KeyPointPushed);
 			}
 		}
 		else
@@ -52,11 +52,11 @@ bool Point::handleInput(Uint32 time, const SDL_Event& event)
 			else
 			{
 				if (event.key.keysym.sym == SDLK_LEFT || event.key.keysym.sym == SDLK_RIGHT || event.key.keysym.sym == SDLK_DOWN || event.key.keysym.sym == SDLK_UP)
-				this->setAnimation(Resources::KeyPointPushed);
+					this->setAnimation(Resources::KeyPointPushed);
 			}
 		}
 	}
-	else
+	else if (event.type == SDL_KEYUP || event.type == SDL_CONTROLLERBUTTONUP)
 	{
 		if (side_)
 		{
@@ -68,7 +68,7 @@ bool Point::handleInput(Uint32 time, const SDL_Event& event)
 			}
 			else
 			{
-				if (!(event.key.keysym.sym == SDLK_a) && !(event.key.keysym.sym == SDLK_d) && !(event.key.keysym.sym == SDLK_s) && !(event.key.keysym.sym == SDLK_w))
+				if (!(event.key.keysym.sym == SDLK_LEFT || event.key.keysym.sym == SDLK_RIGHT || event.key.keysym.sym == SDLK_DOWN || event.key.keysym.sym == SDLK_UP))
 					this->setAnimation(Resources::KeyPoint);
 			}
 		}
@@ -82,7 +82,7 @@ bool Point::handleInput(Uint32 time, const SDL_Event& event)
 			}
 			else
 			{
-				if (!(event.key.keysym.sym == SDLK_LEFT) && !(event.key.keysym.sym == SDLK_RIGHT) && !(event.key.keysym.sym == SDLK_DOWN) && !(event.key.keysym.sym == SDLK_UP))
+				if (!(event.key.keysym.sym == SDLK_a || event.key.keysym.sym == SDLK_d || event.key.keysym.sym == SDLK_s || event.key.keysym.sym == SDLK_w))
 					this->setAnimation(Resources::KeyPoint);
 			}
 		}

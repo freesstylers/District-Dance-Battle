@@ -147,9 +147,6 @@ void PlayState::newGame()
 
 	perico = new Character(manager, 60 * 5, 120 * 5, Vector2D(100, initialNoteHeight + 50), Resources::PericoIdle);
 	
-	fourButtons = new EmptyObject(manager, Vector2D(10, manager->getDefaultWindowHeight() - 101), 75, 81, Resources::fourButtons);
-	
-	
 	extraTimer = new Timer();
 
 	bh = new BeatHandler(level->bpm);
@@ -161,7 +158,6 @@ void PlayState::newGame()
 	stage.push_back(songBar);
 	stage.push_back(player1);
 	stage.push_back(particles);
-	stage.push_back(fourButtons);
 	stage.push_back(Lost);
 	stage.push_back(youLost);
 
@@ -205,8 +201,6 @@ void PlayState::newGame2P()
 	extraTimer = new Timer();
 
 	bh = new BeatHandler(level->bpm);
-	fourButtons = new EmptyObject(manager, Vector2D(10, manager->getDefaultWindowHeight() - 101), 75, 81, Resources::fourButtons);
-	EmptyObject* fourButtons2 = new EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() - 85, manager->getDefaultWindowHeight() - 101), 75, 81, Resources::fourButtons);
 
 	stage.push_back(bg);
 	stage.push_back(perico);
@@ -215,8 +209,6 @@ void PlayState::newGame2P()
 	stage.push_back(songBar);
 	stage.push_back(player1);
 	stage.push_back(player2);
-	stage.push_back(fourButtons);
-	stage.push_back(fourButtons2);
 	stage.push_back(crown);
 	stage.push_back(Lost);
 	stage.push_back(youLost);
