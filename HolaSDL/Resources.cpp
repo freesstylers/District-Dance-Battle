@@ -192,6 +192,7 @@ vector<Resources::ImageInfo> Resources::images_{
 		{ KeyS, "resources/images/KeyS.png", 32, 32, 1, 1, 1 },
 		{ KeyUp, "resources/images/KeyUp.png", 32, 32, 1, 1, 1 },
 		{ KeyW, "resources/images/KeyW.png", 32, 32, 1, 1, 1 },
+		{ ButtonControls2, "resources/images/buttonControls2.png", 153, 29, 1, 1, 1 }
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {

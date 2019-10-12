@@ -61,25 +61,29 @@ MainMenuState::MainMenuState(GameManager*g):GameState(g)
 	double menuW = gameManager->getDefaultWindowWidth() / 3;
 	double menuH = gameManager->getDefaultWindowHeight() * 2 / 3;
 
-	double buttonConst = menuH / 8 - 50;
+	double buttonConst = menuH / 9 - 50;
 
 	op_bg = new EmptyObject(gameManager, Vector2D(menuX, menuY), menuW, menuH, Resources::MenuBG);
 
-	music = new EmptyObject(gameManager, Vector2D(menuX + menuX / 4, menuY + menuH * 0.1 + buttonConst), menuW / 2, 45, Resources::ButtonMusic);
+	music = new EmptyObject(gameManager, Vector2D(menuX + menuX / 4, menuY + menuH * 0.08 + buttonConst), menuW / 2, 45, Resources::ButtonMusic);
 	music->scale(0.8);
-	musicSelect = new EmptyObject(gameManager, Vector2D(menuX + menuX / 4, menuY + menuH * 0.1 + buttonConst + 45), menuW / 2, 45, Resources::ButtonVol);
+	musicSelect = new EmptyObject(gameManager, Vector2D(menuX + menuX / 4, menuY + menuH * 0.08 + buttonConst + 45), menuW / 2, 45, Resources::ButtonVol);
 
-	sounds = new EmptyObject(gameManager, Vector2D(menuX + menuX / 4, menuY + menuH * 0.295 + buttonConst), menuW / 2, 45, Resources::ButtonSound);
+	sounds = new EmptyObject(gameManager, Vector2D(menuX + menuX / 4, menuY + menuH * 0.275 + buttonConst), menuW / 2, 45, Resources::ButtonSound);
 	sounds->scale(0.8);
-	soundsSelect = new EmptyObject(gameManager, Vector2D(menuX + menuX / 4, menuY + menuH * 0.295 + buttonConst + 45), menuW / 2, 45, Resources::ButtonVol);
+	soundsSelect = new EmptyObject(gameManager, Vector2D(menuX + menuX / 4, menuY + menuH * 0.275 + buttonConst + 45), menuW / 2, 45, Resources::ButtonVol);
 
-	controls = new EmptyObject(gameManager, Vector2D(menuX + menuX / 4, menuY + menuH * 0.49 + buttonConst), menuW / 2, 45, Resources::ButtonControls);
+	controls = new EmptyObject(gameManager, Vector2D(menuX + menuX / 4, menuY + menuH * 0.475 + buttonConst), menuW / 2, 45, Resources::ButtonControls);
 	controls->scale(0.8);
-	controlsSelect = new EmptyObject(gameManager, Vector2D(menuX + menuX / 4, menuY + menuH * 0.49 + buttonConst + 45), menuW / 2, 45, Resources::ButtonVol);
+	controlsSelect = new EmptyObject(gameManager, Vector2D(menuX + menuX / 4 - 75, menuY + menuH * 0.475 + buttonConst + 41), menuW / 2, 45, Resources::ButtonVol);
+	controlsSelect->setWidth(controlsSelect->getWidth() + 150);
+	controlsSelect->scale(0.8);
 
-	controls2 = new EmptyObject(gameManager, Vector2D(menuX + menuX / 4, menuY + menuH * 0.665 + buttonConst), menuW / 2, 45, Resources::ButtonControls);
+	controls2 = new EmptyObject(gameManager, Vector2D(menuX + menuX / 4, menuY + menuH * 0.650 + buttonConst), menuW / 2, 45, Resources::ButtonControls2);
 	controls2->scale(0.8);
-	controlsSelect2 = new EmptyObject(gameManager, Vector2D(menuX + menuX / 4, menuY + menuH * 0.665 + buttonConst + 45), menuW / 2, 45, Resources::ButtonVol);
+	controlsSelect2 = new EmptyObject(gameManager, Vector2D(menuX + menuX / 4 - 75, menuY + menuH * 0.650 + buttonConst + 41), menuW / 2, 45, Resources::ButtonVol);
+	controlsSelect2->setWidth(controlsSelect2->getWidth() + 150);
+	controlsSelect2->scale(0.8);
 
 	op_exit = new EmptyObject(gameManager, Vector2D(menuX + menuX / 4, menuY + menuH * 0.8 + buttonConst + 25), menuW / 2, 45, Resources::ButtonExit);
 
@@ -353,12 +357,32 @@ void MainMenuState::nextButton()
 		else {
 			selectedButton++;
 		}
+
 		selection->setPosition(optionsButtons[selectedButton]->getPosition());
 
+		if (selectedButton == 0 || selectedButton == 1)
+		{
+			selection->setHeight(musicSelect->getHeight());
+			selection->setWidth(musicSelect->getWidth());
+		}
+
+		else if (selectedButton == 2 || selectedButton == 3)
+		{
+			//selection->setPosition(selection->getPosition() + 75);
+			selection->setHeight(controlsSelect->getHeight());
+			selection->setWidth(controlsSelect->getWidth());
+		}
+
 		if (selectedButton == 4)
+		{
+			selection->setHeight(op_exit->getHeight());
+			selection->setWidth(op_exit->getWidth());
 			selection->forceAnimationChange(Resources::ButtonSelection);
+		}
 		else
+		{
 			selection->forceAnimationChange(Resources::VolSelection);
+		}
 	}
 	else {
 		selectButton[index] = false;
@@ -381,12 +405,32 @@ void MainMenuState::backButton()
 		else {
 			selectedButton--;
 		}
+
 		selection->setPosition(optionsButtons[selectedButton]->getPosition());
 
+		if (selectedButton == 0 || selectedButton == 1)
+		{
+			selection->setHeight(musicSelect->getHeight());
+			selection->setWidth(musicSelect->getWidth());
+		}
+		else if (selectedButton == 2 || selectedButton == 3)
+		{
+			//selection->setPosition(selection->getPosition() + 75);
+			selection->setHeight(controlsSelect->getHeight());
+			selection->setWidth(controlsSelect->getWidth());
+		}
+
+
 		if (selectedButton == 4) //4
+		{
+			selection->setHeight(op_exit->getHeight());
+			selection->setWidth(op_exit->getWidth());
 			selection->forceAnimationChange(Resources::ButtonSelection);
+		}
 		else
+		{
 			selection->forceAnimationChange(Resources::VolSelection);
+		}
 	}
 	else {
 		selectButton[index] = false;

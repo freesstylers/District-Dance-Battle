@@ -12,7 +12,7 @@ PauseMenu::PauseMenu(SDLGame* game, PlayState* ps, int controllerMode_) : GameOb
 	double menuW = game->getDefaultWindowWidth() / 3;
 	double menuH = game->getDefaultWindowHeight() * 2 / 3;
 
-	double buttonConst = menuH / 8 - 50;
+	double buttonConst = menuH / 9 - 50;
 
 	double opX = menuX + (menuW * 0.3) / 2;
 	double opY = menuY + (menuH * 0.3) / 2;
@@ -42,13 +42,17 @@ PauseMenu::PauseMenu(SDLGame* game, PlayState* ps, int controllerMode_) : GameOb
 	sounds->scale(0.8);
 	soundsSelect = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.275 + buttonConst + 45), menuW / 2, 45, Resources::ButtonVol);
 
-	controls = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.47 + buttonConst), menuW / 2, 45, Resources::ButtonControls);
+	controls = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.475 + buttonConst), menuW / 2, 45, Resources::ButtonControls);
 	controls->scale(0.8);
-	controlsSelect = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.47 + buttonConst + 45), menuW / 2, 45, Resources::ButtonVol);
+	controlsSelect = new EmptyObject(game, Vector2D(menuX + menuX / 4 - 75, menuY + menuH * 0.475 + buttonConst + 41), menuW / 2, 45, Resources::ButtonVol);
+	controlsSelect->setWidth(controlsSelect->getWidth() + 150);
+	controlsSelect->scale(0.8);
 
-	controls2 = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.665 + buttonConst), menuW / 2, 45, Resources::ButtonControls);
+	controls2 = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.650 + buttonConst), menuW / 2, 45, Resources::ButtonControls2);
 	controls2->scale(0.8);
-	controlsSelect2 = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.665 + buttonConst + 45), menuW / 2, 45, Resources::ButtonVol);
+	controlsSelect2 = new EmptyObject(game, Vector2D(menuX + menuX / 4 - 75, menuY + menuH * 0.650 + buttonConst + 41), menuW / 2, 45, Resources::ButtonVol);
+	controlsSelect2->setWidth(controlsSelect2->getWidth() + 150);
+	controlsSelect2->scale(0.8);
 
 
 	op_exit = new EmptyObject(game, Vector2D(menuX + menuX / 4, menuY + menuH * 0.8 + buttonConst + 25), menuW / 2, 45, Resources::ButtonExit);
@@ -124,13 +128,29 @@ bool PauseMenu::handleInput(Uint32 time, const SDL_Event& event)
 		if (event.type == SDL_CONTROLLERBUTTONDOWN || event.type == SDL_KEYDOWN) {
 			if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_UP) || event.key.keysym.sym == SDLK_UP) {
 				
-				selectedButton = (selectedButton == 0) ? 3 : selectedButton - 1;
+				selectedButton = (selectedButton == 0) ? 4 : selectedButton - 1;
 
 				if (optionsOpen) {
 					selection->setPosition(optionsButtons[selectedButton]->getPosition());
 
-					if (selectedButton == 3)
+					if (selectedButton == 0 || selectedButton == 1)
+					{
+						selection->setHeight(musicSelect->getHeight());
+						selection->setWidth(musicSelect->getWidth());
+					}
+
+					else if (selectedButton == 2 || selectedButton == 3)
+					{
+						selection->setHeight(controlsSelect->getHeight());
+						selection->setWidth(controlsSelect->getWidth());
+					}
+
+					if (selectedButton == 4)
+					{
+						selection->setHeight(op_exit->getHeight());
+						selection->setWidth(op_exit->getWidth());
 						selection->forceAnimationChange(Resources::ButtonSelection);
+					}
 					else
 						selection->forceAnimationChange(Resources::VolSelection);
 				}
@@ -139,13 +159,28 @@ bool PauseMenu::handleInput(Uint32 time, const SDL_Event& event)
 			}
 			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN) || event.key.keysym.sym == SDLK_DOWN) {
 				
-				selectedButton = (selectedButton == 3) ? 0 : selectedButton + 1;
+				selectedButton = (selectedButton == 4) ? 0 : selectedButton + 1;
 
 				if (optionsOpen) {
 					selection->setPosition(optionsButtons[selectedButton]->getPosition());
+					if (selectedButton == 0 || selectedButton == 1)
+					{
+						selection->setHeight(musicSelect->getHeight());
+						selection->setWidth(musicSelect->getWidth());
+					}
 
-					if (selectedButton == 3)
+					else if (selectedButton == 2 || selectedButton == 3)
+					{
+						selection->setHeight(controlsSelect->getHeight());
+						selection->setWidth(controlsSelect->getWidth());
+					}
+
+					if (selectedButton == 4)
+					{
+						selection->setHeight(op_exit->getHeight());
+						selection->setWidth(op_exit->getWidth());
 						selection->forceAnimationChange(Resources::ButtonSelection);
+					}
 					else
 						selection->forceAnimationChange(Resources::VolSelection);
 				}
@@ -155,7 +190,7 @@ bool PauseMenu::handleInput(Uint32 time, const SDL_Event& event)
 			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || event.key.keysym.sym == SDLK_RETURN) {
 				if (optionsOpen) {
 					switch (selectedButton) {
-					case 3:
+					case 4:
 						toggleOptions();
 						break;
 					default:
@@ -215,7 +250,7 @@ bool PauseMenu::handleInput(Uint32 time, const SDL_Event& event)
 						updateControlsP1(false);
 						break;
 					case 3:
-						updateControlsP2(true);
+						updateControlsP2(false);
 						break;
 					default:
 						break;
@@ -453,5 +488,6 @@ void PauseMenu::render(Uint32 time, bool beatSync)
 		musicTxt->render(time);
 		soundTxt->render(time);
 		controlTxt->render(time);
+		control2Txt->render(time);
 	}
 }

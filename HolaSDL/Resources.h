@@ -185,7 +185,8 @@ public:
 		KeyRight,
 		KeyS,
 		KeyUp,
-		KeyW
+		KeyW,
+		ButtonControls2
 		// text
 	};
 
