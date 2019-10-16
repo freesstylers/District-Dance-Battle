@@ -6,8 +6,10 @@
 #include "Background.h"
 #include <list>
 #include "checkML.h"
+#include "TextObject.h"
+#include "ExtraSong.h"
 
-//State used to display a menu for selecting the extra levels made for Guerrilla
+//State used to display a menu for selecting the extra levels made for Guerrilla/FIMP
 
 class PlayState;
 
@@ -23,6 +25,10 @@ private:
 	EmptyObject* hand;
 	EmptyObject* switchPlayers;
 	EmptyObject* select;
+	EmptyObject* character; //600x300?
+	TextObject* description; //600x600?
+
+	vector<ExtraSong*> songList;
 
 	bool onePlayer = true;
 	int posHand;

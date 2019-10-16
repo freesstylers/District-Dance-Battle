@@ -55,6 +55,7 @@
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="CreadorNiveles.cpp" />
     <ClCompile Include="ExtraMenu.cpp" />
+    <ClCompile Include="ExtraSong.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioManager.h" />
@@ -112,5 +113,6 @@
     <ClInclude Include="Timer.h" />
     <ClInclude Include="CreadorNiveles.h" />
     <ClInclude Include="ExtraMenu.h" />
+    <ClInclude Include="ExtraSong.h" />
   </ItemGroup>
 </Project>

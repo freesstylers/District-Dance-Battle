@@ -20,6 +20,16 @@ void ExtraMenu::init() {
 	select = new EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() - 150-10, 100), 110, 21, Resources::Select);
 	distanceHand = manager->getDefaultWindowHeight() / 14;
 	posHand = 0;
+
+	character = new EmptyObject(manager, Vector2D(60, 90), 300, 600, Resources::PapitoTwerk); //Hay que animarlo
+	description = new TextObject(manager, manager->getServiceLocator()->getFonts()->getFont(Resources::RETRO20), Vector2D(70, 650));
+	description->setText("Gonzalo huele mal");
+
+	//Leer de archivo la lista de canciones (Titulo >> Artista >> Dificultad >> Numero en menu) y meter en vector
+	//Hacer metodo aparte? (pushSongs)
+	//Metodo para cambiar los parametros del sprite, descripcion y lista de canciones
+
+	songList.push_back(new ExtraSong(manager, Vector2D(60, 90), 944, 149, Resources::CancionExtraFacil, "Honk", "Goose", 0, 1));
 }
 ExtraMenu::~ExtraMenu()
 {
@@ -27,11 +37,15 @@ ExtraMenu::~ExtraMenu()
 	delete hand;
 	delete switchPlayers;
 	delete select;
+	delete character;
+	delete description;
 
 	bg = nullptr;
 	hand = nullptr;
 	switchPlayers = nullptr;
 	select = nullptr;
+	character = nullptr;
+	description = nullptr;
 }
 
 void ExtraMenu::selectionUp() {
@@ -122,4 +136,15 @@ void ExtraMenu::render(Uint32 time, bool beatSync)
 		hand->render(time);
 		switchPlayers->render(time);
 		select->render(time);
+		character->render(time);
+		description->render(time);
+
+		auto it = songList.begin();
+
+		while (it != songList.end())
+		{
+			ExtraSong* song = *(it);
+			song->render(time);
+			it++;
+		}
 }

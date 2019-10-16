@@ -186,7 +186,10 @@ public:
 		KeyS,
 		KeyUp,
 		KeyW,
-		ButtonControls2
+		ButtonControls2,
+		CancionExtraFacil,
+		CancionExtraNormal,
+		CancionExtraDificil
 		// text
 	};
 
