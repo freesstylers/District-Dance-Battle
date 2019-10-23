@@ -189,7 +189,8 @@ public:
 		ButtonControls2,
 		CancionExtraFacil,
 		CancionExtraNormal,
-		CancionExtraDificil
+		CancionExtraDificil,
+		GooseDance
 		// text
 	};
 
@@ -218,7 +219,7 @@ public:
 		MainTheme,
 		Ambient,
 		Hardbass,
-		Megalovania1
+		MegalovaniaHonk
 		// sound effects
 	};
 

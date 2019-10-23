@@ -21,14 +21,14 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxS
 		enemyT = Resources::PericoRoom;
 		break;
 	case 1:
-		levelName = "prueba";
+		levelName = "vaporwave";
 		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::testBG);
 		bgT = Resources::testBG;
 		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 400, initialNoteHeight + 50), Resources::RobotIdle);
 		enemyT = Resources::RobotIdle;
 		break;
 	case 2:
-		levelName = "papito";
+		levelName = "reggeaton";
 		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::CiuBG);
 		bgT = Resources::CiuBG;
 		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 400, initialNoteHeight + 50), Resources::PapitoIdle);
@@ -89,6 +89,13 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxS
 		bgT = Resources::ExtraBG;
 		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 400, initialNoteHeight + 50), Resources::EminemciaIdle);
 		enemyT = Resources::EminemciaIdle;
+		break;
+	case 12:
+		levelName = "MegalovaniaHonk";
+		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::ExtraBG);
+		bgT = Resources::ExtraBG;
+		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 400, initialNoteHeight + 50), Resources::GooseDance);
+		enemyT = Resources::GooseDance;
 		break;
 	default:
 		levelName = "CL";
