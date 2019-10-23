@@ -467,7 +467,9 @@ bool MainMenuState::handleEvent(Uint32 time, SDL_Event e)
 		manager->stop();
 		return true;
 	}
+
 	bool input = false;
+	
 	if ((SDL_CONTROLLERBUTTONDOWN || SDL_KEYDOWN) && keyup)
 	{
 		if (!confirmationActive && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN) || e.key.keysym.sym == SDLK_DOWN))
@@ -501,6 +503,9 @@ bool MainMenuState::handleEvent(Uint32 time, SDL_Event e)
 					break;
 				}
 			}
+
+			input = true;
+
 		}
 		else if (!confirmationActive && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT) || e.key.keysym.sym == SDLK_LEFT))
 		{
@@ -522,6 +527,9 @@ bool MainMenuState::handleEvent(Uint32 time, SDL_Event e)
 					break;
 				}
 			}
+
+			input = true;
+
 		}
 		else if (selectButton[0] == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_w))
 		{
@@ -535,6 +543,9 @@ bool MainMenuState::handleEvent(Uint32 time, SDL_Event e)
 			if (confirmationActive) {
 				confirmationActive = false;
 			}
+
+			input = true;
+
 		}
 		else if (selectButton[1] == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_w))
 		{
@@ -542,20 +553,20 @@ bool MainMenuState::handleEvent(Uint32 time, SDL_Event e)
 				manager->getServiceLocator()->getAudios()->haltChannel(0);
 				gameManager->mainmenu = false;
 				confirmationActive = false;
-
-				newGame(gameManager);
 				input = true;
+				newGame(gameManager);
 			}
 			else {
 				confirmationActive = true;
 			}
+
+			input = true;
+
 		}
 		else if (selectButton[2] == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_w))
 		{
 			gameManager->mainmenu = false;
 			options();
-			gameManager->mainmenu = true;
-
 			input = true;
 		}
 		else if (selectButton[3] == true && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_w))
@@ -570,6 +581,7 @@ bool MainMenuState::handleEvent(Uint32 time, SDL_Event e)
 			exit(gameManager);
 			input = true;
 		}
+
 		if(input) //if any button got pressed
 			keyup = false;
 	}
