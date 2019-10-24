@@ -14,22 +14,23 @@ ExtraMenu::ExtraMenu(GameManager* game):GameState(game)
 
 void ExtraMenu::init() {
 
-	bg = new EmptyObject(manager, Vector2D( 0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::MenuCanciones);
+	bg = new EmptyObject(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::MenuCanciones);
 	hand = new EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth()-400, manager->getDefaultWindowHeight()/14), 128, 128, Resources::MasterHand);
 	switchPlayers = new EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth()-150, 0), 102, 90, Resources::NumPlayersSwitch);
 	select = new EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() - 150-10, 100), 110, 21, Resources::Select);
 	distanceHand = manager->getDefaultWindowHeight() / 14;
 	posHand = 0;
 
-	character = new EmptyObject(manager, Vector2D(60, 90), 300, 600, Resources::PapitoTwerk); //Hay que animarlo
+	character = new EmptyObject(manager, Vector2D(60, 90), 300, 600, Resources::RobotIdle); //Hay que animarlo
 	description = new TextObject(manager, manager->getServiceLocator()->getFonts()->getFont(Resources::RETRO20), Vector2D(70, 650));
 	description->setText("Gonzalo huele mal");
+	descriptionBox = new EmptyObject(manager, Vector2D(346/2, 70), 346, 145, Resources::ExtraBox);
+
 
 	//Leer de archivo la lista de canciones (Titulo >> Artista >> Dificultad >> Numero en menu) y meter en vector
 	//Hacer metodo aparte? (pushSongs)
 	//Metodo para cambiar los parametros del sprite, descripcion y lista de canciones
 
-	songList.push_back(new ExtraSong(manager, Vector2D(60, 90), 944, 149, Resources::CancionExtraFacil, "Honk", "Goose", 0, 1));
 }
 ExtraMenu::~ExtraMenu()
 {
@@ -138,6 +139,7 @@ void ExtraMenu::render(Uint32 time, bool beatSync)
 		select->render(time);
 		character->render(time);
 		description->render(time);
+		descriptionBox->render(time);
 
 		auto it = songList.begin();
 

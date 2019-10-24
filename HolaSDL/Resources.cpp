@@ -195,7 +195,8 @@ vector<Resources::ImageInfo> Resources::images_{
 		{ ButtonControls2, "resources/images/buttonControls2.png", 153, 29, 1, 1, 1 },
 		{ CancionExtraFacil, "resources/images/CancionExtraBaseFacil.png", 944, 149, 1, 1, 1 },
 		{ CancionExtraNormal, "resources/images/CancionExtraBaseFacil.png", 943, 149, 1, 1, 1 },
-		{ CancionExtraDificil, "resources/images/CancionExtraBaseFacil.png", 944, 149, 1, 1, 1 }
+		{ CancionExtraDificil, "resources/images/CancionExtraBaseFacil.png", 944, 149, 1, 1, 1 },
+		{ExtraBox, "resources/images/textbox1.png", 346, 145, 1, 1, 1 }
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {

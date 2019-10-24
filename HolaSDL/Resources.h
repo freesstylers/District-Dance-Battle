@@ -189,7 +189,8 @@ public:
 		ButtonControls2,
 		CancionExtraFacil,
 		CancionExtraNormal,
-		CancionExtraDificil
+		CancionExtraDificil,
+		ExtraBox
 		// text
 	};
 
