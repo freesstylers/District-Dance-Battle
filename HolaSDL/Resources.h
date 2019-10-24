@@ -219,7 +219,8 @@ public:
 		MainTheme,
 		Ambient,
 		Hardbass,
-		MegalovaniaHonk
+		MegalovaniaHonk,
+		DotA
 		// sound effects
 	};
 
