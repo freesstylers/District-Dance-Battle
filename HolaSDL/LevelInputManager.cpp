@@ -87,7 +87,7 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 		auto it = player->screenArrows_.front();
 		if (it != nullptr && abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getLeftPoint()->getPosition().getY() + player->getLeftPoint()->getHeight() / 2)) <= 100)
 		{
-			if ((event.type == SDL_CONTROLLERBUTTONDOWN || event.type == SDL_KEYDOWN) && keyup && (SDL_GameControllerGetButton(controller, it->getKey()) ||  it->getKey() == arrows))
+			if ((event.type == SDL_CONTROLLERBUTTONDOWN || event.type == SDL_KEYDOWN) && keyup && (SDL_GameControllerGetButton(controller, it->getKey()) ||  (ControllerMode == 2 && it->getKey() == arrows)))
 			{
 				if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getLeftPoint()->getPosition().getY() + player->getLeftPoint()->getHeight() / 2)) <= 10)
 				{
@@ -160,7 +160,7 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 		auto it = player->screenButtons_.front();
 		if (it != nullptr && abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getLeftPoint()->getPosition().getY() + player->getLeftPoint()->getHeight() / 2)) <= 75)
 		{
-			if ((event.type == SDL_CONTROLLERBUTTONDOWN || event.type == SDL_KEYDOWN) && keyup2 &&( SDL_GameControllerGetButton(controller, it->getKey()) || it->getKey() == buttons))
+			if ((event.type == SDL_CONTROLLERBUTTONDOWN || event.type == SDL_KEYDOWN) && keyup2 &&( SDL_GameControllerGetButton(controller, it->getKey()) || (ControllerMode == 2 && it->getKey() == buttons)))
 			{
 				if (abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getRightPoint()->getPosition().getY() + player->getRightPoint()->getHeight() / 2)) <= 10)
 				{

@@ -190,6 +190,7 @@ public:
 		CancionExtraFacil,
 		CancionExtraNormal,
 		CancionExtraDificil,
+		GooseDance
 		ExtraBox
 		// text
 	};
@@ -219,7 +220,8 @@ public:
 		MainTheme,
 		Ambient,
 		Hardbass,
-		Megalovania1
+		MegalovaniaHonk,
+		DotA
 		// sound effects
 	};
 

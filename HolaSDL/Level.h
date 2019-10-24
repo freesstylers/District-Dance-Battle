@@ -22,7 +22,7 @@ public:
 
 	void init(bool hardmode);
 
-	int bpm;
+	double bpm;
 	int probqte;
 	double songLength;
 	int song;

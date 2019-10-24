@@ -64,7 +64,7 @@ void Level::init(bool hardmode) {
 			noteVel = level->setVel(60000 / (double)bpm);
 	}
 	else {
-		if (name == "pruebaHard" || name == "papitoHard" || name == "hiphopHard")
+		if (name == "vaporwaveHard" || name == "reggeatonHard" || name == "hiphopHard")
 			noteVel = level->setVel(60000 / ((double)bpm * 2));
 		else
 			noteVel = level->setVel(60000 / (double)bpm);
