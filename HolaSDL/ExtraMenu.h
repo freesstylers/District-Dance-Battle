@@ -48,6 +48,7 @@ private:
 	void toggleOptions() {};
 	void restartSong() {};
 	void init();
+	void initSongs();
 	void exitSong() {};
 
 public:

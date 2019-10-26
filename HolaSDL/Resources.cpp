@@ -196,7 +196,7 @@ vector<Resources::ImageInfo> Resources::images_{
 		{ CancionExtraFacil, "resources/images/CancionExtraBaseFacil.png", 944, 149, 1, 1, 1 },
 		{ CancionExtraNormal, "resources/images/CancionExtraBaseFacil.png", 943, 149, 1, 1, 1 },
 		{ CancionExtraDificil, "resources/images/CancionExtraBaseFacil.png", 944, 149, 1, 1, 1 },
-		{ GooseDance, "resources/images/goose.png", 60, 139, 4, 2, 6}
+		{ GooseDance, "resources/images/goose.png", 60, 139, 4, 2, 6},
 		{ExtraBox, "resources/images/textbox1.png", 346, 145, 1, 1, 1 }
 			//Enum, file path, frame width, frame height, columns, rows, frame total//
 

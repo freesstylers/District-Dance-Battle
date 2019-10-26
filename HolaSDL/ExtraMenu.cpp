@@ -21,16 +21,28 @@ void ExtraMenu::init() {
 	distanceHand = manager->getDefaultWindowHeight() / 14;
 	posHand = 0;
 
-	character = new EmptyObject(manager, Vector2D(60, 90), 300, 600, Resources::RobotIdle); //Hay que animarlo
-	description = new TextObject(manager, manager->getServiceLocator()->getFonts()->getFont(Resources::RETRO20), Vector2D(70, 650));
-	description->setText("Gonzalo huele mal");
-	descriptionBox = new EmptyObject(manager, Vector2D(346/2, 70), 346, 145, Resources::ExtraBox);
-
-
+	initSongs();
 	//Leer de archivo la lista de canciones (Titulo >> Artista >> Dificultad >> Numero en menu) y meter en vector
 	//Hacer metodo aparte? (pushSongs)
 	//Metodo para cambiar los parametros del sprite, descripcion y lista de canciones
 
+}
+void ExtraMenu::initSongs()
+{
+	description = new TextObject(manager, manager->getServiceLocator()->getFonts()->getFont(Resources::RETRO20), Vector2D(70, 650));
+	descriptionBox = new EmptyObject(manager, Vector2D(346 / 2, 70), 346, 145, Resources::ExtraBox);
+
+	switch (currentSinger) {
+		case(ROBOT): {
+			character = new EmptyObject(manager, Vector2D(60, 90), 300, 600, Resources::RobotIdle);
+			description->setText("Gonzalo huele mal");
+
+			//añadir canciones
+			break;
+		}
+
+		/////el resto de cantantes
+	}
 }
 ExtraMenu::~ExtraMenu()
 {
@@ -40,6 +52,8 @@ ExtraMenu::~ExtraMenu()
 	delete select;
 	delete character;
 	delete description;
+
+	songList.erase(songList.begin(), songList.end());
 
 	bg = nullptr;
 	hand = nullptr;
