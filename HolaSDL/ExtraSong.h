@@ -8,7 +8,7 @@ class ExtraSong :
 	public EmptyObject
 {
 public:
-	ExtraSong(GameManager* game, Vector2D pos, int width, int height, int texture, string title_, string artist_, int diff_, int lvl);
+	ExtraSong(GameManager* game, Vector2D pos, int width, int height, int texture, string title_, string artist_, int lvl);
 	~ExtraSong();
 	virtual void render(bool time);
 
@@ -18,7 +18,6 @@ protected:
 	TextObject* title = nullptr;
 	TextObject* artist = nullptr;
 	TextObject* diff = nullptr;
-	EmptyObject* bg = nullptr;
 	int level = 0;
 
 };

@@ -19,7 +19,9 @@ void ExtraMenu::init() {
 	switchPlayers = new EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth()-150, 0), 102, 90, Resources::NumPlayersSwitch);
 	select = new EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() - 150-10, 100), 110, 21, Resources::Select);
 	distanceHand = manager->getDefaultWindowHeight() / 14;
-	posHand = 0;
+	character = new Character(manager, 300, 600, Vector2D(60, 90), Resources::RobotIdle);
+	character->isAnimationSynced(false);
+	character->setAnimationFramerate(4);
 
 	initSongs();
 	//Leer de archivo la lista de canciones (Titulo >> Artista >> Dificultad >> Numero en menu) y meter en vector
@@ -29,20 +31,73 @@ void ExtraMenu::init() {
 }
 void ExtraMenu::initSongs()
 {
+	posHand = 0;
+
 	description = new TextObject(manager, manager->getServiceLocator()->getFonts()->getFont(Resources::RETRO20), Vector2D(70, 650));
 	descriptionBox = new EmptyObject(manager, Vector2D(346 / 2, 70), 346, 145, Resources::ExtraBox);
 
 	switch (currentSinger) {
-		case(ROBOT): {
-			character = new EmptyObject(manager, Vector2D(60, 90), 300, 600, Resources::RobotIdle);
-			description->setText("Gonzalo huele mal");
+	case(ROBOT): {
+		character->forceAnimationChange(Resources::RobotIdle);
+		description->setText("Gonzalo huele mal");
 
-			//añadir canciones
-			break;
-		}
+		//añadir canciones
+		songList.push_back(new ExtraSong(manager, Vector2D(10, 10), 50, 50, Resources::CancionExtraFacil, "AA", "BB", 1));
+		break;
+	}
+	case(PAPITO): {
+		character->forceAnimationChange(Resources::PapitoIdle);
+		description->setText("Gonzalo huele mal");
+
+		//añadir canciones
+		songList.push_back(new ExtraSong(manager, Vector2D(10, 10), 50, 50, Resources::CancionExtraFacil, "AA", "BB", 1));
+		break;
+	}
+	case(EMINEM): {
+		character->forceAnimationChange(Resources::EminemciaIdle);
+		description->setText("Gonzalo huele mal");
+
+		//añadir canciones
+		songList.push_back(new ExtraSong(manager, Vector2D(10, 10), 50, 50, Resources::CancionExtraFacil, "AA", "BB", 1));
+		break;
+	}
+	case(CORPSE): {
+		character->forceAnimationChange(Resources::ZombieIdle);
+		description->setText("Gonzalo huele mal");
+
+		//añadir canciones
+		songList.push_back(new ExtraSong(manager, Vector2D(10, 10), 50, 50, Resources::CancionExtraFacil, "AA", "BB", 1));
+		break;
+	}
+	case(ALIEN): {
+		character->forceAnimationChange(Resources::AlienIdle);
+		description->setText("Gonzalo huele mal");
+
+		//añadir canciones
+		songList.push_back(new ExtraSong(manager, Vector2D(10, 10), 50, 50, Resources::CancionExtraFacil, "AA", "BB", 1));
+		break;
+	}
+	case(NESS): {
+		character->forceAnimationChange(Resources::SansIdle);
+		description->setText("Gonzalo huele mal");
+
+		//añadir canciones
+		songList.push_back(new ExtraSong(manager, Vector2D(10, 10), 50, 50, Resources::CancionExtraFacil, "AA", "BB", 1));
+		break;
+	}
+	case(SHREK): {
+		character->forceAnimationChange(Resources::ShrekIdle);
+		description->setText("Gonzalo huele mal");
+
+		//añadir canciones
+		songList.push_back(new ExtraSong(manager, Vector2D(10, 10), 50, 50, Resources::CancionExtraFacil, "AA", "BB", 1));
+		break;
+	}
 
 		/////el resto de cantantes
 	}
+
+
 }
 ExtraMenu::~ExtraMenu()
 {
@@ -155,12 +210,6 @@ void ExtraMenu::render(Uint32 time, bool beatSync)
 		description->render(time);
 		descriptionBox->render(time);
 
-		auto it = songList.begin();
-
-		while (it != songList.end())
-		{
-			ExtraSong* song = *(it);
-			song->render(time);
-			it++;
-		}
+		for (ExtraSong* s : songList)
+			s->render(time);
 }
