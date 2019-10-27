@@ -33,7 +33,7 @@ private:
 	TextObject* description; //600x600?
 	EmptyObject* descriptionBox; //600x600?
 
-	CurrentSinger currentSinger = ROBOT;
+	int currentSinger = ROBOT;
 
 	vector<ExtraSong*> songList;
 
@@ -44,11 +44,14 @@ private:
 
 	void selectionUp();
 	void selectionDown();
+	void selectionLeft();
+	void selectionRight();
 	void resumeSong() {};
 	void toggleOptions() {};
 	void restartSong() {};
 	void init();
 	void initSongs();
+	void cleanSongs();
 	void exitSong() {};
 
 public:

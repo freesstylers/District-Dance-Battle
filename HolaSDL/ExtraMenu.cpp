@@ -23,6 +23,9 @@ void ExtraMenu::init() {
 	character->isAnimationSynced(false);
 	character->setAnimationFramerate(4);
 
+	description = new TextObject(manager, manager->getServiceLocator()->getFonts()->getFont(Resources::RETRO20), Vector2D(70, 650));
+	descriptionBox = new EmptyObject(manager, Vector2D(346 / 2, 70), 346, 145, Resources::ExtraBox);
+
 	initSongs();
 	//Leer de archivo la lista de canciones (Titulo >> Artista >> Dificultad >> Numero en menu) y meter en vector
 	//Hacer metodo aparte? (pushSongs)
@@ -32,9 +35,6 @@ void ExtraMenu::init() {
 void ExtraMenu::initSongs()
 {
 	posHand = 0;
-
-	description = new TextObject(manager, manager->getServiceLocator()->getFonts()->getFont(Resources::RETRO20), Vector2D(70, 650));
-	descriptionBox = new EmptyObject(manager, Vector2D(346 / 2, 70), 346, 145, Resources::ExtraBox);
 
 	switch (currentSinger) {
 	case(ROBOT): {
@@ -99,6 +99,10 @@ void ExtraMenu::initSongs()
 
 
 }
+void ExtraMenu::cleanSongs()
+{
+	songList.erase(songList.begin(), songList.end());
+}
 ExtraMenu::~ExtraMenu()
 {
 	delete bg;
@@ -140,6 +144,28 @@ void ExtraMenu::selectionDown() {
 	}
 }
 
+void ExtraMenu::selectionLeft()
+{
+	if (currentSinger == ROBOT)
+		currentSinger = SHREK;	//change if more singers added
+	else
+		currentSinger--;
+
+	cleanSongs();
+	initSongs();
+}
+
+void ExtraMenu::selectionRight()
+{
+	if (currentSinger == SHREK)
+		currentSinger = ROBOT;	//change if more singers added
+	else
+		currentSinger++;
+
+	cleanSongs();
+	initSongs();
+}
+
 bool ExtraMenu::handleEvent(Uint32 time,  SDL_Event event)
 {
 	GameState::handleEvent(time, event);
@@ -153,6 +179,16 @@ bool ExtraMenu::handleEvent(Uint32 time,  SDL_Event event)
 		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN) || event.key.keysym.sym == SDLK_DOWN) {
 
 			selectionUp();
+
+		}
+		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT) || event.key.keysym.sym == SDLK_LEFT) {
+
+			selectionLeft();
+
+		}
+		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) || event.key.keysym.sym == SDLK_RIGHT) {
+
+			selectionRight();
 
 		}
 		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || event.key.keysym.sym == SDLK_w) {
