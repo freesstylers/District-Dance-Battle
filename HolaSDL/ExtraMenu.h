@@ -13,6 +13,10 @@
 
 class PlayState;
 
+enum CurrentSinger {
+	ROBOT, PAPITO, EMINEM, CORPSE, ALIEN, NESS, SHREK, HONK,
+};
+
 class ExtraMenu: public GameState
 {
 private:
@@ -25,8 +29,11 @@ private:
 	EmptyObject* hand;
 	EmptyObject* switchPlayers;
 	EmptyObject* select;
-	EmptyObject* character; //600x300?
+	GameObject* character; //600x300?
 	TextObject* description; //600x600?
+	EmptyObject* descriptionBox; //600x600?
+
+	int currentSinger = ROBOT;
 
 	vector<ExtraSong*> songList;
 
@@ -37,10 +44,14 @@ private:
 
 	void selectionUp();
 	void selectionDown();
+	void selectionLeft();
+	void selectionRight();
 	void resumeSong() {};
 	void toggleOptions() {};
 	void restartSong() {};
 	void init();
+	void initSongs();
+	void cleanSongs();
 	void exitSong() {};
 
 public:
