@@ -16,7 +16,6 @@ public:
 
 protected:
 	TextObject* title = nullptr;
-	TextObject* artist = nullptr;
 	TextObject* diff = nullptr;
 	int level = 0;
 

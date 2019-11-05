@@ -14,7 +14,7 @@
 class PlayState;
 
 enum CurrentSinger {
-	ROBOT, PAPITO, EMINEM, CORPSE, ALIEN, NESS, SHREK,
+	ROBOT, PAPITO, EMINEM, CORPSE, ALIEN, NESS, SHREK, HONK,
 };
 
 class ExtraMenu: public GameState

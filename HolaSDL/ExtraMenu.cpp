@@ -13,18 +13,18 @@ ExtraMenu::ExtraMenu(GameManager* game):GameState(game)
 }
 
 void ExtraMenu::init() {
+	distanceHand = manager->getDefaultWindowHeight() / 14 + 15;
 
 	bg = new EmptyObject(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::MenuCanciones);
-	hand = new EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth()-400, manager->getDefaultWindowHeight()/14), 128, 128, Resources::MasterHand);
-	switchPlayers = new EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth()-150, 0), 102, 90, Resources::NumPlayersSwitch);
-	select = new EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() - 150-10, 100), 110, 21, Resources::Select);
-	distanceHand = manager->getDefaultWindowHeight() / 14;
-	character = new Character(manager, 300, 600, Vector2D(60, 90), Resources::RobotIdle);
+	hand = new EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() - 150, distanceHand), 128 * 0.7, 128 * 0.7, Resources::MasterHand);
+	switchPlayers = new EmptyObject(manager, Vector2D(50, 0), 102, 90, Resources::NumPlayersSwitch);
+	select = new EmptyObject(manager, Vector2D(50, 100), 110, 21, Resources::Select);
+	character = new Character(manager, 300 * 0.8, 600 * 0.8, Vector2D((manager->getDefaultWindowWidth() * 0.25) - (300 * 0.5 * 0.9), 10), Resources::RobotIdle);
 	character->isAnimationSynced(false);
 	character->setAnimationFramerate(4);
 
-	description = new TextObject(manager, manager->getServiceLocator()->getFonts()->getFont(Resources::RETRO20), Vector2D(70, 650));
-	descriptionBox = new EmptyObject(manager, Vector2D(346 / 2, 70), 346, 145, Resources::ExtraBox);
+	description = new TextObject(manager, manager->getServiceLocator()->getFonts()->getFont(Resources::RETRO20), Vector2D((manager->getDefaultWindowWidth() * 0.05) + 20, manager->getDefaultWindowHeight() - 220 + 20));
+	descriptionBox = new EmptyObject(manager, Vector2D((manager->getDefaultWindowWidth() * 0.05), manager->getDefaultWindowHeight() - 220), manager->getDefaultWindowWidth() * 0.4, 175, Resources::ExtraBox);
 
 	initSongs();
 	//Leer de archivo la lista de canciones (Titulo >> Artista >> Dificultad >> Numero en menu) y meter en vector
@@ -35,6 +35,13 @@ void ExtraMenu::init() {
 void ExtraMenu::initSongs()
 {
 	posHand = 0;
+	float posX = 630;
+	float posY = manager->getDefaultWindowHeight() / 14 - 10;
+	float tamX = 944 * 0.6;
+	float tamY = 149 * 0.7;
+	float incrY = manager->getDefaultWindowHeight() / 5.8;
+
+	songList.erase(songList.begin(), songList.end());
 
 	switch (currentSinger) {
 	case(ROBOT): {
@@ -42,7 +49,17 @@ void ExtraMenu::initSongs()
 		description->setText("Gonzalo huele mal");
 
 		//añadir canciones
-		songList.push_back(new ExtraSong(manager, Vector2D(10, 10), 50, 50, Resources::CancionExtraFacil, "AA", "BB", 1));
+		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "AA", "BB", 13));
+		posY += incrY;
+		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "AA", "BB", 5));
+		posY += incrY;
+		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "AA", "BB", 7));
+		posY += incrY;
+		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "AA", "BB", 2));
+		posY += incrY;
+		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "AA", "BB", 9));
+		posY += incrY;
+
 		break;
 	}
 	case(PAPITO): {
@@ -50,7 +67,9 @@ void ExtraMenu::initSongs()
 		description->setText("Gonzalo huele mal");
 
 		//añadir canciones
-		songList.push_back(new ExtraSong(manager, Vector2D(10, 10), 50, 50, Resources::CancionExtraFacil, "AA", "BB", 1));
+		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "AA", "BB", 1));
+		posY += incrY;
+
 		break;
 	}
 	case(EMINEM): {
@@ -58,7 +77,9 @@ void ExtraMenu::initSongs()
 		description->setText("Gonzalo huele mal");
 
 		//añadir canciones
-		songList.push_back(new ExtraSong(manager, Vector2D(10, 10), 50, 50, Resources::CancionExtraFacil, "AA", "BB", 1));
+		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "AA", "BB", 1));
+		posY += incrY;
+
 		break;
 	}
 	case(CORPSE): {
@@ -66,7 +87,9 @@ void ExtraMenu::initSongs()
 		description->setText("Gonzalo huele mal");
 
 		//añadir canciones
-		songList.push_back(new ExtraSong(manager, Vector2D(10, 10), 50, 50, Resources::CancionExtraFacil, "AA", "BB", 1));
+		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "AA", "BB", 1));
+		posY += incrY;
+
 		break;
 	}
 	case(ALIEN): {
@@ -74,7 +97,9 @@ void ExtraMenu::initSongs()
 		description->setText("Gonzalo huele mal");
 
 		//añadir canciones
-		songList.push_back(new ExtraSong(manager, Vector2D(10, 10), 50, 50, Resources::CancionExtraFacil, "AA", "BB", 1));
+		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "AA", "BB", 1));
+		posY += incrY;
+
 		break;
 	}
 	case(NESS): {
@@ -82,7 +107,9 @@ void ExtraMenu::initSongs()
 		description->setText("Gonzalo huele mal");
 
 		//añadir canciones
-		songList.push_back(new ExtraSong(manager, Vector2D(10, 10), 50, 50, Resources::CancionExtraFacil, "AA", "BB", 1));
+		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "AA", "BB", 1));
+		posY += incrY;
+
 		break;
 	}
 	case(SHREK): {
@@ -90,7 +117,19 @@ void ExtraMenu::initSongs()
 		description->setText("Gonzalo huele mal");
 
 		//añadir canciones
-		songList.push_back(new ExtraSong(manager, Vector2D(10, 10), 50, 50, Resources::CancionExtraFacil, "AA", "BB", 1));
+		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "AA", "BB", 1));
+		posY += incrY;
+
+		break;
+	}
+	case(HONK): {
+		character->forceAnimationChange(Resources::GooseDance);
+		description->setText("Gonzalo huele mal");
+
+		//añadir canciones
+		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "AA", "BB", 1));
+		posY += incrY;
+
 		break;
 	}
 
@@ -129,7 +168,7 @@ void ExtraMenu::selectionUp() {
 	}
 	else {
 		posHand++;
-		hand->setPosition(Vector2D(hand->getPosition().getX(), hand->getPosition().getY()+ manager->getDefaultWindowHeight() / 5.8));
+		hand->setPosition(Vector2D(hand->getPosition().getX(), hand->getPosition().getY() + manager->getDefaultWindowHeight() / 5.8));
 	}
 }
 
@@ -147,7 +186,7 @@ void ExtraMenu::selectionDown() {
 void ExtraMenu::selectionLeft()
 {
 	if (currentSinger == ROBOT)
-		currentSinger = SHREK;	//change if more singers added
+		currentSinger = HONK;	//change if more singers added
 	else
 		currentSinger--;
 
@@ -157,7 +196,7 @@ void ExtraMenu::selectionLeft()
 
 void ExtraMenu::selectionRight()
 {
-	if (currentSinger == SHREK)
+	if (currentSinger == HONK)
 		currentSinger = ROBOT;	//change if more singers added
 	else
 		currentSinger++;
@@ -193,26 +232,7 @@ bool ExtraMenu::handleEvent(Uint32 time,  SDL_Event event)
 		}
 		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || event.key.keysym.sym == SDLK_w) {
 			
-			switch (posHand)
-			{
-			case 0:
-				manager->getMachine()->changeState(new PlayState(manager, 13, onePlayer, false));
-				break;
-			case 1:
-				manager->getMachine()->changeState(new PlayState(manager, 11, onePlayer, false));
-				break;
-			case 2:
-				manager->getMachine()->changeState(new PlayState(manager, 6, onePlayer, false));
-				break;
-			case 3:
-				manager->getMachine()->changeState(new PlayState(manager, 8, onePlayer, false));
-				break;
-			case 4:
-				manager->getMachine()->changeState(new PlayState(manager, 7, onePlayer, false));
-				break;
-			default:
-				break;
-			}
+			manager->getMachine()->changeState(new PlayState(manager, songList[posHand]->getLevel(), onePlayer, false));
 
 		}
 		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B) || event.key.keysym.sym == SDLK_s) {
@@ -239,13 +259,15 @@ bool ExtraMenu::handleEvent(Uint32 time,  SDL_Event event)
 void ExtraMenu::render(Uint32 time, bool beatSync)
 {
 		bg->render(time);
-		hand->render(time);
 		switchPlayers->render(time);
 		select->render(time);
 		character->render(time);
-		description->render(time);
 		descriptionBox->render(time);
+		description->render(time);
 
 		for (ExtraSong* s : songList)
 			s->render(time);
+
+
+		hand->render(time);
 }
