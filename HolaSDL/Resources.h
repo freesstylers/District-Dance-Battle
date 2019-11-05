@@ -190,7 +190,8 @@ public:
 		CancionExtraFacil,
 		CancionExtraNormal,
 		CancionExtraDificil,
-		GooseDance
+		GooseDance,
+		ExtraBox
 		// text
 	};
 
