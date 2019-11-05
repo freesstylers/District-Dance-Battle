@@ -19,7 +19,7 @@ public:
 	~Level();
 
 	void playSong();
-
+	void RandomLevel();
 	void init(bool hardmode);
 
 	double bpm;

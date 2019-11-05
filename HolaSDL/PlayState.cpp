@@ -99,17 +99,24 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxS
 		break;
 	case 13:
 		levelName = "DotA";
-		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::CiuBG);
-		bgT = Resources::CiuBG;
+		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::ExtraBG);
+		bgT = Resources::ExtraBG;
 		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 400, initialNoteHeight + 50), Resources::PapitoIdle);
 		enemyT = Resources::PapitoIdle;
 		break;
 	case 14:
 		levelName = "Doraemon";
-		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::CiuBG);
+		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::ExtraBG);
 		bgT = Resources::ExtraBG;
 		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 400, initialNoteHeight + 50), Resources::GooseDance);
 		enemyT = Resources::GooseDance;
+		break;
+	case 15:
+		levelName = "Tripoloski";
+		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::ExtraBG);
+		bgT = Resources::ExtraBG;
+		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 400, initialNoteHeight + 50), Resources::AlienIdle);
+		enemyT = Resources::AlienIdle;
 		break;
 	default:
 		levelName = "CL";
@@ -154,7 +161,11 @@ void PlayState::newGame()
 	player1 = new PlayerPack(manager,this, leftNotesPos, rightNotesPos, pointSize, noteBarWidth,0,true);
 	
 	level = new Level(this, manager, levelName,noteSize);
-	level->init(difficultyMode);
+
+	if (levelName == "Tripoloski")
+		level->RandomLevel();
+	else
+		level->init(difficultyMode);
 	timer = new Timer();
 	timer->Reset();
 
@@ -204,7 +215,12 @@ void PlayState::newGame2P()
 	crown = new Background(manager, 128, 128, Vector2D(0, 0), Resources::Crown);
 	crown->setActive(false);
 	level = new Level(this, manager, levelName,noteSize);
-	level->init(difficultyMode);
+
+	if (levelName == "Tripoloski")
+		level->RandomLevel();
+	else
+		level->init(difficultyMode);
+
 	timer = new Timer();
 	timer->Reset();
 

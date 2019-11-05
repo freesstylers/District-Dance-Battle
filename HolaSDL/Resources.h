@@ -222,7 +222,8 @@ public:
 		Hardbass,
 		MegalovaniaHonk,
 		DotA,
-		Doraemon
+		Doraemon,
+		TriPoloski
 		// sound effects
 	};
 
