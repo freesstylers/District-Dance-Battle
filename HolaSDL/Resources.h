@@ -221,7 +221,8 @@ public:
 		Ambient,
 		Hardbass,
 		MegalovaniaHonk,
-		DotA
+		DotA,
+		Doraemon
 		// sound effects
 	};
 

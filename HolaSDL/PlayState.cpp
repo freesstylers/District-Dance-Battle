@@ -104,6 +104,13 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxS
 		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 400, initialNoteHeight + 50), Resources::PapitoIdle);
 		enemyT = Resources::PapitoIdle;
 		break;
+	case 14:
+		levelName = "Doraemon";
+		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::CiuBG);
+		bgT = Resources::ExtraBG;
+		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 400, initialNoteHeight + 50), Resources::GooseDance);
+		enemyT = Resources::GooseDance;
+		break;
 	default:
 		levelName = "CL";
 		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::FondoHardbass);
@@ -534,15 +541,15 @@ void PlayState::showError()
 	bg->cleanAnimationQueue();
 	bg->forceAnimationChange(bgT+1);
 	bg->queueAnimationChange(bgT);
-	manager->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0, 1);
+	//manager->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0, 1);
 }
 
 bool PlayState::isLost()
 {
-	if (player1->lip->numFailed > 10 && isSingleplayer)
+	/*if (player1->lip->numFailed > 10 && isSingleplayer)
 	{
 		return true;
 	}
-	else
+	else*/
 		return false;
 }

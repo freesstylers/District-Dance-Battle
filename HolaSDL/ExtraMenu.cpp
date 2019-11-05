@@ -49,7 +49,7 @@ void ExtraMenu::initSongs()
 		description->setText("Gonzalo huele mal");
 
 		//añadir canciones
-		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "AA", "BB", 13));
+		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "AA", "BB", 14));
 		posY += incrY;
 		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "AA", "BB", 5));
 		posY += incrY;
