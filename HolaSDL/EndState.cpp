@@ -367,7 +367,7 @@ bool EndState::handleEvent(Uint32 time, SDL_Event e)
 	GameState::handleEvent(time, e);
 
 	bool change = false;
-	if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_w) {
+	if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_RETURN || e.key.keysym.sym == SDLK_SPACE) {
 		if (level <= 5) {
 			if (passed)
 				backToMenuWin(gameManager);

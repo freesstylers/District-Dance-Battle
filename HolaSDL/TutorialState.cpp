@@ -140,7 +140,7 @@ bool TutorialState::handleEvent(Uint32 time, SDL_Event e)
 
 
 	if (e.type == SDL_CONTROLLERBUTTONDOWN || e.type == SDL_KEYDOWN) {
-		if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_SPACE) {
+		if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_SPACE || e.key.keysym.sym == SDLK_RETURN) {
 			resumeTutorial(manager,SDL_GetTicks() - auxTime);
 		}
 	}

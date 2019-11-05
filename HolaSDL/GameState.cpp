@@ -33,7 +33,7 @@ void GameState::render(Uint32 time, bool beatSync)
 
 bool GameState::handleEvent(Uint32 time, SDL_Event e)
 {
-	if (e.type == SDL_QUIT || e.key.keysym.sym == SDLK_ESCAPE) {
+	if (e.type == SDL_QUIT || e.key.keysym.sym == SDLK_F9) {
 		manager->stop();
 		return true;
 	}

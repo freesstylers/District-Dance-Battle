@@ -76,7 +76,7 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 	}
 
 	//opening the pause menu, there's a 0.5 second cooldown due to a bug with how the timers are set up
-	if ((blockpause < time - 500) && ((event.type == SDL_CONTROLLERBUTTONDOWN || event.type == SDL_KEYDOWN) && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_START) || event.key.keysym.sym == SDLK_TAB))) {
+	if ((blockpause < time - 500) && ((event.type == SDL_CONTROLLERBUTTONDOWN || event.type == SDL_KEYDOWN) && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_START) || event.key.keysym.sym == SDLK_TAB || event.key.keysym.sym == SDLK_ESCAPE))) {
 		ret = ret || level->pause();
 		blockpause = 0;
 	}

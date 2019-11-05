@@ -230,12 +230,12 @@ bool ExtraMenu::handleEvent(Uint32 time,  SDL_Event event)
 			selectionRight();
 
 		}
-		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || event.key.keysym.sym == SDLK_w) {
+		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || event.key.keysym.sym == SDLK_RETURN || event.key.keysym.sym == SDLK_SPACE) {
 			
 			manager->getMachine()->changeState(new PlayState(manager, songList[posHand]->getLevel(), onePlayer, false));
 
 		}
-		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B) || event.key.keysym.sym == SDLK_s) {
+		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B) || event.key.keysym.sym == SDLK_ESCAPE || event.key.keysym.sym == SDLK_BACKSPACE) {
 				
 			manager->getMachine()->pushState(new MapState(manager));
 				

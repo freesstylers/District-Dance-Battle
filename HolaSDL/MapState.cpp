@@ -32,7 +32,7 @@ bool MapState::handleEvent(Uint32 time, SDL_Event e)
 		if (e.type == SDL_CONTROLLERBUTTONDOWN || e.type == SDL_KEYDOWN) {
 			if (!buttons[index].second.selected)
 			{
-				if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_w) {
+				if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_RETURN || e.key.keysym.sym == SDLK_SPACE) {
 					buttons[index].second.selected = true;
 				}
 				if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) || e.key.keysym.sym == SDLK_RIGHT) {
@@ -46,7 +46,7 @@ bool MapState::handleEvent(Uint32 time, SDL_Event e)
 					manager->getMachine()->changeState(new ExtraMenu(manager));
 					return true;
 				}
-				else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B) || e.key.keysym.sym == SDLK_s) {
+				else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B) || e.key.keysym.sym == SDLK_ESCAPE || e.key.keysym.sym == SDLK_BACKSPACE) {
 					manager->mainmenu = true;
 					manager->getServiceLocator()->getAudios()->haltChannel(0);
 					manager->getMachine()->changeState(new MainMenuState(manager));
@@ -64,12 +64,12 @@ bool MapState::handleEvent(Uint32 time, SDL_Event e)
 					buttons[index].second.prevSwitch();
 					keyup = false;
 				}
-				else if ((SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_w) || (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT) || e.key.keysym.sym == SDLK_LEFT) || (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) || e.key.keysym.sym == SDLK_RIGHT) || e.key.keysym.sym == SDLK_BACKSPACE) {
+				else if ((SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_RETURN || e.key.keysym.sym == SDLK_SPACE) || (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT) || e.key.keysym.sym == SDLK_LEFT) || (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) || e.key.keysym.sym == SDLK_RIGHT) || e.key.keysym.sym == SDLK_BACKSPACE) {
 					buttons[index].second.selectButton(e, controller);
 					keyup = false;
 					return true;
 				}
-				else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B) || e.key.keysym.sym == SDLK_s) {
+				else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B) || e.key.keysym.sym == SDLK_ESCAPE || e.key.keysym.sym == SDLK_BACKSPACE) {
 					buttons[index].second.selected = false;
 					keyup = false;
 				}
