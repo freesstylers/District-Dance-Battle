@@ -1928,18 +1928,18 @@ input, select, textarea {
 			min-height: 100%;
 		}
 
-		.main.style1 {
-			-moz-align-items: center;
-			-webkit-align-items: center;
-			-ms-align-items: center;
-			align-items: center;
-			-moz-justify-content: center;
-			-webkit-justify-content: center;
-			-ms-justify-content: center;
-			justify-content: center;
-			text-align: center;
-			padding: 3em 0 3em 0;
-		}
+        .main.style1 {
+            -moz-align-items: center;
+            -webkit-align-items: center;
+            -ms-align-items: center;
+            align-items: center;
+            -moz-justify-content: center;
+            -webkit-justify-content: center;
+            -ms-justify-content: center;
+            justify-content: center;
+            text-align: center;
+            padding: 3em 0 3em 0;
+        }
 
 			.main.style1 h2 {
 				font-size: 4.25em;
@@ -2321,4 +2321,27 @@ input, select, textarea {
 div, iframe {
     background-color: #ffffff00;
     margin: 0 auto;
+}
+
+.iframe-container {
+    overflow: hidden;
+    padding-top: 56.25%;
+    position: relative;
+}
+
+    .iframe-container iframe {
+        border: 0;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+.iframe-container-4x3 {
+    padding-top: 75%;
+}
+
+.responsive-img {
+    width: 30%;
+    height: auto;
 }
