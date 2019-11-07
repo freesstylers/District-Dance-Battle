@@ -162,7 +162,7 @@ ExtraMenu::~ExtraMenu()
 }
 
 void ExtraMenu::selectionUp() {
-	if (posHand == 4) {
+	if (posHand == songList.size() - 1) {
 		posHand = 0;
 		hand->setPosition(Vector2D(hand->getPosition().getX(), distanceHand));
 	}
@@ -174,7 +174,7 @@ void ExtraMenu::selectionUp() {
 
 void ExtraMenu::selectionDown() {
 	if (posHand == 0) {
-		posHand = 4;
+		posHand = songList.size() - 1;
 		hand->setPosition(Vector2D(hand->getPosition().getX(), distanceHand+( (manager->getDefaultWindowHeight() / 5.8)*4)));
 	}
 	else {
