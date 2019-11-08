@@ -110,9 +110,9 @@ void PanelMap::selectButton(SDL_Event e, SDL_GameController* cont) {
 		{
 			manager_->getServiceLocator()->getAudios()->haltChannel(0);
 			if(!hardMode_)
-				manager_->getMachine()->changeState(new DialogState(manager_, lvl_, 0, oneP_, hardMode_, scoreE_, scoreH_));
+				manager_->getMachine()->changeState(new DialogState(manager_, 10, 0, oneP_, hardMode_, scoreE_, scoreH_));
 			else
-				manager_->getMachine()->changeState(new DialogState(manager_, lvl_, 0, oneP_, hardMode_, scoreE_, scoreH_));
+				manager_->getMachine()->changeState(new DialogState(manager_, 10, 0, oneP_, hardMode_, scoreE_, scoreH_));
 		}
 		break;
 	}

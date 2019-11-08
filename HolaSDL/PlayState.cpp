@@ -73,11 +73,11 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxS
 		levelName = "RunningInThe90s";
 		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::ExtraBG);
 		bgT = Resources::ExtraBG;
-		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 400, initialNoteHeight + 50), Resources::SansIdle);
-		enemyT = Resources::SansIdle;
+		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 400, initialNoteHeight + 50), Resources::AlienIdle);
+		enemyT = Resources::AlienIdle;
 		break;
 	case 10:
-		levelName = "africa";
+		levelName = "NeverGonnaGiveYouUp";
 		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::ExtraBG);
 		bgT = Resources::ExtraBG;
 		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 400, initialNoteHeight + 50), Resources::RobotDance);
@@ -565,15 +565,15 @@ void PlayState::showError()
 	bg->cleanAnimationQueue();
 	bg->forceAnimationChange(bgT+1);
 	bg->queueAnimationChange(bgT);
-	//manager->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0, 1);
+	manager->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0, 1);
 }
 
 bool PlayState::isLost()
 {
-	/*if (player1->lip->numFailed > 10 && isSingleplayer)
+	if (player1->lip->numFailed > 10 && isSingleplayer)
 	{
 		return true;
 	}
-	else*/
+	else
 		return false;
 }
