@@ -233,7 +233,8 @@ vector<Resources::MusicInfo> Resources::musics_ {
 	{MegalovaniaHonk, "resources/sound/megalovaniaHonk.mp3"},
 	{DotA, "resources/sound/DotA.mp3"},
 	{Doraemon, "resources/sound/doraemon.mp3"},
-	{TriPoloski, "resources/sound/TriPoloski.mp3"}
+	{TriPoloski, "resources/sound/TriPoloski.mp3"},
+	{Doom, "resources/sound/doom.mp3"}
 };
 
 vector<Resources::SoundInfo> Resources::sounds_ {

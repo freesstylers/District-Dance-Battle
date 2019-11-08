@@ -223,7 +223,8 @@ public:
 		MegalovaniaHonk,
 		DotA,
 		Doraemon,
-		TriPoloski
+		TriPoloski,
+		Doom
 		// sound effects
 	};
 
