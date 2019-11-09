@@ -53,7 +53,7 @@ void ExtraMenu::initSongs()
 		posY += incrY;
 		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "AA", "BB", 15));
 		posY += incrY;
-		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "Jose", "lillo", 16));
+		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraDificil, "Jose", "lillo", 16));
 		posY += incrY;
 		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "AA", "BB", 2));
 		posY += incrY;
@@ -74,7 +74,7 @@ void ExtraMenu::initSongs()
 	}
 	case(EMINEM): {
 		character->forceAnimationChange(Resources::EminemciaIdle);
-		description->setText("Gonzalo huele mal");
+		description->setText("Jose huele mal");
 
 		//añadir canciones
 		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "AA", "BB", 1));
@@ -84,7 +84,7 @@ void ExtraMenu::initSongs()
 	}
 	case(CORPSE): {
 		character->forceAnimationChange(Resources::ZombieIdle);
-		description->setText("Gonzalo huele mal");
+		description->setText("Grossi huele mal");
 
 		//añadir canciones
 		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "AA", "BB", 1));
@@ -94,7 +94,7 @@ void ExtraMenu::initSongs()
 	}
 	case(ALIEN): {
 		character->forceAnimationChange(Resources::AlienIdle);
-		description->setText("Gonzalo huele mal");
+		description->setText("Javi huele mal");
 
 		//añadir canciones
 		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "AA", "BB", 1));
@@ -104,7 +104,7 @@ void ExtraMenu::initSongs()
 	}
 	case(NESS): {
 		character->forceAnimationChange(Resources::SansIdle);
-		description->setText("Gonzalo huele mal");
+		description->setText("Ibort huele mal");
 
 		//añadir canciones
 		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "AA", "BB", 1));
@@ -114,7 +114,7 @@ void ExtraMenu::initSongs()
 	}
 	case(SHREK): {
 		character->forceAnimationChange(Resources::ShrekIdle);
-		description->setText("Gonzalo huele mal");
+		description->setText("Alvar huele mal");
 
 		//añadir canciones
 		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "AA", "BB", 1));
@@ -124,7 +124,7 @@ void ExtraMenu::initSongs()
 	}
 	case(HONK): {
 		character->forceAnimationChange(Resources::GooseDance);
-		description->setText("Gonzalo huele mal");
+		description->setText("Guille huele mal");
 
 		//añadir canciones
 		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "AA", "BB", 1));
