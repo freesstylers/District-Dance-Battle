@@ -125,6 +125,20 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxS
 		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 400, initialNoteHeight + 50), Resources::ZombieIdle);
 		enemyT = Resources::ZombieIdle;
 		break;
+	case 17:
+		levelName = "Avengers";
+		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::ExtraBG);
+		bgT = Resources::ExtraBG;
+		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 400, initialNoteHeight + 50), Resources::PapitoIdle);
+		enemyT = Resources::PapitoIdle;
+		break;
+	case 18:
+		levelName = "Dracukeo";
+		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::ExtraBG);
+		bgT = Resources::ExtraBG;
+		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 400, initialNoteHeight + 50), Resources::SansIdle);
+		enemyT = Resources::SansIdle;
+		break;
 
 	default:
 		levelName = "CL";
@@ -565,15 +579,15 @@ void PlayState::showError()
 	bg->cleanAnimationQueue();
 	bg->forceAnimationChange(bgT+1);
 	bg->queueAnimationChange(bgT);
-	manager->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0, 1);
+	//manager->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0, 1);
 }
 
 bool PlayState::isLost()
 {
-	if (player1->lip->numFailed > 10 && isSingleplayer)
+	/*if (player1->lip->numFailed > 10 && isSingleplayer)
 	{
 		return true;
 	}
-	else
+	else*/
 		return false;
 }

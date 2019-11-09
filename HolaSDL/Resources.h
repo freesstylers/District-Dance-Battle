@@ -224,7 +224,9 @@ public:
 		DotA,
 		Doraemon,
 		TriPoloski,
-		Doom
+		Doom,
+		Avengers,
+		Dracukeo
 		// sound effects
 	};
 

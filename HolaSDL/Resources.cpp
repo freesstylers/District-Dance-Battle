@@ -234,7 +234,9 @@ vector<Resources::MusicInfo> Resources::musics_ {
 	{DotA, "resources/sound/DotA.mp3"},
 	{Doraemon, "resources/sound/doraemon.mp3"},
 	{TriPoloski, "resources/sound/TriPoloski.mp3"},
-	{Doom, "resources/sound/doom.mp3"}
+	{Doom, "resources/sound/doom.mp3"},
+	{Avengers, "resources/sound/Avengers.mp3"},
+	{Dracukeo, "resources/sound/Dracukeo.mp3"},
 };
 
 vector<Resources::SoundInfo> Resources::sounds_ {
