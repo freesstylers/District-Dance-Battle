@@ -1,0 +1,14 @@
+1
+90
+0
+2
+176 sans
+175 goose
+- goose Honk!
+- sans Honk?
+- goose Honk!
+- sans Honk?
+- goose Honk!
+- sans Honk?
+- goose Honk!
+0

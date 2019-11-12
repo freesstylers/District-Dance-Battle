@@ -191,7 +191,10 @@ public:
 		CancionExtraNormal,
 		CancionExtraDificil,
 		GooseDance,
-		ExtraBox
+		ExtraBox,
+		GooseBox,
+		SansBox,
+		ShrekBox
 		// text
 	};
 

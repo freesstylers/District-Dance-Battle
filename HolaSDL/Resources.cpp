@@ -197,7 +197,10 @@ vector<Resources::ImageInfo> Resources::images_{
 		{ CancionExtraNormal, "resources/images/CancionExtraBaseNormal.png", 943, 149, 1, 1, 1 },
 		{ CancionExtraDificil, "resources/images/CancionExtraBaseDificil.png", 944, 149, 1, 1, 1 },
 		{ GooseDance, "resources/images/goose.png", 60, 139, 4, 2, 6},
-		{ExtraBox, "resources/images/textbox1.png", 346, 145, 1, 1, 1 }
+		{ExtraBox, "resources/images/textbox1.png", 346, 145, 1, 1, 1 },
+		{ GooseBox, "resources/images/GooseBox.png", 153, 65, 1, 1, 1 },
+		{ SansBox, "resources/images/SansBox.png", 153, 65, 1, 1, 1 },
+		{ ShrekBox, "resources/images/ShrekBox.png", 153, 65, 1, 1, 1 },
 			//Enum, file path, frame width, frame height, columns, rows, frame total//
 
 };

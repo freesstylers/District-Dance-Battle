@@ -27,8 +27,7 @@ void DialogState::init()	//this method loads all the assets needed from the dial
 	int sp;
 	string textAux;
 	
-	//ifstream file("resources/dialog/" + archivo + ".txt");
-	ifstream file("resources/dialog/Never.txt");
+	ifstream file("resources/dialog/" + archivo + ".txt");
 
 	if (file.is_open()) {
 		file >> aux;
@@ -149,12 +148,12 @@ bool DialogState::handleEvent(Uint32 time, SDL_Event e) {
 		}
 		else if (end) {
 			manager->getServiceLocator()->getAudios()->haltChannel(4);
-			//if (nlevel == 0)
-				//manager->getMachine()->changeState(new TutorialState(manager));
-			//else if(nlevel <= 5)
+			if (nlevel == 0)
+				manager->getMachine()->changeState(new TutorialState(manager));
+			else if(nlevel <= 5)
 				manager->getMachine()->changeState(new PlayState(manager, nlevel, oneP_, hardMode_, prevMaxScoreE_, prevMaxScoreH_));
-			//else
-				//manager->getMachine()->changeState(new MapState(manager));
+			else
+				manager->getMachine()->changeState(new MapState(manager));
 		}
 
 	}
@@ -163,12 +162,12 @@ bool DialogState::handleEvent(Uint32 time, SDL_Event e) {
 	else if (e.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_BACK) || (e.type == SDL_KEYDOWN && (e.key.keysym.sym == SDLK_TAB || e.key.keysym.sym == SDLK_ESCAPE))) {
 
 		manager->getServiceLocator()->getAudios()->haltChannel(4);
-		//if (nlevel == 0)
-			//manager->getMachine()->changeState(new TutorialState(manager));
-		//else if (nlevel <= 5)
+		if (nlevel == 0)
+			manager->getMachine()->changeState(new TutorialState(manager));
+		else if (nlevel <= 5)
 			manager->getMachine()->changeState(new PlayState(manager, nlevel, oneP_, hardMode_, prevMaxScoreE_, prevMaxScoreH_));
-		//else
-			//manager->getMachine()->changeState(new MapState(manager));
+		else
+			manager->getMachine()->changeState(new MapState(manager));
 	}
 
 	return true;
@@ -211,10 +210,10 @@ void DialogState::updateText() {	//this method updates the text displayed on scr
 			text->setText("COMIENZA TU AVENTURA", { COLOR(0x00000000) });
 			text2->setText(" ", { COLOR(0x00000000) });
 		}
-		else {
+		else if (nlevel <=5) {
 			text->setText("COMIENZA LA BATALLA", { COLOR(0x00000000) });
 			text2->setText(" ", { COLOR(0x00000000) });
-		/*}
+		}
 		else if(nlevel % 2 == 0){
 			if (!hardMode_ && prevMaxScoreE_ < 600000) {
 				text->setText("NIVEL COMPLETADO, HAS DESBLOQUEADO EL MODO DIFICIL", { COLOR(0x00000000) });
@@ -223,12 +222,12 @@ void DialogState::updateText() {	//this method updates the text displayed on scr
 			else {
 				text->setText("HAS COMPLETADO EL NIVEL", { COLOR(0x00000000) });
 				text2->setText(" ", { COLOR(0x00000000) });
-			}*/
+			}
 		}
-		/*else {
+		else {
 			text->setText("NO HAS COMPLETADO EL NIVEL", { COLOR(0x00000000) });
 			text2->setText(" ", { COLOR(0x00000000) });
-		}*/
+		}
 
 		end = true;
 	}
