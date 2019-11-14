@@ -128,9 +128,9 @@ bool PauseMenu::handleInput(Uint32 time, const SDL_Event& event)
 		if (event.type == SDL_CONTROLLERBUTTONDOWN || event.type == SDL_KEYDOWN) {
 			if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_UP) || event.key.keysym.sym == SDLK_UP) {
 				
-				selectedButton = (selectedButton == 0) ? 4 : selectedButton - 1;
 
 				if (optionsOpen) {
+					selectedButton = (selectedButton == 0) ? 4 : selectedButton - 1;
 					selection->setPosition(optionsButtons[selectedButton]->getPosition());
 
 					if (selectedButton == 0 || selectedButton == 1)
@@ -154,14 +154,16 @@ bool PauseMenu::handleInput(Uint32 time, const SDL_Event& event)
 					else
 						selection->forceAnimationChange(Resources::VolSelection);
 				}
-				else
+				else {
+					selectedButton = (selectedButton == 0) ? 3 : selectedButton - 1;
 					selection->setPosition(menuButtons[selectedButton]->getPosition());
+				}
 			}
 			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN) || event.key.keysym.sym == SDLK_DOWN) {
 				
-				selectedButton = (selectedButton == 4) ? 0 : selectedButton + 1;
 
 				if (optionsOpen) {
+					selectedButton = (selectedButton == 4) ? 0 : selectedButton + 1;
 					selection->setPosition(optionsButtons[selectedButton]->getPosition());
 					if (selectedButton == 0 || selectedButton == 1)
 					{
@@ -184,8 +186,10 @@ bool PauseMenu::handleInput(Uint32 time, const SDL_Event& event)
 					else
 						selection->forceAnimationChange(Resources::VolSelection);
 				}
-				else
+				else {
+					selectedButton = (selectedButton == 3) ? 0 : selectedButton + 1;
 					selection->setPosition(menuButtons[selectedButton]->getPosition());
+				}
 			}
 			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || event.key.keysym.sym == SDLK_RETURN) {
 				if (optionsOpen) {
