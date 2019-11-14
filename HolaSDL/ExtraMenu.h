@@ -37,10 +37,10 @@ private:
 
 	int currentSinger = ROBOT;
 
-	vector<ExtraSong*> songList;
+	vector<vector<ExtraSong*>> songList;
 
 	bool onePlayer = true;
-	int posHand;
+	int posHand = 0;
 
 	bool optionsOpen = false;
 
@@ -55,6 +55,7 @@ private:
 	void initSongs();
 	void cleanSongs();
 	void exitSong() {};
+	void updateSinger();
 
 public:
 	ExtraMenu(GameManager* game);

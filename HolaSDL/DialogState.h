@@ -48,7 +48,6 @@ protected:
 
 	GameObject* actualBox;
 	TextObject* text;
-	TextObject* text2;
 	TextBox* textBox;
 	Timer* timer;
 	double animationFramesPerBeat = 2;

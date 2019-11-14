@@ -30,9 +30,9 @@ void TextObject::render(Uint32 time, bool beatSync)
 }
 
 //Puts a text like a texture
-void TextObject::setText(string txt, SDL_Color color)
+void TextObject::setText(string txt, SDL_Color color, Uint32 size)
 {
-	text->loadFromText(game_->getRenderer(), txt, *textFont, color);
+	text->loadFromText(game_->getRenderer(), txt, *textFont, color, size);
 
 	animation.frameHeight = text->getHeight();
 	animation.frameWidth = text->getWidth();

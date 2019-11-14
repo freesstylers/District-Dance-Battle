@@ -17,7 +17,7 @@ public:
 
 	bool load(string fileName, int size);
 	void close();
-	SDL_Surface* renderText(string text, SDL_Color color) const;
+	SDL_Surface* renderText(string text, SDL_Color color, Uint32 size) const;
 private:
 	TTF_Font *font_;
 };

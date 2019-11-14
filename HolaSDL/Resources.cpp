@@ -14,8 +14,14 @@ vector<Resources::FontInfo> Resources::fonts_ {
 	{FIPPS30, "resources/fonts/Fipps-Regular.otf",30},	//Not used, delete to save memory?
 	{FIPPS50, "resources/fonts/Fipps-Regular.otf",50},	//Not used, delete to save memory?
 	{RETRO10, "resources/fonts/Retro Gaming.ttf",10},
+	{RETRO15, "resources/fonts/Retro Gaming.ttf",15},
+	{RETRO16, "resources/fonts/Retro Gaming.ttf",16},
+	{RETRO18, "resources/fonts/Retro Gaming.ttf",18},
 	{RETRO20, "resources/fonts/Retro Gaming.ttf",20},
+	{RETRO25, "resources/fonts/Retro Gaming.ttf",25},
 	{RETRO30, "resources/fonts/Retro Gaming.ttf",30},
+	{RETRO35, "resources/fonts/Retro Gaming.ttf",35},
+	{RETRO40, "resources/fonts/Retro Gaming.ttf",40},
 	{RETRO50, "resources/fonts/Retro Gaming.ttf",50}
 };
 

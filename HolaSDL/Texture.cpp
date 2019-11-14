@@ -56,8 +56,8 @@ bool Texture::loadFromImg(SDL_Renderer* renderer, string fileName) {
 }
 
 bool Texture::loadFromText(SDL_Renderer* renderer, string text, Font& font,
-		const SDL_Color color) {
-	SDL_Surface* textSurface = font.renderText(text, color);
+		const SDL_Color color, Uint32 size) {
+	SDL_Surface* textSurface = font.renderText(text, color, size);
 	if (textSurface != nullptr) {
 		close();
 		texture_ = SDL_CreateTextureFromSurface(renderer, textSurface);

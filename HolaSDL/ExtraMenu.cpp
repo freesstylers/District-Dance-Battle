@@ -13,6 +13,7 @@ ExtraMenu::ExtraMenu(GameManager* game):GameState(game)
 }
 
 void ExtraMenu::init() {
+	songList = vector<vector<ExtraSong*>>(8);
 	distanceHand = manager->getDefaultWindowHeight() / 14 + 15;
 
 	bg = new EmptyObject(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::MenuCanciones);
@@ -38,114 +39,137 @@ void ExtraMenu::initSongs()
 {
 	posHand = 0;
 	float posX = 630;
+	float posYOrig = manager->getDefaultWindowHeight() / 14 - 10;
 	float posY = manager->getDefaultWindowHeight() / 14 - 10;
 	float tamX = 944 * 0.6;
 	float tamY = 149 * 0.7;
 	float incrY = manager->getDefaultWindowHeight() / 5.8;
 
-	songList.erase(songList.begin(), songList.end());
+	hand->setPosition(Vector2D(hand->getPosition().getX(), distanceHand));
 
-	switch (currentSinger) {
-	case(ROBOT): {
+	//case(ROBOT)
 		character->forceAnimationChange(Resources::RobotIdle);
-		description->setText("Ignacio huele mal");
+		description->setText("Ignacio huele mal", SDL_Color{(255), (255), (255), (255)}, manager->getDefaultWindowWidth() * 0.4 - 30);
 
 		//añadir canciones
-		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "Cancion de testeo", "BB", 20));
+		songList[0].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "Cancion de testeo", "BB", 20));
 		posY += incrY;
-		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "Never Gonna Give You Up", "Rick Astley", 10));
+		songList[0].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "Never Gonna Give You Up", "Rick Astley", 10));
 		posY += incrY;
-		break;
-	}
-	case(PAPITO): {
-		character->forceAnimationChange(Resources::PapitoIdle);
-		description->setText("Gonzalo huele mal");
+
+		posY = posYOrig;
+	//case(PAPITO)
+		description->setText("Gonzalo huele mal", SDL_Color{(255), (255), (255), (255)}, manager->getDefaultWindowWidth() * 0.4 - 30);
 
 		//añadir canciones
-		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "Cumbia de los Vengadores", "Cumbia Drive", 17));
+		songList[1].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "Cumbia de los Vengadores", "Cumbia Drive", 17));
 		posY += incrY;
-		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraNormal, "DotA", "Basshunter", 13));
+		songList[1].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraNormal, "DotA", "Basshunter", 13));
 		posY += incrY;
 
-		break;
-	}
-	case(EMINEM): {
-		character->forceAnimationChange(Resources::EminemciaIdle);
-		description->setText("Jose huele mal");
+		posY = posYOrig;
+		//case(EMINEM)
+		description->setText("Jose huele mal", SDL_Color{ (255), (255), (255), (255) }, manager->getDefaultWindowWidth() * 0.4 - 30);
 
 		//añadir canciones
-		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraNormal, "Asereje", "Las Ketchup", 11));
+		songList[2].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraNormal, "Asereje", "Las Ketchup", 11));
 		posY += incrY;
 
-		break;
-	}
-	case(CORPSE): {
-		character->forceAnimationChange(Resources::ZombieIdle);
-		description->setText("Grossi huele mal");
+		posY = posYOrig;
+		//case(CORPSE)
+		description->setText("Grossi huele mal", SDL_Color{ (255), (255), (255), (255) }, manager->getDefaultWindowWidth() * 0.4 - 30);
 
 		//añadir canciones
-		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraDificil, "At Doom's Gate", "Andrew Hulshult", 16));
+		songList[3].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraDificil, "At Doom's Gate", "Andrew Hulshult", 16));
 		posY += incrY;
 
-		break;
-	}
-	case(ALIEN): {
-		character->forceAnimationChange(Resources::AlienIdle);
-		description->setText("Javi huele mal");
+		posY = posYOrig;
+		//case(ALIEN)
+		description->setText("Javi huele mal", SDL_Color{ (255), (255), (255), (255) }, manager->getDefaultWindowWidth() * 0.4 - 30);
 
 		//añadir canciones
-		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "Rasputin (Funk Remix)", "Boney M", 19));
+		songList[4].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "Rasputin (Funk Remix)", "Boney M", 19));
 		posY += incrY;
-		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraDificil, "Running in the 90s", "Maurizio De Jorio", 8));
+		songList[4].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraDificil, "Running in the 90s", "Maurizio De Jorio", 8));
 		posY += incrY;
-		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraDificil, "Tripoloski", "Davay", 15));
+		songList[4].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraDificil, "Tripoloski", "Davay", 15));
 		posY += incrY;
 
-		break;
-	}
-	case(NESS): {
-		character->forceAnimationChange(Resources::SansIdle);
-		description->setText("Ibort huele mal");
+		posY = posYOrig;
+		//case(NESS)
+		description->setText("Ibort huele mal", SDL_Color{ (255), (255), (255), (255) }, manager->getDefaultWindowWidth() * 0.4 - 30);
 
 		//añadir canciones
-		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "Dracukeo", "Kidd Keo", 18));
+		songList[5].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "Dracukeo", "Kidd Keo", 18));
 		posY += incrY;
-		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraDificil, "Megalovania", "Toby Fox", 7));
+		songList[5].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraDificil, "Megalovania", "Toby Fox", 7));
 		posY += incrY;
 
-		break;
-	}
-	case(SHREK): {
-		character->forceAnimationChange(Resources::ShrekIdle);
-		description->setText("Alvar huele mal");
+		posY = posYOrig;
+		//case(SHREK)
+		description->setText("Alvar huele mal", SDL_Color{ (255), (255), (255), (255) }, manager->getDefaultWindowWidth() * 0.4 - 30);
 
 		//añadir canciones
-		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "Doraemon Galego", "Xabarin Club", 14));
+		songList[6].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "Doraemon Galego", "Xabarin Club", 14));
 		posY += incrY;
-		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraNormal, "All Star", "Smash Mouth", 6));
+		songList[6].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraNormal, "All Star", "Smash Mouth", 6));
 		posY += incrY;
 
-		break;
-	}
-	case(HONK): {
-		character->forceAnimationChange(Resources::GooseDance);
-		description->setText("Guille huele mal");
+		posY = posYOrig;
+		//case(HONK)
+		description->setText("Guille huele mal", SDL_Color{(255), (255), (255), (255)}, manager->getDefaultWindowWidth() * 0.4 - 30);
 
 		//añadir canciones
-		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraDificil, "Megalovania (Honk Remix)", "Toby Fox", 12));
+		songList[7].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraDificil, "Megalovania (Honk Remix)", "Toby Fox", 12));
 		posY += incrY;
 
-		break;
-	}
 
 		/////el resto de cantantes
-	}
 
 
 }
 void ExtraMenu::cleanSongs()
 {
+	for(vector<ExtraSong*> v : songList)
+		v.erase(v.begin(), v.end());
 	songList.erase(songList.begin(), songList.end());
+}
+void ExtraMenu::updateSinger()
+{
+	switch (currentSinger) {
+	case(ROBOT): {
+		character->forceAnimationChange(Resources::RobotIdle);
+		break;
+	}
+	case(PAPITO): {
+		character->forceAnimationChange(Resources::PapitoIdle);
+		break;
+	}
+	case(EMINEM): {
+		character->forceAnimationChange(Resources::EminemciaIdle);
+		break;
+	}
+	case(CORPSE): {
+		character->forceAnimationChange(Resources::ZombieIdle);
+		break;
+	}
+	case(ALIEN): {
+		character->forceAnimationChange(Resources::AlienIdle);
+		break;
+	}
+	case(NESS): {
+		character->forceAnimationChange(Resources::SansIdle);
+		break;
+	}
+	case(SHREK): {
+		character->forceAnimationChange(Resources::ShrekIdle);
+		break;
+	}
+	case(HONK): {
+		character->forceAnimationChange(Resources::GooseDance);
+		break;
+	}
+	}
 }
 ExtraMenu::~ExtraMenu()
 {
@@ -158,7 +182,7 @@ ExtraMenu::~ExtraMenu()
 	delete arrowL;
 	delete arrowR;
 
-	songList.erase(songList.begin(), songList.end());
+	cleanSongs();
 
 	bg = nullptr;
 	hand = nullptr;
@@ -171,7 +195,7 @@ ExtraMenu::~ExtraMenu()
 }
 
 void ExtraMenu::selectionUp() {
-	if (posHand == songList.size() - 1) {
+	if (posHand == songList[currentSinger].size() - 1) {
 		posHand = 0;
 		hand->setPosition(Vector2D(hand->getPosition().getX(), distanceHand));
 	}
@@ -183,13 +207,14 @@ void ExtraMenu::selectionUp() {
 
 void ExtraMenu::selectionDown() {
 	if (posHand == 0) {
-		posHand = songList.size() - 1;
-		hand->setPosition(Vector2D(hand->getPosition().getX(), distanceHand+( (manager->getDefaultWindowHeight() / 5.8)*4)));
+		posHand = songList[currentSinger].size() - 1;
+		hand->setPosition(Vector2D(hand->getPosition().getX(), distanceHand + ((manager->getDefaultWindowHeight() / 5.8) * posHand)));
 	}
 	else {
 		posHand--;
 		hand->setPosition(Vector2D(hand->getPosition().getX(), hand->getPosition().getY() - manager->getDefaultWindowHeight() / 5.8));
 	}
+
 }
 
 void ExtraMenu::selectionLeft()
@@ -199,8 +224,7 @@ void ExtraMenu::selectionLeft()
 	else
 		currentSinger--;
 
-	cleanSongs();
-	initSongs();
+	updateSinger();
 }
 
 void ExtraMenu::selectionRight()
@@ -210,8 +234,7 @@ void ExtraMenu::selectionRight()
 	else
 		currentSinger++;
 
-	cleanSongs();
-	initSongs();
+	updateSinger();
 }
 
 bool ExtraMenu::handleEvent(Uint32 time,  SDL_Event event)
@@ -241,7 +264,7 @@ bool ExtraMenu::handleEvent(Uint32 time,  SDL_Event event)
 		}
 		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || event.key.keysym.sym == SDLK_RETURN || event.key.keysym.sym == SDLK_SPACE) {
 			
-			manager->getMachine()->changeState(new PlayState(manager, songList[posHand]->getLevel(), onePlayer, false));
+			manager->getMachine()->changeState(new PlayState(manager, songList[currentSinger][posHand]->getLevel(), onePlayer, false));
 
 		}
 		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B) || event.key.keysym.sym == SDLK_ESCAPE || event.key.keysym.sym == SDLK_BACKSPACE) {
@@ -276,7 +299,7 @@ void ExtraMenu::render(Uint32 time, bool beatSync)
 		arrowR->render(time);
 		arrowL->render(time);
 
-		for (ExtraSong* s : songList)
+		for (ExtraSong* s : songList[currentSinger])
 			s->render(time);
 
 

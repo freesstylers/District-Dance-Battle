@@ -68,8 +68,7 @@ void DialogState::init()	//this method loads all the assets needed from the dial
 		}
 		actualBox = box[dialogo.front().box];
 		text = new TextObject(manager, manager->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(manager->getDefaultWindowWidth() / 22 + 10, manager->getDefaultWindowHeight() - 140));
-		text->setText("AAA", { COLOR(0x00000000) });
-		text2 = new TextObject(manager, manager->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(manager->getDefaultWindowWidth() / 22 + 20, manager->getDefaultWindowHeight() - 140 + text->getHeight()));
+		text->setText("AAA", { COLOR(0x00000000) }, textBox->getWidth() - 50);
 		timer = new Timer();
 		manager->getServiceLocator()->getAudios()->playChannel(Resources::Snare, 0, 1);
 		manager->getServiceLocator()->getAudios()->setChannelVolume(10, 4);
@@ -107,7 +106,6 @@ DialogState::~DialogState()
 	box.clear();
 
 	delete text;
-	delete text2;
 	if(!check)
 		delete actualBox;
 }
@@ -118,7 +116,6 @@ void DialogState::render(Uint32 time, bool beatSync) {
 
  	actualBox->render(time, beatSync);
 	text->render(time);
-	text2->render(time);
 	beatSignal = false;
 }
 
@@ -177,56 +174,25 @@ bool DialogState::handleEvent(Uint32 time, SDL_Event e) {
 void DialogState::updateText() {	//this method updates the text displayed on screen
 	if (!dialogo.empty()) {
 
-		if (dialogo.front().text.size() <= 51) {
-			text->setText(dialogo.front().text, { COLOR(0x00000000) });
-			text2->setText(" ", { COLOR(0x00000000) });
-		}
-		
-		//if the text is longer than 51 characters, then it's cut into two lines
-		else {
-			string aux1 = "";
-			string aux2 = "";
-			int intaux = 0;
-
-			while (intaux <= 51 || (intaux > 51 && intaux < dialogo.front().text.size() && dialogo.front().text[intaux] != ' ')) {
-				aux1 += dialogo.front().text[intaux];
-				intaux++;
-			}
-
-			intaux++;
-
-			while (intaux < dialogo.front().text.size()) {
-				aux2 += dialogo.front().text[intaux];
-				intaux++;
-			}
-			aux2 += " ";
-
-			text->setText(aux1, { COLOR(0x00000000) });
-			text2->setText(aux2, { COLOR(0x00000000) });
-		}
+			text->setText(dialogo.front().text, { COLOR(0x00000000) }, manager->getDefaultWindowWidth() - 120);
 	}
 	else {
 		if (archivo == "Intro2") {
 			text->setText("COMIENZA TU AVENTURA", { COLOR(0x00000000) });
-			text2->setText(" ", { COLOR(0x00000000) });
 		}
 		else if (nlevel <=5) {
 			text->setText("COMIENZA LA BATALLA", { COLOR(0x00000000) });
-			text2->setText(" ", { COLOR(0x00000000) });
 		}
 		else if(nlevel % 2 == 0){
 			if (!hardMode_ && prevMaxScoreE_ < 600000) {
 				text->setText("NIVEL COMPLETADO, HAS DESBLOQUEADO EL MODO DIFICIL", { COLOR(0x00000000) });
-				text2->setText(" ", { COLOR(0x00000000) });
 			}
 			else {
 				text->setText("HAS COMPLETADO EL NIVEL", { COLOR(0x00000000) });
-				text2->setText(" ", { COLOR(0x00000000) });
 			}
 		}
 		else {
 			text->setText("NO HAS COMPLETADO EL NIVEL", { COLOR(0x00000000) });
-			text2->setText(" ", { COLOR(0x00000000) });
 		}
 
 		end = true;

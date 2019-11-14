@@ -31,9 +31,9 @@ void Font::close() {
 	}
 }
 
-SDL_Surface* Font::renderText(string text, SDL_Color color) const {
+SDL_Surface* Font::renderText(string text, SDL_Color color, Uint32 size) const {
 	if ( font_ ) {
-		return TTF_RenderUTF8_Solid(font_, text.c_str(), color);
+		return TTF_RenderUTF8_Blended_Wrapped(font_, text.c_str(), color, size);
 	} else {
 		return nullptr;
 	}

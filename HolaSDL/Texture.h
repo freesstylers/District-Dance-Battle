@@ -22,7 +22,7 @@ public:
 
 	bool loadFromImg(SDL_Renderer* renderer, string fileName);
 	bool loadFromText(SDL_Renderer* renderer, string texto, Font& font,
-			SDL_Color color = { 0, 0, 0, 255 });
+			SDL_Color color = { 0, 0, 0, 255 }, Uint32 size = 999999);
 
 	// render the complete texture at position (x,y). We either provide
 	// a renderer or use the one used at construction
