@@ -136,6 +136,9 @@ void ExtraMenu::cleanSongs()
 }
 void ExtraMenu::updateSinger()
 {
+	posHand = 0;
+	hand->setPosition(Vector2D(hand->getPosition().getX(), distanceHand));
+
 	switch (currentSinger) {
 	case(ROBOT): {
 		character->forceAnimationChange(Resources::RobotIdle);
