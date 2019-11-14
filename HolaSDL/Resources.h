@@ -231,7 +231,8 @@ public:
 		TriPoloski,
 		Doom,
 		Avengers,
-		Dracukeo
+		Dracukeo,
+		Rasputin
 		// sound effects
 	};
 
