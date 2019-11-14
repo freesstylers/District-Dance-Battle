@@ -232,7 +232,8 @@ public:
 		Doom,
 		Avengers,
 		Dracukeo,
-		Rasputin
+		Rasputin,
+		FiestaPagana
 		// sound effects
 	};
 

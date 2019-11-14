@@ -51,17 +51,10 @@ void ExtraMenu::initSongs()
 		description->setText("Ignacio huele mal");
 
 		//añadir canciones
-		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "AA", "BB", 19));
+		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "Cancion de testeo", "BB", 20));
 		posY += incrY;
-		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "AA", "BB", 15));
+		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "Never Gonna Give You Up", "Rick Astley", 10));
 		posY += incrY;
-		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraDificil, "Jose", "lillo", 16));
-		posY += incrY;
-		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "AA", "BB", 2));
-		posY += incrY;
-		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "AA", "BB", 9));
-		posY += incrY;
-
 		break;
 	}
 	case(PAPITO): {
@@ -69,7 +62,9 @@ void ExtraMenu::initSongs()
 		description->setText("Gonzalo huele mal");
 
 		//añadir canciones
-		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "AA", "BB", 1));
+		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "Cumbia de los Vengadores", "Cumbia Drive", 17));
+		posY += incrY;
+		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraNormal, "DotA", "Basshunter", 13));
 		posY += incrY;
 
 		break;
@@ -79,7 +74,7 @@ void ExtraMenu::initSongs()
 		description->setText("Jose huele mal");
 
 		//añadir canciones
-		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "AA", "BB", 1));
+		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraNormal, "Asereje", "Las Ketchup", 11));
 		posY += incrY;
 
 		break;
@@ -89,7 +84,7 @@ void ExtraMenu::initSongs()
 		description->setText("Grossi huele mal");
 
 		//añadir canciones
-		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "AA", "BB", 1));
+		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraDificil, "At Doom's Gate", "Andrew Hulshult", 16));
 		posY += incrY;
 
 		break;
@@ -99,7 +94,11 @@ void ExtraMenu::initSongs()
 		description->setText("Javi huele mal");
 
 		//añadir canciones
-		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "AA", "BB", 1));
+		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "Rasputin (Funk Remix)", "Boney M", 19));
+		posY += incrY;
+		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraDificil, "Running in the 90s", "Maurizio De Jorio", 8));
+		posY += incrY;
+		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraDificil, "Tripoloski", "Davay", 15));
 		posY += incrY;
 
 		break;
@@ -109,7 +108,9 @@ void ExtraMenu::initSongs()
 		description->setText("Ibort huele mal");
 
 		//añadir canciones
-		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "AA", "BB", 1));
+		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "Dracukeo", "Kidd Keo", 18));
+		posY += incrY;
+		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraDificil, "Megalovania", "Toby Fox", 7));
 		posY += incrY;
 
 		break;
@@ -119,7 +120,9 @@ void ExtraMenu::initSongs()
 		description->setText("Alvar huele mal");
 
 		//añadir canciones
-		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "AA", "BB", 1));
+		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "Doraemon Galego", "Xabarin Club", 14));
+		posY += incrY;
+		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraNormal, "All Star", "Smash Mouth", 6));
 		posY += incrY;
 
 		break;
@@ -129,7 +132,7 @@ void ExtraMenu::initSongs()
 		description->setText("Guille huele mal");
 
 		//añadir canciones
-		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "AA", "BB", 1));
+		songList.push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraDificil, "Megalovania (Honk Remix)", "Toby Fox", 12));
 		posY += incrY;
 
 		break;
