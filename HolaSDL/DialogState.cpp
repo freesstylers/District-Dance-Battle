@@ -11,7 +11,7 @@ using namespace std;
 
 DialogState::DialogState(GameManager* g, int txt, int numctrl, bool oneP, bool hardMode, int prevMaxScoreE, int prevMaxScoreH): GameState(g), oneP_(oneP), hardMode_(hardMode), nlevel(txt)
 {
-	//archivo = levels[txt];
+	archivo = levels[txt];
 	controller = SDL_GameControllerOpen(numctrl);
 	prevMaxScoreE_ = prevMaxScoreE;
 	prevMaxScoreH_ = prevMaxScoreH;

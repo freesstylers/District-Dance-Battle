@@ -201,6 +201,8 @@ vector<Resources::ImageInfo> Resources::images_{
 		{ GooseBox, "resources/images/GooseBox.png", 153, 65, 1, 1, 1 },
 		{ SansBox, "resources/images/SansBox.png", 153, 65, 1, 1, 1 },
 		{ ShrekBox, "resources/images/ShrekBox.png", 153, 65, 1, 1, 1 },
+		{ Left, "resources/images/LeftArrow.png", 32, 32, 1, 1, 1 },
+		{ Right, "resources/images/RightArrow.png", 32, 32, 1, 1, 1 },
 			//Enum, file path, frame width, frame height, columns, rows, frame total//
 
 };

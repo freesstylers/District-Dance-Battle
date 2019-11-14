@@ -19,12 +19,14 @@ void ExtraMenu::init() {
 	hand = new EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() - 150, distanceHand), 128 * 0.7, 128 * 0.7, Resources::MasterHand);
 	switchPlayers = new EmptyObject(manager, Vector2D(50, 0), 102, 90, Resources::NumPlayersSwitch);
 	select = new EmptyObject(manager, Vector2D(50, 100), 110, 21, Resources::Select);
-	character = new Character(manager, 300 * 0.8, 600 * 0.8, Vector2D((manager->getDefaultWindowWidth() * 0.25) - (300 * 0.5 * 0.9), 10), Resources::RobotIdle);
+	character = new Character(manager, 300 * 0.8, 600 * 0.8, Vector2D((manager->getDefaultWindowWidth() * 0.25) - (300 * 0.5 * 0.8), 10), Resources::RobotIdle);
 	character->isAnimationSynced(false);
 	character->setAnimationFramerate(4);
 
-	description = new TextObject(manager, manager->getServiceLocator()->getFonts()->getFont(Resources::RETRO20), Vector2D((manager->getDefaultWindowWidth() * 0.05) + 20, manager->getDefaultWindowHeight() - 220 + 20));
-	descriptionBox = new EmptyObject(manager, Vector2D((manager->getDefaultWindowWidth() * 0.05), manager->getDefaultWindowHeight() - 220), manager->getDefaultWindowWidth() * 0.4, 175, Resources::ExtraBox);
+	description = new TextObject(manager, manager->getServiceLocator()->getFonts()->getFont(Resources::RETRO20), Vector2D((manager->getDefaultWindowWidth() * 0.07) + 20, manager->getDefaultWindowHeight() - 220 + 20));
+	descriptionBox = new EmptyObject(manager, Vector2D((manager->getDefaultWindowWidth() * 0.07), manager->getDefaultWindowHeight() - 220), manager->getDefaultWindowWidth() * 0.4, 175, Resources::ExtraBox);
+	arrowL = new EmptyObject(manager, Vector2D((manager->getDefaultWindowWidth() * 0.23 - 225), manager->getDefaultWindowHeight() * 0.35), 96, 96, Resources::Left);
+	arrowR = new EmptyObject(manager, Vector2D((manager->getDefaultWindowWidth() * 0.23 + 225), manager->getDefaultWindowHeight() * 0.35), 96, 96, Resources::Right);
 
 	initSongs();
 	//Leer de archivo la lista de canciones (Titulo >> Artista >> Dificultad >> Numero en menu) y meter en vector
@@ -150,6 +152,8 @@ ExtraMenu::~ExtraMenu()
 	delete select;
 	delete character;
 	delete description;
+	delete arrowL;
+	delete arrowR;
 
 	songList.erase(songList.begin(), songList.end());
 
@@ -159,6 +163,8 @@ ExtraMenu::~ExtraMenu()
 	select = nullptr;
 	character = nullptr;
 	description = nullptr;
+	arrowL = nullptr;
+	arrowR = nullptr;
 }
 
 void ExtraMenu::selectionUp() {
@@ -264,6 +270,8 @@ void ExtraMenu::render(Uint32 time, bool beatSync)
 		character->render(time);
 		descriptionBox->render(time);
 		description->render(time);
+		arrowR->render(time);
+		arrowL->render(time);
 
 		for (ExtraSong* s : songList)
 			s->render(time);

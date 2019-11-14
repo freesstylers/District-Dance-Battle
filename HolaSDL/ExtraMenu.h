@@ -29,6 +29,8 @@ private:
 	EmptyObject* hand;
 	EmptyObject* switchPlayers;
 	EmptyObject* select;
+	EmptyObject* arrowL;
+	EmptyObject* arrowR;
 	GameObject* character; //600x300?
 	TextObject* description; //600x600?
 	EmptyObject* descriptionBox; //600x600?

@@ -194,7 +194,9 @@ public:
 		ExtraBox,
 		GooseBox,
 		SansBox,
-		ShrekBox
+		ShrekBox,
+		Left,
+		Right
 		// text
 	};
 
