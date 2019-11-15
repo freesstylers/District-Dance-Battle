@@ -41,13 +41,6 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 		case SDLK_RIGHT:
 			buttons = SDL_CONTROLLER_BUTTON_B;
 			break;
-		default:
-			buttons = SDL_CONTROLLER_BUTTON_INVALID;
-			break;
-		}
-
-		switch (event.key.keysym.sym)
-		{
 		case SDLK_s:
 			arrows = SDL_CONTROLLER_BUTTON_DPAD_DOWN;
 			break;
@@ -61,7 +54,6 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 			arrows = SDL_CONTROLLER_BUTTON_DPAD_RIGHT;
 			break;
 		default:
-			arrows = SDL_CONTROLLER_BUTTON_INVALID;
 			break;
 		}
 	}
@@ -75,8 +67,7 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 		keyup2 = true;
 	}
 
-	//opening the pause menu, there's a 0.5 second cooldown due to a bug with how the timers are set up
-	if ((blockpause < time - 500) && ((event.type == SDL_CONTROLLERBUTTONDOWN || event.type == SDL_KEYDOWN) && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_START) || event.key.keysym.sym == SDLK_TAB || event.key.keysym.sym == SDLK_ESCAPE))) {
+	if ((blockpause < time - 500) && ((event.type == SDL_CONTROLLERBUTTONDOWN || event.type == SDL_KEYDOWN) && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_BACK) || SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_START) || event.key.keysym.sym == SDLK_TAB || event.key.keysym.sym == SDLK_ESCAPE))) {
 		ret = ret || level->pause();
 		blockpause = 0;
 	}

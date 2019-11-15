@@ -110,6 +110,10 @@ MainMenuState::MainMenuState(GameManager* g) :GameState(g)
 	g->getServiceLocator()->getAudios()->setChannelVolume(gameManager->getMusicVolume(), 0);
 
 	manager->getServiceLocator()->getAudios()->playChannel(Resources::MainTheme, -1, 0);
+
+
+	selection->setHeight(musicSelect->getHeight());
+	selection->setWidth(musicSelect->getWidth());
 }
 
 
@@ -502,6 +506,15 @@ bool MainMenuState::handleEvent(Uint32 time, SDL_Event e)
 				default:
 					break;
 				}
+			}
+
+			input = true;
+
+		}
+		else if (!confirmationActive && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B) || e.key.keysym.sym == SDLK_ESCAPE || e.key.keysym.sym == SDLK_BACKSPACE))
+		{
+			if (optionsOpen) {
+				options();
 			}
 
 			input = true;
