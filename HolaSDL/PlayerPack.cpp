@@ -5,8 +5,10 @@ PlayerPack::PlayerPack()
 {
 }
 
-PlayerPack::PlayerPack(SDLGame* manager, PlayState* ps, int leftNotesPos, int rightNotesPos, int pointSize, int squareWidth, int player,bool OneP): GameObject(manager), playstate_(ps)
+PlayerPack::PlayerPack(SDLGame* manager, PlayState* ps, int leftNotesPos, int rightNotesPos, int pointSize, int squareWidth, int player, bool OneP): GameObject(manager), playstate_(ps)
 {
+	int player_ = player;
+
 	for (int i = 0; i < 4; i++)
 	{
 		califications[i] = 0;
@@ -18,23 +20,27 @@ PlayerPack::PlayerPack(SDLGame* manager, PlayState* ps, int leftNotesPos, int ri
 	}
 	else if (player == 1)
 	{
-		//controllerMode = manager->getP2Controller();
+		controllerMode = manager->getP2Controller();
+		if (manager->getP1Controller() == 2)
+			player_--;
 	}
 
-	lip = new LevelInputManager(playstate_, this, player, controllerMode);
+	lip = new LevelInputManager(playstate_, this, player_, controllerMode);
+	player_ = player;
+
 	leftNotesVector = Vector2D(leftNotesPos - 50 / 2, 70);
 	rightNotesVector = Vector2D(rightNotesPos - 50 / 2, 70);
 
-	leftPoint = new Point(manager, pointSize, pointSize, Vector2D(leftNotesPos - pointSize / 2, 565), lip->getController(), true, player);
-	rightPoint = new Point(manager, pointSize, pointSize, Vector2D(rightNotesPos - pointSize / 2, 565), lip->getController(), false, player);
+	leftPoint = new Point(manager, pointSize, pointSize, Vector2D(leftNotesPos - pointSize / 2, 565), lip->getController(), true, player_);
+	rightPoint = new Point(manager, pointSize, pointSize, Vector2D(rightNotesPos - pointSize / 2, 565), lip->getController(), false, player_);
 	leftNoteBar = new Squares(manager, squareWidth, 565 + 0.6 * pointSize, Vector2D(leftNotesPos + 1 - squareWidth / 2, leftNotesVector.getY()));
 	rightNoteBar = new Squares(manager, squareWidth, 565 + 0.6 * pointSize, Vector2D(rightNotesPos + 1 - squareWidth / 2, rightNotesVector.getY()));
-	if (!OneP && player == 0)
+	if (!OneP && player_ == 0)
 	{
 		leftNoteBar->forceAnimationChange(Resources::Recuadro1P);
 		rightNoteBar->forceAnimationChange(Resources::Recuadro1P);
 	}
-	else if (!OneP && player == 1)
+	else if (!OneP && player_ == 1)
 	{
 		leftNoteBar->forceAnimationChange(Resources::Recuadro2P);
 		rightNoteBar->forceAnimationChange(Resources::Recuadro2P);
@@ -44,7 +50,7 @@ PlayerPack::PlayerPack(SDLGame* manager, PlayState* ps, int leftNotesPos, int ri
 	hitLeft = new HitNotePool(manager, pointSize - 10, pointSize - 10);
 	hitRight = new HitNotePool(manager, pointSize - 10, pointSize - 10);
 	noteYLimit = leftPoint->getPosition().getY() + leftPoint->getHeight()/1.5;
-	if (player == 0)
+	if (player_ == 0)
 	{
 		scoreBar = new ScoreBar(manager, 80, 0, Vector2D(6, 500 + pointSize), playstate_->getMaxScore(), manager->getDefaultWindowHeight() - (500 + pointSize));
 	}

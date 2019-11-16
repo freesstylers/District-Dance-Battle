@@ -245,11 +245,11 @@ void PlayState::newGame2P()
 	leftNotesVector2 = Vector2D(leftNotesPos - 70 / 2 + 400, 70);
 	rightNotesVector2 = Vector2D(rightNotesPos - 70 / 2 + 400, 70);
 
-	player1 = new PlayerPack(manager,this, leftNotesPos, rightNotesPos, pointSize, noteBarWidth,0,false);
+	player1 = new PlayerPack(manager,this, leftNotesPos, rightNotesPos, pointSize, noteBarWidth, 0, false);
 	player2 = new PlayerPack(manager,this, leftNotesPos + 400, rightNotesPos + 400, pointSize, noteBarWidth,1,false);
 	crown = new Background(manager, 128, 128, Vector2D(0, 0), Resources::Crown);
 	crown->setActive(false);
-	level = new Level(this, manager, levelName,noteSize);
+	level = new Level(this, manager, levelName, noteSize);
 
 	if (levelName == "Tripoloski")
 		level->RandomLevel();

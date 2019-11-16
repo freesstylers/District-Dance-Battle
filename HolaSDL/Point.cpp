@@ -25,6 +25,9 @@ Point::Point(SDLGame* game, double width, double height, Vector2D pos, SDL_GameC
 //Change the point animation when some button is pushed
 bool Point::handleInput(Uint32 time, const SDL_Event& event)
 {
+	if (controllerMode == 2 && event.type == SDL_CONTROLLERBUTTONDOWN)
+		return false;
+
 	if (event.type == SDL_CONTROLLERBUTTONDOWN || event.type == SDL_KEYDOWN)
 	{
 		if (side_)

@@ -56,6 +56,9 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 		default:
 			break;
 		}
+
+		if(event.type == SDL_CONTROLLERBUTTONDOWN && !(SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_BACK)))
+			return ret;
 	}
 	
 	if ((event.type == SDL_CONTROLLERBUTTONDOWN || event.type == SDL_KEYDOWN) && keyup) {
