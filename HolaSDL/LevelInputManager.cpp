@@ -60,10 +60,20 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 		if(event.type == SDL_CONTROLLERBUTTONDOWN && !(SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_BACK)))
 			return ret;
 	}
-	
-	if ((event.type == SDL_CONTROLLERBUTTONDOWN || event.type == SDL_KEYDOWN) && keyup) {
-		level->getGameManager()->getServiceLocator()->getAudios()->playChannel(Resources::Snare, 0, 1);
+	else if (event.type == SDL_KEYDOWN && !(event.key.keysym.sym == SDLK_TAB || event.key.keysym.sym == SDLK_ESCAPE))
+			return ret;
+
+	if (keyup && (event.type == SDL_CONTROLLERBUTTONDOWN || event.type == SDL_KEYDOWN)) {
+		if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT) || SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) ||
+			SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN) || SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_UP) ||
+			event.key.keysym.sym == SDLK_a || event.key.keysym.sym == SDLK_d || event.key.keysym.sym == SDLK_s || event.key.keysym.sym == SDLK_w ||
+			SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B) ||
+			SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_X) || SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_Y) ||
+			event.key.keysym.sym == SDLK_LEFT || event.key.keysym.sym == SDLK_RIGHT || event.key.keysym.sym == SDLK_DOWN || event.key.keysym.sym == SDLK_UP) {
+			level->getGameManager()->getServiceLocator()->getAudios()->playChannel(Resources::Snare, 0, 1);
+		}
 	}
+
 	if (event.type == SDL_CONTROLLERBUTTONUP || event.type == SDL_KEYUP)
 	{
 		keyup = true;
