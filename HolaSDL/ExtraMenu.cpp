@@ -32,7 +32,6 @@ void ExtraMenu::init() {
 	//Leer de archivo la lista de canciones (Titulo >> Artista >> Dificultad >> Numero en menu) y meter en vector
 	//Hacer metodo aparte? (pushSongs)
 	//Metodo para cambiar los parametros del sprite, descripcion y lista de canciones
-
 }
 void ExtraMenu::initSongs()
 {
