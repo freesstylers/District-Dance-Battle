@@ -32,6 +32,7 @@
     <ClInclude Include="PlayerPack.h" />
     <ClInclude Include="EmptyObject.h" />
     <ClInclude Include="PanelMap.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="ScoreBar.h" />
     <ClInclude Include="SongBar.h" />
     <ClInclude Include="EndState.h" />
@@ -125,6 +126,14 @@
     <ClCompile Include="TutorialState.cpp" />
     <ClCompile Include="Vector2D.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="District Dance Battle.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\bin\icon.ico" />
+    <Image Include="icon.ico" />
+    <Image Include="icon1.ico" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{28A4C5CD-307A-4FE6-81E4-4CE1F1E49AB4}</ProjectGuid>
     <RootNamespace>HolaSDL</RootNamespace>
@@ -185,6 +194,9 @@
       <OptimizeReferences>true</OptimizeReferences>
       <SubSystem>Windows</SubSystem>
     </Link>
+    <Manifest>
+      <EnableDpiAwareness>PerMonitorHighDPIAware</EnableDpiAwareness>
+    </Manifest>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

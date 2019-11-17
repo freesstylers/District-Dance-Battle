@@ -114,5 +114,14 @@
     <ClInclude Include="CreadorNiveles.h" />
     <ClInclude Include="ExtraMenu.h" />
     <ClInclude Include="ExtraSong.h" />
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="District Dance Battle.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon1.ico" />
+    <Image Include="icon.ico" />
+    <Image Include="..\bin\icon.ico" />
   </ItemGroup>
 </Project>
