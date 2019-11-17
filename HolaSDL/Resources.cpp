@@ -209,6 +209,7 @@ vector<Resources::ImageInfo> Resources::images_{
 		{ ShrekBox, "resources/images/ShrekBox.png", 153, 65, 1, 1, 1 },
 		{ Left, "resources/images/LeftArrow.png", 32, 32, 1, 1, 1 },
 		{ Right, "resources/images/RightArrow.png", 32, 32, 1, 1, 1 },
+		{ AlienIdle2, "resources/images/AlienFumeta.png", 60, 120, 3, 2, 5 },
 			//Enum, file path, frame width, frame height, columns, rows, frame total//
 
 };

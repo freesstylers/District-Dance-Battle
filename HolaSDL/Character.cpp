@@ -36,6 +36,9 @@ Character::Character(SDLGame* game, double width, double height, Vector2D pos, i
 			secondAnim = Resources::AlienDance;
 			isAlien = true;
 			break;
+		case Resources::AlienIdle2:
+			secondAnim = Resources::AlienDance;
+			break;
 		}
 	}
 }

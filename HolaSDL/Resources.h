@@ -196,7 +196,8 @@ public:
 		SansBox,
 		ShrekBox,
 		Left,
-		Right
+		Right,
+		AlienIdle2
 		// text
 	};
 
