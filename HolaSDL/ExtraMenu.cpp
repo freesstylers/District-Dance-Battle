@@ -80,8 +80,8 @@ void ExtraMenu::initSongs()
 		//case(ALIEN)
 
 		//añadir canciones
-		songList[4].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "Rasputin (Funk Remix)", "Boney M", 19));
-		posY += incrY;
+		//songList[4].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "Rasputin (Funk Remix)", "Boney M", 19));
+		//posY += incrY;
 		songList[4].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraDificil, "Running in the 90s", "Maurizio De Jorio", 8));
 		posY += incrY;
 		songList[4].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraDificil, "Tripoloski", "Davay", 15));
