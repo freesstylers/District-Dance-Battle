@@ -108,8 +108,8 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxS
 		levelName = "Doraemon";
 		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::ExtraBG);
 		bgT = Resources::ExtraBG;
-		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 400, initialNoteHeight + 50), Resources::GooseDance);
-		enemyT = Resources::GooseDance;
+		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 400, initialNoteHeight + 50), Resources::ShrekIdle);
+		enemyT = Resources::ShrekIdle;
 		break;
 	case 15:
 		levelName = "Tripoloski";

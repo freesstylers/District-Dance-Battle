@@ -24,7 +24,6 @@ void ExtraMenu::init() {
 	character->isAnimationSynced(false);
 	character->setAnimationFramerate(4);
 
-	description = new TextObject(manager, manager->getServiceLocator()->getFonts()->getFont(Resources::RETRO20), Vector2D((manager->getDefaultWindowWidth() * 0.07) + 20, manager->getDefaultWindowHeight() - 220 + 20));
 	descriptionBox = new EmptyObject(manager, Vector2D((manager->getDefaultWindowWidth() * 0.07), manager->getDefaultWindowHeight() - 220), manager->getDefaultWindowWidth() * 0.4, 175, Resources::ExtraBox);
 	arrowL = new EmptyObject(manager, Vector2D((manager->getDefaultWindowWidth() * 0.23 - 225), manager->getDefaultWindowHeight() * 0.35), 96, 96, Resources::Left);
 	arrowR = new EmptyObject(manager, Vector2D((manager->getDefaultWindowWidth() * 0.23 + 225), manager->getDefaultWindowHeight() * 0.35), 96, 96, Resources::Right);
@@ -49,8 +48,6 @@ void ExtraMenu::initSongs()
 
 	//case(ROBOT)
 		character->forceAnimationChange(Resources::RobotIdle);
-		description->setText("Ignacio huele mal", SDL_Color{(255), (255), (255), (255)}, manager->getDefaultWindowWidth() * 0.4 - 30);
-
 		//añadir canciones
 		songList[0].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "Cancion de testeo", "BB", 20));
 		posY += incrY;
@@ -59,7 +56,6 @@ void ExtraMenu::initSongs()
 
 		posY = posYOrig;
 	//case(PAPITO)
-		description->setText("Gonzalo huele mal", SDL_Color{(255), (255), (255), (255)}, manager->getDefaultWindowWidth() * 0.4 - 30);
 
 		//añadir canciones
 		songList[1].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "Cumbia de los Vengadores", "Cumbia Drive", 17));
@@ -69,7 +65,6 @@ void ExtraMenu::initSongs()
 
 		posY = posYOrig;
 		//case(EMINEM)
-		description->setText("Jose huele mal", SDL_Color{ (255), (255), (255), (255) }, manager->getDefaultWindowWidth() * 0.4 - 30);
 
 		//añadir canciones
 		songList[2].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraNormal, "Asereje", "Las Ketchup", 11));
@@ -77,7 +72,6 @@ void ExtraMenu::initSongs()
 
 		posY = posYOrig;
 		//case(CORPSE)
-		description->setText("Grossi huele mal", SDL_Color{ (255), (255), (255), (255) }, manager->getDefaultWindowWidth() * 0.4 - 30);
 
 		//añadir canciones
 		songList[3].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraDificil, "At Doom's Gate", "Andrew Hulshult", 16));
@@ -85,7 +79,6 @@ void ExtraMenu::initSongs()
 
 		posY = posYOrig;
 		//case(ALIEN)
-		description->setText("Javi huele mal", SDL_Color{ (255), (255), (255), (255) }, manager->getDefaultWindowWidth() * 0.4 - 30);
 
 		//añadir canciones
 		songList[4].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "Rasputin (Funk Remix)", "Boney M", 19));
@@ -97,7 +90,6 @@ void ExtraMenu::initSongs()
 
 		posY = posYOrig;
 		//case(NESS)
-		description->setText("Ibort huele mal", SDL_Color{ (255), (255), (255), (255) }, manager->getDefaultWindowWidth() * 0.4 - 30);
 
 		//añadir canciones
 		songList[5].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "Dracukeo", "Kidd Keo", 18));
@@ -107,7 +99,6 @@ void ExtraMenu::initSongs()
 
 		posY = posYOrig;
 		//case(SHREK)
-		description->setText("Alvar huele mal", SDL_Color{ (255), (255), (255), (255) }, manager->getDefaultWindowWidth() * 0.4 - 30);
 
 		//añadir canciones
 		songList[6].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "Doraemon Galego", "Xabarin Club", 14));
@@ -117,7 +108,6 @@ void ExtraMenu::initSongs()
 
 		posY = posYOrig;
 		//case(HONK)
-		description->setText("Guille huele mal", SDL_Color{(255), (255), (255), (255)}, manager->getDefaultWindowWidth() * 0.4 - 30);
 
 		//añadir canciones
 		songList[7].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraDificil, "Megalovania (Honk Remix)", "Toby Fox", 12));
@@ -126,13 +116,28 @@ void ExtraMenu::initSongs()
 
 		/////el resto de cantantes
 
+		std::ifstream file("resources/dialog/descriptions.txt");
+		if (file.is_open()) {
+			std::string line;
+			int i = 0;
+			while (getline(file, line)) {
+				description.push_back(new TextObject(manager, manager->getServiceLocator()->getFonts()->getFont(Resources::RETRO16), Vector2D((manager->getDefaultWindowWidth() * 0.07) + 20, manager->getDefaultWindowHeight() - 220 + 20)));
+				description[i]->setText(line, SDL_Color{ (255), (255), (255), (255) }, manager->getDefaultWindowWidth() * 0.4 - 30);
+				i++;
+			}
+			file.close();
+		}
 
 }
-void ExtraMenu::cleanSongs()
+void ExtraMenu::cleanStuff()
 {
 	for(vector<ExtraSong*> v : songList)
 		v.erase(v.begin(), v.end());
 	songList.erase(songList.begin(), songList.end());
+
+	for (TextObject* t : description)
+		delete t;
+	description.erase(description.begin(), description.end());
 }
 void ExtraMenu::updateSinger()
 {
@@ -181,18 +186,16 @@ ExtraMenu::~ExtraMenu()
 	delete switchPlayers;
 	delete select;
 	delete character;
-	delete description;
 	delete arrowL;
 	delete arrowR;
 
-	cleanSongs();
+	cleanStuff();
 
 	bg = nullptr;
 	hand = nullptr;
 	switchPlayers = nullptr;
 	select = nullptr;
 	character = nullptr;
-	description = nullptr;
 	arrowL = nullptr;
 	arrowR = nullptr;
 }
@@ -298,7 +301,7 @@ void ExtraMenu::render(Uint32 time, bool beatSync)
 		select->render(time);
 		character->render(time);
 		descriptionBox->render(time);
-		description->render(time);
+		description[currentSinger]->render(time);
 		arrowR->render(time);
 		arrowL->render(time);
 

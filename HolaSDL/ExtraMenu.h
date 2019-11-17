@@ -8,6 +8,8 @@
 #include "checkML.h"
 #include "TextObject.h"
 #include "ExtraSong.h"
+#include <fstream>
+#include <iostream>
 
 //State used to display a menu for selecting the extra levels made for Guerrilla/FIMP
 
@@ -32,11 +34,12 @@ private:
 	EmptyObject* arrowL;
 	EmptyObject* arrowR;
 	GameObject* character; //600x300?
-	TextObject* description; //600x600?
+	//agreTextObject* description; //600x600?
 	EmptyObject* descriptionBox; //600x600?
 
 	int currentSinger = ROBOT;
 
+	vector<TextObject*> description;
 	vector<vector<ExtraSong*>> songList;
 
 	bool onePlayer = true;
@@ -53,7 +56,7 @@ private:
 	void restartSong() {};
 	void init();
 	void initSongs();
-	void cleanSongs();
+	void cleanStuff();
 	void exitSong() {};
 	void updateSinger();
 
