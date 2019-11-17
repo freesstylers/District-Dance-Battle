@@ -1,0 +1,10 @@
+1
+90
+0
+2
+47 grey
+176 sans
+- grey Este juego es una pasada
+- grey Me hace mover el
+- sans esqueleto 
+0

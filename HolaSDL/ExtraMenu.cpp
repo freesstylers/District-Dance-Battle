@@ -122,7 +122,7 @@ void ExtraMenu::initSongs()
 			int i = 0;
 			while (getline(file, line)) {
 				description.push_back(new TextObject(manager, manager->getServiceLocator()->getFonts()->getFont(Resources::RETRO16), Vector2D((manager->getDefaultWindowWidth() * 0.07) + 20, manager->getDefaultWindowHeight() - 220 + 20)));
-				description[i]->setText(line, SDL_Color{ (255), (255), (255), (255) }, manager->getDefaultWindowWidth() * 0.4 - 30);
+				description[i]->setText(line, SDL_Color{ (255), (255), (255), (255) }, manager->getDefaultWindowWidth() * 0.4 - 50);
 				i++;
 			}
 			file.close();

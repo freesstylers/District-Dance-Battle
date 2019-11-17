@@ -331,10 +331,10 @@ EndState::~EndState()
 	letter = nullptr;
 }
 
-void EndState::backToMenu(GameManager * gameManager)	//method used to send the player right back into the map
+void EndState::backToMenu(GameManager* gameManager)	//method used to send the player right back into the map
 {
 	gameManager->getServiceLocator()->getAudios()->haltChannel(0);
-	gameManager->getMachine()->pushState(new MapState(gameManager));
+	gameManager->getMachine()->pushState(new ExtraMenu(gameManager));
 }
 
 void EndState::backToMenuWin(GameManager * gameManager)	//method used to send the player into a new DialogState, if they've won
