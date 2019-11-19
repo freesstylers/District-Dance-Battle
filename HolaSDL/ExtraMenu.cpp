@@ -269,7 +269,7 @@ bool ExtraMenu::handleEvent(Uint32 time,  SDL_Event event)
 		}
 		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || event.key.keysym.sym == SDLK_RETURN || event.key.keysym.sym == SDLK_SPACE) {
 			
-			manager->getMachine()->changeState(new PlayState(manager, songList[currentSinger][posHand]->getLevel(), onePlayer, false));
+			manager->getMachine()->changeState(new PlayState(manager, songList[currentSinger][posHand]->getLevel(), onePlayer, false, songList[currentSinger][posHand]->getMaxScore()));
 
 		}
 		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B) || event.key.keysym.sym == SDLK_ESCAPE || event.key.keysym.sym == SDLK_BACKSPACE) {
@@ -277,7 +277,7 @@ bool ExtraMenu::handleEvent(Uint32 time,  SDL_Event event)
 			manager->getMachine()->pushState(new MapState(manager));
 				
 		}
-		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_BACK) || event.key.keysym.sym == SDLK_BACKSPACE) {
+		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_BACK) || event.key.keysym.sym == SDLK_TAB) {
 			
 			if (switchPlayers->animation.currentFrame == 1) {
 				switchPlayers->animation.currentFrame = 0;

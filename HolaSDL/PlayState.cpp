@@ -417,8 +417,9 @@ void PlayState::resume(unsigned int timePaused)
 bool PlayState::changeControls()
 {
 	int P1Controller = manager->getP1Controller();
+	int P2Controller = manager->getP2Controller();
 
-	if (P1Controller < 2)
+	/*if (P1Controller < 2)
 	{
 		manager->setP1Controller((P1Controller + 1));
 		P1Controller = manager->getP1Controller();
@@ -427,7 +428,7 @@ bool PlayState::changeControls()
 	{
 		manager->setP1Controller(0);
 		P1Controller = manager->getP1Controller();
-	}
+	}*/
 
 
 	for (Note* o : levelArrows_) {
@@ -442,29 +443,35 @@ bool PlayState::changeControls()
 
 	for (Note* o : levelArrows2_) {
 		if (o != nullptr)
-			o->changeController(P1Controller);
+			o->changeController(P2Controller);
 	}
 
 	for (Note* o : levelButtons2_) {
 		if (o != nullptr)
-			o->changeController(P1Controller);
+			o->changeController(P2Controller);
 	}
 
 
 	player1->changeController(P1Controller);
 
-	//if (player2 != nullptr)
-		//player2->changeController(isXbox);
+	if (player2 != nullptr)
+		player2->changeController(P2Controller);
 
-	return true; //isXbox;
+	return true;
 }
 
 
 bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 {
-	if (e.key.keysym.sym == SDLK_F1)
-		//songOver();
-		;
+
+	if (e.key.keysym.sym == SDLK_F1) {
+		songOver();
+	}
+	else if (e.key.keysym.sym == SDLK_F2) {
+		player1->currentScore = maxScore;
+		player1->addCombo(300);
+		songOver();
+	}
 	else if (e.type == SDL_QUIT || e.key.keysym.sym == SDLK_F9) {
 		manager->stop();
 		return true;
@@ -557,9 +564,9 @@ void PlayState::songOver()
 {
 	manager->getServiceLocator()->getAudios()->haltChannel(0);
 	if (isSingleplayer)
-		manager->getMachine()->pushState(new EndState(manager, prevMaxScoreE_, prevMaxScoreH_, player1->getCalifications(), player1->currentScore, maxScore, 70, nlevel, isSingleplayer, difficultyMode));
+		manager->getMachine()->pushState(new EndState(manager, prevMaxScoreE_, prevMaxScoreH_, player1->getCalifications(), player1->currentScore, maxScore, 70, player1->getMaxCombo(), nlevel, isSingleplayer, difficultyMode));
 	else
-		manager->getMachine()->pushState(new EndState(manager, prevMaxScoreE_, prevMaxScoreH_, player1->getCalifications(), player1->currentScore, maxScore, 70, nlevel, isSingleplayer, difficultyMode, player2->currentScore, player2->getCalifications()));
+		manager->getMachine()->pushState(new EndState(manager, prevMaxScoreE_, prevMaxScoreH_, player1->getCalifications(), player1->currentScore, maxScore, 70, player1->getMaxCombo(), nlevel, isSingleplayer, difficultyMode, player2->currentScore, player2->getCalifications(), player2->getMaxCombo()));
 }
 
 void PlayState::restart()

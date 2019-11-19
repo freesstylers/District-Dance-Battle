@@ -14,10 +14,13 @@ public:
 
 	int getLevel() { return level; }
 
+	int getMaxScore() { return maxScore; }
+
 protected:
 	TextObject* title = nullptr;
 	TextObject* diff = nullptr;
 	int level = 0;
 
+	double maxScore = 0;
 };
 

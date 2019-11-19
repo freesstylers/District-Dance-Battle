@@ -61,7 +61,7 @@ void ComboText::updateCombo(int combo)
 	setPosition(centeredPos);
 
 	scale(currentScale);
-	game_->getServiceLocator()->getAudios()->playChannel(Resources::ComboSound, 0);
+	game_->getServiceLocator()->getAudios()->playChannel(Resources::ComboSound, 0, 1);
 	switch (combo)
 	{
 	case 10:

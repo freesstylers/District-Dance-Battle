@@ -194,6 +194,8 @@ void MainMenuState::options()
 	if (optionsOpen) {
 		selectedButton = 0;
 		selection->setPosition(optionsButtons[selectedButton]->getPosition());
+		selection->setHeight(musicSelect->getHeight());
+		selection->setWidth(musicSelect->getWidth());
 		selection->forceAnimationChange(Resources::VolSelection);
 	}
 	gameManager->mainmenu = true;

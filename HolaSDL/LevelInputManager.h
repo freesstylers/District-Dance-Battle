@@ -25,6 +25,7 @@ public:
 		minigameActive = active;
 	}
 	SDL_GameController* getController(){ return controller; }
+	void setControllerMode(int controller){ ControllerMode = controller; }
 	int numFailed = 0;
 
 private:

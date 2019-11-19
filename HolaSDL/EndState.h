@@ -10,7 +10,7 @@ class EndState :
 {
 public:
 	
-	EndState(GameManager* g, int prevMaxScoreE, int prevMaxScoreH, int* califs1, int actualScore, int maxScore, int percentage, int lvl, bool isSingleplayer, bool hardMode, int actualScore2 = 0, int* califs2 = nullptr);
+	EndState(GameManager* g, int prevMaxScoreE, int prevMaxScoreH, int* califs1, int actualScore, int maxScore, int percentage, int maxCombo, int lvl, bool isSingleplayer, bool hardMode, int actualScore2 = 0, int* califs2 = nullptr, int maxCombo2 = 0);
 	virtual ~EndState();
 	void backToMenu(GameManager* gameManager);
 	void backToMenuWin(GameManager* gameManager);
@@ -26,14 +26,16 @@ private:
 	TextObject* tooltip;
 	TextObject* highScoreText;
 	TextObject* highScore;
-	TextObject* Wow1;
-	TextObject* Good1;
-	TextObject* Ok1;
-	TextObject* Bad1;
+	TextObject* Wow1 = nullptr;
+	TextObject* Good1 = nullptr;
+	TextObject* Ok1 = nullptr;
+	TextObject* Bad1 = nullptr;
+	TextObject* Combo1 = nullptr;
 	TextObject* Wow2 = nullptr;
 	TextObject* Good2 = nullptr;
 	TextObject* Ok2 = nullptr;
 	TextObject* Bad2 = nullptr;
+	TextObject* Combo2 = nullptr;
 
 	EmptyObject* EndBG = nullptr;
 	EmptyObject* Wow;

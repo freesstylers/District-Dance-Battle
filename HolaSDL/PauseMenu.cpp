@@ -385,6 +385,7 @@ void PauseMenu::updateControlsP1(bool raise)
 		P1Controller = game_->getP1Controller();
 	}
 	updateTxt();
+	level->changeControls();
 }
 
 void PauseMenu::updateControlsP2(bool raise)
@@ -418,6 +419,7 @@ void PauseMenu::updateControlsP2(bool raise)
 		P2Controller = game_->getP2Controller();
 	}
 	updateTxt();
+	level->changeControls();
 }
 
 void PauseMenu::updateTxt()

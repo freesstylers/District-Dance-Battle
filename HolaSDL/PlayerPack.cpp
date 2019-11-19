@@ -173,8 +173,9 @@ void PlayerPack::addCombo(int i)
 
 	if (combo == 10 || combo == 25 || combo == 50 || combo % 100 == 0) {
 		comboTxt->updateCombo(combo);
-		updateCombo();
 	}
+
+	updateCombo();
 }
 
 void PlayerPack::resetCombo()
@@ -182,8 +183,9 @@ void PlayerPack::resetCombo()
 	if (combo != 0) {
 		combo = 0;
 		comboTxt->setActive(false);
-		updateCombo();
 	}
+
+	updateCombo();
 }
 
 int* PlayerPack::getCalifications() //Makes possible showing data at EndState
@@ -196,20 +198,37 @@ void PlayerPack::addCalifications(int letter)
 	califications[letter]++;
 }
 
-void PlayerPack::changeController(bool isXbox)
+void PlayerPack::changeController(int controller)
 {
 	for (Note* o : screenArrows_) {
 		if (o != nullptr)
-			o->changeController(isXbox);
+			o->changeController(controller);
 	}
 	for (Note* o : screenButtons_) {
 		if (o != nullptr)
-			o->changeController(isXbox);
+			o->changeController(controller);
 	}
+
+	if (controller < 2) {
+		leftPoint->forceAnimationChange(Resources::Point);
+		leftPoint->setControllerMode(controller);
+		rightPoint->forceAnimationChange(Resources::Point);
+		rightPoint->setControllerMode(controller);
+	}
+	else {
+		leftPoint->forceAnimationChange(Resources::KeyPoint);
+		leftPoint->setControllerMode(controller);
+		rightPoint->forceAnimationChange(Resources::KeyPoint);
+		rightPoint->setControllerMode(controller);
+	}
+
+	lip->setControllerMode(controller);
 }
 
 void PlayerPack::updateCombo()
 {
+	if (combo > maxCombo)
+		maxCombo = combo;
 
 	if (combo < 10) {
 		playstate_->getPerico()->setAnimation(Resources::PericoIdle);
