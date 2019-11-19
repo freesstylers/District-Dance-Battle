@@ -210,6 +210,7 @@ vector<Resources::ImageInfo> Resources::images_{
 		{ Left, "resources/images/LeftArrow.png", 32, 32, 1, 1, 1 },
 		{ Right, "resources/images/RightArrow.png", 32, 32, 1, 1, 1 },
 		{ AlienIdle2, "resources/images/AlienFumeta.png", 60, 120, 3, 2, 5 },
+		{ FondoCreditos, "resources/images/FondoCreditos.png", 1600, 900, 1, 1, 1 },
 			//Enum, file path, frame width, frame height, columns, rows, frame total//
 
 };

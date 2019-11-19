@@ -197,7 +197,8 @@ public:
 		ShrekBox,
 		Left,
 		Right,
-		AlienIdle2
+		AlienIdle2, 
+		FondoCreditos
 		// text
 	};
 
