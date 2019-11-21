@@ -24,6 +24,7 @@ class ExtraMenu: public GameState
 private:
 	Timer* timer;
 	SDL_GameController* controller = NULL;
+	SDL_GameController* controller2 = NULL;
 	double distanceHand;
 	PlayState* level;
 
@@ -36,6 +37,10 @@ private:
 	GameObject* character; //600x300?
 	//agreTextObject* description; //600x600?
 	EmptyObject* descriptionBox; //600x600?
+	EmptyObject* selector_;
+	EmptyObject* selectorKeys_;
+	EmptyObject* selector2_;
+	EmptyObject* selectorKeys2_;
 
 	int currentSinger = ROBOT;
 
@@ -59,6 +64,9 @@ private:
 	void cleanStuff();
 	void exitSong() {};
 	void updateSinger();
+	void changeControllerP1(bool raise);
+	void changeControllerP2(bool raise);
+	void changeSelectors();
 
 public:
 	ExtraMenu(GameManager* game);

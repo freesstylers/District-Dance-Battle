@@ -8,15 +8,40 @@ MapState::MapState(GameManager* g) :GameState(g)
 	manager->getServiceLocator()->getAudios()->playChannel(Resources::Mapa, -1, 0);
 	keystates = SDL_GetKeyboardState(NULL);
 	controller = SDL_GameControllerOpen(0);
+	controller2 = SDL_GameControllerOpen(1);
 	createMainButtons();
 	fondo__ = new EmptyObject(g, Vector2D(0, 0), g->getDefaultWindowWidth(), g->getDefaultWindowHeight(), Resources::Map);
 	moreLvls_ = new EmptyObject(g, Vector2D(0, 0), 150, 150, Resources::NivelExtra);
 
+	int aux = Resources::Xbox;
+	if (g->getP1Controller() == 1)
+		aux = Resources::Playstation;
+	else if (g->getP1Controller() == 2)
+		aux = Resources::Keyboard;
+
+	selector_ = new EmptyObject(g, Vector2D(g->getDefaultWindowWidth() - 190 * 2, 0), 183, 137, aux);
+	selectorKeys_ = new EmptyObject(g, Vector2D(g->getDefaultWindowWidth() - 190 * 2, 130), 183, 36, Resources::ControlKey1);
+
+	aux = Resources::Xbox;
+	if (g->getP2Controller() == 1)
+		aux = Resources::Playstation;
+	else if (g->getP2Controller() == 2)
+		aux = Resources::Keyboard;
+
+	selector2_ = new EmptyObject(g, Vector2D(g->getDefaultWindowWidth() - 190, 0), 183, 137, aux);
+	selectorKeys2_ = new EmptyObject(g, Vector2D(g->getDefaultWindowWidth() - 190, 130), 183, 36, Resources::ControlKey2);
+
 	stage.push_back(fondo__);
 	stage.push_back(moreLvls_);
+	stage.push_back(selector_);
+	stage.push_back(selectorKeys_);
+	stage.push_back(selector2_);
+	stage.push_back(selectorKeys2_);
 
 	lockLevels();
 	loadGame();
+
+
 
 }
 
@@ -30,6 +55,25 @@ bool MapState::handleEvent(Uint32 time, SDL_Event e)
 	if (keyup)
 	{
 		if (e.type == SDL_CONTROLLERBUTTONDOWN || e.type == SDL_KEYDOWN) {
+
+			if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_LEFTSHOULDER)) {
+				changeControllerP1(false);
+				return true;
+			}
+			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_RIGHTSHOULDER) || e.key.keysym.sym == SDLK_q) {
+				changeControllerP1(true);
+				return true;
+			}
+			else if (controller2 != NULL && SDL_GameControllerGetButton(controller2, SDL_CONTROLLER_BUTTON_LEFTSHOULDER)) {
+				changeControllerP2(false);
+				return true;
+			}
+			else if ((controller2 != NULL && SDL_GameControllerGetButton(controller2, SDL_CONTROLLER_BUTTON_RIGHTSHOULDER)) || e.key.keysym.sym == SDLK_e) {
+				changeControllerP2(true);
+				return true;
+			}
+
+
 			if (!buttons[index].second.selected)
 			{
 				if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || e.key.keysym.sym == SDLK_RETURN || e.key.keysym.sym == SDLK_SPACE) {
@@ -169,6 +213,97 @@ void MapState::backButton()	//selects the previous level button on the list
 	index = levelOrder[virtualIndex];
 
 	buttons[index].first.scale(2);
+}
+
+void MapState::changeControllerP1(bool raise)
+{
+	int P1Controller = manager->getP1Controller();
+
+	if (raise)
+	{
+		if (P1Controller == 0 || (P1Controller == 1 && manager->getP2Controller() != 2))
+		{
+			manager->setP1Controller((P1Controller + 1));
+		}
+		else
+		{
+			manager->setP1Controller(0);
+		}
+		P1Controller = manager->getP1Controller();
+
+	}
+	else
+	{
+		if (P1Controller == 1 || P1Controller == 2)
+		{
+			manager->setP1Controller((P1Controller - 1));
+		}
+		else if (P1Controller == 0)
+		{
+			if (manager->getP2Controller() != 2)
+				manager->setP1Controller(2);
+			else
+				manager->setP1Controller(1);
+		}
+		P1Controller = manager->getP1Controller();
+	}
+
+	changeSelectors();
+}
+
+void MapState::changeControllerP2(bool raise)
+{
+	int P2Controller = manager->getP2Controller();
+
+	if (raise)
+	{
+		if (P2Controller == 0 || (P2Controller == 1 && manager->getP1Controller() != 2))
+		{
+			manager->setP2Controller((P2Controller + 1));
+		}
+		else
+		{
+			manager->setP2Controller(0);
+		}
+		P2Controller = manager->getP2Controller();
+
+	}
+	else
+	{
+		if (P2Controller == 1 || P2Controller == 2)
+		{
+			manager->setP2Controller((P2Controller - 1));
+		}
+		else if (P2Controller == 0)
+		{
+			if (manager->getP1Controller() != 2)
+				manager->setP2Controller(2);
+			else
+				manager->setP2Controller(1);
+		}
+		P2Controller = manager->getP2Controller();
+	}
+
+	changeSelectors();
+}
+
+void MapState::changeSelectors()
+{
+	int aux = Resources::Xbox;
+	if (manager->getP1Controller() == 1)
+		aux = Resources::Playstation;
+	else if (manager->getP1Controller() == 2)
+		aux = Resources::Keyboard;
+
+	selector_->forceAnimationChange(aux);
+
+	aux = Resources::Xbox;
+	if (manager->getP2Controller() == 1)
+		aux = Resources::Playstation;
+	else if (manager->getP2Controller() == 2)
+		aux = Resources::Keyboard;
+
+	selector2_->forceAnimationChange(aux);
 }
 
 void MapState::loadGame() {	//reads each level's save file and unlocks them / loads highscores

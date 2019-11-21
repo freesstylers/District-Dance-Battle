@@ -153,6 +153,13 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxS
 		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 400, initialNoteHeight + 50), Resources::ZombieIdle);
 		enemyT = Resources::ZombieIdle;
 		break;
+	case 21:
+		levelName = "despacito";
+		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::ExtraBG);
+		bgT = Resources::ExtraBG;
+		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 400, initialNoteHeight + 50), Resources::RobotIdle);
+		enemyT = Resources::RobotIdle;
+		break;
 	default:
 		levelName = "CL";
 		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::FondoHardbass);
@@ -476,7 +483,7 @@ bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 		manager->stop();
 		return true;
 	}
-	else if (isLost() && (e.key.keysym.sym == SDLK_SPACE || SDL_GameControllerGetButton(player1->lip->getController(), SDL_CONTROLLER_BUTTON_A)) && youLost->getPosition().getY() >= 0)
+	else if (isLost() && (e.key.keysym.sym == SDLK_SPACE || e.key.keysym.sym == SDLK_RETURN || SDL_GameControllerGetButton(player1->lip->getController(), SDL_CONTROLLER_BUTTON_A)) && youLost->getPosition().getY() >= 0)
 	{
 		songOver();
 	}
