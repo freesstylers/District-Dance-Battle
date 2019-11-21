@@ -9,7 +9,6 @@
 #include "SDLFontsManager.h"
 #include "ServiceLocator.h"
 #include "SRandBasedGenerator.h"
-#include <iostream>
 #include "checkML.h"
 
 using namespace std;

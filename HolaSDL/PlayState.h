@@ -125,7 +125,7 @@ public:
 	virtual void restart();
 	virtual void exit();
 
-	void updateOptionsFile() { manager->updateOptionsFile(); }
+	void updateOptionsFile();
 
 private:
 	int bgT;
