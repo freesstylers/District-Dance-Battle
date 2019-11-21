@@ -252,7 +252,8 @@ vector<Resources::MusicInfo> Resources::musics_ {
 	{Dracukeo, "resources/sound/Dracukeo.mp3"},
 	{Rasputin, "resources/sound/rasputin.mp3"},
 	{FiestaPagana, "resources/sound/fiestaPagana.mp3"},
-	{Despacito, "resources/sound/despacito.mp3"}
+	{Despacito, "resources/sound/despacito.mp3"},
+	{ChillLoFiBeats, "resources/sound/8bit Bossa.mp3"},
 };
 
 vector<Resources::SoundInfo> Resources::sounds_ {

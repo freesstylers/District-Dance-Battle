@@ -32,6 +32,8 @@ void ExtraMenu::init() {
 	//Leer de archivo la lista de canciones (Titulo >> Artista >> Dificultad >> Numero en menu) y meter en vector
 	//Hacer metodo aparte? (pushSongs)
 	//Metodo para cambiar los parametros del sprite, descripcion y lista de canciones
+
+	manager->getServiceLocator()->getAudios()->playChannel(Resources::ChillLoFiBeats, -1, 0);
 }
 void ExtraMenu::initSongs()
 {
@@ -268,12 +270,14 @@ bool ExtraMenu::handleEvent(Uint32 time,  SDL_Event event)
 
 		}
 		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || event.key.keysym.sym == SDLK_RETURN || event.key.keysym.sym == SDLK_SPACE) {
-			
+
+			manager->getServiceLocator()->getAudios()->haltChannel(0);
 			manager->getMachine()->changeState(new PlayState(manager, songList[currentSinger][posHand]->getLevel(), onePlayer, false, songList[currentSinger][posHand]->getMaxScore()));
 
 		}
 		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B) || event.key.keysym.sym == SDLK_ESCAPE || event.key.keysym.sym == SDLK_BACKSPACE) {
-				
+
+			manager->getServiceLocator()->getAudios()->haltChannel(0);
 			manager->getMachine()->pushState(new MapState(manager));
 				
 		}

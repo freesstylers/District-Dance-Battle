@@ -236,7 +236,8 @@ public:
 		Dracukeo,
 		Rasputin,
 		FiestaPagana,
-		Despacito
+		Despacito,
+		ChillLoFiBeats
 		// sound effects
 	};
 
