@@ -476,7 +476,7 @@ bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 		manager->stop();
 		return true;
 	}
-	else if (isLost() && (e.key.keysym.sym == SDLK_SPACE || SDL_GameControllerGetButton(player1->lip->getController(), SDL_CONTROLLER_BUTTON_A)) && youLost->getPosition().getY() >= 0)
+	else if (isLost() && (e.key.keysym.sym == SDLK_SPACE || e.key.keysym.sym == SDLK_RETURN || SDL_GameControllerGetButton(player1->lip->getController(), SDL_CONTROLLER_BUTTON_A)) && youLost->getPosition().getY() >= 0)
 	{
 		songOver();
 	}

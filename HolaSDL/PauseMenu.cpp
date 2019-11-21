@@ -191,7 +191,7 @@ bool PauseMenu::handleInput(Uint32 time, const SDL_Event& event)
 					selection->setPosition(menuButtons[selectedButton]->getPosition());
 				}
 			}
-			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || event.key.keysym.sym == SDLK_RETURN) {
+			else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || event.key.keysym.sym == SDLK_RETURN || event.key.keysym.sym == SDLK_SPACE) {
 				if (optionsOpen) {
 					switch (selectedButton) {
 					case 4:

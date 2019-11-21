@@ -171,11 +171,14 @@ void PlayerPack::addCombo(int i)
 {
 	combo += i;
 
+	if (combo > maxCombo)
+		maxCombo = combo;
+
 	if (combo == 10 || combo == 25 || combo == 50 || combo % 100 == 0) {
 		comboTxt->updateCombo(combo);
+		updateCombo();
 	}
 
-	updateCombo();
 }
 
 void PlayerPack::resetCombo()
@@ -183,9 +186,9 @@ void PlayerPack::resetCombo()
 	if (combo != 0) {
 		combo = 0;
 		comboTxt->setActive(false);
+		updateCombo();
 	}
 
-	updateCombo();
 }
 
 int* PlayerPack::getCalifications() //Makes possible showing data at EndState
@@ -227,8 +230,6 @@ void PlayerPack::changeController(int controller)
 
 void PlayerPack::updateCombo()
 {
-	if (combo > maxCombo)
-		maxCombo = combo;
 
 	if (combo < 10) {
 		playstate_->getPerico()->setAnimation(Resources::PericoIdle);

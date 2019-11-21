@@ -16,10 +16,10 @@ void ExtraMenu::init() {
 	songList = vector<vector<ExtraSong*>>(8);
 	distanceHand = manager->getDefaultWindowHeight() / 14 + 15;
 
-	bg = new EmptyObject(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::MenuCanciones);
+	bg = new EmptyObject(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::FondoCreditos);
 	hand = new EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() - 150, distanceHand), 128 * 0.7, 128 * 0.7, Resources::MasterHand);
-	switchPlayers = new EmptyObject(manager, Vector2D(50, 0), 102, 90, Resources::NumPlayersSwitch);
-	select = new EmptyObject(manager, Vector2D(50, 100), 110, 21, Resources::Select);
+	switchPlayers = new EmptyObject(manager, Vector2D(50, 30), 102, 90, Resources::NumPlayersSwitch);
+	select = new EmptyObject(manager, Vector2D(50, 130), 110, 21, Resources::Select);
 	character = new Character(manager, 300 * 0.8, 600 * 0.8, Vector2D((manager->getDefaultWindowWidth() * 0.25) - (300 * 0.5 * 0.8), 10), Resources::RobotIdle);
 	character->isAnimationSynced(false);
 	character->setAnimationFramerate(4);
