@@ -235,7 +235,8 @@ public:
 		Avengers,
 		Dracukeo,
 		Rasputin,
-		FiestaPagana
+		FiestaPagana,
+		Despacito
 		// sound effects
 	};
 
