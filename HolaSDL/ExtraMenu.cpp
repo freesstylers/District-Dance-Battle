@@ -7,6 +7,7 @@
 ExtraMenu::ExtraMenu(GameManager* game):GameState(game)
 {
 	controller = SDL_GameControllerOpen(0);
+	controller2 = SDL_GameControllerOpen(1);
 	init();
 	manager = game;
 
@@ -16,10 +17,10 @@ void ExtraMenu::init() {
 	songList = vector<vector<ExtraSong*>>(8);
 	distanceHand = manager->getDefaultWindowHeight() / 14 + 15;
 
-	bg = new EmptyObject(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::MenuCanciones);
+	bg = new EmptyObject(manager, Vector2D(0, 0), manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Resources::FondoCreditos);
 	hand = new EmptyObject(manager, Vector2D(manager->getDefaultWindowWidth() - 150, distanceHand), 128 * 0.7, 128 * 0.7, Resources::MasterHand);
-	switchPlayers = new EmptyObject(manager, Vector2D(50, 0), 102, 90, Resources::NumPlayersSwitch);
-	select = new EmptyObject(manager, Vector2D(50, 100), 110, 21, Resources::Select);
+	switchPlayers = new EmptyObject(manager, Vector2D(50, 30), 102, 90, Resources::NumPlayersSwitch);
+	select = new EmptyObject(manager, Vector2D(50, 130), 110, 21, Resources::Select);
 	character = new Character(manager, 300 * 0.8, 600 * 0.8, Vector2D((manager->getDefaultWindowWidth() * 0.25) - (300 * 0.5 * 0.8), 10), Resources::RobotIdle);
 	character->isAnimationSynced(false);
 	character->setAnimationFramerate(4);
@@ -32,6 +33,27 @@ void ExtraMenu::init() {
 	//Leer de archivo la lista de canciones (Titulo >> Artista >> Dificultad >> Numero en menu) y meter en vector
 	//Hacer metodo aparte? (pushSongs)
 	//Metodo para cambiar los parametros del sprite, descripcion y lista de canciones
+
+	manager->getServiceLocator()->getAudios()->playChannel(Resources::ChillLoFiBeats, -1, 0);
+
+
+	int aux = Resources::Xbox;
+	if (manager->getP1Controller() == 1)
+		aux = Resources::Playstation;
+	else if (manager->getP1Controller() == 2)
+		aux = Resources::Keyboard;
+
+	selector_ = new EmptyObject(manager, Vector2D(630 - 190 * 0.6 * 2, 40), 183 * 0.6, 137 * 0.6, aux);
+	selectorKeys_ = new EmptyObject(manager, Vector2D(630 - 190 * 0.6 * 2, 40 + 130 * 0.6), 183 * 0.6, 36 * 0.6, Resources::ControlKey1);
+
+	aux = Resources::Xbox;
+	if (manager->getP2Controller() == 1)
+		aux = Resources::Playstation;
+	else if (manager->getP2Controller() == 2)
+		aux = Resources::Keyboard;
+
+	selector2_ = new EmptyObject(manager, Vector2D(630 - 190 * 0.6, 40), 183 * 0.6, 137 * 0.6, aux);
+	selectorKeys2_ = new EmptyObject(manager, Vector2D(630 - 190 * 0.6, 40 + 130 * 0.6), 183 * 0.6, 36 * 0.6, Resources::ControlKey2);
 }
 void ExtraMenu::initSongs()
 {
@@ -247,6 +269,24 @@ bool ExtraMenu::handleEvent(Uint32 time,  SDL_Event event)
 	GameState::handleEvent(time, event);
 
 	if (event.type == SDL_CONTROLLERBUTTONDOWN || event.type == SDL_KEYDOWN) {
+
+		if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_LEFTSHOULDER)) {
+			changeControllerP1(false);
+			return true;
+		}
+		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_RIGHTSHOULDER) || event.key.keysym.sym == SDLK_q) {
+			changeControllerP1(true);
+			return true;
+		}
+		else if (controller2 != NULL && SDL_GameControllerGetButton(controller2, SDL_CONTROLLER_BUTTON_LEFTSHOULDER)) {
+			changeControllerP2(false);
+			return true;
+		}
+		else if ((controller2 != NULL && SDL_GameControllerGetButton(controller2, SDL_CONTROLLER_BUTTON_RIGHTSHOULDER)) || event.key.keysym.sym == SDLK_e) {
+			changeControllerP2(true);
+			return true;
+		}
+
 		if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_UP) || event.key.keysym.sym == SDLK_UP) {
 			
 			selectionDown();
@@ -268,12 +308,14 @@ bool ExtraMenu::handleEvent(Uint32 time,  SDL_Event event)
 
 		}
 		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || event.key.keysym.sym == SDLK_RETURN || event.key.keysym.sym == SDLK_SPACE) {
-			
+
+			manager->getServiceLocator()->getAudios()->haltChannel(0);
 			manager->getMachine()->changeState(new PlayState(manager, songList[currentSinger][posHand]->getLevel(), onePlayer, false, songList[currentSinger][posHand]->getMaxScore()));
 
 		}
 		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B) || event.key.keysym.sym == SDLK_ESCAPE || event.key.keysym.sym == SDLK_BACKSPACE) {
-				
+
+			manager->getServiceLocator()->getAudios()->haltChannel(0);
 			manager->getMachine()->pushState(new MapState(manager));
 				
 		}
@@ -309,4 +351,100 @@ void ExtraMenu::render(Uint32 time, bool beatSync)
 
 
 		hand->render(time);
+
+		selector_->render(time);
+		selectorKeys_->render(time);
+		selector2_->render(time);
+		selectorKeys2_->render(time);
+}
+
+void ExtraMenu::changeControllerP1(bool raise)
+{
+	int P1Controller = manager->getP1Controller();
+
+	if (raise)
+	{
+		if (P1Controller == 0 || (P1Controller == 1 && manager->getP2Controller() != 2))
+		{
+			manager->setP1Controller((P1Controller + 1));
+		}
+		else
+		{
+			manager->setP1Controller(0);
+		}
+		P1Controller = manager->getP1Controller();
+
+	}
+	else
+	{
+		if (P1Controller == 1 || P1Controller == 2)
+		{
+			manager->setP1Controller((P1Controller - 1));
+		}
+		else if (P1Controller == 0)
+		{
+			if (manager->getP2Controller() != 2)
+				manager->setP1Controller(2);
+			else
+				manager->setP1Controller(1);
+		}
+		P1Controller = manager->getP1Controller();
+	}
+
+	changeSelectors();
+}
+
+void ExtraMenu::changeControllerP2(bool raise)
+{
+	int P2Controller = manager->getP2Controller();
+
+	if (raise)
+	{
+		if (P2Controller == 0 || (P2Controller == 1 && manager->getP1Controller() != 2))
+		{
+			manager->setP2Controller((P2Controller + 1));
+		}
+		else
+		{
+			manager->setP2Controller(0);
+		}
+		P2Controller = manager->getP2Controller();
+
+	}
+	else
+	{
+		if (P2Controller == 1 || P2Controller == 2)
+		{
+			manager->setP2Controller((P2Controller - 1));
+		}
+		else if (P2Controller == 0)
+		{
+			if (manager->getP1Controller() != 2)
+				manager->setP2Controller(2);
+			else
+				manager->setP2Controller(1);
+		}
+		P2Controller = manager->getP2Controller();
+	}
+
+	changeSelectors();
+}
+
+void ExtraMenu::changeSelectors()
+{
+	int aux = Resources::Xbox;
+	if (manager->getP1Controller() == 1)
+		aux = Resources::Playstation;
+	else if (manager->getP1Controller() == 2)
+		aux = Resources::Keyboard;
+
+	selector_->forceAnimationChange(aux);
+
+	aux = Resources::Xbox;
+	if (manager->getP2Controller() == 1)
+		aux = Resources::Playstation;
+	else if (manager->getP2Controller() == 2)
+		aux = Resources::Keyboard;
+
+	selector2_->forceAnimationChange(aux);
 }

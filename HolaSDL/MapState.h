@@ -39,14 +39,22 @@ private:
 
 	const Uint8 *keystates;
 	SDL_GameController* controller = NULL;
+	SDL_GameController* controller2 = NULL;
 
 	EmptyObject* fondo__;
 	EmptyObject* moreLvls_;
+	EmptyObject* selector_;
+	EmptyObject* selectorKeys_;
+	EmptyObject* selector2_;
+	EmptyObject* selectorKeys2_;
 
 	void unlockLevel(int lvl);
 	void lockLevels();
 	void createMainButtons();
 	void nextButton();
 	void backButton();
+	void changeControllerP1(bool raise);
+	void changeControllerP2(bool raise);
+	void changeSelectors();
 
 };

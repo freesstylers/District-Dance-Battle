@@ -198,7 +198,12 @@ public:
 		Left,
 		Right,
 		AlienIdle2, 
-		FondoCreditos
+		FondoCreditos,
+		Xbox,
+		Playstation,
+		Keyboard,
+		ControlKey1,
+		ControlKey2,
 		// text
 	};
 
@@ -236,7 +241,8 @@ public:
 		Dracukeo,
 		Rasputin,
 		FiestaPagana,
-		Despacito
+		Despacito,
+		ChillLoFiBeats
 		// sound effects
 	};
 
