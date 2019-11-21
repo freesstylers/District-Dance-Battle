@@ -1,6 +1,5 @@
 #include "SDLGame.h"
 #include <time.h>
-#include <iostream>
 #include "Character.h"
 
 SDLGame::SDLGame(string windowTitle, int width, int height) :

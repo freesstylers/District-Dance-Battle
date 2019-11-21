@@ -304,6 +304,8 @@ void MapState::changeSelectors()
 		aux = Resources::Keyboard;
 
 	selector2_->forceAnimationChange(aux);
+
+	manager->updateOptionsFile();
 }
 
 void MapState::loadGame() {	//reads each level's save file and unlocks them / loads highscores

@@ -347,11 +347,7 @@ void MainMenuState::updateTxt()	//this updates the text found in the options men
 	control2Txt->setPosition(controlsSelect2->getPosition() + Vector2D(controlsSelect2->getWidth() / 2, controlsSelect2->getHeight() / 2) - Vector2D(control2Txt->getWidth() / 2, control2Txt->getHeight() / 2));
 
 
-	ofstream file("resources/data/options.ddb");
-
-	file << "MUSIC" << endl << gameManager->getMusicVolume() << endl << "SOUND" << endl << gameManager->getSoundVolume() << endl << "CONTROLLER" << endl << gameManager->getP1Controller() << gameManager->getP2Controller();
-
-	file.close();
+	manager->updateOptionsFile();
 }
 
 void MainMenuState::nextButton()

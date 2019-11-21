@@ -16,9 +16,7 @@ GameManager::GameManager(): SDLGame("District Dance Battle", _WINDOW_WIDTH_, _WI
 
 		file >> s >> soundVolume_;
 
-		file >> s >> P1Controller;
-
-		file >> s >> P2Controller;
+		file >> s >> P1Controller >> P2Controller;
 	}
 
 	file.close();
@@ -65,6 +63,15 @@ void GameManager::tick()
 	uint32_t tick_time = SDL_GetTicks();
 	deltaTime = (tick_time - last_tick_time);
 	last_tick_time = tick_time;
+}
+
+void GameManager::updateOptionsFile()
+{
+	ofstream file("resources/data/options.ddb");
+
+	file << "MUSIC" << endl << musicVolume_ << endl << "SOUND" << endl << soundVolume_ << endl << "CONTROLLER" << endl << P1Controller << endl << P2Controller;
+
+	file.close();
 }
 
 void GameManager::update(Uint32 time)

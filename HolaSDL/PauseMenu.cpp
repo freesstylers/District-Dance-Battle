@@ -470,11 +470,7 @@ void PauseMenu::updateTxt()
 
 	control2Txt->setPosition(controlsSelect2->getPosition() + Vector2D(controlsSelect2->getWidth() / 2, controlsSelect2->getHeight() / 2) - Vector2D(control2Txt->getWidth() / 2, control2Txt->getHeight() / 2));
 
-	ofstream file("resources/data/options.ddb"); //Saves the options so the user doesn't have to reconfigure it every time
-
-	file << "MUSIC" << endl << game_->getMusicVolume() << endl << "SOUND" << endl << game_->getSoundVolume() << endl << "CONTROLLER" << endl << game_->getP1Controller() << endl << game_->getP2Controller();
-
-	file.close();
+	level->updateOptionsFile();
 }
 
 void PauseMenu::render(Uint32 time, bool beatSync)

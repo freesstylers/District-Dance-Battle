@@ -125,6 +125,8 @@ public:
 	virtual void restart();
 	virtual void exit();
 
+	void updateOptionsFile() { manager->updateOptionsFile(); }
+
 private:
 	int bgT;
 	int enemyT;

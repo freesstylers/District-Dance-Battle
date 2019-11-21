@@ -447,4 +447,6 @@ void ExtraMenu::changeSelectors()
 		aux = Resources::Keyboard;
 
 	selector2_->forceAnimationChange(aux);
+
+	manager->updateOptionsFile();
 }
