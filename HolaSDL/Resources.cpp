@@ -211,6 +211,11 @@ vector<Resources::ImageInfo> Resources::images_{
 		{ Right, "resources/images/RightArrow.png", 32, 32, 1, 1, 1 },
 		{ AlienIdle2, "resources/images/AlienFumeta.png", 60, 120, 3, 2, 5 },
 		{ FondoCreditos, "resources/images/FondoCreditos.png", 1600, 900, 1, 1, 1 },
+		{ Xbox, "resources/images/Xbox360.png", 549, 413, 1, 1, 1 },
+		{ Playstation, "resources/images/PlayStation.png", 549, 413, 1, 1, 1 },
+		{ Keyboard, "resources/images/keyboard.png", 549, 413, 1, 1, 1 },
+		{ ControlKey1, "resources/images/controlKey1.png", 549, 108, 1, 1, 1 },
+		{ ControlKey2, "resources/images/controlKey2.png", 549, 108, 1, 1, 1 },
 			//Enum, file path, frame width, frame height, columns, rows, frame total//
 
 };
