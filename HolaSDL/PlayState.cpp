@@ -607,15 +607,15 @@ void PlayState::showError()
 	bg->cleanAnimationQueue();
 	bg->forceAnimationChange(bgT+1);
 	bg->queueAnimationChange(bgT);
-	manager->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0, 1);
+	//manager->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0, 1);
 }
 
 bool PlayState::isLost()
 {
-	if (player1->lip->numFailed > 10 && isSingleplayer)
+	/*if (player1->lip->numFailed > 10 && isSingleplayer)
 	{
 		return true;
 	}
-	else
+	else*/
 		return false;
 }
