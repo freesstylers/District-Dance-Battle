@@ -31,7 +31,8 @@ protected:
 	int noteYLimit;
 	int comboTextX;
 
-	int combo;
+	int combo = 0;
+	int maxCombo = 0;
 	void updateCombo();
 	int controllerMode;
 public:
@@ -55,11 +56,13 @@ public:
 	ScoreBar* scoreBar;
 	void updateScoreNote(int accuracy);
 	void addCombo(int i);
+	int getCombo() { return combo; }
+	int getMaxCombo() { return maxCombo; }
 	void resetCombo();
 	int* getCalifications();
 	void addCalifications(int letter);
 	void setComboActive(bool active) { comboTxt->setActive(active); if (active) updateCombo(); }
-	void changeController(bool isXbox);
+	void changeController(int controller);
 
 	LevelInputManager* lip;
 };

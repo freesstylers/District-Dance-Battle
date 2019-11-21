@@ -26,6 +26,21 @@ ExtraSong::ExtraSong(GameManager* game_, Vector2D pos, int width, int height, in
 
 		break;
 	}
+
+	string filename = "resources/data/" + to_string(level) + ".ddb";
+
+	ifstream archivo(filename);
+
+	//if the save file exists, then its data is loaded
+	if (archivo.is_open()) {
+		int mode;
+		int scoreE = 0;
+
+		archivo >> mode >> scoreE;
+		maxScore = scoreE;
+	}
+
+	archivo.close();
 }
 
 ExtraSong::~ExtraSong()

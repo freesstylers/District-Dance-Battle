@@ -197,7 +197,13 @@ public:
 		ShrekBox,
 		Left,
 		Right,
-		AlienIdle2
+		AlienIdle2, 
+		FondoCreditos,
+		Xbox,
+		Playstation,
+		Keyboard,
+		ControlKey1,
+		ControlKey2,
 		// text
 	};
 
@@ -234,7 +240,9 @@ public:
 		Avengers,
 		Dracukeo,
 		Rasputin,
-		FiestaPagana
+		FiestaPagana,
+		Despacito,
+		ChillLoFiBeats
 		// sound effects
 	};
 

@@ -153,6 +153,13 @@ PlayState::PlayState(GameManager* g, int lvl, bool oneP, bool diff, int prevMaxS
 		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 400, initialNoteHeight + 50), Resources::ZombieIdle);
 		enemyT = Resources::ZombieIdle;
 		break;
+	case 21:
+		levelName = "despacito";
+		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::ExtraBG);
+		bgT = Resources::ExtraBG;
+		enemy = new Character(manager, 60 * 5, 120 * 5, Vector2D(manager->getDefaultWindowWidth() - 400, initialNoteHeight + 50), Resources::RobotIdle);
+		enemyT = Resources::RobotIdle;
+		break;
 	default:
 		levelName = "CL";
 		bg = new Background(manager, manager->getDefaultWindowWidth(), manager->getDefaultWindowHeight(), Vector2D(0, 0), Resources::FondoHardbass);
@@ -417,8 +424,9 @@ void PlayState::resume(unsigned int timePaused)
 bool PlayState::changeControls()
 {
 	int P1Controller = manager->getP1Controller();
+	int P2Controller = manager->getP2Controller();
 
-	if (P1Controller < 2)
+	/*if (P1Controller < 2)
 	{
 		manager->setP1Controller((P1Controller + 1));
 		P1Controller = manager->getP1Controller();
@@ -427,7 +435,7 @@ bool PlayState::changeControls()
 	{
 		manager->setP1Controller(0);
 		P1Controller = manager->getP1Controller();
-	}
+	}*/
 
 
 	for (Note* o : levelArrows_) {
@@ -442,34 +450,40 @@ bool PlayState::changeControls()
 
 	for (Note* o : levelArrows2_) {
 		if (o != nullptr)
-			o->changeController(P1Controller);
+			o->changeController(P2Controller);
 	}
 
 	for (Note* o : levelButtons2_) {
 		if (o != nullptr)
-			o->changeController(P1Controller);
+			o->changeController(P2Controller);
 	}
 
 
 	player1->changeController(P1Controller);
 
-	//if (player2 != nullptr)
-		//player2->changeController(isXbox);
+	if (player2 != nullptr)
+		player2->changeController(P2Controller);
 
-	return true; //isXbox;
+	return true;
 }
 
 
 bool PlayState::handleEvent(Uint32 time, SDL_Event e)
 {
-	if (e.key.keysym.sym == SDLK_F1)
-		//songOver();
-		;
+
+	if (e.key.keysym.sym == SDLK_F1) {
+		songOver();
+	}
+	else if (e.key.keysym.sym == SDLK_F2) {
+		player1->currentScore = maxScore;
+		player1->addCombo(300);
+		songOver();
+	}
 	else if (e.type == SDL_QUIT || e.key.keysym.sym == SDLK_F9) {
 		manager->stop();
 		return true;
 	}
-	else if (isLost() && (e.key.keysym.sym == SDLK_SPACE || SDL_GameControllerGetButton(player1->lip->getController(), SDL_CONTROLLER_BUTTON_A)) && youLost->getPosition().getY() >= 0)
+	else if (isLost() && (e.key.keysym.sym == SDLK_SPACE || e.key.keysym.sym == SDLK_RETURN || SDL_GameControllerGetButton(player1->lip->getController(), SDL_CONTROLLER_BUTTON_A)) && youLost->getPosition().getY() >= 0)
 	{
 		songOver();
 	}
@@ -557,9 +571,9 @@ void PlayState::songOver()
 {
 	manager->getServiceLocator()->getAudios()->haltChannel(0);
 	if (isSingleplayer)
-		manager->getMachine()->pushState(new EndState(manager, prevMaxScoreE_, prevMaxScoreH_, player1->getCalifications(), player1->currentScore, maxScore, 70, nlevel, isSingleplayer, difficultyMode));
+		manager->getMachine()->pushState(new EndState(manager, prevMaxScoreE_, prevMaxScoreH_, player1->getCalifications(), player1->currentScore, maxScore, 70, player1->getMaxCombo(), nlevel, isSingleplayer, difficultyMode));
 	else
-		manager->getMachine()->pushState(new EndState(manager, prevMaxScoreE_, prevMaxScoreH_, player1->getCalifications(), player1->currentScore, maxScore, 70, nlevel, isSingleplayer, difficultyMode, player2->currentScore, player2->getCalifications()));
+		manager->getMachine()->pushState(new EndState(manager, prevMaxScoreE_, prevMaxScoreH_, player1->getCalifications(), player1->currentScore, maxScore, 70, player1->getMaxCombo(), nlevel, isSingleplayer, difficultyMode, player2->currentScore, player2->getCalifications(), player2->getMaxCombo()));
 }
 
 void PlayState::restart()
@@ -593,15 +607,15 @@ void PlayState::showError()
 	bg->cleanAnimationQueue();
 	bg->forceAnimationChange(bgT+1);
 	bg->queueAnimationChange(bgT);
-	//manager->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0, 1);
+	manager->getServiceLocator()->getAudios()->playChannel(Resources::Error, 0, 1);
 }
 
 bool PlayState::isLost()
 {
-	/*if (player1->lip->numFailed > 10 && isSingleplayer)
+	if (player1->lip->numFailed > 10 && isSingleplayer)
 	{
 		return true;
 	}
-	else*/
+	else
 		return false;
 }

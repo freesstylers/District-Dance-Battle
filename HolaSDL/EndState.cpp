@@ -3,7 +3,7 @@
 
 
 
-EndState::EndState(GameManager* g, int prevMaxScoreE, int prevMaxScoreH, int* califs1, int actualScore, int maxScore, int percentage, int lvl, bool isSingleplayer, bool hardMode, int actualScore2, int* califs2) : 
+EndState::EndState(GameManager* g, int prevMaxScoreE, int prevMaxScoreH, int* califs1, int actualScore, int maxScore, int percentage, int maxCombo, int lvl, bool isSingleplayer, bool hardMode, int actualScore2, int* califs2, int maxCombo2) :
 	GameState(g), prevScoreE_(prevMaxScoreE), hardMode_(hardMode)
 {
 	level = lvl;
@@ -21,8 +21,12 @@ EndState::EndState(GameManager* g, int prevMaxScoreE, int prevMaxScoreH, int* ca
 	points->setText("Puntuación final: " + makeScoreBetter(actualScore), SDL_Color{ (0), (0), (0), (255) });
 	points->setPosition(Vector2D(gameManager->getDefaultWindowWidth() / 2, 50) - Vector2D(points->getWidth() / 2, 0));
 
+	Combo1 = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(gameManager->getDefaultWindowWidth() / 2, points->getPosition().getY() + 50));
+	Combo1->setText("Max Combo: " + to_string(maxCombo), SDL_Color{ (0), (0), (0), (255) });
+	Combo1->setPosition(Vector2D(gameManager->getDefaultWindowWidth() / 2, points->getPosition().getY() + 50) - Vector2D(Combo1->getWidth() / 2, 0));
+
 	tooltip = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(0, 0));
-	tooltip->setText("Pulsa A para salir", SDL_Color{ (0), (0), (0), (255) });
+	tooltip->setText("Pulsa A o Espacio para salir", SDL_Color{ (0), (0), (0), (255) });
 	tooltip->setPosition(Vector2D(gameManager->getDefaultWindowWidth() / 2, gameManager->getDefaultWindowHeight()) - Vector2D(tooltip->getWidth() / 2, tooltip->getHeight() + 10));
 
 
@@ -257,9 +261,15 @@ EndState::EndState(GameManager* g, int prevMaxScoreE, int prevMaxScoreH, int* ca
 		points->setText("P1: " + makeScoreBetter(actualScore), SDL_Color{ (0), (0), (0), (255) });
 		points->setPosition(Vector2D(gameManager->getDefaultWindowWidth() / 5, 50) - Vector2D(points->getWidth() / 2, 0));
 
+		Combo1->setPosition(Vector2D(gameManager->getDefaultWindowWidth() / 5, points->getPosition().getY() + 50) - Vector2D(Combo1->getWidth() / 2, 0));
+
 		points2 = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO50), Vector2D(gameManager->getDefaultWindowWidth() / 4, 50));
 		points2->setText("P2: " + makeScoreBetter(actualScore2), SDL_Color{ (0), (0), (0), (255) });
 		points2->setPosition(Vector2D(gameManager->getDefaultWindowWidth() * 4 / 5, 50) - Vector2D(points2->getWidth() / 2, 0));
+
+		Combo2 = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(gameManager->getDefaultWindowWidth() / 4, points2->getPosition().getY() + 50));
+		Combo2->setText("Max Combo: " + to_string(maxCombo2), SDL_Color{ (0), (0), (0), (255) });
+		Combo2->setPosition(Vector2D(gameManager->getDefaultWindowWidth() * 4 / 5, points2->getPosition().getY() + 50) - Vector2D(Combo2->getWidth() / 2, 0));
 	}
 
 	if (!isSingleplayer)
@@ -346,7 +356,7 @@ void EndState::backToMenuWin(GameManager * gameManager)	//method used to send th
 void EndState::backToMenuLose(GameManager * gameManager)	//method used to send the player into a new DialogState, if they've lost
 {
 	gameManager->getServiceLocator()->getAudios()->haltChannel(0);
-	gameManager->getMachine()->pushState(new DialogState(gameManager, (level * 2 + 6), 0, true, hardMode_, prevScoreE_, 0));
+	gameManager->getMachine()->pushState(new DialogState(gameManager, (level * 2 + 7), 0, true, hardMode_, prevScoreE_, 0));
 }
 
 void EndState::render(Uint32 time, bool beatHandler)
@@ -354,11 +364,14 @@ void EndState::render(Uint32 time, bool beatHandler)
 	GameState::render(time);
 	tooltip->render(time);
 	points->render(time);
+	Combo1->render(time);
 	highScoreText->render(time);
 	highScore->render(time);
 
-	if (points2 != nullptr)
+	if (points2 != nullptr) {
 		points2->render(time);
+		Combo2->render(time);
+	}
 }
 
 
@@ -406,8 +419,6 @@ void EndState::saveScore(int scoreE, int scoreH)	//method that saves the score i
 	string filename = "resources/data/" + to_string(level) + ".ddb";
 
 	ofstream archivo(filename);
-
-	
 
 	archivo << 0 << " " << scoreE << endl;
 	archivo << 1 << " " << scoreH << endl;
