@@ -28,6 +28,9 @@ public:
 	void tick();
 	bool mainmenu = true;
 
+	void updateOptionsFile();
+
+
 protected:
 	GameStateMachine* machine;
 	

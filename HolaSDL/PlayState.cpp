@@ -595,6 +595,11 @@ void PlayState::exit()
 	manager->getMachine()->changeState(new MapState(manager));
 }
 
+void PlayState::updateOptionsFile()
+{
+	manager->updateOptionsFile();
+}
+
 
 Vector2D PlayState::setVel(double time)
 {

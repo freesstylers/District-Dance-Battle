@@ -69,7 +69,7 @@ void ExtraMenu::initSongs()
 
 	//case(ROBOT)
 		character->forceAnimationChange(Resources::RobotIdle);
-		//añadir canciones
+		//aï¿½adir canciones
 		songList[0].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "Cancion de testeo", "BB", 22));
 		posY += incrY;
 		songList[0].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "Never Gonna Give You Up", "Rick Astley", 10));
@@ -78,7 +78,7 @@ void ExtraMenu::initSongs()
 		posY = posYOrig;
 	//case(PAPITO)
 
-		//añadir canciones
+		//aï¿½adir canciones
 		songList[1].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "Cumbia de los Vengadores", "Cumbia Drive", 17));
 		posY += incrY;
 		songList[1].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraNormal, "DotA", "Basshunter", 13));
@@ -87,22 +87,22 @@ void ExtraMenu::initSongs()
 		posY = posYOrig;
 		//case(EMINEM)
 
-		//añadir canciones
+		//aï¿½adir canciones
 		songList[2].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraNormal, "Asereje", "Las Ketchup", 11));
 		posY += incrY;
 
 		posY = posYOrig;
 		//case(CORPSE)
 
-		//añadir canciones
+		//aï¿½adir canciones
 		songList[3].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraDificil, "At Doom's Gate", "Andrew Hulshult", 16));
 		posY += incrY;
 
 		posY = posYOrig;
 		//case(ALIEN)
 
-		//añadir canciones
-		songList[4].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "Rasputin (Funk Remix)", "Boney M", 19));
+		//aï¿½adir canciones
+		songList[4].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraNormal, "Rasputin (Funk Remix)", "Boney M", 19));
 		posY += incrY;
 		songList[4].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraDificil, "Running in the 90s", "Maurizio De Jorio", 8));
 		posY += incrY;
@@ -112,7 +112,7 @@ void ExtraMenu::initSongs()
 		posY = posYOrig;
 		//case(NESS)
 
-		//añadir canciones
+		//aï¿½adir canciones
 		songList[5].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "Dracukeo", "Kidd Keo", 18));
 		posY += incrY;
 		songList[5].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraDificil, "Megalovania", "Toby Fox", 7));
@@ -121,7 +121,7 @@ void ExtraMenu::initSongs()
 		posY = posYOrig;
 		//case(SHREK)
 
-		//añadir canciones
+		//aï¿½adir canciones
 		songList[6].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "Doraemon Galego", "Xabarin Club", 14));
 		posY += incrY;
 		songList[6].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraNormal, "All Star", "Smash Mouth", 6));
@@ -130,7 +130,7 @@ void ExtraMenu::initSongs()
 		posY = posYOrig;
 		//case(HONK)
 
-		//añadir canciones
+		//aï¿½adir canciones
 		songList[7].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraDificil, "Megalovania (Honk Remix)", "Toby Fox", 12));
 		posY += incrY;
 
@@ -447,4 +447,6 @@ void ExtraMenu::changeSelectors()
 		aux = Resources::Keyboard;
 
 	selector2_->forceAnimationChange(aux);
+
+	manager->updateOptionsFile();
 }

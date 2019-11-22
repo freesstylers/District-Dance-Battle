@@ -133,7 +133,8 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 					level->showError();
 					player->resetCombo();
 					player->addCalifications(0);
-					numFailed++;
+					if (it->getKey() != SDL_CONTROLLER_BUTTON_INVALID)
+						numFailed++;
 				}
 				keyup = false;
 				delete(it);
@@ -151,7 +152,8 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 					level->showError();
 					player->resetCombo();
 					player->addCalifications(0);
-					numFailed++;
+					if (it->getKey() != SDL_CONTROLLER_BUTTON_INVALID)
+						numFailed++;
 
 				}
 			}
@@ -207,7 +209,8 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 					level->showError();
 					player->resetCombo();
 					player->addCalifications(0);
-					numFailed++;
+					if (it->getKey() != SDL_CONTROLLER_BUTTON_INVALID)
+						numFailed++;
 				}
 				delete it;
 				player->screenButtons_.remove(it);
@@ -225,7 +228,8 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 					level->showError();
 					player->resetCombo();
 					player->addCalifications(0);
-					numFailed++;
+					if (it->getKey() != SDL_CONTROLLER_BUTTON_INVALID)
+						numFailed++;
 				}
 			}
 		}
