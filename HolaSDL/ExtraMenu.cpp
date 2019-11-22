@@ -70,7 +70,7 @@ void ExtraMenu::initSongs()
 	//case(ROBOT)
 		character->forceAnimationChange(Resources::RobotIdle);
 		//añadir canciones
-		songList[0].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "Cancion de testeo", "BB", 21));
+		songList[0].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "Cancion de testeo", "BB", 22));
 		posY += incrY;
 		songList[0].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "Never Gonna Give You Up", "Rick Astley", 10));
 		posY += incrY;

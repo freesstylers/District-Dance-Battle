@@ -242,7 +242,8 @@ public:
 		Rasputin,
 		FiestaPagana,
 		Despacito,
-		ChillLoFiBeats
+		ChillLoFiBeats,
+		KDA
 		// sound effects
 	};
 

@@ -2,7 +2,7 @@
 #include "Resources.h"
 #include "sdl_includes.h"
 
-vector<Resources::FontInfo> Resources::fonts_ {
+vector<Resources::FontInfo> Resources::fonts_{
 	{ ARIAL16, "resources/fonts/ARIAL.ttf", 16 },	//Not used, delete to save memory?
 	{ ARIAL24, "resources/fonts/ARIAL.ttf", 40 },	//Not used, delete to save memory?
 	{PIXEL30, "resources/fonts/NES-Chimera.ttf",30},	//Not used, delete to save memory? 
@@ -130,7 +130,7 @@ vector<Resources::ImageInfo> Resources::images_{
 		{Recuadro1PWin, "resources/images/Recuadro1PWinning.png", 32, 100, 4, 1, 4 },
 		{Recuadro2PWin, "resources/images/Recuadro2PWinning.png", 32, 100, 4, 1, 4 },
 		{MenuIcon, "resources/images/icon.png", 32, 100, 4, 1, 4 },
-        {LeftArrowPlay, "resources/images/FlechaLeftPlay.png", 32, 32, 1, 1, 1 },
+		{LeftArrowPlay, "resources/images/FlechaLeftPlay.png", 32, 32, 1, 1, 1 },
 		{ButtonVol, "resources/images/volumeSprite.png", 153, 29, 1, 1, 1 },
 		{VolSelection, "resources/images/volumeSelection.png", 153, 29, 1, 1, 1 },
 		{RightArrowPlay, "resources/images/FlechaRightPlay.png", 32, 32, 1, 1, 1 },
@@ -216,15 +216,15 @@ vector<Resources::ImageInfo> Resources::images_{
 		{ Keyboard, "resources/images/keyboard.png", 549, 413, 1, 1, 1 },
 		{ ControlKey1, "resources/images/controlKey1.png", 549, 108, 1, 1, 1 },
 		{ ControlKey2, "resources/images/controlKey2.png", 549, 108, 1, 1, 1 },
-			//Enum, file path, frame width, frame height, columns, rows, frame total//
+		//Enum, file path, frame width, frame height, columns, rows, frame total//
 
 };
 
-vector<Resources::TextMsgInfo> Resources::messages_ {
+vector<Resources::TextMsgInfo> Resources::messages_{
 	//{ HelloWorld, "Hello World", { COLOR(0xaaffffff) }, ARIAL16 }
 };
 
-vector<Resources::MusicInfo> Resources::musics_ {
+vector<Resources::MusicInfo> Resources::musics_{
 	{Tutorial , "resources/sound/TutorialJuego.mp3"},	//Not used, delete to save memory?
 	{Sunflower, "resources/sound/sunflower.mp3"},	//Not used, delete to save memory?
 	{Bill, "resources/sound/billijean_noGlitch.mp3"},
@@ -259,9 +259,11 @@ vector<Resources::MusicInfo> Resources::musics_ {
 	{FiestaPagana, "resources/sound/fiestaPagana.mp3"},
 	{Despacito, "resources/sound/despacito.mp3"},
 	{ChillLoFiBeats, "resources/sound/8bit Bossa.mp3"},
+	//{KDA, "resources/sound/KDA.mp3" }
 };
 
-vector<Resources::SoundInfo> Resources::sounds_ {
+vector<Resources::SoundInfo> Resources::sounds_{
+	{ KDA, "resources/sound/KDA.mp3" }
 };
 
 
