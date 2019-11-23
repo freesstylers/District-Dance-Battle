@@ -16,7 +16,7 @@ Point::Point(SDLGame* game, double width, double height, Vector2D pos, SDL_GameC
 		controllerMode = game->getP2Controller();
 	}
 	
-	if (controllerMode != 2)
+	if (controllerMode != 3)
 		animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::Point);
 	else
 		animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::KeyPoint);
@@ -25,14 +25,14 @@ Point::Point(SDLGame* game, double width, double height, Vector2D pos, SDL_GameC
 //Change the point animation when some button is pushed
 bool Point::handleInput(Uint32 time, const SDL_Event& event)
 {
-	if (controllerMode == 2 && event.type == SDL_CONTROLLERBUTTONDOWN)
+	if (controllerMode == 3 && event.type == SDL_CONTROLLERBUTTONDOWN)
 		return false;
 
 	if (event.type == SDL_CONTROLLERBUTTONDOWN || event.type == SDL_KEYDOWN)
 	{
 		if (side_)
 		{
-			if (controllerMode != 2) //Mando
+			if (controllerMode != 3) //Mando
 			{
 				if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT) || SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) ||
 					SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN) || SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_UP))
@@ -46,7 +46,7 @@ bool Point::handleInput(Uint32 time, const SDL_Event& event)
 		}
 		else
 		{
-			if (controllerMode != 2)
+			if (controllerMode != 3)
 			{
 				if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) || SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B) ||
 					SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_X) || SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_Y))
@@ -63,7 +63,7 @@ bool Point::handleInput(Uint32 time, const SDL_Event& event)
 	{
 		if (side_)
 		{
-			if (controllerMode != 2)
+			if (controllerMode != 3)
 			{
 				if (!SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT) && !SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) &&
 					!SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN) && !SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_UP))
@@ -77,7 +77,7 @@ bool Point::handleInput(Uint32 time, const SDL_Event& event)
 		}
 		else
 		{
-			if (controllerMode != 2)
+			if (controllerMode != 3)
 			{
 				if (!SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) && !SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B) &&
 					!SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_X) && !SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_Y))

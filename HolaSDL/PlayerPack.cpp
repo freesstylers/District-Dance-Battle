@@ -21,7 +21,7 @@ PlayerPack::PlayerPack(SDLGame* manager, PlayState* ps, int leftNotesPos, int ri
 	else if (player == 1)
 	{
 		controllerMode = manager->getP2Controller();
-		if (manager->getP1Controller() == 2)
+		if (manager->getP1Controller() == 3)
 			player_--;
 	}
 

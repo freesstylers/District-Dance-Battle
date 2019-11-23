@@ -14,18 +14,22 @@ MapState::MapState(GameManager* g) :GameState(g)
 	moreLvls_ = new EmptyObject(g, Vector2D(0, 0), 150, 150, Resources::NivelExtra);
 
 	int aux = Resources::Xbox;
-	if (g->getP1Controller() == 1)
+	if (manager->getP1Controller() == 1)
 		aux = Resources::Playstation;
-	else if (g->getP1Controller() == 2)
+	else if (manager->getP1Controller() == 4)
+		aux = Resources::fourButtons;
+	else if (manager->getP1Controller() == 3)
 		aux = Resources::Keyboard;
 
 	selector_ = new EmptyObject(g, Vector2D(g->getDefaultWindowWidth() - 190 * 2, 0), 183, 137, aux);
 	selectorKeys_ = new EmptyObject(g, Vector2D(g->getDefaultWindowWidth() - 190 * 2, 130), 183, 36, Resources::ControlKey1);
 
 	aux = Resources::Xbox;
-	if (g->getP2Controller() == 1)
+	if (manager->getP2Controller() == 1)
 		aux = Resources::Playstation;
-	else if (g->getP2Controller() == 2)
+	else if (manager->getP2Controller() == 2)
+		aux = Resources::fourButtons;
+	else if (manager->getP2Controller() == 3)
 		aux = Resources::Keyboard;
 
 	selector2_ = new EmptyObject(g, Vector2D(g->getDefaultWindowWidth() - 190, 0), 183, 137, aux);
@@ -221,7 +225,7 @@ void MapState::changeControllerP1(bool raise)
 
 	if (raise)
 	{
-		if (P1Controller == 0 || (P1Controller == 1 && manager->getP2Controller() != 2))
+		if (P1Controller <= 1 || (P1Controller == 2 && manager->getP2Controller() != 3))
 		{
 			manager->setP1Controller((P1Controller + 1));
 		}
@@ -234,16 +238,16 @@ void MapState::changeControllerP1(bool raise)
 	}
 	else
 	{
-		if (P1Controller == 1 || P1Controller == 2)
+		if (P1Controller > 0 && P1Controller <= 3)
 		{
 			manager->setP1Controller((P1Controller - 1));
 		}
 		else if (P1Controller == 0)
 		{
-			if (manager->getP2Controller() != 2)
-				manager->setP1Controller(2);
+			if (manager->getP2Controller() != 3)
+				manager->setP1Controller(3);
 			else
-				manager->setP1Controller(1);
+				manager->setP1Controller(2);
 		}
 		P1Controller = manager->getP1Controller();
 	}
@@ -257,7 +261,7 @@ void MapState::changeControllerP2(bool raise)
 
 	if (raise)
 	{
-		if (P2Controller == 0 || (P2Controller == 1 && manager->getP1Controller() != 2))
+		if (P2Controller <= 1 || (P2Controller == 2 && manager->getP1Controller() != 3))
 		{
 			manager->setP2Controller((P2Controller + 1));
 		}
@@ -270,16 +274,16 @@ void MapState::changeControllerP2(bool raise)
 	}
 	else
 	{
-		if (P2Controller == 1 || P2Controller == 2)
+		if (P2Controller > 0 && P2Controller <= 3)
 		{
 			manager->setP2Controller((P2Controller - 1));
 		}
 		else if (P2Controller == 0)
 		{
-			if (manager->getP1Controller() != 2)
-				manager->setP2Controller(2);
+			if (manager->getP1Controller() != 3)
+				manager->setP2Controller(3);
 			else
-				manager->setP2Controller(1);
+				manager->setP2Controller(2);
 		}
 		P2Controller = manager->getP2Controller();
 	}
@@ -293,6 +297,8 @@ void MapState::changeSelectors()
 	if (manager->getP1Controller() == 1)
 		aux = Resources::Playstation;
 	else if (manager->getP1Controller() == 2)
+		aux = Resources::fourButtons;
+	else if (manager->getP1Controller() == 3)
 		aux = Resources::Keyboard;
 
 	selector_->forceAnimationChange(aux);
@@ -301,6 +307,8 @@ void MapState::changeSelectors()
 	if (manager->getP2Controller() == 1)
 		aux = Resources::Playstation;
 	else if (manager->getP2Controller() == 2)
+		aux = Resources::fourButtons;
+	else if (manager->getP2Controller() == 3)
 		aux = Resources::Keyboard;
 
 	selector2_->forceAnimationChange(aux);

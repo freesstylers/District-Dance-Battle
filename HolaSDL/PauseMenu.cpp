@@ -356,9 +356,11 @@ void PauseMenu::updateSound(bool raise) //SFX (like error sound) control, the on
 
 void PauseMenu::updateControlsP1(bool raise)
 {
+	int P1Controller = game_->getP1Controller(); //
+
 	if (raise)
 	{
-		if (P1Controller == 0 || (P1Controller == 1 && game_->getP2Controller() != 2))//
+		if (P1Controller <= 1 || (P1Controller == 2 && game_->getP2Controller() != 3))
 		{
 			game_->setP1Controller((P1Controller + 1));
 		}
@@ -371,28 +373,30 @@ void PauseMenu::updateControlsP1(bool raise)
 	}
 	else
 	{
-		if (P1Controller == 1 || P1Controller == 2)
+		if (P1Controller > 0 && P1Controller <= 3)
 		{
 			game_->setP1Controller((P1Controller - 1));
 		}
 		else if (P1Controller == 0)
 		{
-			if (game_->getP2Controller() != 2)
-				game_->setP1Controller(2);
+			if (game_->getP2Controller() != 3)
+				game_->setP1Controller(3);
 			else
-				game_->setP1Controller(1);
+				game_->setP1Controller(2);
 		}
 		P1Controller = game_->getP1Controller();
 	}
+
 	updateTxt();
-	level->changeControls();
 }
 
 void PauseMenu::updateControlsP2(bool raise)
 {
+	int P2Controller = game_->getP2Controller(); //
+
 	if (raise)
 	{
-		if (P2Controller == 0 || (P2Controller == 1 && game_->getP1Controller() != 2))//
+		if (P2Controller <= 1 || (P2Controller == 2 && game_->getP1Controller() != 3))
 		{
 			game_->setP2Controller((P2Controller + 1));
 		}
@@ -405,24 +409,24 @@ void PauseMenu::updateControlsP2(bool raise)
 	}
 	else
 	{
-		if (P2Controller == 1 || P2Controller == 2)
+		if (P2Controller > 0 && P2Controller <= 3)
 		{
 			game_->setP2Controller((P2Controller - 1));
 		}
 		else if (P2Controller == 0)
 		{
-			if (game_->getP1Controller() != 2)
-				game_->setP2Controller(2);
+			if (game_->getP1Controller() != 3)
+				game_->setP2Controller(3);
 			else
-				game_->setP2Controller(1);
+				game_->setP2Controller(2);
 		}
 		P2Controller = game_->getP2Controller();
 	}
+
 	updateTxt();
-	level->changeControls();
 }
 
-void PauseMenu::updateTxt()
+void PauseMenu::updateTxt()	//this updates the text found in the options menu
 {
 	musicTxt->setText(to_string(game_->getMusicVolume()), SDL_Color{ 0, 0, 0, 255 });
 	musicTxt->setPosition(musicSelect->getPosition() + Vector2D(musicSelect->getWidth() / 2, musicSelect->getHeight() / 2) - Vector2D(musicTxt->getWidth() / 2, musicTxt->getHeight() / 2));
@@ -439,6 +443,9 @@ void PauseMenu::updateTxt()
 		controlTxt->setText("PS4", SDL_Color{ 0, 0, 0, 255 });
 		break;
 	case 2:
+		controlTxt->setText("Flechas", SDL_Color{ 0, 0, 0, 255 });
+		break;
+	case 3:
 		controlTxt->setText("Teclado", SDL_Color{ 0, 0, 0, 255 });
 		break;
 	default:
@@ -459,7 +466,10 @@ void PauseMenu::updateTxt()
 		control2Txt->setText("PS4", SDL_Color{ 0, 0, 0, 255 });
 		break;
 	case 2:
-		control2Txt->setText("Teclado", SDL_Color{ 0, 0, 0, 255 });
+		controlTxt->setText("Flechas", SDL_Color{ 0, 0, 0, 255 });
+		break;
+	case 3:
+		controlTxt->setText("Teclado", SDL_Color{ 0, 0, 0, 255 });
 		break;
 	default:
 		game_->setP2Controller(0);
@@ -469,6 +479,7 @@ void PauseMenu::updateTxt()
 	}
 
 	control2Txt->setPosition(controlsSelect2->getPosition() + Vector2D(controlsSelect2->getWidth() / 2, controlsSelect2->getHeight() / 2) - Vector2D(control2Txt->getWidth() / 2, control2Txt->getHeight() / 2));
+
 
 	level->updateOptionsFile();
 }

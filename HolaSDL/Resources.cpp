@@ -125,7 +125,7 @@ vector<Resources::ImageInfo> Resources::images_{
 		{ShrekDance, "resources/images/shrekDance.png", 60, 120, 2, 1, 2},
 		{SansIdle, "resources/images/sansIdle.png", 60, 120, 2, 1, 2 },
 		{SansDance, "resources/images/sansDance.png", 60, 120, 3, 2, 4},
-		{fourButtons, "resources/images/CuatroBotones.png", 75, 81, 1, 1, 1},
+		{fourButtons, "resources/images/CuatroBotones.png", 549, 413, 1, 1, 1},
 		{Crown, "resources/images/Crown.png",32,32,4,1,4},
 		{Recuadro1PWin, "resources/images/Recuadro1PWinning.png", 32, 100, 4, 1, 4 },
 		{Recuadro2PWin, "resources/images/Recuadro2PWinning.png", 32, 100, 4, 1, 4 },

@@ -140,14 +140,14 @@ EndState::EndState(GameManager* g, int prevMaxScoreE, int prevMaxScoreH, int* ca
 		letter->setPosition(letter->getPosition() + Vector2D(60, 0));
 		letter->scale(0.7);
 		stage.push_back(letter);
-		perico->setPosition(Vector2D(gameManager->getDefaultWindowWidth() / 2 - 400, 180));
+		perico->setPosition(Vector2D(gameManager->getDefaultWindowWidth() / 2 + 400, 180));
 		perico->scale(0.7);
 		stage.push_back(perico);
 
 		letter2 = new EmptyObject(g, Vector2D(gameManager->getDefaultWindowWidth() / 2 - 325 - 55 - 160, gameManager->getDefaultWindowHeight() / 2 - 40), 160, 260, Resources::ScoreS);
 		letter2->scale(0.7);
 
-		perico2 = new Character(g, 300, 540, Vector2D(gameManager->getDefaultWindowWidth() / 2 - 500, 160), Resources::PericoDab);
+		perico2 = new Character(g, 300, 540, Vector2D(gameManager->getDefaultWindowWidth() / 2 - 400, 160), Resources::PericoDab);
 		perico2->scale(0.7);
 		perico2->isAnimationSynced(false);
 		perico2->setAnimationFramerate(4);

@@ -40,7 +40,9 @@ void ExtraMenu::init() {
 	int aux = Resources::Xbox;
 	if (manager->getP1Controller() == 1)
 		aux = Resources::Playstation;
-	else if (manager->getP1Controller() == 2)
+	else if (manager->getP1Controller() == 4)
+		aux = Resources::fourButtons;
+	else if (manager->getP1Controller() == 3)
 		aux = Resources::Keyboard;
 
 	selector_ = new EmptyObject(manager, Vector2D(630 - 190 * 0.6 * 2, 40), 183 * 0.6, 137 * 0.6, aux);
@@ -50,6 +52,8 @@ void ExtraMenu::init() {
 	if (manager->getP2Controller() == 1)
 		aux = Resources::Playstation;
 	else if (manager->getP2Controller() == 2)
+		aux = Resources::fourButtons;
+	else if (manager->getP2Controller() == 3)
 		aux = Resources::Keyboard;
 
 	selector2_ = new EmptyObject(manager, Vector2D(630 - 190 * 0.6, 40), 183 * 0.6, 137 * 0.6, aux);
@@ -368,7 +372,7 @@ void ExtraMenu::changeControllerP1(bool raise)
 
 	if (raise)
 	{
-		if (P1Controller == 0 || (P1Controller == 1 && manager->getP2Controller() != 2))
+		if (P1Controller <= 1 || (P1Controller == 2 && manager->getP2Controller() != 3))
 		{
 			manager->setP1Controller((P1Controller + 1));
 		}
@@ -381,16 +385,16 @@ void ExtraMenu::changeControllerP1(bool raise)
 	}
 	else
 	{
-		if (P1Controller == 1 || P1Controller == 2)
+		if (P1Controller > 0 && P1Controller <= 3)
 		{
 			manager->setP1Controller((P1Controller - 1));
 		}
 		else if (P1Controller == 0)
 		{
-			if (manager->getP2Controller() != 2)
-				manager->setP1Controller(2);
+			if (manager->getP2Controller() != 3)
+				manager->setP1Controller(3);
 			else
-				manager->setP1Controller(1);
+				manager->setP1Controller(2);
 		}
 		P1Controller = manager->getP1Controller();
 	}
@@ -404,7 +408,7 @@ void ExtraMenu::changeControllerP2(bool raise)
 
 	if (raise)
 	{
-		if (P2Controller == 0 || (P2Controller == 1 && manager->getP1Controller() != 2))
+		if (P2Controller <= 1 || (P2Controller == 2 && manager->getP1Controller() != 3))
 		{
 			manager->setP2Controller((P2Controller + 1));
 		}
@@ -417,16 +421,16 @@ void ExtraMenu::changeControllerP2(bool raise)
 	}
 	else
 	{
-		if (P2Controller == 1 || P2Controller == 2)
+		if (P2Controller > 0 && P2Controller <= 3)
 		{
 			manager->setP2Controller((P2Controller - 1));
 		}
 		else if (P2Controller == 0)
 		{
-			if (manager->getP1Controller() != 2)
-				manager->setP2Controller(2);
+			if (manager->getP1Controller() != 3)
+				manager->setP2Controller(3);
 			else
-				manager->setP2Controller(1);
+				manager->setP2Controller(2);
 		}
 		P2Controller = manager->getP2Controller();
 	}
@@ -440,6 +444,8 @@ void ExtraMenu::changeSelectors()
 	if (manager->getP1Controller() == 1)
 		aux = Resources::Playstation;
 	else if (manager->getP1Controller() == 2)
+		aux = Resources::fourButtons;
+	else if (manager->getP1Controller() == 3)
 		aux = Resources::Keyboard;
 
 	selector_->forceAnimationChange(aux);
@@ -448,6 +454,8 @@ void ExtraMenu::changeSelectors()
 	if (manager->getP2Controller() == 1)
 		aux = Resources::Playstation;
 	else if (manager->getP2Controller() == 2)
+		aux = Resources::fourButtons;
+	else if (manager->getP2Controller() == 3)
 		aux = Resources::Keyboard;
 
 	selector2_->forceAnimationChange(aux);

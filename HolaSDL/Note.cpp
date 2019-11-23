@@ -86,7 +86,7 @@ void Note::changeController(int controllerMode) //Animation changed between Xbox
 			break;
 		}
 		break;
-	case 2:
+	case 3:
 		switch (key) {
 		case SDL_CONTROLLER_BUTTON_DPAD_LEFT:
 			animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::KeyA);
@@ -115,7 +115,9 @@ void Note::changeController(int controllerMode) //Animation changed between Xbox
 		case SDL_CONTROLLER_BUTTON_INVALID:
 			animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::FlechaEspBomba);
 			break;
-		case 3:
+		}
+		break;
+		case 2:
 			switch (key) {
 			case SDL_CONTROLLER_BUTTON_DPAD_LEFT:
 				animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::LeftArrow);
@@ -130,21 +132,21 @@ void Note::changeController(int controllerMode) //Animation changed between Xbox
 				animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::DownArrow);
 				break;
 			case SDL_CONTROLLER_BUTTON_A:
-				animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::AButton);
+				animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::DownArrow);
 				break;
 			case SDL_CONTROLLER_BUTTON_B:
-				animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::BButton);
+				animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::RightArrow);
 				break;
 			case SDL_CONTROLLER_BUTTON_X:
-				animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::XButton);
+				animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::LeftArrow);
 				break;
 			case SDL_CONTROLLER_BUTTON_Y:
-				animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::YButton);
+				animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::UpArrow);
 				break;
 			case SDL_CONTROLLER_BUTTON_INVALID:
 				animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::FlechaEspBomba);
 				break;
-		}
+			}
 		break;
 	default:
 		break;

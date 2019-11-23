@@ -234,9 +234,11 @@ void MainMenuState::updateSound(bool raise)
 
 void MainMenuState::updateControlsP1(bool raise)
 {
+	int P1Controller = manager->getP1Controller(); //
+
 	if (raise)
 	{
-		if (P1Controller == 0 || (P1Controller == 1 && manager->getP2Controller() != 2))//
+		if (P1Controller <= 1 || (P1Controller == 2 && manager->getP2Controller() != 3))
 		{
 			manager->setP1Controller((P1Controller + 1));
 		}
@@ -249,27 +251,30 @@ void MainMenuState::updateControlsP1(bool raise)
 	}
 	else
 	{
-		if (P1Controller == 1 || P1Controller == 2)
+		if (P1Controller > 0 && P1Controller <= 3)
 		{
 			manager->setP1Controller((P1Controller - 1));
 		}
 		else if (P1Controller == 0)
 		{
-			if (manager->getP2Controller() != 2)
-				manager->setP1Controller(2);
+			if (manager->getP2Controller() != 3)
+				manager->setP1Controller(3);
 			else
-				manager->setP1Controller(1);
+				manager->setP1Controller(2);
 		}
 		P1Controller = manager->getP1Controller();
 	}
+
 	updateTxt();
 }
 
 void MainMenuState::updateControlsP2(bool raise)
 {
+	int P2Controller = manager->getP2Controller(); //
+
 	if (raise)
 	{
-		if (P2Controller == 0 || (P2Controller == 1 && manager->getP1Controller() != 2)) //
+		if (P2Controller <= 1 || (P2Controller == 2 && manager->getP1Controller() != 3))
 		{
 			manager->setP2Controller((P2Controller + 1));
 		}
@@ -282,19 +287,20 @@ void MainMenuState::updateControlsP2(bool raise)
 	}
 	else
 	{
-		if (P2Controller == 1 || P2Controller == 2)
+		if (P2Controller > 0 && P2Controller <= 3)
 		{
 			manager->setP2Controller((P2Controller - 1));
 		}
 		else if (P2Controller == 0)
 		{
-			if (manager->getP1Controller() != 2)
-				manager->setP2Controller(2);
+			if (manager->getP1Controller() != 3)
+				manager->setP2Controller(3);
 			else
-				manager->setP2Controller(1);
+				manager->setP2Controller(2);
 		}
 		P2Controller = manager->getP2Controller();
 	}
+
 	updateTxt();
 }
 
@@ -315,6 +321,9 @@ void MainMenuState::updateTxt()	//this updates the text found in the options men
 		controlTxt->setText("PS4", SDL_Color{ 0, 0, 0, 255 });
 		break;
 	case 2:
+		controlTxt->setText("Flechas", SDL_Color{ 0, 0, 0, 255 });
+		break;
+	case 3:
 		controlTxt->setText("Teclado", SDL_Color{ 0, 0, 0, 255 });
 		break;
 	default:
@@ -335,7 +344,10 @@ void MainMenuState::updateTxt()	//this updates the text found in the options men
 		control2Txt->setText("PS4", SDL_Color{ 0, 0, 0, 255 });
 		break;
 	case 2:
-		control2Txt->setText("Teclado", SDL_Color{ 0, 0, 0, 255 });
+		controlTxt->setText("Flechas", SDL_Color{ 0, 0, 0, 255 });
+		break;
+	case 3:
+		controlTxt->setText("Teclado", SDL_Color{ 0, 0, 0, 255 });
 		break;
 	default:
 		manager->setP2Controller(0);

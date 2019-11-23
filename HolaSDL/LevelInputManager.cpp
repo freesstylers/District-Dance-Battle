@@ -13,7 +13,7 @@ LevelInputManager::LevelInputManager(PlayState* l, PlayerPack* pl, int numctrl, 
 	keystates = SDL_GetKeyboardState(NULL); //esto no se que hace, se puede quitar?
 	ControllerMode = ControllerMode_;
 
-	if (ControllerMode_ != 2)
+	if (ControllerMode_ != 3)
 		controller = SDL_GameControllerOpen(numctrl_);
 }
 
@@ -26,7 +26,7 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 	bool ret = false;
 	SDL_GameControllerButton buttons = SDL_CONTROLLER_BUTTON_INVALID;
 	SDL_GameControllerButton arrows = SDL_CONTROLLER_BUTTON_INVALID;
-	if (ControllerMode == 2) {
+	if (ControllerMode == 3) {
 		switch (event.key.keysym.sym)
 		{
 		case SDLK_DOWN:
