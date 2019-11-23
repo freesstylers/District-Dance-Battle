@@ -115,6 +115,7 @@ void Note::changeController(int controllerMode) //Animation changed between Xbox
 		case SDL_CONTROLLER_BUTTON_INVALID:
 			animation = *getGame()->getServiceLocator()->getTextures()->getAnimation(Resources::FlechaEspBomba);
 			break;
+		}
 		case 3:
 			switch (key) {
 			case SDL_CONTROLLER_BUTTON_DPAD_LEFT:
