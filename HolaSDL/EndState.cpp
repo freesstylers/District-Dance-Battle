@@ -11,11 +11,10 @@ EndState::EndState(GameManager* g, int prevMaxScoreE, int prevMaxScoreH, int* ca
 	controller = SDL_GameControllerOpen(0);
 	gameManager = g;
 	int scoreLimit = (percentage * maxScore)/ 100;
-	if (actualScore >= scoreLimit)
+	if ((actualScore >= scoreLimit || actualScore2 >= scoreLimit))
 		passed = true;
 	else
 		passed = false;
-
 
 	points = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO50), Vector2D(gameManager->getDefaultWindowWidth() / 2, 50));
 	points->setText("Puntuación final: " + makeScoreBetter(actualScore), SDL_Color{ (0), (0), (0), (255) });
