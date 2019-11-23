@@ -147,7 +147,7 @@ EndState::EndState(GameManager* g, int prevMaxScoreE, int prevMaxScoreH, int* ca
 		letter2 = new EmptyObject(g, Vector2D(gameManager->getDefaultWindowWidth() / 2 - 325 - 55 - 160, gameManager->getDefaultWindowHeight() / 2 - 40), 160, 260, Resources::ScoreS);
 		letter2->scale(0.7);
 
-		perico2 = new Character(g, 300, 540, Vector2D(gameManager->getDefaultWindowWidth() / 2 + 65, 180), Resources::PericoDab);
+		perico2 = new Character(g, 300, 540, Vector2D(gameManager->getDefaultWindowWidth() / 2 - 500, 160), Resources::PericoDab);
 		perico2->scale(0.7);
 		perico2->isAnimationSynced(false);
 		perico2->setAnimationFramerate(4);
@@ -162,63 +162,63 @@ EndState::EndState(GameManager* g, int prevMaxScoreE, int prevMaxScoreH, int* ca
 		stage.push_back(Bad);
 
 		
-		Wow1 = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(Wow->getPosition().getX() - 25, Wow->getPosition().getY() - 5));
+		Wow1 = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(Wow->getPosition().getX() - 40, Wow->getPosition().getY() - 5));
 		Wow1->setText(to_string(califs1[3]), SDL_Color{ (0), (0), (0), (255) });
 		Wow1->setPosition(Wow1->getPosition() - Vector2D(Wow1->getWidth() / 2, - Wow1->getHeight() / 2));
 		stage.push_back(Wow1);
 
-		Good1 = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(Good->getPosition().getX() - 25, Good->getPosition().getY() - 5));
+		Good1 = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(Good->getPosition().getX() - 40, Good->getPosition().getY() - 5));
 		Good1->setText(to_string(califs1[2]), SDL_Color{ (0), (0), (0), (255) });
 		Good1->setPosition(Good1->getPosition() - Vector2D(Good1->getWidth() / 2, - Good1->getHeight() / 2));
 		stage.push_back(Good1);
 
-		Ok1 = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(Ok->getPosition().getX() - 25, Ok->getPosition().getY() - 5));
+		Ok1 = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(Ok->getPosition().getX() - 40, Ok->getPosition().getY() - 5));
 		Ok1->setText(to_string(califs1[1]), SDL_Color{ (0), (0), (0), (255) });
 		Ok1->setPosition(Ok1->getPosition() - Vector2D(Ok1->getWidth() / 2, - Ok1->getHeight() / 2));
 		stage.push_back(Ok1);
 
-		Bad1 = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(Bad->getPosition().getX() - 25, Bad->getPosition().getY() - 5));
+		Bad1 = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(Bad->getPosition().getX() - 40, Bad->getPosition().getY() - 5));
 		Bad1->setText(to_string(califs1[0]), SDL_Color{ (0), (0), (0), (255) });
 		Bad1->setPosition(Bad1->getPosition() - Vector2D(Bad1->getWidth() / 2, - Bad1->getHeight() / 2));
 		stage.push_back(Bad1);
 
-		Wow2 = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(Wow->getPosition().getX() + 89, Wow->getPosition().getY() - 5));
+		Wow2 = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(Wow->getPosition().getX() + 104, Wow->getPosition().getY() - 5));
 		Wow2->setText(to_string(califs2[3]), SDL_Color{ (0), (0), (0), (255) });
 		Wow2->setPosition(Wow2->getPosition() - Vector2D(Wow2->getWidth() / 2, - Wow2->getHeight() / 2));
 		stage.push_back(Wow2);
 
-		Good2 = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(Good->getPosition().getX() + 89, Good->getPosition().getY() - 5));
+		Good2 = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(Good->getPosition().getX() + 104, Good->getPosition().getY() - 5));
 		Good2->setText(to_string(califs2[2]), SDL_Color{ (0), (0), (0), (255) });
 		Good2->setPosition(Good2->getPosition() - Vector2D(Good2->getWidth() / 2, - Good2->getHeight() / 2));
 		stage.push_back(Good2);
 
-		Ok2 = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(Ok->getPosition().getX() + 89, Ok->getPosition().getY() - 5));
+		Ok2 = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(Ok->getPosition().getX() + 104, Ok->getPosition().getY() - 5));
 		Ok2->setText(to_string(califs2[1]), SDL_Color{ (0), (0), (0), (255) });
 		Ok2->setPosition(Ok2->getPosition() - Vector2D(Ok2->getWidth() / 2, - Ok2->getHeight() / 2));
 		stage.push_back(Ok2);
 
-		Bad2 = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(Bad->getPosition().getX() + 89, Bad->getPosition().getY() - 5));
+		Bad2 = new TextObject(g, g->getServiceLocator()->getFonts()->getFont(Resources::RETRO30), Vector2D(Bad->getPosition().getX() + 104, Bad->getPosition().getY() - 5));
 		Bad2->setText(to_string(califs2[0]), SDL_Color{ (0), (0), (0), (255) });
 		Bad2->setPosition(Bad2->getPosition() - Vector2D(Bad2->getWidth() / 2, - Bad2->getHeight() / 2));
 		stage.push_back(Bad2);
 
 
-		if (actualScore >= 90 * maxScore / 100) {
+		if (actualScore2 >= 90 * maxScore / 100) {
 			perico2->forceAnimationChange(Resources::PericoMaxPower);
 			letter2->forceAnimationChange(Resources::ScoreS);
 		}
 
-		else if (actualScore >= 70 * maxScore / 100) {
+		else if (actualScore2 >= 70 * maxScore / 100) {
 			perico2->forceAnimationChange(Resources::PericoDance1);
 			letter2->forceAnimationChange(Resources::ScoreA);
 		}
 
-		else if (actualScore >= 50 * maxScore / 100) {
+		else if (actualScore2 >= 50 * maxScore / 100) {
 			perico2->forceAnimationChange(Resources::PericoDance1);
 			letter2->forceAnimationChange(Resources::ScoreB);
 		}
 
-		else if (actualScore >= 30 * maxScore / 100) {
+		else if (actualScore2 >= 30 * maxScore / 100) {
 			perico2->forceAnimationChange(Resources::PericoDab);
 			letter2->forceAnimationChange(Resources::ScoreC);
 		}
@@ -229,22 +229,22 @@ EndState::EndState(GameManager* g, int prevMaxScoreE, int prevMaxScoreH, int* ca
 		}
 
 
-		if (actualScore2 >= 90 * maxScore / 100) {
+		if (actualScore >= 90 * maxScore / 100) {
 			perico->forceAnimationChange(Resources::PericoMaxPower);
 			letter->forceAnimationChange(Resources::ScoreS);
 		}
 
-		else if (actualScore2 >= 70 * maxScore / 100) {
+		else if (actualScore >= 70 * maxScore / 100) {
 			perico->forceAnimationChange(Resources::PericoDance1);
 			letter->forceAnimationChange(Resources::ScoreA);
 		}
 
-		else if (actualScore2 >= 50 * maxScore / 100) {
+		else if (actualScore >= 50 * maxScore / 100) {
 			perico->forceAnimationChange(Resources::PericoDance1);
 			letter->forceAnimationChange(Resources::ScoreB);
 		}
 
-		else if (actualScore2 >= 30 * maxScore / 100) {
+		else if (actualScore >= 30 * maxScore / 100) {
 			perico->forceAnimationChange(Resources::PericoDab);
 			letter->forceAnimationChange(Resources::ScoreC);
 		}
