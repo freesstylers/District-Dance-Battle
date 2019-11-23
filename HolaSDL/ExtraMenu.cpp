@@ -99,12 +99,14 @@ void ExtraMenu::initSongs()
 		//a�adir canciones
 		songList[3].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraDificil, "At Doom's Gate", "Andrew Hulshult", 16));
 		posY += incrY;
+		songList[3].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraDificil, "At Doom's Gate Plus", "Andrew Hulshult", 23));
+		posY += incrY;
 
 		posY = posYOrig;
 		//case(ALIEN)
 
 		//a�adir canciones
-		songList[4].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraNormal, "Rasputin (Funk Remix)", "Boney M", 19));
+		songList[4].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraDificil, "Rasputin (Funk Remix)", "Boney M", 19));
 		posY += incrY;
 		songList[4].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraDificil, "Running in the 90s", "Maurizio De Jorio", 8));
 		posY += incrY;
@@ -124,7 +126,7 @@ void ExtraMenu::initSongs()
 		//case(SHREK)
 
 		//a�adir canciones
-		songList[6].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "Doraemon Galego", "Xabarin Club", 14));
+		songList[6].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraNormal, "Doraemon Galego", "Xabarin Club", 14));
 		posY += incrY;
 		songList[6].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraNormal, "All Star", "Smash Mouth", 6));
 		posY += incrY;
@@ -362,7 +364,7 @@ void ExtraMenu::render(Uint32 time, bool beatSync)
 
 void ExtraMenu::changeControllerP1(bool raise)
 {
-	int P1Controller = manager->getP1Controller();
+	int P1Controller = manager->getP1Controller(); //
 
 	if (raise)
 	{
@@ -398,7 +400,7 @@ void ExtraMenu::changeControllerP1(bool raise)
 
 void ExtraMenu::changeControllerP2(bool raise)
 {
-	int P2Controller = manager->getP2Controller();
+	int P2Controller = manager->getP2Controller(); //
 
 	if (raise)
 	{

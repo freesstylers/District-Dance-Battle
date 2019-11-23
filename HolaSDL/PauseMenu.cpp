@@ -358,7 +358,7 @@ void PauseMenu::updateControlsP1(bool raise)
 {
 	if (raise)
 	{
-		if (P1Controller == 0 || (P1Controller == 1 && game_->getP2Controller() != 2))
+		if (P1Controller == 0 || (P1Controller == 1 && game_->getP2Controller() != 2))//
 		{
 			game_->setP1Controller((P1Controller + 1));
 		}
@@ -392,7 +392,7 @@ void PauseMenu::updateControlsP2(bool raise)
 {
 	if (raise)
 	{
-		if (P2Controller == 0 || (P2Controller == 1 && game_->getP1Controller() != 2))
+		if (P2Controller == 0 || (P2Controller == 1 && game_->getP1Controller() != 2))//
 		{
 			game_->setP2Controller((P2Controller + 1));
 		}

@@ -236,7 +236,7 @@ void MainMenuState::updateControlsP1(bool raise)
 {
 	if (raise)
 	{
-		if (P1Controller == 0 || (P1Controller == 1 && manager->getP2Controller() != 2))
+		if (P1Controller == 0 || (P1Controller == 1 && manager->getP2Controller() != 2))//
 		{
 			manager->setP1Controller((P1Controller + 1));
 		}
@@ -269,7 +269,7 @@ void MainMenuState::updateControlsP2(bool raise)
 {
 	if (raise)
 	{
-		if (P2Controller == 0 || (P2Controller == 1 && manager->getP1Controller() != 2))
+		if (P2Controller == 0 || (P2Controller == 1 && manager->getP1Controller() != 2)) //
 		{
 			manager->setP2Controller((P2Controller + 1));
 		}
