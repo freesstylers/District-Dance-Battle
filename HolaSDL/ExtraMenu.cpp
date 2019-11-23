@@ -70,7 +70,7 @@ void ExtraMenu::initSongs()
 	//case(ROBOT)
 		character->forceAnimationChange(Resources::RobotIdle);
 		//a�adir canciones
-		songList[0].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "Cancion de testeo", "BB", 22));
+		songList[0].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "Despacito", "Luis Fonsi", 21));
 		posY += incrY;
 		songList[0].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraFacil, "Never Gonna Give You Up", "Rick Astley", 10));
 		posY += incrY;
@@ -89,6 +89,8 @@ void ExtraMenu::initSongs()
 
 		//a�adir canciones
 		songList[2].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraNormal, "Asereje", "Las Ketchup", 11));
+		posY += incrY;
+		songList[2].push_back(new ExtraSong(manager, Vector2D(posX, posY), tamX, tamY, Resources::CancionExtraDificil, "Pop/Stars", "K/DA", 22));
 		posY += incrY;
 
 		posY = posYOrig;
