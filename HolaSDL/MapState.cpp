@@ -217,7 +217,7 @@ void MapState::backButton()	//selects the previous level button on the list
 
 void MapState::changeControllerP1(bool raise)
 {
-	int P1Controller = manager->getP1Controller();
+	int P1Controller = manager->getP1Controller(); //
 
 	if (raise)
 	{
@@ -253,7 +253,7 @@ void MapState::changeControllerP1(bool raise)
 
 void MapState::changeControllerP2(bool raise)
 {
-	int P2Controller = manager->getP2Controller();
+	int P2Controller = manager->getP2Controller(); //
 
 	if (raise)
 	{
