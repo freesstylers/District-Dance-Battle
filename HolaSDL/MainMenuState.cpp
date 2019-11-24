@@ -306,6 +306,10 @@ void MainMenuState::updateControlsP2(bool raise)
 
 void MainMenuState::updateTxt()	//this updates the text found in the options menu
 {
+	int P1Controller = manager->getP1Controller();
+	int P2Controller = manager->getP2Controller();
+
+
 	musicTxt->setText(to_string(gameManager->getMusicVolume()), SDL_Color{ 0, 0, 0, 255 });
 	musicTxt->setPosition(musicSelect->getPosition() + Vector2D(musicSelect->getWidth() / 2, musicSelect->getHeight() / 2) - Vector2D(musicTxt->getWidth() / 2, musicTxt->getHeight() / 2));
 
@@ -344,10 +348,10 @@ void MainMenuState::updateTxt()	//this updates the text found in the options men
 		control2Txt->setText("PS4", SDL_Color{ 0, 0, 0, 255 });
 		break;
 	case 2:
-		controlTxt->setText("Flechas", SDL_Color{ 0, 0, 0, 255 });
+		control2Txt->setText("Flechas", SDL_Color{ 0, 0, 0, 255 });
 		break;
 	case 3:
-		controlTxt->setText("Teclado", SDL_Color{ 0, 0, 0, 255 });
+		control2Txt->setText("Teclado", SDL_Color{ 0, 0, 0, 255 });
 		break;
 	default:
 		manager->setP2Controller(0);

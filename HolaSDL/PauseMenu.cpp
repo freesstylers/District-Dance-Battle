@@ -466,10 +466,10 @@ void PauseMenu::updateTxt()	//this updates the text found in the options menu
 		control2Txt->setText("PS4", SDL_Color{ 0, 0, 0, 255 });
 		break;
 	case 2:
-		controlTxt->setText("Flechas", SDL_Color{ 0, 0, 0, 255 });
+		control2Txt->setText("Flechas", SDL_Color{ 0, 0, 0, 255 });
 		break;
 	case 3:
-		controlTxt->setText("Teclado", SDL_Color{ 0, 0, 0, 255 });
+		control2Txt->setText("Teclado", SDL_Color{ 0, 0, 0, 255 });
 		break;
 	default:
 		game_->setP2Controller(0);

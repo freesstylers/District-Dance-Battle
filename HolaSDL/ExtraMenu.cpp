@@ -40,7 +40,7 @@ void ExtraMenu::init() {
 	int aux = Resources::Xbox;
 	if (manager->getP1Controller() == 1)
 		aux = Resources::Playstation;
-	else if (manager->getP1Controller() == 4)
+	else if (manager->getP1Controller() == 2)
 		aux = Resources::fourButtons;
 	else if (manager->getP1Controller() == 3)
 		aux = Resources::Keyboard;
