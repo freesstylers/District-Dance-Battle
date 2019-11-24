@@ -428,6 +428,10 @@ void PauseMenu::updateControlsP2(bool raise)
 
 void PauseMenu::updateTxt()	//this updates the text found in the options menu
 {
+	int P1Controller = game_->getP1Controller();
+	int P2Controller = game_->getP2Controller();
+
+
 	musicTxt->setText(to_string(game_->getMusicVolume()), SDL_Color{ 0, 0, 0, 255 });
 	musicTxt->setPosition(musicSelect->getPosition() + Vector2D(musicSelect->getWidth() / 2, musicSelect->getHeight() / 2) - Vector2D(musicTxt->getWidth() / 2, musicTxt->getHeight() / 2));
 
