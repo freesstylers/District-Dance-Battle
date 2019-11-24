@@ -139,14 +139,14 @@ EndState::EndState(GameManager* g, int prevMaxScoreE, int prevMaxScoreH, int* ca
 		letter->setPosition(letter->getPosition() + Vector2D(60, 0));
 		letter->scale(0.7);
 		stage.push_back(letter);
-		perico->setPosition(Vector2D(gameManager->getDefaultWindowWidth() / 2 + 400, 180));
+		perico->setPosition(Vector2D(gameManager->getDefaultWindowWidth() / 2 - 350, 180));
 		perico->scale(0.7);
 		stage.push_back(perico);
 
 		letter2 = new EmptyObject(g, Vector2D(gameManager->getDefaultWindowWidth() / 2 - 325 - 55 - 160, gameManager->getDefaultWindowHeight() / 2 - 40), 160, 260, Resources::ScoreS);
 		letter2->scale(0.7);
 
-		perico2 = new Character(g, 300, 540, Vector2D(gameManager->getDefaultWindowWidth() / 2 - 400, 160), Resources::PericoDab);
+		perico2 = new Character(g, 300, 540, Vector2D(gameManager->getDefaultWindowWidth() / 2 + 40, 180), Resources::PericoDab);
 		perico2->scale(0.7);
 		perico2->isAnimationSynced(false);
 		perico2->setAnimationFramerate(4);
@@ -204,53 +204,53 @@ EndState::EndState(GameManager* g, int prevMaxScoreE, int prevMaxScoreH, int* ca
 
 		if (actualScore2 >= 90 * maxScore / 100) {
 			perico2->forceAnimationChange(Resources::PericoMaxPower);
-			letter2->forceAnimationChange(Resources::ScoreS);
+			letter->forceAnimationChange(Resources::ScoreS);
 		}
 
 		else if (actualScore2 >= 70 * maxScore / 100) {
 			perico2->forceAnimationChange(Resources::PericoDance1);
-			letter2->forceAnimationChange(Resources::ScoreA);
+			letter->forceAnimationChange(Resources::ScoreA);
 		}
 
 		else if (actualScore2 >= 50 * maxScore / 100) {
 			perico2->forceAnimationChange(Resources::PericoDance1);
-			letter2->forceAnimationChange(Resources::ScoreB);
+			letter->forceAnimationChange(Resources::ScoreB);
 		}
 
 		else if (actualScore2 >= 30 * maxScore / 100) {
 			perico2->forceAnimationChange(Resources::PericoDab);
-			letter2->forceAnimationChange(Resources::ScoreC);
+			letter->forceAnimationChange(Resources::ScoreC);
 		}
 
 		else {
 			perico2->forceAnimationChange(Resources::PericoIdle);
-			letter2->forceAnimationChange(Resources::ScoreD);
+			letter->forceAnimationChange(Resources::ScoreD);
 		}
 
 
 		if (actualScore >= 90 * maxScore / 100) {
 			perico->forceAnimationChange(Resources::PericoMaxPower);
-			letter->forceAnimationChange(Resources::ScoreS);
+			letter2->forceAnimationChange(Resources::ScoreS);
 		}
 
 		else if (actualScore >= 70 * maxScore / 100) {
 			perico->forceAnimationChange(Resources::PericoDance1);
-			letter->forceAnimationChange(Resources::ScoreA);
+			letter2->forceAnimationChange(Resources::ScoreA);
 		}
 
 		else if (actualScore >= 50 * maxScore / 100) {
 			perico->forceAnimationChange(Resources::PericoDance1);
-			letter->forceAnimationChange(Resources::ScoreB);
+			letter2->forceAnimationChange(Resources::ScoreB);
 		}
 
 		else if (actualScore >= 30 * maxScore / 100) {
 			perico->forceAnimationChange(Resources::PericoDab);
-			letter->forceAnimationChange(Resources::ScoreC);
+			letter2->forceAnimationChange(Resources::ScoreC);
 		}
 
 		else {
 			perico->forceAnimationChange(Resources::PericoIdle);
-			letter->forceAnimationChange(Resources::ScoreD);
+			letter2->forceAnimationChange(Resources::ScoreD);
 		}
 
 		stage.push_back(letter2);
