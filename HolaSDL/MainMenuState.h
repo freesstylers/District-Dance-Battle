@@ -63,6 +63,9 @@ private:
 	
 	int P1Controller;
 	int P2Controller;
+	
+	SDL_Haptic* haptics;
+	int aux = 0;
 
 	void options();
 	void updateMusic(bool raise);

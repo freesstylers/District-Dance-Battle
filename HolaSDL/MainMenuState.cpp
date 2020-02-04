@@ -114,6 +114,12 @@ MainMenuState::MainMenuState(GameManager* g) :GameState(g)
 
 	selection->setHeight(musicSelect->getHeight());
 	selection->setWidth(musicSelect->getWidth());
+
+
+	haptics = SDL_HapticOpen(0);	//id del controller, asumo 0 para MANDO 1 y 1 para MANDO 2
+	SDL_HapticRumbleInit(haptics);
+
+	aux = SDL_HapticRumblePlay(haptics, 1, 5000);
 }
 
 
@@ -144,6 +150,8 @@ MainMenuState::~MainMenuState()
 	delete controlTxt;
 
 	optionsButtons.clear();
+
+	SDL_HapticClose(haptics);
 }
 
 void MainMenuState::render(Uint32 time, bool beatHandler)
