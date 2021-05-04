@@ -1,11 +1,12 @@
 #pragma once
 #include "Event.h"
+
 class InputEvent :
 	public Event
 {
 enum InputButton { rUp, rDown, rLeft, rRight, lUp, lDown, lLeft, lRight };
 public:
-	InputEvent(float timeStamp) : Event(timeStamp) {
+	InputEvent(float timeStamp) : Event(timeStamp, INPUT_EVENT) {
 	}
 
 	void setNLevel(int nLevel_){
@@ -13,7 +14,7 @@ public:
 	}
 	
 	void setPlayerButton(int playerButton_){
-		playerButton = playerButton_;
+		playerButton = (InputButton)playerButton_;
 	}
 
 	void setLevelButton(InputButton levelButton_){
@@ -31,6 +32,8 @@ public:
 	void setDistance(int numNote_){
 		numNote = numNote_;
 	}
+
+	virtual string toJson();
 
 
 protected:

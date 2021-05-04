@@ -140,16 +140,27 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Event.h" />
+    <ClInclude Include="FilePersistence.h" />
     <ClInclude Include="InputEvent.h" />
+    <ClInclude Include="json.hpp" />
+    <ClInclude Include="JsonSerializer.h" />
     <ClInclude Include="LevelEvent.h" />
     <ClInclude Include="LogEvent.h" />
+    <ClInclude Include="Persistence.h" />
+    <ClInclude Include="Serializer.h" />
+    <ClInclude Include="ServerPersistence.h" />
     <ClInclude Include="Tracker.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Event.cpp" />
+    <ClCompile Include="FilePersistence.cpp" />
     <ClCompile Include="InputEvent.cpp" />
+    <ClCompile Include="JsonSerializer.cpp" />
     <ClCompile Include="LevelEvent.cpp" />
     <ClCompile Include="LogEvent.cpp" />
+    <ClCompile Include="Persistence.cpp" />
+    <ClCompile Include="Serializer.cpp" />
+    <ClCompile Include="ServerPersistence.cpp" />
     <ClCompile Include="Tracker.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

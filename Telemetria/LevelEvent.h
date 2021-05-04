@@ -3,7 +3,7 @@
 class LevelEvent: public Event
 {
 public:
-	LevelEvent(float timeStamp) : Event(timeStamp) {
+	LevelEvent(float timeStamp) : Event(timeStamp, LEVEL_EVENT) {
 
 	}
 
@@ -13,6 +13,8 @@ public:
 	void setScore(int score) {
 		score_ = score;
 	}
+
+	virtual string toJson();
 
 
 protected:
