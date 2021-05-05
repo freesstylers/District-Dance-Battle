@@ -21,10 +21,6 @@ public:
 		levelButton = levelButton_;
 	}
 
-	void setLevelButton(InputButton levelButton_){
-		levelButton = levelButton_;
-	}
-
 	void setDistance(float distance_){
 		distance = distance_;
 	}

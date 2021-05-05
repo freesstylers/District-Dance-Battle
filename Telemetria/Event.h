@@ -11,6 +11,13 @@ enum EventType {
 	LOG_EVENT
 };
 
+static const char* enum_str[]{
+	"BASE_EVENT",
+	"LEVEL_EVENT",
+	"INPUT_EVENT",
+	"LOG_EVENT"
+};
+
 class Event
 {
 public:

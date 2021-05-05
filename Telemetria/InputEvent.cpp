@@ -2,6 +2,7 @@
 
 string InputEvent::toJson()
 {
+	Event::toJson();
 	j["nLevel"] = nLevel;
 	j["playerButton"] = playerButton;
 	j["levelButton"] = levelButton;

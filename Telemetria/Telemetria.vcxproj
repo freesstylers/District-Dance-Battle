@@ -158,6 +158,7 @@
     <ClCompile Include="JsonSerializer.cpp" />
     <ClCompile Include="LevelEvent.cpp" />
     <ClCompile Include="LogEvent.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="Persistence.cpp" />
     <ClCompile Include="Serializer.cpp" />
     <ClCompile Include="ServerPersistence.cpp" />

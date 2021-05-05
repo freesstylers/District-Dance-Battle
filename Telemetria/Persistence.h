@@ -5,7 +5,7 @@
 class Persistence
 {
 protected:
-	Serializer* serializerObject=nullptr;
+	Serializer* serializerObject = nullptr;
 public:
 	Persistence() {
 	}

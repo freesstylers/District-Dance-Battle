@@ -2,8 +2,9 @@
 
 string Event::toJson()
 {
-	j["event_type"] = type_;
+	j["event_type"] = enum_str[type_];
 	j["time_stamp"] = timeStamp_;
 	j["id_session"] = idSession_;
-	return j.dump(4);
+	nlohmann::json aux = j;
+	return aux.dump(4);
 }
