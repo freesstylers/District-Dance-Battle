@@ -7,8 +7,8 @@ void InputEvent::setNLevel(int nLevel_) {
 	nLevel = nLevel_;
 }
 
-void InputEvent::setPlayerButton(int playerButton_) {
-	playerButton = (InputButton)playerButton_;
+void InputEvent::setPlayerButton(InputButton playerButton_) {
+	playerButton = playerButton_;
 }
 
 void InputEvent::setLevelButton(InputButton levelButton_) {

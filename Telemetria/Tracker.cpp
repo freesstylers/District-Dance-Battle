@@ -10,9 +10,9 @@ void Tracker::setIdSession(int idSession) {
 	idSession_ = idSession;
 }
 
-void Tracker::trackEvent(Event* e) {
+void Tracker::trackEvent(Event e) {
 	eventCont_++;
-	e->setIdSession(idSession_);
+	e.setIdSession(idSession_);
 	eventQueue_.push(e);
 }
 

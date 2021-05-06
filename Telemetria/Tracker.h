@@ -19,7 +19,7 @@ public:
 
 	void setIdSession(int idSession);
  
-	void trackEvent(Event* e);
+	void trackEvent(Event e);
 
 	void setPersistenceObject(Persistence* persistence);
 
@@ -34,7 +34,7 @@ public:
 
 private:
 
-	std::queue<Event*> eventQueue_;
+	std::queue<Event> eventQueue_;
 
 	static Tracker* instance;
 	int idSession_;

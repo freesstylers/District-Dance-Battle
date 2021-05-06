@@ -127,6 +127,8 @@ public:
 
 	void updateOptionsFile();
 
+	int getNLevel() { return nlevel; }
+
 private:
 	int bgT;
 	int enemyT;

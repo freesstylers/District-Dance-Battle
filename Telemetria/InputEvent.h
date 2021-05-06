@@ -5,14 +5,15 @@ class InputEvent :
 	public Event
 {
 
-enum InputButton { rUp, rDown, rLeft, rRight, lUp, lDown, lLeft, lRight };
 
 public:
+
+	enum InputButton { rUp, rDown, rLeft, rRight, lUp, lDown, lLeft, lRight };
 	InputEvent(float timeStamp);
 
 	void setNLevel(int nLevel_);
 	
-	void setPlayerButton(int playerButton_);
+	void setPlayerButton(InputButton playerButton_);
 
 	void setLevelButton(InputButton levelButton_);
 
