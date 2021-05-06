@@ -4,30 +4,21 @@
 class InputEvent :
 	public Event
 {
+
 enum InputButton { rUp, rDown, rLeft, rRight, lUp, lDown, lLeft, lRight };
+
 public:
-	InputEvent(float timeStamp) : Event(timeStamp, INPUT_EVENT) {
-	}
+	InputEvent(float timeStamp);
 
-	void setNLevel(int nLevel_){
-		nLevel = nLevel_;
-	}
+	void setNLevel(int nLevel_);
 	
-	void setPlayerButton(int playerButton_){
-		playerButton = (InputButton)playerButton_;
-	}
+	void setPlayerButton(int playerButton_);
 
-	void setLevelButton(InputButton levelButton_){
-		levelButton = levelButton_;
-	}
+	void setLevelButton(InputButton levelButton_);
 
-	void setDistance(float distance_){
-		distance = distance_;
-	}
+	void setDistance(float distance_);
 
-	void setDistance(int numNote_){
-		numNote = numNote_;
-	}
+	void setDistance(int numNote_);
 
 	virtual string toJson();
 

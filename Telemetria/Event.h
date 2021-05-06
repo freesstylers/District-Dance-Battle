@@ -22,12 +22,9 @@ class Event
 {
 public:
 
-	Event(float time, EventType type=BASE_EVENT): timeStamp_(time), type_(type) {
-	}
+	Event(float time, EventType type = BASE_EVENT);
 
-	void setIdSession(int idSession) {
-		idSession_ = idSession;
-	}
+	void setIdSession(int idSession);
 
 	virtual string toJson();
 

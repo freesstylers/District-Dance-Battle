@@ -3,16 +3,10 @@
 class LevelEvent: public Event
 {
 public:
-	LevelEvent(float timeStamp) : Event(timeStamp, LEVEL_EVENT) {
+	LevelEvent(float timeStamp);
 
-	}
-
-	void setLevel(int level) {
-		level_ = level;
-	}
-	void setScore(int score) {
-		score_ = score;
-	}
+	void setLevel(int level);
+	void setScore(int score);
 
 	virtual string toJson();
 

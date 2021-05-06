@@ -1,5 +1,12 @@
 #include "Event.h"
 
+Event::Event(float time, EventType type = BASE_EVENT) : timeStamp_(time), type_(type) {
+}
+
+void Event::setIdSession(int idSession) {
+	idSession_ = idSession;
+}
+
 string Event::toJson()
 {
 	j["event_type"] = enum_str[type_];

@@ -17,42 +17,20 @@ public:
 		return instance;
 	}
 
-	void setIdSession(int idSession) {
-		idSession_ = idSession;
-	}
+	void setIdSession(int idSession);
  
-	void trackEvent(Event* e) {
-		eventCont_++;
-		e->setIdSession(idSession_);
-		eventQueue_.push(e);
-	}
+	void trackEvent(Event* e);
 
-	void setPersistenceObject(Persistence* persistence) {
-		persistenceObject_ = persistence;
-	}
+	void setPersistenceObject(Persistence* persistence);
 
-	Persistence* getPersistenceObject() {
-		return persistenceObject_;
-	}
+	Persistence* getPersistenceObject();
 
 
-	InputEvent createInputEvent(float timeStamp) {
-		InputEvent e = InputEvent(timeStamp);
-		e.setIdSession(idSession_);
-		return e;
-	}
+	InputEvent createInputEvent(float timeStamp);
 
-	LevelEvent createLevelEvent(float timeStamp) {
-		LevelEvent e = LevelEvent(timeStamp);
-		e.setIdSession(idSession_);
-		return e;
-	}
+	LevelEvent createLevelEvent(float timeStamp);
 
-	LogEvent createLogEvent(float timeStamp) {
-		LogEvent e = LogEvent(timeStamp);
-		e.setIdSession(idSession_);
-		return e;
-	}
+	LogEvent createLogEvent(float timeStamp);
 
 private:
 
@@ -64,8 +42,6 @@ private:
 
 	Persistence* persistenceObject_;
 
-	Tracker() {
-
-	}
+	Tracker();
 
 };

@@ -1,5 +1,28 @@
 #include "InputEvent.h"
 
+InputEvent::InputEvent(float timeStamp) : Event(timeStamp, INPUT_EVENT) {
+}
+
+void InputEvent::setNLevel(int nLevel_) {
+	nLevel = nLevel_;
+}
+
+void InputEvent::setPlayerButton(int playerButton_) {
+	playerButton = (InputButton)playerButton_;
+}
+
+void InputEvent::setLevelButton(InputButton levelButton_) {
+	levelButton = levelButton_;
+}
+
+void InputEvent::setDistance(float distance_) {
+	distance = distance_;
+}
+
+void InputEvent::setDistance(int numNote_) {
+	numNote = numNote_;
+}
+
 string InputEvent::toJson()
 {
 	Event::toJson();
