@@ -22,7 +22,7 @@ class Event
 {
 public:
 
-	Event(float time, EventType type = BASE_EVENT);
+	Event(float time, EventType type);
 
 	void setIdSession(int idSession);
 
