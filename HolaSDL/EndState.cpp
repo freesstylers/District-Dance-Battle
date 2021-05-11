@@ -2,7 +2,6 @@
 #include "EndState.h"
 
 
-
 EndState::EndState(GameManager* g, int prevMaxScoreE, int prevMaxScoreH, int* califs1, int actualScore, int maxScore, int percentage, int maxCombo, int lvl, bool isSingleplayer, bool hardMode, int actualScore2, int* califs2, int maxCombo2) :
 	GameState(g), prevScoreE_(prevMaxScoreE), hardMode_(hardMode)
 {
@@ -287,6 +286,24 @@ EndState::EndState(GameManager* g, int prevMaxScoreE, int prevMaxScoreH, int* ca
 		if (actualScore > prevMaxScoreE)
 			saveScore(actualScore, prevMaxScoreH);
 	}
+
+	////////////////////////////////// TELEMETRIA /////////////////////////////////////////////////////////////////
+
+
+	LevelEvent e = Tracker::GetInstance()->createLevelEvent(time_t(0));
+	e.setIdSession(0);
+	e.setLevel(level);
+	e.setScore(actualScore);
+
+	Tracker::GetInstance()->trackEvent(e);
+
+	FilePersistence* f = new FilePersistence("../info.json");
+	f->setSerializer(new JsonSerializer());
+
+	Tracker::GetInstance()->setPersistenceObject(f);
+	Tracker::GetInstance()->getPersistenceObject()->Send(&e);
+
+	////////////////////////////////// TELEMETRIA /////////////////////////////////////////////////////////////////
 }
 
 EndState::~EndState()

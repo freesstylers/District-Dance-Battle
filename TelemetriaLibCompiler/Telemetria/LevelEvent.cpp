@@ -14,6 +14,7 @@ void LevelEvent::setScore(int score) {
 
 string LevelEvent::toJson()
 {
+	Event::toJson();
 	j["level"] = level_;
 	j["score"] = score_;
 	

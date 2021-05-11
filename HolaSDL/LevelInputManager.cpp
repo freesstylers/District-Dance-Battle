@@ -4,7 +4,7 @@
 #include <string>
 #include "PlayerPack.h"
 
-#include "../Telemetria/Tracker.h"
+#include "Tracker.h"
 
 
 LevelInputManager::LevelInputManager(PlayState* l, PlayerPack* pl, int numctrl, int ControllerMode_)
@@ -220,14 +220,14 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 		Tracker* tracker = Tracker::GetInstance();
 
 		InputEvent e = InputEvent(time_t(0));
-		e.setPlayerButton(playerButton);
-		e.setLevelButton(levelButton);
-		e.setDistance(distance);
-		e.setNLevel(level->getNLevel());
+		//e.setPlayerButton(playerButton);
+		//e.setLevelButton(levelButton);
+		//e.setDistance(distance);
+		//e.setNLevel(level->getNLevel());
 
-		tracker->trackEvent(e);
+		//tracker->trackEvent(e);
 
-		std::cout << "Event tracked: " << playerButton << std::endl;
+		//std::cout << "Event tracked: " << playerButton << std::endl;
 		///////////////////////////////////////////////////    TELEMETRIA       /////////////////////////////////////////////////////////////////////////////////
 
 

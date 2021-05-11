@@ -1,7 +1,7 @@
 #include "GameManager.h"
-#include "../Telemetria/Tracker.h"
-#include "../Telemetria/FilePersistence.h"
-#include "../Telemetria/JsonSerializer.h"
+#include "Tracker.h"
+#include "FilePersistence.h"
+#include "JsonSerializer.h"
 
 GameManager::GameManager(): SDLGame("District Dance Battle", _WINDOW_WIDTH_, _WINDOW_HEIGHT_)
 {

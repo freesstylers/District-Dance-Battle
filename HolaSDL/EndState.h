@@ -3,6 +3,10 @@
 #include "GameManager.h"
 #include "checkML.h"
 
+#include "FilePersistence.h"
+#include "Tracker.h"
+#include "JsonSerializer.h"
+
 //State used to display the end screen after a song, with the player's performance
 
 class EndState :
