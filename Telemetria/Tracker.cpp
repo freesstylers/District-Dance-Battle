@@ -42,3 +42,11 @@ LogEvent Tracker::createLogEvent(float timeStamp) {
 	e.setIdSession(idSession_);
 	return e;
 }
+
+void Tracker::sendEventsToPersistance() {
+	for (int i = 0; i < eventCont_; i++) {
+		Event e = eventQueue_.front();
+		getPersistenceObject()->Send(&e);
+		eventQueue_.pop();
+	}
+}

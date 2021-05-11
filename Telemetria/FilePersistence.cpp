@@ -13,6 +13,11 @@ void FilePersistence::Send(Event* e)
 
 }
 
+void FilePersistence::Close() 
+{
+	file_.close();
+}
+
 void FilePersistence::Flush()
 {
 	//Borrar el fichero que contiene los eventos

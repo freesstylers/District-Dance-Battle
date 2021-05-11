@@ -1,6 +1,7 @@
 #include "GameManager.h"
-
-
+#include "../Telemetria/Tracker.h"
+#include "../Telemetria/FilePersistence.h"
+#include "../Telemetria/JsonSerializer.h"
 
 GameManager::GameManager(): SDLGame("District Dance Battle", _WINDOW_WIDTH_, _WINDOW_HEIGHT_)
 {
@@ -30,11 +31,16 @@ GameManager::~GameManager()
 }
 
 void GameManager::start() {
+	Tracker::GetInstance()->setIdSession(69);
+	FilePersistence* f = new FilePersistence("../info.json");
+	f->setSerializer(new JsonSerializer());
+	Tracker::GetInstance()->setPersistenceObject(f);
 	if(LEVEL_CREATOR_MODE)
 		machine->pushState(new CreadorNiveles(this)); //Creador de niveles, descomentar esta parte y comentar la linea de abajo para crear niveles mas facil
 	else
 		machine->pushState(new MainMenuState(this));
 	run();
+	Tracker::GetInstance()->sendEventsToPersistance();
 }
 
 void GameManager::stop() {

@@ -8,6 +8,7 @@ public:
 	FilePersistence(string filePath);
 	virtual void Send(Event* e);
 	virtual void Flush();
+	virtual void Close();
 private:
 	ofstream file_;
 };

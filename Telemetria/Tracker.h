@@ -32,6 +32,8 @@ public:
 
 	LogEvent createLogEvent(float timeStamp);
 
+	void sendEventsToPersistance();
+
 private:
 
 	std::queue<Event> eventQueue_;
