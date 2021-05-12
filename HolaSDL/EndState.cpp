@@ -290,18 +290,11 @@ EndState::EndState(GameManager* g, int prevMaxScoreE, int prevMaxScoreH, int* ca
 	////////////////////////////////// TELEMETRIA /////////////////////////////////////////////////////////////////
 
 
-	LevelEvent e = Tracker::GetInstance()->createLevelEvent(time_t(0));
-	e.setIdSession(0);
-	e.setLevel(level);
-	e.setScore(actualScore);
+	LevelEvent* e = Tracker::GetInstance()->createLevelEvent(time_t(0));
+	e->setLevel(level);
+	e->setScore(actualScore);
 
 	Tracker::GetInstance()->trackEvent(e);
-
-	FilePersistence* f = new FilePersistence("../info.json");
-	f->setSerializer(new JsonSerializer());
-
-	Tracker::GetInstance()->setPersistenceObject(f);
-	Tracker::GetInstance()->getPersistenceObject()->Send(&e);
 
 	////////////////////////////////// TELEMETRIA /////////////////////////////////////////////////////////////////
 }

@@ -19,24 +19,24 @@ public:
 
 	void setIdSession(int idSession);
  
-	void trackEvent(Event e);
+	void trackEvent(Event* e);
 
 	void setPersistenceObject(Persistence* persistence);
 
 	Persistence* getPersistenceObject();
 
 
-	InputEvent createInputEvent(float timeStamp);
+	InputEvent* createInputEvent(float timeStamp);
 
-	LevelEvent createLevelEvent(float timeStamp);
+	LevelEvent* createLevelEvent(float timeStamp);
 
-	LogEvent createLogEvent(float timeStamp);
+	LogEvent* createLogEvent(float timeStamp);
 
 	void sendEventsToPersistance();
 
 private:
 
-	std::queue<Event> eventQueue_;
+	std::queue<Event*> eventQueue_;
 
 	static Tracker* instance;
 	int idSession_;

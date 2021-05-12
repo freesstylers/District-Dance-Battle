@@ -1,7 +1,14 @@
 {
     "event_type": "LEVEL_EVENT",
-    "id_session": 0,
+    "id_session": 69,
     "level": 14,
-    "score": 832818,
+    "score": 860468,
+    "time_stamp": 0.0
+}
+{
+    "event_type": "LEVEL_EVENT",
+    "id_session": 69,
+    "level": 14,
+    "score": 914662,
     "time_stamp": 0.0
 }

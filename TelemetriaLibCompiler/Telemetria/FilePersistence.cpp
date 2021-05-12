@@ -4,14 +4,13 @@
 
 FilePersistence::FilePersistence(string filePath)
 {
-	file_.open(filePath);
+	file_.open(filePath, std::fstream::app);
 }
 
 void FilePersistence::Send(Event* e)
 {
 	
-	file_<<serializerObject->serialize(e);
-
+	file_<<serializerObject->serialize(e)<<"\n";
 }
 
 void FilePersistence::Close() 

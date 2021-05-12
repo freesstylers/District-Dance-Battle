@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31129.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "District Dance Battle", "HolaSDL\HolaSDL.vcxproj", "{28A4C5CD-307A-4FE6-81E4-4CE1F1E49AB4}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Telemetria", "TelemetriaLibCompiler\Telemetria\Telemetria.vcxproj", "{D1288F2C-F8F5-40BB-BC6D-23B63A91B611}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -19,6 +21,14 @@ Global
 		{28A4C5CD-307A-4FE6-81E4-4CE1F1E49AB4}.Release|Win32.ActiveCfg = Release|Win32
 		{28A4C5CD-307A-4FE6-81E4-4CE1F1E49AB4}.Release|Win32.Build.0 = Release|Win32
 		{28A4C5CD-307A-4FE6-81E4-4CE1F1E49AB4}.Release|x64.ActiveCfg = Release|Win32
+		{D1288F2C-F8F5-40BB-BC6D-23B63A91B611}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D1288F2C-F8F5-40BB-BC6D-23B63A91B611}.Debug|Win32.Build.0 = Debug|Win32
+		{D1288F2C-F8F5-40BB-BC6D-23B63A91B611}.Debug|x64.ActiveCfg = Debug|x64
+		{D1288F2C-F8F5-40BB-BC6D-23B63A91B611}.Debug|x64.Build.0 = Debug|x64
+		{D1288F2C-F8F5-40BB-BC6D-23B63A91B611}.Release|Win32.ActiveCfg = Release|Win32
+		{D1288F2C-F8F5-40BB-BC6D-23B63A91B611}.Release|Win32.Build.0 = Release|Win32
+		{D1288F2C-F8F5-40BB-BC6D-23B63A91B611}.Release|x64.ActiveCfg = Release|x64
+		{D1288F2C-F8F5-40BB-BC6D-23B63A91B611}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
