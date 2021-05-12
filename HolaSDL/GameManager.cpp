@@ -52,6 +52,7 @@ void GameManager::start() {
 		machine->pushState(new MainMenuState(this));
 	run();
 
+	//////////////////////////////////////////////////TELEMETRIA////////////////////////////////////////////////////////////
 	Tracker::GetInstance()->sendEventsToPersistance();
 }
 

@@ -403,3 +403,13 @@
     "playerButton": 1,
     "time_stamp": 1620838272.0
 }
+{
+    "event_type": "LOG_EVENT",
+    "id_session": -1534304228,
+    "time_stamp": 1620848640.0
+}
+{
+    "event_type": "LOG_EVENT",
+    "id_session": -247497948,
+    "time_stamp": 1620849920.0
+}
