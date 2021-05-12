@@ -1,4 +1,6 @@
+#include "Tracker.h"
 #include "GameObject.h"
+
 
 GameObject::GameObject() :
 		GameObject(nullptr) {
@@ -7,6 +9,7 @@ GameObject::GameObject() :
 GameObject::GameObject(SDLGame* game) :
 		game_(game), active_(true), width_(), height_(), position_(), velocity_(), acceleration_(0, 0),
 			rotation_(0.0), alpha_(255) {
+
 }
 
 GameObject::~GameObject() {

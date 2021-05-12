@@ -8,6 +8,8 @@
 #include "DialogState.h"
 #include "checkML.h"
 #include "CreadorNiveles.h"
+#include <windows.h>
+#include <ctime>
 
 //Manager for the game's states, global variables, window, etc.
 

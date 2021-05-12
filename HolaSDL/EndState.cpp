@@ -1,5 +1,6 @@
 
 #include "EndState.h"
+#include <sysinfoapi.h>
 
 
 EndState::EndState(GameManager* g, int prevMaxScoreE, int prevMaxScoreH, int* califs1, int actualScore, int maxScore, int percentage, int maxCombo, int lvl, bool isSingleplayer, bool hardMode, int actualScore2, int* califs2, int maxCombo2) :
@@ -290,7 +291,7 @@ EndState::EndState(GameManager* g, int prevMaxScoreE, int prevMaxScoreH, int* ca
 	////////////////////////////////// TELEMETRIA /////////////////////////////////////////////////////////////////
 
 
-	LevelEvent* e = Tracker::GetInstance()->createLevelEvent(time_t(0));
+	LevelEvent* e = Tracker::GetInstance()->createLevelEvent(time(NULL));
 	e->setLevel(level);
 	e->setScore(actualScore);
 

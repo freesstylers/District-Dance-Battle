@@ -3,6 +3,7 @@
 #include "FilePersistence.h"
 #include "JsonSerializer.h"
 
+
 GameManager::GameManager(): SDLGame("District Dance Battle", _WINDOW_WIDTH_, _WINDOW_HEIGHT_)
 {
 	machine = new GameStateMachine();
@@ -21,6 +22,8 @@ GameManager::GameManager(): SDLGame("District Dance Battle", _WINDOW_WIDTH_, _WI
 	}
 
 	file.close();
+
+	
 }
 
 
@@ -31,7 +34,8 @@ GameManager::~GameManager()
 }
 
 void GameManager::start() {
-	Tracker::GetInstance()->setIdSession(69);
+	
+
 	FilePersistence* f = new FilePersistence("../info.json");
 	f->setSerializer(new JsonSerializer());
 	Tracker::GetInstance()->setPersistenceObject(f);
@@ -40,7 +44,13 @@ void GameManager::start() {
 	else
 		machine->pushState(new MainMenuState(this));
 	run();
+	//////////////////////////////////////////////////TELEMETRIA////////////////////////////////////////////////////////////
+	Tracker::GetInstance()->setIdSession(rand() * time(NULL));
+
+	LogEvent* e = Tracker::GetInstance()->createLogEvent(time(NULL));
+	Tracker::GetInstance()->trackEvent(e);
 	Tracker::GetInstance()->sendEventsToPersistance();
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }
 
 void GameManager::stop() {
