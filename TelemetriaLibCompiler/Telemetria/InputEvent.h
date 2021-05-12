@@ -8,7 +8,7 @@ class InputEvent :
 
 public:
 
-	enum InputButton { rUp, rDown, rLeft, rRight, lUp, lDown, lLeft, lRight };
+	enum InputButton { rUp, rDown, rLeft, rRight, lUp, lDown, lLeft, lRight, bomb };
 	InputEvent(float timeStamp);
 
 	void setNLevel(int nLevel_);
@@ -19,7 +19,7 @@ public:
 
 	void setDistance(float distance_);
 
-	void setDistance(int numNote_);
+	void setNumNote(int numNote_);
 
 	virtual string toJson();
 

@@ -42,5 +42,6 @@ private:
 	PlayerPack* player;
 	SDL_GameController* controller = NULL;
 	int ControllerMode;
+	int numNote;
 };
 

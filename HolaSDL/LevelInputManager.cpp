@@ -3,6 +3,7 @@
 #include "GameManager.h"
 #include <string>
 #include "PlayerPack.h"
+#include <ctime>
 
 #include "Tracker.h"
 
@@ -17,6 +18,8 @@ LevelInputManager::LevelInputManager(PlayState* l, PlayerPack* pl, int numctrl, 
 
 	if (ControllerMode_ != 3)
 		controller = SDL_GameControllerOpen(numctrl_);
+
+	numNote = 0;
 }
 
 LevelInputManager::~LevelInputManager()
@@ -27,11 +30,9 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 
 
 	///////////////////////////////////////////////////    TELEMETRIA       /////////////////////////////////////////////////////////////////////////////////
-	//////////////////////////////////////////////////		variables		/////////////////////////////////////////////////////////////////////////////////
 	InputEvent::InputButton playerButton;
 	InputEvent::InputButton levelButton;
 	float distance = 0.0f;
-	int numNote = 0;
 	///////////////////////////////////////////////////    TELEMETRIA       /////////////////////////////////////////////////////////////////////////////////
 
 
@@ -141,6 +142,9 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 			case SDL_GameControllerButton::SDL_CONTROLLER_BUTTON_A:
 				levelButton = InputEvent::InputButton::rDown;
 				break;
+			default:
+				levelButton = InputEvent::InputButton::bomb;
+				break;
 			}
 			///////////////////////////////////////////////////    TELEMETRIA       /////////////////////////////////////////////////////////////////////////////////
 			
@@ -191,6 +195,42 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 					if (it->getKey() != SDL_CONTROLLER_BUTTON_INVALID)
 						numFailed++;
 				}
+
+				///////////////////////////////////////////////////    TELEMETRIA       /////////////////////////////////////////////////////////////////////////////////
+				distance = abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getLeftPoint()->getPosition().getY() + player->getLeftPoint()->getHeight() / 2));
+				switch (it->getKey()) {
+				case SDL_GameControllerButton::SDL_CONTROLLER_BUTTON_DPAD_LEFT:
+					levelButton = InputEvent::InputButton::lLeft;
+					break;
+				case SDL_GameControllerButton::SDL_CONTROLLER_BUTTON_DPAD_RIGHT:
+					levelButton = InputEvent::InputButton::lRight;
+					break;
+				case SDL_GameControllerButton::SDL_CONTROLLER_BUTTON_DPAD_UP:
+					levelButton = InputEvent::InputButton::lUp;
+					break;
+				case SDL_GameControllerButton::SDL_CONTROLLER_BUTTON_DPAD_DOWN:
+					levelButton = InputEvent::InputButton::lDown;
+					break;
+				default:
+					levelButton = InputEvent::InputButton::bomb;
+					break;
+				}
+
+				numNote++;
+				Tracker* tracker = Tracker::GetInstance();
+
+				InputEvent* e = tracker->createInputEvent(std::time(NULL));
+				e->setPlayerButton(playerButton);
+				e->setLevelButton(levelButton);
+				e->setDistance(distance);
+				e->setNLevel(level->getNLevel());
+				e->setNumNote(numNote);
+
+				tracker->trackEvent(e);
+				///////////////////////////////////////////////////    TELEMETRIA       /////////////////////////////////////////////////////////////////////////////////
+
+
+
 				keyup = false;
 				delete(it);
 				player->screenArrows_.remove(it);
@@ -213,23 +253,6 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 				}
 			}
 		}
-
-
-		///////////////////////////////////////////////////    TELEMETRIA       /////////////////////////////////////////////////////////////////////////////////
-		///////////////////////////////////////////////////    enviar eventos   /////////////////////////////////////////////////////////////////////////////////
-		Tracker* tracker = Tracker::GetInstance();
-
-		InputEvent e = InputEvent(time_t(0));
-		//e.setPlayerButton(playerButton);
-		//e.setLevelButton(levelButton);
-		//e.setDistance(distance);
-		//e.setNLevel(level->getNLevel());
-
-		//tracker->trackEvent(e);
-
-		//std::cout << "Event tracked: " << playerButton << std::endl;
-		///////////////////////////////////////////////////    TELEMETRIA       /////////////////////////////////////////////////////////////////////////////////
-
 
 	}
 
@@ -285,6 +308,40 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 					if (it->getKey() != SDL_CONTROLLER_BUTTON_INVALID)
 						numFailed++;
 				}
+
+
+
+				distance = abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getLeftPoint()->getPosition().getY() + player->getLeftPoint()->getHeight() / 2));
+				switch (it->getKey()) {
+				case SDL_GameControllerButton::SDL_CONTROLLER_BUTTON_X:
+					levelButton = InputEvent::InputButton::rLeft;
+					break;
+				case SDL_GameControllerButton::SDL_CONTROLLER_BUTTON_B:
+					levelButton = InputEvent::InputButton::rRight;
+					break;
+				case SDL_GameControllerButton::SDL_CONTROLLER_BUTTON_Y:
+					levelButton = InputEvent::InputButton::rUp;
+					break;
+				case SDL_GameControllerButton::SDL_CONTROLLER_BUTTON_A:
+					levelButton = InputEvent::InputButton::rDown;
+					break;
+				}
+
+				///////////////////////////////////////////////////    TELEMETRIA       /////////////////////////////////////////////////////////////////////////////////
+				numNote++;
+				Tracker* tracker = Tracker::GetInstance();
+
+				InputEvent* e = tracker->createInputEvent(std::time(NULL));
+				e->setPlayerButton(playerButton);
+				e->setLevelButton(levelButton);
+				e->setDistance(distance);
+				e->setNLevel(level->getNLevel());
+				e->setNumNote(numNote);
+
+				tracker->trackEvent(e);
+				///////////////////////////////////////////////////    TELEMETRIA       /////////////////////////////////////////////////////////////////////////////////
+
+
 				delete it;
 				player->screenButtons_.remove(it);
 				keyup2 = false;

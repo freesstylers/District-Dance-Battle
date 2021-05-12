@@ -20,7 +20,7 @@ void InputEvent::setDistance(float distance_) {
 	distance = distance_;
 }
 
-void InputEvent::setDistance(int numNote_) {
+void InputEvent::setNumNote(int numNote_) {
 	numNote = numNote_;
 }
 
