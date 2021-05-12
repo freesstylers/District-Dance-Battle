@@ -34,6 +34,11 @@ public:
 
 	void sendEventsToPersistance();
 
+
+	void startTime();
+
+	double getTime();
+
 private:
 
 	std::queue<Event*> eventQueue_;
@@ -45,5 +50,7 @@ private:
 	Persistence* persistenceObject_;
 
 	Tracker();
+
+	time_t start_;
 
 };

@@ -1,5 +1,6 @@
 #include "pch.h"
 
+#include <time.h>
 
 Tracker* Tracker::instance= nullptr;
 
@@ -54,4 +55,12 @@ void Tracker::sendEventsToPersistance() {
 		eventQueue_.pop();
 		delete e;
 	}
+}
+
+void Tracker::startTime() {
+	start_ = 0;
+}
+
+double Tracker::getTime() {
+	return difftime(time(0), start_);
 }

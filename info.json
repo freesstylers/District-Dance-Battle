@@ -1,13 +1,405 @@
-
-{
-    "event_type": "LEVEL_EVENT",
-    "id_session": -1,
-    "level": 14,
-    "score": 840560,
-    "time_stamp": 1620834944.0
-}
 {
     "event_type": "LOG_EVENT",
-    "id_session": 1111826110,
-    "time_stamp": 1620834944.0
+    "id_session": -1064554013,
+    "time_stamp": 1620838272.0
+}
+{
+    "distance": 6.587500095367432,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1064554013,
+    "levelButton": 6,
+    "nLevel": 3,
+    "numNote": 1,
+    "playerButton": 6,
+    "time_stamp": 1620838272.0
+}
+{
+    "distance": 13.8125,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1064554013,
+    "levelButton": 1,
+    "nLevel": 3,
+    "numNote": 2,
+    "playerButton": 1,
+    "time_stamp": 1620838272.0
+}
+{
+    "distance": 10.625,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1064554013,
+    "levelButton": 7,
+    "nLevel": 3,
+    "numNote": 3,
+    "playerButton": 7,
+    "time_stamp": 1620838272.0
+}
+{
+    "distance": 6.800000190734863,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1064554013,
+    "levelButton": 4,
+    "nLevel": 3,
+    "numNote": 4,
+    "playerButton": 4,
+    "time_stamp": 1620838272.0
+}
+{
+    "distance": 0.42500001192092896,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1064554013,
+    "levelButton": 1,
+    "nLevel": 3,
+    "numNote": 5,
+    "playerButton": 1,
+    "time_stamp": 1620838272.0
+}
+{
+    "distance": 3.825000047683716,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1064554013,
+    "levelButton": 5,
+    "nLevel": 3,
+    "numNote": 6,
+    "playerButton": 5,
+    "time_stamp": 1620838272.0
+}
+{
+    "distance": 7.012499809265137,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1064554013,
+    "levelButton": 1,
+    "nLevel": 3,
+    "numNote": 7,
+    "playerButton": 1,
+    "time_stamp": 1620838272.0
+}
+{
+    "distance": 3.612499952316284,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1064554013,
+    "levelButton": 6,
+    "nLevel": 3,
+    "numNote": 8,
+    "playerButton": 6,
+    "time_stamp": 1620838272.0
+}
+{
+    "distance": 3.1875,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1064554013,
+    "levelButton": 2,
+    "nLevel": 3,
+    "numNote": 9,
+    "playerButton": 2,
+    "time_stamp": 1620838272.0
+}
+{
+    "distance": 3.612499952316284,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1064554013,
+    "levelButton": 3,
+    "nLevel": 3,
+    "numNote": 10,
+    "playerButton": 3,
+    "time_stamp": 1620838272.0
+}
+{
+    "distance": 0.21250000596046448,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1064554013,
+    "levelButton": 6,
+    "nLevel": 3,
+    "numNote": 11,
+    "playerButton": 6,
+    "time_stamp": 1620838272.0
+}
+{
+    "distance": 3.4000000953674316,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1064554013,
+    "levelButton": 0,
+    "nLevel": 3,
+    "numNote": 12,
+    "playerButton": 0,
+    "time_stamp": 1620838272.0
+}
+{
+    "distance": 3.612499952316284,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1064554013,
+    "levelButton": 6,
+    "nLevel": 3,
+    "numNote": 13,
+    "playerButton": 6,
+    "time_stamp": 1620838272.0
+}
+{
+    "distance": 10.412500381469727,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1064554013,
+    "levelButton": 1,
+    "nLevel": 3,
+    "numNote": 14,
+    "playerButton": 1,
+    "time_stamp": 1620838272.0
+}
+{
+    "distance": 10.625,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1064554013,
+    "levelButton": 7,
+    "nLevel": 3,
+    "numNote": 15,
+    "playerButton": 7,
+    "time_stamp": 1620838272.0
+}
+{
+    "distance": 7.012499809265137,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1064554013,
+    "levelButton": 4,
+    "nLevel": 3,
+    "numNote": 16,
+    "playerButton": 4,
+    "time_stamp": 1620838272.0
+}
+{
+    "distance": 6.800000190734863,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1064554013,
+    "levelButton": 1,
+    "nLevel": 3,
+    "numNote": 17,
+    "playerButton": 1,
+    "time_stamp": 1620838272.0
+}
+{
+    "distance": 0.21250000596046448,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1064554013,
+    "levelButton": 5,
+    "nLevel": 3,
+    "numNote": 18,
+    "playerButton": 5,
+    "time_stamp": 1620838272.0
+}
+{
+    "distance": 3.4000000953674316,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1064554013,
+    "levelButton": 1,
+    "nLevel": 3,
+    "numNote": 19,
+    "playerButton": 1,
+    "time_stamp": 1620838272.0
+}
+{
+    "distance": 10.412500381469727,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1064554013,
+    "levelButton": 6,
+    "nLevel": 3,
+    "numNote": 20,
+    "playerButton": 6,
+    "time_stamp": 1620838272.0
+}
+{
+    "distance": 0.21250000596046448,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1064554013,
+    "levelButton": 2,
+    "nLevel": 3,
+    "numNote": 21,
+    "playerButton": 2,
+    "time_stamp": 1620838272.0
+}
+{
+    "distance": 2.762500047683716,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1064554013,
+    "levelButton": 3,
+    "nLevel": 3,
+    "numNote": 22,
+    "playerButton": 3,
+    "time_stamp": 1620838272.0
+}
+{
+    "distance": 3.612499952316284,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1064554013,
+    "levelButton": 6,
+    "nLevel": 3,
+    "numNote": 23,
+    "playerButton": 6,
+    "time_stamp": 1620838272.0
+}
+{
+    "distance": 3.4000000953674316,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1064554013,
+    "levelButton": 0,
+    "nLevel": 3,
+    "numNote": 24,
+    "playerButton": 0,
+    "time_stamp": 1620838272.0
+}
+{
+    "distance": 3.4000000953674316,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1064554013,
+    "levelButton": 7,
+    "nLevel": 3,
+    "numNote": 25,
+    "playerButton": 7,
+    "time_stamp": 1620838272.0
+}
+{
+    "distance": 10.412500381469727,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1064554013,
+    "levelButton": 7,
+    "nLevel": 3,
+    "numNote": 26,
+    "playerButton": 7,
+    "time_stamp": 1620838272.0
+}
+{
+    "distance": 7.012499809265137,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1064554013,
+    "levelButton": 1,
+    "nLevel": 3,
+    "numNote": 27,
+    "playerButton": 1,
+    "time_stamp": 1620838272.0
+}
+{
+    "distance": 10.837499618530273,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1064554013,
+    "levelButton": 6,
+    "nLevel": 3,
+    "numNote": 28,
+    "playerButton": 6,
+    "time_stamp": 1620838272.0
+}
+{
+    "distance": 17.637500762939453,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1064554013,
+    "levelButton": 4,
+    "nLevel": 3,
+    "numNote": 29,
+    "playerButton": 4,
+    "time_stamp": 1620838272.0
+}
+{
+    "distance": 3.4000000953674316,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1064554013,
+    "levelButton": 4,
+    "nLevel": 3,
+    "numNote": 30,
+    "playerButton": 4,
+    "time_stamp": 1620838272.0
+}
+{
+    "distance": 28.262500762939453,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1064554013,
+    "levelButton": 1,
+    "nLevel": 3,
+    "numNote": 31,
+    "playerButton": 1,
+    "time_stamp": 1620838272.0
+}
+{
+    "distance": 6.800000190734863,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1064554013,
+    "levelButton": 6,
+    "nLevel": 3,
+    "numNote": 32,
+    "playerButton": 6,
+    "time_stamp": 1620838272.0
+}
+{
+    "distance": 0.21250000596046448,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1064554013,
+    "levelButton": 3,
+    "nLevel": 3,
+    "numNote": 33,
+    "playerButton": 3,
+    "time_stamp": 1620838272.0
+}
+{
+    "distance": 3.4000000953674316,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1064554013,
+    "levelButton": 3,
+    "nLevel": 3,
+    "numNote": 34,
+    "playerButton": 3,
+    "time_stamp": 1620838272.0
+}
+{
+    "distance": 7.4375,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1064554013,
+    "levelButton": 6,
+    "nLevel": 3,
+    "numNote": 35,
+    "playerButton": 6,
+    "time_stamp": 1620838272.0
+}
+{
+    "distance": 10.412500381469727,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1064554013,
+    "levelButton": 1,
+    "nLevel": 3,
+    "numNote": 36,
+    "playerButton": 1,
+    "time_stamp": 1620838272.0
+}
+{
+    "distance": 10.412500381469727,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1064554013,
+    "levelButton": 2,
+    "nLevel": 3,
+    "numNote": 37,
+    "playerButton": 2,
+    "time_stamp": 1620838272.0
+}
+{
+    "distance": 10.412500381469727,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1064554013,
+    "levelButton": 2,
+    "nLevel": 3,
+    "numNote": 38,
+    "playerButton": 2,
+    "time_stamp": 1620838272.0
+}
+{
+    "distance": 3.1875,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1064554013,
+    "levelButton": 6,
+    "nLevel": 3,
+    "numNote": 39,
+    "playerButton": 6,
+    "time_stamp": 1620838272.0
+}
+{
+    "distance": 3.1875,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1064554013,
+    "levelButton": 1,
+    "nLevel": 3,
+    "numNote": 40,
+    "playerButton": 1,
+    "time_stamp": 1620838272.0
 }

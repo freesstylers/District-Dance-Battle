@@ -35,22 +35,24 @@ GameManager::~GameManager()
 
 void GameManager::start() {
 	
+	//////////////////////////////////////////////////TELEMETRIA////////////////////////////////////////////////////////////
+	Tracker::GetInstance()->startTime();
+	Tracker::GetInstance()->setIdSession(abs(rand() * time(NULL)));
 
 	FilePersistence* f = new FilePersistence("../info.json");
 	f->setSerializer(new JsonSerializer());
 	Tracker::GetInstance()->setPersistenceObject(f);
+	LogEvent* e = Tracker::GetInstance()->createLogEvent(Tracker::GetInstance()->getTime());
+	Tracker::GetInstance()->trackEvent(e);
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	if(LEVEL_CREATOR_MODE)
 		machine->pushState(new CreadorNiveles(this)); //Creador de niveles, descomentar esta parte y comentar la linea de abajo para crear niveles mas facil
 	else
 		machine->pushState(new MainMenuState(this));
 	run();
-	//////////////////////////////////////////////////TELEMETRIA////////////////////////////////////////////////////////////
-	Tracker::GetInstance()->setIdSession(rand() * time(NULL));
 
-	LogEvent* e = Tracker::GetInstance()->createLogEvent(time(NULL));
-	Tracker::GetInstance()->trackEvent(e);
 	Tracker::GetInstance()->sendEventsToPersistance();
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }
 
 void GameManager::stop() {

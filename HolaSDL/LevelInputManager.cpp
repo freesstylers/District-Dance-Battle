@@ -217,16 +217,15 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 				}
 
 				numNote++;
-				Tracker* tracker = Tracker::GetInstance();
 
-				InputEvent* e = tracker->createInputEvent(std::time(NULL));
+				InputEvent* e = Tracker::GetInstance()->createInputEvent(Tracker::GetInstance()->getTime());
 				e->setPlayerButton(playerButton);
 				e->setLevelButton(levelButton);
 				e->setDistance(distance);
 				e->setNLevel(level->getNLevel());
 				e->setNumNote(numNote);
 
-				tracker->trackEvent(e);
+				Tracker::GetInstance()->trackEvent(e);
 				///////////////////////////////////////////////////    TELEMETRIA       /////////////////////////////////////////////////////////////////////////////////
 
 
@@ -310,7 +309,7 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 				}
 
 
-
+				///////////////////////////////////////////////////    TELEMETRIA       /////////////////////////////////////////////////////////////////////////////////
 				distance = abs((it->getPosition().getY() + it->getHeight() / 2) - (player->getLeftPoint()->getPosition().getY() + player->getLeftPoint()->getHeight() / 2));
 				switch (it->getKey()) {
 				case SDL_GameControllerButton::SDL_CONTROLLER_BUTTON_X:
@@ -327,18 +326,17 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 					break;
 				}
 
-				///////////////////////////////////////////////////    TELEMETRIA       /////////////////////////////////////////////////////////////////////////////////
+				
 				numNote++;
-				Tracker* tracker = Tracker::GetInstance();
 
-				InputEvent* e = tracker->createInputEvent(std::time(NULL));
+				InputEvent* e = Tracker::GetInstance()->createInputEvent(Tracker::GetInstance()->getTime());
 				e->setPlayerButton(playerButton);
 				e->setLevelButton(levelButton);
 				e->setDistance(distance);
 				e->setNLevel(level->getNLevel());
 				e->setNumNote(numNote);
 
-				tracker->trackEvent(e);
+				Tracker::GetInstance()->trackEvent(e);
 				///////////////////////////////////////////////////    TELEMETRIA       /////////////////////////////////////////////////////////////////////////////////
 
 

@@ -291,7 +291,7 @@ EndState::EndState(GameManager* g, int prevMaxScoreE, int prevMaxScoreH, int* ca
 	////////////////////////////////// TELEMETRIA /////////////////////////////////////////////////////////////////
 
 
-	LevelEvent* e = Tracker::GetInstance()->createLevelEvent(time(NULL));
+	LevelEvent* e = Tracker::GetInstance()->createLevelEvent(Tracker::GetInstance()->getTime());
 	e->setLevel(level);
 	e->setScore(actualScore);
 
