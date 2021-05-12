@@ -12,3 +12,31 @@
     "score": 914662,
     "time_stamp": 0.0
 }
+{
+    "event_type": "LEVEL_EVENT",
+    "id_session": 69,
+    "level": 14,
+    "score": 890330,
+    "time_stamp": 1620832000.0
+}
+{
+    "event_type": "LEVEL_EVENT",
+    "id_session": 0,
+    "level": 14,
+    "score": 861574,
+    "time_stamp": 1620832128.0
+}
+{
+    "event_type": "LEVEL_EVENT",
+    "id_session": 0,
+    "level": 14,
+    "score": 871528,
+    "time_stamp": 1620832512.0
+}
+{
+    "event_type": "LEVEL_EVENT",
+    "id_session": -412301389,
+    "level": 14,
+    "score": 796320,
+    "time_stamp": 1620832768.0
+}
