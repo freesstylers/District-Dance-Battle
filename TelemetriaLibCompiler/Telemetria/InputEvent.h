@@ -9,7 +9,7 @@ class InputEvent :
 public:
 
 	enum InputButton { rUp, rDown, rLeft, rRight, lUp, lDown, lLeft, lRight, bomb };
-	InputEvent(float timeStamp);
+	InputEvent(string timeStamp);
 
 	void setNLevel(int nLevel_);
 	

@@ -22,7 +22,7 @@ class Event
 {
 public:
 
-	Event(float time, EventType type);
+	Event(string time, EventType type);
 
 	void setIdSession(int idSession);
 
@@ -30,7 +30,7 @@ public:
 
 protected:
 
-	float timeStamp_;
+	string timeStamp_;
 	int idSession_;
 	EventType type_;
 	nlohmann::json j;

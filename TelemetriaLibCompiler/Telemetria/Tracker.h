@@ -26,18 +26,18 @@ public:
 	Persistence* getPersistenceObject();
 
 
-	InputEvent* createInputEvent(float timeStamp);
+	InputEvent* createInputEvent(string timeStamp);
 
-	LevelEvent* createLevelEvent(float timeStamp);
+	LevelEvent* createLevelEvent(string timeStamp);
 
-	LogEvent* createLogEvent(float timeStamp);
+	LogEvent* createLogEvent(string timeStamp);
 
 	void sendEventsToPersistance();
 
 
 	void startTime();
 
-	double getTime();
+	string getTime();
 
 private:
 

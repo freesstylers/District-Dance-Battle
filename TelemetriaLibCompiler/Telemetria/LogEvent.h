@@ -4,7 +4,7 @@ class LogEvent :
     public Event
 {
 public:
-    LogEvent(float timeStamp);
+    LogEvent(string timeStamp);
 
     virtual string toJson();
 };

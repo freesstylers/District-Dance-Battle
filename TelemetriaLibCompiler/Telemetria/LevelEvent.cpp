@@ -1,7 +1,7 @@
 #include "pch.h"
 
 
-LevelEvent::LevelEvent(float timeStamp) : Event(timeStamp, LEVEL_EVENT) {
+LevelEvent::LevelEvent(string timeStamp) : Event(timeStamp, LEVEL_EVENT) {
 
 }
 

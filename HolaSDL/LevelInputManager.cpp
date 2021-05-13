@@ -3,7 +3,7 @@
 #include "GameManager.h"
 #include <string>
 #include "PlayerPack.h"
-#include <ctime>
+#include <time.h>
 
 #include "Tracker.h"
 
@@ -26,7 +26,7 @@ LevelInputManager::~LevelInputManager()
 {
 }
 
-bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
+bool LevelInputManager::handleInput(Uint32 time1, const SDL_Event& event) {
 
 
 	///////////////////////////////////////////////////    TELEMETRIA       /////////////////////////////////////////////////////////////////////////////////
@@ -101,7 +101,7 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 		keyup2 = true;
 	}
 
-	if ((blockpause < time - 500) && ((event.type == SDL_CONTROLLERBUTTONDOWN || event.type == SDL_KEYDOWN) && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_BACK) || SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_START) || event.key.keysym.sym == SDLK_TAB || event.key.keysym.sym == SDLK_ESCAPE))) {
+	if ((blockpause < time1 - 500) && ((event.type == SDL_CONTROLLERBUTTONDOWN || event.type == SDL_KEYDOWN) && (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_BACK) || SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_START) || event.key.keysym.sym == SDLK_TAB || event.key.keysym.sym == SDLK_ESCAPE))) {
 		ret = ret || level->pause();
 		blockpause = 0;
 	}

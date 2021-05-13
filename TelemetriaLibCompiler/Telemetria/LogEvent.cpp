@@ -1,7 +1,7 @@
 #include "pch.h"
 
 
-LogEvent::LogEvent(float timeStamp) : Event(timeStamp, LOG_EVENT) {
+LogEvent::LogEvent(string timeStamp) : Event(timeStamp, LOG_EVENT) {
 
 }
 
