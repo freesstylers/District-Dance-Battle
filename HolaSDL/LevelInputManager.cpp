@@ -82,6 +82,9 @@ bool LevelInputManager::handleInput(Uint32 time1, const SDL_Event& event) {
 			return ret;
 	}
 
+	else if (event.type == SDL_KEYDOWN && !(event.key.keysym.sym == SDLK_TAB || event.key.keysym.sym == SDLK_ESCAPE))
+			return ret;
+
 	////////////// TELEMETRIA ///////////////////
 
 	if (event.type == SDL_CONTROLLERBUTTONDOWN) {
@@ -97,9 +100,6 @@ bool LevelInputManager::handleInput(Uint32 time1, const SDL_Event& event) {
 	}
 
 	////////////// TELEMETRIA ///////////////////
-
-	else if (event.type == SDL_KEYDOWN && !(event.key.keysym.sym == SDLK_TAB || event.key.keysym.sym == SDLK_ESCAPE))
-			return ret;
 
 	if (keyup && (event.type == SDL_CONTROLLERBUTTONDOWN || event.type == SDL_KEYDOWN)) {
 
