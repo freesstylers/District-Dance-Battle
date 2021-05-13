@@ -1,6 +1,7 @@
 #include "pch.h"
 
 #include <time.h>
+#define _CRT_SECURE_NO_WARNINGS
 
 Tracker* Tracker::instance= nullptr;
 
@@ -30,19 +31,19 @@ Persistence* Tracker::getPersistenceObject() {
 }
 
 
-InputEvent* Tracker::createInputEvent(float timeStamp) {
+InputEvent* Tracker::createInputEvent(string timeStamp) {
 	InputEvent* e = new InputEvent(timeStamp);
 	e->setIdSession(idSession_);
 	return e;
 }
 
-LevelEvent* Tracker::createLevelEvent(float timeStamp) {
+LevelEvent* Tracker::createLevelEvent(string timeStamp) {
 	LevelEvent* e = new LevelEvent(timeStamp);
 	e->setIdSession(idSession_);
 	return e;
 }
 
-LogEvent* Tracker::createLogEvent(float timeStamp) {
+LogEvent* Tracker::createLogEvent(string timeStamp) {
 	LogEvent* e = new LogEvent(timeStamp);
 	e->setIdSession(idSession_);
 	return e;
@@ -61,6 +62,19 @@ void Tracker::startTime() {
 	start_ = 0;
 }
 
-double Tracker::getTime() {
-	return difftime(time(0), start_);
+string Tracker::getTime() {
+
+	time_t     now;
+	struct tm* ts;
+	char       buf[80];
+	struct tm newtime;
+
+	/* Obtener la hora actual */
+	now = time(0);
+
+	/* Formatear e imprimir el tiempo, "ddd yyyy-mm-dd hh:mm:ss zzz" */
+	localtime_s(&newtime, &now);
+	strftime(buf, sizeof(buf), "%a %Y-%m-%d %H:%M:%S", &newtime);
+
+	return buf;
 }

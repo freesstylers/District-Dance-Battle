@@ -3,7 +3,7 @@
 class LevelEvent: public Event
 {
 public:
-	LevelEvent(float timeStamp);
+	LevelEvent(string timeStamp);
 
 	void setLevel(int level);
 	void setScore(int score);

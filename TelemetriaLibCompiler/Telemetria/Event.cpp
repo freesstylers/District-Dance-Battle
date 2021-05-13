@@ -1,7 +1,7 @@
 #include "pch.h"
 
 
-Event::Event(float time, EventType type = BASE_EVENT) : timeStamp_(time), type_(type) {
+Event::Event(string time, EventType type = BASE_EVENT) : timeStamp_(time), type_(type) {
 }
 
 void Event::setIdSession(int idSession) {

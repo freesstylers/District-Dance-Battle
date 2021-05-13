@@ -1,7 +1,7 @@
 #include "pch.h"
 
 
-InputEvent::InputEvent(float timeStamp) : Event(timeStamp, INPUT_EVENT) {
+InputEvent::InputEvent(string timeStamp) : Event(timeStamp, INPUT_EVENT) {
 }
 
 void InputEvent::setNLevel(int nLevel_) {
