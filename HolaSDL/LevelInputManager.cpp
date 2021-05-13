@@ -81,10 +81,28 @@ bool LevelInputManager::handleInput(Uint32 time, const SDL_Event& event) {
 		if(event.type == SDL_CONTROLLERBUTTONDOWN && !(SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_BACK)))
 			return ret;
 	}
+
+	////////////// TELEMETRIA ///////////////////
+
+	if (event.type == SDL_CONTROLLERBUTTONDOWN) {
+		if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT)) playerButton = InputEvent::InputButton::lLeft;
+		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT)) playerButton = InputEvent::InputButton::lRight;
+		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_UP)) playerButton = InputEvent::InputButton::lUp;
+		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN)) playerButton = InputEvent::InputButton::lDown;
+
+		if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_X)) playerButton = InputEvent::InputButton::rLeft;
+		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B)) playerButton = InputEvent::InputButton::rRight;
+		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_Y)) playerButton = InputEvent::InputButton::rUp;
+		else if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A)) playerButton = InputEvent::InputButton::rDown;
+	}
+
+	////////////// TELEMETRIA ///////////////////
+
 	else if (event.type == SDL_KEYDOWN && !(event.key.keysym.sym == SDLK_TAB || event.key.keysym.sym == SDLK_ESCAPE))
 			return ret;
 
 	if (keyup && (event.type == SDL_CONTROLLERBUTTONDOWN || event.type == SDL_KEYDOWN)) {
+
 		if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT) || SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) ||
 			SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN) || SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_UP) ||
 			event.key.keysym.sym == SDLK_a || event.key.keysym.sym == SDLK_d || event.key.keysym.sym == SDLK_s || event.key.keysym.sym == SDLK_w ||
