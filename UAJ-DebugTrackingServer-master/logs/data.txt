@@ -1,0 +1,50 @@
+{
+    "distance": 3.1875,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1553741277,
+    "levelButton": 6,
+    "nLevel": 17,
+    "numNote": 2,
+    "playerButton": 6,
+    "time_stamp": "Thu 2021-05-20 18:13:50"
+}
+{
+    "distance": 3.1875,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1553741277,
+    "levelButton": 2,
+    "nLevel": 17,
+    "numNote": 3,
+    "playerButton": 2,
+    "time_stamp": "Thu 2021-05-20 18:13:51"
+}
+{
+    "distance": 0.2549999952316284,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1553741277,
+    "levelButton": 7,
+    "nLevel": 17,
+    "numNote": 4,
+    "playerButton": 7,
+    "time_stamp": "Thu 2021-05-20 18:13:52"
+}
+{
+    "distance": 2.805000066757202,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1553741277,
+    "levelButton": 1,
+    "nLevel": 17,
+    "numNote": 5,
+    "playerButton": 1,
+    "time_stamp": "Thu 2021-05-20 18:13:53"
+}
+{
+    "distance": 3.697499990463257,
+    "event_type": "INPUT_EVENT",
+    "id_session": -1553741277,
+    "levelButton": 5,
+    "nLevel": 17,
+    "numNote": 6,
+    "playerButton": 5,
+    "time_stamp": "Thu 2021-05-20 18:13:53"
+}

@@ -1,6 +1,5 @@
 #include "pch.h"
 
-
 Event::Event(string time, EventType type = BASE_EVENT) : timeStamp_(time), type_(type) {
 }
 
