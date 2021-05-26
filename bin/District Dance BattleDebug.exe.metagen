@@ -3,7 +3,5 @@ Assembly District Dance BattleDebug, Version=0.0.*, Culture=Todos los idiomas (t
 	hash=SHA1, flags=PublicKey
 Assembly mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
 	hash=None, flags=None
-Assembly Post, Version=1.0.*, Culture=Todos los idiomas (todos los países): 
-	hash=None, flags=None
 Assembly System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
 	hash=None, flags=None

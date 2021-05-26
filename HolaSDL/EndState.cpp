@@ -2,7 +2,6 @@
 #include "EndState.h"
 #include <sysinfoapi.h>
 
-
 EndState::EndState(GameManager* g, int prevMaxScoreE, int prevMaxScoreH, int* califs1, int actualScore, int maxScore, int percentage, int maxCombo, int lvl, bool isSingleplayer, bool hardMode, int actualScore2, int* califs2, int maxCombo2) :
 	GameState(g), prevScoreE_(prevMaxScoreE), hardMode_(hardMode)
 {
@@ -294,9 +293,27 @@ EndState::EndState(GameManager* g, int prevMaxScoreE, int prevMaxScoreH, int* ca
 	LevelEvent* e = Tracker::GetInstance()->createLevelEvent(Tracker::GetInstance()->getTime());
 	e->setLevel(level);
 	e->setScore(actualScore);
+	e->setComboTime(3);
+	e->setInputType(XBOX_INPUT);
+	e->setMaxComboCount(200);
 
 	Tracker::GetInstance()->trackEvent(e);
 
+	LostLevelEvent* e2 = Tracker::GetInstance()->createLostLevelEvent(Tracker::GetInstance()->getTime());
+	e2->setLevel(level);
+	e2->setScore(actualScore);
+	e2->setComboTime(69);
+	e2->setInputType(XBOX_INPUT);
+	e2->setMaxComboCount(300);
+	e2->setLastNote(46);
+
+	Tracker::GetInstance()->trackEvent(e2);
+
+	DialogSkipEvent* e3 = Tracker::GetInstance()->createDialogSkipEvent(Tracker::GetInstance()->getTime());
+	e3->setLevel(level);
+	e3->setDialogLine(2);
+
+	Tracker::GetInstance()->trackEvent(e3);
 	////////////////////////////////// TELEMETRIA /////////////////////////////////////////////////////////////////
 }
 

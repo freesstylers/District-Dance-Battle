@@ -8,14 +8,30 @@ enum EventType {
 	BASE_EVENT,
 	LEVEL_EVENT,
 	INPUT_EVENT,
-	LOG_EVENT
+	LOG_EVENT,
+	DIALOG_SKIP_EVENT,
+	LOST_LEVEL_EVENT
 };
 
-static const char* enum_str[]{
+static const char* event_enum_str[]{
 	"BASE_EVENT",
 	"LEVEL_EVENT",
 	"INPUT_EVENT",
-	"LOG_EVENT"
+	"LOG_EVENT",
+	"DIALOG_SKIP_EVENT",
+	"LOST_LEVEL_EVENT"
+};
+
+enum InputType {
+	PS4_INPUT,
+	XBOX_INPUT,
+	KEYBOARD_INPUT
+};
+
+static const char* input_enum_str[]{
+	"PS4_INPUT",
+	"XBOX_INPUT",
+	"KEYBOARD_INPUT"
 };
 
 class Event

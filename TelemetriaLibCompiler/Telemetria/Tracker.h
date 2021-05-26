@@ -3,6 +3,8 @@
 #include "LevelEvent.h"
 #include "LogEvent.h"
 #include "InputEvent.h"
+#include "DialogSkipEvent.h"
+#include "LostLevelEvent.h"
 #include "Persistence.h"
 #include <queue>
 
@@ -25,12 +27,15 @@ public:
 
 	Persistence* getPersistenceObject();
 
-
 	InputEvent* createInputEvent(string timeStamp);
 
 	LevelEvent* createLevelEvent(string timeStamp);
 
 	LogEvent* createLogEvent(string timeStamp);
+
+	LostLevelEvent* createLostLevelEvent(string timeStamp);
+
+	DialogSkipEvent* createDialogSkipEvent(string timeStamp);
 
 	void sendEventsToPersistance();
 

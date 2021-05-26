@@ -1,3211 +1,2194 @@
 {
-	"event_type": "LOG_EVENT",
-	"id_session": 2136653944,
-	"time_stamp": "Thu 2021-05-13 17:07:32"
-}
-{
-    "distance": 5.099999904632568,
-    "event_type": "INPUT_EVENT",
-    "id_session": 2136653944,
-    "levelButton": 1,
-    "nLevel": 14,
-    "numNote": 1,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-13 17:07:41"
-}
-{
-    "distance": 5.099999904632568,
-    "event_type": "INPUT_EVENT",
-    "id_session": 2136653944,
-    "levelButton": 5,
-    "nLevel": 14,
-    "numNote": 2,
-    "playerButton": 5,
-    "time_stamp": "Thu 2021-05-13 17:07:41"
-}
-{
-    "distance": 4.78125,
-    "event_type": "INPUT_EVENT",
-    "id_session": 2136653944,
-    "levelButton": 6,
-    "nLevel": 14,
-    "numNote": 3,
-    "playerButton": 6,
-    "time_stamp": "Thu 2021-05-13 17:07:42"
-}
-{
-    "distance": 5.099999904632568,
-    "event_type": "INPUT_EVENT",
-    "id_session": 2136653944,
-    "levelButton": 3,
-    "nLevel": 14,
-    "numNote": 4,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-13 17:07:42"
-}
-{
-    "distance": 0.3187499940395355,
-    "event_type": "INPUT_EVENT",
-    "id_session": 2136653944,
-    "levelButton": 7,
-    "nLevel": 14,
-    "numNote": 5,
-    "playerButton": 7,
-    "time_stamp": "Thu 2021-05-13 17:07:43"
-}
-{
-    "distance": 10.518750190734863,
-    "event_type": "INPUT_EVENT",
-    "id_session": 2136653944,
-    "levelButton": 2,
-    "nLevel": 14,
-    "numNote": 6,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-13 17:07:43"
-}
-{
-    "distance": 10.518750190734863,
-    "event_type": "INPUT_EVENT",
-    "id_session": 2136653944,
-    "levelButton": 6,
-    "nLevel": 14,
-    "numNote": 7,
-    "playerButton": 6,
-    "time_stamp": "Thu 2021-05-13 17:07:43"
-}{
     "event_type": "LOG_EVENT",
-    "id_session": 195638926,
-    "time_stamp": "Thu 2021-05-13 17:30:01"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 5,
-    "nLevel": 14,
-    "numNote": 1,
-    "playerButton": 5,
-    "time_stamp": "Thu 2021-05-13 17:30:21"
-}
-{
-    "distance": 10.518750190734863,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 1,
-    "nLevel": 14,
-    "numNote": 2,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-13 17:30:21"
-}
-{
-    "distance": 10.518750190734863,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 6,
-    "nLevel": 14,
-    "numNote": 3,
-    "playerButton": 6,
-    "time_stamp": "Thu 2021-05-13 17:30:21"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 3,
-    "nLevel": 14,
-    "numNote": 4,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-13 17:30:22"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 7,
-    "nLevel": 14,
-    "numNote": 5,
-    "playerButton": 7,
-    "time_stamp": "Thu 2021-05-13 17:30:22"
-}
-{
-    "distance": 10.518750190734863,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 2,
-    "nLevel": 14,
-    "numNote": 6,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-13 17:30:22"
-}
-{
-    "distance": 21.356250762939453,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 6,
-    "nLevel": 14,
-    "numNote": 7,
-    "playerButton": 6,
-    "time_stamp": "Thu 2021-05-13 17:30:23"
-}
-{
-    "distance": 15.9375,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 3,
-    "nLevel": 14,
-    "numNote": 8,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-13 17:30:23"
-}
-{
-    "distance": 10.518750190734863,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 7,
-    "nLevel": 14,
-    "numNote": 9,
-    "playerButton": 7,
-    "time_stamp": "Thu 2021-05-13 17:30:23"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 2,
-    "nLevel": 14,
-    "numNote": 10,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-13 17:30:23"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 4,
-    "nLevel": 14,
-    "numNote": 11,
-    "playerButton": 4,
-    "time_stamp": "Thu 2021-05-13 17:30:24"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 0,
-    "nLevel": 14,
-    "numNote": 12,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-13 17:30:24"
-}
-{
-    "distance": 10.837499618530273,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 6,
-    "nLevel": 14,
-    "numNote": 13,
-    "playerButton": 6,
-    "time_stamp": "Thu 2021-05-13 17:30:24"
-}
-{
-    "distance": 2.2737367544323206e-13,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 6,
-    "nLevel": 14,
-    "numNote": 14,
-    "playerButton": 6,
-    "time_stamp": "Thu 2021-05-13 17:30:25"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 3,
-    "nLevel": 14,
-    "numNote": 15,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-13 17:30:25"
-}
-{
-    "distance": 2.2737367544323206e-13,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 3,
-    "nLevel": 14,
-    "numNote": 16,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-13 17:30:25"
-}
-{
-    "distance": 2.2737367544323206e-13,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 4,
-    "nLevel": 14,
-    "numNote": 17,
-    "playerButton": 4,
-    "time_stamp": "Thu 2021-05-13 17:30:26"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 4,
-    "nLevel": 14,
-    "numNote": 18,
-    "playerButton": 4,
-    "time_stamp": "Thu 2021-05-13 17:30:26"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 0,
-    "nLevel": 14,
-    "numNote": 19,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-13 17:30:26"
-}
-{
-    "distance": 5.099999904632568,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 0,
-    "nLevel": 14,
-    "numNote": 20,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-13 17:30:26"
-}
-{
-    "distance": 2.2737367544323206e-13,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 5,
-    "nLevel": 14,
-    "numNote": 21,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-13 17:30:27"
-}
-{
-    "distance": 2.2737367544323206e-13,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 1,
-    "nLevel": 14,
-    "numNote": 22,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-13 17:30:27"
-}
-{
-    "distance": 10.518750190734863,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 6,
-    "nLevel": 14,
-    "numNote": 23,
-    "playerButton": 6,
-    "time_stamp": "Thu 2021-05-13 17:30:28"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 3,
-    "nLevel": 14,
-    "numNote": 24,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-13 17:30:28"
-}
-{
-    "distance": 21.356250762939453,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 7,
-    "nLevel": 14,
-    "numNote": 25,
-    "playerButton": 7,
-    "time_stamp": "Thu 2021-05-13 17:30:28"
-}
-{
-    "distance": 15.9375,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 2,
-    "nLevel": 14,
-    "numNote": 26,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-13 17:30:29"
-}
-{
-    "distance": 37.29375076293945,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 6,
-    "nLevel": 14,
-    "numNote": 27,
-    "playerButton": 6,
-    "time_stamp": "Thu 2021-05-13 17:30:29"
-}
-{
-    "distance": 15.9375,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 3,
-    "nLevel": 14,
-    "numNote": 28,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-13 17:30:29"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 7,
-    "nLevel": 14,
-    "numNote": 29,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-13 17:30:30"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 2,
-    "nLevel": 14,
-    "numNote": 30,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-13 17:30:30"
-}
-{
-    "distance": 10.518750190734863,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 4,
-    "nLevel": 14,
-    "numNote": 31,
-    "playerButton": 4,
-    "time_stamp": "Thu 2021-05-13 17:30:30"
-}
-{
-    "distance": 2.2737367544323206e-13,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 0,
-    "nLevel": 14,
-    "numNote": 32,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-13 17:30:30"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 6,
-    "nLevel": 14,
-    "numNote": 33,
-    "playerButton": 6,
-    "time_stamp": "Thu 2021-05-13 17:30:31"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 6,
-    "nLevel": 14,
-    "numNote": 34,
-    "playerButton": 6,
-    "time_stamp": "Thu 2021-05-13 17:30:31"
-}
-{
-    "distance": 21.356250762939453,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 2,
-    "nLevel": 14,
-    "numNote": 35,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-13 17:30:31"
-}
-{
-    "distance": 2.2737367544323206e-13,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 2,
-    "nLevel": 14,
-    "numNote": 36,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-13 17:30:31"
-}
-{
-    "distance": 2.2737367544323206e-13,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 5,
-    "nLevel": 14,
-    "numNote": 37,
-    "playerButton": 5,
-    "time_stamp": "Thu 2021-05-13 17:30:32"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 0,
-    "nLevel": 14,
-    "numNote": 38,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-13 17:30:32"
-}
-{
-    "distance": 15.9375,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 6,
-    "nLevel": 14,
-    "numNote": 39,
-    "playerButton": 6,
-    "time_stamp": "Thu 2021-05-13 17:30:32"
-}
-{
-    "distance": 15.9375,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 6,
-    "nLevel": 14,
-    "numNote": 40,
-    "playerButton": 6,
-    "time_stamp": "Thu 2021-05-13 17:30:33"
-}
-{
-    "distance": 21.037500381469727,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 4,
-    "nLevel": 14,
-    "numNote": 41,
-    "playerButton": 4,
-    "time_stamp": "Thu 2021-05-13 17:30:33"
-}
-{
-    "distance": 15.9375,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 0,
-    "nLevel": 14,
-    "numNote": 42,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-13 17:30:33"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 3,
-    "nLevel": 14,
-    "numNote": 43,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-13 17:30:34"
-}
-{
-    "distance": 10.518750190734863,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 3,
-    "nLevel": 14,
-    "numNote": 44,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-13 17:30:34"
-}
-{
-    "distance": 3.410605131648481e-13,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 5,
-    "nLevel": 14,
-    "numNote": 45,
-    "playerButton": 5,
-    "time_stamp": "Thu 2021-05-13 17:30:34"
-}
-{
-    "distance": 5.099999904632568,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 0,
-    "nLevel": 14,
-    "numNote": 46,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-13 17:30:34"
-}
-{
-    "distance": 10.837499618530273,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 6,
-    "nLevel": 14,
-    "numNote": 47,
-    "playerButton": 6,
-    "time_stamp": "Thu 2021-05-13 17:30:35"
-}
-{
-    "distance": 21.356250762939453,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 2,
-    "nLevel": 14,
-    "numNote": 48,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-13 17:30:35"
-}
-{
-    "distance": 21.037500381469727,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 7,
-    "nLevel": 14,
-    "numNote": 49,
-    "playerButton": 7,
-    "time_stamp": "Thu 2021-05-13 17:30:36"
-}
-{
-    "distance": 15.9375,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 3,
-    "nLevel": 14,
-    "numNote": 50,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-13 17:30:36"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 4,
-    "nLevel": 14,
-    "numNote": 51,
-    "playerButton": 4,
-    "time_stamp": "Thu 2021-05-13 17:30:37"
-}
-{
-    "distance": 10.518750190734863,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 0,
-    "nLevel": 14,
-    "numNote": 52,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-13 17:30:37"
-}
-{
-    "distance": 10.518750190734863,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 5,
-    "nLevel": 14,
-    "numNote": 53,
-    "playerButton": 5,
-    "time_stamp": "Thu 2021-05-13 17:30:37"
-}
-{
-    "distance": 1.1368683772161603e-13,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 1,
-    "nLevel": 14,
-    "numNote": 54,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-13 17:30:38"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 6,
-    "nLevel": 14,
-    "numNote": 55,
-    "playerButton": 6,
-    "time_stamp": "Thu 2021-05-13 17:30:39"
-}
-{
-    "distance": 3.410605131648481e-13,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 2,
-    "nLevel": 14,
-    "numNote": 56,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-13 17:30:39"
-}
-{
-    "distance": 10.518750190734863,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 6,
-    "nLevel": 14,
-    "numNote": 57,
-    "playerButton": 6,
-    "time_stamp": "Thu 2021-05-13 17:30:39"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 2,
-    "nLevel": 14,
-    "numNote": 58,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-13 17:30:39"
-}
-{
-    "distance": 10.518750190734863,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 7,
-    "nLevel": 14,
-    "numNote": 59,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-13 17:30:40"
-}
-{
-    "distance": 10.518750190734863,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 3,
-    "nLevel": 14,
-    "numNote": 60,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-13 17:30:40"
-}
-{
-    "distance": 10.518750190734863,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 7,
-    "nLevel": 14,
-    "numNote": 61,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-13 17:30:40"
-}
-{
-    "distance": 10.518750190734863,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 3,
-    "nLevel": 14,
-    "numNote": 62,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-13 17:30:40"
-}
-{
-    "distance": 10.518750190734863,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 5,
-    "nLevel": 14,
-    "numNote": 63,
-    "playerButton": 5,
-    "time_stamp": "Thu 2021-05-13 17:30:41"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 1,
-    "nLevel": 14,
-    "numNote": 64,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-13 17:30:41"
-}
-{
-    "distance": 10.518750190734863,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 0,
-    "nLevel": 14,
-    "numNote": 65,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-13 17:30:41"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 4,
-    "nLevel": 14,
-    "numNote": 66,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-13 17:30:41"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 5,
-    "nLevel": 14,
-    "numNote": 67,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-13 17:30:42"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 2,
-    "nLevel": 14,
-    "numNote": 68,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-13 17:30:42"
-}
-{
-    "distance": 5.099999904632568,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 1,
-    "nLevel": 14,
-    "numNote": 69,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-13 17:30:42"
-}
-{
-    "distance": 26.456249237060547,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 5,
-    "nLevel": 14,
-    "numNote": 70,
-    "playerButton": 5,
-    "time_stamp": "Thu 2021-05-13 17:30:43"
-}
-{
-    "distance": 21.356250762939453,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 1,
-    "nLevel": 14,
-    "numNote": 71,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-13 17:30:43"
-}
-{
-    "distance": 26.774999618530273,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 5,
-    "nLevel": 14,
-    "numNote": 72,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-13 17:30:43"
-}
-{
-    "distance": 26.774999618530273,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 1,
-    "nLevel": 14,
-    "numNote": 73,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-13 17:30:43"
-}
-{
-    "distance": 26.456249237060547,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 4,
-    "nLevel": 14,
-    "numNote": 74,
-    "playerButton": 4,
-    "time_stamp": "Thu 2021-05-13 17:30:44"
-}
-{
-    "distance": 15.9375,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 0,
-    "nLevel": 14,
-    "numNote": 75,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-13 17:30:44"
-}
-{
-    "distance": 15.9375,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 4,
-    "nLevel": 14,
-    "numNote": 76,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-13 17:30:44"
-}
-{
-    "distance": 15.9375,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 0,
-    "nLevel": 14,
-    "numNote": 77,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-13 17:30:44"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 6,
-    "nLevel": 14,
-    "numNote": 78,
-    "playerButton": 6,
-    "time_stamp": "Thu 2021-05-13 17:30:44"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 7,
-    "nLevel": 14,
-    "numNote": 79,
-    "playerButton": 7,
-    "time_stamp": "Thu 2021-05-13 17:30:45"
-}
-{
-    "distance": 10.518750190734863,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 4,
-    "nLevel": 14,
-    "numNote": 80,
-    "playerButton": 4,
-    "time_stamp": "Thu 2021-05-13 17:30:45"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 5,
-    "nLevel": 14,
-    "numNote": 81,
-    "playerButton": 5,
-    "time_stamp": "Thu 2021-05-13 17:30:45"
-}
-{
-    "distance": 21.356250762939453,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 1,
-    "nLevel": 14,
-    "numNote": 82,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-13 17:30:46"
-}
-{
-    "distance": 10.518750190734863,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 3,
-    "nLevel": 14,
-    "numNote": 83,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-13 17:30:46"
-}
-{
-    "distance": 10.518750190734863,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 2,
-    "nLevel": 14,
-    "numNote": 84,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-13 17:30:46"
-}
-{
-    "distance": 10.518750190734863,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 0,
-    "nLevel": 14,
-    "numNote": 85,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-13 17:30:47"
-}
-{
-    "distance": 15.9375,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 5,
-    "nLevel": 14,
-    "numNote": 86,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-13 17:30:47"
-}
-{
-    "distance": 15.9375,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 1,
-    "nLevel": 14,
-    "numNote": 87,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-13 17:30:47"
-}
-{
-    "distance": 3.410605131648481e-13,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 6,
-    "nLevel": 14,
-    "numNote": 88,
-    "playerButton": 6,
-    "time_stamp": "Thu 2021-05-13 17:30:48"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 6,
-    "nLevel": 14,
-    "numNote": 89,
-    "playerButton": 6,
-    "time_stamp": "Thu 2021-05-13 17:30:48"
-}
-{
-    "distance": 3.410605131648481e-13,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 2,
-    "nLevel": 14,
-    "numNote": 90,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-13 17:30:48"
-}
-{
-    "distance": 5.099999904632568,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 4,
-    "nLevel": 14,
-    "numNote": 91,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-13 17:30:49"
-}
-{
-    "distance": 5.099999904632568,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 0,
-    "nLevel": 14,
-    "numNote": 92,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-13 17:30:49"
-}
-{
-    "distance": 2.2737367544323206e-13,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 4,
-    "nLevel": 14,
-    "numNote": 93,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-13 17:30:49"
-}
-{
-    "distance": 2.2737367544323206e-13,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 0,
-    "nLevel": 14,
-    "numNote": 94,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-13 17:30:49"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 7,
-    "nLevel": 14,
-    "numNote": 95,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-13 17:30:50"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 3,
-    "nLevel": 14,
-    "numNote": 96,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-13 17:30:50"
-}
-{
-    "distance": 10.837499618530273,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 7,
-    "nLevel": 14,
-    "numNote": 97,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-13 17:30:50"
-}
-{
-    "distance": 10.837499618530273,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 3,
-    "nLevel": 14,
-    "numNote": 98,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-13 17:30:50"
-}
-{
-    "distance": 5.099999904632568,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 5,
-    "nLevel": 14,
-    "numNote": 99,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-13 17:30:51"
-}
-{
-    "distance": 5.099999904632568,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 1,
-    "nLevel": 14,
-    "numNote": 100,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-13 17:30:51"
-}
-{
-    "distance": 3.410605131648481e-13,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 5,
-    "nLevel": 14,
-    "numNote": 101,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-13 17:30:51"
-}
-{
-    "distance": 3.410605131648481e-13,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 1,
-    "nLevel": 14,
-    "numNote": 102,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-13 17:30:51"
-}
-{
-    "distance": 2.2737367544323206e-13,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 4,
-    "nLevel": 14,
-    "numNote": 103,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-13 17:30:52"
-}
-{
-    "distance": 2.2737367544323206e-13,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 0,
-    "nLevel": 14,
-    "numNote": 104,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-13 17:30:52"
-}
-{
-    "distance": 5.099999904632568,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 4,
-    "nLevel": 14,
-    "numNote": 105,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-13 17:30:52"
-}
-{
-    "distance": 5.099999904632568,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 0,
-    "nLevel": 14,
-    "numNote": 106,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-13 17:30:52"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 4,
-    "nLevel": 14,
-    "numNote": 107,
-    "playerButton": 4,
-    "time_stamp": "Thu 2021-05-13 17:30:53"
-}
-{
-    "distance": 5.099999904632568,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 0,
-    "nLevel": 14,
-    "numNote": 108,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-13 17:30:54"
-}
-{
-    "distance": 10.518750190734863,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 4,
-    "nLevel": 14,
-    "numNote": 109,
-    "playerButton": 4,
-    "time_stamp": "Thu 2021-05-13 17:30:54"
-}
-{
-    "distance": 10.518750190734863,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 0,
-    "nLevel": 14,
-    "numNote": 110,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-13 17:30:54"
-}
-{
-    "distance": 10.518750190734863,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 4,
-    "nLevel": 14,
-    "numNote": 111,
-    "playerButton": 4,
-    "time_stamp": "Thu 2021-05-13 17:30:54"
-}
-{
-    "distance": 10.518750190734863,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 0,
-    "nLevel": 14,
-    "numNote": 112,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-13 17:30:54"
-}
-{
-    "distance": 10.518750190734863,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 4,
-    "nLevel": 14,
-    "numNote": 113,
-    "playerButton": 4,
-    "time_stamp": "Thu 2021-05-13 17:30:55"
-}
-{
-    "distance": 15.9375,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 0,
-    "nLevel": 14,
-    "numNote": 114,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-13 17:30:55"
-}
-{
-    "distance": 5.099999904632568,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 3,
-    "nLevel": 14,
-    "numNote": 115,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-13 17:30:55"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 3,
-    "nLevel": 14,
-    "numNote": 116,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-13 17:30:56"
-}
-{
-    "distance": 15.9375,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 4,
-    "nLevel": 14,
-    "numNote": 117,
-    "playerButton": 4,
-    "time_stamp": "Thu 2021-05-13 17:30:56"
-}
-{
-    "distance": 5.099999904632568,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 4,
-    "nLevel": 14,
-    "numNote": 118,
-    "playerButton": 4,
-    "time_stamp": "Thu 2021-05-13 17:30:56"
-}
-{
-    "distance": 3.410605131648481e-13,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 0,
-    "nLevel": 14,
-    "numNote": 119,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-13 17:30:57"
-}
-{
-    "distance": 3.410605131648481e-13,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 0,
-    "nLevel": 14,
-    "numNote": 120,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-13 17:30:57"
-}
-{
-    "distance": 2.2737367544323206e-13,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 5,
-    "nLevel": 14,
-    "numNote": 121,
-    "playerButton": 5,
-    "time_stamp": "Thu 2021-05-13 17:30:57"
-}
-{
-    "distance": 5.099999904632568,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 1,
-    "nLevel": 14,
-    "numNote": 122,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-13 17:30:57"
-}
-{
-    "distance": 10.837499618530273,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 5,
-    "nLevel": 14,
-    "numNote": 123,
-    "playerButton": 5,
-    "time_stamp": "Thu 2021-05-13 17:30:58"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 0,
-    "nLevel": 14,
-    "numNote": 124,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-13 17:30:58"
-}
-{
-    "distance": 10.837499618530273,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 6,
-    "nLevel": 14,
-    "numNote": 125,
-    "playerButton": 6,
-    "time_stamp": "Thu 2021-05-13 17:30:59"
-}
-{
-    "distance": 2.2737367544323206e-13,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 2,
-    "nLevel": 14,
-    "numNote": 126,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-13 17:30:59"
-}
-{
-    "distance": 10.837499618530273,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 6,
-    "nLevel": 14,
-    "numNote": 127,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-13 17:31:00"
-}
-{
-    "distance": 10.837499618530273,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 2,
-    "nLevel": 14,
-    "numNote": 128,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-13 17:31:00"
-}
-{
-    "distance": 21.356250762939453,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 6,
-    "nLevel": 14,
-    "numNote": 129,
-    "playerButton": 6,
-    "time_stamp": "Thu 2021-05-13 17:31:00"
-}
-{
-    "distance": 10.837499618530273,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 2,
-    "nLevel": 14,
-    "numNote": 130,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-13 17:31:00"
-}
-{
-    "distance": 10.837499618530273,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 7,
-    "nLevel": 14,
-    "numNote": 131,
-    "playerButton": 7,
-    "time_stamp": "Thu 2021-05-13 17:31:00"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 3,
-    "nLevel": 14,
-    "numNote": 132,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-13 17:31:00"
-}
-{
-    "distance": 1.1368683772161603e-13,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 7,
-    "nLevel": 14,
-    "numNote": 133,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-13 17:31:00"
-}
-{
-    "distance": 1.1368683772161603e-13,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 3,
-    "nLevel": 14,
-    "numNote": 134,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-13 17:31:00"
-}
-{
-    "distance": 3.410605131648481e-13,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 5,
-    "nLevel": 14,
-    "numNote": 135,
-    "playerButton": 5,
-    "time_stamp": "Thu 2021-05-13 17:31:01"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 1,
-    "nLevel": 14,
-    "numNote": 136,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-13 17:31:01"
-}
-{
-    "distance": 15.9375,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 5,
-    "nLevel": 14,
-    "numNote": 137,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-13 17:31:01"
-}
-{
-    "distance": 15.9375,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 1,
-    "nLevel": 14,
-    "numNote": 138,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-13 17:31:01"
-}
-{
-    "distance": 15.9375,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 4,
-    "nLevel": 14,
-    "numNote": 139,
-    "playerButton": 4,
-    "time_stamp": "Thu 2021-05-13 17:31:01"
-}
-{
-    "distance": 21.037500381469727,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 0,
-    "nLevel": 14,
-    "numNote": 140,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-13 17:31:01"
-}
-{
-    "distance": 15.9375,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 4,
-    "nLevel": 14,
-    "numNote": 141,
-    "playerButton": 4,
-    "time_stamp": "Thu 2021-05-13 17:31:01"
-}
-{
-    "distance": 21.037500381469727,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 0,
-    "nLevel": 14,
-    "numNote": 142,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-13 17:31:01"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 7,
-    "nLevel": 14,
-    "numNote": 143,
-    "playerButton": 7,
-    "time_stamp": "Thu 2021-05-13 17:31:02"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 3,
-    "nLevel": 14,
-    "numNote": 144,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-13 17:31:03"
-}
-{
-    "distance": 10.837499618530273,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 7,
-    "nLevel": 14,
-    "numNote": 145,
-    "playerButton": 7,
-    "time_stamp": "Thu 2021-05-13 17:31:04"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 2,
-    "nLevel": 14,
-    "numNote": 146,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-13 17:31:04"
-}
-{
-    "distance": 21.356250762939453,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 6,
-    "nLevel": 14,
-    "numNote": 147,
-    "playerButton": 6,
-    "time_stamp": "Thu 2021-05-13 17:31:04"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 3,
-    "nLevel": 14,
-    "numNote": 148,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-13 17:31:04"
-}
-{
-    "distance": 10.837499618530273,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 7,
-    "nLevel": 14,
-    "numNote": 149,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-13 17:31:05"
-}
-{
-    "distance": 10.837499618530273,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 2,
-    "nLevel": 14,
-    "numNote": 150,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-13 17:31:05"
-}
-{
-    "distance": 10.837499618530273,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 4,
-    "nLevel": 14,
-    "numNote": 151,
-    "playerButton": 4,
-    "time_stamp": "Thu 2021-05-13 17:31:05"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 0,
-    "nLevel": 14,
-    "numNote": 152,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-13 17:31:05"
-}
-{
-    "distance": 37.29375076293945,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 6,
-    "nLevel": 14,
-    "numNote": 153,
-    "playerButton": 6,
-    "time_stamp": "Thu 2021-05-13 17:31:06"
-}
-{
-    "distance": 26.774999618530273,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 6,
-    "nLevel": 14,
-    "numNote": 154,
-    "playerButton": 6,
-    "time_stamp": "Thu 2021-05-13 17:31:06"
-}
-{
-    "distance": 21.356250762939453,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 3,
-    "nLevel": 14,
-    "numNote": 155,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-13 17:31:07"
-}
-{
-    "distance": 21.037500381469727,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 3,
-    "nLevel": 14,
-    "numNote": 156,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-13 17:31:07"
-}
-{
-    "distance": 2.2737367544323206e-13,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 4,
-    "nLevel": 14,
-    "numNote": 157,
-    "playerButton": 4,
-    "time_stamp": "Thu 2021-05-13 17:31:07"
-}
-{
-    "distance": 2.2737367544323206e-13,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 4,
-    "nLevel": 14,
-    "numNote": 158,
-    "playerButton": 4,
-    "time_stamp": "Thu 2021-05-13 17:31:07"
-}
-{
-    "distance": 15.9375,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 5,
-    "nLevel": 14,
-    "numNote": 159,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-13 17:31:08"
-}
-{
-    "distance": 15.9375,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 0,
-    "nLevel": 14,
-    "numNote": 160,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-13 17:31:08"
-}
-{
-    "distance": 15.9375,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 6,
-    "nLevel": 14,
-    "numNote": 161,
-    "playerButton": 6,
-    "time_stamp": "Thu 2021-05-13 17:31:09"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 3,
-    "nLevel": 14,
-    "numNote": 162,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-13 17:31:10"
-}
-{
-    "distance": 37.29375076293945,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 7,
-    "nLevel": 14,
-    "numNote": 163,
-    "playerButton": 7,
-    "time_stamp": "Thu 2021-05-13 17:31:10"
-}
-{
-    "distance": 10.837499618530273,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 2,
-    "nLevel": 14,
-    "numNote": 164,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-13 17:31:10"
-}
-{
-    "distance": 42.712501525878906,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 6,
-    "nLevel": 14,
-    "numNote": 165,
-    "playerButton": 6,
-    "time_stamp": "Thu 2021-05-13 17:31:11"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 3,
-    "nLevel": 14,
-    "numNote": 166,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-13 17:31:11"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 7,
-    "nLevel": 14,
-    "numNote": 167,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-13 17:31:11"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 2,
-    "nLevel": 14,
-    "numNote": 168,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-13 17:31:11"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 4,
-    "nLevel": 14,
-    "numNote": 169,
-    "playerButton": 4,
-    "time_stamp": "Thu 2021-05-13 17:31:12"
-}
-{
-    "distance": 5.099999904632568,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 0,
-    "nLevel": 14,
-    "numNote": 170,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-13 17:31:12"
-}
-{
-    "distance": 15.9375,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 6,
-    "nLevel": 14,
-    "numNote": 171,
-    "playerButton": 6,
-    "time_stamp": "Thu 2021-05-13 17:31:13"
-}
-{
-    "distance": 15.9375,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 6,
-    "nLevel": 14,
-    "numNote": 172,
-    "playerButton": 6,
-    "time_stamp": "Thu 2021-05-13 17:31:13"
-}
-{
-    "distance": 10.837499618530273,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 3,
-    "nLevel": 14,
-    "numNote": 173,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-13 17:31:13"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 3,
-    "nLevel": 14,
-    "numNote": 174,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-13 17:31:13"
-}
-{
-    "distance": 10.837499618530273,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 4,
-    "nLevel": 14,
-    "numNote": 175,
-    "playerButton": 4,
-    "time_stamp": "Thu 2021-05-13 17:31:14"
-}
-{
-    "distance": 15.9375,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 4,
-    "nLevel": 14,
-    "numNote": 176,
-    "playerButton": 4,
-    "time_stamp": "Thu 2021-05-13 17:31:14"
-}
-{
-    "distance": 2.2737367544323206e-13,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 5,
-    "nLevel": 14,
-    "numNote": 177,
-    "playerButton": 5,
-    "time_stamp": "Thu 2021-05-13 17:31:15"
-}
-{
-    "distance": 5.099999904632568,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 0,
-    "nLevel": 14,
-    "numNote": 178,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-13 17:31:15"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 6,
-    "nLevel": 14,
-    "numNote": 179,
-    "playerButton": 6,
-    "time_stamp": "Thu 2021-05-13 17:31:17"
-}
-{
-    "distance": 2.2737367544323206e-13,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 1,
-    "nLevel": 14,
-    "numNote": 180,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-13 17:31:17"
-}
-{
-    "distance": 5.099999904632568,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 6,
-    "nLevel": 14,
-    "numNote": 181,
-    "playerButton": 6,
-    "time_stamp": "Thu 2021-05-13 17:31:17"
-}
-{
-    "distance": 10.518750190734863,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 1,
-    "nLevel": 14,
-    "numNote": 182,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-13 17:31:17"
-}
-{
-    "distance": 5.099999904632568,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 6,
-    "nLevel": 14,
-    "numNote": 183,
-    "playerButton": 6,
-    "time_stamp": "Thu 2021-05-13 17:31:17"
-}
-{
-    "distance": 10.518750190734863,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 1,
-    "nLevel": 14,
-    "numNote": 184,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-13 17:31:17"
-}
-{
-    "distance": 2.2737367544323206e-13,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 6,
-    "nLevel": 14,
-    "numNote": 185,
-    "playerButton": 6,
-    "time_stamp": "Thu 2021-05-13 17:31:17"
-}
-{
-    "distance": 5.099999904632568,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 1,
-    "nLevel": 14,
-    "numNote": 186,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-13 17:31:17"
-}
-{
-    "distance": 10.518750190734863,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 7,
-    "nLevel": 14,
-    "numNote": 187,
-    "playerButton": 7,
-    "time_stamp": "Thu 2021-05-13 17:31:18"
-}
-{
-    "distance": 15.9375,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 3,
-    "nLevel": 14,
-    "numNote": 188,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-13 17:31:19"
-}
-{
-    "distance": 15.9375,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 7,
-    "nLevel": 14,
-    "numNote": 189,
-    "playerButton": 7,
-    "time_stamp": "Thu 2021-05-13 17:31:19"
-}
-{
-    "distance": 21.037500381469727,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 3,
-    "nLevel": 14,
-    "numNote": 190,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-13 17:31:19"
-}
-{
-    "distance": 15.9375,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 7,
-    "nLevel": 14,
-    "numNote": 191,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-13 17:31:19"
-}
-{
-    "distance": 15.9375,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 3,
-    "nLevel": 14,
-    "numNote": 192,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-13 17:31:19"
-}
-{
-    "distance": 10.518750190734863,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 7,
-    "nLevel": 14,
-    "numNote": 193,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-13 17:31:19"
-}
-{
-    "distance": 10.518750190734863,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 3,
-    "nLevel": 14,
-    "numNote": 194,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-13 17:31:19"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 4,
-    "nLevel": 14,
-    "numNote": 195,
-    "playerButton": 4,
-    "time_stamp": "Thu 2021-05-13 17:31:20"
-}
-{
-    "distance": 2.2737367544323206e-13,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 2,
-    "nLevel": 14,
-    "numNote": 196,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-13 17:31:20"
-}
-{
-    "distance": 2.2737367544323206e-13,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 4,
-    "nLevel": 14,
-    "numNote": 197,
-    "playerButton": 4,
-    "time_stamp": "Thu 2021-05-13 17:31:20"
-}
-{
-    "distance": 5.099999904632568,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 2,
-    "nLevel": 14,
-    "numNote": 198,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-13 17:31:20"
-}
-{
-    "distance": 10.518750190734863,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 4,
-    "nLevel": 14,
-    "numNote": 199,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-13 17:31:21"
-}
-{
-    "distance": 10.518750190734863,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 2,
-    "nLevel": 14,
-    "numNote": 200,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-13 17:31:21"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 2,
-    "nLevel": 14,
-    "numNote": 201,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-13 17:31:21"
-}
-{
-    "distance": 16.256250381469727,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 4,
-    "nLevel": 14,
-    "numNote": 202,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-13 17:31:21"
-}
-{
-    "distance": 15.9375,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 2,
-    "nLevel": 14,
-    "numNote": 203,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-13 17:31:21"
-}
-{
-    "distance": 21.037500381469727,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 4,
-    "nLevel": 14,
-    "numNote": 204,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-13 17:31:21"
-}
-{
-    "distance": 16.256250381469727,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 2,
-    "nLevel": 14,
-    "numNote": 205,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-13 17:31:21"
-}
-{
-    "distance": 26.774999618530273,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 4,
-    "nLevel": 14,
-    "numNote": 206,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-13 17:31:21"
-}
-{
-    "distance": 26.456249237060547,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 4,
-    "nLevel": 14,
-    "numNote": 207,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-13 17:31:22"
-}
-{
-    "distance": 26.456249237060547,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 2,
-    "nLevel": 14,
-    "numNote": 208,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-13 17:31:22"
-}
-{
-    "distance": 26.456249237060547,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 2,
-    "nLevel": 14,
-    "numNote": 209,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-13 17:31:22"
-}
-{
-    "distance": 31.875,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 4,
-    "nLevel": 14,
-    "numNote": 210,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-13 17:31:22"
-}
-{
-    "distance": 31.875,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 4,
-    "nLevel": 14,
-    "numNote": 211,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-13 17:31:22"
-}
-{
-    "distance": 31.875,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 2,
-    "nLevel": 14,
-    "numNote": 212,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-13 17:31:22"
-}
-{
-    "distance": 31.556249618530273,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 4,
-    "nLevel": 14,
-    "numNote": 213,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-13 17:31:22"
-}
-{
-    "distance": 31.556249618530273,
-    "event_type": "INPUT_EVENT",
-    "id_session": 195638926,
-    "levelButton": 2,
-    "nLevel": 14,
-    "numNote": 214,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-13 17:31:22"
-}
-{
-    "event_type": "LEVEL_EVENT",
-    "id_session": 195638926,
-    "level": 14,
-    "score": 844984,
-    "time_stamp": "Thu 2021-05-13 17:31:24"
+    "id_session": 396907052,
+    "time_stamp": "Wed 2021-05-26 18:59:54"
+}
+{
+    "combo_time": 69.0,
+    "event_type": "LOST_LEVEL_EVENT",
+    "id_session": 396907052,
+    "input_type": "XBOX_INPUT",
+    "last_note": 46,
+    "level": 1,
+    "max_combo_count": 300,
+    "score": 500,
+    "time_stamp": "Wed 2021-05-26 18:59:54"
 }
 {
     "event_type": "LOG_EVENT",
-    "id_session": 811202884,
-    "time_stamp": "Thu 2021-05-20 17:56:25"
+    "id_session": 1577489818,
+    "time_stamp": "Wed 2021-05-26 19:04:30"
 }
 {
-    "distance": 4.547473508864641e-13,
+    "event_type": "LOG_EVENT",
+    "id_session": 309434505,
+    "time_stamp": "Wed 2021-05-26 19:07:47"
+}
+{
+    "distance": 11.475000381469727,
     "event_type": "INPUT_EVENT",
-    "id_session": 811202884,
-    "levelButton": 6,
-    "nLevel": 3,
+    "id_session": 309434505,
+    "levelButton": 5,
+    "nLevel": 14,
     "numNote": 1,
-    "playerButton": 6,
-    "time_stamp": "Thu 2021-05-20 17:56:38"
-}
-{
-    "distance": 6.800000190734863,
-    "event_type": "INPUT_EVENT",
-    "id_session": 811202884,
-    "levelButton": 1,
-    "nLevel": 3,
-    "numNote": 2,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-20 17:56:39"
-}
-{
-    "distance": 0.21250000596046448,
-    "event_type": "INPUT_EVENT",
-    "id_session": 811202884,
-    "levelButton": 7,
-    "nLevel": 3,
-    "numNote": 3,
-    "playerButton": 7,
-    "time_stamp": "Thu 2021-05-20 17:56:39"
-}
-{
-    "distance": 3.4000000953674316,
-    "event_type": "INPUT_EVENT",
-    "id_session": 811202884,
-    "levelButton": 4,
-    "nLevel": 3,
-    "numNote": 4,
-    "playerButton": 4,
-    "time_stamp": "Thu 2021-05-20 17:56:40"
-}
-{
-    "distance": 10.412500381469727,
-    "event_type": "INPUT_EVENT",
-    "id_session": 811202884,
-    "levelButton": 1,
-    "nLevel": 3,
-    "numNote": 5,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-20 17:56:41"
-}
-{
-    "distance": 0.21250000596046448,
-    "event_type": "INPUT_EVENT",
-    "id_session": 811202884,
-    "levelButton": 5,
-    "nLevel": 3,
-    "numNote": 6,
     "playerButton": 5,
-    "time_stamp": "Thu 2021-05-20 17:56:42"
-}
-{
-    "distance": 6.800000190734863,
-    "event_type": "INPUT_EVENT",
-    "id_session": 811202884,
-    "levelButton": 1,
-    "nLevel": 3,
-    "numNote": 7,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-20 17:56:43"
-}
-{
-    "distance": 6.800000190734863,
-    "event_type": "INPUT_EVENT",
-    "id_session": 811202884,
-    "levelButton": 6,
-    "nLevel": 3,
-    "numNote": 8,
-    "playerButton": 6,
-    "time_stamp": "Thu 2021-05-20 17:56:44"
-}
-{
-    "distance": 0.21250000596046448,
-    "event_type": "INPUT_EVENT",
-    "id_session": 811202884,
-    "levelButton": 2,
-    "nLevel": 3,
-    "numNote": 9,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-20 17:56:44"
-}
-{
-    "distance": 3.612499952316284,
-    "event_type": "INPUT_EVENT",
-    "id_session": 811202884,
-    "levelButton": 3,
-    "nLevel": 3,
-    "numNote": 10,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-20 17:56:45"
-}
-{
-    "distance": 10.412500381469727,
-    "event_type": "INPUT_EVENT",
-    "id_session": 811202884,
-    "levelButton": 6,
-    "nLevel": 3,
-    "numNote": 11,
-    "playerButton": 6,
-    "time_stamp": "Thu 2021-05-20 17:56:46"
-}
-{
-    "distance": 3.1875,
-    "event_type": "INPUT_EVENT",
-    "id_session": 811202884,
-    "levelButton": 0,
-    "nLevel": 3,
-    "numNote": 12,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-20 17:56:46"
-}
-{
-    "distance": 3.4000000953674316,
-    "event_type": "INPUT_EVENT",
-    "id_session": 811202884,
-    "levelButton": 6,
-    "nLevel": 3,
-    "numNote": 13,
-    "playerButton": 6,
-    "time_stamp": "Thu 2021-05-20 17:56:48"
-}
-{
-    "distance": 0.21250000596046448,
-    "event_type": "INPUT_EVENT",
-    "id_session": 811202884,
-    "levelButton": 1,
-    "nLevel": 3,
-    "numNote": 14,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-20 17:56:49"
-}
-{
-    "distance": 14.024999618530273,
-    "event_type": "INPUT_EVENT",
-    "id_session": 811202884,
-    "levelButton": 7,
-    "nLevel": 3,
-    "numNote": 15,
-    "playerButton": 7,
-    "time_stamp": "Thu 2021-05-20 17:56:49"
-}
-{
-    "distance": 3.612499952316284,
-    "event_type": "INPUT_EVENT",
-    "id_session": 811202884,
-    "levelButton": 4,
-    "nLevel": 3,
-    "numNote": 16,
-    "playerButton": 4,
-    "time_stamp": "Thu 2021-05-20 17:56:50"
-}
-{
-    "distance": 14.024999618530273,
-    "event_type": "INPUT_EVENT",
-    "id_session": 811202884,
-    "levelButton": 1,
-    "nLevel": 3,
-    "numNote": 17,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-20 17:56:51"
-}
-{
-    "distance": 3.4000000953674316,
-    "event_type": "INPUT_EVENT",
-    "id_session": 811202884,
-    "levelButton": 5,
-    "nLevel": 3,
-    "numNote": 18,
-    "playerButton": 5,
-    "time_stamp": "Thu 2021-05-20 17:56:51"
-}
-{
-    "distance": 10.199999809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 811202884,
-    "levelButton": 1,
-    "nLevel": 3,
-    "numNote": 19,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-20 17:56:52"
-}
-{
-    "distance": 6.800000190734863,
-    "event_type": "INPUT_EVENT",
-    "id_session": 811202884,
-    "levelButton": 6,
-    "nLevel": 3,
-    "numNote": 20,
-    "playerButton": 6,
-    "time_stamp": "Thu 2021-05-20 17:56:53"
+    "time_stamp": "Wed 2021-05-26 19:08:03"
 }
 {
     "distance": 3.825000047683716,
     "event_type": "INPUT_EVENT",
-    "id_session": 811202884,
-    "levelButton": 2,
-    "nLevel": 3,
-    "numNote": 21,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-20 17:56:54"
-}
-{
-    "distance": 3.4000000953674316,
-    "event_type": "INPUT_EVENT",
-    "id_session": 811202884,
-    "levelButton": 3,
-    "nLevel": 3,
-    "numNote": 22,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-20 17:56:55"
-}
-{
-    "distance": 7.012499809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": 811202884,
-    "levelButton": 6,
-    "nLevel": 3,
-    "numNote": 23,
-    "playerButton": 6,
-    "time_stamp": "Thu 2021-05-20 17:56:56"
-}
-{
-    "distance": 10.412500381469727,
-    "event_type": "INPUT_EVENT",
-    "id_session": 811202884,
-    "levelButton": 0,
-    "nLevel": 3,
-    "numNote": 24,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-20 17:56:56"
-}
-{
-    "event_type": "LOG_EVENT",
-    "id_session": 1672767310,
-    "time_stamp": "Thu 2021-05-20 18:04:06"
-}
-{
-    "distance": 9.027000427246094,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 1,
-    "nLevel": 19,
-    "numNote": 1,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-20 18:04:12"
-}
-{
-    "distance": 9.027000427246094,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 5,
-    "nLevel": 19,
-    "numNote": 2,
-    "playerButton": 5,
-    "time_stamp": "Thu 2021-05-20 18:04:12"
-}
-{
-    "distance": 9.027000427246094,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 1,
-    "nLevel": 19,
-    "numNote": 3,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-20 18:04:12"
-}
-{
-    "distance": 9.027000427246094,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 5,
-    "nLevel": 19,
-    "numNote": 4,
-    "playerButton": 5,
-    "time_stamp": "Thu 2021-05-20 18:04:12"
-}
-{
-    "distance": 14.517999649047852,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 1,
-    "nLevel": 19,
-    "numNote": 5,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-20 18:04:12"
-}
-{
-    "distance": 1.6319999694824219,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 5,
-    "nLevel": 19,
-    "numNote": 6,
-    "playerButton": 5,
-    "time_stamp": "Thu 2021-05-20 18:04:12"
-}
-{
-    "distance": 1.309000015258789,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 6,
-    "nLevel": 19,
-    "numNote": 7,
-    "playerButton": 6,
-    "time_stamp": "Thu 2021-05-20 18:04:13"
-}
-{
-    "distance": 3.5360000133514404,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 6,
-    "nLevel": 19,
-    "numNote": 8,
-    "playerButton": 6,
-    "time_stamp": "Thu 2021-05-20 18:04:13"
-}
-{
-    "distance": 3.8589999675750732,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 6,
-    "nLevel": 19,
-    "numNote": 9,
-    "playerButton": 6,
-    "time_stamp": "Thu 2021-05-20 18:04:13"
-}
-{
-    "distance": 1.309000015258789,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 1,
-    "nLevel": 19,
-    "numNote": 10,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-20 18:04:15"
-}
-{
-    "distance": 12.291000366210938,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 5,
-    "nLevel": 19,
-    "numNote": 11,
-    "playerButton": 5,
-    "time_stamp": "Thu 2021-05-20 18:04:15"
-}
-{
-    "distance": 1.6319999694824219,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 1,
-    "nLevel": 19,
-    "numNote": 12,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-20 18:04:15"
-}
-{
-    "distance": 7.123000144958496,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 5,
-    "nLevel": 19,
-    "numNote": 13,
-    "playerButton": 5,
-    "time_stamp": "Thu 2021-05-20 18:04:15"
-}
-{
-    "distance": 1.309000015258789,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 1,
-    "nLevel": 19,
-    "numNote": 14,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-20 18:04:15"
-}
-{
-    "distance": 6.800000190734863,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 5,
-    "nLevel": 19,
-    "numNote": 15,
-    "playerButton": 5,
-    "time_stamp": "Thu 2021-05-20 18:04:15"
-}
-{
-    "distance": 14.517999649047852,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 3,
-    "nLevel": 19,
-    "numNote": 16,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-20 18:04:16"
-}
-{
-    "distance": 3.5360000133514404,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 3,
-    "nLevel": 19,
-    "numNote": 17,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-20 18:04:16"
-}
-{
-    "distance": 12.291000366210938,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 3,
-    "nLevel": 19,
-    "numNote": 18,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-20 18:04:17"
-}
-{
-    "distance": 3.8589999675750732,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 1,
-    "nLevel": 19,
-    "numNote": 19,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-20 18:04:18"
-}
-{
-    "distance": 7.123000144958496,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 5,
-    "nLevel": 19,
-    "numNote": 20,
-    "playerButton": 5,
-    "time_stamp": "Thu 2021-05-20 18:04:18"
-}
-{
-    "distance": 3.5360000133514404,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 1,
-    "nLevel": 19,
-    "numNote": 21,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-20 18:04:18"
-}
-{
-    "distance": 1.6319999694824219,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 5,
-    "nLevel": 19,
-    "numNote": 22,
-    "playerButton": 5,
-    "time_stamp": "Thu 2021-05-20 18:04:18"
-}
-{
-    "distance": 1.6319999694824219,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 1,
-    "nLevel": 19,
-    "numNote": 23,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-20 18:04:18"
-}
-{
-    "distance": 7.123000144958496,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 5,
-    "nLevel": 19,
-    "numNote": 24,
-    "playerButton": 5,
-    "time_stamp": "Thu 2021-05-20 18:04:18"
-}
-{
-    "distance": 9.027000427246094,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 1,
-    "nLevel": 19,
-    "numNote": 25,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-20 18:04:20"
-}
-{
-    "distance": 9.027000427246094,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 5,
-    "nLevel": 19,
-    "numNote": 26,
-    "playerButton": 5,
-    "time_stamp": "Thu 2021-05-20 18:04:20"
-}
-{
-    "distance": 1.6319999694824219,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 0,
-    "nLevel": 19,
-    "numNote": 27,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-20 18:04:20"
-}
-{
-    "distance": 4.182000160217285,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 4,
-    "nLevel": 19,
-    "numNote": 28,
-    "playerButton": 4,
-    "time_stamp": "Thu 2021-05-20 18:04:21"
-}
-{
-    "distance": 4.182000160217285,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 1,
-    "nLevel": 19,
-    "numNote": 29,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-20 18:04:21"
-}
-{
-    "distance": 0.9860000014305115,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 5,
-    "nLevel": 19,
-    "numNote": 30,
-    "playerButton": 5,
-    "time_stamp": "Thu 2021-05-20 18:04:22"
-}
-{
-    "distance": 7.123000144958496,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 0,
-    "nLevel": 19,
-    "numNote": 31,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-20 18:04:22"
-}
-{
-    "distance": 1.309000015258789,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 4,
-    "nLevel": 19,
-    "numNote": 32,
-    "playerButton": 4,
-    "time_stamp": "Thu 2021-05-20 18:04:22"
-}
-{
-    "distance": 7.123000144958496,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 1,
-    "nLevel": 19,
-    "numNote": 33,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-20 18:04:23"
-}
-{
-    "distance": 9.027000427246094,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 5,
-    "nLevel": 19,
-    "numNote": 34,
-    "playerButton": 5,
-    "time_stamp": "Thu 2021-05-20 18:04:23"
-}
-{
-    "distance": 7.123000144958496,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 0,
-    "nLevel": 19,
-    "numNote": 35,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-20 18:04:24"
-}
-{
-    "distance": 14.517999649047852,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 4,
-    "nLevel": 19,
-    "numNote": 36,
-    "playerButton": 4,
-    "time_stamp": "Thu 2021-05-20 18:04:24"
-}
-{
-    "distance": 7.123000144958496,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 1,
-    "nLevel": 19,
-    "numNote": 37,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-20 18:04:26"
-}
-{
-    "distance": 3.8589999675750732,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 5,
-    "nLevel": 19,
-    "numNote": 38,
-    "playerButton": 5,
-    "time_stamp": "Thu 2021-05-20 18:04:26"
-}
-{
-    "distance": 6.1539998054504395,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 0,
-    "nLevel": 19,
-    "numNote": 39,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-20 18:04:27"
-}
-{
-    "distance": 9.67300033569336,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 4,
-    "nLevel": 19,
-    "numNote": 40,
-    "playerButton": 4,
-    "time_stamp": "Thu 2021-05-20 18:04:27"
-}
-{
-    "distance": 3.8589999675750732,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 1,
-    "nLevel": 19,
-    "numNote": 41,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-20 18:04:28"
-}
-{
-    "distance": 3.8589999675750732,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 5,
-    "nLevel": 19,
-    "numNote": 42,
-    "playerButton": 5,
-    "time_stamp": "Thu 2021-05-20 18:04:28"
-}
-{
-    "distance": 1.9550000429153442,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 0,
-    "nLevel": 19,
-    "numNote": 43,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-20 18:04:28"
-}
-{
-    "distance": 3.5360000133514404,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 4,
-    "nLevel": 19,
-    "numNote": 44,
-    "playerButton": 4,
-    "time_stamp": "Thu 2021-05-20 18:04:29"
-}
-{
-    "distance": 1.309000015258789,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 1,
-    "nLevel": 19,
-    "numNote": 45,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-20 18:04:29"
-}
-{
-    "distance": 3.8589999675750732,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 5,
-    "nLevel": 19,
-    "numNote": 46,
-    "playerButton": 5,
-    "time_stamp": "Thu 2021-05-20 18:04:29"
-}
-{
-    "distance": 1.309000015258789,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 0,
-    "nLevel": 19,
-    "numNote": 47,
-    "playerButton": 0,
-    "time_stamp": "Thu 2021-05-20 18:04:30"
-}
-{
-    "distance": 1.6319999694824219,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1672767310,
-    "levelButton": 4,
-    "nLevel": 19,
-    "numNote": 48,
-    "playerButton": 4,
-    "time_stamp": "Thu 2021-05-20 18:04:30"
-}
-{
-    "event_type": "LOG_EVENT",
-    "id_session": -111728471,
-    "time_stamp": "Thu 2021-05-20 18:08:17"
-}
-{
-    "distance": 10.837499618530273,
-    "event_type": "INPUT_EVENT",
-    "id_session": -111728471,
+    "id_session": 309434505,
     "levelButton": 1,
     "nLevel": 14,
-    "numNote": 1,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-20 18:08:31"
-}
-{
-    "distance": 10.837499618530273,
-    "event_type": "INPUT_EVENT",
-    "id_session": -111728471,
-    "levelButton": 5,
-    "nLevel": 14,
     "numNote": 2,
-    "playerButton": 5,
-    "time_stamp": "Thu 2021-05-20 18:08:31"
+    "playerButton": 1,
+    "time_stamp": "Wed 2021-05-26 19:08:03"
 }
 {
-    "distance": 10.837499618530273,
+    "distance": 15.300000190734863,
     "event_type": "INPUT_EVENT",
-    "id_session": -111728471,
+    "id_session": 309434505,
     "levelButton": 6,
     "nLevel": 14,
     "numNote": 3,
     "playerButton": 6,
-    "time_stamp": "Thu 2021-05-20 18:08:31"
+    "time_stamp": "Wed 2021-05-26 19:08:04"
 }
 {
-    "distance": 5.418749809265137,
+    "distance": 15.300000190734863,
     "event_type": "INPUT_EVENT",
-    "id_session": -111728471,
+    "id_session": 309434505,
     "levelButton": 3,
     "nLevel": 14,
     "numNote": 4,
     "playerButton": 3,
-    "time_stamp": "Thu 2021-05-20 18:08:32"
+    "time_stamp": "Wed 2021-05-26 19:08:04"
 }
 {
-    "distance": 5.099999904632568,
+    "distance": 3.825000047683716,
     "event_type": "INPUT_EVENT",
-    "id_session": -111728471,
+    "id_session": 309434505,
     "levelButton": 7,
     "nLevel": 14,
     "numNote": 5,
     "playerButton": 7,
-    "time_stamp": "Thu 2021-05-20 18:08:32"
+    "time_stamp": "Wed 2021-05-26 19:08:04"
+}
+{
+    "distance": 5.737500190734863,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 2,
+    "nLevel": 14,
+    "numNote": 6,
+    "playerButton": 2,
+    "time_stamp": "Wed 2021-05-26 19:08:04"
+}
+{
+    "distance": 11.793749809265137,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 6,
+    "nLevel": 14,
+    "numNote": 7,
+    "playerButton": 6,
+    "time_stamp": "Wed 2021-05-26 19:08:05"
+}
+{
+    "distance": 7.650000095367432,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 3,
+    "nLevel": 14,
+    "numNote": 8,
+    "playerButton": 3,
+    "time_stamp": "Wed 2021-05-26 19:08:05"
+}
+{
+    "distance": 15.300000190734863,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 7,
+    "nLevel": 14,
+    "numNote": 9,
+    "playerButton": 2,
+    "time_stamp": "Wed 2021-05-26 19:08:06"
+}
+{
+    "distance": 15.300000190734863,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 2,
+    "nLevel": 14,
+    "numNote": 10,
+    "playerButton": 2,
+    "time_stamp": "Wed 2021-05-26 19:08:06"
+}
+{
+    "distance": 11.475000381469727,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 4,
+    "nLevel": 14,
+    "numNote": 11,
+    "playerButton": 4,
+    "time_stamp": "Wed 2021-05-26 19:08:06"
+}
+{
+    "distance": 19.443750381469727,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 0,
+    "nLevel": 14,
+    "numNote": 12,
+    "playerButton": 0,
+    "time_stamp": "Wed 2021-05-26 19:08:06"
+}
+{
+    "distance": 27.09375,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 6,
+    "nLevel": 14,
+    "numNote": 13,
+    "playerButton": 6,
+    "time_stamp": "Wed 2021-05-26 19:08:07"
 }
 {
     "distance": 21.037500381469727,
     "event_type": "INPUT_EVENT",
-    "id_session": -111728471,
-    "levelButton": 2,
-    "nLevel": 14,
-    "numNote": 6,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-20 18:08:32"
-}
-{
-    "distance": 5.418749809265137,
-    "event_type": "INPUT_EVENT",
-    "id_session": -111728471,
+    "id_session": 309434505,
     "levelButton": 6,
     "nLevel": 14,
-    "numNote": 7,
+    "numNote": 14,
     "playerButton": 6,
-    "time_stamp": "Thu 2021-05-20 18:08:33"
+    "time_stamp": "Wed 2021-05-26 19:08:07"
 }
 {
-    "distance": 10.199999809265137,
+    "distance": 7.650000095367432,
     "event_type": "INPUT_EVENT",
-    "id_session": -111728471,
+    "id_session": 309434505,
     "levelButton": 3,
     "nLevel": 14,
-    "numNote": 8,
+    "numNote": 15,
     "playerButton": 3,
-    "time_stamp": "Thu 2021-05-20 18:08:33"
+    "time_stamp": "Wed 2021-05-26 19:08:07"
 }
 {
-    "distance": 15.300000190734863,
+    "distance": 7.650000095367432,
     "event_type": "INPUT_EVENT",
-    "id_session": -111728471,
-    "levelButton": 2,
+    "id_session": 309434505,
+    "levelButton": 3,
     "nLevel": 14,
-    "numNote": 9,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-20 18:08:33"
+    "numNote": 16,
+    "playerButton": 3,
+    "time_stamp": "Wed 2021-05-26 19:08:07"
 }
 {
-    "distance": 15.300000190734863,
+    "distance": 2.6147972675971687e-12,
     "event_type": "INPUT_EVENT",
-    "id_session": -111728471,
-    "levelButton": 7,
-    "nLevel": 14,
-    "numNote": 10,
-    "playerButton": 7,
-    "time_stamp": "Thu 2021-05-20 18:08:33"
-}
-{
-    "distance": 4.78125,
-    "event_type": "INPUT_EVENT",
-    "id_session": -111728471,
+    "id_session": 309434505,
     "levelButton": 4,
     "nLevel": 14,
-    "numNote": 11,
+    "numNote": 17,
     "playerButton": 4,
-    "time_stamp": "Thu 2021-05-20 18:08:34"
+    "time_stamp": "Wed 2021-05-26 19:08:08"
 }
 {
-    "distance": 0.3187499940395355,
+    "distance": 5.737500190734863,
     "event_type": "INPUT_EVENT",
-    "id_session": -111728471,
+    "id_session": 309434505,
+    "levelButton": 4,
+    "nLevel": 14,
+    "numNote": 18,
+    "playerButton": 4,
+    "time_stamp": "Wed 2021-05-26 19:08:08"
+}
+{
+    "distance": 3.825000047683716,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
     "levelButton": 0,
     "nLevel": 14,
-    "numNote": 12,
+    "numNote": 19,
     "playerButton": 0,
-    "time_stamp": "Thu 2021-05-20 18:08:34"
+    "time_stamp": "Wed 2021-05-26 19:08:08"
 }
 {
-    "event_type": "LOG_EVENT",
-    "id_session": -1553741277,
-    "time_stamp": "Thu 2021-05-20 18:13:39"
-}
-{
-    "distance": 3.1875,
+    "distance": 2.8421709430404007e-12,
     "event_type": "INPUT_EVENT",
-    "id_session": -1553741277,
-    "levelButton": 3,
-    "nLevel": 17,
-    "numNote": 1,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-20 18:13:50"
+    "id_session": 309434505,
+    "levelButton": 0,
+    "nLevel": 14,
+    "numNote": 20,
+    "playerButton": 0,
+    "time_stamp": "Wed 2021-05-26 19:08:08"
 }
 {
-    "distance": 3.1875,
+    "distance": 7.650000095367432,
     "event_type": "INPUT_EVENT",
-    "id_session": -1553741277,
-    "levelButton": 6,
-    "nLevel": 17,
-    "numNote": 2,
-    "playerButton": 6,
-    "time_stamp": "Thu 2021-05-20 18:13:50"
-}
-{
-    "distance": 3.1875,
-    "event_type": "INPUT_EVENT",
-    "id_session": -1553741277,
-    "levelButton": 2,
-    "nLevel": 17,
-    "numNote": 3,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-20 18:13:51"
-}
-{
-    "distance": 0.2549999952316284,
-    "event_type": "INPUT_EVENT",
-    "id_session": -1553741277,
-    "levelButton": 7,
-    "nLevel": 17,
-    "numNote": 4,
-    "playerButton": 7,
-    "time_stamp": "Thu 2021-05-20 18:13:52"
-}
-{
-    "distance": 2.805000066757202,
-    "event_type": "INPUT_EVENT",
-    "id_session": -1553741277,
-    "levelButton": 1,
-    "nLevel": 17,
-    "numNote": 5,
-    "playerButton": 1,
-    "time_stamp": "Thu 2021-05-20 18:13:53"
-}
-{
-    "distance": 3.697499990463257,
-    "event_type": "INPUT_EVENT",
-    "id_session": -1553741277,
+    "id_session": 309434505,
     "levelButton": 5,
-    "nLevel": 17,
-    "numNote": 6,
+    "nLevel": 14,
+    "numNote": 21,
     "playerButton": 5,
-    "time_stamp": "Thu 2021-05-20 18:13:53"
+    "time_stamp": "Wed 2021-05-26 19:08:09"
 }
 {
-    "event_type": "LOG_EVENT",
-    "id_session": 1438510960,
-    "time_stamp": "Thu 2021-05-20 18:30:16"
-}
-{
-    "distance": 6.056250095367432,
+    "distance": 1.912500023841858,
     "event_type": "INPUT_EVENT",
-    "id_session": 1438510960,
-    "levelButton": 6,
-    "nLevel": 17,
-    "numNote": 1,
-    "playerButton": 6,
-    "time_stamp": "Thu 2021-05-20 18:30:24"
-}
-{
-    "distance": 2.9962499141693115,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1438510960,
-    "levelButton": 3,
-    "nLevel": 17,
-    "numNote": 2,
-    "playerButton": 3,
-    "time_stamp": "Thu 2021-05-20 18:30:24"
-}
-{
-    "distance": 6.247499942779541,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1438510960,
-    "levelButton": 2,
-    "nLevel": 17,
-    "numNote": 3,
-    "playerButton": 2,
-    "time_stamp": "Thu 2021-05-20 18:30:26"
-}
-{
-    "distance": 6.247499942779541,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1438510960,
-    "levelButton": 7,
-    "nLevel": 17,
-    "numNote": 4,
-    "playerButton": 7,
-    "time_stamp": "Thu 2021-05-20 18:30:26"
-}
-{
-    "distance": 9.307499885559082,
-    "event_type": "INPUT_EVENT",
-    "id_session": 1438510960,
+    "id_session": 309434505,
     "levelButton": 1,
-    "nLevel": 17,
-    "numNote": 5,
+    "nLevel": 14,
+    "numNote": 22,
     "playerButton": 1,
-    "time_stamp": "Thu 2021-05-20 18:30:27"
+    "time_stamp": "Wed 2021-05-26 19:08:09"
 }
 {
-    "distance": 6.056250095367432,
+    "distance": 15.300000190734863,
     "event_type": "INPUT_EVENT",
-    "id_session": 1438510960,
+    "id_session": 309434505,
+    "levelButton": 6,
+    "nLevel": 14,
+    "numNote": 23,
+    "playerButton": 6,
+    "time_stamp": "Wed 2021-05-26 19:08:10"
+}
+{
+    "distance": 15.300000190734863,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 3,
+    "nLevel": 14,
+    "numNote": 24,
+    "playerButton": 3,
+    "time_stamp": "Wed 2021-05-26 19:08:10"
+}
+{
+    "distance": 17.212499618530273,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 7,
+    "nLevel": 14,
+    "numNote": 25,
+    "playerButton": 7,
+    "time_stamp": "Wed 2021-05-26 19:08:11"
+}
+{
+    "distance": 1.912500023841858,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 2,
+    "nLevel": 14,
+    "numNote": 26,
+    "playerButton": 2,
+    "time_stamp": "Wed 2021-05-26 19:08:11"
+}
+{
+    "distance": 2.8421709430404007e-12,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 6,
+    "nLevel": 14,
+    "numNote": 27,
+    "playerButton": 6,
+    "time_stamp": "Wed 2021-05-26 19:08:11"
+}
+{
+    "distance": 7.650000095367432,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 3,
+    "nLevel": 14,
+    "numNote": 28,
+    "playerButton": 3,
+    "time_stamp": "Wed 2021-05-26 19:08:11"
+}
+{
+    "distance": 11.793749809265137,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 7,
+    "nLevel": 14,
+    "numNote": 29,
+    "playerButton": 7,
+    "time_stamp": "Wed 2021-05-26 19:08:12"
+}
+{
+    "distance": 3.825000047683716,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 2,
+    "nLevel": 14,
+    "numNote": 30,
+    "playerButton": 2,
+    "time_stamp": "Wed 2021-05-26 19:08:12"
+}
+{
+    "distance": 9.881250381469727,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 4,
+    "nLevel": 14,
+    "numNote": 31,
+    "playerButton": 4,
+    "time_stamp": "Wed 2021-05-26 19:08:12"
+}
+{
+    "distance": 3.825000047683716,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 0,
+    "nLevel": 14,
+    "numNote": 32,
+    "playerButton": 0,
+    "time_stamp": "Wed 2021-05-26 19:08:12"
+}
+{
+    "distance": 9.5625,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 6,
+    "nLevel": 14,
+    "numNote": 33,
+    "playerButton": 6,
+    "time_stamp": "Wed 2021-05-26 19:08:13"
+}
+{
+    "distance": 17.53125,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 6,
+    "nLevel": 14,
+    "numNote": 34,
+    "playerButton": 6,
+    "time_stamp": "Wed 2021-05-26 19:08:13"
+}
+{
+    "distance": 3.825000047683716,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 2,
+    "nLevel": 14,
+    "numNote": 35,
+    "playerButton": 2,
+    "time_stamp": "Wed 2021-05-26 19:08:13"
+}
+{
+    "distance": 7.650000095367432,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 2,
+    "nLevel": 14,
+    "numNote": 36,
+    "playerButton": 2,
+    "time_stamp": "Wed 2021-05-26 19:08:14"
+}
+{
+    "distance": 19.443750381469727,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
     "levelButton": 5,
-    "nLevel": 17,
-    "numNote": 6,
+    "nLevel": 14,
+    "numNote": 37,
+    "playerButton": 0,
+    "time_stamp": "Wed 2021-05-26 19:08:14"
+}
+{
+    "distance": 19.443750381469727,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 0,
+    "nLevel": 14,
+    "numNote": 38,
+    "playerButton": 0,
+    "time_stamp": "Wed 2021-05-26 19:08:14"
+}
+{
+    "distance": 2.7284841053187847e-12,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 6,
+    "nLevel": 14,
+    "numNote": 39,
+    "playerButton": 6,
+    "time_stamp": "Wed 2021-05-26 19:08:14"
+}
+{
+    "distance": 3.825000047683716,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 6,
+    "nLevel": 14,
+    "numNote": 40,
+    "playerButton": 6,
+    "time_stamp": "Wed 2021-05-26 19:08:15"
+}
+{
+    "distance": 7.650000095367432,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 4,
+    "nLevel": 14,
+    "numNote": 41,
+    "playerButton": 4,
+    "time_stamp": "Wed 2021-05-26 19:08:15"
+}
+{
+    "distance": 11.475000381469727,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 0,
+    "nLevel": 14,
+    "numNote": 42,
+    "playerButton": 0,
+    "time_stamp": "Wed 2021-05-26 19:08:15"
+}
+{
+    "distance": 7.650000095367432,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 3,
+    "nLevel": 14,
+    "numNote": 43,
+    "playerButton": 3,
+    "time_stamp": "Wed 2021-05-26 19:08:16"
+}
+{
+    "distance": 7.650000095367432,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 3,
+    "nLevel": 14,
+    "numNote": 44,
+    "playerButton": 3,
+    "time_stamp": "Wed 2021-05-26 19:08:16"
+}
+{
+    "distance": 1.912500023841858,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 5,
+    "nLevel": 14,
+    "numNote": 45,
     "playerButton": 5,
-    "time_stamp": "Thu 2021-05-20 18:30:27"
+    "time_stamp": "Wed 2021-05-26 19:08:16"
+}
+{
+    "distance": 5.737500190734863,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 0,
+    "nLevel": 14,
+    "numNote": 46,
+    "playerButton": 0,
+    "time_stamp": "Wed 2021-05-26 19:08:16"
+}
+{
+    "distance": 19.125,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 6,
+    "nLevel": 14,
+    "numNote": 47,
+    "playerButton": 6,
+    "time_stamp": "Wed 2021-05-26 19:08:17"
+}
+{
+    "distance": 9.5625,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 2,
+    "nLevel": 14,
+    "numNote": 48,
+    "playerButton": 2,
+    "time_stamp": "Wed 2021-05-26 19:08:18"
+}
+{
+    "distance": 19.125,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 7,
+    "nLevel": 14,
+    "numNote": 49,
+    "playerButton": 7,
+    "time_stamp": "Wed 2021-05-26 19:08:18"
+}
+{
+    "distance": 5.737500190734863,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 3,
+    "nLevel": 14,
+    "numNote": 50,
+    "playerButton": 3,
+    "time_stamp": "Wed 2021-05-26 19:08:18"
+}
+{
+    "distance": 2.8421709430404007e-12,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 4,
+    "nLevel": 14,
+    "numNote": 51,
+    "playerButton": 4,
+    "time_stamp": "Wed 2021-05-26 19:08:19"
+}
+{
+    "distance": 2.8421709430404007e-12,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 0,
+    "nLevel": 14,
+    "numNote": 52,
+    "playerButton": 0,
+    "time_stamp": "Wed 2021-05-26 19:08:19"
+}
+{
+    "distance": 9.5625,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 5,
+    "nLevel": 14,
+    "numNote": 53,
+    "playerButton": 5,
+    "time_stamp": "Wed 2021-05-26 19:08:20"
+}
+{
+    "distance": 3.825000047683716,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 1,
+    "nLevel": 14,
+    "numNote": 54,
+    "playerButton": 1,
+    "time_stamp": "Wed 2021-05-26 19:08:20"
+}
+{
+    "distance": 19.125,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 6,
+    "nLevel": 14,
+    "numNote": 55,
+    "playerButton": 6,
+    "time_stamp": "Wed 2021-05-26 19:08:21"
+}
+{
+    "distance": 23.268749237060547,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 2,
+    "nLevel": 14,
+    "numNote": 56,
+    "playerButton": 2,
+    "time_stamp": "Wed 2021-05-26 19:08:21"
+}
+{
+    "distance": 11.475000381469727,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 6,
+    "nLevel": 14,
+    "numNote": 57,
+    "playerButton": 6,
+    "time_stamp": "Wed 2021-05-26 19:08:21"
+}
+{
+    "distance": 21.356250762939453,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 2,
+    "nLevel": 14,
+    "numNote": 58,
+    "playerButton": 2,
+    "time_stamp": "Wed 2021-05-26 19:08:21"
+}
+{
+    "distance": 11.475000381469727,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 7,
+    "nLevel": 14,
+    "numNote": 59,
+    "playerButton": 3,
+    "time_stamp": "Wed 2021-05-26 19:08:22"
+}
+{
+    "distance": 11.475000381469727,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 3,
+    "nLevel": 14,
+    "numNote": 60,
+    "playerButton": 3,
+    "time_stamp": "Wed 2021-05-26 19:08:22"
+}
+{
+    "distance": 9.5625,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 7,
+    "nLevel": 14,
+    "numNote": 61,
+    "playerButton": 3,
+    "time_stamp": "Wed 2021-05-26 19:08:22"
+}
+{
+    "distance": 9.5625,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 3,
+    "nLevel": 14,
+    "numNote": 62,
+    "playerButton": 3,
+    "time_stamp": "Wed 2021-05-26 19:08:22"
+}
+{
+    "distance": 9.5625,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 5,
+    "nLevel": 14,
+    "numNote": 63,
+    "playerButton": 1,
+    "time_stamp": "Wed 2021-05-26 19:08:23"
+}
+{
+    "distance": 9.5625,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 1,
+    "nLevel": 14,
+    "numNote": 64,
+    "playerButton": 1,
+    "time_stamp": "Wed 2021-05-26 19:08:23"
+}
+{
+    "distance": 2.8421709430404007e-12,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 4,
+    "nLevel": 14,
+    "numNote": 65,
+    "playerButton": 4,
+    "time_stamp": "Wed 2021-05-26 19:08:23"
+}
+{
+    "distance": 3.825000047683716,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 0,
+    "nLevel": 14,
+    "numNote": 66,
+    "playerButton": 0,
+    "time_stamp": "Wed 2021-05-26 19:08:23"
+}
+{
+    "distance": 13.387499809265137,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 5,
+    "nLevel": 14,
+    "numNote": 67,
+    "playerButton": 5,
+    "time_stamp": "Wed 2021-05-26 19:08:24"
+}
+{
+    "distance": 17.212499618530273,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 2,
+    "nLevel": 14,
+    "numNote": 68,
+    "playerButton": 2,
+    "time_stamp": "Wed 2021-05-26 19:08:24"
+}
+{
+    "distance": 1.912500023841858,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 4,
+    "nLevel": 14,
+    "numNote": 69,
+    "playerButton": 4,
+    "time_stamp": "Wed 2021-05-26 19:08:24"
+}
+{
+    "distance": 7.650000095367432,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 1,
+    "nLevel": 14,
+    "numNote": 70,
+    "playerButton": 1,
+    "time_stamp": "Wed 2021-05-26 19:08:24"
+}
+{
+    "distance": 1.912500023841858,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 5,
+    "nLevel": 14,
+    "numNote": 71,
+    "playerButton": 5,
+    "time_stamp": "Wed 2021-05-26 19:08:25"
+}
+{
+    "distance": 7.650000095367432,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 1,
+    "nLevel": 14,
+    "numNote": 72,
+    "playerButton": 1,
+    "time_stamp": "Wed 2021-05-26 19:08:25"
+}
+{
+    "distance": 9.5625,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 5,
+    "nLevel": 14,
+    "numNote": 73,
+    "playerButton": 5,
+    "time_stamp": "Wed 2021-05-26 19:08:25"
+}
+{
+    "distance": 3.825000047683716,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 1,
+    "nLevel": 14,
+    "numNote": 74,
+    "playerButton": 1,
+    "time_stamp": "Wed 2021-05-26 19:08:25"
+}
+{
+    "distance": 5.737500190734863,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 4,
+    "nLevel": 14,
+    "numNote": 75,
+    "playerButton": 4,
+    "time_stamp": "Wed 2021-05-26 19:08:26"
+}
+{
+    "distance": 3.825000047683716,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 0,
+    "nLevel": 14,
+    "numNote": 76,
+    "playerButton": 0,
+    "time_stamp": "Wed 2021-05-26 19:08:26"
+}
+{
+    "distance": 9.5625,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 4,
+    "nLevel": 14,
+    "numNote": 77,
+    "playerButton": 0,
+    "time_stamp": "Wed 2021-05-26 19:08:26"
+}
+{
+    "distance": 9.5625,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 0,
+    "nLevel": 14,
+    "numNote": 78,
+    "playerButton": 0,
+    "time_stamp": "Wed 2021-05-26 19:08:26"
+}
+{
+    "distance": 11.475000381469727,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 6,
+    "nLevel": 14,
+    "numNote": 79,
+    "playerButton": 6,
+    "time_stamp": "Wed 2021-05-26 19:08:26"
+}
+{
+    "distance": 7.650000095367432,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 7,
+    "nLevel": 14,
+    "numNote": 80,
+    "playerButton": 7,
+    "time_stamp": "Wed 2021-05-26 19:08:27"
+}
+{
+    "distance": 7.650000095367432,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 4,
+    "nLevel": 14,
+    "numNote": 81,
+    "playerButton": 4,
+    "time_stamp": "Wed 2021-05-26 19:08:27"
+}
+{
+    "distance": 7.650000095367432,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 5,
+    "nLevel": 14,
+    "numNote": 82,
+    "playerButton": 5,
+    "time_stamp": "Wed 2021-05-26 19:08:28"
+}
+{
+    "distance": 27.09375,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 1,
+    "nLevel": 14,
+    "numNote": 83,
+    "playerButton": 1,
+    "time_stamp": "Wed 2021-05-26 19:08:28"
+}
+{
+    "distance": 27.09375,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 3,
+    "nLevel": 14,
+    "numNote": 84,
+    "playerButton": 3,
+    "time_stamp": "Wed 2021-05-26 19:08:28"
+}
+{
+    "distance": 2.7284841053187847e-12,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 2,
+    "nLevel": 14,
+    "numNote": 85,
+    "playerButton": 2,
+    "time_stamp": "Wed 2021-05-26 19:08:28"
+}
+{
+    "distance": 32.83124923706055,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 0,
+    "nLevel": 14,
+    "numNote": 86,
+    "playerButton": 0,
+    "time_stamp": "Wed 2021-05-26 19:08:29"
+}
+{
+    "distance": 13.387499809265137,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 5,
+    "nLevel": 14,
+    "numNote": 87,
+    "playerButton": 5,
+    "time_stamp": "Wed 2021-05-26 19:08:29"
+}
+{
+    "distance": 34.743751525878906,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 1,
+    "nLevel": 14,
+    "numNote": 88,
+    "playerButton": 1,
+    "time_stamp": "Wed 2021-05-26 19:08:29"
+}
+{
+    "distance": 7.650000095367432,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 2,
+    "nLevel": 14,
+    "numNote": 89,
+    "playerButton": 2,
+    "time_stamp": "Wed 2021-05-26 19:08:30"
+}
+{
+    "distance": 9.5625,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 6,
+    "nLevel": 14,
+    "numNote": 90,
+    "playerButton": 2,
+    "time_stamp": "Wed 2021-05-26 19:08:30"
+}
+{
+    "distance": 3.825000047683716,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 6,
+    "nLevel": 14,
+    "numNote": 91,
+    "playerButton": 6,
+    "time_stamp": "Wed 2021-05-26 19:08:30"
+}
+{
+    "distance": 1.912500023841858,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 2,
+    "nLevel": 14,
+    "numNote": 92,
+    "playerButton": 2,
+    "time_stamp": "Wed 2021-05-26 19:08:30"
+}
+{
+    "distance": 11.475000381469727,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 4,
+    "nLevel": 14,
+    "numNote": 93,
+    "playerButton": 4,
+    "time_stamp": "Wed 2021-05-26 19:08:31"
+}
+{
+    "distance": 15.618749618530273,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 0,
+    "nLevel": 14,
+    "numNote": 94,
+    "playerButton": 0,
+    "time_stamp": "Wed 2021-05-26 19:08:31"
+}
+{
+    "distance": 5.737500190734863,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 4,
+    "nLevel": 14,
+    "numNote": 95,
+    "playerButton": 4,
+    "time_stamp": "Wed 2021-05-26 19:08:31"
+}
+{
+    "distance": 7.650000095367432,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 0,
+    "nLevel": 14,
+    "numNote": 96,
+    "playerButton": 0,
+    "time_stamp": "Wed 2021-05-26 19:08:31"
+}
+{
+    "distance": 3.825000047683716,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 7,
+    "nLevel": 14,
+    "numNote": 97,
+    "playerButton": 7,
+    "time_stamp": "Wed 2021-05-26 19:08:32"
+}
+{
+    "distance": 11.475000381469727,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 3,
+    "nLevel": 14,
+    "numNote": 98,
+    "playerButton": 3,
+    "time_stamp": "Wed 2021-05-26 19:08:32"
+}
+{
+    "distance": 2.8421709430404007e-12,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 7,
+    "nLevel": 14,
+    "numNote": 99,
+    "playerButton": 7,
+    "time_stamp": "Wed 2021-05-26 19:08:32"
+}
+{
+    "distance": 3.825000047683716,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 3,
+    "nLevel": 14,
+    "numNote": 100,
+    "playerButton": 3,
+    "time_stamp": "Wed 2021-05-26 19:08:32"
+}
+{
+    "distance": 19.125,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 5,
+    "nLevel": 14,
+    "numNote": 101,
+    "playerButton": 1,
+    "time_stamp": "Wed 2021-05-26 19:08:33"
+}
+{
+    "distance": 19.125,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 1,
+    "nLevel": 14,
+    "numNote": 102,
+    "playerButton": 1,
+    "time_stamp": "Wed 2021-05-26 19:08:33"
+}
+{
+    "distance": 11.475000381469727,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 5,
+    "nLevel": 14,
+    "numNote": 103,
+    "playerButton": 5,
+    "time_stamp": "Wed 2021-05-26 19:08:33"
+}
+{
+    "distance": 15.300000190734863,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 1,
+    "nLevel": 14,
+    "numNote": 104,
+    "playerButton": 1,
+    "time_stamp": "Wed 2021-05-26 19:08:33"
+}
+{
+    "distance": 2.7284841053187847e-12,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 4,
+    "nLevel": 14,
+    "numNote": 105,
+    "playerButton": 0,
+    "time_stamp": "Wed 2021-05-26 19:08:34"
+}
+{
+    "distance": 2.7284841053187847e-12,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 0,
+    "nLevel": 14,
+    "numNote": 106,
+    "playerButton": 0,
+    "time_stamp": "Wed 2021-05-26 19:08:34"
+}
+{
+    "distance": 7.650000095367432,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 4,
+    "nLevel": 14,
+    "numNote": 107,
+    "playerButton": 4,
+    "time_stamp": "Wed 2021-05-26 19:08:34"
+}
+{
+    "distance": 1.912500023841858,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 0,
+    "nLevel": 14,
+    "numNote": 108,
+    "playerButton": 0,
+    "time_stamp": "Wed 2021-05-26 19:08:34"
+}
+{
+    "distance": 1.912500023841858,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 4,
+    "nLevel": 14,
+    "numNote": 109,
+    "playerButton": 4,
+    "time_stamp": "Wed 2021-05-26 19:08:35"
+}
+{
+    "distance": 7.650000095367432,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 0,
+    "nLevel": 14,
+    "numNote": 110,
+    "playerButton": 0,
+    "time_stamp": "Wed 2021-05-26 19:08:36"
+}
+{
+    "distance": 9.5625,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 4,
+    "nLevel": 14,
+    "numNote": 111,
+    "playerButton": 4,
+    "time_stamp": "Wed 2021-05-26 19:08:36"
+}
+{
+    "distance": 3.825000047683716,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 0,
+    "nLevel": 14,
+    "numNote": 112,
+    "playerButton": 0,
+    "time_stamp": "Wed 2021-05-26 19:08:36"
+}
+{
+    "distance": 13.387499809265137,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 4,
+    "nLevel": 14,
+    "numNote": 113,
+    "playerButton": 4,
+    "time_stamp": "Wed 2021-05-26 19:08:36"
+}
+{
+    "distance": 11.475000381469727,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 0,
+    "nLevel": 14,
+    "numNote": 114,
+    "playerButton": 0,
+    "time_stamp": "Wed 2021-05-26 19:08:37"
+}
+{
+    "distance": 11.475000381469727,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 4,
+    "nLevel": 14,
+    "numNote": 115,
+    "playerButton": 4,
+    "time_stamp": "Wed 2021-05-26 19:08:37"
+}
+{
+    "distance": 3.825000047683716,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 0,
+    "nLevel": 14,
+    "numNote": 116,
+    "playerButton": 0,
+    "time_stamp": "Wed 2021-05-26 19:08:37"
+}
+{
+    "distance": 5.737500190734863,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 3,
+    "nLevel": 14,
+    "numNote": 117,
+    "playerButton": 3,
+    "time_stamp": "Wed 2021-05-26 19:08:38"
+}
+{
+    "distance": 3.825000047683716,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 3,
+    "nLevel": 14,
+    "numNote": 118,
+    "playerButton": 3,
+    "time_stamp": "Wed 2021-05-26 19:08:38"
+}
+{
+    "distance": 9.5625,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 4,
+    "nLevel": 14,
+    "numNote": 119,
+    "playerButton": 4,
+    "time_stamp": "Wed 2021-05-26 19:08:38"
+}
+{
+    "distance": 2.7284841053187847e-12,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 4,
+    "nLevel": 14,
+    "numNote": 120,
+    "playerButton": 4,
+    "time_stamp": "Wed 2021-05-26 19:08:38"
+}
+{
+    "distance": 7.650000095367432,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 0,
+    "nLevel": 14,
+    "numNote": 121,
+    "playerButton": 0,
+    "time_stamp": "Wed 2021-05-26 19:08:39"
+}
+{
+    "distance": 5.737500190734863,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 0,
+    "nLevel": 14,
+    "numNote": 122,
+    "playerButton": 0,
+    "time_stamp": "Wed 2021-05-26 19:08:39"
+}
+{
+    "distance": 1.912500023841858,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 5,
+    "nLevel": 14,
+    "numNote": 123,
+    "playerButton": 5,
+    "time_stamp": "Wed 2021-05-26 19:08:39"
+}
+{
+    "distance": 7.650000095367432,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 1,
+    "nLevel": 14,
+    "numNote": 124,
+    "playerButton": 1,
+    "time_stamp": "Wed 2021-05-26 19:08:39"
+}
+{
+    "distance": 9.5625,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 5,
+    "nLevel": 14,
+    "numNote": 125,
+    "playerButton": 5,
+    "time_stamp": "Wed 2021-05-26 19:08:40"
+}
+{
+    "distance": 11.793749809265137,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 0,
+    "nLevel": 14,
+    "numNote": 126,
+    "playerButton": 0,
+    "time_stamp": "Wed 2021-05-26 19:08:40"
+}
+{
+    "distance": 7.650000095367432,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 2,
+    "nLevel": 14,
+    "numNote": 127,
+    "playerButton": 2,
+    "time_stamp": "Wed 2021-05-26 19:08:42"
+}
+{
+    "distance": 9.5625,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 6,
+    "nLevel": 14,
+    "numNote": 128,
+    "playerButton": 2,
+    "time_stamp": "Wed 2021-05-26 19:08:42"
+}
+{
+    "distance": 2.7284841053187847e-12,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 6,
+    "nLevel": 14,
+    "numNote": 129,
+    "playerButton": 6,
+    "time_stamp": "Wed 2021-05-26 19:08:42"
+}
+{
+    "distance": 3.825000047683716,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 2,
+    "nLevel": 14,
+    "numNote": 130,
+    "playerButton": 2,
+    "time_stamp": "Wed 2021-05-26 19:08:42"
+}
+{
+    "distance": 7.650000095367432,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 6,
+    "nLevel": 14,
+    "numNote": 131,
+    "playerButton": 6,
+    "time_stamp": "Wed 2021-05-26 19:08:42"
+}
+{
+    "distance": 2.7284841053187847e-12,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 2,
+    "nLevel": 14,
+    "numNote": 132,
+    "playerButton": 2,
+    "time_stamp": "Wed 2021-05-26 19:08:42"
+}
+{
+    "distance": 3.825000047683716,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 7,
+    "nLevel": 14,
+    "numNote": 133,
+    "playerButton": 7,
+    "time_stamp": "Wed 2021-05-26 19:08:42"
+}
+{
+    "distance": 2.8421709430404007e-12,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 3,
+    "nLevel": 14,
+    "numNote": 134,
+    "playerButton": 3,
+    "time_stamp": "Wed 2021-05-26 19:08:42"
+}
+{
+    "distance": 5.737500190734863,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 3,
+    "nLevel": 14,
+    "numNote": 135,
+    "playerButton": 3,
+    "time_stamp": "Wed 2021-05-26 19:08:42"
+}
+{
+    "distance": 2.8421709430404007e-12,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 7,
+    "nLevel": 14,
+    "numNote": 136,
+    "playerButton": 3,
+    "time_stamp": "Wed 2021-05-26 19:08:42"
+}
+{
+    "distance": 9.5625,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 5,
+    "nLevel": 14,
+    "numNote": 137,
+    "playerButton": 5,
+    "time_stamp": "Wed 2021-05-26 19:08:43"
+}
+{
+    "distance": 11.475000381469727,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 1,
+    "nLevel": 14,
+    "numNote": 138,
+    "playerButton": 1,
+    "time_stamp": "Wed 2021-05-26 19:08:43"
+}
+{
+    "distance": 5.737500190734863,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 5,
+    "nLevel": 14,
+    "numNote": 139,
+    "playerButton": 5,
+    "time_stamp": "Wed 2021-05-26 19:08:43"
+}
+{
+    "distance": 7.650000095367432,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 1,
+    "nLevel": 14,
+    "numNote": 140,
+    "playerButton": 1,
+    "time_stamp": "Wed 2021-05-26 19:08:43"
+}
+{
+    "distance": 15.300000190734863,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 4,
+    "nLevel": 14,
+    "numNote": 141,
+    "playerButton": 0,
+    "time_stamp": "Wed 2021-05-26 19:08:43"
+}
+{
+    "distance": 15.300000190734863,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 0,
+    "nLevel": 14,
+    "numNote": 142,
+    "playerButton": 0,
+    "time_stamp": "Wed 2021-05-26 19:08:43"
+}
+{
+    "distance": 11.475000381469727,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 4,
+    "nLevel": 14,
+    "numNote": 143,
+    "playerButton": 0,
+    "time_stamp": "Wed 2021-05-26 19:08:43"
+}
+{
+    "distance": 11.475000381469727,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 0,
+    "nLevel": 14,
+    "numNote": 144,
+    "playerButton": 0,
+    "time_stamp": "Wed 2021-05-26 19:08:43"
+}
+{
+    "distance": 2.6147972675971687e-12,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 7,
+    "nLevel": 14,
+    "numNote": 145,
+    "playerButton": 7,
+    "time_stamp": "Wed 2021-05-26 19:08:44"
+}
+{
+    "distance": 11.475000381469727,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 3,
+    "nLevel": 14,
+    "numNote": 146,
+    "playerButton": 3,
+    "time_stamp": "Wed 2021-05-26 19:08:45"
+}
+{
+    "distance": 5.737500190734863,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 7,
+    "nLevel": 14,
+    "numNote": 147,
+    "playerButton": 7,
+    "time_stamp": "Wed 2021-05-26 19:08:46"
+}
+{
+    "distance": 7.650000095367432,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 2,
+    "nLevel": 14,
+    "numNote": 148,
+    "playerButton": 2,
+    "time_stamp": "Wed 2021-05-26 19:08:46"
+}
+{
+    "distance": 29.006250381469727,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 3,
+    "nLevel": 14,
+    "numNote": 149,
+    "playerButton": 3,
+    "time_stamp": "Wed 2021-05-26 19:08:47"
+}
+{
+    "distance": 17.53125,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 7,
+    "nLevel": 14,
+    "numNote": 150,
+    "playerButton": 7,
+    "time_stamp": "Wed 2021-05-26 19:08:47"
+}
+{
+    "distance": 23.268749237060547,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 2,
+    "nLevel": 14,
+    "numNote": 151,
+    "playerButton": 2,
+    "time_stamp": "Wed 2021-05-26 19:08:47"
+}
+{
+    "distance": 9.5625,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 4,
+    "nLevel": 14,
+    "numNote": 152,
+    "playerButton": 4,
+    "time_stamp": "Wed 2021-05-26 19:08:47"
+}
+{
+    "distance": 15.618749618530273,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 0,
+    "nLevel": 14,
+    "numNote": 153,
+    "playerButton": 0,
+    "time_stamp": "Wed 2021-05-26 19:08:47"
+}
+{
+    "distance": 3.825000047683716,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 6,
+    "nLevel": 14,
+    "numNote": 154,
+    "playerButton": 6,
+    "time_stamp": "Wed 2021-05-26 19:08:48"
+}
+{
+    "distance": 15.300000190734863,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 6,
+    "nLevel": 14,
+    "numNote": 155,
+    "playerButton": 6,
+    "time_stamp": "Wed 2021-05-26 19:08:48"
+}
+{
+    "distance": 13.706250190734863,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 3,
+    "nLevel": 14,
+    "numNote": 156,
+    "playerButton": 3,
+    "time_stamp": "Wed 2021-05-26 19:08:49"
+}
+{
+    "distance": 3.825000047683716,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 3,
+    "nLevel": 14,
+    "numNote": 157,
+    "playerButton": 3,
+    "time_stamp": "Wed 2021-05-26 19:08:49"
+}
+{
+    "distance": 15.300000190734863,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 4,
+    "nLevel": 14,
+    "numNote": 158,
+    "playerButton": 4,
+    "time_stamp": "Wed 2021-05-26 19:08:49"
+}
+{
+    "distance": 21.037500381469727,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 4,
+    "nLevel": 14,
+    "numNote": 159,
+    "playerButton": 4,
+    "time_stamp": "Wed 2021-05-26 19:08:49"
+}
+{
+    "distance": 11.475000381469727,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 5,
+    "nLevel": 14,
+    "numNote": 160,
+    "playerButton": 5,
+    "time_stamp": "Wed 2021-05-26 19:08:50"
+}
+{
+    "distance": 1.912500023841858,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 0,
+    "nLevel": 14,
+    "numNote": 161,
+    "playerButton": 0,
+    "time_stamp": "Wed 2021-05-26 19:08:50"
+}
+{
+    "distance": 9.5625,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 6,
+    "nLevel": 14,
+    "numNote": 162,
+    "playerButton": 6,
+    "time_stamp": "Wed 2021-05-26 19:08:52"
+}
+{
+    "distance": 13.706250190734863,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 3,
+    "nLevel": 14,
+    "numNote": 163,
+    "playerButton": 3,
+    "time_stamp": "Wed 2021-05-26 19:08:52"
+}
+{
+    "distance": 19.443750381469727,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 7,
+    "nLevel": 14,
+    "numNote": 164,
+    "playerButton": 7,
+    "time_stamp": "Wed 2021-05-26 19:08:52"
+}
+{
+    "distance": 11.793749809265137,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 2,
+    "nLevel": 14,
+    "numNote": 165,
+    "playerButton": 2,
+    "time_stamp": "Wed 2021-05-26 19:08:52"
+}
+{
+    "distance": 44.306251525878906,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 3,
+    "nLevel": 14,
+    "numNote": 166,
+    "playerButton": 3,
+    "time_stamp": "Wed 2021-05-26 19:08:53"
+}
+{
+    "distance": 5.737500190734863,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 7,
+    "nLevel": 14,
+    "numNote": 167,
+    "playerButton": 7,
+    "time_stamp": "Wed 2021-05-26 19:08:54"
+}
+{
+    "distance": 9.5625,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 2,
+    "nLevel": 14,
+    "numNote": 168,
+    "playerButton": 2,
+    "time_stamp": "Wed 2021-05-26 19:08:54"
+}
+{
+    "distance": 1.912500023841858,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 4,
+    "nLevel": 14,
+    "numNote": 169,
+    "playerButton": 4,
+    "time_stamp": "Wed 2021-05-26 19:08:54"
+}
+{
+    "distance": 9.5625,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 0,
+    "nLevel": 14,
+    "numNote": 170,
+    "playerButton": 0,
+    "time_stamp": "Wed 2021-05-26 19:08:54"
+}
+{
+    "distance": 21.356250762939453,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 6,
+    "nLevel": 14,
+    "numNote": 171,
+    "playerButton": 6,
+    "time_stamp": "Wed 2021-05-26 19:08:54"
+}
+{
+    "distance": 27.09375,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 6,
+    "nLevel": 14,
+    "numNote": 172,
+    "playerButton": 6,
+    "time_stamp": "Wed 2021-05-26 19:08:55"
+}
+{
+    "distance": 7.650000095367432,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 3,
+    "nLevel": 14,
+    "numNote": 173,
+    "playerButton": 3,
+    "time_stamp": "Wed 2021-05-26 19:08:55"
+}
+{
+    "distance": 15.300000190734863,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 3,
+    "nLevel": 14,
+    "numNote": 174,
+    "playerButton": 3,
+    "time_stamp": "Wed 2021-05-26 19:08:55"
+}
+{
+    "distance": 19.125,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 4,
+    "nLevel": 14,
+    "numNote": 175,
+    "playerButton": 4,
+    "time_stamp": "Wed 2021-05-26 19:08:56"
+}
+{
+    "distance": 15.300000190734863,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 4,
+    "nLevel": 14,
+    "numNote": 176,
+    "playerButton": 4,
+    "time_stamp": "Wed 2021-05-26 19:08:56"
+}
+{
+    "distance": 15.618749618530273,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 5,
+    "nLevel": 14,
+    "numNote": 177,
+    "playerButton": 5,
+    "time_stamp": "Wed 2021-05-26 19:08:57"
+}
+{
+    "distance": 11.475000381469727,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 0,
+    "nLevel": 14,
+    "numNote": 178,
+    "playerButton": 0,
+    "time_stamp": "Wed 2021-05-26 19:08:57"
+}
+{
+    "distance": 17.53125,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 6,
+    "nLevel": 14,
+    "numNote": 179,
+    "playerButton": 6,
+    "time_stamp": "Wed 2021-05-26 19:08:59"
+}
+{
+    "distance": 7.650000095367432,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 1,
+    "nLevel": 14,
+    "numNote": 180,
+    "playerButton": 1,
+    "time_stamp": "Wed 2021-05-26 19:08:59"
+}
+{
+    "distance": 25.181249618530273,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 6,
+    "nLevel": 14,
+    "numNote": 181,
+    "playerButton": 6,
+    "time_stamp": "Wed 2021-05-26 19:08:59"
+}
+{
+    "distance": 15.618749618530273,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 1,
+    "nLevel": 14,
+    "numNote": 182,
+    "playerButton": 1,
+    "time_stamp": "Wed 2021-05-26 19:08:59"
+}
+{
+    "distance": 29.006250381469727,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 6,
+    "nLevel": 14,
+    "numNote": 183,
+    "playerButton": 6,
+    "time_stamp": "Wed 2021-05-26 19:08:59"
+}
+{
+    "distance": 17.53125,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 1,
+    "nLevel": 14,
+    "numNote": 184,
+    "playerButton": 1,
+    "time_stamp": "Wed 2021-05-26 19:08:59"
+}
+{
+    "distance": 34.743751525878906,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 6,
+    "nLevel": 14,
+    "numNote": 185,
+    "playerButton": 6,
+    "time_stamp": "Wed 2021-05-26 19:08:59"
+}
+{
+    "distance": 27.09375,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 1,
+    "nLevel": 14,
+    "numNote": 186,
+    "playerButton": 1,
+    "time_stamp": "Wed 2021-05-26 19:08:59"
+}
+{
+    "distance": 9.5625,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 7,
+    "nLevel": 14,
+    "numNote": 187,
+    "playerButton": 7,
+    "time_stamp": "Wed 2021-05-26 19:09:00"
+}
+{
+    "distance": 1.912500023841858,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 3,
+    "nLevel": 14,
+    "numNote": 188,
+    "playerButton": 3,
+    "time_stamp": "Wed 2021-05-26 19:09:00"
+}
+{
+    "distance": 9.5625,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 3,
+    "nLevel": 14,
+    "numNote": 189,
+    "playerButton": 3,
+    "time_stamp": "Wed 2021-05-26 19:09:01"
+}
+{
+    "distance": 5.737500190734863,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 7,
+    "nLevel": 14,
+    "numNote": 190,
+    "playerButton": 3,
+    "time_stamp": "Wed 2021-05-26 19:09:01"
+}
+{
+    "distance": 13.387499809265137,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 3,
+    "nLevel": 14,
+    "numNote": 191,
+    "playerButton": 3,
+    "time_stamp": "Wed 2021-05-26 19:09:01"
+}
+{
+    "distance": 3.825000047683716,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 7,
+    "nLevel": 14,
+    "numNote": 192,
+    "playerButton": 3,
+    "time_stamp": "Wed 2021-05-26 19:09:01"
+}
+{
+    "distance": 19.443750381469727,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 3,
+    "nLevel": 14,
+    "numNote": 193,
+    "playerButton": 3,
+    "time_stamp": "Wed 2021-05-26 19:09:01"
+}
+{
+    "distance": 11.475000381469727,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 7,
+    "nLevel": 14,
+    "numNote": 194,
+    "playerButton": 3,
+    "time_stamp": "Wed 2021-05-26 19:09:01"
+}
+{
+    "distance": 15.300000190734863,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 2,
+    "nLevel": 14,
+    "numNote": 195,
+    "playerButton": 2,
+    "time_stamp": "Wed 2021-05-26 19:09:02"
+}
+{
+    "distance": 3.825000047683716,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 4,
+    "nLevel": 14,
+    "numNote": 196,
+    "playerButton": 2,
+    "time_stamp": "Wed 2021-05-26 19:09:02"
+}
+{
+    "distance": 13.387499809265137,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 4,
+    "nLevel": 14,
+    "numNote": 197,
+    "playerButton": 4,
+    "time_stamp": "Wed 2021-05-26 19:09:02"
+}
+{
+    "distance": 11.475000381469727,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 2,
+    "nLevel": 14,
+    "numNote": 198,
+    "playerButton": 2,
+    "time_stamp": "Wed 2021-05-26 19:09:02"
+}
+{
+    "distance": 15.618749618530273,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 4,
+    "nLevel": 14,
+    "numNote": 199,
+    "playerButton": 4,
+    "time_stamp": "Wed 2021-05-26 19:09:03"
+}
+{
+    "distance": 13.706250190734863,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 2,
+    "nLevel": 14,
+    "numNote": 200,
+    "playerButton": 2,
+    "time_stamp": "Wed 2021-05-26 19:09:03"
+}
+{
+    "distance": 15.618749618530273,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 4,
+    "nLevel": 14,
+    "numNote": 201,
+    "playerButton": 4,
+    "time_stamp": "Wed 2021-05-26 19:09:03"
+}
+{
+    "distance": 13.387499809265137,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 2,
+    "nLevel": 14,
+    "numNote": 202,
+    "playerButton": 2,
+    "time_stamp": "Wed 2021-05-26 19:09:03"
+}
+{
+    "distance": 13.387499809265137,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 4,
+    "nLevel": 14,
+    "numNote": 203,
+    "playerButton": 2,
+    "time_stamp": "Wed 2021-05-26 19:09:03"
+}
+{
+    "distance": 13.387499809265137,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 2,
+    "nLevel": 14,
+    "numNote": 204,
+    "playerButton": 2,
+    "time_stamp": "Wed 2021-05-26 19:09:03"
+}
+{
+    "distance": 11.475000381469727,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 4,
+    "nLevel": 14,
+    "numNote": 205,
+    "playerButton": 2,
+    "time_stamp": "Wed 2021-05-26 19:09:03"
+}
+{
+    "distance": 11.475000381469727,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 2,
+    "nLevel": 14,
+    "numNote": 206,
+    "playerButton": 2,
+    "time_stamp": "Wed 2021-05-26 19:09:03"
+}
+{
+    "distance": 11.475000381469727,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 4,
+    "nLevel": 14,
+    "numNote": 207,
+    "playerButton": 2,
+    "time_stamp": "Wed 2021-05-26 19:09:03"
+}
+{
+    "distance": 11.475000381469727,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 2,
+    "nLevel": 14,
+    "numNote": 208,
+    "playerButton": 2,
+    "time_stamp": "Wed 2021-05-26 19:09:03"
+}
+{
+    "distance": 11.475000381469727,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 4,
+    "nLevel": 14,
+    "numNote": 209,
+    "playerButton": 4,
+    "time_stamp": "Wed 2021-05-26 19:09:04"
+}
+{
+    "distance": 9.5625,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 2,
+    "nLevel": 14,
+    "numNote": 210,
+    "playerButton": 2,
+    "time_stamp": "Wed 2021-05-26 19:09:04"
+}
+{
+    "distance": 13.706250190734863,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 4,
+    "nLevel": 14,
+    "numNote": 211,
+    "playerButton": 4,
+    "time_stamp": "Wed 2021-05-26 19:09:04"
+}
+{
+    "distance": 11.793749809265137,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 2,
+    "nLevel": 14,
+    "numNote": 212,
+    "playerButton": 2,
+    "time_stamp": "Wed 2021-05-26 19:09:04"
+}
+{
+    "distance": 15.300000190734863,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 4,
+    "nLevel": 14,
+    "numNote": 213,
+    "playerButton": 4,
+    "time_stamp": "Wed 2021-05-26 19:09:04"
+}
+{
+    "distance": 7.650000095367432,
+    "event_type": "INPUT_EVENT",
+    "id_session": 309434505,
+    "levelButton": 2,
+    "nLevel": 14,
+    "numNote": 214,
+    "playerButton": 2,
+    "time_stamp": "Wed 2021-05-26 19:09:04"
+}
+{
+    "combo_time": 3.0,
+    "event_type": "LEVEL_EVENT",
+    "id_session": 309434505,
+    "input_type": "XBOX_INPUT",
+    "level": 14,
+    "max_combo_count": 200,
+    "score": 869316,
+    "time_stamp": "Wed 2021-05-26 19:09:06"
+}
+{
+    "combo_time": 69.0,
+    "event_type": "LOST_LEVEL_EVENT",
+    "id_session": 309434505,
+    "input_type": "XBOX_INPUT",
+    "last_note": 46,
+    "level": 14,
+    "max_combo_count": 300,
+    "score": 869316,
+    "time_stamp": "Wed 2021-05-26 19:09:06"
+}
+{
+    "dialog_line": 2,
+    "event_type": "DIALOG_SKIP_EVENT",
+    "id_session": 309434505,
+    "level": 14,
+    "time_stamp": "Wed 2021-05-26 19:09:06"
 }

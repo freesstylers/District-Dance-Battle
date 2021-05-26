@@ -49,6 +49,20 @@ LogEvent* Tracker::createLogEvent(string timeStamp) {
 	return e;
 }
 
+LostLevelEvent* Tracker::createLostLevelEvent(string timeStamp)
+{
+	LostLevelEvent* e = new LostLevelEvent(timeStamp);
+	e->setIdSession(idSession_);
+	return e;
+}
+
+DialogSkipEvent* Tracker::createDialogSkipEvent(string timeStamp)
+{
+	DialogSkipEvent* e = new DialogSkipEvent(timeStamp);
+	e->setIdSession(idSession_);
+	return e;
+}
+
 void Tracker::sendEventsToPersistance() {
 	for (int i = 0; i < eventCont_; i++) {
 		Event* e = eventQueue_.front();

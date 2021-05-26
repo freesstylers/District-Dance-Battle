@@ -177,6 +177,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="DialogSkipEvent.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="FilePersistence.h" />
     <ClInclude Include="framework.h" />
@@ -185,6 +186,7 @@
     <ClInclude Include="JsonSerializer.h" />
     <ClInclude Include="LevelEvent.h" />
     <ClInclude Include="LogEvent.h" />
+    <ClInclude Include="LostLevelEvent.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Persistence.h" />
     <ClInclude Include="Serializer.h" />
@@ -192,12 +194,14 @@
     <ClInclude Include="Tracker.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DialogSkipEvent.cpp" />
     <ClCompile Include="Event.cpp" />
     <ClCompile Include="FilePersistence.cpp" />
     <ClCompile Include="InputEvent.cpp" />
     <ClCompile Include="JsonSerializer.cpp" />
     <ClCompile Include="LevelEvent.cpp" />
     <ClCompile Include="LogEvent.cpp" />
+    <ClCompile Include="LostLevelEvent.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

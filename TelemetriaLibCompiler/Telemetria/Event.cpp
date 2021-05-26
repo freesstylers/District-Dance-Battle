@@ -9,7 +9,7 @@ void Event::setIdSession(int idSession) {
 
 string Event::toJson()
 {
-	j["event_type"] = enum_str[type_];
+	j["event_type"] = event_enum_str[type_];
 	j["time_stamp"] = timeStamp_;
 	j["id_session"] = idSession_;
 	nlohmann::json aux = j;

@@ -44,6 +44,7 @@ void GameManager::start() {
 	Tracker::GetInstance()->setPersistenceObject(f);
 	LogEvent* e = Tracker::GetInstance()->createLogEvent(Tracker::GetInstance()->getTime());
 	Tracker::GetInstance()->trackEvent(e);
+
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	if(LEVEL_CREATOR_MODE)
