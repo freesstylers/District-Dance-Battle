@@ -1,5 +1,7 @@
 #include "pch.h"
 
+using namespace tinyxml2;
+
 Event::Event(string time, EventType type = BASE_EVENT) : timeStamp_(time), type_(type) {
 }
 
@@ -14,4 +16,25 @@ string Event::toJson()
 	j["id_session"] = idSession_;
 	nlohmann::json aux = j;
 	return aux.dump(4);
+}
+
+string Event::toXML()
+{
+	eventRoot_ = xml_.NewElement(event_enum_str[type_]);
+
+	xml_.InsertFirstChild(eventRoot_);
+
+	XMLElement* timeStamp = xml_.NewElement("timeStamp");
+	timeStamp->SetText(timeStamp_.c_str());
+	XMLElement* idSession = xml_.NewElement("idSession");
+	idSession->SetText(idSession_);
+
+	eventRoot_->InsertEndChild(timeStamp);
+	eventRoot_->InsertEndChild(idSession);
+
+	XMLPrinter printer_;
+
+	xml_.Print(&printer_);
+
+	return printer_.CStr();
 }

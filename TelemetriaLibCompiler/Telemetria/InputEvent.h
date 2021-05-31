@@ -11,28 +11,30 @@ public:
 	enum InputButton { rUp, rDown, rLeft, rRight, lUp, lDown, lLeft, lRight, bomb };
 	InputEvent(string timeStamp);
 
-	void setNLevel(int nLevel_);
+	void setNLevel(int nLevel);
 	
-	void setPlayerButton(InputButton playerButton_);
+	void setPlayerButton(InputButton playerButton);
 
-	void setLevelButton(InputButton levelButton_);
+	void setLevelButton(InputButton levelButton);
 
-	void setDistance(float distance_);
+	void setDistance(float distance);
 
-	void setNumNote(int numNote_);
+	void setNumNote(int numNote);
 
 	virtual string toJson();
+
+	virtual string toXML();
 
 
 protected:
 
-	int nLevel = -1; //Número de nivel
+	int nLevel_ = -1; //Número de nivel
 
-	InputButton playerButton; //input del jugador
-	InputButton levelButton; //Botón que debería de ser pulsado
+	InputButton playerButton_; //input del jugador
+	InputButton levelButton_; //Botón que debería de ser pulsado
 
-	float distance; //Distancia de la nota hasta el pulsador
-	int numNote; //Numero de nota dentro de la cancion
+	float distance_; //Distancia de la nota hasta el pulsador
+	int numNote_; //Numero de nota dentro de la cancion
 
 };
 

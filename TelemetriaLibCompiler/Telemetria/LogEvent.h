@@ -7,5 +7,6 @@ public:
     LogEvent(string timeStamp);
 
     virtual string toJson();
+    virtual string toXML();
 };
 

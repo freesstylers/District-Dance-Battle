@@ -191,7 +191,9 @@
     <ClInclude Include="Persistence.h" />
     <ClInclude Include="Serializer.h" />
     <ClInclude Include="ServerPersistence.h" />
+    <ClInclude Include="tinyxml2.h" />
     <ClInclude Include="Tracker.h" />
+    <ClInclude Include="XMLSerializer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DialogSkipEvent.cpp" />
@@ -212,7 +214,9 @@
     <ClCompile Include="Serializer.cpp" />
     <ClCompile Include="ServerPersistence.cpp" />
     <ClCompile Include="Telemetria.cpp" />
+    <ClCompile Include="tinyxml2.cpp" />
     <ClCompile Include="Tracker.cpp" />
+    <ClCompile Include="XMLSerializer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

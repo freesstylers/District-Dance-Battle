@@ -8,6 +8,7 @@ public:
 	void setLevel(int level);
 	void setDialogLine(int dialog_line);
 	string toJson();
+	string toXML();
 
 private:
 	int level_;

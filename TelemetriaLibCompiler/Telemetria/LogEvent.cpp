@@ -10,3 +10,8 @@ string LogEvent::toJson()
 	Event::toJson();
 	return j.dump(4);
 }
+
+string LogEvent::toXML()
+{
+	return Event::toXML();
+}

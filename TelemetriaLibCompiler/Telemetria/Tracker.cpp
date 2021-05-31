@@ -64,12 +64,14 @@ DialogSkipEvent* Tracker::createDialogSkipEvent(string timeStamp)
 }
 
 void Tracker::sendEventsToPersistance() {
-	for (int i = 0; i < eventCont_; i++) {
+	getPersistenceObject()->Open();
+	for (int i=0; i<eventCont_; i++) {
 		Event* e = eventQueue_.front();
 		getPersistenceObject()->Send(e);
 		eventQueue_.pop();
 		delete e;
 	}
+	getPersistenceObject()->Close();
 }
 
 void Tracker::startTime() {

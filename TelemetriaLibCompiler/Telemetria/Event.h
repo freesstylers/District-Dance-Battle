@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include "json.hpp"
+#include "tinyxml2.h"
 
 using namespace std;
 
@@ -44,11 +45,15 @@ public:
 
 	virtual string toJson();
 
+	virtual string toXML();
+
 protected:
 
 	string timeStamp_;
 	int idSession_;
 	EventType type_;
 	nlohmann::json j;
+	tinyxml2::XMLDocument xml_;
+	tinyxml2::XMLNode* eventRoot_;
 };
 

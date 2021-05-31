@@ -12,6 +12,7 @@ public:
 	void setInputType(InputType input);
 
 	virtual string toJson();
+	virtual string toXML();
 
 
 protected:

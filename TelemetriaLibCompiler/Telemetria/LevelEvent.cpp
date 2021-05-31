@@ -1,5 +1,5 @@
 #include "pch.h"
-
+using namespace tinyxml2;
 
 LevelEvent::LevelEvent(string timeStamp) : Event(timeStamp, LEVEL_EVENT) {
 	level_ = -1;
@@ -37,4 +37,36 @@ string LevelEvent::toJson(){
 	j["input_type"] = input_enum_str[input_type_];
 	nlohmann::json aux2 = j;
 	return aux2.dump(4);
+}
+
+string LevelEvent::toXML()
+{
+	Event::toXML();
+
+	XMLElement* level = xml_.NewElement("level");
+	level->SetText(level_);
+
+	XMLElement* score = xml_.NewElement("score");
+	score->SetText(score_);
+
+	XMLElement* max_combo_count = xml_.NewElement("max_combo_count");
+	max_combo_count->SetText(max_combo_count_);
+
+	XMLElement* combo_time = xml_.NewElement("combo_time");
+	combo_time->SetText(combo_time_);
+
+	XMLElement* input_type = xml_.NewElement("input_type");
+	input_type->SetText(input_enum_str[input_type_]);
+
+
+	eventRoot_->InsertEndChild(level);
+	eventRoot_->InsertEndChild(score);
+	eventRoot_->InsertEndChild(max_combo_count);
+	eventRoot_->InsertEndChild(combo_time);
+	eventRoot_->InsertEndChild(input_type);
+
+	XMLPrinter printer_;
+
+	xml_.Print(&printer_);
+	return printer_.CStr();
 }

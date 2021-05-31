@@ -2,6 +2,7 @@
 #include "Tracker.h"
 #include "FilePersistence.h"
 #include "JsonSerializer.h"
+#include "XMLSerializer.h"
 
 
 GameManager::GameManager(): SDLGame("District Dance Battle", _WINDOW_WIDTH_, _WINDOW_HEIGHT_)
@@ -39,8 +40,8 @@ void GameManager::start() {
 	Tracker::GetInstance()->startTime();
 	Tracker::GetInstance()->setIdSession(abs(rand() * time(NULL)));
 
-	FilePersistence* f = new FilePersistence("../info.json");
-	f->setSerializer(new JsonSerializer());
+	FilePersistence* f = new FilePersistence("../info.xml");
+	f->setSerializer(new XMLSerializer());
 	Tracker::GetInstance()->setPersistenceObject(f);
 	LogEvent* e = Tracker::GetInstance()->createLogEvent(Tracker::GetInstance()->getTime());
 	Tracker::GetInstance()->trackEvent(e);

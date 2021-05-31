@@ -8,5 +8,7 @@ class Serializer
 public:
     Serializer() {}
     virtual string serialize(Event* e)=0;
+    virtual string openSerialization() { return ""; };
+    virtual string closeSerialization() { return ""; };
 };
 

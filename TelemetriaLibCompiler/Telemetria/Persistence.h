@@ -9,10 +9,12 @@ protected:
 public:
 	Persistence() {
 	}
-	virtual void Send(Event* e)=0;
-	virtual void Flush()=0;
+	virtual void Send(Event* e) = 0;
+	virtual void Flush() = 0;
 	void setSerializer(Serializer* s) {
 		serializerObject = s;
 	}
+	virtual void Open() = 0;
+	virtual void Close() = 0;
 };
 

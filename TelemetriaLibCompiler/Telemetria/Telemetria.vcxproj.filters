@@ -60,6 +60,12 @@
     <ClInclude Include="LostLevelEvent.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="XMLSerializer.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml2.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Telemetria.cpp">
@@ -102,6 +108,12 @@
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="LostLevelEvent.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="XMLSerializer.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxml2.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
