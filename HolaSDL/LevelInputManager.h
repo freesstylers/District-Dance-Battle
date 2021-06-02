@@ -28,6 +28,9 @@ public:
 	void setControllerMode(int controller){ ControllerMode = controller; }
 	int numFailed = 0;
 
+	int getNumNote() { return numNote; }
+	float getComboTime() { return comboTime_; }
+
 private:
 	bool keyPressed(SDL_GameControllerButton buttons, bool areButtons);
 	int numctrl_;
@@ -43,5 +46,9 @@ private:
 	SDL_GameController* controller = NULL;
 	int ControllerMode;
 	int numNote;
+
+	float comboTime_ = 0.0f;
+	int maxCombo_;
+
 };
 

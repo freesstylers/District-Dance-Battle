@@ -40,8 +40,8 @@ void GameManager::start() {
 	Tracker::GetInstance()->startTime();
 	Tracker::GetInstance()->setIdSession(abs(rand() * time(NULL)));
 
-	FilePersistence* f = new FilePersistence("../info.xml");
-	f->setSerializer(new XMLSerializer());
+	FilePersistence* f = new FilePersistence("../info.json");
+	f->setSerializer(new JsonSerializer());
 	Tracker::GetInstance()->setPersistenceObject(f);
 	LogEvent* e = Tracker::GetInstance()->createLogEvent(Tracker::GetInstance()->getTime());
 	Tracker::GetInstance()->trackEvent(e);

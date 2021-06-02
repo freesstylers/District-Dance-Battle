@@ -131,6 +131,7 @@ bool DialogState::handleEvent(Uint32 time, SDL_Event e) {
 			dialogo.pop_front();
 			if (!dialogo.empty()) {
 				actualBox = box[dialogo.front().box];
+				dialogLines_++;
 			}
 
 			else if (archivo == "Corpselillo1" || archivo == "Onilecram1") { 
@@ -157,6 +158,12 @@ bool DialogState::handleEvent(Uint32 time, SDL_Event e) {
 	else if (e.type == SDL_CONTROLLERBUTTONUP || e.type == SDL_KEYUP) keyup = true;
 
 	else if (e.type == SDL_CONTROLLERBUTTONDOWN && SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_BACK) || (e.type == SDL_KEYDOWN && (e.key.keysym.sym == SDLK_TAB || e.key.keysym.sym == SDLK_ESCAPE))) {
+
+		DialogSkipEvent* e3 = Tracker::GetInstance()->createDialogSkipEvent(Tracker::GetInstance()->getTime());
+		e3->setLevel(nlevel);
+		e3->setDialogLine(dialogLines_);
+
+		Tracker::GetInstance()->trackEvent(e3);
 
 		manager->getServiceLocator()->getAudios()->haltChannel(4);
 		if (nlevel == 0)

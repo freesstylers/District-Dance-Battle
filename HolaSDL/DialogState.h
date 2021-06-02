@@ -57,6 +57,8 @@ protected:
 	bool endlevel = false;
 	string archivo;
 
+	int dialogLines_ = 0;
+
 	void updateText();
 };
 

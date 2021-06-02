@@ -1,0 +1,27 @@
+<Root>
+<LOG_EVENT>
+    <timeStamp>Wed 2021-06-02 17:06:29</timeStamp>
+    <idSession>-1698603163</idSession>
+</LOG_EVENT>
+
+<LOG_EVENT>
+    <timeStamp>Wed 2021-06-02 17:09:21</timeStamp>
+    <idSession>1659856265</idSession>
+</LOG_EVENT>
+
+<LOG_EVENT>
+    <timeStamp>Wed 2021-06-02 17:22:04</timeStamp>
+    <idSession>-561929716</idSession>
+</LOG_EVENT>
+
+<LOG_EVENT>
+    <timeStamp>Wed 2021-06-02 17:36:55</timeStamp>
+    <idSession>-1017765911</idSession>
+</LOG_EVENT>
+
+<LOG_EVENT>
+    <timeStamp>Wed 2021-06-02 17:45:07</timeStamp>
+    <idSession>-463609006</idSession>
+</LOG_EVENT>
+
+</Root>

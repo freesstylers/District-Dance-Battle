@@ -14,7 +14,7 @@ class EndState :
 {
 public:
 	
-	EndState(GameManager* g, int prevMaxScoreE, int prevMaxScoreH, int* califs1, int actualScore, int maxScore, int percentage, int maxCombo, int lvl, bool isSingleplayer, bool hardMode, int actualScore2 = 0, int* califs2 = nullptr, int maxCombo2 = 0);
+	EndState(GameManager* g, int prevMaxScoreE, int prevMaxScoreH, int* califs1, int actualScore, int maxScore, int percentage, int maxCombo, int lvl, bool isSingleplayer, bool hardMode, float comboTime, int actualScore2 = 0, int* califs2 = nullptr, int maxCombo2 = 0);
 	virtual ~EndState();
 	void backToMenu(GameManager* gameManager);
 	void backToMenuWin(GameManager* gameManager);

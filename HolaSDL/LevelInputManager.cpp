@@ -198,6 +198,7 @@ bool LevelInputManager::handleInput(Uint32 time1, const SDL_Event& event) {
 					player->hitLeft->addHit(Resources::HitCopper, it->getPosition());
 					player->updateScoreNote(3);
 					player->addCombo(1);
+					comboTime_ += time1;
 					player->addCalifications(1);
 					if (numFailed >= 3)
 						numFailed -= 3;

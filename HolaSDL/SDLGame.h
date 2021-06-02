@@ -81,6 +81,7 @@ protected:
 	Character* anim;
 
 	//bool isXbox = true;
+	//0 xbox, 1 ps4, 2 flechas, 3 teclado
 	int P1Controller;
 	int P2Controller;
 };

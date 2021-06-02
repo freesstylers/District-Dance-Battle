@@ -377,6 +377,23 @@ void PlayState::update(Uint32 time)
 			}
 			else if (isLost())
 			{
+
+				LostLevelEvent* e2 = Tracker::GetInstance()->createLostLevelEvent(Tracker::GetInstance()->getTime());
+				e2->setLevel(level->song);
+				e2->setScore(player1->currentScore);
+				e2->setComboTime(player1->lip->getComboTime());
+				InputType inputType;
+				int p1controller = manager->getP1Controller();
+				if (p1controller == 0) inputType = InputType::PS4_INPUT;
+				else if (p1controller == 1) inputType = InputType::XBOX_INPUT;
+				else if (p1controller == 2) inputType = InputType::ARROWS_INPUT;
+				else inputType = InputType::KEYBOARD_INPUT;
+				e2->setInputType(inputType);
+				e2->setMaxComboCount(player1->getMaxCombo());
+				e2->setLastNote(player1->lip->getNumNote());
+
+				Tracker::GetInstance()->trackEvent(e2);
+
 				Lost->setActive(true);
 				youLost->setActive(true);
 				if (volume > 0)
@@ -575,11 +592,12 @@ void PlayState::generateButtons()
 
 void PlayState::songOver()
 {
+
 	manager->getServiceLocator()->getAudios()->haltChannel(0);
 	if (isSingleplayer)
-		manager->getMachine()->pushState(new EndState(manager, prevMaxScoreE_, prevMaxScoreH_, player1->getCalifications(), player1->currentScore, maxScore, 70, player1->getMaxCombo(), nlevel, isSingleplayer, difficultyMode));
+		manager->getMachine()->pushState(new EndState(manager, prevMaxScoreE_, prevMaxScoreH_, player1->getCalifications(), player1->currentScore, maxScore, 70, player1->getMaxCombo(), nlevel, isSingleplayer, difficultyMode, player1->lip->getComboTime()));
 	else
-		manager->getMachine()->pushState(new EndState(manager, prevMaxScoreE_, prevMaxScoreH_, player1->getCalifications(), player1->currentScore, maxScore, 70, player1->getMaxCombo(), nlevel, isSingleplayer, difficultyMode, player2->currentScore, player2->getCalifications(), player2->getMaxCombo()));
+		manager->getMachine()->pushState(new EndState(manager, prevMaxScoreE_, prevMaxScoreH_, player1->getCalifications(), player1->currentScore, maxScore, 70, player1->getMaxCombo(), nlevel, isSingleplayer, difficultyMode, player1->lip->getComboTime(), player2->currentScore, player2->getCalifications(), player2->getMaxCombo()));
 }
 
 void PlayState::restart()
