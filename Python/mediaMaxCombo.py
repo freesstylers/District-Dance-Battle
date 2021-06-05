@@ -15,22 +15,22 @@ sumas = [0,0,0,0,0]
 divs = [0,0,0,0,0]
 
 for i in range(len(level_events)):
-    comboTime = level_events[i]['combo_time']
+    maxCombo = level_events[i]['max_combo_count']
     
     if level_events[i]['level'] == 1:
-        sumas[0] += comboTime
+        sumas[0] += maxCombo
         divs[0] +=1
     if level_events[i]['level'] == 2:
-        sumas[1] += comboTime
+        sumas[1] += maxCombo
         divs[1] +=1
     if level_events[i]['level'] == 3:
-        sumas[2] += comboTime
+        sumas[2] += maxCombo
         divs[2] +=1
     if level_events[i]['level'] == 4:
-        sumas[3] += comboTime
+        sumas[3] += maxCombo
         divs[3] +=1
     if level_events[i]['level'] == 5:
-        sumas[4] += comboTime
+        sumas[4] += maxCombo
         divs[4] +=1
 
 medias = [0,0,0,0,0]
@@ -45,7 +45,7 @@ lvls = [1,2,3,4,5]
 #y_pos = np.arange(len(lvls))
 #plt.xticks(y_pos, lvls)
 plt.xlabel('Nivel')
-plt.ylabel('Tiempo de combo')
+plt.ylabel('Max Combo')
 plt.bar(lvls, medias)
-plt.suptitle('Medias de tiempo de combo por nivel')
+plt.suptitle('Medias de combo máximo por nivel')
 plt.show()
