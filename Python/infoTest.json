@@ -31853,7 +31853,7 @@
     "playerButton": 6,
     "time_stamp": "Sat 2021-06-05 14:13:33"
 },
-{
+    {
     "combo_time": 29249908.0,
     "event_type": "LOST_LEVEL_EVENT",
     "id_session": 1629589086,
@@ -31874,7 +31874,7 @@
     "max_combo_count": 33,
     "score": 94331,
     "time_stamp": "Sat 2021-06-05 14:13:33"
-},
+},                                                                      
 {
     "combo_time": 29249908.0,
     "event_type": "LOST_LEVEL_EVENT",
