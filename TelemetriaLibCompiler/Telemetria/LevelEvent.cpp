@@ -70,3 +70,33 @@ string LevelEvent::toXML()
 	xml_.Print(&printer_);
 	return printer_.CStr();
 }
+
+string LevelEvent::toCSV()
+{
+	string csv = Event::toCSV();
+	csv += ", ";
+
+	csv += std::to_string(level_);
+	csv += ", ";
+
+	csv += ", ";
+
+	csv += ", ";
+
+	csv += ", ";
+
+	csv += ", ";
+
+	csv += std::to_string(score_);
+	csv += ", ";
+
+	csv += std::to_string(max_combo_count_);
+	csv += ", ";
+
+	csv += std::to_string(combo_time_);
+	csv += ", ";
+
+	csv += input_enum_str[input_type_];
+
+	return csv;
+}

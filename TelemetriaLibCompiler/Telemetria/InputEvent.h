@@ -9,6 +9,9 @@ class InputEvent :
 public:
 
 	enum InputButton { rUp, rDown, rLeft, rRight, lUp, lDown, lLeft, lRight, bomb };
+	
+	const char* inputButton_str [9] =  {"rUp", "rDown", "rLeft", "rRight", "lUp", "lDown", "lLeft", "lRight", "bomb"};
+
 	InputEvent(string timeStamp);
 
 	void setNLevel(int nLevel);
@@ -24,6 +27,8 @@ public:
 	virtual string toJson();
 
 	virtual string toXML();
+
+	virtual string toCSV();
 
 
 protected:

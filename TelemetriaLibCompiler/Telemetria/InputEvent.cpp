@@ -66,3 +66,25 @@ string InputEvent::toXML()
 	xml_.Print(&printer_);
 	return printer_.CStr();
 }
+
+string InputEvent::toCSV()
+{
+	string csv = Event::toCSV();
+	csv += ", ";
+
+	csv += std::to_string(nLevel_);
+	csv += ", ";
+
+	csv += inputButton_str[playerButton_];
+	csv += ", ";
+
+	csv += inputButton_str[levelButton_];
+	csv += ", ";
+
+	csv += std::to_string(distance_);
+	csv += ", ";
+
+	csv += std::to_string(numNote_);
+
+	return csv;
+}

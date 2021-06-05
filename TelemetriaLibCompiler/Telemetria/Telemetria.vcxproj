@@ -177,6 +177,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CSVSerializer.h" />
     <ClInclude Include="DialogSkipEvent.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="FilePersistence.h" />
@@ -196,6 +197,7 @@
     <ClInclude Include="XMLSerializer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CSVSerializer.cpp" />
     <ClCompile Include="DialogSkipEvent.cpp" />
     <ClCompile Include="Event.cpp" />
     <ClCompile Include="FilePersistence.cpp" />

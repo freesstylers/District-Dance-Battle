@@ -13,6 +13,7 @@ public:
 
 	virtual string toJson();
 	virtual string toXML();
+	virtual string toCSV();
 
 
 protected:

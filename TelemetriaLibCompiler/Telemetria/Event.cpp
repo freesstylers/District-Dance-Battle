@@ -38,3 +38,20 @@ string Event::toXML()
 
 	return printer_.CStr();
 }
+
+string Event::toCSV()
+{
+	string csv = "";
+
+	csv += event_enum_str[type_];
+
+	csv += ", ";
+
+	csv += timeStamp_;
+
+	csv += ", ";
+
+	csv += std::to_string(idSession_);
+
+	return csv;
+}

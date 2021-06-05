@@ -7,6 +7,7 @@ public:
 	void setLastNote(int last_note);
 	virtual string toJson();
 	virtual string toXML();
+	virtual string toCSV();
 
 private:
 	int last_note_;

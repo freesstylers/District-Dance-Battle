@@ -49,6 +49,8 @@ public:
 
 	virtual string toXML();
 
+	virtual string toCSV();
+
 protected:
 
 	string timeStamp_;

@@ -43,3 +43,25 @@ string DialogSkipEvent::toXML()
 	xml_.Print(&printer_);
 	return printer_.CStr();
 }
+
+string DialogSkipEvent::toCSV()
+{
+	string csv = Event::toCSV();
+	csv += ", ";
+
+	csv += std::to_string(level_);
+	csv += ", ";
+
+	csv += ", ";
+	csv += ", ";
+	csv += ", ";
+	csv += ", ";
+	csv += ", ";
+	csv += ", ";
+	csv += ", ";
+	csv += ", ";
+	csv += ", ";
+	csv += std::to_string(dialog_line_);
+
+	return csv;
+}

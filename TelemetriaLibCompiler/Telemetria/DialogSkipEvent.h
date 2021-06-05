@@ -9,6 +9,7 @@ public:
 	void setDialogLine(int dialog_line);
 	string toJson();
 	string toXML();
+	string toCSV();
 
 private:
 	int level_;

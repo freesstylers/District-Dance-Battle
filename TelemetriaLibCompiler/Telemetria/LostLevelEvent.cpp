@@ -33,3 +33,13 @@ string LostLevelEvent::toXML()
 	xml_.Print(&printer_);
 	return printer_.CStr();
 }
+
+string LostLevelEvent::toCSV()
+{
+	string csv = LevelEvent::toCSV();
+	csv += ", ";
+
+	csv += std::to_string(last_note_);
+
+	return csv;
+}

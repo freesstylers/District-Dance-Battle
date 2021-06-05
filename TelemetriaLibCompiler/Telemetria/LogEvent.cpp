@@ -1,6 +1,5 @@
 #include "pch.h"
 
-
 LogEvent::LogEvent(string timeStamp) : Event(timeStamp, LOG_EVENT) {
 
 }
@@ -14,4 +13,9 @@ string LogEvent::toJson()
 string LogEvent::toXML()
 {
 	return Event::toXML();
+}
+
+string LogEvent::toCSV()
+{
+	return Event::toCSV();
 }
