@@ -14,13 +14,21 @@ for i in range(len(data["events"])):
 levels = [[] for i in range(16)]
 
 for i in range(len(levels)):
-    levels[i] = [[] for i in range(1000)]
-    for j in range(len(levels[i])):
-        levels[i][j] = 0
+    levels[i].append(0)
 
 for i in range(len(input_events)):
+    if len(levels[int(input_events[i]["nLevel"])]) <= int(input_events[i]["numNote"]):
+        levels[int(input_events[i]["nLevel"])].append(0)
     if input_events[i]["levelButton"] != input_events[i]["playerButton"]:
         levels[int(input_events[i]["nLevel"])][int(input_events[i]["numNote"])] += 1
+
+
+# poner aqui el numero del nivel para sacar la grafica
+level = levels[14]
+
+y_pos = np.arange(len(level))
+plt.bar(y_pos, level)
+plt.show()
 
 
 
