@@ -24,7 +24,7 @@ for i in range(len(input_events)):
 
 
 # poner aqui el numero del nivel para sacar la grafica
-level = levels[12]
+level = levels[4]
 
 y_pos = np.arange(len(level))
 plt.bar(y_pos, level)
