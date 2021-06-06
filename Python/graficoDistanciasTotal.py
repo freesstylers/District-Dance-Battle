@@ -2,7 +2,7 @@ import json
 import matplotlib.pyplot as plt
 import numpy as np
 
-with open('c:/District-Dance-Battle/Python/info.json') as f:
+with open('c:/Users/alvar/Documents/GitHub/District-Dance-Battle/Python/info.json') as f:
     data = json.load(f)
 
 input_events = []
@@ -42,10 +42,11 @@ for i in range(len(input_events)):
         distances[5]+=1
 
 fig = plt.figure()
-ax = fig.add_axes([0,0,1,1])
+#ax = fig.add_axes([0,0,1,1])
 langs = ['0-2', '2-4', '4-6', '6-8', '8-10', '10-12']
-y_pos = np.arange(len(langs))
-plt.xticks(y_pos, langs)
+#y_pos = np.arange(len(langs))
+#plt.xticks(y_pos, langs)
 plt.ylabel('Inputs')
-ax.bar(langs,distances)
+plt.bar(langs,distances)
+plt.suptitle('Grafico de distancias total')
 plt.show()
