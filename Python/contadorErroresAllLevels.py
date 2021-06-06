@@ -17,6 +17,8 @@ for i in range(len(levels)):
     levels[i].append(0)
 
 for i in range(len(input_events)):
+    if i == 214:
+        print("aqui")
     if len(levels[int(input_events[i]["nLevel"])]) <= int(input_events[i]["numNote"]):
         levels[int(input_events[i]["nLevel"])].append(0)
     if input_events[i]["levelButton"] != input_events[i]["playerButton"]:
