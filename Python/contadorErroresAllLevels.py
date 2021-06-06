@@ -2,7 +2,7 @@ import json
 import matplotlib.pyplot as plt
 import numpy as np
 
-with open('c:/District-Dance-Battle/Python/info.json') as f:
+with open('info.json') as f:
     data = json.load(f)
 
 input_events = []
