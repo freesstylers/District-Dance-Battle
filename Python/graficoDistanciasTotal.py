@@ -14,15 +14,6 @@ for i in range(len(data["events"])):
     if data["events"][i]['event_type'] == "INPUT_EVENT":
         input_events.append(data["events"][i])
 
-    if data["events"][i]['event_type'] == "LOG_EVENT":
-        log_events.append(data["events"][i])
-
-    if data["events"][i]['event_type'] == "LOST_LEVEL_EVENT":
-        lostlevel_events.append(data["events"][i])
-
-    if data["events"][i]['event_type'] == "DIALOG_SKIP_EVENT":
-        dialogskip_events.append(data["events"][i])
-
 
 distances = [0,0,0,0,0,0]
 
