@@ -6,26 +6,26 @@ with open('c:/Users/alvar/Documents/GitHub/District-Dance-Battle/Python/infoTest
     data = json.load(f)
 
 lost_level_events = []
-eventAux = [0]
+eventAux = 0
 
 for i in range(len(data["events"])):
     if data["events"][i]['event_type'] == "LOST_LEVEL_EVENT":
-        if data["events"][i]['score'] != eventAux[0]:
+        if data["events"][i]['score'] != eventAux:
             lost_level_events.append(data["events"][i])
-            eventAux[0] = data["events"][i]['score']
+            eventAux = data["events"][i]['score']
 
 sumas = [0,0,0,0,0]
 
 for i in range(len(lost_level_events)):
-    if lost_level_events[i]['level'] == 1:
-        sumas[0] += 1
     if lost_level_events[i]['level'] == 2:
+        sumas[0] += 1
+    if lost_level_events[i]['level'] == 14:
         sumas[1] += 1
-    if lost_level_events[i]['level'] == 3:
-        sumas[2] += 1
-    if lost_level_events[i]['level'] == 4:
-        sumas[3] += 1
     if lost_level_events[i]['level'] == 5:
+        sumas[2] += 1
+    if lost_level_events[i]['level'] == 19:
+        sumas[3] += 1
+    if lost_level_events[i]['level'] == 22:
         sumas[4] += 1
 
 
