@@ -11,14 +11,12 @@ for i in range(len(data["events"])):
     if data["events"][i]['event_type'] == "INPUT_EVENT":
         input_events.append(data["events"][i])
 
-levels = [[] for i in range(16)]
+levels = [[] for i in range(24)]
 
 for i in range(len(levels)):
     levels[i].append(0)
 
 for i in range(len(input_events)):
-    if i == 214:
-        print("aqui")
     if len(levels[int(input_events[i]["nLevel"])]) <= int(input_events[i]["numNote"]):
         levels[int(input_events[i]["nLevel"])].append(0)
     if input_events[i]["levelButton"] != input_events[i]["playerButton"]:
@@ -26,7 +24,7 @@ for i in range(len(input_events)):
 
 
 # poner aqui el numero del nivel para sacar la grafica
-level = levels[14]
+level = levels[12]
 
 y_pos = np.arange(len(level))
 plt.bar(y_pos, level)
